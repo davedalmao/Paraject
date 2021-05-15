@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Core\Services\" />
+    <Folder Include="Core\Commands\" />
+    <Folder Include="MVVM\" />
+    <Folder Include="Database\" />
+    <Folder Include="UiDesign\Theme\" />
+    <Folder Include="UiDesign\Images\" />
+    <Folder Include="UiDesign\Fonts\" />
+    <Folder Include="MVVM\ViewModels\" />
+    <Folder Include="MVVM\Views\" />
+    <Folder Include="MVVM\Models\" />
+  </ItemGroup>
+
+</Project>
