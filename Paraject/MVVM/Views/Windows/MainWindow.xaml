@@ -24,6 +24,8 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
+                <!--min, max, close buttons-->
+                <RowDefinition Height="auto" />
                 <!--logo-->
                 <RowDefinition Height="auto" />
                 <!--user image and name-->
@@ -52,22 +54,17 @@
                     Grid.Row="3" />
             <Border Background="#25282C"
                     Grid.Column="0"
-                    Grid.Row="4"
+                    Grid.Row="4" />
+            <Border Background="#25282C"
+                    Grid.Column="0"
+                    Grid.Row="5"
                     CornerRadius="0,0,0,20" />
 
-            <!--Logo-->
-            <Image Source="/UiDesign/Images/Logo/parajectLogo.png"
-                   Grid.Column="0"
-                   Grid.Row="0"
-                   Width="90.43"
-                   Height="22.61"
-                   VerticalAlignment="Bottom"
-                   Margin="0,52,0,18.48" />
 
             <!--min, max, close buttons-->
             <StackPanel Orientation="Horizontal"
-                        Grid.Row="0"
                         Grid.Column="1"
+                        Grid.Row="0"
                         HorizontalAlignment="Right"
                         VerticalAlignment="top"
                         Margin="0,20,20,0">
@@ -92,8 +89,19 @@
                        Cursor="Hand" />
             </StackPanel>
 
+            <!--Logo-->
+            <Image Source="/UiDesign/Images/Logo/parajectLogo.png"
+                   Grid.Column="0"
+                   Grid.Row="1"
+                   Width="90.43"
+                   Height="22.61"
+                   VerticalAlignment="Bottom"
+                   Margin="0,12,0,18.48" />
+
+
+            <!--User image and User name-->
             <StackPanel  Grid.Column="0"
-                         Grid.Row="1"
+                         Grid.Row="2"
                          Margin="0,18.48">
                 <!--User image-->
                 <Ellipse Width="81.94"
@@ -118,7 +126,7 @@
             <!--Separator-->
             <Border BorderBrush="#3C3F43"
                     Grid.Column="0"
-                    Grid.Row="2"
+                    Grid.Row="3"
                     BorderThickness="5"
                     CornerRadius="4"
                     Height="1"
@@ -129,7 +137,7 @@
 
             <!--top menu-->
             <StackPanel Grid.Column="0"
-                        Grid.Row="3"
+                        Grid.Row="4"
                         HorizontalAlignment="Center">
                 <StackPanel.Resources>
                     <Style TargetType="{x:Type StackPanel}">
@@ -194,7 +202,7 @@
 
             <!--bottom menu-->
             <StackPanel Grid.Column="0"
-                        Grid.Row="4"
+                        Grid.Row="5"
                         HorizontalAlignment="Center"
                         Width="112"
                         VerticalAlignment="Bottom"
