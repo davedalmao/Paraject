@@ -13,13 +13,14 @@
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
+        FontFamily="/UiDesign/Fonts/#Nunito"
         MouseDown="Window_MouseDown">
     <Border Background="#222529"
             CornerRadius="20">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="208" />
-                <ColumnDefinition />
+                <ColumnDefinition Width="732" />
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
@@ -79,7 +80,7 @@
 
                 <Image Source="/UiDesign/Images/WindowStateButtons/min.png"
                        Width="20.37"
-                       Height="3"
+                       Height="20"
                        Cursor="Hand" />
                 <Image Source="/UiDesign/Images/WindowStateButtons/max.png"
                        Width="20.37"
@@ -109,7 +110,8 @@
                            Height="23.21"
                            HorizontalAlignment="Center"
                            Foreground="#B8BDC1"
-                           FontSize="18" />
+                           FontSize="18"
+                           FontFamily="/UiDesign/Fonts/#Merriweather" />
             </StackPanel>
 
             <!--18.48-->
@@ -145,7 +147,8 @@
                     <TextBlock Text="Dashboard"
                                FontSize="14.59"
                                Margin="12,0,0,0"
-                               Foreground="#7D8083" />
+                               Foreground="#7D8083"
+                               FontWeight="Bold" />
                 </StackPanel>
 
                 <!--Projects-->
@@ -157,7 +160,8 @@
                     <TextBlock Text="Projects"
                                FontSize="14.59"
                                Margin="12,0,0,0"
-                               Foreground="#7D8083" />
+                               Foreground="#7D8083"
+                               FontWeight="Bold" />
                 </StackPanel>
 
                 <!--Profile-->
@@ -169,7 +173,8 @@
                     <TextBlock Text="Profile"
                                FontSize="14.59"
                                Margin="12,0,0,0"
-                               Foreground="#7D8083" />
+                               Foreground="#7D8083"
+                               FontWeight="Bold" />
                 </StackPanel>
 
                 <!--Project Ideas-->
@@ -181,7 +186,8 @@
                     <TextBlock Text="Project Ideas"
                                FontSize="14.59"
                                Margin="12,0,0,0"
-                               Foreground="#7D8083" />
+                               Foreground="#7D8083"
+                               FontWeight="Bold" />
                 </StackPanel>
             </StackPanel>
 
@@ -190,7 +196,7 @@
             <StackPanel Grid.Column="0"
                         Grid.Row="4"
                         HorizontalAlignment="Center"
-                        Width="110"
+                        Width="112"
                         VerticalAlignment="Bottom"
                         Margin="0,0,0,34">
                 <StackPanel.Resources>
@@ -209,7 +215,8 @@
                     <TextBlock Text="Settings"
                                FontSize="14.59"
                                Margin="12,0,0,0"
-                               Foreground="#7D8083" />
+                               Foreground="#7D8083"
+                               FontWeight="Bold" />
                 </StackPanel>
 
                 <!--Logout-->
@@ -221,7 +228,8 @@
                     <TextBlock Text="Logout"
                                FontSize="14.59"
                                Margin="12,0,0,0"
-                               Foreground="#7D8083" />
+                               Foreground="#7D8083"
+                               FontWeight="Bold" />
                 </StackPanel>
             </StackPanel>
         </Grid>

@@ -31,7 +31,6 @@
     <Folder Include="Core\Commands\" />
     <Folder Include="Database\" />
     <Folder Include="MVVM\Views\ModalDialogs\" />
-    <Folder Include="UiDesign\Fonts\" />
     <Folder Include="MVVM\ViewModels\" />
     <Folder Include="MVVM\Models\" />
   </ItemGroup>
