@@ -5,11 +5,9 @@ D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\netcoreapp3.1\Par
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\netcoreapp3.1\Paraject.dll
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\netcoreapp3.1\Paraject.pdb
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\netcoreapp3.1\Paraject.csprojAssemblyReference.cache
-D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\netcoreapp3.1\App.g.cs
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\netcoreapp3.1\Paraject_MarkupCompile.cache
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\netcoreapp3.1\Paraject_MarkupCompile.lref
-D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\netcoreapp3.1\MainWindow.baml
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\netcoreapp3.1\Paraject.g.resources
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\netcoreapp3.1\Paraject.AssemblyInfoInputs.cache
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\netcoreapp3.1\Paraject.AssemblyInfo.cs
@@ -17,3 +15,7 @@ D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\netcoreapp3.1\Par
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\netcoreapp3.1\Paraject.dll
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\netcoreapp3.1\Paraject.pdb
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\netcoreapp3.1\Paraject.genruntimeconfig.cache
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\netcoreapp3.1\MVVM\Views\Windows\MainWindow.g.cs
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\netcoreapp3.1\MVVM\Views\Windows\MainWindow.baml
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\netcoreapp3.1\UiDesign\Theme\SidebarMenuButtonTheme.baml
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\netcoreapp3.1\App.baml

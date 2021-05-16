@@ -7,16 +7,87 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="UiDesign\Images\parajectLogo.png" />
+    <None Remove="UiDesign\Images\SideBarIcons\dashboard.png" />
+    <None Remove="UiDesign\Images\SideBarIcons\logout.png" />
+    <None Remove="UiDesign\Images\SideBarIcons\profile.png" />
+    <None Remove="UiDesign\Images\SideBarIcons\projectIdeas.png" />
+    <None Remove="UiDesign\Images\SideBarIcons\projects.png" />
+    <None Remove="UiDesign\Images\SideBarIcons\selected\dashboard.png" />
+    <None Remove="UiDesign\Images\SideBarIcons\selected\logout.png" />
+    <None Remove="UiDesign\Images\SideBarIcons\selected\profile.png" />
+    <None Remove="UiDesign\Images\SideBarIcons\selected\projectIdeas.png" />
+    <None Remove="UiDesign\Images\SideBarIcons\selected\projects.png" />
+    <None Remove="UiDesign\Images\SideBarIcons\selected\settings.png" />
+    <None Remove="UiDesign\Images\SideBarIcons\settings.png" />
+    <None Remove="UiDesign\Images\UserImage\default.png" />
+    <None Remove="UiDesign\Images\WindowStateButtons\close.png" />
+    <None Remove="UiDesign\Images\WindowStateButtons\max.png" />
+    <None Remove="UiDesign\Images\WindowStateButtons\min.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Core\Services\" />
     <Folder Include="Core\Commands\" />
-    <Folder Include="MVVM\" />
     <Folder Include="Database\" />
-    <Folder Include="UiDesign\Theme\" />
-    <Folder Include="UiDesign\Images\" />
+    <Folder Include="MVVM\Views\ModalDialogs\" />
     <Folder Include="UiDesign\Fonts\" />
     <Folder Include="MVVM\ViewModels\" />
-    <Folder Include="MVVM\Views\" />
     <Folder Include="MVVM\Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="UiDesign\Images\Logo\parajectLogo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Images\SideBarIcons\dashboard.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Images\SideBarIcons\logout.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Images\SideBarIcons\profile.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Images\SideBarIcons\projectIdeas.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Images\SideBarIcons\projects.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Images\SideBarIcons\selected\dashboard.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Images\SideBarIcons\selected\logout.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Images\SideBarIcons\selected\profile.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Images\SideBarIcons\selected\projectIdeas.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Images\SideBarIcons\selected\projects.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Images\SideBarIcons\selected\settings.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Images\SideBarIcons\settings.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Images\UserImage\default.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Images\WindowStateButtons\close.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Images\WindowStateButtons\max.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Images\WindowStateButtons\min.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

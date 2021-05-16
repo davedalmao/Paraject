@@ -1,0 +1,229 @@
+﻿<Window x:Class="Paraject.MVVM.Views.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Paraject.MVVM.Views.Windows"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="615"
+        Width="940"
+        WindowStyle="None"
+        ResizeMode="CanResize"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        MouseDown="Window_MouseDown">
+    <Border Background="#222529"
+            CornerRadius="20">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="208" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <!--logo-->
+                <RowDefinition Height="auto" />
+                <!--user image and name-->
+                <RowDefinition Height="auto" />
+                <!--separator-->
+                <RowDefinition Height="auto" />
+                <!--top menu-->
+                <RowDefinition Height="auto" />
+                <!--bottom menu-->
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!--Sidebar color-->
+            <Border Background="#25282C"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    CornerRadius="20,0,0,0" />
+            <Border Background="#25282C"
+                    Grid.Column="0"
+                    Grid.Row="1" />
+            <Border Background="#25282C"
+                    Grid.Column="0"
+                    Grid.Row="2" />
+            <Border Background="#25282C"
+                    Grid.Column="0"
+                    Grid.Row="3" />
+            <Border Background="#25282C"
+                    Grid.Column="0"
+                    Grid.Row="4"
+                    CornerRadius="0,0,0,20" />
+
+            <!--Logo-->
+            <Image Source="/UiDesign/Images/Logo/parajectLogo.png"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   Width="90.43"
+                   Height="22.61"
+                   VerticalAlignment="Bottom"
+                   Margin="0,52,0,18.48" />
+
+            <!--min, max, close buttons-->
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="top"
+                        Margin="0,20,20,0">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Margin"
+                                Value="20,0,0,0" />
+                    </Style>
+                </StackPanel.Resources>
+
+                <Image Source="/UiDesign/Images/WindowStateButtons/min.png"
+                       Width="20.37"
+                       Height="3"
+                       Cursor="Hand" />
+                <Image Source="/UiDesign/Images/WindowStateButtons/max.png"
+                       Width="20.37"
+                       Height="20.37"
+                       Cursor="Hand" />
+                <Image Source="/UiDesign/Images/WindowStateButtons/close.png"
+                       Width="20.37"
+                       Height="20.37"
+                       Cursor="Hand" />
+            </StackPanel>
+
+            <StackPanel  Grid.Column="0"
+                         Grid.Row="1"
+                         Margin="0,18.48">
+                <!--User image-->
+                <Ellipse Width="81.94"
+                         Height="81.94"
+                         Cursor="Hand"
+                         Margin="0,0,0,12.5">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="/UiDesign/Images/UserImage/default.png" />
+                    </Ellipse.Fill>
+                </Ellipse>
+
+                <!--Username-->
+                <TextBlock Text="John Dave"
+                           Height="23.21"
+                           HorizontalAlignment="Center"
+                           Foreground="#B8BDC1"
+                           FontSize="18" />
+            </StackPanel>
+
+            <!--18.48-->
+            <!--Separator-->
+            <Border BorderBrush="#3C3F43"
+                    Grid.Column="0"
+                    Grid.Row="2"
+                    BorderThickness="5"
+                    CornerRadius="4"
+                    Height="1"
+                    Width="128"
+                    Margin="0,32,0,28.48" />
+
+            <!--Sidebar Menu-->
+
+            <!--top menu-->
+            <StackPanel Grid.Column="0"
+                        Grid.Row="3"
+                        HorizontalAlignment="Center">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type StackPanel}">
+                        <Setter Property="Margin"
+                                Value="0,0,0,18.57" />
+                    </Style>
+                </StackPanel.Resources>
+
+                <!--Dashboard-->
+                <StackPanel Orientation="Horizontal"
+                            Cursor="Hand">
+                    <Image Source="/UiDesign/Images/SidebarIcons/dashboard.png"
+                           Width="18.57"
+                           Height="18.57" />
+                    <TextBlock Text="Dashboard"
+                               FontSize="14.59"
+                               Margin="12,0,0,0"
+                               Foreground="#7D8083" />
+                </StackPanel>
+
+                <!--Projects-->
+                <StackPanel Orientation="Horizontal"
+                            Cursor="Hand">
+                    <Image Source="/UiDesign/Images/SidebarIcons/projects.png"
+                           Width="18.57"
+                           Height="18.57" />
+                    <TextBlock Text="Projects"
+                               FontSize="14.59"
+                               Margin="12,0,0,0"
+                               Foreground="#7D8083" />
+                </StackPanel>
+
+                <!--Profile-->
+                <StackPanel Orientation="Horizontal"
+                            Cursor="Hand">
+                    <Image Source="/UiDesign/Images/SidebarIcons/profile.png"
+                           Width="18.57"
+                           Height="18.57" />
+                    <TextBlock Text="Profile"
+                               FontSize="14.59"
+                               Margin="12,0,0,0"
+                               Foreground="#7D8083" />
+                </StackPanel>
+
+                <!--Project Ideas-->
+                <StackPanel Orientation="Horizontal"
+                            Cursor="Hand">
+                    <Image Source="/UiDesign/Images/SidebarIcons/projectIdeas.png"
+                           Width="18.57"
+                           Height="18.57" />
+                    <TextBlock Text="Project Ideas"
+                               FontSize="14.59"
+                               Margin="12,0,0,0"
+                               Foreground="#7D8083" />
+                </StackPanel>
+            </StackPanel>
+
+
+            <!--bottom menu-->
+            <StackPanel Grid.Column="0"
+                        Grid.Row="4"
+                        HorizontalAlignment="Center"
+                        Width="110"
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,0,34">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type StackPanel}">
+                        <Setter Property="Margin"
+                                Value="0,0,0,18.57" />
+                    </Style>
+                </StackPanel.Resources>
+
+                <!--Settings-->
+                <StackPanel Orientation="Horizontal"
+                            Cursor="Hand">
+                    <Image Source="/UiDesign/Images/SidebarIcons/settings.png"
+                           Width="18.57"
+                           Height="18.57" />
+                    <TextBlock Text="Settings"
+                               FontSize="14.59"
+                               Margin="12,0,0,0"
+                               Foreground="#7D8083" />
+                </StackPanel>
+
+                <!--Logout-->
+                <StackPanel Orientation="Horizontal"
+                            Cursor="Hand">
+                    <Image Source="/UiDesign/Images/SidebarIcons/logout.png"
+                           Width="18.57"
+                           Height="18.57" />
+                    <TextBlock Text="Logout"
+                               FontSize="14.59"
+                               Margin="12,0,0,0"
+                               Foreground="#7D8083" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

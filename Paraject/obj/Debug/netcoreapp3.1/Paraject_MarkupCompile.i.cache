@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\App.xaml
-11407045341
+2963721005
 
-5869885401
+5-1770797296
 192-1533232326
-MainWindow.xaml;
+MVVM\Views\Windows\MainWindow.xaml;UiDesign\Theme\SidebarMenuButtonTheme.xaml;
 
-False
+True
 

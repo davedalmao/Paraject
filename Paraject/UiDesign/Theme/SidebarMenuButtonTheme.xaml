@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--we use the "x:key" to access the style in our UI-->
+    <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
+           TargetType="{x:Type RadioButton}"
+           x:Key="SidebarMenuButtonTheme">
+        <Style.Setters>
+            <!--we are styling the template of the radio button-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <!--we target "RadioButton" so we can access its properties-->
+                    <ControlTemplate TargetType="RadioButton">
+                        <Grid VerticalAlignment="Stretch"
+                              HorizontalAlignment="Stretch"
+                              Background="{TemplateBinding Background}">
+
+                            <TextBlock Text="{TemplateBinding Property=Content}"
+                                       VerticalAlignment="Center"
+                                       Margin="50,0,0,0"
+                                       FontFamily="/Fonts/#Poppins" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+        </Style.Setters>
+
+        <Style.Triggers>
+            <!--to check if the radio button is actually checked
+                if the value is true, we will change the background of the button to indicate that it is selected-->
+            <Trigger Property="IsChecked"
+                     Value="True">
+                <!--this is the color when a button is selected-->
+                <Setter Property="Background"
+                        Value="#22202f" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>
