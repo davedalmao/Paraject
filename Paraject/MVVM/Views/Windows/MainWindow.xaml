@@ -32,9 +32,7 @@
                 <RowDefinition Height="auto" />
                 <!--separator-->
                 <RowDefinition Height="auto" />
-                <!--top menu-->
-                <RowDefinition Height="auto" />
-                <!--bottom menu-->
+                <!--sidebar menu-->
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
@@ -54,10 +52,7 @@
                     Grid.Row="3" />
             <Border Background="#25282C"
                     Grid.Column="0"
-                    Grid.Row="4" />
-            <Border Background="#25282C"
-                    Grid.Column="0"
-                    Grid.Row="5"
+                    Grid.Row="4"
                     CornerRadius="0,0,0,20" />
 
 
@@ -133,110 +128,83 @@
                     Margin="0,32,0,28.48" />
 
             <!--Sidebar Menu-->
-            <!--top menu-->
             <StackPanel Grid.Column="0"
                         Grid.Row="4"
                         HorizontalAlignment="Center">
                 <StackPanel.Resources>
-                    <Style TargetType="{x:Type StackPanel}">
+                    <Style TargetType="{x:Type RadioButton}">
                         <Setter Property="Margin"
                                 Value="0,0,0,18.57" />
                     </Style>
                 </StackPanel.Resources>
 
                 <!--Dashboard-->
-                <StackPanel Orientation="Horizontal"
-                            Cursor="Hand">
-                    <Image Source="/UiDesign/Images/SidebarIcons/dashboard.png"
-                           Width="18.57"
-                           Height="18.57" />
-                    <TextBlock Text="Dashboard"
-                               FontSize="14.59"
-                               Margin="12,0,0,0"
-                               Foreground="#7D8083"
-                               FontWeight="Bold" />
-                </StackPanel>
+                <RadioButton>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/UiDesign/Images/SidebarIcons/dashboard.png"
+                               Width="18.57"
+                               Height="18.57" />
+                        <TextBlock Text="Dashboard"
+                                   VerticalAlignment="Center" />
+                    </StackPanel>
+                </RadioButton>
 
                 <!--Projects-->
-                <StackPanel Orientation="Horizontal"
-                            Cursor="Hand">
-                    <Image Source="/UiDesign/Images/SidebarIcons/projects.png"
-                           Width="18.57"
-                           Height="18.57" />
-                    <TextBlock Text="Projects"
-                               FontSize="14.59"
-                               Margin="12,0,0,0"
-                               Foreground="#7D8083"
-                               FontWeight="Bold" />
-                </StackPanel>
+                <RadioButton>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/UiDesign/Images/SidebarIcons/projects.png"
+                               Width="18.57"
+                               Height="18.57" />
+                        <TextBlock Text="Projects"
+                                   VerticalAlignment="Center" />
+                    </StackPanel>
+                </RadioButton>
 
                 <!--Profile-->
-                <StackPanel Orientation="Horizontal"
-                            Cursor="Hand">
-                    <Image Source="/UiDesign/Images/SidebarIcons/profile.png"
-                           Width="18.57"
-                           Height="18.57" />
-                    <TextBlock Text="Profile"
-                               FontSize="14.59"
-                               Margin="12,0,0,0"
-                               Foreground="#7D8083"
-                               FontWeight="Bold" />
-                </StackPanel>
+                <RadioButton>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/UiDesign/Images/SidebarIcons/profile.png"
+                               Width="18.57"
+                               Height="18.57" />
+                        <TextBlock Text="Profile" />
+                    </StackPanel>
+                </RadioButton>
 
                 <!--Project Ideas-->
-                <StackPanel Orientation="Horizontal"
-                            Cursor="Hand">
-                    <Image Source="/UiDesign/Images/SidebarIcons/projectIdeas.png"
-                           Width="18.57"
-                           Height="18.57" />
-                    <TextBlock Text="Project Ideas"
-                               FontSize="14.59"
-                               Margin="12,0,0,0"
-                               Foreground="#7D8083"
-                               FontWeight="Bold" />
-                </StackPanel>
-            </StackPanel>
+                <RadioButton>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/UiDesign/Images/SidebarIcons/projectIdeas.png"
+                               Width="18.57"
+                               Height="18.57" />
+                        <TextBlock Text="Project Ideas"
+                                   VerticalAlignment="Center" />
+                    </StackPanel>
+                </RadioButton>
 
-
-            <!--bottom menu-->
-            <StackPanel Grid.Column="0"
-                        Grid.Row="5"
-                        HorizontalAlignment="Center"
-                        Width="112"
-                        VerticalAlignment="Bottom"
-                        Margin="0,0,0,34">
-                <StackPanel.Resources>
-                    <Style TargetType="{x:Type StackPanel}">
-                        <Setter Property="Margin"
-                                Value="0,0,0,18.57" />
-                    </Style>
-                </StackPanel.Resources>
+                <!--block separator for the top and bottom menus-->
+                <Border Height="30" />
 
                 <!--Settings-->
-                <StackPanel Orientation="Horizontal"
-                            Cursor="Hand">
-                    <Image Source="/UiDesign/Images/SidebarIcons/settings.png"
-                           Width="18.57"
-                           Height="18.57" />
-                    <TextBlock Text="Settings"
-                               FontSize="14.59"
-                               Margin="12,0,0,0"
-                               Foreground="#7D8083"
-                               FontWeight="Bold" />
-                </StackPanel>
+                <RadioButton>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/UiDesign/Images/SidebarIcons/settings.png"
+                               Width="18.57"
+                               Height="18.57" />
+                        <TextBlock Text="Settings"
+                                   VerticalAlignment="Center" />
+                    </StackPanel>
+                </RadioButton>
 
                 <!--Logout-->
-                <StackPanel Orientation="Horizontal"
-                            Cursor="Hand">
-                    <Image Source="/UiDesign/Images/SidebarIcons/logout.png"
-                           Width="18.57"
-                           Height="18.57" />
-                    <TextBlock Text="Logout"
-                               FontSize="14.59"
-                               Margin="12,0,0,0"
-                               Foreground="#7D8083"
-                               FontWeight="Bold" />
-                </StackPanel>
+                <RadioButton>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/UiDesign/Images/SidebarIcons/logout.png"
+                               Width="18.57"
+                               Height="18.57" />
+                        <TextBlock Text="Logout"
+                                   VerticalAlignment="Center" />
+                    </StackPanel>
+                </RadioButton>
             </StackPanel>
         </Grid>
     </Border>
