@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
+    <!--<Style BasedOn="{StaticResource {x:Type ToggleButton}}"
            TargetType="{x:Type RadioButton}"
            x:Key="MenuButtonTheme">
         <Style.Setters>
@@ -16,6 +16,15 @@
                                        FontFamily="/UiDesign/Fonts/#Nunito"
                                        Margin="12,0,0,0" />
                         </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked"
+                                     Value="True">
+                                <Setter TargetName="RadioButton"
+                                        Property="Foreground"
+                                        Value="Red" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -29,9 +38,46 @@
                      Value="True">
                 <Setter Property="Background"
                         Value="#22202f" />
-                <Setter Property="Foreground"
-                        Value="red" />
             </Trigger>
+        </Style.Triggers>
+    </Style>-->
+    <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
+           TargetType="{x:Type RadioButton}"
+           x:Key="MenuButtonTheme">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Grid Background="{TemplateBinding Background}">
+                            <TextBlock x:Name="RadioButton"
+                                       Text="{TemplateBinding Property=Content}"
+                                       VerticalAlignment="Center"
+                                       Foreground="#7D8083"
+                                       FontSize="14.59"
+                                       FontWeight="Bold"
+                                       FontFamily="/UiDesign/Fonts/#Nunito"
+                                       Margin="12,0,0,0" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked"
+                                     Value="True">
+                                <Setter TargetName="RadioButton"
+                                        Property="Foreground"
+                                        Value="#F54342" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background"
+                    Value="Transparent" />
+        </Style.Setters>
+        <Style.Triggers>
+            <!--<Trigger Property="IsChecked"
+                     Value="True">
+                <Setter Property="Background"
+                        Value="#22202f" />
+            </Trigger>-->
         </Style.Triggers>
     </Style>
 </ResourceDictionary>
