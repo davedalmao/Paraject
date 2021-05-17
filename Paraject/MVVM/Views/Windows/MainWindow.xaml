@@ -131,80 +131,106 @@
             <StackPanel Grid.Column="0"
                         Grid.Row="4"
                         HorizontalAlignment="Center">
-                <StackPanel.Resources>
+                <!--<StackPanel.Resources>
                     <Style TargetType="{x:Type RadioButton}">
                         <Setter Property="Margin"
                                 Value="0,0,0,18.57" />
                     </Style>
-                </StackPanel.Resources>
+                </StackPanel.Resources>-->
 
-                <!--Dashboard-->
-                <RadioButton>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/UiDesign/Images/SidebarIcons/dashboard.png"
-                               Width="18.57"
-                               Height="18.57" />
-                        <TextBlock Text="Dashboard"
-                                   VerticalAlignment="Center" />
-                    </StackPanel>
-                </RadioButton>
 
-                <!--Projects-->
-                <RadioButton>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/UiDesign/Images/SidebarIcons/projects.png"
-                               Width="18.57"
-                               Height="18.57" />
-                        <TextBlock Text="Projects"
-                                   VerticalAlignment="Center" />
-                    </StackPanel>
-                </RadioButton>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
 
-                <!--Profile-->
-                <RadioButton>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/UiDesign/Images/SidebarIcons/profile.png"
-                               Width="18.57"
-                               Height="18.57" />
-                        <TextBlock Text="Profile" />
-                    </StackPanel>
-                </RadioButton>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="33.16" />
+                        <RowDefinition Height="33.16" />
+                        <RowDefinition Height="33.16" />
+                        <RowDefinition Height="33.16" />
+                        <RowDefinition Height="33.16" />
+                        <RowDefinition Height="33.16" />
+                        <RowDefinition Height="33.16" />
+                    </Grid.RowDefinitions>
 
-                <!--Project Ideas-->
-                <RadioButton>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/UiDesign/Images/SidebarIcons/projectIdeas.png"
-                               Width="18.57"
-                               Height="18.57" />
-                        <TextBlock Text="Project Ideas"
-                                   VerticalAlignment="Center" />
-                    </StackPanel>
-                </RadioButton>
+                    <!--Dashboard-->
+                    <Image Source="/UiDesign/Images/SidebarIcons/logout.png"
+                           Width="18.57"
+                           Height="18.57"
+                           Grid.Column="0"
+                           Grid.Row="0" />
+                    <RadioButton Content="Dashboard"
+                                 Grid.Column="1"
+                                 Grid.Row="0"
+                                 Style="{StaticResource MenuButtonTheme}" />
 
-                <!--block separator for the top and bottom menus-->
-                <Border Height="30" />
+                    <!--Projects-->
+                    <Image Source="/UiDesign/Images/SidebarIcons/logout.png"
+                           Width="18.57"
+                           Height="18.57"
+                           Grid.Column="0"
+                           Grid.Row="1" />
+                    <RadioButton Content="Projects"
+                                 Grid.Column="1"
+                                 Grid.Row="1"
+                                 Style="{StaticResource MenuButtonTheme}" />
 
-                <!--Settings-->
-                <RadioButton>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/UiDesign/Images/SidebarIcons/settings.png"
-                               Width="18.57"
-                               Height="18.57" />
-                        <TextBlock Text="Settings"
-                                   VerticalAlignment="Center" />
-                    </StackPanel>
-                </RadioButton>
+                    <!--Profile-->
+                    <Image Source="/UiDesign/Images/SidebarIcons/logout.png"
+                           Width="18.57"
+                           Height="18.57"
+                           Grid.Column="0"
+                           Grid.Row="2" />
+                    <RadioButton Content="Profile"
+                                 Grid.Column="1"
+                                 Grid.Row="2"
+                                 Style="{StaticResource MenuButtonTheme}" />
 
-                <!--Logout-->
-                <RadioButton>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/UiDesign/Images/SidebarIcons/logout.png"
-                               Width="18.57"
-                               Height="18.57" />
-                        <TextBlock Text="Logout"
-                                   VerticalAlignment="Center" />
-                    </StackPanel>
-                </RadioButton>
+                    <!--Project Ideas-->
+                    <Image Source="/UiDesign/Images/SidebarIcons/logout.png"
+                           Width="18.57"
+                           Height="18.57"
+                           Grid.Column="0"
+                           Grid.Row="3" />
+                    <RadioButton Content="Project Ideas"
+                                 Grid.Column="1"
+                                 Grid.Row="3"
+                                 Style="{StaticResource MenuButtonTheme}" />
+
+                    <!--block separator for the top and bottom menus-->
+
+                    <Border Height="30"
+                            Grid.Row="4" />
+
+                    <!--Settings-->
+                    <Image Source="/UiDesign/Images/SidebarIcons/logout.png"
+                           Width="18.57"
+                           Height="18.57"
+                           Grid.Column="0"
+                           Grid.Row="5" />
+                    <RadioButton Content="Settings"
+                                 Grid.Column="1"
+                                 Grid.Row="5"
+                                 Style="{StaticResource MenuButtonTheme}" />
+
+                    <!--Logout-->
+                    <Image Source="/UiDesign/Images/SidebarIcons/logout.png"
+                           Width="18.57"
+                           Height="18.57"
+                           Grid.Column="0"
+                           Grid.Row="6" />
+                    <RadioButton Content="Logout"
+                                 Grid.Column="1"
+                                 Grid.Row="6"
+                                 Style="{StaticResource MenuButtonTheme}" />
+                </Grid>
+
+
+
+
+
             </StackPanel>
         </Grid>
     </Border>
