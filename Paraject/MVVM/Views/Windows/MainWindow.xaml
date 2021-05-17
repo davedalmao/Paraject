@@ -122,7 +122,6 @@
                            FontFamily="/UiDesign/Fonts/#Merriweather" />
             </StackPanel>
 
-            <!--18.48-->
             <!--Separator-->
             <Border BorderBrush="#3C3F43"
                     Grid.Column="0"
@@ -134,7 +133,6 @@
                     Margin="0,32,0,28.48" />
 
             <!--Sidebar Menu-->
-
             <!--top menu-->
             <StackPanel Grid.Column="0"
                         Grid.Row="4"
