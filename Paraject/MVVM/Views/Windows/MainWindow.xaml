@@ -115,7 +115,8 @@
                            HorizontalAlignment="Center"
                            Foreground="#B8BDC1"
                            FontSize="18"
-                           FontFamily="/UiDesign/Fonts/#Merriweather" />
+                           FontFamily="/UiDesign/Fonts/#Merriweather"
+                           FontWeight="Bold" />
             </StackPanel>
 
             <!--Separator-->
@@ -131,16 +132,18 @@
             <!--Sidebar Menu-->
             <Grid  Grid.Column="0"
                    Grid.Row="4"
-                   HorizontalAlignment="Center">
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,33">
 
+                <!--Height="33.16"-->
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="33.16" />
-                    <RowDefinition Height="33.16" />
-                    <RowDefinition Height="33.16" />
-                    <RowDefinition Height="33.16" />
-                    <RowDefinition Height="33.16" />
-                    <RowDefinition Height="33.16" />
-                    <RowDefinition Height="33.16" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
 
                 <!--Dashboard-->
@@ -150,35 +153,34 @@
                              Style="{StaticResource MenuButtonTheme}" />
 
                 <!--Projects-->
-                <RadioButton Content="random"
+                <RadioButton Content="Projects"
                              Grid.Column="1"
                              Grid.Row="1"
                              Style="{StaticResource MenuButtonTheme}" />
 
                 <!--Profile-->
-                <RadioButton Content="random"
+                <RadioButton Content="Profile"
                              Grid.Column="1"
                              Grid.Row="2"
                              Style="{StaticResource MenuButtonTheme}" />
 
                 <!--Project Ideas-->
-                <RadioButton Content="random Ideas"
+                <RadioButton Content="Project Ideas"
                              Grid.Column="1"
                              Grid.Row="3"
                              Style="{StaticResource MenuButtonTheme}" />
 
                 <!--block separator for the top and bottom menus-->
-                <Border Height="30"
-                        Grid.Row="4" />
+                <Border Grid.Row="4" />
 
                 <!--Settings-->
-                <RadioButton Content="random"
+                <RadioButton Content="Settings"
                              Grid.Column="1"
                              Grid.Row="5"
                              Style="{StaticResource MenuButtonTheme}" />
 
                 <!--Logout-->
-                <RadioButton Content="random"
+                <RadioButton Content="Logout"
                              Grid.Column="1"
                              Grid.Row="6"
                              Style="{StaticResource MenuButtonTheme}" />

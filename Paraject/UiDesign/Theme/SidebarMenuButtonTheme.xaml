@@ -16,15 +16,16 @@
                                    Width="18.57"
                                    Height="18.57"
                                    Grid.Column="0"
-                                   Cursor="Hand" />
+                                   Cursor="Hand"
+                                   VerticalAlignment="Top" />
                             <TextBlock x:Name="SidebarRadioButtonMenuText"
                                        Text="{TemplateBinding Property=Content}"
-                                       VerticalAlignment="Center"
+                                       VerticalAlignment="Top"
                                        Foreground="#7D8083"
                                        FontSize="14.59"
                                        FontWeight="Bold"
                                        FontFamily="/UiDesign/Fonts/#Nunito"
-                                       Margin="12,0,0,0"
+                                       Margin="12,0,0,21"
                                        Grid.Column="1"
                                        Cursor="Hand" />
                         </Grid>
