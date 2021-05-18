@@ -13,12 +13,12 @@
     <None Remove="UiDesign\Images\SideBarIcons\profile.png" />
     <None Remove="UiDesign\Images\SideBarIcons\projectIdeas.png" />
     <None Remove="UiDesign\Images\SideBarIcons\projects.png" />
-    <None Remove="UiDesign\Images\SideBarIcons\selected\dashboard.png" />
-    <None Remove="UiDesign\Images\SideBarIcons\selected\logout.png" />
-    <None Remove="UiDesign\Images\SideBarIcons\selected\profile.png" />
-    <None Remove="UiDesign\Images\SideBarIcons\selected\projectIdeas.png" />
-    <None Remove="UiDesign\Images\SideBarIcons\selected\projects.png" />
-    <None Remove="UiDesign\Images\SideBarIcons\selected\settings.png" />
+    <None Remove="UiDesign\Images\SideBarIcons\Selected\dashboard.png" />
+    <None Remove="UiDesign\Images\SideBarIcons\Selected\logout.png" />
+    <None Remove="UiDesign\Images\SideBarIcons\Selected\profile.png" />
+    <None Remove="UiDesign\Images\SideBarIcons\Selected\projectIdeas.png" />
+    <None Remove="UiDesign\Images\SideBarIcons\Selected\projects.png" />
+    <None Remove="UiDesign\Images\SideBarIcons\Selected\settings.png" />
     <None Remove="UiDesign\Images\SideBarIcons\settings.png" />
     <None Remove="UiDesign\Images\UserImage\default.png" />
     <None Remove="UiDesign\Images\WindowStateButtons\close.png" />
@@ -54,22 +54,22 @@
     <Resource Include="UiDesign\Images\SideBarIcons\projects.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="UiDesign\Images\SideBarIcons\selected\dashboard.png">
+    <Resource Include="UiDesign\Images\SideBarIcons\Selected\dashboard.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="UiDesign\Images\SideBarIcons\selected\logout.png">
+    <Resource Include="UiDesign\Images\SideBarIcons\Selected\logout.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="UiDesign\Images\SideBarIcons\selected\profile.png">
+    <Resource Include="UiDesign\Images\SideBarIcons\Selected\profile.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="UiDesign\Images\SideBarIcons\selected\projectIdeas.png">
+    <Resource Include="UiDesign\Images\SideBarIcons\Selected\projectIdeas.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="UiDesign\Images\SideBarIcons\selected\projects.png">
+    <Resource Include="UiDesign\Images\SideBarIcons\Selected\projects.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="UiDesign\Images\SideBarIcons\selected\settings.png">
+    <Resource Include="UiDesign\Images\SideBarIcons\Selected\settings.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Images\SideBarIcons\settings.png">

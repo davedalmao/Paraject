@@ -131,10 +131,6 @@
             <Grid  Grid.Column="0"
                    Grid.Row="4"
                    HorizontalAlignment="Center">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="33.16" />
@@ -147,72 +143,40 @@
                 </Grid.RowDefinitions>
 
                 <!--Dashboard-->
-                <Image Source="/UiDesign/Images/SidebarIcons/logout.png"
-                       Width="18.57"
-                       Height="18.57"
-                       Grid.Column="0"
-                       Grid.Row="0" />
-                <RadioButton x:Name="radioBtnDashboard"
-                             Content="Dashboard"
+                <RadioButton Content="Dashboard"
                              Grid.Column="1"
                              Grid.Row="0"
                              Style="{StaticResource MenuButtonTheme}" />
 
                 <!--Projects-->
-                <Image Source="/UiDesign/Images/SidebarIcons/logout.png"
-                       Width="18.57"
-                       Height="18.57"
-                       Grid.Column="0"
-                       Grid.Row="1" />
                 <RadioButton Content="Projects"
                              Grid.Column="1"
                              Grid.Row="1"
                              Style="{StaticResource MenuButtonTheme}" />
 
                 <!--Profile-->
-                <Image Source="/UiDesign/Images/SidebarIcons/logout.png"
-                       Width="18.57"
-                       Height="18.57"
-                       Grid.Column="0"
-                       Grid.Row="2" />
                 <RadioButton Content="Profile"
                              Grid.Column="1"
                              Grid.Row="2"
                              Style="{StaticResource MenuButtonTheme}" />
 
                 <!--Project Ideas-->
-                <Image Source="/UiDesign/Images/SidebarIcons/logout.png"
-                       Width="18.57"
-                       Height="18.57"
-                       Grid.Column="0"
-                       Grid.Row="3" />
                 <RadioButton Content="Project Ideas"
                              Grid.Column="1"
                              Grid.Row="3"
                              Style="{StaticResource MenuButtonTheme}" />
 
                 <!--block separator for the top and bottom menus-->
-
                 <Border Height="30"
                         Grid.Row="4" />
 
                 <!--Settings-->
-                <Image Source="/UiDesign/Images/SidebarIcons/logout.png"
-                       Width="18.57"
-                       Height="18.57"
-                       Grid.Column="0"
-                       Grid.Row="5" />
                 <RadioButton Content="Settings"
                              Grid.Column="1"
                              Grid.Row="5"
                              Style="{StaticResource MenuButtonTheme}" />
 
                 <!--Logout-->
-                <Image Source="/UiDesign/Images/SidebarIcons/logout.png"
-                       Width="18.57"
-                       Height="18.57"
-                       Grid.Column="0"
-                       Grid.Row="6" />
                 <RadioButton Content="Logout"
                              Grid.Column="1"
                              Grid.Row="6"
