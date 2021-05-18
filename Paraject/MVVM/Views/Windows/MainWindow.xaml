@@ -150,25 +150,29 @@
                 <RadioButton Content="Dashboard"
                              Grid.Column="1"
                              Grid.Row="0"
-                             Style="{StaticResource MenuButtonTheme}" />
+                             Style="{StaticResource MenuButtonTheme}"
+                             Tag="/UiDesign/Images/SideBarIcons/dashboard.svg" />
 
                 <!--Projects-->
                 <RadioButton Content="Projects"
                              Grid.Column="1"
                              Grid.Row="1"
-                             Style="{StaticResource MenuButtonTheme}" />
+                             Style="{StaticResource MenuButtonTheme}"
+                             Tag="/UiDesign/Images/SideBarIcons/projects.svg" />
 
                 <!--Profile-->
                 <RadioButton Content="Profile"
                              Grid.Column="1"
                              Grid.Row="2"
-                             Style="{StaticResource MenuButtonTheme}" />
+                             Style="{StaticResource MenuButtonTheme}"
+                             Tag="/UiDesign/Images/SideBarIcons/profile.svg" />
 
                 <!--Project Ideas-->
                 <RadioButton Content="Project Ideas"
                              Grid.Column="1"
                              Grid.Row="3"
-                             Style="{StaticResource MenuButtonTheme}" />
+                             Style="{StaticResource MenuButtonTheme}"
+                             Tag="/UiDesign/Images/SideBarIcons/projectIdeas.svg" />
 
                 <!--block separator for the top and bottom menus-->
                 <Border Grid.Row="4" />
@@ -177,13 +181,15 @@
                 <RadioButton Content="Settings"
                              Grid.Column="1"
                              Grid.Row="5"
-                             Style="{StaticResource MenuButtonTheme}" />
+                             Style="{StaticResource MenuButtonTheme}"
+                             Tag="/UiDesign/Images/SideBarIcons/settings.svg" />
 
                 <!--Logout-->
                 <RadioButton Content="Logout"
                              Grid.Column="1"
                              Grid.Row="6"
-                             Style="{StaticResource MenuButtonTheme}" />
+                             Style="{StaticResource MenuButtonTheme}"
+                             Tag="/UiDesign/Images/SideBarIcons/logout.svg" />
             </Grid>
         </Grid>
     </Border>

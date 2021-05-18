@@ -11,18 +11,18 @@
     <None Remove="UiDesign\Images\Logo\parajectLogo.svg" />
     <None Remove="UiDesign\Images\Logo\parajectLogoo.svg" />
     <None Remove="UiDesign\Images\parajectLogo.png" />
-    <None Remove="UiDesign\Images\SideBarIcons\dashboard.png" />
-    <None Remove="UiDesign\Images\SideBarIcons\logout.png" />
-    <None Remove="UiDesign\Images\SideBarIcons\profile.png" />
-    <None Remove="UiDesign\Images\SideBarIcons\projectIdeas.png" />
-    <None Remove="UiDesign\Images\SideBarIcons\projects.png" />
-    <None Remove="UiDesign\Images\SideBarIcons\Selected\dashboard.png" />
-    <None Remove="UiDesign\Images\SideBarIcons\Selected\logout.png" />
-    <None Remove="UiDesign\Images\SideBarIcons\Selected\profile.png" />
-    <None Remove="UiDesign\Images\SideBarIcons\Selected\projectIdeas.png" />
-    <None Remove="UiDesign\Images\SideBarIcons\Selected\projects.png" />
-    <None Remove="UiDesign\Images\SideBarIcons\Selected\settings.png" />
-    <None Remove="UiDesign\Images\SideBarIcons\settings.png" />
+    <None Remove="UiDesign\Images\SideBarIcons\dashboard.svg" />
+    <None Remove="UiDesign\Images\SideBarIcons\logout.svg" />
+    <None Remove="UiDesign\Images\SideBarIcons\profile.svg" />
+    <None Remove="UiDesign\Images\SideBarIcons\projectIdeas.svg" />
+    <None Remove="UiDesign\Images\SideBarIcons\projects.svg" />
+    <None Remove="UiDesign\Images\SideBarIcons\Selected\dashboard.svg" />
+    <None Remove="UiDesign\Images\SideBarIcons\Selected\logout.svg" />
+    <None Remove="UiDesign\Images\SideBarIcons\Selected\profile.svg" />
+    <None Remove="UiDesign\Images\SideBarIcons\Selected\projectIdeas.svg" />
+    <None Remove="UiDesign\Images\SideBarIcons\Selected\projects.svg" />
+    <None Remove="UiDesign\Images\SideBarIcons\Selected\settings.svg" />
+    <None Remove="UiDesign\Images\SideBarIcons\settings.svg" />
     <None Remove="UiDesign\Images\UserImage\default.png" />
     <None Remove="UiDesign\Images\WindowStateButtons\close.png" />
     <None Remove="UiDesign\Images\WindowStateButtons\max.png" />
@@ -52,40 +52,40 @@
     <Resource Include="UiDesign\Images\Logo\parajectLogoo.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="UiDesign\Images\SideBarIcons\dashboard.png">
+    <Resource Include="UiDesign\Images\SideBarIcons\dashboard.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="UiDesign\Images\SideBarIcons\logout.png">
+    <Resource Include="UiDesign\Images\SideBarIcons\logout.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="UiDesign\Images\SideBarIcons\profile.png">
+    <Resource Include="UiDesign\Images\SideBarIcons\profile.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="UiDesign\Images\SideBarIcons\projectIdeas.png">
+    <Resource Include="UiDesign\Images\SideBarIcons\projectIdeas.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="UiDesign\Images\SideBarIcons\projects.png">
+    <Resource Include="UiDesign\Images\SideBarIcons\projects.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="UiDesign\Images\SideBarIcons\Selected\dashboard.png">
+    <Resource Include="UiDesign\Images\SideBarIcons\Selected\dashboard.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="UiDesign\Images\SideBarIcons\Selected\logout.png">
+    <Resource Include="UiDesign\Images\SideBarIcons\Selected\logout.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="UiDesign\Images\SideBarIcons\Selected\profile.png">
+    <Resource Include="UiDesign\Images\SideBarIcons\Selected\profile.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="UiDesign\Images\SideBarIcons\Selected\projectIdeas.png">
+    <Resource Include="UiDesign\Images\SideBarIcons\Selected\projectIdeas.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="UiDesign\Images\SideBarIcons\Selected\projects.png">
+    <Resource Include="UiDesign\Images\SideBarIcons\Selected\projects.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="UiDesign\Images\SideBarIcons\Selected\settings.png">
+    <Resource Include="UiDesign\Images\SideBarIcons\Selected\settings.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="UiDesign\Images\SideBarIcons\settings.png">
+    <Resource Include="UiDesign\Images\SideBarIcons\settings.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Images\UserImage\default.png">

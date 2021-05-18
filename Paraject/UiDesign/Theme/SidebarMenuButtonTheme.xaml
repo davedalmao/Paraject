@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/">
     <Style TargetType="{x:Type RadioButton}"
            x:Key="MenuButtonTheme">
         <Style.Setters>
@@ -11,13 +12,22 @@
                                 <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="auto" />
                             </Grid.ColumnDefinitions>
-                            <Image x:Name="SidebarRadioButtonMenuIcon"
-                                   Source="/UiDesign/Images/SidebarIcons/logout.png"
+                            <UserControl Width="18.57"
+                                         Height="18.57"
+                                         Grid.Column="0"
+                                         VerticalAlignment="Top">
+                                <svgc1:SvgViewbox   x:Name="SidebarRadioButtonMenuIcon"
+                                                    Cursor="Hand"
+                                                    Source="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" />
+                            </UserControl>
+
+                            <!--<Image x:Name="SidebarRadioButtonMenuIcon"
+                                   Source="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}"
                                    Width="18.57"
                                    Height="18.57"
                                    Grid.Column="0"
                                    Cursor="Hand"
-                                   VerticalAlignment="Top" />
+                                   VerticalAlignment="Top" />-->
                             <TextBlock x:Name="SidebarRadioButtonMenuText"
                                        Text="{TemplateBinding Property=Content}"
                                        VerticalAlignment="Top"
@@ -37,7 +47,7 @@
                                         Value="#F54342" />
                                 <Setter TargetName="SidebarRadioButtonMenuIcon"
                                         Property="Source"
-                                        Value="/UiDesign/Images/SidebarIcons/Selected/logout.png" />
+                                        Value="/UiDesign/Images/SideBarIcons/Selected/dashboard.svg" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
