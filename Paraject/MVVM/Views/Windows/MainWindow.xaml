@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paraject.MVVM.Views.Windows"
+        xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="615"
@@ -84,15 +85,15 @@
                        Cursor="Hand" />
             </StackPanel>
 
-            <!--Logo-->
-            <Image Source="/UiDesign/Images/Logo/parajectLogo.png"
-                   Grid.Column="0"
-                   Grid.Row="1"
-                   Width="90.43"
-                   Height="22.61"
-                   VerticalAlignment="Bottom"
-                   Margin="0,12,0,18.48" />
-
+            <!--Logo (svg)-->
+            <UserControl Grid.Column="0"
+                         Grid.Row="1"
+                         Width="90.43"
+                         Height="22.61"
+                         VerticalAlignment="Bottom"
+                         Margin="0,12,0,18.48">
+                <svgc1:SvgViewbox Source="/UiDesign/Images/Logo/parajectLogoo.svg" />
+            </UserControl>
 
             <!--User image and User name-->
             <StackPanel  Grid.Column="0"
@@ -149,19 +150,19 @@
                              Style="{StaticResource MenuButtonTheme}" />
 
                 <!--Projects-->
-                <RadioButton Content="Projects"
+                <RadioButton Content="random"
                              Grid.Column="1"
                              Grid.Row="1"
                              Style="{StaticResource MenuButtonTheme}" />
 
                 <!--Profile-->
-                <RadioButton Content="Profile"
+                <RadioButton Content="random"
                              Grid.Column="1"
                              Grid.Row="2"
                              Style="{StaticResource MenuButtonTheme}" />
 
                 <!--Project Ideas-->
-                <RadioButton Content="Project Ideas"
+                <RadioButton Content="random Ideas"
                              Grid.Column="1"
                              Grid.Row="3"
                              Style="{StaticResource MenuButtonTheme}" />
@@ -171,13 +172,13 @@
                         Grid.Row="4" />
 
                 <!--Settings-->
-                <RadioButton Content="Settings"
+                <RadioButton Content="random"
                              Grid.Column="1"
                              Grid.Row="5"
                              Style="{StaticResource MenuButtonTheme}" />
 
                 <!--Logout-->
-                <RadioButton Content="Logout"
+                <RadioButton Content="random"
                              Grid.Column="1"
                              Grid.Row="6"
                              Style="{StaticResource MenuButtonTheme}" />

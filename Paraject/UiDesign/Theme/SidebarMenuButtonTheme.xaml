@@ -15,7 +15,8 @@
                                    Source="/UiDesign/Images/SidebarIcons/logout.png"
                                    Width="18.57"
                                    Height="18.57"
-                                   Grid.Column="0" />
+                                   Grid.Column="0"
+                                   Cursor="Hand" />
                             <TextBlock x:Name="SidebarRadioButtonMenuText"
                                        Text="{TemplateBinding Property=Content}"
                                        VerticalAlignment="Center"
@@ -24,7 +25,8 @@
                                        FontWeight="Bold"
                                        FontFamily="/UiDesign/Fonts/#Nunito"
                                        Margin="12,0,0,0"
-                                       Grid.Column="1" />
+                                       Grid.Column="1"
+                                       Cursor="Hand" />
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked"

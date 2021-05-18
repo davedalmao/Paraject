@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="UiDesign\Images\Logo\oldParajectLogo.svg" />
+    <None Remove="UiDesign\Images\Logo\parajectLogo.svg" />
+    <None Remove="UiDesign\Images\Logo\parajectLogoo.svg" />
     <None Remove="UiDesign\Images\parajectLogo.png" />
     <None Remove="UiDesign\Images\SideBarIcons\dashboard.png" />
     <None Remove="UiDesign\Images\SideBarIcons\logout.png" />
@@ -36,7 +39,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="UiDesign\Images\Logo\parajectLogo.png">
+    <PackageReference Include="SharpVectors" Version="1.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="UiDesign\Images\Logo\oldParajectLogo.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Images\Logo\parajectLogo.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Images\Logo\parajectLogoo.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Images\SideBarIcons\dashboard.png">

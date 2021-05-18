@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "K5IqzfTL6jjdkcdgu3Ta/WWuuFsUQwunGGgVeSqpbJeqdc0nlIGxHIpKQRUriGnEjGk7wJ+wkHD3SlHmTKm+Yg==",
+  "dgSpecHash": "NpvdgOmV3g1E3EuWzvyogN42ducy8EfOBDtaHN4dVnXp7OOvO3gfFHgZo0gN9bpGz6xb8ShxM+C/cLiTH6UKWg==",
   "success": true,
   "projectFilePath": "D:\\Projects\\Paraject\\Paraject Main\\Paraject\\Paraject\\Paraject.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\John\\.nuget\\packages\\sharpvectors\\1.7.1\\sharpvectors.1.7.1.nupkg.sha512"
+  ],
   "logs": []
 }
