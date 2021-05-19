@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paraject.MVVM.Views.Windows"
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
+        xmlns:local1="clr-namespace:Paraject"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="615"
@@ -147,49 +148,50 @@
                 </Grid.RowDefinitions>
 
                 <!--Dashboard-->
-                <RadioButton Content="Dashboard"
-                             Grid.Column="1"
-                             Grid.Row="0"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Tag="/UiDesign/Images/SideBarIcons/dashboard.svg" />
+                <local1:SampleRadioButton Grid.Row="0"
+                                          Content="Dashboard"
+                                          CheckedImageUriString="/UiDesign/Images/SideBarIcons/Selected/dashboard.svg"
+                                          Style="{StaticResource MenuButtonTheme}"
+                                          Tag="/UiDesign/Images/SideBarIcons/dashboard.svg" />
+
 
                 <!--Projects-->
-                <RadioButton Content="Projects"
-                             Grid.Column="1"
-                             Grid.Row="1"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Tag="/UiDesign/Images/SideBarIcons/projects.svg" />
+                <local1:SampleRadioButton Grid.Row="1"
+                                          Content="Projects"
+                                          CheckedImageUriString="/UiDesign/Images/SideBarIcons/Selected/projects.svg"
+                                          Style="{StaticResource MenuButtonTheme}"
+                                          Tag="/UiDesign/Images/SideBarIcons/projects.svg" />
 
                 <!--Profile-->
-                <RadioButton Content="Profile"
-                             Grid.Column="1"
-                             Grid.Row="2"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Tag="/UiDesign/Images/SideBarIcons/profile.svg" />
+                <local1:SampleRadioButton Grid.Row="2"
+                                          Content="Profile"
+                                          CheckedImageUriString="/UiDesign/Images/SideBarIcons/Selected/profile.svg"
+                                          Style="{StaticResource MenuButtonTheme}"
+                                          Tag="/UiDesign/Images/SideBarIcons/profile.svg" />
 
                 <!--Project Ideas-->
-                <RadioButton Content="Project Ideas"
-                             Grid.Column="1"
-                             Grid.Row="3"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Tag="/UiDesign/Images/SideBarIcons/projectIdeas.svg" />
+                <local1:SampleRadioButton Grid.Row="3"
+                                          Content="Project Ideas"
+                                          CheckedImageUriString="/UiDesign/Images/SideBarIcons/Selected/projectIdeas.svg"
+                                          Style="{StaticResource MenuButtonTheme}"
+                                          Tag="/UiDesign/Images/SideBarIcons/projectIdeas.svg" />
 
                 <!--block separator for the top and bottom menus-->
                 <Border Grid.Row="4" />
 
-                <!--Settings-->
-                <RadioButton Content="Options"
-                             Grid.Column="1"
-                             Grid.Row="5"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Tag="/UiDesign/Images/SideBarIcons/options.svg" />
+                <!--Options-->
+                <local1:SampleRadioButton Grid.Row="5"
+                                          Content="Options"
+                                          CheckedImageUriString="/UiDesign/Images/SideBarIcons/Selected/options.svg"
+                                          Style="{StaticResource MenuButtonTheme}"
+                                          Tag="/UiDesign/Images/SideBarIcons/options.svg" />
 
                 <!--Logout-->
-                <RadioButton Content="Logout"
-                             Grid.Column="1"
-                             Grid.Row="6"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Tag="/UiDesign/Images/SideBarIcons/logout.svg" />
+                <local1:SampleRadioButton Grid.Row="6"
+                                          Content="Logout"
+                                          CheckedImageUriString="/UiDesign/Images/SideBarIcons/Selected/logout.svg"
+                                          Style="{StaticResource MenuButtonTheme}"
+                                          Tag="/UiDesign/Images/SideBarIcons/logout.svg" />
             </Grid>
         </Grid>
     </Border>
