@@ -5,10 +5,6 @@
     <local:ImageUriStringConverter x:Key="ImageUriStringConverterKey" />
     <Style TargetType="{x:Type local:SampleRadioButton}"
            x:Key="MenuButtonTheme">
-        <!--<Setter Property="NormalImageUriString"
-                Value="[URI string to default image for normal state]" />
-        <Setter Property="CheckedImageUriString"
-                Value="[URI string to default image for checked state]" />-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:SampleRadioButton}">
@@ -23,8 +19,7 @@
                                      VerticalAlignment="Top">
                             <svgc1:SvgViewbox   x:Name="SidebarRadioButtonMenuIcon"
                                                 Cursor="Hand"
-                                                Source="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" />
-                            <!--Source="{TemplateBinding NormalImageUriString, Converter={StaticResource ImageUriStringConverterKey}}"-->
+                                                Source="{Binding NormalImageUriString, RelativeSource={RelativeSource TemplatedParent}}" />
                         </UserControl>
 
                         <TextBlock x:Name="SidebarRadioButtonMenuText"
@@ -55,53 +50,4 @@
         <Setter Property="Background"
                 Value="Transparent" />
     </Style>
-    <!--<Style TargetType="{x:Type RadioButton}"
-           x:Key="MenuButtonTheme">
-        <Style.Setters>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="RadioButton">
-                        <Grid Background="{TemplateBinding Background}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto" />
-                                <ColumnDefinition Width="auto" />
-                            </Grid.ColumnDefinitions>
-                            <UserControl Width="18.57"
-                                         Height="18.57"
-                                         Grid.Column="0"
-                                         VerticalAlignment="Top">
-                                <svgc1:SvgViewbox   x:Name="SidebarRadioButtonMenuIcon"
-                                                    Cursor="Hand"
-                                                    Source="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" />
-                            </UserControl>
-
-                            <TextBlock x:Name="SidebarRadioButtonMenuText"
-                                       Text="{TemplateBinding Property=Content}"
-                                       VerticalAlignment="Top"
-                                       Foreground="#7D8083"
-                                       FontSize="14.59"
-                                       FontWeight="Bold"
-                                       FontFamily="/UiDesign/Fonts/#Nunito"
-                                       Margin="12,0,0,21"
-                                       Grid.Column="1"
-                                       Cursor="Hand" />
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsChecked"
-                                     Value="True">
-                                <Setter TargetName="SidebarRadioButtonMenuText"
-                                        Property="Foreground"
-                                        Value="#F54342" />
-                                <Setter TargetName="SidebarRadioButtonMenuIcon"
-                                        Property="Source"
-                                        Value="/UiDesign/Images/SideBarIcons/Selected/dashboard.svg" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="Background"
-                    Value="Transparent" />
-        </Style.Setters>
-    </Style>-->
 </ResourceDictionary>  

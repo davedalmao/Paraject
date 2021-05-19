@@ -150,31 +150,31 @@
                 <!--Dashboard-->
                 <local1:SampleRadioButton Grid.Row="0"
                                           Content="Dashboard"
+                                          NormalImageUriString="/UiDesign/Images/SideBarIcons/dashboard.svg"
                                           CheckedImageUriString="/UiDesign/Images/SideBarIcons/Selected/dashboard.svg"
-                                          Style="{StaticResource MenuButtonTheme}"
-                                          Tag="/UiDesign/Images/SideBarIcons/dashboard.svg" />
+                                          Style="{StaticResource MenuButtonTheme}" />
 
 
                 <!--Projects-->
                 <local1:SampleRadioButton Grid.Row="1"
                                           Content="Projects"
+                                          NormalImageUriString="/UiDesign/Images/SideBarIcons/projects.svg"
                                           CheckedImageUriString="/UiDesign/Images/SideBarIcons/Selected/projects.svg"
-                                          Style="{StaticResource MenuButtonTheme}"
-                                          Tag="/UiDesign/Images/SideBarIcons/projects.svg" />
+                                          Style="{StaticResource MenuButtonTheme}" />
 
                 <!--Profile-->
                 <local1:SampleRadioButton Grid.Row="2"
                                           Content="Profile"
+                                          NormalImageUriString="/UiDesign/Images/SideBarIcons/profile.svg"
                                           CheckedImageUriString="/UiDesign/Images/SideBarIcons/Selected/profile.svg"
-                                          Style="{StaticResource MenuButtonTheme}"
-                                          Tag="/UiDesign/Images/SideBarIcons/profile.svg" />
+                                          Style="{StaticResource MenuButtonTheme}" />
 
                 <!--Project Ideas-->
                 <local1:SampleRadioButton Grid.Row="3"
                                           Content="Project Ideas"
+                                          NormalImageUriString="/UiDesign/Images/SideBarIcons/projectIdeas.svg"
                                           CheckedImageUriString="/UiDesign/Images/SideBarIcons/Selected/projectIdeas.svg"
-                                          Style="{StaticResource MenuButtonTheme}"
-                                          Tag="/UiDesign/Images/SideBarIcons/projectIdeas.svg" />
+                                          Style="{StaticResource MenuButtonTheme}" />
 
                 <!--block separator for the top and bottom menus-->
                 <Border Grid.Row="4" />
@@ -182,16 +182,16 @@
                 <!--Options-->
                 <local1:SampleRadioButton Grid.Row="5"
                                           Content="Options"
+                                          NormalImageUriString="/UiDesign/Images/SideBarIcons/options.svg"
                                           CheckedImageUriString="/UiDesign/Images/SideBarIcons/Selected/options.svg"
-                                          Style="{StaticResource MenuButtonTheme}"
-                                          Tag="/UiDesign/Images/SideBarIcons/options.svg" />
+                                          Style="{StaticResource MenuButtonTheme}" />
 
                 <!--Logout-->
                 <local1:SampleRadioButton Grid.Row="6"
                                           Content="Logout"
+                                          NormalImageUriString="/UiDesign/Images/SideBarIcons/logout.svg"
                                           CheckedImageUriString="/UiDesign/Images/SideBarIcons/Selected/logout.svg"
-                                          Style="{StaticResource MenuButtonTheme}"
-                                          Tag="/UiDesign/Images/SideBarIcons/logout.svg" />
+                                          Style="{StaticResource MenuButtonTheme}" />
             </Grid>
         </Grid>
     </Border>
