@@ -2,7 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
                     xmlns:local="clr-namespace:Paraject">
-    <local:ImageUriStringConverter x:Key="ImageUriStringConverterKey" />
     <Style TargetType="{x:Type local:SampleRadioButton}"
            x:Key="MenuButtonTheme">
         <Setter Property="Template">
