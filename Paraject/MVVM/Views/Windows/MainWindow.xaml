@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paraject.MVVM.Views.Windows"
+        xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="615"
@@ -32,9 +33,7 @@
                 <RowDefinition Height="auto" />
                 <!--separator-->
                 <RowDefinition Height="auto" />
-                <!--top menu-->
-                <RowDefinition Height="auto" />
-                <!--bottom menu-->
+                <!--sidebar menu-->
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
@@ -54,10 +53,7 @@
                     Grid.Row="3" />
             <Border Background="#25282C"
                     Grid.Column="0"
-                    Grid.Row="4" />
-            <Border Background="#25282C"
-                    Grid.Column="0"
-                    Grid.Row="5"
+                    Grid.Row="4"
                     CornerRadius="0,0,0,20" />
 
 
@@ -89,15 +85,15 @@
                        Cursor="Hand" />
             </StackPanel>
 
-            <!--Logo-->
-            <Image Source="/UiDesign/Images/Logo/parajectLogo.png"
-                   Grid.Column="0"
-                   Grid.Row="1"
-                   Width="90.43"
-                   Height="22.61"
-                   VerticalAlignment="Bottom"
-                   Margin="0,12,0,18.48" />
-
+            <!--Logo (svg)-->
+            <UserControl Grid.Column="0"
+                         Grid.Row="1"
+                         Width="90.43"
+                         Height="22.61"
+                         VerticalAlignment="Bottom"
+                         Margin="0,12,0,18.48">
+                <svgc1:SvgViewbox Source="/UiDesign/Images/Logo/parajectLogoo.svg" />
+            </UserControl>
 
             <!--User image and User name-->
             <StackPanel  Grid.Column="0"
@@ -119,7 +115,8 @@
                            HorizontalAlignment="Center"
                            Foreground="#B8BDC1"
                            FontSize="18"
-                           FontFamily="/UiDesign/Fonts/#Merriweather" />
+                           FontFamily="/UiDesign/Fonts/#Merriweather"
+                           FontWeight="Bold" />
             </StackPanel>
 
             <!--Separator-->
@@ -133,111 +130,67 @@
                     Margin="0,32,0,28.48" />
 
             <!--Sidebar Menu-->
-            <!--top menu-->
-            <StackPanel Grid.Column="0"
-                        Grid.Row="4"
-                        HorizontalAlignment="Center">
-                <StackPanel.Resources>
-                    <Style TargetType="{x:Type StackPanel}">
-                        <Setter Property="Margin"
-                                Value="0,0,0,18.57" />
-                    </Style>
-                </StackPanel.Resources>
+            <Grid  Grid.Column="0"
+                   Grid.Row="4"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,33">
+
+                <!--Height="33.16"-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
 
                 <!--Dashboard-->
-                <StackPanel Orientation="Horizontal"
-                            Cursor="Hand">
-                    <Image Source="/UiDesign/Images/SidebarIcons/dashboard.png"
-                           Width="18.57"
-                           Height="18.57" />
-                    <TextBlock Text="Dashboard"
-                               FontSize="14.59"
-                               Margin="12,0,0,0"
-                               Foreground="#7D8083"
-                               FontWeight="Bold" />
-                </StackPanel>
+                <RadioButton Content="Dashboard"
+                             Grid.Column="1"
+                             Grid.Row="0"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Tag="/UiDesign/Images/SideBarIcons/dashboard.svg" />
 
                 <!--Projects-->
-                <StackPanel Orientation="Horizontal"
-                            Cursor="Hand">
-                    <Image Source="/UiDesign/Images/SidebarIcons/projects.png"
-                           Width="18.57"
-                           Height="18.57" />
-                    <TextBlock Text="Projects"
-                               FontSize="14.59"
-                               Margin="12,0,0,0"
-                               Foreground="#7D8083"
-                               FontWeight="Bold" />
-                </StackPanel>
+                <RadioButton Content="Projects"
+                             Grid.Column="1"
+                             Grid.Row="1"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Tag="/UiDesign/Images/SideBarIcons/projects.svg" />
 
                 <!--Profile-->
-                <StackPanel Orientation="Horizontal"
-                            Cursor="Hand">
-                    <Image Source="/UiDesign/Images/SidebarIcons/profile.png"
-                           Width="18.57"
-                           Height="18.57" />
-                    <TextBlock Text="Profile"
-                               FontSize="14.59"
-                               Margin="12,0,0,0"
-                               Foreground="#7D8083"
-                               FontWeight="Bold" />
-                </StackPanel>
+                <RadioButton Content="Profile"
+                             Grid.Column="1"
+                             Grid.Row="2"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Tag="/UiDesign/Images/SideBarIcons/profile.svg" />
 
                 <!--Project Ideas-->
-                <StackPanel Orientation="Horizontal"
-                            Cursor="Hand">
-                    <Image Source="/UiDesign/Images/SidebarIcons/projectIdeas.png"
-                           Width="18.57"
-                           Height="18.57" />
-                    <TextBlock Text="Project Ideas"
-                               FontSize="14.59"
-                               Margin="12,0,0,0"
-                               Foreground="#7D8083"
-                               FontWeight="Bold" />
-                </StackPanel>
-            </StackPanel>
+                <RadioButton Content="Project Ideas"
+                             Grid.Column="1"
+                             Grid.Row="3"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Tag="/UiDesign/Images/SideBarIcons/projectIdeas.svg" />
 
-
-            <!--bottom menu-->
-            <StackPanel Grid.Column="0"
-                        Grid.Row="5"
-                        HorizontalAlignment="Center"
-                        Width="112"
-                        VerticalAlignment="Bottom"
-                        Margin="0,0,0,34">
-                <StackPanel.Resources>
-                    <Style TargetType="{x:Type StackPanel}">
-                        <Setter Property="Margin"
-                                Value="0,0,0,18.57" />
-                    </Style>
-                </StackPanel.Resources>
+                <!--block separator for the top and bottom menus-->
+                <Border Grid.Row="4" />
 
                 <!--Settings-->
-                <StackPanel Orientation="Horizontal"
-                            Cursor="Hand">
-                    <Image Source="/UiDesign/Images/SidebarIcons/settings.png"
-                           Width="18.57"
-                           Height="18.57" />
-                    <TextBlock Text="Settings"
-                               FontSize="14.59"
-                               Margin="12,0,0,0"
-                               Foreground="#7D8083"
-                               FontWeight="Bold" />
-                </StackPanel>
+                <RadioButton Content="Options"
+                             Grid.Column="1"
+                             Grid.Row="5"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Tag="/UiDesign/Images/SideBarIcons/options.svg" />
 
                 <!--Logout-->
-                <StackPanel Orientation="Horizontal"
-                            Cursor="Hand">
-                    <Image Source="/UiDesign/Images/SidebarIcons/logout.png"
-                           Width="18.57"
-                           Height="18.57" />
-                    <TextBlock Text="Logout"
-                               FontSize="14.59"
-                               Margin="12,0,0,0"
-                               Foreground="#7D8083"
-                               FontWeight="Bold" />
-                </StackPanel>
-            </StackPanel>
+                <RadioButton Content="Logout"
+                             Grid.Column="1"
+                             Grid.Row="6"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Tag="/UiDesign/Images/SideBarIcons/logout.svg" />
+            </Grid>
         </Grid>
     </Border>
 </Window>
