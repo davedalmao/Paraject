@@ -13,16 +13,16 @@
     <None Remove="UiDesign\Images\parajectLogo.png" />
     <None Remove="UiDesign\Images\SideBarIcons\dashboard.svg" />
     <None Remove="UiDesign\Images\SideBarIcons\logout.svg" />
+    <None Remove="UiDesign\Images\SideBarIcons\options.svg" />
     <None Remove="UiDesign\Images\SideBarIcons\profile.svg" />
     <None Remove="UiDesign\Images\SideBarIcons\projectIdeas.svg" />
     <None Remove="UiDesign\Images\SideBarIcons\projects.svg" />
     <None Remove="UiDesign\Images\SideBarIcons\Selected\dashboard.svg" />
     <None Remove="UiDesign\Images\SideBarIcons\Selected\logout.svg" />
+    <None Remove="UiDesign\Images\SideBarIcons\Selected\options.svg" />
     <None Remove="UiDesign\Images\SideBarIcons\Selected\profile.svg" />
     <None Remove="UiDesign\Images\SideBarIcons\Selected\projectIdeas.svg" />
     <None Remove="UiDesign\Images\SideBarIcons\Selected\projects.svg" />
-    <None Remove="UiDesign\Images\SideBarIcons\Selected\settings.svg" />
-    <None Remove="UiDesign\Images\SideBarIcons\settings.svg" />
     <None Remove="UiDesign\Images\UserImage\default.png" />
     <None Remove="UiDesign\Images\WindowStateButtons\close.png" />
     <None Remove="UiDesign\Images\WindowStateButtons\max.png" />
@@ -82,10 +82,10 @@
     <Resource Include="UiDesign\Images\SideBarIcons\Selected\projects.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="UiDesign\Images\SideBarIcons\Selected\settings.svg">
+    <Resource Include="UiDesign\Images\SideBarIcons\Selected\options.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="UiDesign\Images\SideBarIcons\settings.svg">
+    <Resource Include="UiDesign\Images\SideBarIcons\options.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Images\UserImage\default.png">

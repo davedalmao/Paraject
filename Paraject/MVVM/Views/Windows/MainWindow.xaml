@@ -178,11 +178,11 @@
                 <Border Grid.Row="4" />
 
                 <!--Settings-->
-                <RadioButton Content="Settings"
+                <RadioButton Content="Options"
                              Grid.Column="1"
                              Grid.Row="5"
                              Style="{StaticResource MenuButtonTheme}"
-                             Tag="/UiDesign/Images/SideBarIcons/settings.svg" />
+                             Tag="/UiDesign/Images/SideBarIcons/options.svg" />
 
                 <!--Logout-->
                 <RadioButton Content="Logout"
