@@ -42,3 +42,8 @@ D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\re
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\Paraject.pdb
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\Paraject.genruntimeconfig.cache
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\UiDesign\Fonts\Merriweather-Bold.ttf
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\UiDesign\Fonts\Merriweather-Regular.ttf
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\UiDesign\Fonts\Nunito-Bold.ttf
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\UiDesign\Fonts\Nunito-Regular.ttf
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\Paraject_Content.g.cs
