@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\netcoreapp3.1\
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0\
 Paraject
 none
 false
-TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
+TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\App.xaml
 71342662590
 
-111672506323
-200219220988
+11-325986060
+201-139272790
 MVVM\Views\DashboardView.xaml;MVVM\Views\OptionsView.xaml;MVVM\Views\ProjectIdeasView.xaml;MVVM\Views\ProjectsView.xaml;MVVM\Views\UserProfileView.xaml;MVVM\Views\Windows\MainWindow.xaml;UiDesign\Theme\SidebarMenuButtonTheme.xaml;
 
-False
+True
 

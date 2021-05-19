@@ -1,28 +1,28 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {
+    "net5.0-windows7.0": {
       "SharpVectors/1.7.1": {
         "type": "package",
         "compile": {
-          "lib/netcoreapp3.1/SharpVectors.Converters.Wpf.dll": {},
-          "lib/netcoreapp3.1/SharpVectors.Core.dll": {},
-          "lib/netcoreapp3.1/SharpVectors.Css.dll": {},
-          "lib/netcoreapp3.1/SharpVectors.Dom.dll": {},
-          "lib/netcoreapp3.1/SharpVectors.Model.dll": {},
-          "lib/netcoreapp3.1/SharpVectors.Rendering.Gdi.dll": {},
-          "lib/netcoreapp3.1/SharpVectors.Rendering.Wpf.dll": {},
-          "lib/netcoreapp3.1/SharpVectors.Runtime.Wpf.dll": {}
+          "lib/net5.0-windows/SharpVectors.Converters.Wpf.dll": {},
+          "lib/net5.0-windows/SharpVectors.Core.dll": {},
+          "lib/net5.0-windows/SharpVectors.Css.dll": {},
+          "lib/net5.0-windows/SharpVectors.Dom.dll": {},
+          "lib/net5.0-windows/SharpVectors.Model.dll": {},
+          "lib/net5.0-windows/SharpVectors.Rendering.Gdi.dll": {},
+          "lib/net5.0-windows/SharpVectors.Rendering.Wpf.dll": {},
+          "lib/net5.0-windows/SharpVectors.Runtime.Wpf.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp3.1/SharpVectors.Converters.Wpf.dll": {},
-          "lib/netcoreapp3.1/SharpVectors.Core.dll": {},
-          "lib/netcoreapp3.1/SharpVectors.Css.dll": {},
-          "lib/netcoreapp3.1/SharpVectors.Dom.dll": {},
-          "lib/netcoreapp3.1/SharpVectors.Model.dll": {},
-          "lib/netcoreapp3.1/SharpVectors.Rendering.Gdi.dll": {},
-          "lib/netcoreapp3.1/SharpVectors.Rendering.Wpf.dll": {},
-          "lib/netcoreapp3.1/SharpVectors.Runtime.Wpf.dll": {}
+          "lib/net5.0-windows/SharpVectors.Converters.Wpf.dll": {},
+          "lib/net5.0-windows/SharpVectors.Core.dll": {},
+          "lib/net5.0-windows/SharpVectors.Css.dll": {},
+          "lib/net5.0-windows/SharpVectors.Dom.dll": {},
+          "lib/net5.0-windows/SharpVectors.Model.dll": {},
+          "lib/net5.0-windows/SharpVectors.Rendering.Gdi.dll": {},
+          "lib/net5.0-windows/SharpVectors.Rendering.Wpf.dll": {},
+          "lib/net5.0-windows/SharpVectors.Runtime.Wpf.dll": {}
         }
       }
     }
@@ -154,7 +154,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": [
+    "net5.0-windows7.0": [
       "SharpVectors >= 1.7.1"
     ]
   },
@@ -175,15 +175,15 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "netcoreapp3.1"
+        "net5.0-windows7.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
+        "net5.0-windows7.0": {
+          "targetAlias": "net5.0-windows",
           "projectReferences": {}
         }
       },
@@ -194,8 +194,8 @@
       }
     },
     "frameworks": {
-      "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
+      "net5.0-windows7.0": {
+        "targetAlias": "net5.0-windows",
         "dependencies": {
           "SharpVectors": {
             "target": "Package",

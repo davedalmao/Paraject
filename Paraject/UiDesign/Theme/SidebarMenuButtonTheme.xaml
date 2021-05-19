@@ -1,6 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/">
+                    xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
+                    xmlns:local="clr-namespace:Paraject.Core.Converters">
+    <local:ImageUriStringConverter x:Key="ImageUriStringConverterKey" />
+
     <Style TargetType="{x:Type RadioButton}"
            x:Key="MenuButtonTheme">
         <Style.Setters>
@@ -21,13 +24,6 @@
                                                     Source="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" />
                             </UserControl>
 
-                            <!--<Image x:Name="SidebarRadioButtonMenuIcon"
-                                   Source="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}"
-                                   Width="18.57"
-                                   Height="18.57"
-                                   Grid.Column="0"
-                                   Cursor="Hand"
-                                   VerticalAlignment="Top" />-->
                             <TextBlock x:Name="SidebarRadioButtonMenuText"
                                        Text="{TemplateBinding Property=Content}"
                                        VerticalAlignment="Top"
@@ -57,4 +53,4 @@
                     Value="Transparent" />
         </Style.Setters>
     </Style>
-</ResourceDictionary>
+</ResourceDictionary>  
