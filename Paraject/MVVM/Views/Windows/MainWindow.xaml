@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paraject.MVVM.Views.Windows"
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
-        xmlns:local1="clr-namespace:Paraject"
+        xmlns:custom="clr-namespace:Paraject.Core.CustomControlClasses"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="615"
@@ -136,7 +136,7 @@
                    HorizontalAlignment="Center"
                    Margin="0,0,0,33">
 
-                <!--Height="33.16"-->
+                <!--Height="40.9"-->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
@@ -148,50 +148,50 @@
                 </Grid.RowDefinitions>
 
                 <!--Dashboard-->
-                <local1:SampleRadioButton Grid.Row="0"
-                                          Content="Dashboard"
-                                          NormalImageUriString="/UiDesign/Images/SideBarIcons/dashboard.svg"
-                                          CheckedImageUriString="/UiDesign/Images/SideBarIcons/Selected/dashboard.svg"
-                                          Style="{StaticResource MenuButtonTheme}" />
+                <custom:MenuItem Grid.Row="0"
+                                 Content="Dashboard"
+                                 DefaultImageUriString="/UiDesign/Images/SideBarIcons/dashboard.svg"
+                                 SelectedImageUriString="/UiDesign/Images/SideBarIcons/Selected/dashboard.svg"
+                                 Style="{StaticResource MenuButtonTheme}" />
 
 
                 <!--Projects-->
-                <local1:SampleRadioButton Grid.Row="1"
-                                          Content="Projects"
-                                          NormalImageUriString="/UiDesign/Images/SideBarIcons/projects.svg"
-                                          CheckedImageUriString="/UiDesign/Images/SideBarIcons/Selected/projects.svg"
-                                          Style="{StaticResource MenuButtonTheme}" />
+                <custom:MenuItem Grid.Row="1"
+                                 Content="Projects"
+                                 DefaultImageUriString="/UiDesign/Images/SideBarIcons/projects.svg"
+                                 SelectedImageUriString="/UiDesign/Images/SideBarIcons/Selected/projects.svg"
+                                 Style="{StaticResource MenuButtonTheme}" />
 
                 <!--Profile-->
-                <local1:SampleRadioButton Grid.Row="2"
-                                          Content="Profile"
-                                          NormalImageUriString="/UiDesign/Images/SideBarIcons/profile.svg"
-                                          CheckedImageUriString="/UiDesign/Images/SideBarIcons/Selected/profile.svg"
-                                          Style="{StaticResource MenuButtonTheme}" />
+                <custom:MenuItem Grid.Row="2"
+                                 Content="Profile"
+                                 DefaultImageUriString="/UiDesign/Images/SideBarIcons/profile.svg"
+                                 SelectedImageUriString="/UiDesign/Images/SideBarIcons/Selected/profile.svg"
+                                 Style="{StaticResource MenuButtonTheme}" />
 
                 <!--Project Ideas-->
-                <local1:SampleRadioButton Grid.Row="3"
-                                          Content="Project Ideas"
-                                          NormalImageUriString="/UiDesign/Images/SideBarIcons/projectIdeas.svg"
-                                          CheckedImageUriString="/UiDesign/Images/SideBarIcons/Selected/projectIdeas.svg"
-                                          Style="{StaticResource MenuButtonTheme}" />
+                <custom:MenuItem Grid.Row="3"
+                                 Content="Project Ideas"
+                                 DefaultImageUriString="/UiDesign/Images/SideBarIcons/projectIdeas.svg"
+                                 SelectedImageUriString="/UiDesign/Images/SideBarIcons/Selected/projectIdeas.svg"
+                                 Style="{StaticResource MenuButtonTheme}" />
 
                 <!--block separator for the top and bottom menus-->
                 <Border Grid.Row="4" />
 
                 <!--Options-->
-                <local1:SampleRadioButton Grid.Row="5"
-                                          Content="Options"
-                                          NormalImageUriString="/UiDesign/Images/SideBarIcons/options.svg"
-                                          CheckedImageUriString="/UiDesign/Images/SideBarIcons/Selected/options.svg"
-                                          Style="{StaticResource MenuButtonTheme}" />
+                <custom:MenuItem Grid.Row="5"
+                                 Content="Options"
+                                 DefaultImageUriString="/UiDesign/Images/SideBarIcons/options.svg"
+                                 SelectedImageUriString="/UiDesign/Images/SideBarIcons/Selected/options.svg"
+                                 Style="{StaticResource MenuButtonTheme}" />
 
                 <!--Logout-->
-                <local1:SampleRadioButton Grid.Row="6"
-                                          Content="Logout"
-                                          NormalImageUriString="/UiDesign/Images/SideBarIcons/logout.svg"
-                                          CheckedImageUriString="/UiDesign/Images/SideBarIcons/Selected/logout.svg"
-                                          Style="{StaticResource MenuButtonTheme}" />
+                <custom:MenuItem Grid.Row="6"
+                                 Content="Logout"
+                                 DefaultImageUriString="/UiDesign/Images/SideBarIcons/logout.svg"
+                                 SelectedImageUriString="/UiDesign/Images/SideBarIcons/Selected/logout.svg"
+                                 Style="{StaticResource MenuButtonTheme}" />
             </Grid>
         </Grid>
     </Border>
