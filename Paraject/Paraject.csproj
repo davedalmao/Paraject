@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="UiDesign\Fonts\Merriweather-Bold.ttf" />
+    <None Remove="UiDesign\Fonts\Merriweather-Regular.ttf" />
+    <None Remove="UiDesign\Fonts\Nunito-Bold.ttf" />
+    <None Remove="UiDesign\Fonts\Nunito-Regular.ttf" />
     <None Remove="UiDesign\Images\Logo\oldParajectLogo.svg" />
     <None Remove="UiDesign\Images\Logo\parajectLogo.svg" />
     <None Remove="UiDesign\Images\Logo\parajectLogoo.svg" />
@@ -27,6 +31,21 @@
     <None Remove="UiDesign\Images\WindowStateButtons\close.png" />
     <None Remove="UiDesign\Images\WindowStateButtons\max.png" />
     <None Remove="UiDesign\Images\WindowStateButtons\min.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="UiDesign\Fonts\Merriweather-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UiDesign\Fonts\Merriweather-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UiDesign\Fonts\Nunito-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UiDesign\Fonts\Nunito-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
