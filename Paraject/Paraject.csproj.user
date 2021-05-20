@@ -48,5 +48,8 @@
     <Page Update="UiDesign\Theme\SidebarMenuButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="UiDesign\Theme\tesst.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 </Project>

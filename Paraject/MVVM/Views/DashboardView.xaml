@@ -16,9 +16,8 @@
 
         <TextBlock Text="Let's complete tasks today!"
                    Grid.Row="0"
-                   FontFamily="/UiDesign/Fonts/#Nunito"
+                   FontFamily="{StaticResource NunitoBold}"
                    FontSize="38.04"
-                   FontWeight="Bold"
                    Foreground="#BED6D3"
                    Margin="0,0,0,50" />
 
