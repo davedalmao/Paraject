@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Paraject.MVVM.Views.Windows"
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
         xmlns:custom="clr-namespace:Paraject.Core.CustomControlClasses"
+        xmlns:viewModel="clr-namespace:Paraject.MVVM.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="615"
@@ -17,6 +18,13 @@
         Background="Transparent"
         FontFamily="/UiDesign/Fonts/#Nunito"
         MouseDown="Window_MouseDown">
+
+
+    <Window.DataContext>
+        <viewModel:MainViewModel />
+    </Window.DataContext>
+
+
     <Border Background="#222529"
             CornerRadius="20">
         <Grid>
@@ -150,6 +158,8 @@
                 <!--Dashboard-->
                 <custom:MenuItem Grid.Row="0"
                                  Content="Dashboard"
+                                 IsChecked="True"
+                                 Command="{Binding DashboardViewCommand}"
                                  DefaultImageUriString="/UiDesign/Images/SideBarIcons/dashboard.svg"
                                  SelectedImageUriString="/UiDesign/Images/SideBarIcons/Selected/dashboard.svg"
                                  Style="{StaticResource MenuButtonTheme}" />
@@ -158,6 +168,7 @@
                 <!--Projects-->
                 <custom:MenuItem Grid.Row="1"
                                  Content="Projects"
+                                 Command="{Binding ProjectsViewCommand}"
                                  DefaultImageUriString="/UiDesign/Images/SideBarIcons/projects.svg"
                                  SelectedImageUriString="/UiDesign/Images/SideBarIcons/Selected/projects.svg"
                                  Style="{StaticResource MenuButtonTheme}" />
@@ -165,6 +176,7 @@
                 <!--Profile-->
                 <custom:MenuItem Grid.Row="2"
                                  Content="Profile"
+                                 Command="{Binding ProfileViewCommand}"
                                  DefaultImageUriString="/UiDesign/Images/SideBarIcons/profile.svg"
                                  SelectedImageUriString="/UiDesign/Images/SideBarIcons/Selected/profile.svg"
                                  Style="{StaticResource MenuButtonTheme}" />
@@ -172,6 +184,7 @@
                 <!--Project Ideas-->
                 <custom:MenuItem Grid.Row="3"
                                  Content="Project Ideas"
+                                 Command="{Binding ProjectIdeasViewCommand}"
                                  DefaultImageUriString="/UiDesign/Images/SideBarIcons/projectIdeas.svg"
                                  SelectedImageUriString="/UiDesign/Images/SideBarIcons/Selected/projectIdeas.svg"
                                  Style="{StaticResource MenuButtonTheme}" />
@@ -182,6 +195,7 @@
                 <!--Options-->
                 <custom:MenuItem Grid.Row="5"
                                  Content="Options"
+                                 Command="{Binding OptionsViewCommand}"
                                  DefaultImageUriString="/UiDesign/Images/SideBarIcons/options.svg"
                                  SelectedImageUriString="/UiDesign/Images/SideBarIcons/Selected/options.svg"
                                  Style="{StaticResource MenuButtonTheme}" />
@@ -193,6 +207,12 @@
                                  SelectedImageUriString="/UiDesign/Images/SideBarIcons/Selected/logout.svg"
                                  Style="{StaticResource MenuButtonTheme}" />
             </Grid>
+
+            <!--Where the views are going to be displayed-->
+            <ContentControl Grid.Column="1"
+                            Grid.Row="1"
+                            Grid.RowSpan="4"
+                            Content="{Binding CurrentView}" />
         </Grid>
     </Border>
 </Window>

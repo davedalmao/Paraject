@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\App.xaml
-71342662590
+7-768396196
 4-809313125
-91670812958
+17-517000911
 201-342335255
-MVVM\Views\DashboardView.xaml;MVVM\Views\OptionsView.xaml;MVVM\Views\ProjectIdeasView.xaml;MVVM\Views\ProjectsView.xaml;MVVM\Views\UserProfileView.xaml;MVVM\Views\Windows\MainWindow.xaml;UiDesign\Theme\SidebarMenuButtonTheme.xaml;
+MVVM\Views\DashboardView.xaml;MVVM\Views\OptionsView.xaml;MVVM\Views\ProfileView.xaml;MVVM\Views\ProjectIdeasView.xaml;MVVM\Views\ProjectsView.xaml;MVVM\Views\Windows\MainWindow.xaml;UiDesign\Theme\SidebarMenuButtonTheme.xaml;
 
 False
 

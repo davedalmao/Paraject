@@ -2,12 +2,43 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Paraject"
+             xmlns:view="clr-namespace:Paraject.MVVM.Views"
+             xmlns:viewModel="clr-namespace:Paraject.MVVM.ViewModels"
              StartupUri="/MVVM/Views/Windows/MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/UiDesign/Theme/SidebarMenuButtonTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+
+            <!--Binding the View to its ViewModel-->
+
+            <!--Dashboard-->
+            <DataTemplate DataType="{x:Type viewModel:DashboardViewModel}">
+                <view:DashboardView />
+            </DataTemplate>
+
+            <!--Projects-->
+            <DataTemplate DataType="{x:Type viewModel:ProjectsViewModel}">
+                <view:ProjectsView />
+            </DataTemplate>
+
+            <!--Profile-->
+            <DataTemplate DataType="{x:Type viewModel:ProfileViewModel}">
+                <view:ProfileView />
+            </DataTemplate>
+
+            <!--Project Ideas-->
+            <DataTemplate DataType="{x:Type viewModel:ProjectIdeasViewModel}">
+                <view:ProjectIdeasView />
+            </DataTemplate>
+
+            <!--Options-->
+            <DataTemplate DataType="{x:Type viewModel:OptionsViewModel}">
+                <view:OptionsView />
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
