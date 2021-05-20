@@ -4,6 +4,7 @@
                     xmlns:custom="clr-namespace:Paraject.Core.CustomControlClasses">
     <Style TargetType="{x:Type custom:MenuItem}"
            x:Key="MenuButtonTheme">
+        <!--The controls inside the menu item (radio button)-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type custom:MenuItem}">
@@ -28,9 +29,10 @@
                                    FontSize="14.59"
                                    FontWeight="Bold"
                                    FontFamily="/UiDesign/Fonts/#Nunito"
-                                   Margin="12,0,0,21"
+                                   Margin="12,0,0,0"
                                    Grid.Column="1"
-                                   Cursor="Hand" />
+                                   Cursor="Hand"
+                                   Height="19.9" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked"
@@ -46,7 +48,13 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
+        <!--Background for the whole menu item (radio button) control-->
         <Setter Property="Background"
                 Value="Transparent" />
+
+        <!--Margin for the whole menu item (radio button) control-->
+        <Setter Property="Margin"
+                Value="0,0,0,22" />
     </Style>
 </ResourceDictionary>  

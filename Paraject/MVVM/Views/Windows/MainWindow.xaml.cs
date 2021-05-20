@@ -17,32 +17,11 @@ namespace Paraject.MVVM.Views.Windows
     /// </summary>
     public partial class MainWindow : Window
     {
-        //public static readonly DependencyProperty DefDashboardImage = DependencyProperty.Register("ImageUri", typeof(string), typeof(MainWindow));
-        //public static readonly DependencyProperty SelDashboardImage = DependencyProperty.Register("ImageUri", typeof(string), typeof(MainWindow));
 
         public MainWindow()
         {
             InitializeComponent();
-            //DataContext = this;
-            //DefaultDashboardImage = "/UiDesign/Images/SidebarIcons/logoout.png";
         }
-
-        //public string DefaultDashboardImage
-        //{
-        //    get { return (string)GetValue(DefDashboardImage); }
-        //    set
-        //    {
-        //        if (radioBtnDashboard.Foreground == (SolidColorBrush)(new BrushConverter().ConvertFrom("#F54342")))
-        //        {
-
-        //        }
-        //        else
-        //        {
-        //            SetValue(DefDashboardImage, value);
-        //        }
-        //    }
-        //}
-
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)

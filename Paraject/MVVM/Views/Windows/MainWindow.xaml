@@ -138,13 +138,13 @@
 
                 <!--Height="40.9"-->
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="40.9" />
+                    <RowDefinition Height="40.9" />
+                    <RowDefinition Height="40.9" />
+                    <RowDefinition Height="40.9" />
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="40.9" />
+                    <RowDefinition Height="40.9" />
                 </Grid.RowDefinitions>
 
                 <!--Dashboard-->
