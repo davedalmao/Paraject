@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:Paraject.MVVM.Views"
              mc:Ignorable="d"
              Background="#F54342"
-             Height="288"
-             Width="428">
+             Height="450 "
+             Width="800">
     <Grid>
 
     </Grid>
