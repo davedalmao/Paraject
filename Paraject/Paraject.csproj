@@ -53,7 +53,6 @@
     <Folder Include="Core\Services\" />
     <Folder Include="Database\" />
     <Folder Include="MVVM\Views\ModalDialogs\" />
-    <Folder Include="MVVM\ViewModels\" />
     <Folder Include="MVVM\Models\" />
   </ItemGroup>
 
