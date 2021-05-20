@@ -13,13 +13,11 @@ D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\Sh
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\SharpVectors.Rendering.Gdi.dll
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\SharpVectors.Rendering.Wpf.dll
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\SharpVectors.Runtime.Wpf.dll
-D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\Paraject.csprojAssemblyReference.cache
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\UiDesign\Theme\SidebarMenuButtonTheme.baml
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\DashboardView.g.cs
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\OptionsView.g.cs
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ProjectIdeasView.g.cs
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ProjectsView.g.cs
-D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\UserProfileView.g.cs
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\Windows\MainWindow.g.cs
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\App.g.cs
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\Paraject_MarkupCompile.cache
@@ -29,7 +27,6 @@ D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MV
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\OptionsView.baml
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ProjectIdeasView.baml
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ProjectsView.baml
-D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\UserProfileView.baml
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\Windows\MainWindow.baml
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\Paraject.g.resources
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\Paraject.GeneratedMSBuildEditorConfig.editorconfig
@@ -47,3 +44,6 @@ D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\Ui
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\UiDesign\Fonts\Nunito-Bold.ttf
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\UiDesign\Fonts\Nunito-Regular.ttf
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\Paraject_Content.g.cs
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\Paraject.csprojAssemblyReference.cache
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ProfileView.g.cs
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ProfileView.baml
