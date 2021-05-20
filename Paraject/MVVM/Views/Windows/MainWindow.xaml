@@ -176,6 +176,7 @@
                 <!--Profile-->
                 <custom:MenuItem Grid.Row="2"
                                  Content="Profile"
+                                 Command="{Binding ProfileViewCommand}"
                                  DefaultImageUriString="/UiDesign/Images/SideBarIcons/profile.svg"
                                  SelectedImageUriString="/UiDesign/Images/SideBarIcons/Selected/profile.svg"
                                  Style="{StaticResource MenuButtonTheme}" />
@@ -183,6 +184,7 @@
                 <!--Project Ideas-->
                 <custom:MenuItem Grid.Row="3"
                                  Content="Project Ideas"
+                                 Command="{Binding ProjectIdeasViewCommand}"
                                  DefaultImageUriString="/UiDesign/Images/SideBarIcons/projectIdeas.svg"
                                  SelectedImageUriString="/UiDesign/Images/SideBarIcons/Selected/projectIdeas.svg"
                                  Style="{StaticResource MenuButtonTheme}" />
@@ -193,6 +195,7 @@
                 <!--Options-->
                 <custom:MenuItem Grid.Row="5"
                                  Content="Options"
+                                 Command="{Binding OptionsViewCommand}"
                                  DefaultImageUriString="/UiDesign/Images/SideBarIcons/options.svg"
                                  SelectedImageUriString="/UiDesign/Images/SideBarIcons/Selected/options.svg"
                                  Style="{StaticResource MenuButtonTheme}" />

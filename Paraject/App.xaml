@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="/UiDesign/Theme/SidebarMenuButtonTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
+
             <!--Binding the View to its ViewModel-->
 
             <!--Dashboard-->
