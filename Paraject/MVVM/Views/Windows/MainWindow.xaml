@@ -193,6 +193,11 @@
                                  SelectedImageUriString="/UiDesign/Images/SideBarIcons/Selected/logout.svg"
                                  Style="{StaticResource MenuButtonTheme}" />
             </Grid>
+
+            <!--Where the views are going to be displayed-->
+            <ContentControl Grid.Column="1"
+                            Grid.Row="1"
+                            Grid.RowSpan="4" />
         </Grid>
     </Border>
 </Window>
