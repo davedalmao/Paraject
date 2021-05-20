@@ -49,7 +49,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Core\Commands\" />
     <Folder Include="Core\Services\" />
     <Folder Include="Database\" />
     <Folder Include="MVVM\Views\ModalDialogs\" />
