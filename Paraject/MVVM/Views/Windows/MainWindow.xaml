@@ -162,7 +162,7 @@
                                  Command="{Binding DashboardViewCommand}"
                                  DefaultImageUriString="/UiDesign/Images/SideBarIcons/dashboard.svg"
                                  SelectedImageUriString="/UiDesign/Images/SideBarIcons/Selected/dashboard.svg"
-                                 Style="{StaticResource MenuButtonTheme}" />
+                                 Style="{StaticResource HorizontalMenuButtonTheme}" />
 
 
                 <!--Projects-->
@@ -171,7 +171,7 @@
                                  Command="{Binding ProjectsViewCommand}"
                                  DefaultImageUriString="/UiDesign/Images/SideBarIcons/projects.svg"
                                  SelectedImageUriString="/UiDesign/Images/SideBarIcons/Selected/projects.svg"
-                                 Style="{StaticResource MenuButtonTheme}" />
+                                 Style="{StaticResource HorizontalMenuButtonTheme}" />
 
                 <!--Profile-->
                 <custom:MenuItem Grid.Row="2"
@@ -179,7 +179,7 @@
                                  Command="{Binding ProfileViewCommand}"
                                  DefaultImageUriString="/UiDesign/Images/SideBarIcons/profile.svg"
                                  SelectedImageUriString="/UiDesign/Images/SideBarIcons/Selected/profile.svg"
-                                 Style="{StaticResource MenuButtonTheme}" />
+                                 Style="{StaticResource HorizontalMenuButtonTheme}" />
 
                 <!--Project Ideas-->
                 <custom:MenuItem Grid.Row="3"
@@ -187,7 +187,7 @@
                                  Command="{Binding ProjectIdeasViewCommand}"
                                  DefaultImageUriString="/UiDesign/Images/SideBarIcons/projectIdeas.svg"
                                  SelectedImageUriString="/UiDesign/Images/SideBarIcons/Selected/projectIdeas.svg"
-                                 Style="{StaticResource MenuButtonTheme}" />
+                                 Style="{StaticResource HorizontalMenuButtonTheme}" />
 
                 <!--block separator for the top and bottom menus-->
                 <Border Grid.Row="4" />
@@ -198,14 +198,14 @@
                                  Command="{Binding OptionsViewCommand}"
                                  DefaultImageUriString="/UiDesign/Images/SideBarIcons/options.svg"
                                  SelectedImageUriString="/UiDesign/Images/SideBarIcons/Selected/options.svg"
-                                 Style="{StaticResource MenuButtonTheme}" />
+                                 Style="{StaticResource HorizontalMenuButtonTheme}" />
 
                 <!--Logout-->
                 <custom:MenuItem Grid.Row="6"
                                  Content="Logout"
                                  DefaultImageUriString="/UiDesign/Images/SideBarIcons/logout.svg"
                                  SelectedImageUriString="/UiDesign/Images/SideBarIcons/Selected/logout.svg"
-                                 Style="{StaticResource MenuButtonTheme}" />
+                                 Style="{StaticResource HorizontalMenuButtonTheme}" />
             </Grid>
 
             <!--Where the views are going to be displayed-->

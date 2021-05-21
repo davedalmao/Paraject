@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\App.xaml
-7370053587
+8241814447
 4-809313125
 191186012059
 201-342335255
-MVVM\Views\DashboardView.xaml;MVVM\Views\OptionsView.xaml;MVVM\Views\ProfileView.xaml;MVVM\Views\ProjectIdeasView.xaml;MVVM\Views\ProjectsView.xaml;MVVM\Views\Windows\MainWindow.xaml;UiDesign\Theme\HorizontalRadioButton.xaml;
+MVVM\Views\DashboardView.xaml;MVVM\Views\OptionsView.xaml;MVVM\Views\ProfileView.xaml;MVVM\Views\ProjectIdeasView.xaml;MVVM\Views\ProjectsView.xaml;MVVM\Views\Windows\MainWindow.xaml;UiDesign\Theme\HorizontalRadioButtonTheme.xaml;UiDesign\Theme\VerticalRadioButtonTheme.xaml;
 
 True
 

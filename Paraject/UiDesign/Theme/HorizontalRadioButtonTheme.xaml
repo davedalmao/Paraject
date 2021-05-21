@@ -4,7 +4,7 @@
                     xmlns:custom="clr-namespace:Paraject.Core.CustomControlClasses">
     <FontFamily x:Key="NunitoBold">/UiDesign/Fonts/Nunito-Bold.ttf#Nunito</FontFamily>
     <Style TargetType="{x:Type custom:MenuItem}"
-           x:Key="MenuButtonTheme">
+           x:Key="HorizontalMenuButtonTheme">
         <!--The controls inside the menu item (radio button)-->
         <Setter Property="Template">
             <Setter.Value>
