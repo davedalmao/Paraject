@@ -12,6 +12,9 @@
     <None Remove="UiDesign\Fonts\Nunito-Bold.ttf" />
     <None Remove="UiDesign\Fonts\Nunito-Regular.ttf" />
     <None Remove="UiDesign\Icons\ButtonIcons\add.svg" />
+    <None Remove="UiDesign\Icons\ButtonIcons\delete.svg" />
+    <None Remove="UiDesign\Icons\ButtonIcons\image.svg" />
+    <None Remove="UiDesign\Icons\ButtonIcons\update.svg" />
     <None Remove="UiDesign\Images\dashboardImage.svg" />
     <None Remove="UiDesign\Images\Logo\oldParajectLogo.svg" />
     <None Remove="UiDesign\Images\Logo\parajectLogo.svg" />
@@ -63,6 +66,15 @@
 
   <ItemGroup>
     <Resource Include="UiDesign\Icons\ButtonIcons\add.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Icons\ButtonIcons\delete.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Icons\ButtonIcons\image.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Icons\ButtonIcons\update.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Images\dashboardImage.svg">
