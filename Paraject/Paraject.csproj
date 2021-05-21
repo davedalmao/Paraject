@@ -11,6 +11,7 @@
     <None Remove="UiDesign\Fonts\Merriweather-Regular.ttf" />
     <None Remove="UiDesign\Fonts\Nunito-Bold.ttf" />
     <None Remove="UiDesign\Fonts\Nunito-Regular.ttf" />
+    <None Remove="UiDesign\Icons\ButtonIcons\add.svg" />
     <None Remove="UiDesign\Images\dashboardImage.svg" />
     <None Remove="UiDesign\Images\Logo\oldParajectLogo.svg" />
     <None Remove="UiDesign\Images\Logo\parajectLogo.svg" />
@@ -61,6 +62,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="UiDesign\Icons\ButtonIcons\add.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="UiDesign\Images\dashboardImage.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

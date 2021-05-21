@@ -10,6 +10,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/UiDesign/Theme/HorizontalRadioButtonTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/VerticalRadioButtonTheme.xaml" />
+                <ResourceDictionary Source="/UiDesign/Theme/ButtonTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <FontFamily x:Key="NunitoBold">/UiDesign/Fonts/Nunito-Bold.ttf#Nunito</FontFamily>

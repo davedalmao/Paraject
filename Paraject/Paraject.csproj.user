@@ -45,7 +45,7 @@
     <Page Update="MVVM\Views\Windows\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UiDesign\Theme\CreateOrAddButtonTheme.xaml">
+    <Page Update="UiDesign\Theme\ButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UiDesign\Theme\HorizontalRadioButtonTheme.xaml">

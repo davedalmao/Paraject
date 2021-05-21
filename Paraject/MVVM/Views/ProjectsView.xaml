@@ -20,5 +20,12 @@
         <custom:MenuItem Grid.Column="1"
                          Content="Paid Projects"
                          Style="{StaticResource VerticalMenuButtonTheme}" />
+
+        <Button Content="Add New Project"
+                Grid.Column="2"
+                Height="36"
+                Width="169"
+                Background="#F54342"
+                Style="{StaticResource ButtonTheme}" />
     </Grid>
 </UserControl>
