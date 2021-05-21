@@ -22,7 +22,8 @@
                                          Height="22.57"
                                          Grid.Column="0"
                                          Margin="0,0,10,0">
-                                <svgc1:SvgViewbox Source="/UiDesign/Icons/ButtonIcons/add.svg" />
+                                <!--The image source is defined in the "Tag" property of the button-->
+                                <svgc1:SvgViewbox Source="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" />
                             </UserControl>
 
                             <!--Button Text-->
