@@ -4,11 +4,43 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Paraject.MVVM.Views"
+             xmlns:custom="clr-namespace:Paraject.Core.CustomControlClasses"
              mc:Ignorable="d"
-             d:DesignHeight="450"
-             d:DesignWidth="800"
-             Background="Red">
-    <Grid>
+             Width="732"
+             Height="544.63"
+             Background="Transparent">
+    <Grid Margin="75,40,75,30">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
 
+        <custom:MenuItem Grid.Column="0"
+                         Grid.Row="0"
+                         Content="Personal Projects"
+                         IsChecked="True"
+                         Style="{StaticResource VerticalMenuButtonTheme}" />
+        <custom:MenuItem Grid.Column="1"
+                         Grid.Row="0"
+                         Content="Paid Projects"
+                         Style="{StaticResource VerticalMenuButtonTheme}" />
+
+        <Border Grid.Column="2"
+                Grid.Row="0" />
+
+        <Button Content="Add New Project"
+                Grid.Column="3"
+                Grid.Row="0"
+                Height="36"
+                Width="169"
+                Background="#F54342"
+                Tag="/UiDesign/Icons/ButtonIcons/add.svg"
+                Style="{StaticResource ButtonTheme}" />
     </Grid>
 </UserControl>

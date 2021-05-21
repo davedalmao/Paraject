@@ -45,10 +45,13 @@
     <Page Update="MVVM\Views\Windows\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UiDesign\Theme\SidebarMenuButtonTheme.xaml">
+    <Page Update="UiDesign\Theme\ButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UiDesign\Theme\tesst.xaml">
+    <Page Update="UiDesign\Theme\HorizontalRadioButtonTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UiDesign\Theme\VerticalRadioButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
