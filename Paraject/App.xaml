@@ -11,6 +11,8 @@
                 <ResourceDictionary Source="/UiDesign/Theme/SidebarMenuButtonTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
+            <FontFamily x:Key="NunitoBold">/UiDesign/Fonts/Nunito-Bold.ttf#Nunito</FontFamily>
+
             <!--Binding the View to its ViewModel-->
 
             <!--Dashboard-->
