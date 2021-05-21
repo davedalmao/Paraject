@@ -8,7 +8,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/UiDesign/Theme/SidebarMenuButtonTheme.xaml" />
+                <ResourceDictionary Source="/UiDesign/Theme/HorizontalRadioButton.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <FontFamily x:Key="NunitoBold">/UiDesign/Fonts/Nunito-Bold.ttf#Nunito</FontFamily>
