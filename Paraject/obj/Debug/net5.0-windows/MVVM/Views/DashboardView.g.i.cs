@@ -54,7 +54,7 @@ namespace Paraject.MVVM.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Paraject;component/mvvm/views/dashboardview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Paraject;V1.0.0.0;component/mvvm/views/dashboardview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\MVVM\Views\DashboardView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
