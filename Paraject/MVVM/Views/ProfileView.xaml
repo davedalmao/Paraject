@@ -68,6 +68,7 @@
                        Grid.Column="0"
                        Foreground="#B8BDC1"
                        FontSize="19"
+                       Margin="0,0,0,6"
                        FontFamily="{StaticResource NunitoBold}" />
 
             <!--Username Textbox-->
@@ -82,7 +83,7 @@
             <TextBlock Text="Password"
                        Grid.Column="0"
                        Grid.Row="2"
-                       Margin="0,56.5,0,0"
+                       Margin="0,44.5,0,6"
                        Foreground="#B8BDC1"
                        FontSize="19"
                        FontFamily="{StaticResource NunitoBold}" />
