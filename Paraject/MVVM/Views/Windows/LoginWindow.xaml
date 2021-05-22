@@ -38,15 +38,16 @@
                 <TextBlock Text="Login"
                            Grid.Row="0"
                            Foreground="#B8BDC1"
-                           FontSize="19"
-                           FontFamily="{StaticResource NunitoBold}" />
+                           FontSize="25"
+                           FontFamily="{StaticResource MerriweatherBold}"
+                           HorizontalAlignment="Center" />
 
                 <!--Username TextBlock-->
                 <TextBlock Text="Username"
                            Grid.Row="1"
                            Foreground="#B8BDC1"
                            FontSize="19"
-                           Margin="0,0,0,6"
+                           Margin="0,38,0,6"
                            FontFamily="{StaticResource NunitoBold}" />
 
                 <!--Username Textbox-->
@@ -61,7 +62,7 @@
                            Grid.Row="3"
                            Foreground="#B8BDC1"
                            FontSize="19"
-                           Margin="0,0,0,6"
+                           Margin="0,22.78,0,6"
                            FontFamily="{StaticResource NunitoBold}" />
 
                 <!--Password Textbox-->
@@ -72,19 +73,22 @@
                          Style="{StaticResource ModernTextBox}" />
 
                 <!--Login button-->
-                <Button Content="Login"
+                <Button Content="LOGIN"
                         Grid.Row="5"
                         Height="38.27"
                         Width="285"
                         Background="#F54342"
-                        Margin="0,5,0,0" />
+                        Margin="0,5,0,8"
+                        FontSize="16"
+                        Style="{StaticResource PlainButtonTheme}" />
 
                 <StackPanel Grid.Row="6"
                             Orientation="Horizontal"
                             HorizontalAlignment="Center">
-                    <TextBlock Text="Don't have an account?" />
+                    <TextBlock Text="Don't have an account?"
+                               Foreground="#B8BDC1" />
                     <TextBlock Text="Sign Up"
-                               Margin="9.79,0,0,0"
+                               Margin="10,0,0,0"
                                Foreground="#F54342" />
                 </StackPanel>
             </Grid>

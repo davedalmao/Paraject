@@ -16,6 +16,7 @@
             </ResourceDictionary.MergedDictionaries>
 
             <FontFamily x:Key="NunitoBold">/UiDesign/Fonts/Nunito-Bold.ttf#Nunito</FontFamily>
+            <FontFamily x:Key="MerriweatherBold">/UiDesign/Fonts/Merriweather-Bold.ttf#Merriweather</FontFamily>
 
 
             <!--Binding the View to its ViewModel-->
