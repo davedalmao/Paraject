@@ -9,14 +9,15 @@
              Height="544.63"
              Background="Transparent">
     <Grid HorizontalAlignment="Center"
-          Margin="0,120,0,20">
+          Margin="0,90,0,35 ">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
         </Grid.ColumnDefinitions>
 
         <!--Image Column-->
-        <Grid Grid.Column="0">
+        <Grid Grid.Column="0"
+              Margin="0,0,56,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -74,12 +75,14 @@
                      Grid.Row="1"
                      Grid.ColumnSpan="2"
                      Width="349"
-                     Height="42" />
+                     Height="42"
+                     Style="{StaticResource ModernTextBox}" />
 
             <!--Password TextBlock-->
             <TextBlock Text="Password"
                        Grid.Column="0"
                        Grid.Row="2"
+                       Margin="0,56.5,0,0"
                        Foreground="#B8BDC1"
                        FontSize="19"
                        FontFamily="{StaticResource NunitoBold}" />
@@ -89,7 +92,8 @@
                      Grid.Row="3"
                      Grid.ColumnSpan="2"
                      Width="349"
-                     Height="42" />
+                     Height="42"
+                     Style="{StaticResource ModernTextBox}" />
 
             <!--Update Profile Button-->
             <Button Content="Update Profile"
@@ -98,7 +102,7 @@
                     Height="40"
                     Width="164"
                     Background="#D2B330"
-                    Margin="0,12,0,0"
+                    Margin="0,50,0,0"
                     Tag="/UiDesign/Icons/ButtonIcons/update.svg"
                     Style="{StaticResource ButtonTheme}" />
 
@@ -109,7 +113,7 @@
                     Height="40"
                     Width="164"
                     Background="#FA9033"
-                    Margin="0,12,0,0"
+                    Margin="0,50,0,0"
                     Tag="/UiDesign/Icons/ButtonIcons/delete.svg"
                     Style="{StaticResource ButtonTheme}" />
 
