@@ -10,7 +10,8 @@
                 <ControlTemplate TargetType="{x:Type Button}">
                     <!--Button Contents-->
                     <Border Background="{TemplateBinding Background}"
-                            CornerRadius="18">
+                            CornerRadius="18"
+                            Cursor="Hand">
                         <Grid HorizontalAlignment="Center">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto" />
@@ -34,7 +35,6 @@
                                            FontSize="14.59"
                                            FontWeight="Bold"
                                            FontFamily="{StaticResource NunitoBold}"
-                                           Cursor="Hand"
                                            VerticalAlignment="Center" />
                             </Border>
                         </Grid>
@@ -42,9 +42,5 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
-        <!--Margin for the whole add button control-->
-        <!--<Setter Property="Margin"
-                Value="0,0,15,0" />-->
     </Style>
 </ResourceDictionary>

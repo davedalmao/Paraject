@@ -51,6 +51,9 @@
     <Page Update="UiDesign\Theme\HorizontalRadioButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="UiDesign\Theme\TextBoxTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="UiDesign\Theme\VerticalRadioButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
