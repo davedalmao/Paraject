@@ -28,6 +28,9 @@
     <Compile Update="MVVM\Views\Windows\MainWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="MVVM\Views\Windows\SignupWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MVVM\Views\DashboardView.xaml">
@@ -49,6 +52,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\Windows\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\Views\Windows\SignupWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UiDesign\Theme\GeneralButtonTheme.xaml">

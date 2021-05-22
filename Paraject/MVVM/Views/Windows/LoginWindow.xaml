@@ -97,7 +97,8 @@
                     <TextBlock Text="Sign Up"
                                Margin="10,0,0,0"
                                Foreground="#F54342"
-                               FontSize="16.31" />
+                               FontSize="16.31"
+                               Cursor="Hand" />
                 </StackPanel>
             </Grid>
 
@@ -139,7 +140,7 @@
 
                 <!--Login Graphic and Logo-->
                 <StackPanel Grid.Row="1">
-                    <!--Login Graphic-->
+                    <!--Login Graphic Image-->
                     <UserControl Width="330.93"
                                  Height="276.26">
                         <svgc1:SvgViewbox Source="/UiDesign/Images/loginGraphic.svg" />
