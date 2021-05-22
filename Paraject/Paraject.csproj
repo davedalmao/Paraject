@@ -15,10 +15,13 @@
     <None Remove="UiDesign\Icons\ButtonIcons\delete.svg" />
     <None Remove="UiDesign\Icons\ButtonIcons\image.svg" />
     <None Remove="UiDesign\Icons\ButtonIcons\update.svg" />
+    <None Remove="UiDesign\Icons\Password\showPassword.svg" />
+    <None Remove="UiDesign\Icons\WindowStateButtons\lightClose.png" />
+    <None Remove="UiDesign\Icons\WindowStateButtons\lightMin.png" />
     <None Remove="UiDesign\Images\dashboardImage.svg" />
-    <None Remove="UiDesign\Images\Logo\oldParajectLogo.svg" />
+    <None Remove="UiDesign\Images\loginGraphic.svg" />
     <None Remove="UiDesign\Images\Logo\parajectLogo.svg" />
-    <None Remove="UiDesign\Images\Logo\parajectLogoo.svg" />
+    <None Remove="UiDesign\Images\Logo\parajectLogoDark.svg" />
     <None Remove="UiDesign\Images\parajectLogo.png" />
     <None Remove="UiDesign\Icons\SideBarIcons\dashboard.svg" />
     <None Remove="UiDesign\Icons\SideBarIcons\logout.svg" />
@@ -77,16 +80,19 @@
     <Resource Include="UiDesign\Icons\ButtonIcons\update.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="UiDesign\Icons\Password\showPassword.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Icons\WindowStateButtons\lightClose.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Icons\WindowStateButtons\lightMin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="UiDesign\Images\dashboardImage.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="UiDesign\Images\Logo\oldParajectLogo.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Images\Logo\parajectLogo.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Images\Logo\parajectLogoo.svg">
+    <Resource Include="UiDesign\Images\loginGraphic.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Icons\SideBarIcons\dashboard.svg">
@@ -123,6 +129,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Icons\SideBarIcons\options.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Images\Logo\parajectLogo.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Images\Logo\parajectLogoDark.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Images\UserImage\default.png">

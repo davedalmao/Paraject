@@ -41,6 +41,6 @@
                 Width="169"
                 Background="#F54342"
                 Tag="/UiDesign/Icons/ButtonIcons/add.svg"
-                Style="{StaticResource ButtonTheme}" />
+                Style="{StaticResource GeneralButtonTheme}" />
     </Grid>
 </UserControl>

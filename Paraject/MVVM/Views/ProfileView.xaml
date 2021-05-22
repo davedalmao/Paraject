@@ -42,7 +42,7 @@
                     Background="#0093C4"
                     Margin="0,12,0,0"
                     Tag="/UiDesign/Icons/ButtonIcons/image.svg"
-                    Style="{StaticResource ButtonTheme}" />
+                    Style="{StaticResource GeneralButtonTheme}" />
         </Grid>
 
 
@@ -77,7 +77,8 @@
                      Grid.ColumnSpan="2"
                      Width="349"
                      Height="42"
-                     Style="{StaticResource ModernTextBox}" />
+                     Style="{StaticResource ParajectTextBox}"
+                     FontSize="15" />
 
             <!--Password TextBlock-->
             <TextBlock Text="Password"
@@ -94,7 +95,8 @@
                      Grid.ColumnSpan="2"
                      Width="349"
                      Height="42"
-                     Style="{StaticResource ModernTextBox}" />
+                     Style="{StaticResource ParajectTextBox}"
+                     FontSize="15" />
 
             <!--Update Profile Button-->
             <Button Content="Update Profile"
@@ -105,7 +107,7 @@
                     Background="#D2B330"
                     Margin="0,50,0,0"
                     Tag="/UiDesign/Icons/ButtonIcons/update.svg"
-                    Style="{StaticResource ButtonTheme}" />
+                    Style="{StaticResource GeneralButtonTheme}" />
 
             <!--Delete Profile Button-->
             <Button Content="Delete Profile"
@@ -116,7 +118,7 @@
                     Background="#FA9033"
                     Margin="0,50,0,0"
                     Tag="/UiDesign/Icons/ButtonIcons/delete.svg"
-                    Style="{StaticResource ButtonTheme}" />
+                    Style="{StaticResource GeneralButtonTheme}" />
 
             <!--Account Created-->
             <TextBlock Text="Account Created:  08 / 15 / 2020"

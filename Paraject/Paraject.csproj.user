@@ -22,6 +22,9 @@
     <Compile Update="MVVM\Views\ProjectsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="MVVM\Views\Windows\LoginWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MVVM\Views\Windows\MainWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -42,13 +45,22 @@
     <Page Update="MVVM\Views\ProjectsView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="MVVM\Views\Windows\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MVVM\Views\Windows\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UiDesign\Theme\ButtonTheme.xaml">
+    <Page Update="UiDesign\Theme\GeneralButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UiDesign\Theme\HorizontalRadioButtonTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UiDesign\Theme\PasswordBoxTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UiDesign\Theme\PlainButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UiDesign\Theme\TextBoxTheme.xaml">

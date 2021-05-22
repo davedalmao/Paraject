@@ -8,7 +8,6 @@
         xmlns:custom="clr-namespace:Paraject.Core.CustomControlClasses"
         xmlns:viewModel="clr-namespace:Paraject.MVVM.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow"
         Height="615"
         Width="940"
         WindowStyle="None"
@@ -101,7 +100,7 @@
                          Height="22.61"
                          VerticalAlignment="Bottom"
                          Margin="0,12,0,18.48">
-                <svgc1:SvgViewbox Source="/UiDesign/Images/Logo/parajectLogoo.svg" />
+                <svgc1:SvgViewbox Source="/UiDesign/Images/Logo/parajectLogo.svg" />
             </UserControl>
 
             <!--User image and User name-->
