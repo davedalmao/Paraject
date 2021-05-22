@@ -16,6 +16,7 @@
 
             <FontFamily x:Key="NunitoBold">/UiDesign/Fonts/Nunito-Bold.ttf#Nunito</FontFamily>
 
+
             <!--Binding the View to its ViewModel-->
 
             <!--Dashboard-->
