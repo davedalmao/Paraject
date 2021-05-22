@@ -56,8 +56,113 @@
                     <TextBlock Text="Login"
                                Margin="10,0,0,0"
                                Foreground="#F54342"
-                               FontSize="15" />
+                               FontSize="15"
+                               Cursor="Hand" />
                 </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                <!--Min and Close buttons-->
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            Margin="0,25,25,5">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Margin"
+                                    Value="10,0,0,0" />
+                        </Style>
+                    </StackPanel.Resources>
+
+                    <Image Source="/UiDesign/Icons/WindowStateButtons/min.png"
+                           Width="18"
+                           Height="18"
+                           Cursor="Hand" />
+                    <Image Source="/UiDesign/Icons/WindowStateButtons/close.png"
+                           Width="18"
+                           Height="18"
+                           Cursor="Hand" />
+                </StackPanel>
+
+                <!--User Input Grid-->
+                <Grid Grid.Column="1"
+                      HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+
+                    <!--Create Account Text-->
+                    <TextBlock  Grid.Row="0"
+                                Text="Create Account"
+                                Foreground="#B8BDC1"
+                                FontSize="26"
+                                Margin="0,0,0,23"
+                                FontFamily="{StaticResource MerriweatherBold}"
+                                HorizontalAlignment="Left" />
+
+                    <!--Username TextBlock-->
+                    <TextBlock  Grid.Row="1"
+                                Text="Username"
+                                Foreground="#B8BDC1"
+                                FontSize="16"
+                                Margin="0,0,0,6"
+                                FontFamily="{StaticResource NunitoBold}" />
+
+                    <!--Username Textbox-->
+                    <TextBox  Grid.Row="2"
+                              Width="303"
+                              Height="38"
+                              Margin="0,0,0,30"
+                              Style="{StaticResource ParajectTextBox}"
+                              FontSize="15" />
+
+                    <!--Password TextBlock-->
+                    <TextBlock Grid.Row="3"
+                               Text="Password"
+                               Foreground="#B8BDC1"
+                               FontSize="16"
+                               Margin="0,00,0,6"
+                               FontFamily="{StaticResource NunitoBold}" />
+
+                    <!--Password Textbox-->
+                    <PasswordBox Grid.Row="4"
+                                 Width="303"
+                                 Height="38"
+                                 FontSize="15"
+                                 Margin="0,0,0,30"
+                                 Style="{StaticResource ParajectPasswordBox}" />
+
+                    <!--Confirm Password TextBlock-->
+                    <TextBlock Grid.Row="5"
+                               Text="Confirm Password"
+                               Foreground="#B8BDC1"
+                               FontSize="16"
+                               Margin="0,00,0,6"
+                               FontFamily="{StaticResource NunitoBold}" />
+
+                    <!--Confirm Password Textbox-->
+                    <PasswordBox  Grid.Row="6"
+                                  Width="303"
+                                  Height="38"
+                                  FontSize="15"
+                                  Style="{StaticResource ParajectPasswordBox}" />
+
+                    <!--Signup Button-->
+                    <Button  Grid.Row="7"
+                             Content="Create Account"
+                             Height="40"
+                             Width="303"
+                             Background="#F54342"
+                             FontSize="16"
+                             Margin="0,38,0,0"
+                             Style="{StaticResource PlainButtonTheme}" />
+                </Grid>
             </StackPanel>
         </Grid>
     </Border>
