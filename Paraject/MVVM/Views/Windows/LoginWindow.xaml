@@ -139,7 +139,7 @@
 
                 <!--Login Graphic and Logo-->
                 <StackPanel Grid.Row="1">
-                    <!--Login Graphic-->
+                    <!--Login Graphic Image-->
                     <UserControl Width="330.93"
                                  Height="276.26">
                         <svgc1:SvgViewbox Source="/UiDesign/Images/loginGraphic.svg" />

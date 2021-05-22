@@ -35,6 +35,7 @@
     <None Remove="UiDesign\Icons\SideBarIcons\Selected\profile.svg" />
     <None Remove="UiDesign\Icons\SideBarIcons\Selected\projectIdeas.svg" />
     <None Remove="UiDesign\Icons\SideBarIcons\Selected\projects.svg" />
+    <None Remove="UiDesign\Images\signupGraphic.svg" />
     <None Remove="UiDesign\Images\UserImage\default.png" />
     <None Remove="UiDesign\Icons\WindowStateButtons\close.png" />
     <None Remove="UiDesign\Icons\WindowStateButtons\max.png" />
@@ -135,6 +136,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Images\Logo\parajectLogoDark.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Images\signupGraphic.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Images\UserImage\default.png">
