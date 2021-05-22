@@ -15,6 +15,7 @@
     <None Remove="UiDesign\Icons\ButtonIcons\delete.svg" />
     <None Remove="UiDesign\Icons\ButtonIcons\image.svg" />
     <None Remove="UiDesign\Icons\ButtonIcons\update.svg" />
+    <None Remove="UiDesign\Icons\Password\showPassword.svg" />
     <None Remove="UiDesign\Images\dashboardImage.svg" />
     <None Remove="UiDesign\Images\Logo\oldParajectLogo.svg" />
     <None Remove="UiDesign\Images\Logo\parajectLogo.svg" />
@@ -75,6 +76,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Icons\ButtonIcons\update.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Icons\Password\showPassword.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Images\dashboardImage.svg">

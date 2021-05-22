@@ -77,7 +77,8 @@
                      Grid.ColumnSpan="2"
                      Width="349"
                      Height="42"
-                     Style="{StaticResource ModernTextBox}" />
+                     Style="{StaticResource ParajectTextBox}"
+                     FontSize="15" />
 
             <!--Password TextBlock-->
             <TextBlock Text="Password"
@@ -94,7 +95,8 @@
                      Grid.ColumnSpan="2"
                      Width="349"
                      Height="42"
-                     Style="{StaticResource ModernTextBox}" />
+                     Style="{StaticResource ParajectTextBox}"
+                     FontSize="15" />
 
             <!--Update Profile Button-->
             <Button Content="Update Profile"

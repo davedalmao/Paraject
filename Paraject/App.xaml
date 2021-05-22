@@ -4,17 +4,20 @@
              xmlns:local="clr-namespace:Paraject"
              xmlns:view="clr-namespace:Paraject.MVVM.Views"
              xmlns:viewModel="clr-namespace:Paraject.MVVM.ViewModels"
-             StartupUri="/MVVM/Views/Windows/MainWindow.xaml">
+             StartupUri="/MVVM/Views/Windows/LoginWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <!--Control Theme-->
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/UiDesign/Theme/HorizontalRadioButtonTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/VerticalRadioButtonTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/GeneralButtonTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/PlainButtonTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/TextBoxTheme.xaml" />
+                <ResourceDictionary Source="/UiDesign/Theme/PasswordBoxTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
+            <!--Fontstyles-->
             <FontFamily x:Key="NunitoBold">/UiDesign/Fonts/Nunito-Bold.ttf#Nunito</FontFamily>
             <FontFamily x:Key="MerriweatherBold">/UiDesign/Fonts/Merriweather-Bold.ttf#Merriweather</FontFamily>
 

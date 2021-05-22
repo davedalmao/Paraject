@@ -12,7 +12,8 @@
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
-        FontFamily="{StaticResource NunitoBold}">
+        FontFamily="{StaticResource NunitoBold}"
+        MouseDown="Window_MouseDown">
     <Border Background="#222529"
             CornerRadius="20">
         <!--Main Grid-->
@@ -23,7 +24,8 @@
             </Grid.ColumnDefinitions>
 
             <!--User Input Grid-->
-            <Grid Grid.Column="0">
+            <Grid Grid.Column="0"
+                  Margin="45">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
@@ -55,22 +57,24 @@
                          Grid.ColumnSpan="2"
                          Width="285"
                          Height="38.27"
-                         Style="{StaticResource ModernTextBox}" />
+                         Style="{StaticResource ParajectTextBox}"
+                         FontSize="15" />
 
                 <!--Password TextBlock-->
                 <TextBlock Text="Password"
                            Grid.Row="3"
                            Foreground="#B8BDC1"
                            FontSize="19"
-                           Margin="0,22.78,0,6"
+                           Margin="0,30,0,6"
                            FontFamily="{StaticResource NunitoBold}" />
 
                 <!--Password Textbox-->
-                <TextBox Grid.Row="4"
-                         Grid.ColumnSpan="2"
-                         Width="285"
-                         Height="38.27"
-                         Style="{StaticResource ModernTextBox}" />
+                <PasswordBox Grid.Row="4"
+                             Grid.ColumnSpan="2"
+                             Width="285"
+                             Height="38.27"
+                             FontSize="15"
+                             Style="{StaticResource ParajectPasswordBox}" />
 
                 <!--Login button-->
                 <Button Content="LOGIN"
@@ -78,18 +82,21 @@
                         Height="38.27"
                         Width="285"
                         Background="#F54342"
-                        Margin="0,5,0,8"
+                        Margin="0,82,0,8"
                         FontSize="16"
                         Style="{StaticResource PlainButtonTheme}" />
 
                 <StackPanel Grid.Row="6"
                             Orientation="Horizontal"
-                            HorizontalAlignment="Center">
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
                     <TextBlock Text="Don't have an account?"
-                               Foreground="#B8BDC1" />
+                               Foreground="#B8BDC1"
+                               FontSize="16.31" />
                     <TextBlock Text="Sign Up"
                                Margin="10,0,0,0"
-                               Foreground="#F54342" />
+                               Foreground="#F54342"
+                               FontSize="16.31" />
                 </StackPanel>
             </Grid>
         </Grid>
