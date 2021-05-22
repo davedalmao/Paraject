@@ -7,6 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Core\Services\**" />
+    <Compile Remove="Database\**" />
+    <Compile Remove="MVVM\Models\**" />
+    <EmbeddedResource Remove="Core\Services\**" />
+    <EmbeddedResource Remove="Database\**" />
+    <EmbeddedResource Remove="MVVM\Models\**" />
+    <None Remove="Core\Services\**" />
+    <None Remove="Database\**" />
+    <None Remove="MVVM\Models\**" />
+    <Page Remove="Core\Services\**" />
+    <Page Remove="Database\**" />
+    <Page Remove="MVVM\Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="UiDesign\Fonts\Merriweather-Bold.ttf" />
     <None Remove="UiDesign\Fonts\Merriweather-Regular.ttf" />
     <None Remove="UiDesign\Fonts\Nunito-Bold.ttf" />
@@ -58,10 +73,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Core\Services\" />
-    <Folder Include="Database\" />
     <Folder Include="MVVM\Views\ModalDialogs\" />
-    <Folder Include="MVVM\Models\" />
   </ItemGroup>
 
   <ItemGroup>
