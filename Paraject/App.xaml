@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="/UiDesign/Theme/HorizontalRadioButtonTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/VerticalRadioButtonTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/GeneralButtonTheme.xaml" />
+                <ResourceDictionary Source="/UiDesign/Theme/PlainButtonTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/TextBoxTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
