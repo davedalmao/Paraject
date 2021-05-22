@@ -3,7 +3,7 @@
                     xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/">
     <FontFamily x:Key="NunitoBold">/UiDesign/Fonts/Nunito-Bold.ttf#Nunito</FontFamily>
     <Style TargetType="{x:Type Button}"
-           x:Key="ButtonTheme">
+           x:Key="GeneralButtonTheme">
         <!--The controls inside the menu item (radio button)-->
         <Setter Property="Template">
             <Setter.Value>
