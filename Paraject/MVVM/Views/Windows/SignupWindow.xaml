@@ -97,7 +97,8 @@
 
                     <!--Close Button-->
                     <Button Style="{StaticResource PlainButtonTheme}"
-                            Margin="15,0,0,0">
+                            Margin="15,0,0,0"
+                            Click="CloseWindow">
                         <!--Button Image-->
                         <Image Source="/UiDesign/Icons/WindowStateButtons/close.png"
                                Width="18"
