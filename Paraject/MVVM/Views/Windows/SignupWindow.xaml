@@ -99,19 +99,10 @@
                     <Button Style="{StaticResource PlainButtonTheme}"
                             Margin="15,0,0,0"
                             Click="CloseWindow">
-                        <!--Button Image-->
                         <Image Source="/UiDesign/Icons/WindowStateButtons/close.png"
                                Width="18"
                                Height="18"
                                Cursor="Hand" />
-
-                        <!--Button's close event-->
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Click">
-                                <i:CallMethodAction MethodName="Close"
-                                                    TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" />
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
                     </Button>
                 </StackPanel>
 
