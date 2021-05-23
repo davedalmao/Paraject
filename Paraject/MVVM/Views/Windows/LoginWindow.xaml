@@ -140,21 +140,28 @@
                             HorizontalAlignment="Right"
                             VerticalAlignment="Top"
                             Margin="0,20,25,50">
-                    <StackPanel.Resources>
-                        <Style TargetType="{x:Type Image}">
-                            <Setter Property="Margin"
-                                    Value="10,0,0,0" />
-                        </Style>
-                    </StackPanel.Resources>
 
-                    <Image Source="/UiDesign/Icons/WindowStateButtons/lightMin.png"
-                           Width="30"
-                           Height="30"
-                           Cursor="Hand" />
-                    <Image Source="/UiDesign/Icons/WindowStateButtons/lightClose.png"
-                           Width="30"
-                           Height="30"
-                           Cursor="Hand" />
+                    <Button Style="{StaticResource TextOnlyButtonTheme}">
+                        <Image Source=" /UiDesign/Icons/WindowStateButtons/lightMin.png"
+                               Width="30"
+                               Height="30"
+                               Cursor="Hand" />
+                    </Button>
+
+                    <Button Style="{StaticResource TextOnlyButtonTheme}"
+                            Margin="10,0,0,0">
+                        <Image Source="/UiDesign/Icons/WindowStateButtons/lightClose.png"
+                               Width="30"
+                               Height="30"
+                               Cursor="Hand" />
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:CallMethodAction MethodName="Close"
+                                                    TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
+                    </Button>
                 </StackPanel>
 
                 <!--Login Graphic and Logo-->
