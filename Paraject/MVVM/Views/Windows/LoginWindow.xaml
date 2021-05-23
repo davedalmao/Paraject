@@ -142,7 +142,8 @@
                             Margin="0,20,25,50">
 
                     <!--Minimize Button-->
-                    <Button Style="{StaticResource PlainButtonTheme}">
+                    <Button Style="{StaticResource PlainButtonTheme}"
+                            Click="MinimizeWindow">
                         <Image Source=" /UiDesign/Icons/WindowStateButtons/lightMin.png"
                                Width="30"
                                Height="30"
