@@ -86,7 +86,8 @@
                             HorizontalAlignment="Right"
                             Margin="0,25,25,5">
                     <!--Minimize Button -->
-                    <Button Style="{StaticResource PlainButtonTheme}">
+                    <Button Style="{StaticResource PlainButtonTheme}"
+                            Click="MinimizeWindow">
                         <Image Source="/UiDesign/Icons/WindowStateButtons/min.png"
                                Width="18"
                                Height="18"

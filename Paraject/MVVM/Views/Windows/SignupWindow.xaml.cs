@@ -29,5 +29,13 @@ namespace Paraject.MVVM.Views.Windows
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }
+
+        private void MinimizeWindow(object sender, RoutedEventArgs e)
+        {
+            if (WindowState != WindowState.Minimized)
+            {
+                WindowState = WindowState.Minimized;
+            }
+        }
     }
 }
