@@ -5,6 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paraject.MVVM.Views.Windows"
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
+        xmlns:windows="clr-namespace:Paraject.MVVM.ViewModels.Windows"
+        xmlns:windowViewModel="clr-namespace:Paraject.MVVM.ViewModels.Windows"
+        d:DataContext="{d:DesignInstance Type=windows:LoginWindowViewModel}"
         mc:Ignorable="d"
         Height="480"
         Width="750"
@@ -15,6 +18,11 @@
         Background="Transparent"
         FontFamily="{StaticResource NunitoBold}"
         MouseDown="Window_MouseDown">
+
+    <Window.DataContext>
+        <windows:LoginWindowViewModel />
+    </Window.DataContext>
+
     <Border Background="#222529"
             CornerRadius="22">
         <!--Main Grid-->
@@ -94,11 +102,12 @@
                     <TextBlock Text="Don't have an account?"
                                Foreground="#B8BDC1"
                                FontSize="16.31" />
-                    <TextBlock Text="Sign Up"
-                               Margin="10,0,0,0"
-                               Foreground="#F54342"
-                               FontSize="16.31"
-                               Cursor="Hand" />
+                    <Button  Content="Sign Up"
+                             Foreground="#F54342"
+                             FontSize="16.31"
+                             Margin="10,0,0,0"
+                             Style="{StaticResource  TextOnlyButtonTheme}">
+                    </Button>
                 </StackPanel>
             </Grid>
 

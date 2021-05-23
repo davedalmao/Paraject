@@ -10,7 +10,7 @@ namespace Paraject.Core.Commands
     class DelegateCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
-        private Action RunCommand;
+        private readonly Action RunCommand;
 
         public DelegateCommand(Action runCommand)
         {

@@ -53,11 +53,11 @@
                     <TextBlock Text="Already have an account?"
                                Foreground="#B8BDC1"
                                FontSize="15" />
-                    <TextBlock Text="Login"
-                               Margin="10,0,0,0"
-                               Foreground="#F54342"
-                               FontSize="15"
-                               Cursor="Hand" />
+                    <Button  Content="Login"
+                             Foreground="#F54342"
+                             FontSize="15"
+                             Margin="10,0,0,0"
+                             Style="{StaticResource  TextOnlyButtonTheme}" />
                 </StackPanel>
             </StackPanel>
 

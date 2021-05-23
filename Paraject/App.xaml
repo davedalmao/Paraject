@@ -6,7 +6,7 @@
              xmlns:viewModel="clr-namespace:Paraject.MVVM.ViewModels"
              xmlns:windowView="clr-namespace:Paraject.MVVM.Views.Windows"
              xmlns:windowViewModel="clr-namespace:Paraject.MVVM.ViewModels.Windows"
-             StartupUri="/MVVM/Views/Windows/MainWindow.xaml">
+             StartupUri="/MVVM/Views/Windows/LoginWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <!--Control Theme-->
@@ -15,6 +15,7 @@
                 <ResourceDictionary Source="/UiDesign/Theme/VerticalRadioButtonTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/GeneralButtonTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/PlainButtonTheme.xaml" />
+                <ResourceDictionary Source="/UiDesign/Theme/TextOnlyButtonTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/TextBoxTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/PasswordBoxTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
