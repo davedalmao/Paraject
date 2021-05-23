@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Fnjs08c3Z/W3IL6m7N47qX96II6CMTCTyNE/2r0bBYiHRPekw7QnyfZTi4p80j5hLjkgzs/C1iNL5dzhUUH5Dg==",
+  "dgSpecHash": "V3eVPNYk1Gcd37OEPti5F80+Sb31Y4ZOJloljAy84zHbBJgv6dmM1XfoN8RNeVknxfjjUIfSNhvHLrIBFFjSEA==",
   "success": true,
   "projectFilePath": "D:\\Projects\\Paraject\\Paraject Main\\Paraject\\Paraject\\Paraject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\John\\.nuget\\packages\\fody\\6.4.0\\fody.6.4.0.nupkg.sha512",
+    "C:\\Users\\John\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.31\\microsoft.xaml.behaviors.wpf.1.1.31.nupkg.sha512",
     "C:\\Users\\John\\.nuget\\packages\\propertychanged.fody\\3.3.3\\propertychanged.fody.3.3.3.nupkg.sha512",
     "C:\\Users\\John\\.nuget\\packages\\sharpvectors\\1.7.1\\sharpvectors.1.7.1.nupkg.sha512"
   ],

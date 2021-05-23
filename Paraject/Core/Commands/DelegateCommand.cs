@@ -9,8 +9,14 @@ namespace Paraject.Core.Commands
 {
     class DelegateCommand : ICommand
     {
-        public event EventHandler CanExecuteChanged;
+
         private readonly Action RunCommand;
+
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
 
         public DelegateCommand(Action runCommand)
         {
