@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:Paraject"
              xmlns:view="clr-namespace:Paraject.MVVM.Views"
              xmlns:viewModel="clr-namespace:Paraject.MVVM.ViewModels"
+             xmlns:windowView="clr-namespace:Paraject.MVVM.Views.Windows"
+             xmlns:windowViewModel="clr-namespace:Paraject.MVVM.ViewModels.Windows"
              StartupUri="/MVVM/Views/Windows/MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -23,6 +25,16 @@
 
 
             <!--Binding the View to its ViewModel-->
+
+            <!--Login Window-->
+            <DataTemplate DataType="{x:Type windowViewModel:LoginWindowViewModel}">
+                <windowView:LoginWindow />
+            </DataTemplate>
+
+            <!--Signup Window-->
+            <DataTemplate DataType="{x:Type windowViewModel:SignupWindowViewModel}">
+                <windowView:SignupWindow />
+            </DataTemplate>
 
             <!--Dashboard-->
             <DataTemplate DataType="{x:Type viewModel:DashboardViewModel}">
@@ -48,7 +60,6 @@
             <DataTemplate DataType="{x:Type viewModel:OptionsViewModel}">
                 <view:OptionsView />
             </DataTemplate>
-
         </ResourceDictionary>
     </Application.Resources>
 </Application>

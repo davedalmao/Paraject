@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Paraject.MVVM.ViewModels.Windows
 {
-    class LoginWindowViewModel : BaseViewModel
+    class SignupWindowViewModel : BaseViewModel
     {
-
     }
 }
