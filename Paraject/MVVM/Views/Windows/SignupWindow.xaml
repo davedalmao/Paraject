@@ -76,7 +76,7 @@
                              FontSize="15"
                              Margin="10,0,0,0"
                              Command="{Binding LoginWindowRedirectCommand}"
-                             Style="{StaticResource  TextOnlyButtonTheme}" />
+                             Style="{StaticResource  PlainButtonTheme}" />
                 </StackPanel>
             </StackPanel>
 
@@ -85,21 +85,31 @@
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Right"
                             Margin="0,25,25,5">
-                    <StackPanel.Resources>
-                        <Style TargetType="{x:Type Image}">
-                            <Setter Property="Margin"
-                                    Value="10,0,0,0" />
-                        </Style>
-                    </StackPanel.Resources>
+                    <!--Minimize Button -->
+                    <Button Style="{StaticResource PlainButtonTheme}">
+                        <Image Source="/UiDesign/Icons/WindowStateButtons/min.png"
+                               Width="18"
+                               Height="18"
+                               Cursor="Hand" />
+                    </Button>
 
-                    <Image Source="/UiDesign/Icons/WindowStateButtons/min.png"
-                           Width="18"
-                           Height="18"
-                           Cursor="Hand" />
-                    <Image Source="/UiDesign/Icons/WindowStateButtons/close.png"
-                           Width="18"
-                           Height="18"
-                           Cursor="Hand" />
+                    <!--Close Button-->
+                    <Button Style="{StaticResource PlainButtonTheme}"
+                            Margin="15,0,0,0">
+                        <!--Button Image-->
+                        <Image Source="/UiDesign/Icons/WindowStateButtons/close.png"
+                               Width="18"
+                               Height="18"
+                               Cursor="Hand" />
+
+                        <!--Button's close event-->
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:CallMethodAction MethodName="Close"
+                                                    TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
                 </StackPanel>
 
                 <!--User Input Grid-->
@@ -180,7 +190,7 @@
                              Background="#F54342"
                              FontSize="16"
                              Margin="0,38,0,0"
-                             Style="{StaticResource PlainButtonTheme}" />
+                             Style="{StaticResource TextOnlyButtonTheme}" />
                 </Grid>
             </StackPanel>
         </Grid>

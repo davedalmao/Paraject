@@ -26,11 +26,11 @@ namespace Paraject.MVVM.ViewModels.Windows
         {
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.Show();
-            CloseThisWindow();
+            Close();
         }
 
         //The method that executes Closed EventHandler
-        private void CloseThisWindow()
+        private void Close()
         {
             Closed?.Invoke(this, EventArgs.Empty);
         }

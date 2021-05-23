@@ -103,7 +103,7 @@
                         Background="#F54342"
                         Margin="0,82,0,8"
                         FontSize="16"
-                        Style="{StaticResource PlainButtonTheme}" />
+                        Style="{StaticResource TextOnlyButtonTheme}" />
 
                 <StackPanel Grid.Row="6"
                             Orientation="Horizontal"
@@ -117,7 +117,7 @@
                              FontSize="16.31"
                              Margin="10,0,0,0"
                              Command="{Binding SignUpWindowRedirectCommand}"
-                             Style="{StaticResource  TextOnlyButtonTheme}" />
+                             Style="{StaticResource  PlainButtonTheme}" />
                 </StackPanel>
             </Grid>
 
@@ -141,26 +141,31 @@
                             VerticalAlignment="Top"
                             Margin="0,20,25,50">
 
-                    <Button Style="{StaticResource TextOnlyButtonTheme}">
+                    <!--Minimize Button-->
+                    <Button Style="{StaticResource PlainButtonTheme}">
                         <Image Source=" /UiDesign/Icons/WindowStateButtons/lightMin.png"
                                Width="30"
                                Height="30"
                                Cursor="Hand" />
                     </Button>
 
-                    <Button Style="{StaticResource TextOnlyButtonTheme}"
-                            Margin="10,0,0,0">
+                    <!--Close Button-->
+                    <Button Style="{StaticResource PlainButtonTheme}"
+                            Margin="6,0,0,0">
+
+                        <!--Button Image-->
                         <Image Source="/UiDesign/Icons/WindowStateButtons/lightClose.png"
                                Width="30"
                                Height="30"
                                Cursor="Hand" />
+
+                        <!--Button's close event-->
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:CallMethodAction MethodName="Close"
                                                     TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
-
                     </Button>
                 </StackPanel>
 

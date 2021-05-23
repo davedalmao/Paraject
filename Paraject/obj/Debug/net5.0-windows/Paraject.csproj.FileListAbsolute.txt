@@ -43,7 +43,6 @@ D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\Ui
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\UiDesign\Fonts\Nunito-Bold.ttf
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\UiDesign\Fonts\Nunito-Regular.ttf
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\Paraject_Content.g.cs
-D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\Paraject.csprojAssemblyReference.cache
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ProfileView.g.cs
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ProfileView.baml
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\UiDesign\Theme\VerticalRadioButtonTheme.baml
@@ -59,3 +58,4 @@ D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MV
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\Paraject.csproj.Fody.CopyLocal.cache
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\UiDesign\Theme\TextOnlyButtonTheme.baml
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\Microsoft.Xaml.Behaviors.dll
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\Paraject.csprojAssemblyReference.cache

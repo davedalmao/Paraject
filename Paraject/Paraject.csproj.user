@@ -68,13 +68,13 @@
     <Page Update="UiDesign\Theme\PasswordBoxTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UiDesign\Theme\PlainButtonTheme.xaml">
+    <Page Update="UiDesign\Theme\TextOnlyButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UiDesign\Theme\TextBoxTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UiDesign\Theme\TextOnlyButtonTheme.xaml">
+    <Page Update="UiDesign\Theme\PlainButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UiDesign\Theme\VerticalRadioButtonTheme.xaml">
