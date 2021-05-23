@@ -37,6 +37,7 @@ namespace Paraject.MVVM.Views.Windows
                 WindowState = WindowState.Minimized;
             }
         }
+
         private void CloseWindow(object sender, RoutedEventArgs e)
         {
             Close();
