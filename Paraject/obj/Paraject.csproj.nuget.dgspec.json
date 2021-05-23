@@ -40,6 +40,10 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "dependencies": {
+            "PropertyChanged.Fody": {
+              "target": "Package",
+              "version": "[3.3.3, )"
+            },
             "SharpVectors": {
               "target": "Package",
               "version": "[1.7.1, )"

@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "iiDeaChdudlzFiLzMPI15W24k9QEVjJKB4dznJPYS9VUgO1Evf81pJXH6rrWG+gY05GrICMr07bxjXfctd6bkg==",
+  "dgSpecHash": "Fnjs08c3Z/W3IL6m7N47qX96II6CMTCTyNE/2r0bBYiHRPekw7QnyfZTi4p80j5hLjkgzs/C1iNL5dzhUUH5Dg==",
   "success": true,
   "projectFilePath": "D:\\Projects\\Paraject\\Paraject Main\\Paraject\\Paraject\\Paraject.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\John\\.nuget\\packages\\fody\\6.4.0\\fody.6.4.0.nupkg.sha512",
+    "C:\\Users\\John\\.nuget\\packages\\propertychanged.fody\\3.3.3\\propertychanged.fody.3.3.3.nupkg.sha512",
     "C:\\Users\\John\\.nuget\\packages\\sharpvectors\\1.7.1\\sharpvectors.1.7.1.nupkg.sha512"
   ],
   "logs": []

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,12 +9,9 @@ using System.Threading.Tasks;
 
 namespace Paraject.MVVM.ViewModels
 {
+    [AddINotifyPropertyChangedInterface]
     class BaseViewModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
+        public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
     }
 }

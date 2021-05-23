@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:Paraject"
              xmlns:view="clr-namespace:Paraject.MVVM.Views"
              xmlns:viewModel="clr-namespace:Paraject.MVVM.ViewModels"
-             StartupUri="/MVVM/Views/Windows/SignupWindow.xaml">
+             StartupUri="/MVVM/Views/Windows/MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <!--Control Theme-->
