@@ -23,6 +23,7 @@
         <windowViewModel:LoginWindowViewModel />
     </Window.DataContext>
 
+    <!--This code SHOWS SignupWindow and then CLOSES LoginWindow(this window)-->
     <!--This closes(close event: EventName="Closed") the LoginWindow(this window) when MethodName="Close" executes-->
     <i:Interaction.Triggers>
         <i:EventTrigger SourceObject="{Binding}"
@@ -152,21 +153,12 @@
 
                     <!--Close Button-->
                     <Button Style="{StaticResource PlainButtonTheme}"
-                            Margin="6,0,0,0">
-
-                        <!--Button Image-->
+                            Margin="6,0,0,0"
+                            Click="CloseWindow">
                         <Image Source="/UiDesign/Icons/WindowStateButtons/lightClose.png"
                                Width="30"
                                Height="30"
                                Cursor="Hand" />
-
-                        <!--Button's close event-->
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Click">
-                                <i:CallMethodAction MethodName="Close"
-                                                    TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" />
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
                     </Button>
                 </StackPanel>
 

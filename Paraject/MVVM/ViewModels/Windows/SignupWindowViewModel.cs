@@ -13,12 +13,12 @@ namespace Paraject.MVVM.ViewModels.Windows
         private DelegateCommand _loginWindowRedirectCommand;
         public event EventHandler Closed; //The Window (LoginWindow) closes itself when this event is executed
 
+        /// <summary>
+        /// The command that Shows LoginWindow and Closes SignupWindow
+        /// </summary>
         public DelegateCommand LoginWindowRedirectCommand
         {
-            get
-            {
-                return _loginWindowRedirectCommand ??= new DelegateCommand(ShowLoginWindow);
-            }
+            get { return _loginWindowRedirectCommand ??= new DelegateCommand(ShowLoginWindow); }
         }
 
 
@@ -26,7 +26,7 @@ namespace Paraject.MVVM.ViewModels.Windows
         {
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.Show();
-            Close();
+            Close(); //Closes SignupWindow when LoginWindow is present
         }
 
         //The method that executes Closed EventHandler

@@ -23,6 +23,7 @@
         <windowViewModel:SignupWindowViewModel />
     </Window.DataContext>
 
+    <!--This code SHOWS LoginWindow and then CLOSES SignupWindow(this window)-->
     <!--This closes(close event: EventName="Closed") the SignupWindow(this window) when MethodName="Close" executes-->
     <i:Interaction.Triggers>
         <i:EventTrigger SourceObject="{Binding}"
@@ -85,7 +86,7 @@
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Right"
                             Margin="0,25,25,5">
-                    <!--Minimize Button -->
+                    <!--Minimize  Button -->
                     <Button Style="{StaticResource PlainButtonTheme}"
                             Click="MinimizeWindow">
                         <Image Source="/UiDesign/Icons/WindowStateButtons/min.png"
