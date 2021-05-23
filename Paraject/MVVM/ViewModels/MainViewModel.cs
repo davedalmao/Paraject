@@ -9,24 +9,23 @@ namespace Paraject.MVVM.ViewModels
 {
     class MainViewModel : BaseViewModel
     {
+        #region Commands
         public NavigationCommand DashboardViewCommand { get; set; }
         public NavigationCommand ProjectsViewCommand { get; set; }
         public NavigationCommand ProfileViewCommand { get; set; }
         public NavigationCommand ProjectIdeasViewCommand { get; set; }
         public NavigationCommand OptionsViewCommand { get; set; }
+        #endregion
 
+        #region ViewModels
         public DashboardViewModel DashboardVM { get; set; }
         public ProjectsViewModel ProjectsVM { get; set; }
         public ProfileViewModel ProfileVM { get; set; }
         public ProjectIdeasViewModel ProjectIdeasVM { get; set; }
         public OptionsViewModel OptionsVM { get; set; }
+        #endregion
 
-        private object _currentView;
-        public object CurrentView
-        {
-            get { return _currentView; }
-            set { _currentView = value; OnPropertyChanged(); }
-        }
+        public object CurrentView { get; set; }
 
         public MainViewModel()
         {

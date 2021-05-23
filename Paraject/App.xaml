@@ -4,7 +4,9 @@
              xmlns:local="clr-namespace:Paraject"
              xmlns:view="clr-namespace:Paraject.MVVM.Views"
              xmlns:viewModel="clr-namespace:Paraject.MVVM.ViewModels"
-             StartupUri="/MVVM/Views/Windows/SignupWindow.xaml">
+             xmlns:windowView="clr-namespace:Paraject.MVVM.Views.Windows"
+             xmlns:windowViewModel="clr-namespace:Paraject.MVVM.ViewModels.Windows"
+             StartupUri="/MVVM/Views/Windows/LoginWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <!--Control Theme-->
@@ -13,6 +15,7 @@
                 <ResourceDictionary Source="/UiDesign/Theme/VerticalRadioButtonTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/GeneralButtonTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/PlainButtonTheme.xaml" />
+                <ResourceDictionary Source="/UiDesign/Theme/TextOnlyButtonTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/TextBoxTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/PasswordBoxTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
@@ -23,6 +26,16 @@
 
 
             <!--Binding the View to its ViewModel-->
+
+            <!--Login Window-->
+            <DataTemplate DataType="{x:Type windowViewModel:LoginWindowViewModel}">
+                <windowView:LoginWindow />
+            </DataTemplate>
+
+            <!--Signup Window-->
+            <DataTemplate DataType="{x:Type windowViewModel:SignupWindowViewModel}">
+                <windowView:SignupWindow />
+            </DataTemplate>
 
             <!--Dashboard-->
             <DataTemplate DataType="{x:Type viewModel:DashboardViewModel}">
@@ -48,7 +61,6 @@
             <DataTemplate DataType="{x:Type viewModel:OptionsViewModel}">
                 <view:OptionsView />
             </DataTemplate>
-
         </ResourceDictionary>
     </Application.Resources>
 </Application>
