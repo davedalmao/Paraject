@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Paraject.MVVM.Models
 {
-    public class User : INotifyPropertyChanged
+    public class UserAccount : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
 

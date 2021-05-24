@@ -1,4 +1,5 @@
 ﻿using Paraject.Core.Interfaces;
+using Paraject.MVVM.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -7,31 +8,50 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Paraject.Core.Services
 {
-    class UserCrudService<TEntity> : IMainCrudOperations<TEntity>
+    class UserCrudService<TEntity> : IMainCrudOperations<TEntity> where TEntity : class
     {
-        private readonly SqlConnection _sqlCon;
-        private readonly SqlCommand _sqlCmd;
+        private readonly string _connectionString;
 
-        public UserCrudService()
+        public UserCrudService(string connectionString)
         {
-            _sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["ParajectDbTest"].ConnectionString);
-            _sqlCmd = new SqlCommand
-            {
-                Connection = _sqlCon,
-                CommandType = CommandType.StoredProcedure
-            };
+            _connectionString = connectionString;
+            //_sqlCmd = new SqlCommand
+            //{
+            //    Connection = _sqlCon,
+            //    CommandType = CommandType.StoredProcedure
+            //};
         }
 
         public bool Add(TEntity entity)
         {
+            UserAccount userAccount = entity as UserAccount;
+            bool isAdded = false;
 
+            using (SqlConnection con = new(_connectionString))
+            using (SqlCommand cmd = new("spAddUserAccount", con))
+            {
+                try
+                {
+                    con.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
 
+                    cmd.Parameters.Add("@username", SqlDbType.NVarChar, 50).Value = userAccount.Username;
+                    cmd.Parameters.Add("@pasword", SqlDbType.NVarChar, 50).Value = userAccount.Password;
+                    cmd.Parameters.Add("@date_created", SqlDbType.DateTime2).Value = DateTime.Now;
 
-
-            return true;
+                    int NoOfRowsAffected = cmd.ExecuteNonQuery();
+                    isAdded = NoOfRowsAffected > 0;
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            return isAdded;
         }
 
         public bool Delete(int id)
