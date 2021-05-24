@@ -52,9 +52,10 @@ namespace Paraject.Core.Services
         public bool Delete(int id)
         {
             bool isDeleted = false;
-            using (SqlConnection con = new(_connectionString))
-            using (SqlCommand cmd = new("spDeleteUserAccount", con))
+            if (id != 0)
             {
+                using SqlConnection con = new(_connectionString);
+                using SqlCommand cmd = new("spDeleteUserAccount", con);
                 try
                 {
                     con.Open();
@@ -69,12 +70,44 @@ namespace Paraject.Core.Services
                     MessageBox.Show(ex.ToString());
                 }
             }
+
             return isDeleted;
         }
 
         public TEntity Get(int id)
         {
-            throw new NotImplementedException();
+            UserAccount userAccount = null;
+
+            if (id != 0)
+            {
+                using SqlConnection con = new(_connectionString);
+                using SqlCommand cmd = new("spGetUserAccount", con);
+                try
+                {
+                    con.Open();
+                    cmd.Parameters.Add("@user_id", SqlDbType.Int).Value = id;
+
+                    var sqlDataReader = cmd.ExecuteReader();
+                    if (sqlDataReader.HasRows)
+                    {
+                        //Reads a single UserAccount
+                        sqlDataReader.Read();
+                        userAccount = new UserAccount
+                        {
+                            Id = sqlDataReader.GetInt32(0),
+                            Username = sqlDataReader.GetString(1),
+                            Password = sqlDataReader.GetString(2),
+                            DateCreated = sqlDataReader.GetDateTime(3)
+                        };
+                    }
+                    sqlDataReader.Close();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            return (userAccount is not null) ? (TEntity)Convert.ChangeType(userAccount, typeof(TEntity)) : default;
         }
 
         public bool Update(TEntity entity)
