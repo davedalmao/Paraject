@@ -6,7 +6,7 @@
              xmlns:viewModel="clr-namespace:Paraject.MVVM.ViewModels"
              xmlns:windowView="clr-namespace:Paraject.MVVM.Views.Windows"
              xmlns:windowViewModel="clr-namespace:Paraject.MVVM.ViewModels.Windows"
-             StartupUri="/MVVM/Views/Windows/LoginWindow.xaml">
+             StartupUri="/MVVM/Views/Windows/MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <!--Control Theme-->
@@ -48,8 +48,8 @@
             </DataTemplate>
 
             <!--Profile-->
-            <DataTemplate DataType="{x:Type viewModel:ProfileViewModel}">
-                <view:ProfileView />
+            <DataTemplate DataType="{x:Type viewModel:UserAccountViewModel}">
+                <view:UserAccountView />
             </DataTemplate>
 
             <!--Project Ideas-->

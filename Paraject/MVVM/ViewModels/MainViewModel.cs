@@ -20,7 +20,7 @@ namespace Paraject.MVVM.ViewModels
         #region ViewModels
         public DashboardViewModel DashboardVM { get; set; }
         public ProjectsViewModel ProjectsVM { get; set; }
-        public ProfileViewModel ProfileVM { get; set; }
+        public UserAccountViewModel ProfileVM { get; set; }
         public ProjectIdeasViewModel ProjectIdeasVM { get; set; }
         public OptionsViewModel OptionsVM { get; set; }
         #endregion
@@ -31,7 +31,7 @@ namespace Paraject.MVVM.ViewModels
         {
             DashboardVM = new DashboardViewModel();
             ProjectsVM = new ProjectsViewModel();
-            ProfileVM = new ProfileViewModel();
+            ProfileVM = new UserAccountViewModel();
             ProjectIdeasVM = new ProjectIdeasViewModel();
             OptionsVM = new OptionsViewModel();
 

@@ -1,0 +1,135 @@
+﻿<UserControl x:Class="Paraject.MVVM.Views.UserAccountView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Paraject.MVVM.Views"
+             mc:Ignorable="d"
+             Width="732"
+             Height="544.63"
+             Background="Transparent">
+    <Grid HorizontalAlignment="Center"
+          Margin="0,90,0,35 ">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+
+        <!--Image Column-->
+        <Grid Grid.Column="0"
+              Margin="0,0,56,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <!--User Image-->
+            <Border CornerRadius="29.3"
+                    Width="141.24"
+                    Height="141.24"
+                    Grid.Row="0">
+                <Border.Background>
+                    <ImageBrush Stretch="Fill"
+                                ImageSource="/UiDesign/Images/UserImage/default.png" />
+                </Border.Background>
+            </Border>
+
+            <!--Select Image Button-->
+            <Button Content="Select Image"
+                    Grid.Row="1"
+                    Height="36"
+                    Width="164"
+                    Background="#0093C4"
+                    Margin="0,12,0,0"
+                    Tag="/UiDesign/Icons/ButtonIcons/image.svg"
+                    Style="{StaticResource GeneralButtonTheme}" />
+        </Grid>
+
+
+        <!--Textboxes column-->
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!--Username TextBlock-->
+            <TextBlock Text="Username"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       Foreground="#B8BDC1"
+                       FontSize="19"
+                       Margin="0,0,0,6"
+                       FontFamily="{StaticResource NunitoBold}" />
+
+            <!--Username Textbox-->
+            <TextBox Grid.Column="0"
+                     Grid.Row="1"
+                     Grid.ColumnSpan="2"
+                     Width="349"
+                     Height="42"
+                     Style="{StaticResource ParajectTextBox}"
+                     FontSize="15" />
+
+            <!--Password TextBlock-->
+            <TextBlock Text="Password"
+                       Grid.Column="0"
+                       Grid.Row="2"
+                       Margin="0,44.5,0,6"
+                       Foreground="#B8BDC1"
+                       FontSize="19"
+                       FontFamily="{StaticResource NunitoBold}" />
+
+            <!--Password Textbox-->
+            <TextBox Grid.Column="0"
+                     Grid.Row="3"
+                     Grid.ColumnSpan="2"
+                     Width="349"
+                     Height="42"
+                     Style="{StaticResource ParajectTextBox}"
+                     FontSize="15" />
+
+            <!--Update Profile Button-->
+            <Button Content="Update Profile"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Height="40"
+                    Width="164"
+                    Background="#D2B330"
+                    Margin="0,50,0,0"
+                    Tag="/UiDesign/Icons/ButtonIcons/update.svg"
+                    Style="{StaticResource GeneralButtonTheme}" />
+
+            <!--Delete Profile Button-->
+            <Button Content="Delete Profile"
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Height="40"
+                    Width="164"
+                    Background="#FA9033"
+                    Margin="0,50,0,0"
+                    Tag="/UiDesign/Icons/ButtonIcons/delete.svg"
+                    Style="{StaticResource GeneralButtonTheme}" />
+
+            <!--Account Created-->
+            <TextBlock Text="Account Created:  08 / 15 / 2020"
+                       Grid.Column="0"
+                       Grid.Row="5"
+                       Grid.ColumnSpan="2"
+                       Foreground="#686A6F"
+                       FontSize="15"
+                       FontFamily="{StaticResource NunitoBold}"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Bottom" />
+        </Grid>
+    </Grid>
+</UserControl>

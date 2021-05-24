@@ -15,7 +15,7 @@
     <Compile Update="MVVM\Views\OptionsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="MVVM\Views\ProfileView.xaml.cs">
+    <Compile Update="MVVM\Views\UserAccountView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="MVVM\Views\ProjectIdeasView.xaml.cs">
@@ -41,7 +41,7 @@
     <Page Update="MVVM\Views\OptionsView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MVVM\Views\ProfileView.xaml">
+    <Page Update="MVVM\Views\UserAccountView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\ProjectIdeasView.xaml">
