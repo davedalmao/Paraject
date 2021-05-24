@@ -8,13 +8,9 @@
 
   <ItemGroup>
     <Compile Remove="Database\**" />
-    <Compile Remove="MVVM\Models\**" />
     <EmbeddedResource Remove="Database\**" />
-    <EmbeddedResource Remove="MVVM\Models\**" />
     <None Remove="Database\**" />
-    <None Remove="MVVM\Models\**" />
     <Page Remove="Database\**" />
-    <Page Remove="MVVM\Models\**" />
   </ItemGroup>
 
   <ItemGroup>

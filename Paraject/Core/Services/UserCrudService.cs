@@ -25,12 +25,16 @@ namespace Paraject.Core.Services
             };
         }
 
-        public void Add(TEntity entity)
+        public bool Add(TEntity entity)
         {
-            throw new NotImplementedException();
+
+
+
+
+            return true;
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             throw new NotImplementedException();
         }
@@ -40,7 +44,7 @@ namespace Paraject.Core.Services
             throw new NotImplementedException();
         }
 
-        public void Update(TEntity entity)
+        public bool Update(TEntity entity)
         {
             throw new NotImplementedException();
         }

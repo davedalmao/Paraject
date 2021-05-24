@@ -9,8 +9,8 @@ namespace Paraject.Core.Interfaces
     public interface IMainCrudOperations<TEntity>
     {
         public TEntity Get(int id);
-        public void Add(TEntity entity);
-        public void Update(TEntity entity);
-        public void Delete(int id);
+        public bool Add(TEntity entity);
+        public bool Update(TEntity entity);
+        public bool Delete(int id);
     }
 }
