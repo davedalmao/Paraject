@@ -7,16 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Core\Services\**" />
     <Compile Remove="Database\**" />
     <Compile Remove="MVVM\Models\**" />
-    <EmbeddedResource Remove="Core\Services\**" />
     <EmbeddedResource Remove="Database\**" />
     <EmbeddedResource Remove="MVVM\Models\**" />
-    <None Remove="Core\Services\**" />
     <None Remove="Database\**" />
     <None Remove="MVVM\Models\**" />
-    <Page Remove="Core\Services\**" />
     <Page Remove="Database\**" />
     <Page Remove="MVVM\Models\**" />
   </ItemGroup>
