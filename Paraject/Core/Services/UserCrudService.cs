@@ -51,7 +51,25 @@ namespace Paraject.Core.Services
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            bool isDeleted = false;
+            using (SqlConnection con = new(_connectionString))
+            using (SqlCommand cmd = new("spDeleteUserAccount", con))
+            {
+                try
+                {
+                    con.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@user_id", SqlDbType.Int).Value = id;
+
+                    int NoOfRowsAffected = cmd.ExecuteNonQuery();
+                    isDeleted = NoOfRowsAffected > 0;
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            return isDeleted;
         }
 
         public TEntity Get(int id)
