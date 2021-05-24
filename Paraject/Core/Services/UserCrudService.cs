@@ -19,11 +19,6 @@ namespace Paraject.Core.Services
         public UserCrudService(string connectionString)
         {
             _connectionString = connectionString;
-            //_sqlCmd = new SqlCommand
-            //{
-            //    Connection = _sqlCon,
-            //    CommandType = CommandType.StoredProcedure
-            //};
         }
 
         public bool Add(TEntity entity)
@@ -66,7 +61,30 @@ namespace Paraject.Core.Services
 
         public bool Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            UserAccount userAccount = entity as UserAccount;
+            bool isUpdated = false;
+
+            using (SqlConnection con = new(_connectionString))
+            using (SqlCommand cmd = new("spUpdateUserAccount", con))
+            {
+                try
+                {
+                    con.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@user_id", SqlDbType.Int).Value = userAccount.Id;
+                    cmd.Parameters.Add("@username", SqlDbType.NVarChar, 50).Value = userAccount.Username;
+                    cmd.Parameters.Add("@pasword", SqlDbType.NVarChar, 50).Value = userAccount.Password;
+
+                    int NoOfRowsAffected = cmd.ExecuteNonQuery();
+                    isUpdated = NoOfRowsAffected > 0;
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            return isUpdated;
         }
     }
 }
