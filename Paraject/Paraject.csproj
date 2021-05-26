@@ -65,6 +65,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Core\Services\" />
     <Folder Include="MVVM\Views\ModalDialogs\" />
   </ItemGroup>
 
