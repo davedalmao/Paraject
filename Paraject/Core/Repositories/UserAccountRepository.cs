@@ -1,4 +1,5 @@
 ﻿using Paraject.Core.Repositories.Interfaces;
+using Paraject.Core.Utilities;
 using Paraject.MVVM.Models;
 using System;
 using System.Data;
@@ -13,7 +14,7 @@ namespace Paraject.Core.Repositories
 
         public UserAccountRepository()
         {
-            _connectionString = "";
+            _connectionString = ConnectionString.config;
         }
 
         public bool Add(UserAccount userAccount)

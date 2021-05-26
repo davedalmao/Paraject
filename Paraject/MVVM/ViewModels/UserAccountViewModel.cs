@@ -1,4 +1,5 @@
-﻿using Paraject.Core.Repositories;
+﻿using Paraject.Core.Commands;
+using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using System;
 using System.Windows;
@@ -9,8 +10,21 @@ namespace Paraject.MVVM.ViewModels
     {
         private readonly UserAccountRepository _userAccountRepository;
 
+        public UserAccountViewModel()
+        {
+            AddCommand = new DelegateCommand(Add);
+            GetCommand = new DelegateCommand(Get);
+            UpdateCommand = new DelegateCommand(Update);
+            DeleteCommand = new DelegateCommand(Delete);
+        }
         public UserAccount CurrentUserAccount { get; set; }
 
+        public DelegateCommand AddCommand { get; }
+        public DelegateCommand GetCommand { get; }
+        public DelegateCommand UpdateCommand { get; }
+        public DelegateCommand DeleteCommand { get; }
+
+        #region CRUD
         public void Add()
         {
             try
@@ -22,7 +36,6 @@ namespace Paraject.MVVM.ViewModels
                 MessageBox.Show(ex.ToString());
             }
         }
-
         public void Get()
         {
             UserAccount userAccount = _userAccountRepository.Get(CurrentUserAccount.Id);
@@ -38,7 +51,6 @@ namespace Paraject.MVVM.ViewModels
                 MessageBox.Show("User Account not Found!");
             }
         }
-
         public void Update()
         {
             try
@@ -51,7 +63,6 @@ namespace Paraject.MVVM.ViewModels
                 MessageBox.Show(ex.ToString());
             }
         }
-
         public void Delete()
         {
             try
@@ -64,5 +75,6 @@ namespace Paraject.MVVM.ViewModels
                 MessageBox.Show(ex.ToString());
             }
         }
+        #endregion
     }
 }

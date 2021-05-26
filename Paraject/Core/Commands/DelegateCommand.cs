@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace Paraject.Core.Commands
 {
-    class DelegateCommand : ICommand
+    public class DelegateCommand : ICommand
     {
         private readonly Action RunCommand;
 

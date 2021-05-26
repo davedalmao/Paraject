@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace Paraject.Core.Commands
 {
-    class NavigationCommand : ICommand
+    public class NavigationCommand : ICommand
     {
         private Action<object> _execute;
         private Func<object, bool> _canExecute;
