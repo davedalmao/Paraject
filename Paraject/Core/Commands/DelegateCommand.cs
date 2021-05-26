@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Paraject.Core.Commands
 {
     class DelegateCommand : ICommand
     {
-
         private readonly Action RunCommand;
 
         public event EventHandler CanExecuteChanged

@@ -7,13 +7,13 @@ using System.Windows;
 
 namespace Paraject.Core.Repositories
 {
-    class UserAccountRepository : IUserAccountRepository
+    public class UserAccountRepository : IUserAccountRepository
     {
         private readonly string _connectionString;
 
-        public UserAccountRepository(string connectionString)
+        public UserAccountRepository()
         {
-            _connectionString = connectionString;
+            _connectionString = "";
         }
 
         public bool Add(UserAccount userAccount)

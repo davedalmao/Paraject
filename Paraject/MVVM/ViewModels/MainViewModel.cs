@@ -32,30 +32,15 @@ namespace Paraject.MVVM.ViewModels
 
             CurrentView = DashboardVM;
 
-            DashboardViewCommand = new NavigationCommand(o =>
-            {
-                CurrentView = DashboardVM;
-            });
+            DashboardViewCommand = new NavigationCommand(o => { CurrentView = DashboardVM; });
 
-            ProjectsViewCommand = new NavigationCommand(o =>
-            {
-                CurrentView = ProjectsVM;
-            });
+            ProjectsViewCommand = new NavigationCommand(o => { CurrentView = ProjectsVM; });
 
-            ProfileViewCommand = new NavigationCommand(o =>
-            {
-                CurrentView = ProfileVM;
-            });
+            ProfileViewCommand = new NavigationCommand(o => { CurrentView = ProfileVM; });
 
-            ProjectIdeasViewCommand = new NavigationCommand(o =>
-            {
-                CurrentView = ProjectIdeasVM;
-            });
+            ProjectIdeasViewCommand = new NavigationCommand(o => { CurrentView = ProjectIdeasVM; });
 
-            OptionsViewCommand = new NavigationCommand(o =>
-            {
-                CurrentView = OptionsVM;
-            });
+            OptionsViewCommand = new NavigationCommand(o => { CurrentView = OptionsVM; });
         }
     }
 }
