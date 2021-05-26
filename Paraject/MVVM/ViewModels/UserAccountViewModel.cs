@@ -12,30 +12,17 @@ namespace Paraject.MVVM.ViewModels
 
         public UserAccountViewModel()
         {
-            AddCommand = new DelegateCommand(Add);
             GetCommand = new DelegateCommand(Get);
             UpdateCommand = new DelegateCommand(Update);
             DeleteCommand = new DelegateCommand(Delete);
         }
         public UserAccount CurrentUserAccount { get; set; }
 
-        public DelegateCommand AddCommand { get; }
         public DelegateCommand GetCommand { get; }
         public DelegateCommand UpdateCommand { get; }
         public DelegateCommand DeleteCommand { get; }
 
-        #region CRUD
-        public void Add()
-        {
-            try
-            {
-                bool isSaved = _userAccountRepository.Add(CurrentUserAccount);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
+        #region Get, Update, Delete
         public void Get()
         {
             UserAccount userAccount = _userAccountRepository.Get(CurrentUserAccount.Id);
