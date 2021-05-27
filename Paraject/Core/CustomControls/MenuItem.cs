@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace Paraject.Core.CustomControlClasses
+namespace Paraject.Core.CustomControls
 {
-    /// <summary>
-    /// Sidebar menu item
-    /// </summary>
-    class MenuItem : RadioButton
+    public class MenuItem : RadioButton
     {
         public string DefaultImageUriString
         {
