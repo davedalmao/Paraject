@@ -12,7 +12,19 @@ TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\App.xaml
 151701578310
 4-809313125
+<<<<<<< HEAD
 26-862588263
+=======
+<<<<<<< HEAD
+26-862588263
+=======
+<<<<<<< HEAD
+27218646706
+=======
+2729928463
+>>>>>>> 92946a869507cd9a00b4ecf68dd86f83530052da
+>>>>>>> 0a2ccc768b90c5896fc9bc3db97cade605edb8f3
+>>>>>>> bcb731406f6064ea172a820c7479fe71ba22bb75
 204755123820
 MVVM\Views\DashboardView.xaml;MVVM\Views\OptionsView.xaml;MVVM\Views\ProjectIdeasView.xaml;MVVM\Views\ProjectsView.xaml;MVVM\Views\UserAccountView.xaml;MVVM\Views\Windows\LoginWindow.xaml;MVVM\Views\Windows\MainWindow.xaml;MVVM\Views\Windows\SignupWindow.xaml;UiDesign\Theme\GeneralButtonTheme.xaml;UiDesign\Theme\HorizontalRadioButtonTheme.xaml;UiDesign\Theme\PasswordBoxTheme.xaml;UiDesign\Theme\PlainButtonTheme.xaml;UiDesign\Theme\TextBoxTheme.xaml;UiDesign\Theme\TextOnlyButtonTheme.xaml;UiDesign\Theme\VerticalRadioButtonTheme.xaml;
 

@@ -8,6 +8,7 @@
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
         xmlns:windowViewModel="clr-namespace:Paraject.MVVM.ViewModels.Windows"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        d:DataContext="{d:DesignInstance Type=windowViewModel:SignupWindowViewModel}"
         mc:Ignorable="d"
         Height="480"
         Width="750"
@@ -18,10 +19,6 @@
         Background="Transparent"
         FontFamily="{StaticResource NunitoBold}"
         MouseDown="Window_MouseDown">
-
-    <Window.DataContext>
-        <windowViewModel:SignupWindowViewModel />
-    </Window.DataContext>
 
     <!--This code SHOWS LoginWindow and then CLOSES SignupWindow(this window)-->
     <!--This closes(close event: EventName="Closed") the SignupWindow(this window) when MethodName="Close" executes-->
@@ -184,7 +181,8 @@
                              Background="#F54342"
                              FontSize="16"
                              Margin="0,38,0,0"
-                             Style="{StaticResource TextOnlyButtonTheme}" />
+                             Style="{StaticResource TextOnlyButtonTheme}"
+                             Command="{Binding AddCommand}" />
                 </Grid>
             </StackPanel>
         </Grid>
