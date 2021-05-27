@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace Paraject.MVVM.ViewModels.Windows
 {
-    class SignupWindowViewModel : BaseViewModel
+    public class SignupWindowViewModel : BaseViewModel
     {
         private readonly UserAccountRepository _userAccountRepository;
         private DelegateCommand _loginWindowRedirectCommand;
