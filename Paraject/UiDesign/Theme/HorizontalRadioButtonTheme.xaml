@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
-                    xmlns:custom="clr-namespace:Paraject.Core.CustomControlClasses">
+                    xmlns:custom="clr-namespace:Paraject.Core.CustomControls">
     <FontFamily x:Key="NunitoBold">/UiDesign/Fonts/Nunito-Bold.ttf#Nunito</FontFamily>
     <Style TargetType="{x:Type custom:MenuItem}"
            x:Key="HorizontalMenuButtonTheme">
