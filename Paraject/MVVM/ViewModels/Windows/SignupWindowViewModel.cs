@@ -15,7 +15,8 @@ namespace Paraject.MVVM.ViewModels.Windows
 
         public SignupWindowViewModel()
         {
-            AddCommand = new DelegateCommand(Add);
+            _userAccountRepository = new UserAccountRepository();
+            AddCommand = new DelegateCommand(AddTest);
         }
 
         #region Properties
@@ -46,6 +47,11 @@ namespace Paraject.MVVM.ViewModels.Windows
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        public void AddTest()
+        {
+            MessageBox.Show("fsd");
         }
 
         //The method that executes Closed EventHandler
