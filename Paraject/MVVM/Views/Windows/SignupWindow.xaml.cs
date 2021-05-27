@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Paraject.MVVM.ViewModels.Windows;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Paraject.MVVM.Views.Windows
 {
@@ -19,9 +9,12 @@ namespace Paraject.MVVM.Views.Windows
     /// </summary>
     public partial class SignupWindow : Window
     {
+        readonly SignupWindowViewModel _viewModel;
         public SignupWindow()
         {
             InitializeComponent();
+            _viewModel = new SignupWindowViewModel();
+            DataContext = _viewModel;
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
