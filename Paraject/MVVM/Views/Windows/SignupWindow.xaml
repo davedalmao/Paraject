@@ -143,7 +143,7 @@
                              Height="38"
                              Margin="0,0,0,30"
                              FontSize="15"
-                             Text="{Binding Path=CurrentUserAccount.Username, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                             Text="{Binding Path=CurrentUserAccount.Username}" />
 
                     <!--Password TextBlock-->
                     <TextBlock Grid.Row="3"
@@ -159,7 +159,8 @@
                                                       Width="303"
                                                       Height="38"
                                                       FontSize="15"
-                                                      Margin="0,0,0,30" />
+                                                      Margin="0,0,0,30"
+                                                      Password="{Binding CurrentUserAccount.Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
 
                     <!--Confirm Password TextBlock-->
                     <TextBlock Grid.Row="5"

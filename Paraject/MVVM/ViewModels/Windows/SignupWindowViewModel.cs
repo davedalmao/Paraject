@@ -52,14 +52,14 @@ namespace Paraject.MVVM.ViewModels.Windows
 
         public void AddTest()
         {
-            if (!string.IsNullOrWhiteSpace(CurrentUserAccount.Username))
+            if (!string.IsNullOrWhiteSpace(CurrentUserAccount.Password))
             {
-                MessageBox.Show(CurrentUserAccount.Username);
+                MessageBox.Show(CurrentUserAccount.Password);
             }
 
             else
             {
-                MessageBox.Show("Username should not be blank");
+                MessageBox.Show("Password should not be blank");
             }
         }
 
