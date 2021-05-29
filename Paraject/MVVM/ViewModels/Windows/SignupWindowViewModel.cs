@@ -18,7 +18,6 @@ namespace Paraject.MVVM.ViewModels.Windows
         {
             _userAccountRepository = new UserAccountRepository();
             AddCommand = new DelegateCommand(Add);
-            CreateAccountCommand = new CreateAccountCommand(this, Add);
             CurrentUserAccount = new UserAccount();
         }
 
@@ -28,7 +27,6 @@ namespace Paraject.MVVM.ViewModels.Windows
         public UserAccount CurrentUserAccount { get; set; }
         public string InitialPassword { get; set; }
         public ICommand AddCommand { get; }
-        public ICommand CreateAccountCommand { get; }
         #endregion
 
         #region Methods
