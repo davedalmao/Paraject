@@ -40,7 +40,7 @@ namespace Paraject.MVVM.ViewModels.Windows
         {
             try
             {
-                MessageBox.Show($"username: {CurrentUserAccount.Username}");
+                MessageBox.Show($"Username: {CurrentUserAccount.Username} \nInitialPassword: {InitialPassword} \nPassword: {CurrentUserAccount.Password}");
                 //if (ValidateInput())
                 //{
                 //    //bool isSaved = _userAccountRepository.Add(CurrentUserAccount);

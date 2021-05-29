@@ -10,11 +10,16 @@
                             Width="{TemplateBinding Width}"
                             Height="{TemplateBinding Height}">
                         <Grid>
-                            <TextBox BorderThickness="0"
+                            <TextBox Text="{Binding Path=Text,
+                                                    RelativeSource={RelativeSource TemplatedParent}, 
+                                                    Mode=TwoWay,
+                                                    UpdateSourceTrigger=PropertyChanged}"
+                                     BorderThickness="0"
                                      Background="Transparent"
                                      VerticalContentAlignment="Center"
                                      Padding="20,0,20,0"
-                                     Foreground="#B8BDC1" />
+                                     Foreground="#B8BDC1"
+                                     CaretBrush="#B8BDC1" />
                         </Grid>
                     </Border>
                 </ControlTemplate>

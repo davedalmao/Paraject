@@ -19,7 +19,8 @@
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
         FontFamily="{StaticResource NunitoBold}"
-        MouseDown="Window_MouseDown">
+        MouseDown="Window_MouseDown"
+        FocusManager.FocusedElement="{Binding ElementName=UsernameTextBox}">
 
     <!--This code SHOWS LoginWindow and then CLOSES SignupWindow(this window)-->
     <!--This closes(close event: EventName="Closed") the SignupWindow(this window) when MethodName="Close" executes-->
@@ -137,7 +138,8 @@
 
                     <!--Style="{StaticResource TextBoxTheme}"-->
                     <!--Username Textbox-->
-                    <TextBox Grid.Row="2"
+                    <TextBox x:Name="UsernameTextBox"
+                             Grid.Row="2"
                              Width="303"
                              Height="38"
                              Margin="0,0,0,30"
