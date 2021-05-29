@@ -160,7 +160,7 @@
                                                       Height="38"
                                                       FontSize="15"
                                                       Margin="0,0,0,30"
-                                                      Password="{Binding CurrentUserAccount.Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                                      Password="{Binding InitialPassword, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
 
                     <!--Confirm Password TextBlock-->
                     <TextBlock Grid.Row="5"
@@ -170,12 +170,13 @@
                                Margin="0,00,0,6"
                                FontFamily="{StaticResource NunitoBold}" />
 
+                    <!--Style="{StaticResource ParajectPasswordBox}"-->
                     <!--Confirm Password Textbox-->
-                    <PasswordBox  Grid.Row="6"
-                                  Width="303"
-                                  Height="38"
-                                  FontSize="15"
-                                  Style="{StaticResource ParajectPasswordBox}" />
+                    <usercontrols:BindablePasswordBox  Grid.Row="6"
+                                                       Width="303"
+                                                       Height="38"
+                                                       FontSize="15"
+                                                       Password="{Binding CurrentUserAccount.Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
 
                     <!--Style="{StaticResource TextOnlyButtonTheme}"-->
                     <!--Signup Button-->

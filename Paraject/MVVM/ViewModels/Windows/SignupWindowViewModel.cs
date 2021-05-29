@@ -17,8 +17,8 @@ namespace Paraject.MVVM.ViewModels.Windows
         public SignupWindowViewModel()
         {
             _userAccountRepository = new UserAccountRepository();
-            AddCommand = new DelegateCommand(AddTest);
-            CreateAccountCommand = new CreateAccountCommand(this, AddTest);
+            AddCommand = new DelegateCommand(Add);
+            CreateAccountCommand = new CreateAccountCommand(this, Add);
             CurrentUserAccount = new UserAccount();
         }
 
@@ -26,6 +26,7 @@ namespace Paraject.MVVM.ViewModels.Windows
         public DelegateCommand LoginWindowRedirectCommand { get { return _loginWindowRedirectCommand ??= new DelegateCommand(ShowLoginWindow); } }
 
         public UserAccount CurrentUserAccount { get; set; }
+        public string InitialPassword { get; set; }
         public ICommand AddCommand { get; }
         public ICommand CreateAccountCommand { get; }
         #endregion
@@ -42,7 +43,16 @@ namespace Paraject.MVVM.ViewModels.Windows
         {
             try
             {
-                bool isSaved = _userAccountRepository.Add(CurrentUserAccount);
+                if (ValidateInput())
+                {
+                    //bool isSaved = _userAccountRepository.Add(CurrentUserAccount);
+                    MessageBox.Show($"username: {CurrentUserAccount.Username} \nInitial Password: {InitialPassword} \npassword:{CurrentUserAccount.Password}");
+                }
+
+                else
+                {
+                    MessageBox.Show("Check your inputs: \n1. Passwords doesn't match \n2. No username in the input");
+                }
             }
             catch (Exception ex)
             {
@@ -50,24 +60,25 @@ namespace Paraject.MVVM.ViewModels.Windows
             }
         }
 
-        public void AddTest()
+        public bool ValidateInput()
         {
-            if (!string.IsNullOrWhiteSpace(CurrentUserAccount.Username) && !string.IsNullOrWhiteSpace(CurrentUserAccount.Password))
+            bool isValid = false;
+            // Check if Username, initial Password, and confirm Password is not blank
+            if (!string.IsNullOrWhiteSpace(CurrentUserAccount.Username) && !string.IsNullOrWhiteSpace(InitialPassword) && !string.IsNullOrWhiteSpace(CurrentUserAccount.Password))
             {
-                MessageBox.Show($"Username: {CurrentUserAccount.Username} Password: {CurrentUserAccount.Password}");
+                //if Username, initial Password, and confirm Password is not blank:
+                return InitialPassword.Equals(CurrentUserAccount.Password); //Check if initial password and confirm password is the same
             }
-
-            else
-            {
-                MessageBox.Show("Username or Password should not be blank");
-            }
+            return isValid;
         }
 
-        //The method that executes Closed EventHandler
-        private void Close()
+
+        private void Close() //The method that executes Closed EventHandler
         {
             Closed?.Invoke(this, EventArgs.Empty);
         }
         #endregion
     }
 }
+
+
