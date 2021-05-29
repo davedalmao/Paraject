@@ -1,7 +1,6 @@
 ﻿using Paraject.MVVM.ViewModels.Windows;
 using System;
 using System.ComponentModel;
-using System.Windows;
 using System.Windows.Input;
 
 namespace Paraject.Core.Commands
@@ -9,11 +8,13 @@ namespace Paraject.Core.Commands
     public class CreateAccountCommand : ICommand
     {
         private readonly SignupWindowViewModel _viewModel;
-        public CreateAccountCommand(SignupWindowViewModel viewModel)
+        private readonly Action RunCommand;
+
+        public CreateAccountCommand(SignupWindowViewModel viewModel, Action runCommand)
         {
             _viewModel = viewModel;
-
             _viewModel.PropertyChanged += SignupWindowViewModel_PropertyChanged;
+            RunCommand = runCommand;
         }
 
         public event EventHandler CanExecuteChanged;
@@ -25,8 +26,7 @@ namespace Paraject.Core.Commands
 
         public void Execute(object parameter)
         {
-            MessageBox.Show($"Username: {_viewModel.CurrentUserAccount.Username}\nPassword: {_viewModel.CurrentUserAccount.Password}", "Info",
-               MessageBoxButton.OK, MessageBoxImage.Information);
+            RunCommand();
         }
         private void SignupWindowViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {

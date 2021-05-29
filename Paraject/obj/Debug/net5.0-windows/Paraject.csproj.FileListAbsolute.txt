@@ -56,7 +56,6 @@ D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MV
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\Paraject.csproj.Fody.CopyLocal.cache
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\UiDesign\Theme\TextOnlyButtonTheme.baml
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\Microsoft.Xaml.Behaviors.dll
-D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\Paraject.csprojAssemblyReference.cache
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\UserAccountView.g.cs
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\UserAccountView.baml
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\Paraject.dll.config
@@ -66,3 +65,6 @@ D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\ru
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\runtimes\win-x86\native\sni.dll
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\Core\CustomControls\UserControls\BindablePasswordBox.g.cs
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\Core\CustomControls\UserControls\BindablePasswordBox.baml
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\Paraject.csprojAssemblyReference.cache

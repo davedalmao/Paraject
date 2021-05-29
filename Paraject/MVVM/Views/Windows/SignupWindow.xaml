@@ -8,6 +8,7 @@
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
         xmlns:windowViewModel="clr-namespace:Paraject.MVVM.ViewModels.Windows"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:usercontrols="clr-namespace:Paraject.Core.CustomControls.UserControls"
         d:DataContext="{d:DesignInstance Type=windowViewModel:SignupWindowViewModel}"
         mc:Ignorable="d"
         Height="480"
@@ -134,13 +135,15 @@
                                 Margin="0,0,0,6"
                                 FontFamily="{StaticResource NunitoBold}" />
 
+                    <!--Style="{StaticResource ParajectTextBox}"-->
                     <!--Username Textbox-->
-                    <TextBox  Grid.Row="2"
-                              Width="303"
-                              Height="38"
-                              Margin="0,0,0,30"
-                              Style="{StaticResource ParajectTextBox}"
-                              FontSize="15" />
+                    <TextBox x:Name="UsernameTextbox"
+                             Grid.Row="2"
+                             Width="303"
+                             Height="38"
+                             Margin="0,0,0,30"
+                             FontSize="15"
+                             Text="{Binding Path=CurrentUserAccount.Username, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
 
                     <!--Password TextBlock-->
                     <TextBlock Grid.Row="3"
@@ -150,13 +153,13 @@
                                Margin="0,00,0,6"
                                FontFamily="{StaticResource NunitoBold}" />
 
+                    <!--Style="{StaticResource ParajectPasswordBox}"-->
                     <!--Password Textbox-->
-                    <PasswordBox Grid.Row="4"
-                                 Width="303"
-                                 Height="38"
-                                 FontSize="15"
-                                 Margin="0,0,0,30"
-                                 Style="{StaticResource ParajectPasswordBox}" />
+                    <usercontrols:BindablePasswordBox Grid.Row="4"
+                                                      Width="303"
+                                                      Height="38"
+                                                      FontSize="15"
+                                                      Margin="0,0,0,30" />
 
                     <!--Confirm Password TextBlock-->
                     <TextBlock Grid.Row="5"
@@ -173,6 +176,7 @@
                                   FontSize="15"
                                   Style="{StaticResource ParajectPasswordBox}" />
 
+                    <!--Style="{StaticResource TextOnlyButtonTheme}"-->
                     <!--Signup Button-->
                     <Button  Grid.Row="7"
                              Content="Create Account"
@@ -181,8 +185,8 @@
                              Background="#F54342"
                              FontSize="16"
                              Margin="0,38,0,0"
-                             Style="{StaticResource TextOnlyButtonTheme}"
-                             Command="{Binding AddCommand}" />
+                             Command="{Binding Path=AddCommand}" />
+                    <!--IsEnabled="{Binding ElementName=UsernameTextbox, Path=Text.Length}"-->
                 </Grid>
             </StackPanel>
         </Grid>

@@ -10,13 +10,13 @@
                             Width="{TemplateBinding Width}"
                             Height="{TemplateBinding Height}">
                         <Grid>
-                            <TextBox Text="{TemplateBinding Text}"
-                                     BorderThickness="0"
-                                     Background="Transparent"
-                                     VerticalContentAlignment="Center"
-                                     Padding="20,0,20,0"
-                                     Foreground="#B8BDC1"
-                                     FontSize="{TemplateBinding FontSize}" />
+                            <TextBox  Text="{TemplateBinding Text}"
+                                      BorderThickness="0"
+                                      Background="Transparent"
+                                      VerticalContentAlignment="Center"
+                                      Padding="20,0,20,0"
+                                      Foreground="#B8BDC1"
+                                      FontSize="{TemplateBinding FontSize}" />
                         </Grid>
                     </Border>
                 </ControlTemplate>

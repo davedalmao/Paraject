@@ -4,6 +4,7 @@ using Paraject.MVVM.Models;
 using Paraject.MVVM.Views.Windows;
 using System;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels.Windows
 {
@@ -17,16 +18,16 @@ namespace Paraject.MVVM.ViewModels.Windows
         {
             _userAccountRepository = new UserAccountRepository();
             AddCommand = new DelegateCommand(AddTest);
+            CreateAccountCommand = new CreateAccountCommand(this, AddTest);
+            CurrentUserAccount = new UserAccount();
         }
 
         #region Properties
-        /// <summary>
-        /// The command that Shows LoginWindow and Closes SignupWindow
-        /// </summary>
         public DelegateCommand LoginWindowRedirectCommand { get { return _loginWindowRedirectCommand ??= new DelegateCommand(ShowLoginWindow); } }
 
         public UserAccount CurrentUserAccount { get; set; }
-        public DelegateCommand AddCommand { get; }
+        public ICommand AddCommand { get; }
+        public ICommand CreateAccountCommand { get; }
         #endregion
 
         #region Methods
@@ -51,7 +52,15 @@ namespace Paraject.MVVM.ViewModels.Windows
 
         public void AddTest()
         {
-            MessageBox.Show("fsd");
+            if (!string.IsNullOrWhiteSpace(CurrentUserAccount.Username))
+            {
+                MessageBox.Show(CurrentUserAccount.Username);
+            }
+
+            else
+            {
+                MessageBox.Show("Username should not be blank");
+            }
         }
 
         //The method that executes Closed EventHandler
