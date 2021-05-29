@@ -153,7 +153,6 @@
                                Margin="0,00,0,6"
                                FontFamily="{StaticResource NunitoBold}" />
 
-                    <!--Style="{StaticResource ParajectPasswordBox}"-->
                     <!--Password Textbox-->
                     <usercontrols:BindablePasswordBox Grid.Row="4"
                                                       Width="303"
@@ -170,7 +169,6 @@
                                Margin="0,00,0,6"
                                FontFamily="{StaticResource NunitoBold}" />
 
-                    <!--Style="{StaticResource ParajectPasswordBox}"-->
                     <!--Confirm Password Textbox-->
                     <usercontrols:BindablePasswordBox  Grid.Row="6"
                                                        Width="303"
@@ -178,7 +176,6 @@
                                                        FontSize="15"
                                                        Password="{Binding CurrentUserAccount.Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
 
-                    <!--Style="{StaticResource TextOnlyButtonTheme}"-->
                     <!--Signup Button-->
                     <Button  Grid.Row="7"
                              Content="Create Account"
