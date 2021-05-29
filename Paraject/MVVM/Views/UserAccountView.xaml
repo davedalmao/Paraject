@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Paraject.MVVM.Views"
+             xmlns:usercontrols="clr-namespace:Paraject.Core.CustomControls.UserControls"
              mc:Ignorable="d"
              Width="732"
              Height="544.63"
@@ -77,7 +78,7 @@
                      Grid.ColumnSpan="2"
                      Width="349"
                      Height="42"
-                     Style="{StaticResource ParajectTextBox}"
+                     Style="{StaticResource TextBoxTheme}"
                      FontSize="15" />
 
             <!--Password TextBlock-->
@@ -90,13 +91,12 @@
                        FontFamily="{StaticResource NunitoBold}" />
 
             <!--Password Textbox-->
-            <TextBox Grid.Column="0"
-                     Grid.Row="3"
-                     Grid.ColumnSpan="2"
-                     Width="349"
-                     Height="42"
-                     Style="{StaticResource ParajectTextBox}"
-                     FontSize="15" />
+            <usercontrols:BindablePasswordBox Grid.Column="0"
+                                              Grid.Row="3"
+                                              Grid.ColumnSpan="2"
+                                              Width="349"
+                                              Height="42"
+                                              FontSize="15" />
 
             <!--Update Profile Button-->
             <Button Content="Update Profile"

@@ -135,15 +135,15 @@
                                 Margin="0,0,0,6"
                                 FontFamily="{StaticResource NunitoBold}" />
 
-                    <!--Style="{StaticResource ParajectTextBox}"-->
+                    <!--Style="{StaticResource TextBoxTheme}"-->
                     <!--Username Textbox-->
-                    <TextBox x:Name="UsernameTextbox"
-                             Grid.Row="2"
+                    <TextBox Grid.Row="2"
                              Width="303"
                              Height="38"
                              Margin="0,0,0,30"
                              FontSize="15"
-                             Text="{Binding Path=CurrentUserAccount.Username}" />
+                             Text="{Binding Path=CurrentUserAccount.Username}"
+                             Style="{StaticResource TextBoxTheme}" />
 
                     <!--Password TextBlock-->
                     <TextBlock Grid.Row="3"
@@ -187,8 +187,8 @@
                              Background="#F54342"
                              FontSize="16"
                              Margin="0,38,0,0"
-                             Command="{Binding Path=AddCommand}" />
-                    <!--IsEnabled="{Binding ElementName=UsernameTextbox, Path=Text.Length}"-->
+                             Command="{Binding Path=AddCommand}"
+                             Style="{StaticResource TextOnlyButtonTheme}" />
                 </Grid>
             </StackPanel>
         </Grid>

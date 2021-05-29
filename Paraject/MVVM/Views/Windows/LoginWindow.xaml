@@ -8,6 +8,7 @@
          xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
          xmlns:windowViewModel="clr-namespace:Paraject.MVVM.ViewModels.Windows"
          xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+         xmlns:usercontrols="clr-namespace:Paraject.Core.CustomControls.UserControls"
          mc:Ignorable="d"
          Height="480"
          Width="750"
@@ -77,7 +78,7 @@
                          Grid.ColumnSpan="2"
                          Width="285"
                          Height="38.27"
-                         Style="{StaticResource ParajectTextBox}"
+                         Style="{StaticResource TextBoxTheme}"
                          FontSize="15" />
 
                 <!--Password TextBlock-->
@@ -89,12 +90,11 @@
                            FontFamily="{StaticResource NunitoBold}" />
 
                 <!--Password Textbox-->
-                <PasswordBox Grid.Row="4"
-                             Grid.ColumnSpan="2"
-                             Width="285"
-                             Height="38.27"
-                             FontSize="15"
-                             Style="{StaticResource ParajectPasswordBox}" />
+                <usercontrols:BindablePasswordBox Grid.Row="4"
+                                                  Grid.ColumnSpan="2"
+                                                  Width="285"
+                                                  Height="38.27"
+                                                  FontSize="15" />
 
                 <!--Login button-->
                 <Button Content="LOGIN"

@@ -23,7 +23,6 @@ namespace Paraject.MVVM.ViewModels.Windows
 
         #region Properties
         public DelegateCommand LoginWindowRedirectCommand { get { return _loginWindowRedirectCommand ??= new DelegateCommand(ShowLoginWindow); } }
-
         public UserAccount CurrentUserAccount { get; set; }
         public string InitialPassword { get; set; }
         public ICommand AddCommand { get; }
@@ -41,16 +40,17 @@ namespace Paraject.MVVM.ViewModels.Windows
         {
             try
             {
-                if (ValidateInput())
-                {
-                    //bool isSaved = _userAccountRepository.Add(CurrentUserAccount);
-                    MessageBox.Show($"username: {CurrentUserAccount.Username} \nInitial Password: {InitialPassword} \npassword:{CurrentUserAccount.Password}");
-                }
+                MessageBox.Show($"username: {CurrentUserAccount.Username}");
+                //if (ValidateInput())
+                //{
+                //    //bool isSaved = _userAccountRepository.Add(CurrentUserAccount);
+                //    MessageBox.Show($"username: {CurrentUserAccount.Username} \nInitial Password: {InitialPassword} \npassword:{CurrentUserAccount.Password}");
+                //}
 
-                else
-                {
-                    MessageBox.Show("Check your inputs: \n1. Passwords doesn't match \n2. No username in the input");
-                }
+                //else
+                //{
+                //    MessageBox.Show("Check your inputs: \n1. Passwords doesn't match \n2. No username in the input");
+                //}
             }
             catch (Exception ex)
             {
