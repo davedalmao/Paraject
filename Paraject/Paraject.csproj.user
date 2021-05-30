@@ -74,9 +74,6 @@
     <Page Update="UiDesign\Theme\HorizontalRadioButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UiDesign\Theme\PasswordBoxTheme.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="UiDesign\Theme\TextOnlyButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
