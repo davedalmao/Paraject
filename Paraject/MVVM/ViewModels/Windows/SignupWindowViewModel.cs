@@ -59,11 +59,6 @@ namespace Paraject.MVVM.ViewModels.Windows
             {
                 ShowMainWindow();
             }
-
-            else
-            {
-                MessageBox.Show("Error in creating User Account");
-            }
         }
         private bool ValidateInput()
         {
