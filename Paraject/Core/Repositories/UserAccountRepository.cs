@@ -131,12 +131,27 @@ namespace Paraject.Core.Repositories
 
         public bool LoginUser(UserAccount userAccount)
         {
+            bool userExists = false;
 
             using (SqlConnection con = new(_connectionString))
             using (SqlCommand cmd = new("spLoginUserAccount", con))
             {
+                try
+                {
+                    con.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@username", SqlDbType.NVarChar, 50).Value = userAccount.Username;
+                    cmd.Parameters.Add("@password", SqlDbType.NVarChar, 50).Value = userAccount.Password;
+
+                    userExists = cmd.ExecuteScalar() is not null;
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
-            return false;
+            return userExists;
         }
     }
 }
