@@ -129,5 +129,14 @@ namespace Paraject.Core.Repositories
             return isDeleted;
         }
 
+        public bool LoginUser(UserAccount userAccount)
+        {
+
+            using (SqlConnection con = new(_connectionString))
+            using (SqlCommand cmd = new("spLoginUserAccount", con))
+            {
+            }
+            return false;
+        }
     }
 }

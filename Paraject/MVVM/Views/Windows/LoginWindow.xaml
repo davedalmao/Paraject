@@ -9,6 +9,7 @@
          xmlns:windowViewModel="clr-namespace:Paraject.MVVM.ViewModels.Windows"
          xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
          xmlns:usercontrols="clr-namespace:Paraject.Core.CustomControls.UserControls"
+         d:DataContext="{d:DesignInstance Type=windowViewModel:LoginWindowViewModel}"
          mc:Ignorable="d"
          Height="480"
          Width="750"
@@ -18,11 +19,8 @@
          WindowStartupLocation="CenterScreen"
          Background="Transparent"
          FontFamily="{StaticResource NunitoBold}"
-         MouseDown="Window_MouseDown">
-
-    <Window.DataContext>
-        <windowViewModel:LoginWindowViewModel />
-    </Window.DataContext>
+         MouseDown="Window_MouseDown"
+         FocusManager.FocusedElement="{Binding ElementName=UsernameTextBox}">
 
     <!--This code SHOWS SignupWindow and then CLOSES LoginWindow(this window)-->
     <!--This closes(close event: EventName="Closed") the LoginWindow(this window) when MethodName="Close" executes-->
@@ -74,12 +72,14 @@
                            FontFamily="{StaticResource NunitoBold}" />
 
                 <!--Username Textbox-->
-                <TextBox Grid.Row="2"
+                <TextBox x:Name="UsernameTextBox"
+                         Grid.Row="2"
                          Grid.ColumnSpan="2"
                          Width="285"
                          Height="38.27"
                          Style="{StaticResource TextBoxTheme}"
-                         FontSize="15" />
+                         FontSize="15"
+                         Text="{Binding Path=CurrentUserAccount.Username}" />
 
                 <!--Password TextBlock-->
                 <TextBlock Text="Password"
@@ -95,7 +95,10 @@
                                                   Width="285"
                                                   Height="38.27"
                                                   FontSize="15"
-                                                  Style="{StaticResource BindablePasswordBoxTheme}" />
+                                                  Style="{StaticResource BindablePasswordBoxTheme}"
+                                                  Password="{Binding Path=CurrentUserAccount.Password,
+                     UpdateSourceTrigger=PropertyChanged, 
+                     Mode=TwoWay}" />
 
 
                 <!--Login button-->
@@ -106,7 +109,8 @@
                         Background="#F54342"
                         Margin="0,82,0,8"
                         FontSize="16"
-                        Style="{StaticResource TextOnlyButtonTheme}" />
+                        Style="{StaticResource TextOnlyButtonTheme}"
+                        Command="{Binding LoginCommand}" />
 
                 <StackPanel Grid.Row="6"
                             Orientation="Horizontal"
