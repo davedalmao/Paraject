@@ -21,14 +21,17 @@ namespace Paraject.MVVM.ViewModels.Windows
             LoginCommand = new DelegateCommand(Login);
         }
 
+        #region Properties
         public DelegateCommand SignUpWindowRedirectCommand
         {
             get { return _signUpWindowRedirectCommand ??= new DelegateCommand(ShowSignupWindow); }
         }
         public UserAccount CurrentUserAccount { get; set; }
         public ICommand LoginCommand { get; set; }
+        #endregion 
 
-        public void Login()
+        #region Login Methods
+        private void Login()
         {
             if (ValidateInput())
             {
@@ -40,8 +43,7 @@ namespace Paraject.MVVM.ViewModels.Windows
                 MessageBox.Show("Check your inputs: username does not exist, or incorrect password.");
             }
         }
-
-        public bool ValidateInput()
+        private bool ValidateInput()
         {
             if (!string.IsNullOrWhiteSpace(CurrentUserAccount.Username) && !string.IsNullOrWhiteSpace(CurrentUserAccount.Password))
             {
@@ -49,9 +51,10 @@ namespace Paraject.MVVM.ViewModels.Windows
             }
             return false;
         }
+        #endregion
 
-        #region Methods
-        public void ShowSignupWindow()
+        #region Specific Window Methods
+        private void ShowSignupWindow()
         {
             SignupWindow signupWindow = new SignupWindow();
             signupWindow.Show();
