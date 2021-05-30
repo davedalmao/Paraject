@@ -27,6 +27,12 @@
 
             <!--Binding the View to its ViewModel-->
 
+
+            <!--Main Window-->
+            <DataTemplate DataType="{x:Type windowViewModel:MainWindowViewModel}">
+                <windowView:MainWindow />
+            </DataTemplate>
+
             <!--Login Window-->
             <DataTemplate DataType="{x:Type windowViewModel:LoginWindowViewModel}">
                 <windowView:LoginWindow />

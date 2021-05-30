@@ -1,8 +1,8 @@
 ﻿using Paraject.Core.Commands;
 
-namespace Paraject.MVVM.ViewModels
+namespace Paraject.MVVM.ViewModels.Windows
 {
-    class MainViewModel : BaseViewModel
+    class MainWindowViewModel : BaseViewModel
     {
         #region Commands
         public NavigationCommand DashboardViewCommand { get; set; }
@@ -22,7 +22,7 @@ namespace Paraject.MVVM.ViewModels
 
         public object CurrentView { get; set; }
 
-        public MainViewModel()
+        public MainWindowViewModel()
         {
             DashboardVM = new DashboardViewModel();
             ProjectsVM = new ProjectsViewModel();

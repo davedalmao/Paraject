@@ -1,4 +1,4 @@
-﻿using Paraject.MVVM.ViewModels;
+﻿using Paraject.MVVM.ViewModels.Windows;
 using System.Windows;
 using System.Windows.Input;
 
@@ -9,12 +9,12 @@ namespace Paraject.MVVM.Views.Windows
     /// </summary>
     public partial class MainWindow : Window
     {
-        readonly MainViewModel _mainViewModel;
+        readonly MainWindowViewModel _viewModel;
         public MainWindow()
         {
             InitializeComponent();
-            _mainViewModel = new MainViewModel();
-            DataContext = _mainViewModel;
+            _viewModel = new MainWindowViewModel();
+            DataContext = _viewModel;
         }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
