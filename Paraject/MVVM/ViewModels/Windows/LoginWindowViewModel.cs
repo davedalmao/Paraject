@@ -32,41 +32,36 @@ namespace Paraject.MVVM.ViewModels.Windows
         {
             if (ValidateInput())
             {
-                //Login user and redirect to MainWindow
+                ShowMainWindow();
             }
 
             else
             {
                 MessageBox.Show("Check your inputs: username does not exist, or incorrect password.");
             }
-            MessageBox.Show($"Username: {CurrentUserAccount.Username} Password: {CurrentUserAccount.Password}");
         }
 
         public bool ValidateInput()
         {
             if (!string.IsNullOrWhiteSpace(CurrentUserAccount.Username) && !string.IsNullOrWhiteSpace(CurrentUserAccount.Password))
             {
-                return AccountExistsInDatabase();
+                return _userAccountRepository.AccountExistsInDatabase(CurrentUserAccount);
             }
-
-            else
-            {
-                MessageBox.Show("Username or Password shouldn't be blank");
-                return false;
-            }
-        }
-
-        public bool AccountExistsInDatabase()
-        {
-            //Check if username and password match, and exist to database
             return false;
         }
+
         #region Methods
         public void ShowSignupWindow()
         {
             SignupWindow signupWindow = new SignupWindow();
             signupWindow.Show();
             Close(); //Closes LoginWindow when SignupWindow is present
+        }
+        private void ShowMainWindow()
+        {
+            MainWindow mainWindow = new();
+            mainWindow.Show();
+            Close(); //Closes LoginWindow when MainWindow is present
         }
         private void Close() //The method that executes Closed EventHandler
         {

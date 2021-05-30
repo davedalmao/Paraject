@@ -128,8 +128,7 @@ namespace Paraject.Core.Repositories
             }
             return isDeleted;
         }
-
-        public bool LoginUser(UserAccount userAccount)
+        public bool AccountExistsInDatabase(UserAccount userAccount)
         {
             bool userExists = false;
 
