@@ -90,13 +90,14 @@
                        FontSize="19"
                        FontFamily="{StaticResource NunitoBold}" />
 
-            <!--Password Textbox-->
+            <!--Password Textbox (no binding yet)-->
             <usercontrols:BindablePasswordBox Grid.Column="0"
                                               Grid.Row="3"
                                               Grid.ColumnSpan="2"
                                               Width="349"
                                               Height="42"
-                                              FontSize="15" />
+                                              FontSize="15"
+                                              Style="{StaticResource BindablePasswordBoxTheme}" />
 
             <!--Update Profile Button-->
             <Button Content="Update Profile"

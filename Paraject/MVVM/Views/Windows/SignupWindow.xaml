@@ -137,7 +137,6 @@
                                 Margin="0,0,0,6"
                                 FontFamily="{StaticResource NunitoBold}" />
 
-                    <!--Style="{StaticResource TextBoxTheme}"-->
                     <!--Username Textbox-->
                     <TextBox x:Name="UsernameTextBox"
                              Grid.Row="2"
@@ -157,18 +156,16 @@
                                FontFamily="{StaticResource NunitoBold}" />
 
 
-                    <!--Password="{Binding InitialPassword, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                    
-                     Style="{StaticResource PasswordBoxTheme }"-->
                     <!--Password Textbox-->
-                    <PasswordBox Grid.Row="4"
-                                 Width="303"
-                                 Height="38"
-                                 FontSize="15"
-                                 Margin="0,0,0,30"
-                                 w:PasswordHelper.Attach="True"
-                                 w:PasswordHelper.Password="{Binding Path=InitialPassword}"
-                                 Style="{StaticResource PasswordBoxTheme}" />
+                    <usercontrols:BindablePasswordBox  Grid.Row="4"
+                                                       Width="303"
+                                                       Height="38"
+                                                       FontSize="15"
+                                                       Margin="0,0,0,30"
+                                                       Password="{Binding Path=InitialPassword,
+                         UpdateSourceTrigger=PropertyChanged, 
+                         Mode=TwoWay}"
+                                                       Style="{StaticResource BindablePasswordBoxTheme}" />
 
                     <!--Confirm Password TextBlock-->
                     <TextBlock Grid.Row="5"

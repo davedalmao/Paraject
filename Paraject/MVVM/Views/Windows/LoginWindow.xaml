@@ -89,12 +89,14 @@
                            Margin="0,30,0,6"
                            FontFamily="{StaticResource NunitoBold}" />
 
-                <!--Password Textbox-->
+                <!--Password Textbox (no binding yet)-->
                 <usercontrols:BindablePasswordBox Grid.Row="4"
                                                   Grid.ColumnSpan="2"
                                                   Width="285"
                                                   Height="38.27"
-                                                  FontSize="15" />
+                                                  FontSize="15"
+                                                  Style="{StaticResource BindablePasswordBoxTheme}" />
+
 
                 <!--Login button-->
                 <Button Content="LOGIN"
