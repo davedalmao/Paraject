@@ -22,8 +22,8 @@ namespace Paraject.MVVM.ViewModels.Windows
         }
 
         #region Properties
-        public UserAccount CurrentUserAccount { get; set; }
         public string InitialPassword { get; set; }
+        public UserAccount CurrentUserAccount { get; set; }
         public ICommand AddCommand { get; }
         public ICommand LoginWindowRedirectCommand
         {
@@ -31,22 +31,14 @@ namespace Paraject.MVVM.ViewModels.Windows
         }
         #endregion
 
-        #region Methods
-
-
-        public void Add()
+        #region Add UserAccount Methods
+        private void Add()
         {
             try
             {
-                //MessageBox.Show($"Username: {CurrentUserAccount.Username} \nInitialPassword: {InitialPassword} \nPassword: {CurrentUserAccount.Password}");
                 if (ValidateInput())
                 {
-                    bool isSaved = _userAccountRepository.Add(CurrentUserAccount);
-
-                    if (isSaved)
-                    {
-                        ShowMainWindow();
-                    }
+                    AddUserAccountToDatabase();
                 }
 
                 else
@@ -59,8 +51,21 @@ namespace Paraject.MVVM.ViewModels.Windows
                 MessageBox.Show(ex.ToString());
             }
         }
+        private void AddUserAccountToDatabase()
+        {
+            bool isSaved = _userAccountRepository.Add(CurrentUserAccount);
 
-        public bool ValidateInput()
+            if (isSaved)
+            {
+                ShowMainWindow();
+            }
+
+            else
+            {
+                MessageBox.Show("Error in creating User Account");
+            }
+        }
+        private bool ValidateInput()
         {
             bool isValid = false;
             // Check if Username, initial Password, and confirm Password is not blank
@@ -71,23 +76,21 @@ namespace Paraject.MVVM.ViewModels.Windows
             }
             return isValid;
         }
+        #endregion
 
-
-        public void ShowLoginWindow()
+        #region Specific Window Methods
+        private void ShowLoginWindow()
         {
             LoginWindow loginWindow = new();
             loginWindow.Show();
             Close(); //Closes SignupWindow when LoginWindow is present
         }
-
-
-        public void ShowMainWindow()
+        private void ShowMainWindow()
         {
             MainWindow mainWindow = new();
             mainWindow.Show();
             Close(); //Closes SignupWindow when MainWindow is present
         }
-
         private void Close() //The method that executes Closed EventHandler
         {
             Closed?.Invoke(this, EventArgs.Empty);
