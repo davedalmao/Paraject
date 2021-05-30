@@ -15,9 +15,9 @@
                                                     Mode=TwoWay,
                                                     UpdateSourceTrigger=PropertyChanged}"
                                      BorderThickness="0"
-                                     Background="Transparent"
                                      VerticalContentAlignment="Center"
                                      Padding="20,0,20,0"
+                                     Background="Transparent"
                                      Foreground="#B8BDC1"
                                      CaretBrush="#B8BDC1" />
                         </Grid>

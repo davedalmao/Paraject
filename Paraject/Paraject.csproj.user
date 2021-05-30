@@ -65,6 +65,9 @@
     <Page Update="MVVM\Views\Windows\SignupWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="UiDesign\Theme\BindablePasswordBoxTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="UiDesign\Theme\GeneralButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>

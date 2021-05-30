@@ -18,6 +18,7 @@
                 <ResourceDictionary Source="/UiDesign/Theme/TextOnlyButtonTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/TextBoxTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/PasswordBoxTheme.xaml" />
+                <ResourceDictionary Source="/UiDesign/Theme/BindablePasswordBoxTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--Fontstyles-->

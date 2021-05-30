@@ -9,6 +9,7 @@
         xmlns:windowViewModel="clr-namespace:Paraject.MVVM.ViewModels.Windows"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:usercontrols="clr-namespace:Paraject.Core.CustomControls.UserControls"
+        xmlns:w="clr-namespace:Paraject.Core.CustomControls"
         d:DataContext="{d:DesignInstance Type=windowViewModel:SignupWindowViewModel}"
         mc:Ignorable="d"
         Height="480"
@@ -155,13 +156,19 @@
                                Margin="0,00,0,6"
                                FontFamily="{StaticResource NunitoBold}" />
 
+
+                    <!--Password="{Binding InitialPassword, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                    
+                     Style="{StaticResource PasswordBoxTheme }"-->
                     <!--Password Textbox-->
-                    <usercontrols:BindablePasswordBox Grid.Row="4"
-                                                      Width="303"
-                                                      Height="38"
-                                                      FontSize="15"
-                                                      Margin="0,0,0,30"
-                                                      Password="{Binding InitialPassword, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                    <PasswordBox Grid.Row="4"
+                                 Width="303"
+                                 Height="38"
+                                 FontSize="15"
+                                 Margin="0,0,0,30"
+                                 w:PasswordHelper.Attach="True"
+                                 w:PasswordHelper.Password="{Binding Path=InitialPassword}"
+                                 Style="{StaticResource PasswordBoxTheme}" />
 
                     <!--Confirm Password TextBlock-->
                     <TextBlock Grid.Row="5"
@@ -176,7 +183,10 @@
                                                        Width="303"
                                                        Height="38"
                                                        FontSize="15"
-                                                       Password="{Binding CurrentUserAccount.Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                                       Password="{Binding Path=CurrentUserAccount.Password,
+                         UpdateSourceTrigger=PropertyChanged, 
+                         Mode=TwoWay}"
+                                                       Style="{StaticResource BindablePasswordBoxTheme}" />
 
                     <!--Signup Button-->
                     <Button  Grid.Row="7"

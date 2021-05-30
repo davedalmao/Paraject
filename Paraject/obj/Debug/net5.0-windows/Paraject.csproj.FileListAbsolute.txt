@@ -68,3 +68,4 @@ D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\ru
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\Core\CustomControls\UserControls\BindablePasswordBox.g.cs
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\Core\CustomControls\UserControls\BindablePasswordBox.baml
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\Paraject.csprojAssemblyReference.cache
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\UiDesign\Theme\BindablePasswordBoxTheme.baml

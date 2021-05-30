@@ -8,8 +8,6 @@ namespace Paraject.Core.CustomControls.UserControls
     /// </summary>
     public partial class BindablePasswordBox : UserControl
     {
-
-
         public string Password
         {
             get { return (string)GetValue(PasswordProperty); }
