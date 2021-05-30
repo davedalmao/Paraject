@@ -8,7 +8,7 @@
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
         xmlns:windowViewModel="clr-namespace:Paraject.MVVM.ViewModels.Windows"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-        xmlns:usercontrols="clr-namespace:Paraject.Core.CustomControls.UserControls"
+        xmlns:custom="clr-namespace:Paraject.Core.CustomControls.UserControls"
         xmlns:w="clr-namespace:Paraject.Core.CustomControls"
         d:DataContext="{d:DesignInstance Type=windowViewModel:SignupWindowViewModel}"
         mc:Ignorable="d"
@@ -108,7 +108,8 @@
 
                 <!--User Input Grid-->
                 <Grid Grid.Column="1"
-                      HorizontalAlignment="Center">
+                      HorizontalAlignment="Center"
+                      FocusManager.IsFocusScope="True">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
@@ -157,15 +158,15 @@
 
 
                     <!--Password Textbox-->
-                    <usercontrols:BindablePasswordBox  Grid.Row="4"
-                                                       Width="303"
-                                                       Height="38"
-                                                       FontSize="15"
-                                                       Margin="0,0,0,30"
-                                                       Password="{Binding Path=InitialPassword,
+                    <custom:BindablePasswordBox  Grid.Row="4"
+                                                 Width="303"
+                                                 Height="38"
+                                                 FontSize="15"
+                                                 Margin="0,0,0,30"
+                                                 Password="{Binding Path=InitialPassword,
                          UpdateSourceTrigger=PropertyChanged, 
                          Mode=TwoWay}"
-                                                       Style="{StaticResource BindablePasswordBoxTheme}" />
+                                                 Style="{StaticResource BindablePasswordBoxTheme}" />
 
                     <!--Confirm Password TextBlock-->
                     <TextBlock Grid.Row="5"
@@ -176,14 +177,14 @@
                                FontFamily="{StaticResource NunitoBold}" />
 
                     <!--Confirm Password Textbox-->
-                    <usercontrols:BindablePasswordBox  Grid.Row="6"
-                                                       Width="303"
-                                                       Height="38"
-                                                       FontSize="15"
-                                                       Password="{Binding Path=CurrentUserAccount.Password,
+                    <custom:BindablePasswordBox  Grid.Row="6"
+                                                 Width="303"
+                                                 Height="38"
+                                                 FontSize="15"
+                                                 Password="{Binding Path=CurrentUserAccount.Password,
                          UpdateSourceTrigger=PropertyChanged, 
                          Mode=TwoWay}"
-                                                       Style="{StaticResource BindablePasswordBoxTheme}" />
+                                                 Style="{StaticResource BindablePasswordBoxTheme}" />
 
                     <!--Signup Button-->
                     <Button  Grid.Row="7"

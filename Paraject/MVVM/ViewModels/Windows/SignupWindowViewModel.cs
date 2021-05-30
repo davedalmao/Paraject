@@ -22,35 +22,37 @@ namespace Paraject.MVVM.ViewModels.Windows
         }
 
         #region Properties
-        public DelegateCommand LoginWindowRedirectCommand { get { return _loginWindowRedirectCommand ??= new DelegateCommand(ShowLoginWindow); } }
         public UserAccount CurrentUserAccount { get; set; }
         public string InitialPassword { get; set; }
         public ICommand AddCommand { get; }
+        public ICommand LoginWindowRedirectCommand
+        {
+            get { return _loginWindowRedirectCommand ??= new DelegateCommand(ShowLoginWindow); }
+        }
         #endregion
 
         #region Methods
-        public void ShowLoginWindow()
-        {
-            LoginWindow loginWindow = new LoginWindow();
-            loginWindow.Show();
-            Close(); //Closes SignupWindow when LoginWindow is present
-        }
+
 
         public void Add()
         {
             try
             {
-                MessageBox.Show($"Username: {CurrentUserAccount.Username} \nInitialPassword: {InitialPassword} \nPassword: {CurrentUserAccount.Password}");
-                //if (ValidateInput())
-                //{
-                //    //bool isSaved = _userAccountRepository.Add(CurrentUserAccount);
-                //    MessageBox.Show($"username: {CurrentUserAccount.Username} \nInitial Password: {InitialPassword} \npassword:{CurrentUserAccount.Password}");
-                //}
+                //MessageBox.Show($"Username: {CurrentUserAccount.Username} \nInitialPassword: {InitialPassword} \nPassword: {CurrentUserAccount.Password}");
+                if (ValidateInput())
+                {
+                    bool isSaved = _userAccountRepository.Add(CurrentUserAccount);
 
-                //else
-                //{
-                //    MessageBox.Show("Check your inputs: \n1. Passwords doesn't match \n2. No username in the input");
-                //}
+                    if (isSaved)
+                    {
+                        ShowMainWindow();
+                    }
+                }
+
+                else
+                {
+                    MessageBox.Show("Check your inputs: \n1. Passwords doesn't match \n2. No username in the input");
+                }
             }
             catch (Exception ex)
             {
@@ -70,6 +72,21 @@ namespace Paraject.MVVM.ViewModels.Windows
             return isValid;
         }
 
+
+        public void ShowLoginWindow()
+        {
+            LoginWindow loginWindow = new();
+            loginWindow.Show();
+            Close(); //Closes SignupWindow when LoginWindow is present
+        }
+
+
+        public void ShowMainWindow()
+        {
+            MainWindow mainWindow = new();
+            mainWindow.Show();
+            Close(); //Closes SignupWindow when MainWindow is present
+        }
 
         private void Close() //The method that executes Closed EventHandler
         {

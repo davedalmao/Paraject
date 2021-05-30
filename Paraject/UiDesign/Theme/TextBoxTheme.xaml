@@ -9,18 +9,16 @@
                             Background="#2E3135"
                             Width="{TemplateBinding Width}"
                             Height="{TemplateBinding Height}">
-                        <Grid>
-                            <TextBox Text="{Binding Path=Text,
-                                                    RelativeSource={RelativeSource TemplatedParent}, 
-                                                    Mode=TwoWay,
-                                                    UpdateSourceTrigger=PropertyChanged}"
-                                     BorderThickness="0"
-                                     VerticalContentAlignment="Center"
-                                     Padding="20,0,20,0"
-                                     Background="Transparent"
-                                     Foreground="#B8BDC1"
-                                     CaretBrush="#B8BDC1" />
-                        </Grid>
+                        <TextBox Text="{Binding Path=Text,
+                                                RelativeSource={RelativeSource Mode=TemplatedParent},
+                                                UpdateSourceTrigger=PropertyChanged,
+                                                Mode=TwoWay}"
+                                 BorderThickness="0"
+                                 VerticalContentAlignment="Center"
+                                 Padding="20,0,20,0"
+                                 Background="Transparent"
+                                 Foreground="#B8BDC1"
+                                 CaretBrush="#B8BDC1" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

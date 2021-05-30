@@ -30,7 +30,7 @@ namespace Paraject.Core.Repositories
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("@username", SqlDbType.NVarChar, 50).Value = userAccount.Username;
-                    cmd.Parameters.Add("@pasword", SqlDbType.NVarChar, 50).Value = userAccount.Password;
+                    cmd.Parameters.Add("@password", SqlDbType.NVarChar, 50).Value = userAccount.Password;
                     cmd.Parameters.Add("@date_created", SqlDbType.DateTime2).Value = DateTime.Now;
 
                     int NoOfRowsAffected = cmd.ExecuteNonQuery();
