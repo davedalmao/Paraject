@@ -2,23 +2,25 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style TargetType="{x:Type TextBox}"
            x:Key="TextBoxTheme">
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="Foreground"
+                Value="#B8BDC1" />
+        <Setter Property="CaretBrush"
+                Value="#B8BDC1" />
+        <Setter Property="Padding"
+                Value="20,0,20,0" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Border CornerRadius="12"
-                            Background="#2E3135"
-                            Width="{TemplateBinding Width}"
-                            Height="{TemplateBinding Height}">
-                        <TextBox Text="{Binding Path=Text,
-                                                RelativeSource={RelativeSource Mode=TemplatedParent},
-                                                UpdateSourceTrigger=PropertyChanged,
-                                                Mode=TwoWay}"
-                                 BorderThickness="0"
-                                 VerticalContentAlignment="Center"
-                                 Padding="20,0,20,0"
-                                 Background="Transparent"
-                                 Foreground="#B8BDC1"
-                                 CaretBrush="#B8BDC1" />
+                            Background="#2E3135">
+                        <ScrollViewer x:Name="PART_ContentHost"
+                                      Focusable="false"
+                                      HorizontalScrollBarVisibility="Hidden"
+                                      VerticalScrollBarVisibility="Hidden" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

@@ -163,7 +163,6 @@ namespace Paraject.Core.Repositories
             }
             return userExists;
         }
-
         public bool IdExistsInDatabase(int id)
         {
             bool idExists = false;
