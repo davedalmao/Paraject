@@ -1,4 +1,5 @@
-﻿using Paraject.Core.Repositories;
+﻿using Paraject.Core.Commands;
+using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using System;
 using System.Windows;
@@ -17,7 +18,7 @@ namespace Paraject.MVVM.ViewModels
             CurrentUserAccount = new UserAccount();
             _userAccountRepository = new UserAccountRepository();
             Get();
-            //UpdateCommand = new DelegateCommand(Update);
+            UpdateCommand = new DelegateCommand(Update);
             //DeleteCommand = new DelegateCommand(Delete);
         }
         #region Properties
@@ -34,6 +35,7 @@ namespace Paraject.MVVM.ViewModels
 
             if (userAccount is not null)
             {
+                CurrentUserAccount.Id = userAccount.Id;
                 CurrentUserAccount.Username = userAccount.Username;
                 CurrentUserAccount.Password = userAccount.Password;
                 CurrentUserAccount.DateCreated = userAccount.DateCreated;
@@ -47,8 +49,9 @@ namespace Paraject.MVVM.ViewModels
         {
             try
             {
-                bool isUpdate = _userAccountRepository.Update(CurrentUserAccount);
+                //bool isUpdate = _userAccountRepository.Update(CurrentUserAccount);
                 //after update change the values of the textboxes (username and password)
+                MessageBox.Show($"Id: {CurrentUserAccount.Id} \nUsername: {CurrentUserAccount.Username} \nPassword: {CurrentUserAccount.Password} \nDate Created: {CurrentUserAccount.DateCreated}");
             }
             catch (Exception ex)
             {

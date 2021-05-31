@@ -102,9 +102,7 @@
                                               Height="42"
                                               FontSize="15"
                                               Style="{StaticResource BindablePasswordBoxTheme}"
-                                              Password="{Binding Path=CurrentUserAccount.Password,
-                     UpdateSourceTrigger=PropertyChanged, 
-                     Mode=TwoWay}" />
+                                              Password="{Binding CurrentUserAccount.Password}" />
 
             <!--Update Profile Button-->
             <Button Content="Update Profile"
@@ -115,7 +113,8 @@
                     Background="#D2B330"
                     Margin="0,50,0,0"
                     Tag="/UiDesign/Icons/ButtonIcons/update.svg"
-                    Style="{StaticResource GeneralButtonTheme}" />
+                    Style="{StaticResource GeneralButtonTheme}"
+                    Command="{Binding UpdateCommand}" />
 
             <!--Delete Profile Button-->
             <Button Content="Delete Profile"

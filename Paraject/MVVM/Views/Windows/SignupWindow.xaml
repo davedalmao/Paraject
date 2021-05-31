@@ -163,9 +163,7 @@
                                                  Height="38"
                                                  FontSize="15"
                                                  Margin="0,0,0,30"
-                                                 Password="{Binding Path=InitialPassword,
-                         UpdateSourceTrigger=PropertyChanged, 
-                         Mode=TwoWay}"
+                                                 Password="{Binding InitialPassword}"
                                                  Style="{StaticResource BindablePasswordBoxTheme}" />
 
                     <!--Confirm Password TextBlock-->
@@ -181,9 +179,7 @@
                                                  Width="303"
                                                  Height="38"
                                                  FontSize="15"
-                                                 Password="{Binding Path=CurrentUserAccount.Password,
-                         UpdateSourceTrigger=PropertyChanged, 
-                         Mode=TwoWay}"
+                                                 Password="{Binding CurrentUserAccount.Password}"
                                                  Style="{StaticResource BindablePasswordBoxTheme}" />
 
                     <!--Signup Button-->
