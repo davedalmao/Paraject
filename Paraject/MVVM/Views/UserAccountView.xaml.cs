@@ -7,12 +7,9 @@ namespace Paraject.MVVM.Views
     /// </summary>
     public partial class UserAccountView : UserControl
     {
-        //readonly UserAccountViewModel _viewModel;
         public UserAccountView()
         {
             InitializeComponent();
-            //_viewModel = new UserAccountViewModel();
-            //DataContext = _viewModel;
         }
     }
 }

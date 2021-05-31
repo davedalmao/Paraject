@@ -17,7 +17,6 @@ namespace Paraject.MVVM.ViewModels
             CurrentUserAccount = new UserAccount();
             _userAccountRepository = new UserAccountRepository();
             Get();
-            //GetCommand = new DelegateCommand(Get);
             //UpdateCommand = new DelegateCommand(Update);
             //DeleteCommand = new DelegateCommand(Delete);
         }
