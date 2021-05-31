@@ -96,9 +96,7 @@
                                                   Height="38.27"
                                                   FontSize="15"
                                                   Style="{StaticResource BindablePasswordBoxTheme}"
-                                                  Password="{Binding Path=CurrentUserAccount.Password,
-                     UpdateSourceTrigger=PropertyChanged, 
-                     Mode=TwoWay}" />
+                                                  Password="{Binding CurrentUserAccount.Password}" />
 
 
                 <!--Login button-->

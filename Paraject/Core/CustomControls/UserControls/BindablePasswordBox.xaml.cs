@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace Paraject.Core.CustomControls.UserControls
 {
@@ -17,9 +18,12 @@ namespace Paraject.Core.CustomControls.UserControls
         }
 
         // Using a DependencyProperty as the backing store for Password.  This enables animation, styling, binding, etc...
+        // UpdateSourceTrigger=PropertyChanged, and Mode=TwoWay Properties for binding the password is defined here(FrameworkPropertyMetadata)
+        // so we don't need to explicitly declare them everytime we create a new PasswordBox
         public static readonly DependencyProperty PasswordProperty =
             DependencyProperty.Register("Password", typeof(string), typeof(BindablePasswordBox),
-                new PropertyMetadata(string.Empty, PasswordPropertyChanged));
+                new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
+                    PasswordPropertyChanged, null, false, UpdateSourceTrigger.PropertyChanged));
 
         private static void PasswordPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
