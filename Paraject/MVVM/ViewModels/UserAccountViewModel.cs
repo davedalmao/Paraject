@@ -17,9 +17,11 @@ namespace Paraject.MVVM.ViewModels
             _username = username;
             CurrentUserAccount = new UserAccount();
             _userAccountRepository = new UserAccountRepository();
-            Get();
+
             UpdateCommand = new DelegateCommand(Update);
             //DeleteCommand = new DelegateCommand(Delete);
+
+            Get();
         }
         #region Properties
         public UserAccount CurrentUserAccount { get; set; }
@@ -49,13 +51,29 @@ namespace Paraject.MVVM.ViewModels
         {
             try
             {
-                //bool isUpdate = _userAccountRepository.Update(CurrentUserAccount);
-                //after update change the values of the textboxes (username and password)
-                MessageBox.Show($"Id: {CurrentUserAccount.Id} \nUsername: {CurrentUserAccount.Username} \nPassword: {CurrentUserAccount.Password} \nDate Created: {CurrentUserAccount.DateCreated}");
+                bool idExists = _userAccountRepository.IdExistsInDatabase(CurrentUserAccount.Id);
+                if (idExists)
+                {
+                    UpdateCurrentUser();
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+        private void UpdateCurrentUser()
+        {
+            bool isUpdate = _userAccountRepository.Update(CurrentUserAccount);
+
+            if (isUpdate)
+            {
+                MessageBox.Show("User Updated");
+            }
+            else
+            {
+                MessageBox.Show("Failed to Update User");
+
             }
         }
         public void Delete()

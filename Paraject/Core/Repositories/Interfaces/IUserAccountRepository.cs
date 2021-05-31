@@ -6,6 +6,7 @@ namespace Paraject.Core.Repositories.Interfaces
     {
         public UserAccount Get(string username);
         public bool AccountExistsInDatabase(UserAccount userAccount);
+        public bool IdExistsInDatabase(int id);
         public bool Add(UserAccount userAccount);
         public bool Update(UserAccount userAccount);
         public bool Delete(int id);

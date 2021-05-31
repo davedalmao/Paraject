@@ -102,7 +102,7 @@ namespace Paraject.Core.Repositories
 
                     cmd.Parameters.Add("@user_id", SqlDbType.Int).Value = userAccount.Id;
                     cmd.Parameters.Add("@username", SqlDbType.NVarChar, 50).Value = userAccount.Username;
-                    cmd.Parameters.Add("@pasword", SqlDbType.NVarChar, 50).Value = userAccount.Password;
+                    cmd.Parameters.Add("@password", SqlDbType.NVarChar, 50).Value = userAccount.Password;
 
                     int NoOfRowsAffected = cmd.ExecuteNonQuery();
                     isUpdated = NoOfRowsAffected > 0;
@@ -137,6 +137,8 @@ namespace Paraject.Core.Repositories
             }
             return isDeleted;
         }
+
+
         public bool AccountExistsInDatabase(UserAccount userAccount)
         {
             bool userExists = false;
@@ -160,6 +162,30 @@ namespace Paraject.Core.Repositories
                 }
             }
             return userExists;
+        }
+
+        public bool IdExistsInDatabase(int id)
+        {
+            bool idExists = false;
+
+            using (SqlConnection con = new(_connectionString))
+            using (SqlCommand cmd = new("spCheckUserAccountId", con))
+            {
+                try
+                {
+                    con.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@user_id", SqlDbType.Int).Value = id;
+
+                    idExists = cmd.ExecuteScalar() is not null;
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            return idExists;
         }
     }
 }
