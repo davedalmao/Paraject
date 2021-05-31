@@ -26,13 +26,14 @@ namespace Paraject.MVVM.ViewModels.Windows
 
         public MainWindowViewModel(UserAccount currentUserAccount)
         {
+            CurrentUserAccount = currentUserAccount;
+
             DashboardVM = new DashboardViewModel();
             ProjectsVM = new ProjectsViewModel();
-            ProfileVM = new UserAccountViewModel();
+            ProfileVM = new UserAccountViewModel(currentUserAccount.Username);
             ProjectIdeasVM = new ProjectIdeasViewModel();
             OptionsVM = new OptionsViewModel();
 
-            CurrentUserAccount = currentUserAccount;
             CurrentView = DashboardVM;
 
             DashboardViewCommand = new NavigationCommand(o => { CurrentView = DashboardVM; });

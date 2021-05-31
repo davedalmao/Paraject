@@ -49,9 +49,11 @@
             </DataTemplate>
 
             <!--Profile-->
+
             <DataTemplate DataType="{x:Type viewModel:UserAccountViewModel}">
                 <view:UserAccountView />
             </DataTemplate>
+
 
             <!--Project Ideas-->
             <DataTemplate DataType="{x:Type viewModel:ProjectIdeasViewModel}">

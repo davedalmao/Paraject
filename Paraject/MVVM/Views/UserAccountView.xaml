@@ -5,6 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Paraject.MVVM.Views"
              xmlns:usercontrols="clr-namespace:Paraject.Core.CustomControls.UserControls"
+             xmlns:windows="clr-namespace:Paraject.MVVM.ViewModels.Windows"
+             xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:UserAccountViewModel}"
              mc:Ignorable="d"
              Width="732"
              Height="544.63"
@@ -79,6 +82,7 @@
                      Width="349"
                      Height="42"
                      Style="{StaticResource TextBoxTheme}"
+                     Text="{Binding CurrentUserAccount.Username}"
                      FontSize="15" />
 
             <!--Password TextBlock-->
@@ -97,7 +101,10 @@
                                               Width="349"
                                               Height="42"
                                               FontSize="15"
-                                              Style="{StaticResource BindablePasswordBoxTheme}" />
+                                              Style="{StaticResource BindablePasswordBoxTheme}"
+                                              Password="{Binding Path=CurrentUserAccount.Password,
+                     UpdateSourceTrigger=PropertyChanged, 
+                     Mode=TwoWay}" />
 
             <!--Update Profile Button-->
             <Button Content="Update Profile"
@@ -122,15 +129,23 @@
                     Style="{StaticResource GeneralButtonTheme}" />
 
             <!--Account Created-->
-            <TextBlock Text="Account Created:  08 / 15 / 2020"
-                       Grid.Column="0"
-                       Grid.Row="5"
-                       Grid.ColumnSpan="2"
-                       Foreground="#686A6F"
-                       FontSize="15"
-                       FontFamily="{StaticResource NunitoBold}"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Bottom" />
+            <StackPanel Orientation="Horizontal"
+                        Grid.Column="0"
+                        Grid.Row="5"
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom">
+                <TextBlock Text="Account Created: "
+                           Foreground="#686A6F"
+                           FontSize="15"
+                           FontFamily="{StaticResource NunitoBold}" />
+
+                <TextBlock Text="{Binding CurrentUserAccount.DateCreated}"
+                           Foreground="#686A6F"
+                           FontSize="15"
+                           FontFamily="{StaticResource NunitoBold}" />
+            </StackPanel>
+
         </Grid>
     </Grid>
 </UserControl>
