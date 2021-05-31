@@ -26,7 +26,7 @@ namespace Paraject.MVVM.ViewModels
         #region Get, Update, Delete
         public void Get()
         {
-            UserAccount userAccount = _userAccountRepository.Get(CurrentUserAccount.Id);
+            UserAccount userAccount = _userAccountRepository.Get(CurrentUserAccount.Username);
 
             if (userAccount is not null)
             {

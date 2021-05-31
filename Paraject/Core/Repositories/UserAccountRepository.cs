@@ -54,38 +54,36 @@ namespace Paraject.Core.Repositories
             }
             return isAdded;
         }
-        public UserAccount Get(int id)
+        public UserAccount Get(string username)
         {
             UserAccount userAccount = null;
 
-            if (id != 0)
+            using SqlConnection con = new(_connectionString);
+            using SqlCommand cmd = new("spGetUserAccount", con);
+            try
             {
-                using SqlConnection con = new(_connectionString);
-                using SqlCommand cmd = new("spGetUserAccount", con);
-                try
-                {
-                    con.Open();
-                    cmd.Parameters.Add("@user_id", SqlDbType.Int).Value = id;
+                con.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@username", SqlDbType.NVarChar, 50).Value = username;
 
-                    var sqlDataReader = cmd.ExecuteReader();
-                    if (sqlDataReader.HasRows)
-                    {
-                        //Reads a single UserAccount
-                        sqlDataReader.Read();
-                        userAccount = new UserAccount
-                        {
-                            Id = sqlDataReader.GetInt32(0),
-                            Username = sqlDataReader.GetString(1),
-                            Password = sqlDataReader.GetString(2),
-                            DateCreated = sqlDataReader.GetDateTime(3)
-                        };
-                    }
-                    sqlDataReader.Close();
-                }
-                catch (SqlException ex)
+                var sqlDataReader = cmd.ExecuteReader();
+                if (sqlDataReader.HasRows)
                 {
-                    MessageBox.Show(ex.ToString());
+                    //Reads a single UserAccount
+                    sqlDataReader.Read();
+                    userAccount = new UserAccount
+                    {
+                        Id = sqlDataReader.GetInt32(0),
+                        Username = sqlDataReader.GetString(1),
+                        Password = sqlDataReader.GetString(2),
+                        DateCreated = sqlDataReader.GetDateTime(3)
+                    };
                 }
+                sqlDataReader.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
 
             return userAccount;

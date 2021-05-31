@@ -27,7 +27,7 @@ namespace Paraject.MVVM.ViewModels.Windows
             get { return _signUpWindowRedirectCommand ??= new DelegateCommand(ShowSignupWindow); }
         }
         public UserAccount CurrentUserAccount { get; set; }
-        public ICommand LoginCommand { get; set; }
+        public ICommand LoginCommand { get; }
         #endregion 
 
         #region Login Methods
@@ -62,7 +62,8 @@ namespace Paraject.MVVM.ViewModels.Windows
         }
         private void ShowMainWindow()
         {
-            MainWindow mainWindow = new();
+            UserAccount userToLogin = _userAccountRepository.Get(CurrentUserAccount.Username);
+            MainWindow mainWindow = new(userToLogin);
             mainWindow.Show();
             Close(); //Closes LoginWindow when MainWindow is present
         }

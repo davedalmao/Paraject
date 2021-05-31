@@ -1,4 +1,5 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.MVVM.Models;
 
 namespace Paraject.MVVM.ViewModels.Windows
 {
@@ -21,8 +22,9 @@ namespace Paraject.MVVM.ViewModels.Windows
         #endregion
 
         public object CurrentView { get; set; }
+        public UserAccount CurrentUserAccount { get; set; }
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(UserAccount currentUserAccount)
         {
             DashboardVM = new DashboardViewModel();
             ProjectsVM = new ProjectsViewModel();
@@ -30,6 +32,7 @@ namespace Paraject.MVVM.ViewModels.Windows
             ProjectIdeasVM = new ProjectIdeasViewModel();
             OptionsVM = new OptionsViewModel();
 
+            CurrentUserAccount = currentUserAccount;
             CurrentView = DashboardVM;
 
             DashboardViewCommand = new NavigationCommand(o => { CurrentView = DashboardVM; });

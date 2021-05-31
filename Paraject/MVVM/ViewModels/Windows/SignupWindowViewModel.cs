@@ -82,7 +82,7 @@ namespace Paraject.MVVM.ViewModels.Windows
         }
         private void ShowMainWindow()
         {
-            MainWindow mainWindow = new();
+            MainWindow mainWindow = new(CurrentUserAccount);
             mainWindow.Show();
             Close(); //Closes SignupWindow when MainWindow is present
         }

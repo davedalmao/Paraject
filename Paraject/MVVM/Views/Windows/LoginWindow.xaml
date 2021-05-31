@@ -77,8 +77,8 @@
                          Grid.ColumnSpan="2"
                          Width="285"
                          Height="38.27"
-                         Style="{StaticResource TextBoxTheme}"
                          FontSize="15"
+                         Style="{StaticResource TextBoxTheme}"
                          Text="{Binding Path=CurrentUserAccount.Username}" />
 
                 <!--Password TextBlock-->

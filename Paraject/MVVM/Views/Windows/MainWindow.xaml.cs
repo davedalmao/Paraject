@@ -1,4 +1,5 @@
-﻿using Paraject.MVVM.ViewModels.Windows;
+﻿using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.Windows;
 using System.Windows;
 using System.Windows.Input;
 
@@ -10,12 +11,13 @@ namespace Paraject.MVVM.Views.Windows
     public partial class MainWindow : Window
     {
         readonly MainWindowViewModel _viewModel;
-        public MainWindow()
+        public MainWindow(UserAccount currentUserAccount)
         {
             InitializeComponent();
-            _viewModel = new MainWindowViewModel();
+            _viewModel = new MainWindowViewModel(currentUserAccount);
             DataContext = _viewModel;
         }
+
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)

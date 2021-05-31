@@ -120,7 +120,7 @@
                 </Ellipse>
 
                 <!--Username-->
-                <TextBlock Text="John Dave"
+                <TextBlock Text="{Binding Path=CurrentUserAccount.Username}"
                            Height="23.21"
                            HorizontalAlignment="Center"
                            Foreground="#B8BDC1"
