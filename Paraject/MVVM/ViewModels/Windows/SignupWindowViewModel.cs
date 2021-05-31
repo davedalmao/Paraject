@@ -66,7 +66,6 @@ namespace Paraject.MVVM.ViewModels.Windows
             // Check if Username, initial Password, and confirm Password is not blank
             if (!string.IsNullOrWhiteSpace(CurrentUserAccount.Username) && !string.IsNullOrWhiteSpace(InitialPassword) && !string.IsNullOrWhiteSpace(CurrentUserAccount.Password))
             {
-                //if Username, initial Password, and confirm Password is not blank:
                 return InitialPassword.Equals(CurrentUserAccount.Password); //Check if initial password and confirm password is the same
             }
             return isValid;
@@ -82,7 +81,8 @@ namespace Paraject.MVVM.ViewModels.Windows
         }
         private void ShowMainWindow()
         {
-            MainWindow mainWindow = new(CurrentUserAccount);
+            UserAccount userToLogin = _userAccountRepository.Get(CurrentUserAccount.Username);
+            MainWindow mainWindow = new(userToLogin);
             mainWindow.Show();
             Close(); //Closes SignupWindow when MainWindow is present
         }
