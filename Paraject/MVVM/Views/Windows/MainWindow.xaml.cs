@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Paraject.Core.Utilities;
+using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.Windows;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Paraject.MVVM.Views.Windows
 {
@@ -17,11 +11,16 @@ namespace Paraject.MVVM.Views.Windows
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        public MainWindow()
+        readonly MainWindowViewModel _viewModel;
+        public MainWindow(UserAccount currentUserAccount)
         {
             InitializeComponent();
+            CloseWindow.WinObject = this;
+
+            _viewModel = new MainWindowViewModel(currentUserAccount);
+            DataContext = _viewModel;
         }
+
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)

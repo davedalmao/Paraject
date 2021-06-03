@@ -7,18 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Core\Services\**" />
     <Compile Remove="Database\**" />
-    <Compile Remove="MVVM\Models\**" />
-    <EmbeddedResource Remove="Core\Services\**" />
     <EmbeddedResource Remove="Database\**" />
-    <EmbeddedResource Remove="MVVM\Models\**" />
-    <None Remove="Core\Services\**" />
     <None Remove="Database\**" />
-    <None Remove="MVVM\Models\**" />
-    <Page Remove="Core\Services\**" />
     <Page Remove="Database\**" />
-    <Page Remove="MVVM\Models\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -80,6 +72,7 @@
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.31" />
     <PackageReference Include="PropertyChanged.Fody" Version="3.3.3" />
     <PackageReference Include="SharpVectors" Version="1.7.1" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
 
   <ItemGroup>

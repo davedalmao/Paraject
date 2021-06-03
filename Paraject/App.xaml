@@ -17,7 +17,7 @@
                 <ResourceDictionary Source="/UiDesign/Theme/PlainButtonTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/TextOnlyButtonTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/TextBoxTheme.xaml" />
-                <ResourceDictionary Source="/UiDesign/Theme/PasswordBoxTheme.xaml" />
+                <ResourceDictionary Source="/UiDesign/Theme/BindablePasswordBoxTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--Fontstyles-->
@@ -48,9 +48,10 @@
             </DataTemplate>
 
             <!--Profile-->
-            <DataTemplate DataType="{x:Type viewModel:ProfileViewModel}">
-                <view:ProfileView />
+            <DataTemplate DataType="{x:Type viewModel:UserAccountViewModel}">
+                <view:UserAccountView />
             </DataTemplate>
+
 
             <!--Project Ideas-->
             <DataTemplate DataType="{x:Type viewModel:ProjectIdeasViewModel}">

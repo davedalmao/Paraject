@@ -8,6 +8,9 @@
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
         xmlns:windowViewModel="clr-namespace:Paraject.MVVM.ViewModels.Windows"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:custom="clr-namespace:Paraject.Core.CustomControls.UserControls"
+        xmlns:w="clr-namespace:Paraject.Core.CustomControls"
+        d:DataContext="{d:DesignInstance Type=windowViewModel:SignupWindowViewModel}"
         mc:Ignorable="d"
         Height="480"
         Width="750"
@@ -17,11 +20,8 @@
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
         FontFamily="{StaticResource NunitoBold}"
-        MouseDown="Window_MouseDown">
-
-    <Window.DataContext>
-        <windowViewModel:SignupWindowViewModel />
-    </Window.DataContext>
+        MouseDown="Window_MouseDown"
+        FocusManager.FocusedElement="{Binding ElementName=UsernameTextBox}">
 
     <!--This code SHOWS LoginWindow and then CLOSES SignupWindow(this window)-->
     <!--This closes(close event: EventName="Closed") the SignupWindow(this window) when MethodName="Close" executes-->
@@ -108,7 +108,8 @@
 
                 <!--User Input Grid-->
                 <Grid Grid.Column="1"
-                      HorizontalAlignment="Center">
+                      HorizontalAlignment="Center"
+                      FocusManager.IsFocusScope="True">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
@@ -138,12 +139,14 @@
                                 FontFamily="{StaticResource NunitoBold}" />
 
                     <!--Username Textbox-->
-                    <TextBox  Grid.Row="2"
-                              Width="303"
-                              Height="38"
-                              Margin="0,0,0,30"
-                              Style="{StaticResource ParajectTextBox}"
-                              FontSize="15" />
+                    <TextBox x:Name="UsernameTextBox"
+                             Grid.Row="2"
+                             Width="303"
+                             Height="38"
+                             Margin="0,0,0,30"
+                             FontSize="15"
+                             Text="{Binding Path=CurrentUserAccount.Username}"
+                             Style="{StaticResource TextBoxTheme}" />
 
                     <!--Password TextBlock-->
                     <TextBlock Grid.Row="3"
@@ -153,13 +156,15 @@
                                Margin="0,00,0,6"
                                FontFamily="{StaticResource NunitoBold}" />
 
+
                     <!--Password Textbox-->
-                    <PasswordBox Grid.Row="4"
-                                 Width="303"
-                                 Height="38"
-                                 FontSize="15"
-                                 Margin="0,0,0,30"
-                                 Style="{StaticResource ParajectPasswordBox}" />
+                    <custom:BindablePasswordBox  Grid.Row="4"
+                                                 Width="303"
+                                                 Height="38"
+                                                 FontSize="15"
+                                                 Margin="0,0,0,30"
+                                                 Password="{Binding InitialPassword}"
+                                                 Style="{StaticResource BindablePasswordBoxTheme}" />
 
                     <!--Confirm Password TextBlock-->
                     <TextBlock Grid.Row="5"
@@ -170,11 +175,12 @@
                                FontFamily="{StaticResource NunitoBold}" />
 
                     <!--Confirm Password Textbox-->
-                    <PasswordBox  Grid.Row="6"
-                                  Width="303"
-                                  Height="38"
-                                  FontSize="15"
-                                  Style="{StaticResource ParajectPasswordBox}" />
+                    <custom:BindablePasswordBox  Grid.Row="6"
+                                                 Width="303"
+                                                 Height="38"
+                                                 FontSize="15"
+                                                 Password="{Binding CurrentUserAccount.Password}"
+                                                 Style="{StaticResource BindablePasswordBoxTheme}" />
 
                     <!--Signup Button-->
                     <Button  Grid.Row="7"
@@ -184,6 +190,7 @@
                              Background="#F54342"
                              FontSize="16"
                              Margin="0,38,0,0"
+                             Command="{Binding Path=AddCommand}"
                              Style="{StaticResource TextOnlyButtonTheme}" />
                 </Grid>
             </StackPanel>
