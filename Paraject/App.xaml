@@ -27,7 +27,6 @@
 
             <!--Binding the View to its ViewModel-->
 
-
             <!--Login Window-->
             <DataTemplate DataType="{x:Type windowViewModel:LoginWindowViewModel}">
                 <windowView:LoginWindow />
@@ -49,7 +48,6 @@
             </DataTemplate>
 
             <!--Profile-->
-
             <DataTemplate DataType="{x:Type viewModel:UserAccountViewModel}">
                 <view:UserAccountView />
             </DataTemplate>
