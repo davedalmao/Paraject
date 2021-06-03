@@ -213,7 +213,8 @@
                                  Content="Logout"
                                  DefaultImageUriString="/UiDesign/Icons/SideBarIcons/logout.svg"
                                  SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/logout.svg"
-                                 Style="{StaticResource HorizontalMenuButtonTheme}" />
+                                 Style="{StaticResource HorizontalMenuButtonTheme}"
+                                 Command="{Binding LogoutCommand}" />
             </Grid>
 
             <!--Where the views are going to be displayed-->

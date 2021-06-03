@@ -27,6 +27,9 @@ namespace Paraject.MVVM.ViewModels.Windows
         // Update/Delete UserAccount Commands
         public ICommand UpdateCurrentUserCommand { get; }
         public ICommand DeleteCurrentUserCommand { get; }
+
+        //MainWindow Command
+        public ICommand LogoutCommand { get; }
         #endregion
 
         #region ViewModels (that will navigate to their associated Views)
@@ -45,6 +48,7 @@ namespace Paraject.MVVM.ViewModels.Windows
 
             UpdateCurrentUserCommand = new DelegateCommand(Update);
             DeleteCurrentUserCommand = new DelegateCommand(Delete);
+            LogoutCommand = new DelegateCommand(Logout);
 
 
             //pass currentUserAccount to the ViewModels that need to access the User's details
@@ -141,6 +145,16 @@ namespace Paraject.MVVM.ViewModels.Windows
                 MessageBox.Show("An error occured when deleting your account, please try again");
             }
         }
+        #endregion
+
+        public void Logout()
+        {
+            MessageBoxResult Result = MessageBox.Show("Do you want Logout?", "Logout Account", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (Result == MessageBoxResult.Yes)
+            {
+                ShowLoginWindow();
+            }
+        }
         public void CloseMainWindow()
         {
             if (CloseWindow.WinObject != null)
@@ -152,7 +166,5 @@ namespace Paraject.MVVM.ViewModels.Windows
             loginWindow.Show();
             CloseMainWindow();
         }
-        #endregion
-
     }
 }
