@@ -2,7 +2,6 @@
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using System.Windows;
-using System.Windows.Input;
 
 namespace Paraject.MVVM.Views.Windows
 {
@@ -19,12 +18,34 @@ namespace Paraject.MVVM.Views.Windows
 
             _viewModel = new MainWindowViewModel(currentUserAccount);
             DataContext = _viewModel;
+            MouseDown += delegate { DragMove(); };
         }
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+
+        private void MinimizeWindow(object sender, RoutedEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left)
-                this.DragMove();
+            if (WindowState != WindowState.Minimized)
+            {
+                WindowState = WindowState.Minimized;
+            }
+        }
+
+        private void CloseMainWindow(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void MaximizeWindow(object sender, RoutedEventArgs e)
+        {
+
+            if (WindowState != WindowState.Maximized)
+            {
+                WindowState = WindowState.Maximized;
+            }
+            else
+            {
+                WindowState = WindowState.Normal;
+            }
         }
     }
 }
