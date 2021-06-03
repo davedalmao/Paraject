@@ -141,8 +141,6 @@ namespace Paraject.MVVM.ViewModels.Windows
                 MessageBox.Show("An error occured when deleting your account, please try again");
             }
         }
-        #endregion
-
         public void CloseMainWindow()
         {
             if (CloseWindow.WinObject != null)
@@ -154,5 +152,7 @@ namespace Paraject.MVVM.ViewModels.Windows
             loginWindow.Show();
             CloseMainWindow();
         }
+        #endregion
+
     }
 }
