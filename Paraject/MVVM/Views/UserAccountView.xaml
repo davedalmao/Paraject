@@ -12,7 +12,7 @@
              Height="544.63"
              Background="Transparent"
              DataContext="{Binding Path=DataContext, 
-          RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                                   RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
 
     <!--The data binded properties/commands here are in MainWindowViewModel-->
     <Grid HorizontalAlignment="Center"
@@ -97,7 +97,7 @@
                        FontSize="19"
                        FontFamily="{StaticResource NunitoBold}" />
 
-            <!--Password Textbox (no binding yet)-->
+            <!--Password Textbox-->
             <usercontrols:BindablePasswordBox Grid.Column="0"
                                               Grid.Row="3"
                                               Grid.ColumnSpan="2"
