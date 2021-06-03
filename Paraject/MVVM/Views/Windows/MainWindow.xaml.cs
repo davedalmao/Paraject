@@ -1,4 +1,5 @@
-﻿using Paraject.MVVM.Models;
+﻿using Paraject.Core.Utilities;
+using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using System.Windows;
 using System.Windows.Input;
@@ -14,6 +15,8 @@ namespace Paraject.MVVM.Views.Windows
         public MainWindow(UserAccount currentUserAccount)
         {
             InitializeComponent();
+            CloseWindow.WinObject = this;
+
             _viewModel = new MainWindowViewModel(currentUserAccount);
             DataContext = _viewModel;
         }

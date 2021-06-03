@@ -1,5 +1,6 @@
 ﻿using Paraject.Core.Commands;
 using Paraject.Core.Repositories;
+using Paraject.Core.Utilities;
 using Paraject.MVVM.Models;
 using System;
 using System.Windows;
@@ -9,21 +10,25 @@ namespace Paraject.MVVM.ViewModels.Windows
 {
     public class MainWindowViewModel : BaseViewModel
     {
-        #region UserAccount elements
         private readonly UserAccountRepository _userAccountRepository;
+
+        public UserAccount CurrentUserAccount { get; set; }
+        public object CurrentView { get; set; }
+
+        #region Commands 
+        //Navigation Commands
+        public ICommand DashboardViewCommand { get; }
+        public ICommand ProjectsViewCommand { get; }
+        public ICommand ProfileViewCommand { get; }
+        public ICommand ProjectIdeasViewCommand { get; }
+        public ICommand OptionsViewCommand { get; }
+
+        // Update/Delete UserAccount Commands
         public ICommand UpdateCurrentUserCommand { get; }
         public ICommand DeleteCurrentUserCommand { get; }
         #endregion
 
-        #region Commands To Navigate From Different Views
-        public NavigationCommand DashboardViewCommand { get; set; }
-        public NavigationCommand ProjectsViewCommand { get; set; }
-        public NavigationCommand ProfileViewCommand { get; set; }
-        public NavigationCommand ProjectIdeasViewCommand { get; set; }
-        public NavigationCommand OptionsViewCommand { get; set; }
-        #endregion
-
-        #region ViewModels
+        #region ViewModels (that will navigate to their associated Views)
         public DashboardViewModel DashboardVM { get; set; }
         public ProjectsViewModel ProjectsVM { get; set; }
         public UserAccountViewModel ProfileVM { get; set; }
@@ -31,8 +36,6 @@ namespace Paraject.MVVM.ViewModels.Windows
         public OptionsViewModel OptionsVM { get; set; }
         #endregion
 
-        public object CurrentView { get; set; }
-        public UserAccount CurrentUserAccount { get; set; }
 
         public MainWindowViewModel(UserAccount currentUserAccount)
         {
@@ -47,7 +50,6 @@ namespace Paraject.MVVM.ViewModels.Windows
             DashboardVM = new DashboardViewModel();
             ProjectsVM = new ProjectsViewModel();
             ProfileVM = new UserAccountViewModel();
-            //ProfileVM = new UserAccountViewModel(currentUserAccount.Username);
             ProjectIdeasVM = new ProjectIdeasViewModel();
             OptionsVM = new OptionsViewModel();
 
@@ -62,6 +64,7 @@ namespace Paraject.MVVM.ViewModels.Windows
             Get();
         }
 
+        #region Methods Used in UserAccountView
         public void Get()
         {
             UserAccount userAccount = _userAccountRepository.Get(CurrentUserAccount.Username);
@@ -111,8 +114,8 @@ namespace Paraject.MVVM.ViewModels.Windows
         {
             try
             {
-
-                MessageBox.Show($"Id: {CurrentUserAccount.Id} \nUsername: {CurrentUserAccount.Username} \nPassword: {CurrentUserAccount.Password} \nDate Created: {CurrentUserAccount.DateCreated}");
+                CloseMainWindow();
+                //MessageBox.Show($"Id: {CurrentUserAccount.Id} \nUsername: {CurrentUserAccount.Username} \nPassword: {CurrentUserAccount.Password} \nDate Created: {CurrentUserAccount.DateCreated}");
                 //bool isDeleted = _userAccountRepository.Delete(CurrentUserAccount.Id);
 
                 //if (isDeleted)
@@ -125,6 +128,13 @@ namespace Paraject.MVVM.ViewModels.Windows
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+        #endregion
+
+        public void CloseMainWindow()
+        {
+            if (CloseWindow.WinObject != null)
+                CloseWindow.CloseParent();
         }
     }
 }

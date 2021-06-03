@@ -14,7 +14,7 @@
              DataContext="{Binding Path=DataContext, 
           RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
 
-
+    <!--The data binded properties/commands here are in MainWindowViewModel-->
     <Grid HorizontalAlignment="Center"
           Margin="0,90,0,35">
         <Grid.ColumnDefinitions>
