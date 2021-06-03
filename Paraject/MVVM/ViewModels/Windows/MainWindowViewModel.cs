@@ -2,6 +2,7 @@
 using Paraject.Core.Repositories;
 using Paraject.Core.Utilities;
 using Paraject.MVVM.Models;
+using Paraject.MVVM.Views.Windows;
 using System;
 using System.Windows;
 using System.Windows.Input;
@@ -88,7 +89,7 @@ namespace Paraject.MVVM.ViewModels.Windows
                 bool idExists = _userAccountRepository.IdExistsInDatabase(CurrentUserAccount.Id);
                 if (idExists)
                 {
-                    UpdateCurrentUser();
+                    UpdateUserAccount();
                 }
             }
             catch (Exception ex)
@@ -96,7 +97,7 @@ namespace Paraject.MVVM.ViewModels.Windows
                 MessageBox.Show(ex.ToString());
             }
         }
-        private void UpdateCurrentUser()
+        private void UpdateUserAccount()
         {
             bool isUpdate = _userAccountRepository.Update(CurrentUserAccount);
 
@@ -114,19 +115,30 @@ namespace Paraject.MVVM.ViewModels.Windows
         {
             try
             {
-                CloseMainWindow();
-                //MessageBox.Show($"Id: {CurrentUserAccount.Id} \nUsername: {CurrentUserAccount.Username} \nPassword: {CurrentUserAccount.Password} \nDate Created: {CurrentUserAccount.DateCreated}");
-                //bool isDeleted = _userAccountRepository.Delete(CurrentUserAccount.Id);
-
-                //if (isDeleted)
-                //{
-                //    MessageBox.Show($"Your account {CurrentUserAccount.Username} is now deleted");
-                //}
-                //after deleting account, popup a message box, then redirect to login page
+                MessageBoxResult Result = MessageBox.Show("Do you want to DELETE your account?", "Delete Operation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (Result == MessageBoxResult.Yes)
+                {
+                    DeleteUserAccount();
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+        private void DeleteUserAccount()
+        {
+            bool isDeleted = _userAccountRepository.Delete(CurrentUserAccount.Id);
+
+            if (isDeleted)
+            {
+                MessageBox.Show($"Your account {CurrentUserAccount.Username} is now deleted");
+                ShowLoginWindow();
+            }
+
+            else
+            {
+                MessageBox.Show("An error occured when deleting your account, please try again");
             }
         }
         #endregion
@@ -135,6 +147,12 @@ namespace Paraject.MVVM.ViewModels.Windows
         {
             if (CloseWindow.WinObject != null)
                 CloseWindow.CloseParent();
+        }
+        private void ShowLoginWindow()
+        {
+            LoginWindow loginWindow = new();
+            loginWindow.Show();
+            CloseMainWindow();
         }
     }
 }
