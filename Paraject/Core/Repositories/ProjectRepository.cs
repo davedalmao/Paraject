@@ -150,7 +150,54 @@ namespace Paraject.Core.Repositories
         }
         public IEnumerable<Project> FindAll(string projectOption)
         {
-            throw new System.NotImplementedException();
+            List<Project> projects = new();
+
+            using (SqlConnection con = new(_connectionString))
+            using (SqlCommand cmd = new("spFindAllProjects", con))
+            {
+                try
+                {
+                    con.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@project_option", SqlDbType.NVarChar, 50).Value = projectOption;
+
+                    var sqlDataReader = cmd.ExecuteReader();
+                    if (sqlDataReader.HasRows)
+                    {
+                        Project project = null;
+
+                        //reading multiple Projects
+                        while (sqlDataReader.Read())
+                        {
+                            project = new Project
+                            {
+                                Id = sqlDataReader.GetInt32(0),
+                                User_Id_Fk = sqlDataReader.GetInt32(1),
+                                Name = sqlDataReader.GetString(2),
+                                Description = sqlDataReader.GetString(3),
+                                Option = sqlDataReader.GetString(4),
+                                Status = sqlDataReader.GetString(5),
+                                Deadline = sqlDataReader.GetDateTime(6),
+                                DateCreated = sqlDataReader.GetDateTime(7)
+                            };
+
+                            projects.Add(project);
+                        }
+                    }
+                    sqlDataReader.Close();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+
+            return projects;
         }
         public bool Update(Project project)
         {
