@@ -9,6 +9,12 @@ using System.Windows;
 
 namespace Paraject.Core.Repositories
 {
+    public enum ProjectOptions
+    {
+        Paid,
+        Personal
+    }
+
     public class ProjectRepository : IProjectRepository
     {
         private readonly string _connectionString;
@@ -148,7 +154,7 @@ namespace Paraject.Core.Repositories
 
             return projects;
         }
-        public IEnumerable<Project> FindAll(string projectOption)
+        public IEnumerable<Project> FindAll(ProjectOptions projectOption)
         {
             List<Project> projects = new();
 
