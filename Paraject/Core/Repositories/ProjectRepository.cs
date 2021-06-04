@@ -109,7 +109,33 @@ namespace Paraject.Core.Repositories
         }
         public bool Update(Project project)
         {
-            throw new System.NotImplementedException();
+            bool isUpdated = false;
+
+            using (SqlConnection con = new(_connectionString))
+            using (SqlCommand cmd = new("spUpdateProject", con))
+            {
+                try
+                {
+                    con.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@project_id", SqlDbType.Int).Value = project.Id;
+                    cmd.Parameters.Add("@project_name", SqlDbType.NVarChar, 50).Value = project.Name;
+                    cmd.Parameters.Add("@project_description", SqlDbType.NVarChar, 500).Value = project.Description;
+                    cmd.Parameters.Add("@project_option", SqlDbType.NVarChar, 50).Value = project.Option;
+                    cmd.Parameters.Add("@project_status", SqlDbType.NVarChar, 12).Value = project.Status;
+                    cmd.Parameters.Add("@project_deadline", SqlDbType.DateTime2).Value = project.Deadline;
+
+                    int NoOfRowsAffected = cmd.ExecuteNonQuery();
+                    isUpdated = NoOfRowsAffected > 0;
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+
+            return isUpdated;
         }
         public bool Delete(int id)
         {
