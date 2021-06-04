@@ -62,7 +62,42 @@ namespace Paraject.Core.Repositories
         }
         public Project Get(int id)
         {
-            throw new System.NotImplementedException();
+            Project project = null;
+
+            using SqlConnection con = new(_connectionString);
+            using SqlCommand cmd = new("spGetProject", con);
+            try
+            {
+                con.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add("@project_id", SqlDbType.Int).Value = id;
+
+                var sqlDataReader = cmd.ExecuteReader();
+                if (sqlDataReader.HasRows)
+                {
+                    //Reads a single Project
+                    sqlDataReader.Read();
+                    project = new Project()
+                    {
+                        Id = sqlDataReader.GetInt32(0),
+                        User_Id_Fk = sqlDataReader.GetInt32(1),
+                        Name = sqlDataReader.GetString(2),
+                        Description = sqlDataReader.GetString(3),
+                        Option = sqlDataReader.GetString(4),
+                        Status = sqlDataReader.GetString(5),
+                        Deadline = sqlDataReader.GetDateTime(6),
+                        DateCreated = sqlDataReader.GetDateTime(7)
+                    };
+                }
+                sqlDataReader.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return project;
         }
         public IEnumerable<Project> GetAll()
         {
