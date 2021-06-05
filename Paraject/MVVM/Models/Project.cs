@@ -1,4 +1,5 @@
-﻿using PropertyChanged;
+﻿using Paraject.Core.Enums;
+using PropertyChanged;
 using System;
 using System.ComponentModel;
 
@@ -14,7 +15,7 @@ namespace Paraject.MVVM.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string Option { get; set; }
-        public string Status { get; set; }
+        public Status Status { get; set; }
         public DateTime Deadline { get; set; }
         public DateTime DateCreated { get; set; }
     }
