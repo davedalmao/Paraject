@@ -46,5 +46,9 @@
                 HorizontalAlignment="Right"
                 Tag="/UiDesign/Icons/ButtonIcons/add.svg"
                 Style="{StaticResource GeneralButtonTheme}" />
+
+        <ContentControl Grid.Column="0"
+                        Grid.ColumnSpan="4"
+                        Grid.Row="1" />
     </Grid>
 </UserControl>
