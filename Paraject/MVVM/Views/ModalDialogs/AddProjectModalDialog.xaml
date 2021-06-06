@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paraject.MVVM.Views.ModalDialogs"
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
+        xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
+        xmlns:enums="clr-namespace:Paraject.Core.Repositories"
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="CanResize"
@@ -70,7 +72,8 @@
                 <StackPanel Grid.Column="0">
                     <!--Project Logo-->
                     <Image Width="190"
-                           Height="115" />
+                           Height="115"
+                           HorizontalAlignment="Left" />
 
                     <!--Add Project Logo Button-->
                     <Button Content="Add Logo"
@@ -78,6 +81,7 @@
                             Height="36"
                             Width="190"
                             Background="#0093C4"
+                            HorizontalAlignment="Left"
                             Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
                             Style="{StaticResource GeneralButtonTheme}" />
 
@@ -86,7 +90,11 @@
                                Margin="0,44,0,0"
                                FontSize="19"
                                Foreground="#B8BDC1" />
+
                     <!--ProjectOption ComboBox-->
+                    <ComboBox Width="294"
+                              Height="42"
+                              ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:ProjectOptions}}}" />
 
                     <!--Deadline TextBlock-->
                     <TextBlock Text="Deadline"
@@ -98,21 +106,25 @@
 
                 <StackPanel Grid.Column="1"
                             Margin="49,0,0,0">
+                    <!--ProjectName TextBlock-->
                     <TextBlock Text="Project Name"
                                FontSize="19"
                                Foreground="#B8BDC1"
                                Margin="0,0,0,6" />
 
+                    <!--ProjectName TextBox-->
                     <TextBox Width="294"
                              Height="42"
                              FontSize="15"
                              Style="{StaticResource TextBoxTheme}" />
 
+                    <!--Description TextBlock-->
                     <TextBlock Text="Description (optional)"
                                FontSize="19"
                                Foreground="#B8BDC1"
                                Margin="0,22,0,6" />
 
+                    <!--Description Multiline TextBox-->
                     <TextBox Width="294"
                              Height="185"
                              FontSize="15"
@@ -124,6 +136,7 @@
                              Padding="20" />
 
 
+                    <!--Create Project Button-->
                     <Button Content="Create New Project"
                             Margin="0,22,0,0"
                             Height="40"
