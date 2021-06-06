@@ -221,7 +221,6 @@
             <ContentControl  Grid.Column="1"
                              Grid.RowSpan="5"
                              Content="{Binding CurrentView}"
-                             Grid.ColumnSpan="2"
                              Margin="0,40,0,0" />
         </Grid>
     </Border>

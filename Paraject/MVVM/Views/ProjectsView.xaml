@@ -5,16 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Paraject.MVVM.Views"
              xmlns:custom="clr-namespace:Paraject.Core.CustomControls"
+             xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:ProjectsViewModel}"
              mc:Ignorable="d"
              Width="732"
              Height="544.63"
              Background="Transparent">
-    <Grid Margin="75,40,75,30">
+    <Grid Margin="65,33,65,33">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="*" />
             <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -23,16 +25,25 @@
 
         <custom:MenuItem Grid.Column="0"
                          Grid.Row="0"
-                         Content="Personal Projects"
+                         Content="All Projects"
                          IsChecked="True"
-                         Style="{StaticResource VerticalMenuButtonTheme}" />
+                         VerticalAlignment="Top"
+                         Style="{StaticResource VerticalMenuButtonTheme}"
+                         Command="{Binding AllProjectsCommand}" />
+
         <custom:MenuItem Grid.Column="1"
                          Grid.Row="0"
-                         Content="Paid Projects"
-                         Style="{StaticResource VerticalMenuButtonTheme}" />
+                         Content="Personal Projects"
+                         VerticalAlignment="Top"
+                         Style="{StaticResource VerticalMenuButtonTheme}"
+                         Command="{Binding PersonalProjectsCommand}" />
 
-        <Border Grid.Column="2"
-                Grid.Row="0" />
+        <custom:MenuItem Grid.Column="2"
+                         Grid.Row="0"
+                         Content="Paid Projects"
+                         VerticalAlignment="Top"
+                         Style="{StaticResource VerticalMenuButtonTheme}"
+                         Command="{Binding PaidProjectsCommand}" />
 
         <Button Content="Add New Project"
                 Grid.Column="3"
@@ -40,7 +51,14 @@
                 Height="36"
                 Width="169"
                 Background="#F54342"
+                HorizontalAlignment="Right"
                 Tag="/UiDesign/Icons/ButtonIcons/add.svg"
+                Margin="0,0,0,25"
                 Style="{StaticResource GeneralButtonTheme}" />
+
+        <ContentControl Grid.Column="0"
+                        Grid.ColumnSpan="4"
+                        Grid.Row="1"
+                        Content="{Binding DisplayProjectsVM}" />
     </Grid>
 </UserControl>

@@ -15,6 +15,9 @@
     <Compile Update="MVVM\Views\DashboardView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="MVVM\Views\DisplayProjectsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MVVM\Views\OptionsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -42,6 +45,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\DashboardView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\Views\DisplayProjectsView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\OptionsView.xaml">

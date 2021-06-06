@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
+﻿using Paraject.MVVM.ViewModels;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Paraject.MVVM.Views
 {
@@ -18,9 +8,12 @@ namespace Paraject.MVVM.Views
     /// </summary>
     public partial class ProjectsView : UserControl
     {
+        readonly ProjectsViewModel _viewModel;
         public ProjectsView()
         {
             InitializeComponent();
+            _viewModel = new();
+            DataContext = _viewModel;
         }
     }
 }
