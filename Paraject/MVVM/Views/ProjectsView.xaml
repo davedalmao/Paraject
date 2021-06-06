@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Paraject.MVVM.Views"
              xmlns:custom="clr-namespace:Paraject.Core.CustomControls"
+             xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:ProjectsViewModel}"
              mc:Ignorable="d"
              Width="732"
              Height="544.63"
@@ -49,6 +51,7 @@
 
         <ContentControl Grid.Column="0"
                         Grid.ColumnSpan="4"
-                        Grid.Row="1" />
+                        Grid.Row="1"
+                        Content="{Binding DisplayProjectsVM}" />
     </Grid>
 </UserControl>

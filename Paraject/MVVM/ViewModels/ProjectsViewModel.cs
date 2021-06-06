@@ -4,9 +4,16 @@ namespace Paraject.MVVM.ViewModels
 {
     public class ProjectsViewModel : BaseViewModel
     {
-        public object CurrentView { get; set; }
+        //public object CurrentView { get; set; }
+
         public ICommand DisplayProjectsViewCommand { get; }
 
+        public DisplayProjectsViewModel DisplayProjectsVM { get; set; }
+
+        public ProjectsViewModel()
+        {
+            DisplayProjectsVM = new DisplayProjectsViewModel();
+        }
 
         /*
         if (all projects radio button is selected)
