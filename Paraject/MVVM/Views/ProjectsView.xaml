@@ -9,7 +9,7 @@
              Width="732"
              Height="544.63"
              Background="Transparent">
-    <Grid Margin="75,40,75,30">
+    <Grid Margin="65,33,65,33">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
@@ -26,10 +26,12 @@
                          Content="All Projects"
                          IsChecked="True"
                          Style="{StaticResource VerticalMenuButtonTheme}" />
+
         <custom:MenuItem Grid.Column="1"
                          Grid.Row="0"
                          Content="Personal Projects"
                          Style="{StaticResource VerticalMenuButtonTheme}" />
+
         <custom:MenuItem Grid.Column="2"
                          Grid.Row="0"
                          Content="Paid Projects"
