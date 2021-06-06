@@ -27,17 +27,23 @@
                          Grid.Row="0"
                          Content="All Projects"
                          IsChecked="True"
-                         Style="{StaticResource VerticalMenuButtonTheme}" />
+                         VerticalAlignment="Top"
+                         Style="{StaticResource VerticalMenuButtonTheme}"
+                         Command="{Binding AllProjectsCommand}" />
 
         <custom:MenuItem Grid.Column="1"
                          Grid.Row="0"
                          Content="Personal Projects"
-                         Style="{StaticResource VerticalMenuButtonTheme}" />
+                         VerticalAlignment="Top"
+                         Style="{StaticResource VerticalMenuButtonTheme}"
+                         Command="{Binding PersonalProjectsCommand}" />
 
         <custom:MenuItem Grid.Column="2"
                          Grid.Row="0"
                          Content="Paid Projects"
-                         Style="{StaticResource VerticalMenuButtonTheme}" />
+                         VerticalAlignment="Top"
+                         Style="{StaticResource VerticalMenuButtonTheme}"
+                         Command="{Binding PaidProjectsCommand}" />
 
         <Button Content="Add New Project"
                 Grid.Column="3"
@@ -47,6 +53,7 @@
                 Background="#F54342"
                 HorizontalAlignment="Right"
                 Tag="/UiDesign/Icons/ButtonIcons/add.svg"
+                Margin="0,0,0,25"
                 Style="{StaticResource GeneralButtonTheme}" />
 
         <ContentControl Grid.Column="0"

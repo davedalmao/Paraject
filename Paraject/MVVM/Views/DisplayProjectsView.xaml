@@ -7,8 +7,12 @@
              mc:Ignorable="d"
              Height="420"
              Width="602"
-             Background="RosyBrown">
+             Background="Transparent"
+             DataContext="{Binding Path=DataContext, 
+                                   RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
     <Grid>
-
+        <TextBlock Text="{Binding Message}"
+                   FontSize="100"
+                   Foreground="red" />
     </Grid>
 </UserControl>
