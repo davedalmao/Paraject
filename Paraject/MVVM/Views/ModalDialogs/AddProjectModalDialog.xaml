@@ -16,7 +16,7 @@
         FontFamily="{StaticResource NunitoBold}">
     <Border Background="#222529"
             CornerRadius="20">
-        <Grid>
+        <Grid Margin="25,20,25,40">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -24,12 +24,13 @@
 
             <!--Modal Header-->
             <Grid Grid.Row="0"
-                  Margin="0,20,25,0">
+                  Margin="0,0,0,20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
 
+                <!--Modal Header Text and Image-->
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Center"
                             Grid.Column="0"
@@ -46,6 +47,7 @@
                                HorizontalAlignment="Center" />
                 </StackPanel>
 
+                <!--Close Button-->
                 <Button Style="{StaticResource PlainButtonTheme}"
                         Grid.Column="1"
                         HorizontalAlignment="Right"
@@ -57,6 +59,81 @@
                 </Button>
             </Grid>
 
+            <!--Modal Content-->
+            <Grid Grid.Row="1"
+                  HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <!--Project Logo-->
+                    <Image Width="190"
+                           Height="115" />
+
+                    <!--Add Project Logo Button-->
+                    <Button Content="Add Logo"
+                            Margin="0,12,0,0"
+                            Height="36"
+                            Width="190"
+                            Background="#0093C4"
+                            Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
+                            Style="{StaticResource GeneralButtonTheme}" />
+
+                    <!--ProjectOption TextBlock-->
+                    <TextBlock Text="Project Option"
+                               Margin="0,44,0,0"
+                               FontSize="19"
+                               Foreground="#B8BDC1" />
+                    <!--ProjectOption ComboBox-->
+
+                    <!--Deadline TextBlock-->
+                    <TextBlock Text="Deadline"
+                               Margin="0,18,0,0"
+                               FontSize="19"
+                               Foreground="#B8BDC1" />
+                    <!--Deadline DateTimePicker-->
+                </StackPanel>
+
+                <StackPanel Grid.Column="1"
+                            Margin="49,0,0,0">
+                    <TextBlock Text="Project Name"
+                               FontSize="19"
+                               Foreground="#B8BDC1"
+                               Margin="0,0,0,6" />
+
+                    <TextBox Width="294"
+                             Height="42"
+                             FontSize="15"
+                             Style="{StaticResource TextBoxTheme}" />
+
+                    <TextBlock Text="Description (optional)"
+                               FontSize="19"
+                               Foreground="#B8BDC1"
+                               Margin="0,22,0,6" />
+
+                    <TextBox Width="294"
+                             Height="185"
+                             FontSize="15"
+                             TextWrapping="Wrap"
+                             AcceptsReturn="True"
+                             Style="{StaticResource TextBoxTheme}"
+                             VerticalScrollBarVisibility="Auto"
+                             VerticalContentAlignment="Top"
+                             Padding="20" />
+
+
+                    <Button Content="Create New Project"
+                            Margin="0,22,0,0"
+                            Height="40"
+                            Width="294"
+                            Background="#F54342"
+                            VerticalAlignment="Bottom"
+                            Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
+                            Style="{StaticResource GeneralButtonTheme}" />
+                </StackPanel>
+            </Grid>
         </Grid>
     </Border>
 </Window>
