@@ -1,4 +1,5 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.MVVM.Views.ModalDialogs;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
@@ -8,6 +9,7 @@ namespace Paraject.MVVM.ViewModels
         public ICommand AllProjectsCommand { get; }
         public ICommand PersonalProjectsCommand { get; }
         public ICommand PaidProjectsCommand { get; }
+        public ICommand AddProjectsDialogCommand { get; }
 
         public string Message { get; set; } //test property
 
@@ -20,6 +22,7 @@ namespace Paraject.MVVM.ViewModels
             AllProjectsCommand = new DelegateCommand(AllProjects);
             PersonalProjectsCommand = new DelegateCommand(PersonalProjects);
             PaidProjectsCommand = new DelegateCommand(PaidProjects);
+            AddProjectsDialogCommand = new DelegateCommand(ShowAddProjectsDialog);
 
             AllProjects();
         }
@@ -35,6 +38,11 @@ namespace Paraject.MVVM.ViewModels
         public void PaidProjects()
         {
             Message = "paid";
+        }
+        public void ShowAddProjectsDialog()
+        {
+            AddProjectModalDialog addProjectModalDialog = new AddProjectModalDialog();
+            addProjectModalDialog.ShowDialog();
         }
     }
 }
