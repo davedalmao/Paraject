@@ -26,7 +26,8 @@
                   Fill="#B8BDC1"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
-                  Data="M 0 0 L 5 5 L 10 0" />
+                  Data="M 0 0 L 5 5 L 10 0"
+                  Margin="0,0,20,0" />
         </Grid>
     </ControlTemplate>
 
