@@ -104,7 +104,10 @@
                                Margin="0,18,0,0"
                                FontSize="19"
                                Foreground="#B8BDC1" />
+
                     <!--Deadline DateTimePicker-->
+                    <DatePicker Style="{StaticResource dsds}"
+                                FontSize="15" />
                 </StackPanel>
 
                 <StackPanel Grid.Column="1"
