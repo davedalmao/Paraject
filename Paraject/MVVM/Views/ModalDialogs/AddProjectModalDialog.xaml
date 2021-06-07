@@ -87,14 +87,17 @@
 
                     <!--ProjectOption TextBlock-->
                     <TextBlock Text="Project Option"
-                               Margin="0,44,0,0"
+                               Margin="0,44,0,6"
                                FontSize="19"
                                Foreground="#B8BDC1" />
 
                     <!--ProjectOption ComboBox-->
                     <ComboBox Width="294"
                               Height="42"
-                              ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:ProjectOptions}}}" />
+                              ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:ProjectOptions}}}"
+                              Style="{StaticResource ComboBoxTheme}"
+                              FontSize="15"
+                              Foreground="#B8BDC1" />
 
                     <!--Deadline TextBlock-->
                     <TextBlock Text="Deadline"

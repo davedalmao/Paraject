@@ -1,0 +1,139 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTemplate x:Key="ComboBoxToggleButton"
+                     TargetType="ToggleButton">
+        <!--ComboBox UI Design-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="40" />
+            </Grid.ColumnDefinitions>
+            <!--ComboBox arrow dropdown-->
+            <Border x:Name="Border"
+                    Grid.ColumnSpan="2"
+                    CornerRadius="12"
+                    Background="#2E3135"
+                    BorderThickness="0" />
+
+            <!--ComboBox input-->
+            <Border Grid.Column="0"
+                    Background="#2E3135"
+                    CornerRadius="12,0,0,12" />
+
+            <!--ComboBox arrow dropdown fill-->
+            <Path x:Name="Arrow"
+                  Grid.Column="1"
+                  Fill="#B8BDC1"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Data="M 0 0 L 5 5 L 10 0" />
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ComboBoxTextBox"
+                     TargetType="TextBox">
+        <Border x:Name="PART_ContentHost"
+                Focusable="False"
+                Height="30" />
+    </ControlTemplate>
+
+    <Style x:Key="ComboBoxTheme"
+           TargetType="ComboBox">
+        <Setter Property="SnapsToDevicePixels"
+                Value="true" />
+        <Setter Property="OverridesDefaultStyle"
+                Value="true" />
+        <Setter Property="ScrollViewer.CanContentScroll"
+                Value="true" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
+                Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
+                Value="Auto" />
+        <!--For ComboBox items-->
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <!--ComBoxItem-->
+                <Style TargetType="ComboBoxItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ComboBoxItem">
+                                <!--(single) ComboBox item color-->
+                                <Border Name="Back"
+                                        Background="Transparent"
+                                        CornerRadius="10"
+                                        BorderThickness="0,0,0,0">
+                                    <ContentPresenter ContentSource="{Binding Source}"
+                                                      VerticalAlignment="Center"
+                                                      HorizontalAlignment="Left"
+                                                      Margin="20,9" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsHighlighted"
+                                             Value="True">
+                                        <Setter TargetName="Back"
+                                                Property="Background"
+                                                Value="#3E4042" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBox">
+                    <Grid>
+                        <ToggleButton Name="ToggleButton"
+                                      Template="{StaticResource ComboBoxToggleButton}"
+                                      Grid.Column="2"
+                                      Focusable="false"
+                                      IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
+                                      ClickMode="Press">
+                        </ToggleButton>
+                        <ContentPresenter Name="ContentSite"
+                                          IsHitTestVisible="False"
+                                          Content="{TemplateBinding SelectionBoxItem}"
+                                          ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                          ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Left"
+                                          Margin="20,0" />
+                        <TextBox x:Name="PART_EditableTextBox"
+                                 Style="{x:Null}"
+                                 Template="{StaticResource ComboBoxTextBox}"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Center"
+                                 Text="{TemplateBinding Text}"
+                                 Focusable="True"
+                                 Visibility="Hidden"
+                                 IsReadOnly="{TemplateBinding IsReadOnly}" />
+                        <Popup Name="Popup"
+                               Placement="Bottom"
+                               IsOpen="{TemplateBinding IsDropDownOpen}"
+                               AllowsTransparency="True"
+                               Focusable="False"
+                               PopupAnimation="Slide">
+                            <!--ComboBox Dropdown-->
+                            <Grid Name="DropDown"
+                                  SnapsToDevicePixels="True"
+                                  MinWidth="{TemplateBinding ActualWidth}"
+                                  MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                <!--ComboBox Dropdown color (this houses all ComboBox items)-->
+                                <Border x:Name="DropDownBorder"
+                                        Background="#333639"
+                                        CornerRadius="10" />
+                                <ScrollViewer SnapsToDevicePixels="True">
+                                    <StackPanel IsItemsHost="True"
+                                                KeyboardNavigation.DirectionalNavigation="Contained" />
+                                </ScrollViewer>
+                            </Grid>
+                        </Popup>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
