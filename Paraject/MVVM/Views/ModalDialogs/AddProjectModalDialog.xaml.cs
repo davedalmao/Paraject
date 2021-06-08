@@ -11,11 +11,20 @@ namespace Paraject.MVVM.Views.ModalDialogs
         {
             InitializeComponent();
             MouseDown += delegate { DragMove(); };
+            DisplayWatermark();
         }
 
         private void CloseModal(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void DisplayWatermark()
+        {
+            if (DeadlineDatePicker.Text.Length == 0 || DeadlineDatePicker.SelectedDate is null)
+            {
+                DeadlineDatePicker.Text = "re";
+            }
         }
     }
 }

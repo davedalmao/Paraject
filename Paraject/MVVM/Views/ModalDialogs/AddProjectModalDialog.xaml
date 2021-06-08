@@ -87,7 +87,7 @@
 
                     <!--ProjectOption TextBlock-->
                     <TextBlock Text="Project Option"
-                               Margin="0,44,0,6"
+                               Margin="0,46,0,6"
                                FontSize="19"
                                Foreground="#B8BDC1" />
 
@@ -101,12 +101,13 @@
 
                     <!--Deadline TextBlock-->
                     <TextBlock Text="Deadline"
-                               Margin="0,18,0,0"
+                               Margin="0,18,0,6"
                                FontSize="19"
                                Foreground="#B8BDC1" />
 
                     <!--Deadline DateTimePicker-->
-                    <DatePicker Style="{StaticResource dsds}"
+                    <DatePicker x:Name="DeadlineDatePicker"
+                                Style="{StaticResource dsds}"
                                 FontSize="15" />
                 </StackPanel>
 

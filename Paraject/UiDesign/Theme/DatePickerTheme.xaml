@@ -1,17 +1,16 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=System.Runtime">
-
     <Style x:Key="DatePickerStyle"
            TargetType="{x:Type DatePicker}">
         <Setter Property="Foreground"
-                Value="#FF333333" />
+                Value="red" />
         <Setter Property="IsTodayHighlighted"
                 Value="True" />
         <Setter Property="SelectedDateFormat"
                 Value="Long" />
         <Setter Property="Background"
-                Value="Transparent" />
+                Value="red" />
         <Setter Property="Padding"
                 Value="2" />
         <Setter Property="BorderBrush">
@@ -288,6 +287,7 @@
                                                HorizontalContentAlignment="Stretch"
                                                Grid.Row="0"
                                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+
                             <Grid x:Name="PART_DisabledVisual"
                                   Grid.ColumnSpan="2"
                                   Grid.Column="0"
@@ -324,43 +324,119 @@
         </Setter>
     </Style>
 
+
     <Style TargetType="DatePicker"
            BasedOn="{StaticResource DatePickerStyle}"
            x:Key="dsds">
         <Style.Resources>
+            <!--DatePicker TextBox-->
             <Style TargetType="DatePickerTextBox">
-                <!--<Setter Property="Background"
-                        Value="red" />
-                <Setter Property="Margin"
-                        Value="20,0" />-->
-                <Setter Property="BorderThickness"
-                        Value="0" />
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate x:Name="dptext"
-                                         TargetType="{x:Type DatePickerTextBox}">
+                        <ControlTemplate TargetType="{x:Type DatePickerTextBox}">
                             <Grid>
-                                <Grid x:Name="WatermarkContent"
-                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-                                    <ScrollViewer x:Name="PART_ContentHost"
-                                                  Margin="0"
-                                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-                                </Grid>
+                                <Grid.Resources>
+                                    <SolidColorBrush x:Key="WatermarkBrush"
+                                                     Color="#FFAAAAAA" />
+                                </Grid.Resources>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualStateGroup.Transitions>
+                                            <VisualTransition GeneratedDuration="0" />
+                                            <VisualTransition GeneratedDuration="0:0:0.1"
+                                                              To="MouseOver" />
+                                        </VisualStateGroup.Transitions>
+                                        <VisualState x:Name="Normal" />
+                                        <!--Mouse Hover Border color (of the inner DatePickerTextBox)-->
+                                        <VisualState x:Name="MouseOver">
+                                            <Storyboard>
+                                                <ColorAnimation Duration="0"
+                                                                To="Transparent"
+                                                                Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                                                Storyboard.TargetName="ContentElement" />
+                                                <ColorAnimation Duration="0"
+                                                                To="Transparent"
+                                                                Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                                                Storyboard.TargetName="watermark_decorator" />
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                    <VisualStateGroup x:Name="WatermarkStates">
+                                        <VisualStateGroup.Transitions>
+                                            <VisualTransition GeneratedDuration="0" />
+                                        </VisualStateGroup.Transitions>
+                                        <VisualState x:Name="Unwatermarked" />
+                                        <VisualState x:Name="Watermarked">
+                                            <Storyboard>
+                                                <DoubleAnimation Duration="0"
+                                                                 To="0"
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 Storyboard.TargetName="ContentElement" />
+                                                <DoubleAnimation Duration="0"
+                                                                 To="1"
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 Storyboard.TargetName="PART_Watermark" />
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                    <VisualStateGroup x:Name="FocusStates">
+                                        <VisualStateGroup.Transitions>
+                                            <VisualTransition GeneratedDuration="0" />
+                                        </VisualStateGroup.Transitions>
+                                        <VisualState x:Name="Unfocused" />
+                                        <VisualState x:Name="Focused">
+                                            <Storyboard>
+                                                <DoubleAnimation Duration="0"
+                                                                 To="1"
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 Storyboard.TargetName="FocusVisual" />
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <Border x:Name="Border"
+                                        Padding="{TemplateBinding Padding}">
+                                    <Grid x:Name="WatermarkContent"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                        <Border x:Name="ContentElement"
+                                                BorderBrush="Transparent"
+                                                BorderThickness="1" />
+                                        <Border x:Name="watermark_decorator"
+                                                BorderBrush="Transparent"
+                                                BorderThickness="1">
+                                            <ContentControl x:Name="PART_Watermark"
+                                                            Focusable="False"
+                                                            IsHitTestVisible="False"
+                                                            Opacity="0"
+                                                            Padding="2">
+                                                <ContentControl.Template>
+                                                    <ControlTemplate>
+                                                        <TextBlock Text="NO DEADLINE"
+                                                                   Foreground="#F57272" />
+                                                    </ControlTemplate>
+                                                </ContentControl.Template>
+                                            </ContentControl>
+                                        </Border>
+                                        <ScrollViewer x:Name="PART_ContentHost"
+                                                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                      Margin="0"
+                                                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+
+                                        <!--Error (System.InvalidOperationException: ''FocusVisual' name cannot be found in the name scope of 'System.Windows.Controls.Grid'.')
+                                            when selecting a date (in the calendar) if this Block of code is deleted-->
+                                        <Border x:Name="FocusVisual"
+                                                BorderBrush="red"
+                                                CornerRadius="1"
+                                                IsHitTestVisible="False"
+                                                Opacity="1" />
+                                    </Grid>
+                                </Border>
                             </Grid>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
-                <Style.Triggers>
-                    <Trigger Property="IsEnabled"
-                             Value="False">
-                        <Setter Property="Background"
-                                Value="Black" />
-                    </Trigger>
-                </Style.Triggers>
             </Style>
-
         </Style.Resources>
 
         <Setter Property="FontSize"
