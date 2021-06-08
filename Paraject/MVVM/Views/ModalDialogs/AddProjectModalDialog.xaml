@@ -107,7 +107,7 @@
 
                     <!--Deadline DateTimePicker-->
                     <DatePicker x:Name="DeadlineDatePicker"
-                                Style="{StaticResource dsds}"
+                                Style="{StaticResource DatePickerTheme}"
                                 FontSize="15" />
                 </StackPanel>
 

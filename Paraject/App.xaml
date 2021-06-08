@@ -20,6 +20,7 @@
                 <ResourceDictionary Source="/UiDesign/Theme/BindablePasswordBoxTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/ComboBoxTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/DatePickerTheme.xaml" />
+                <ResourceDictionary Source="/UiDesign/Theme/DatePickerCalendarTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--Fontstyles-->
