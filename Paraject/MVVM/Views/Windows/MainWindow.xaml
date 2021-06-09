@@ -24,204 +24,218 @@
         FontFamily="/UiDesign/Fonts/#Nunito">
     <Border Background="#222529"
             CornerRadius="20">
+        <!--The Grid that houses the overlay and the MainWindow content-->
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="208" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+            <!--The Grid that houses the MainWindow content-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="208" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <Grid.RowDefinitions>
-                <!--min, max, close buttons-->
-                <RowDefinition Height="auto" />
-                <!--logo-->
-                <RowDefinition Height="auto" />
-                <!--user image and name-->
-                <RowDefinition Height="auto" />
-                <!--separator-->
-                <RowDefinition Height="auto" />
-                <!--sidebar menu-->
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-
-            <!--Sidebar color-->
-            <Border Background="#25282C"
-                    Grid.Column="0"
-                    Grid.Row="0"
-                    CornerRadius="20,0,0,0" />
-            <Border Background="#25282C"
-                    Grid.Column="0"
-                    Grid.Row="1"
-                    Padding="0,40,0,0" />
-            <Border Background="#25282C"
-                    Grid.Column="0"
-                    Grid.Row="2"
-                    Padding="0,53,0,0" />
-            <Border Background="#25282C"
-                    Grid.Column="0"
-                    Grid.Row="3" />
-            <Border Background="#25282C"
-                    Grid.Column="0"
-                    Grid.Row="4"
-                    CornerRadius="0,0,0,20" />
-
-
-            <!--min, max, close buttons-->
-            <StackPanel Orientation="Horizontal"
-                        Grid.Column="1"
-                        Grid.Row="0"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Top"
-                        Margin="0,20,10,0">
-
-                <!--Minimize Button-->
-                <Button Style="{StaticResource PlainButtonTheme}"
-                        Click="MinimizeWindow">
-                    <Image Source="/UiDesign/Icons/WindowStateButtons/min.png"
-                           Width="20.37"
-                           Height="20"
-                           Cursor="Hand" />
-                </Button>
-
-                <!--Maximize Button-->
-                <Button Style="{StaticResource PlainButtonTheme}"
-                        Click="MaximizeWindow"
-                        Margin="20,0,20,0">
-                    <Image Source="/UiDesign/Icons/WindowStateButtons/max.png"
-                           Width="20.37"
-                           Height="20.37"
-                           Cursor="Hand" />
-                </Button>
-
-                <!--Close Button-->
-                <Button Style="{StaticResource PlainButtonTheme}"
-                        Margin="0,0,12,0"
-                        Click="CloseMainWindow">
-                    <Image Source="/UiDesign/Icons/WindowStateButtons/close.png"
-                           Width="20.37"
-                           Height="20.37"
-                           Cursor="Hand" />
-                </Button>
-            </StackPanel>
-
-            <!--Logo (svg)-->
-            <UserControl Grid.Column="0"
-                         Grid.Row="1"
-                         Width="90.43"
-                         Height="23"
-                         VerticalAlignment="Top"
-                         Margin="59,12,59,0">
-                <svgc1:SvgViewbox Source="/UiDesign/Images/Logo/parajectLogo.svg" />
-            </UserControl>
-
-            <!--User image and User name-->
-            <StackPanel  Grid.Column="0"
-                         Grid.Row="2"
-                         Margin="0,19,0,18">
-                <!--User image-->
-                <Ellipse Width="81.94"
-                         Height="81.94"
-                         Cursor="Hand"
-                         Margin="0,0,0,12.5">
-                    <Ellipse.Fill>
-                        <ImageBrush ImageSource="/UiDesign/Images/UserImage/default.png" />
-                    </Ellipse.Fill>
-                </Ellipse>
-
-                <!--Username-->
-                <TextBlock Text="{Binding CurrentUserAccount.Username}"
-                           Height="23.21"
-                           HorizontalAlignment="Center"
-                           Foreground="#B8BDC1"
-                           FontSize="18"
-                           FontFamily="/UiDesign/Fonts/#Merriweather"
-                           FontWeight="Bold" />
-            </StackPanel>
-
-            <!--Separator-->
-            <Border BorderBrush="#3C3F43"
-                    Grid.Column="0"
-                    Grid.Row="3"
-                    BorderThickness="5"
-                    CornerRadius="4"
-                    Height="1"
-                    Width="128"
-                    Margin="40,32,40,29" />
-
-            <!--Sidebar Menu-->
-            <Grid Grid.Row="4"
-                  HorizontalAlignment="Center"
-                  Margin="0,0,0,33">
-
-                <!--Height="40.9"-->
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="40.9" />
-                    <RowDefinition Height="40.9" />
-                    <RowDefinition Height="40.9" />
-                    <RowDefinition Height="40.9" />
+                    <!--min, max, close buttons-->
+                    <RowDefinition Height="auto" />
+                    <!--logo-->
+                    <RowDefinition Height="auto" />
+                    <!--user image and name-->
+                    <RowDefinition Height="auto" />
+                    <!--separator-->
+                    <RowDefinition Height="auto" />
+                    <!--sidebar menu-->
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="40.9" />
-                    <RowDefinition Height="40.9" />
                 </Grid.RowDefinitions>
 
-                <!--Dashboard-->
-                <custom:MenuItem Grid.Row="0"
-                                 Content="Dashboard"
-                                 IsChecked="True"
-                                 Command="{Binding DashboardViewCommand}"
-                                 DefaultImageUriString="/UiDesign/Icons/SideBarIcons/dashboard.svg"
-                                 SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/dashboard.svg"
-                                 Style="{StaticResource HorizontalMenuButtonTheme}" />
+                <!--Sidebar color-->
+                <Border Background="#25282C"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        CornerRadius="20,0,0,0" />
+                <Border Background="#25282C"
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Padding="0,40,0,0" />
+                <Border Background="#25282C"
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Padding="0,53,0,0" />
+                <Border Background="#25282C"
+                        Grid.Column="0"
+                        Grid.Row="3" />
+                <Border Background="#25282C"
+                        Grid.Column="0"
+                        Grid.Row="4"
+                        CornerRadius="0,0,0,20" />
 
 
-                <!--Projects-->
-                <custom:MenuItem Grid.Row="1"
-                                 Content="Projects"
-                                 Command="{Binding ProjectsViewCommand}"
-                                 DefaultImageUriString="/UiDesign/Icons/SideBarIcons/projects.svg"
-                                 SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/projects.svg"
-                                 Style="{StaticResource HorizontalMenuButtonTheme}" />
 
-                <!--Profile-->
-                <custom:MenuItem Grid.Row="2"
-                                 Content="Profile"
-                                 Command="{Binding ProfileViewCommand}"
-                                 DefaultImageUriString="/UiDesign/Icons/SideBarIcons/profile.svg"
-                                 SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/profile.svg"
-                                 Style="{StaticResource HorizontalMenuButtonTheme}" />
+                <!--min, max, close buttons-->
+                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Margin="0,20,10,0">
 
-                <!--Project Ideas-->
-                <custom:MenuItem Grid.Row="3"
-                                 Content="Project Ideas"
-                                 Command="{Binding ProjectIdeasViewCommand}"
-                                 DefaultImageUriString="/UiDesign/Icons/SideBarIcons/projectIdeas.svg"
-                                 SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/projectIdeas.svg"
-                                 Style="{StaticResource HorizontalMenuButtonTheme}" />
+                    <!--Minimize Button-->
+                    <Button Style="{StaticResource PlainButtonTheme}"
+                            Click="MinimizeWindow">
+                        <Image Source="/UiDesign/Icons/WindowStateButtons/min.png"
+                               Width="20.37"
+                               Height="20"
+                               Cursor="Hand" />
+                    </Button>
 
-                <!--block separator for the top and bottom menus-->
-                <Border Grid.Row="4" />
+                    <!--Maximize Button-->
+                    <Button Style="{StaticResource PlainButtonTheme}"
+                            Click="MaximizeWindow"
+                            Margin="20,0,20,0">
+                        <Image Source="/UiDesign/Icons/WindowStateButtons/max.png"
+                               Width="20.37"
+                               Height="20.37"
+                               Cursor="Hand" />
+                    </Button>
 
-                <!--Options-->
-                <custom:MenuItem Grid.Row="5"
-                                 Content="Options"
-                                 Command="{Binding OptionsViewCommand}"
-                                 DefaultImageUriString="/UiDesign/Icons/SideBarIcons/options.svg"
-                                 SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/options.svg"
-                                 Style="{StaticResource HorizontalMenuButtonTheme}" />
+                    <!--Close Button-->
+                    <Button Style="{StaticResource PlainButtonTheme}"
+                            Margin="0,0,12,0"
+                            Click="CloseMainWindow">
+                        <Image Source="/UiDesign/Icons/WindowStateButtons/close.png"
+                               Width="20.37"
+                               Height="20.37"
+                               Cursor="Hand" />
+                    </Button>
+                </StackPanel>
 
-                <!--Logout-->
-                <custom:MenuItem Grid.Row="6"
-                                 Content="Logout"
-                                 DefaultImageUriString="/UiDesign/Icons/SideBarIcons/logout.svg"
-                                 SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/logout.svg"
-                                 Style="{StaticResource HorizontalMenuButtonTheme}"
-                                 Command="{Binding LogoutCommand}" />
+                <!--Logo (svg)-->
+                <UserControl Grid.Column="0"
+                             Grid.Row="1"
+                             Width="90.43"
+                             Height="23"
+                             VerticalAlignment="Top"
+                             Margin="59,12,59,0">
+                    <svgc1:SvgViewbox Source="/UiDesign/Images/Logo/parajectLogo.svg" />
+                </UserControl>
+
+                <!--User image and User name-->
+                <StackPanel  Grid.Column="0"
+                             Grid.Row="2"
+                             Margin="0,19,0,18">
+                    <!--User image-->
+                    <Ellipse Width="81.94"
+                             Height="81.94"
+                             Cursor="Hand"
+                             Margin="0,0,0,12.5">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="/UiDesign/Images/UserImage/default.png" />
+                        </Ellipse.Fill>
+                    </Ellipse>
+
+                    <!--Username-->
+                    <TextBlock Text="{Binding CurrentUserAccount.Username}"
+                               Height="23.21"
+                               HorizontalAlignment="Center"
+                               Foreground="#B8BDC1"
+                               FontSize="18"
+                               FontFamily="/UiDesign/Fonts/#Merriweather"
+                               FontWeight="Bold" />
+                </StackPanel>
+
+                <!--Separator-->
+                <Border BorderBrush="#3C3F43"
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        BorderThickness="5"
+                        CornerRadius="4"
+                        Height="1"
+                        Width="128"
+                        Margin="40,32,40,29" />
+
+                <!--Sidebar Menu-->
+                <Grid Grid.Row="4"
+                      HorizontalAlignment="Center"
+                      Margin="0,0,0,33">
+
+                    <!--Height="40.9"-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40.9" />
+                        <RowDefinition Height="40.9" />
+                        <RowDefinition Height="40.9" />
+                        <RowDefinition Height="40.9" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="40.9" />
+                        <RowDefinition Height="40.9" />
+                    </Grid.RowDefinitions>
+
+                    <!--Dashboard-->
+                    <custom:MenuItem Grid.Row="0"
+                                     Content="Dashboard"
+                                     IsChecked="True"
+                                     Command="{Binding DashboardViewCommand}"
+                                     DefaultImageUriString="/UiDesign/Icons/SideBarIcons/dashboard.svg"
+                                     SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/dashboard.svg"
+                                     Style="{StaticResource HorizontalMenuButtonTheme}" />
+
+
+                    <!--Projects-->
+                    <custom:MenuItem Grid.Row="1"
+                                     Content="Projects"
+                                     Command="{Binding ProjectsViewCommand}"
+                                     DefaultImageUriString="/UiDesign/Icons/SideBarIcons/projects.svg"
+                                     SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/projects.svg"
+                                     Style="{StaticResource HorizontalMenuButtonTheme}" />
+
+                    <!--Profile-->
+                    <custom:MenuItem Grid.Row="2"
+                                     Content="Profile"
+                                     Command="{Binding ProfileViewCommand}"
+                                     DefaultImageUriString="/UiDesign/Icons/SideBarIcons/profile.svg"
+                                     SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/profile.svg"
+                                     Style="{StaticResource HorizontalMenuButtonTheme}" />
+
+                    <!--Project Ideas-->
+                    <custom:MenuItem Grid.Row="3"
+                                     Content="Project Ideas"
+                                     Command="{Binding ProjectIdeasViewCommand}"
+                                     DefaultImageUriString="/UiDesign/Icons/SideBarIcons/projectIdeas.svg"
+                                     SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/projectIdeas.svg"
+                                     Style="{StaticResource HorizontalMenuButtonTheme}" />
+
+                    <!--block separator for the top and bottom menus-->
+                    <Border Grid.Row="4" />
+
+                    <!--Options-->
+                    <custom:MenuItem Grid.Row="5"
+                                     Content="Options"
+                                     Command="{Binding OptionsViewCommand}"
+                                     DefaultImageUriString="/UiDesign/Icons/SideBarIcons/options.svg"
+                                     SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/options.svg"
+                                     Style="{StaticResource HorizontalMenuButtonTheme}" />
+
+                    <!--Logout-->
+                    <custom:MenuItem Grid.Row="6"
+                                     Content="Logout"
+                                     DefaultImageUriString="/UiDesign/Icons/SideBarIcons/logout.svg"
+                                     SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/logout.svg"
+                                     Style="{StaticResource HorizontalMenuButtonTheme}"
+                                     Command="{Binding LogoutCommand}" />
+                </Grid>
+
+                <!--Where the views are going to be displayed-->
+                <ContentControl  Grid.Column="1"
+                                 Grid.RowSpan="5"
+                                 Content="{Binding CurrentView}"
+                                 Margin="0,40,0,0" />
             </Grid>
 
-            <!--Where the views are going to be displayed-->
-            <ContentControl  Grid.Column="1"
-                             Grid.RowSpan="5"
-                             Content="{Binding CurrentView}"
-                             Margin="0,40,0,0" />
+
+            <!--The MainWindow overlay-->
+            <Border VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    Background="#000000"
+                    Opacity="0.5"
+                    Visibility="{Binding MainWindowOverlay, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    CornerRadius="20" />
         </Grid>
     </Border>
 </Window>

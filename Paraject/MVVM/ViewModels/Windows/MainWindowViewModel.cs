@@ -15,6 +15,7 @@ namespace Paraject.MVVM.ViewModels.Windows
 
         public UserAccount CurrentUserAccount { get; set; }
         public object CurrentView { get; set; }
+        public bool MainWindowOverlay { get; set; } = true;
 
         #region Commands 
         //Navigation Commands
@@ -40,7 +41,7 @@ namespace Paraject.MVVM.ViewModels.Windows
         public OptionsViewModel OptionsVM { get; set; }
         #endregion
 
-
+        #region Contructor
         public MainWindowViewModel(UserAccount currentUserAccount)
         {
             CurrentUserAccount = currentUserAccount;
@@ -68,6 +69,7 @@ namespace Paraject.MVVM.ViewModels.Windows
 
             Get();
         }
+        #endregion
 
         #region Methods Used in UserAccountView
         public void Get()
