@@ -2,6 +2,7 @@
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -37,7 +38,7 @@ namespace Paraject.MVVM.ViewModels
 
         public void Add()
         {
-            MessageBox.Show($"{CurrentProject.Name} {CurrentProject.Description} {CurrentProject.Option} {CurrentProject.Deadline}");
+            MessageBox.Show($"User Id Fk: {CurrentUserAccount.Id} \nName: {CurrentProject.Name} \nDecription: {CurrentProject.Description} \nOption: {CurrentProject.Option} \nDeadline: {CurrentProject.Deadline} \nDate Created: {DateTime.Now}");
         }
 
         #region Display Project/s Methods
