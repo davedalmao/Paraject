@@ -37,7 +37,7 @@ namespace Paraject.MVVM.ViewModels
 
         public void Add()
         {
-            MessageBox.Show($"{CurrentUserAccount.Id} {CurrentUserAccount.Username} {CurrentUserAccount.DateCreated}");
+            MessageBox.Show($"{CurrentProject.Name} {CurrentProject.Description} {CurrentProject.Option} {CurrentProject.Deadline}");
         }
 
         #region Display Project/s Methods

@@ -15,9 +15,7 @@
         Background="Transparent"
         Width="764"
         Height="500"
-        FontFamily="{StaticResource NunitoBold}"
-        DataContext="{Binding Path=DataContext, 
-                                   RelativeSource={RelativeSource AncestorType={x:Type  Window}}}">
+        FontFamily="{StaticResource NunitoBold}">
     <Border Background="#222529"
             CornerRadius="20">
         <Grid Margin="25,20,25,40">
@@ -71,6 +69,7 @@
                     <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
 
+                <!--Left Group-->
                 <StackPanel Grid.Column="0">
                     <!--Project Logo-->
                     <Image Width="190"
@@ -99,7 +98,8 @@
                               ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:ProjectOptions}}}"
                               Style="{StaticResource ComboBoxTheme}"
                               FontSize="15"
-                              Foreground="#B8BDC1" />
+                              Foreground="#B8BDC1"
+                              Text="{Binding CurrentProject.Option}" />
 
                     <!--Deadline TextBlock-->
                     <TextBlock Text="Deadline"
@@ -110,9 +110,11 @@
                     <!--Deadline DateTimePicker-->
                     <DatePicker x:Name="DeadlineDatePicker"
                                 Style="{StaticResource DatePickerTheme}"
-                                FontSize="15" />
+                                FontSize="15"
+                                SelectedDate="{Binding CurrentProject.Deadline}" />
                 </StackPanel>
 
+                <!--Right Group-->
                 <StackPanel Grid.Column="1"
                             Margin="49,0,0,0">
                     <!--ProjectName TextBlock-->
@@ -125,7 +127,8 @@
                     <TextBox Width="294"
                              Height="42"
                              FontSize="15"
-                             Style="{StaticResource TextBoxTheme}" />
+                             Style="{StaticResource TextBoxTheme}"
+                             Text="{Binding CurrentProject.Name}" />
 
                     <!--Description TextBlock-->
                     <TextBlock Text="Description (optional)"
@@ -142,7 +145,8 @@
                              Style="{StaticResource TextBoxTheme}"
                              VerticalScrollBarVisibility="Auto"
                              VerticalContentAlignment="Top"
-                             Padding="20" />
+                             Padding="20"
+                             Text="{Binding CurrentProject.Description}" />
 
 
                     <!--Create Project Button-->

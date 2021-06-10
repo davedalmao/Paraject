@@ -63,8 +63,7 @@
                                         Background="Transparent"
                                         CornerRadius="10"
                                         BorderThickness="0,0,0,0">
-                                    <ContentPresenter ContentSource="{Binding Source}"
-                                                      VerticalAlignment="Center"
+                                    <ContentPresenter VerticalAlignment="Center"
                                                       HorizontalAlignment="Left"
                                                       Margin="20,9" />
                                 </Border>
