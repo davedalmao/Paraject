@@ -72,7 +72,8 @@
                 <!--Left Group-->
                 <StackPanel Grid.Column="0">
                     <!--Project Logo-->
-                    <Image Width="190"
+                    <Image x:Name="imagebox"
+                           Width="190"
                            Height="115"
                            HorizontalAlignment="Left" />
 
@@ -84,7 +85,8 @@
                             Background="#0093C4"
                             HorizontalAlignment="Left"
                             Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
-                            Style="{StaticResource GeneralButtonTheme}" />
+                            Style="{StaticResource GeneralButtonTheme}"
+                            Command="{Binding SelectProjectLogoCommand}" />
 
                     <!--ProjectOption TextBlock-->
                     <TextBlock Text="Project Option"

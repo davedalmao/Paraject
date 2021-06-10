@@ -11,6 +11,7 @@ namespace Paraject.MVVM.ViewModels
     public class ProjectsViewModel : BaseViewModel
     {
         public ICommand AddProjectCommand { get; }
+        public ICommand SelectProjectLogoCommand { get; }
         public ICommand AllProjectsCommand { get; }
         public ICommand PersonalProjectsCommand { get; }
         public ICommand PaidProjectsCommand { get; }
@@ -28,6 +29,7 @@ namespace Paraject.MVVM.ViewModels
             CurrentUserAccount = userAccount;
 
             AddProjectCommand = new DelegateCommand(Add);
+            SelectProjectLogoCommand = new DelegateCommand(SelectLogo);
             AllProjectsCommand = new DelegateCommand(AllProjects);
             PersonalProjectsCommand = new DelegateCommand(PersonalProjects);
             PaidProjectsCommand = new DelegateCommand(PaidProjects);
@@ -39,6 +41,11 @@ namespace Paraject.MVVM.ViewModels
         public void Add()
         {
             MessageBox.Show($"User Id Fk: {CurrentUserAccount.Id} \nName: {CurrentProject.Name} \nDecription: {CurrentProject.Description} \nOption: {CurrentProject.Option} \nDeadline: {CurrentProject.Deadline} \nDate Created: {DateTime.Now}");
+        }
+
+        public void SelectLogo()
+        {
+
         }
 
         #region Display Project/s Methods
