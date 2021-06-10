@@ -74,8 +74,7 @@
                     <StackPanel Width="190"
                                 HorizontalAlignment="Left">
                         <!--Project Logo-->
-                        <Image Name="ProjectLogo"
-                               MaxWidth="190"
+                        <Image MaxWidth="190"
                                Height="115"
                                HorizontalAlignment="Center"
                                RenderOptions.BitmapScalingMode="HighQuality"
@@ -90,8 +89,7 @@
                                 Background="#0093C4"
                                 HorizontalAlignment="Left"
                                 Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
-                                Style="{StaticResource GeneralButtonTheme}"
-                                Click="Button_Click" />
+                                Style="{StaticResource GeneralButtonTheme}" />
                     </StackPanel>
 
                     <!--ProjectOption TextBlock-->
