@@ -12,10 +12,25 @@ namespace Paraject.MVVM.ViewModels.Windows
     public class MainWindowViewModel : BaseViewModel
     {
         private readonly UserAccountRepository _userAccountRepository;
+        private static bool _overlay;
+
+        //Event handler for static property (MainWindowOverlay), since PropertyChanged.Fody (nuget package) doesn't notify static property changes
+        //The static property name in this ViewModel is Overlay. The event name is therefore OverlayChanged (or else it will not notify the changes)
+        public static event EventHandler OverlayChanged;
+        public static bool Overlay
+        {
+            get { return _overlay; }
+            set
+            {
+                _overlay = value;
+                if (OverlayChanged is not null)
+                    OverlayChanged(null, EventArgs.Empty);
+            }
+        }
 
         public UserAccount CurrentUserAccount { get; set; }
         public object CurrentView { get; set; }
-        public bool MainWindowOverlay { get; set; } = true;
+
 
         #region Commands 
         //Navigation Commands

@@ -8,9 +8,9 @@
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
         xmlns:custom="clr-namespace:Paraject.Core.CustomControls"
         xmlns:viewModel="clr-namespace:Paraject.MVVM.ViewModels"
-        xmlns:windows="clr-namespace:Paraject.MVVM.ViewModels.Windows"
+        xmlns:windowViewModel="clr-namespace:Paraject.MVVM.ViewModels.Windows"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-        d:DataContext="{d:DesignInstance Type=windows:MainWindowViewModel}"
+        d:DataContext="{d:DesignInstance Type=windowViewModel:MainWindowViewModel}"
         mc:Ignorable="d"
         Height="615"
         Width="940"
@@ -233,9 +233,11 @@
             <Border VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Background="#000000"
-                    Opacity="0.5"
-                    Visibility="{Binding MainWindowOverlay, Converter={StaticResource BooleanToVisibilityConverter}}"
-                    CornerRadius="20" />
+                    Opacity="0.3"
+                    CornerRadius="20"
+                    Visibility="{Binding Path=(windowViewModel:MainWindowViewModel.Overlay),  
+                                         FallbackValue=Collapsed,
+                                         Converter={StaticResource BooleanToVisibilityConverter }}" />
         </Grid>
     </Border>
 </Window>

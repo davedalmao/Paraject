@@ -11,7 +11,7 @@
         WindowStyle="None"
         ResizeMode="CanResize"
         AllowsTransparency="True"
-        WindowStartupLocation="CenterScreen"
+        WindowStartupLocation="CenterOwner"
         Background="Transparent"
         Width="764"
         Height="500"

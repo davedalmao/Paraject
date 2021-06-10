@@ -1,4 +1,5 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
 using System.Windows.Input;
 
@@ -12,7 +13,6 @@ namespace Paraject.MVVM.ViewModels
         public ICommand AddProjectsDialogCommand { get; }
 
         public string Message { get; set; } //test property
-
         public DisplayProjectsViewModel DisplayProjectsVM { get; set; }
 
         public ProjectsViewModel()
@@ -41,6 +41,9 @@ namespace Paraject.MVVM.ViewModels
         }
         public void ShowAddProjectsDialog()
         {
+            //Show overlay from MainWindow
+            MainWindowViewModel.Overlay = true;
+
             AddProjectModalDialog addProjectModalDialog = new AddProjectModalDialog();
             addProjectModalDialog.ShowDialog();
         }
