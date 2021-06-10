@@ -91,7 +91,7 @@ namespace Paraject.Core.Repositories
                         Name = sqlDataReader.GetString(2),
                         Description = sqlDataReader.GetString(3),
                         Option = sqlDataReader.GetString(4),
-                        Status = (Enums.Status)sqlDataReader.GetByte(5),
+                        Status = sqlDataReader.GetString(5),
                         Deadline = sqlDataReader.GetDateTime(6),
                         DateCreated = sqlDataReader.GetDateTime(7)
                     };
@@ -131,7 +131,7 @@ namespace Paraject.Core.Repositories
                                 Name = sqlDataReader.GetString(2),
                                 Description = sqlDataReader.GetString(3),
                                 Option = sqlDataReader.GetString(4),
-                                Status = (Enums.Status)sqlDataReader.GetByte(5),
+                                Status = sqlDataReader.GetString(5),
                                 Deadline = sqlDataReader.GetDateTime(6),
                                 DateCreated = sqlDataReader.GetDateTime(7)
                             };
@@ -182,7 +182,7 @@ namespace Paraject.Core.Repositories
                                 Name = sqlDataReader.GetString(2),
                                 Description = sqlDataReader.GetString(3),
                                 Option = sqlDataReader.GetString(4),
-                                Status = (Enums.Status)sqlDataReader.GetByte(5),
+                                Status = sqlDataReader.GetString(5),
                                 Deadline = sqlDataReader.GetDateTime(6),
                                 DateCreated = sqlDataReader.GetDateTime(7)
                             };
