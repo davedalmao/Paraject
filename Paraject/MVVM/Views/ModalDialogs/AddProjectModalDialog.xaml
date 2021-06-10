@@ -15,7 +15,9 @@
         Background="Transparent"
         Width="764"
         Height="500"
-        FontFamily="{StaticResource NunitoBold}">
+        FontFamily="{StaticResource NunitoBold}"
+        DataContext="{Binding Path=DataContext, 
+                                   RelativeSource={RelativeSource AncestorType={x:Type  Window}}}">
     <Border Background="#222529"
             CornerRadius="20">
         <Grid Margin="25,20,25,40">
@@ -151,7 +153,8 @@
                             Background="#F54342"
                             VerticalAlignment="Bottom"
                             Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
-                            Style="{StaticResource GeneralButtonTheme}" />
+                            Style="{StaticResource GeneralButtonTheme}"
+                            Command="{Binding AddProjectCommand}" />
                 </StackPanel>
             </Grid>
         </Grid>
