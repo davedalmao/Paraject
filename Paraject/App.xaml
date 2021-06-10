@@ -6,6 +6,7 @@
              xmlns:viewModel="clr-namespace:Paraject.MVVM.ViewModels"
              xmlns:windowView="clr-namespace:Paraject.MVVM.Views.Windows"
              xmlns:windowViewModel="clr-namespace:Paraject.MVVM.ViewModels.Windows"
+             xmlns:converters="clr-namespace:Paraject.Core.Converters"
              StartupUri="/MVVM/Views/Windows/LoginWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -18,12 +19,18 @@
                 <ResourceDictionary Source="/UiDesign/Theme/TextOnlyButtonTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/TextBoxTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/BindablePasswordBoxTheme.xaml" />
+                <ResourceDictionary Source="/UiDesign/Theme/ComboBoxTheme.xaml" />
+                <ResourceDictionary Source="/UiDesign/Theme/DatePickerTheme.xaml" />
+                <ResourceDictionary Source="/UiDesign/Theme/DatePickerCalendarTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--Fontstyles-->
             <FontFamily x:Key="NunitoBold">/UiDesign/Fonts/Nunito-Bold.ttf#Nunito</FontFamily>
             <FontFamily x:Key="MerriweatherBold">/UiDesign/Fonts/Merriweather-Bold.ttf#Merriweather</FontFamily>
 
+            <!--Converters-->
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <converters:ByteArrayToBitmapImageConverter x:Key="ByteArrayToBitmapImageConverter" />
 
             <!--Binding the View to its ViewModel-->
 
@@ -56,7 +63,6 @@
             <DataTemplate DataType="{x:Type viewModel:UserAccountViewModel}">
                 <view:UserAccountView />
             </DataTemplate>
-
 
             <!--Project Ideas-->
             <DataTemplate DataType="{x:Type viewModel:ProjectIdeasViewModel}">

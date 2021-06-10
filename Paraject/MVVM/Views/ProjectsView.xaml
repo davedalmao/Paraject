@@ -54,7 +54,8 @@
                 HorizontalAlignment="Right"
                 Tag="/UiDesign/Icons/ButtonIcons/add.svg"
                 Margin="0,0,0,25"
-                Style="{StaticResource GeneralButtonTheme}" />
+                Style="{StaticResource GeneralButtonTheme}"
+                Command="{Binding AddProjectsDialogCommand}" />
 
         <ContentControl Grid.Column="0"
                         Grid.ColumnSpan="4"

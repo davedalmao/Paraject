@@ -12,9 +12,25 @@ namespace Paraject.MVVM.ViewModels.Windows
     public class MainWindowViewModel : BaseViewModel
     {
         private readonly UserAccountRepository _userAccountRepository;
+        private static bool _overlay;
+
+        //Event handler for static property (MainWindowOverlay), since PropertyChanged.Fody (nuget package) doesn't notify static property changes
+        //The static property name in this ViewModel is Overlay. The event name is therefore OverlayChanged (or else it will not notify the changes)
+        public static event EventHandler OverlayChanged;
+        public static bool Overlay
+        {
+            get { return _overlay; }
+            set
+            {
+                _overlay = value;
+                if (OverlayChanged is not null)
+                    OverlayChanged(null, EventArgs.Empty);
+            }
+        }
 
         public UserAccount CurrentUserAccount { get; set; }
         public object CurrentView { get; set; }
+
 
         #region Commands 
         //Navigation Commands
@@ -40,7 +56,7 @@ namespace Paraject.MVVM.ViewModels.Windows
         public OptionsViewModel OptionsVM { get; set; }
         #endregion
 
-
+        #region Contructor
         public MainWindowViewModel(UserAccount currentUserAccount)
         {
             CurrentUserAccount = currentUserAccount;
@@ -53,7 +69,7 @@ namespace Paraject.MVVM.ViewModels.Windows
 
             //pass currentUserAccount to the ViewModels that need to access the User's details
             DashboardVM = new DashboardViewModel();
-            ProjectsVM = new ProjectsViewModel();
+            ProjectsVM = new ProjectsViewModel(currentUserAccount);
             ProfileVM = new UserAccountViewModel();
             ProjectIdeasVM = new ProjectIdeasViewModel();
             OptionsVM = new OptionsViewModel();
@@ -68,6 +84,7 @@ namespace Paraject.MVVM.ViewModels.Windows
 
             Get();
         }
+        #endregion
 
         #region Methods Used in UserAccountView
         public void Get()

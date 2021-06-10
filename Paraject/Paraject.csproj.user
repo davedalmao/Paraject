@@ -18,6 +18,9 @@
     <Compile Update="MVVM\Views\DisplayProjectsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="MVVM\Views\ModalDialogs\AddProjectModalDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MVVM\Views\OptionsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -50,6 +53,9 @@
     <Page Update="MVVM\Views\DisplayProjectsView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="MVVM\Views\ModalDialogs\AddProjectModalDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MVVM\Views\OptionsView.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -72,6 +78,15 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UiDesign\Theme\BindablePasswordBoxTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UiDesign\Theme\ComboBoxTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UiDesign\Theme\DatePickerCalendarTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UiDesign\Theme\DatePickerTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UiDesign\Theme\GeneralButtonTheme.xaml">

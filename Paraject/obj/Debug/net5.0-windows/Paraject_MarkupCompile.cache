@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\App.xaml
-17-914246161
+212136562416
 4-809313125
-34-934888426
+37-365171511
 204755123820
-Core\CustomControls\UserControls\BindablePasswordBox.xaml;MVVM\Views\DashboardView.xaml;MVVM\Views\DisplayProjectsView.xaml;MVVM\Views\OptionsView.xaml;MVVM\Views\ProjectIdeasView.xaml;MVVM\Views\ProjectsView.xaml;MVVM\Views\UserAccountView.xaml;MVVM\Views\Windows\LoginWindow.xaml;MVVM\Views\Windows\MainWindow.xaml;MVVM\Views\Windows\SignupWindow.xaml;UiDesign\Theme\BindablePasswordBoxTheme.xaml;UiDesign\Theme\GeneralButtonTheme.xaml;UiDesign\Theme\HorizontalRadioButtonTheme.xaml;UiDesign\Theme\PlainButtonTheme.xaml;UiDesign\Theme\TextBoxTheme.xaml;UiDesign\Theme\TextOnlyButtonTheme.xaml;UiDesign\Theme\VerticalRadioButtonTheme.xaml;
+Core\CustomControls\UserControls\BindablePasswordBox.xaml;MVVM\Views\DashboardView.xaml;MVVM\Views\DisplayProjectsView.xaml;MVVM\Views\ModalDialogs\AddProjectModalDialog.xaml;MVVM\Views\OptionsView.xaml;MVVM\Views\ProjectIdeasView.xaml;MVVM\Views\ProjectsView.xaml;MVVM\Views\UserAccountView.xaml;MVVM\Views\Windows\LoginWindow.xaml;MVVM\Views\Windows\MainWindow.xaml;MVVM\Views\Windows\SignupWindow.xaml;UiDesign\Theme\BindablePasswordBoxTheme.xaml;UiDesign\Theme\ComboBoxTheme.xaml;UiDesign\Theme\DatePickerCalendarTheme.xaml;UiDesign\Theme\DatePickerTheme.xaml;UiDesign\Theme\GeneralButtonTheme.xaml;UiDesign\Theme\HorizontalRadioButtonTheme.xaml;UiDesign\Theme\PlainButtonTheme.xaml;UiDesign\Theme\TextBoxTheme.xaml;UiDesign\Theme\TextOnlyButtonTheme.xaml;UiDesign\Theme\VerticalRadioButtonTheme.xaml;
 
 False
 

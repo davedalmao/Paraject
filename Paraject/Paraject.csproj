@@ -19,9 +19,11 @@
     <None Remove="UiDesign\Fonts\Nunito-Bold.ttf" />
     <None Remove="UiDesign\Fonts\Nunito-Regular.ttf" />
     <None Remove="UiDesign\Icons\ButtonIcons\add.svg" />
+    <None Remove="UiDesign\Icons\ButtonIcons\addProjectLogo.svg" />
     <None Remove="UiDesign\Icons\ButtonIcons\delete.svg" />
     <None Remove="UiDesign\Icons\ButtonIcons\image.svg" />
     <None Remove="UiDesign\Icons\ButtonIcons\update.svg" />
+    <None Remove="UiDesign\Icons\ModalDialogIcons\addProjectIcon.svg" />
     <None Remove="UiDesign\Icons\Password\showPassword.svg" />
     <None Remove="UiDesign\Icons\WindowStateButtons\lightClose.png" />
     <None Remove="UiDesign\Icons\WindowStateButtons\lightMin.png" />
@@ -65,10 +67,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="MVVM\Views\ModalDialogs\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.31" />
     <PackageReference Include="PropertyChanged.Fody" Version="3.3.3" />
     <PackageReference Include="SharpVectors" Version="1.7.1" />
@@ -79,6 +77,9 @@
     <Resource Include="UiDesign\Icons\ButtonIcons\add.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="UiDesign\Icons\ButtonIcons\addProjectLogo.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="UiDesign\Icons\ButtonIcons\delete.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -86,6 +87,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Icons\ButtonIcons\update.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Icons\ModalDialogIcons\addProjectIcon.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Icons\Password\showPassword.svg">

@@ -1,5 +1,4 @@
-﻿using Paraject.MVVM.ViewModels;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace Paraject.MVVM.Views
 {
@@ -8,12 +7,9 @@ namespace Paraject.MVVM.Views
     /// </summary>
     public partial class ProjectsView : UserControl
     {
-        readonly ProjectsViewModel _viewModel;
         public ProjectsView()
         {
             InitializeComponent();
-            _viewModel = new();
-            DataContext = _viewModel;
         }
     }
 }

@@ -1,0 +1,172 @@
+﻿<Window x:Class="Paraject.MVVM.Views.ModalDialogs.AddProjectModalDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Paraject.MVVM.Views.ModalDialogs"
+        xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
+        xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
+        xmlns:enums="clr-namespace:Paraject.Core.Repositories"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        ResizeMode="CanResize"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterOwner"
+        Background="Transparent"
+        Width="764"
+        Height="500"
+        FontFamily="{StaticResource NunitoBold}">
+    <Border Background="#222529"
+            CornerRadius="20">
+        <Grid Margin="25,20,25,40">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <!--Modal Header-->
+            <Grid Grid.Row="0"
+                  Margin="0,0,0,25">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <!--Modal Header Text and Image-->
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2">
+                    <UserControl Width="28"
+                                 Height="28"
+                                 Margin="0,0,8,0">
+                        <svgc1:SvgViewbox Cursor="Hand"
+                                          Source="/UiDesign/Icons/ModalDialogIcons/addProjectIcon.svg" />
+                    </UserControl>
+                    <TextBlock Text="Add Project"
+                               FontSize="25"
+                               Foreground="#B8BDC1"
+                               HorizontalAlignment="Center" />
+                </StackPanel>
+
+                <!--Close Button-->
+                <Button Style="{StaticResource PlainButtonTheme}"
+                        Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        Click="CloseModal">
+                    <Image Source="/UiDesign/Icons/WindowStateButtons/close.png"
+                           Width="28"
+                           Height="28"
+                           Cursor="Hand" />
+                </Button>
+            </Grid>
+
+            <!--Modal Content-->
+            <Grid Grid.Row="1"
+                  HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <!--Left Group-->
+                <StackPanel Grid.Column="0">
+                    <StackPanel Width="190"
+                                HorizontalAlignment="Left">
+                        <!--Project Logo-->
+                        <Image MaxWidth="190"
+                               Height="115"
+                               HorizontalAlignment="Center"
+                               RenderOptions.BitmapScalingMode="HighQuality"
+                               RenderOptions.EdgeMode="Aliased"
+                               SnapsToDevicePixels="True" />
+
+                        <!--Add Project Logo Button-->
+                        <Button Content="Add Logo"
+                                Margin="0,18,0,0"
+                                Height="36"
+                                Width="190"
+                                Background="#0093C4"
+                                HorizontalAlignment="Left"
+                                Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
+                                Style="{StaticResource GeneralButtonTheme}" />
+                    </StackPanel>
+
+                    <!--ProjectOption TextBlock-->
+                    <TextBlock Text="Project Option"
+                               Margin="0,40,0,6"
+                               FontSize="19"
+                               Foreground="#B8BDC1" />
+
+                    <!--ProjectOption ComboBox-->
+                    <ComboBox Width="294"
+                              Height="42"
+                              ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:ProjectOptions}}}"
+                              Style="{StaticResource ComboBoxTheme}"
+                              FontSize="15"
+                              Foreground="#B8BDC1"
+                              Text="{Binding CurrentProject.Option}" />
+
+                    <!--Deadline TextBlock-->
+                    <TextBlock Text="Deadline"
+                               Margin="0,18,0,6"
+                               FontSize="19"
+                               Foreground="#B8BDC1" />
+
+                    <!--Deadline DateTimePicker-->
+                    <DatePicker x:Name="DeadlineDatePicker"
+                                Style="{StaticResource DatePickerTheme}"
+                                FontSize="15"
+                                SelectedDate="{Binding CurrentProject.Deadline}" />
+                </StackPanel>
+
+                <!--Right Group-->
+                <StackPanel Grid.Column="1"
+                            Margin="49,0,0,0">
+                    <!--ProjectName TextBlock-->
+                    <TextBlock Text="Project Name"
+                               FontSize="19"
+                               Foreground="#B8BDC1"
+                               Margin="0,0,0,6" />
+
+                    <!--ProjectName TextBox-->
+                    <TextBox Width="294"
+                             Height="42"
+                             FontSize="15"
+                             Style="{StaticResource TextBoxTheme}"
+                             Text="{Binding CurrentProject.Name}" />
+
+                    <!--Description TextBlock-->
+                    <TextBlock Text="Description (optional)"
+                               FontSize="19"
+                               Foreground="#B8BDC1"
+                               Margin="0,22,0,6" />
+
+                    <!--Description Multiline TextBox-->
+                    <TextBox Width="294"
+                             Height="185"
+                             FontSize="15"
+                             TextWrapping="Wrap"
+                             AcceptsReturn="True"
+                             Style="{StaticResource TextBoxTheme}"
+                             VerticalScrollBarVisibility="Auto"
+                             VerticalContentAlignment="Top"
+                             Padding="20"
+                             Text="{Binding CurrentProject.Description}" />
+
+
+                    <!--Create Project Button-->
+                    <Button Content="Create New Project"
+                            Margin="0,22,0,0"
+                            Height="40"
+                            Width="294"
+                            Background="#F54342"
+                            VerticalAlignment="Bottom"
+                            Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
+                            Style="{StaticResource GeneralButtonTheme}"
+                            Command="{Binding AddProjectCommand}" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
