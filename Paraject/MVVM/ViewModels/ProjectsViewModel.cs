@@ -1,4 +1,5 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
 using System.Windows;
@@ -15,11 +16,15 @@ namespace Paraject.MVVM.ViewModels
         public ICommand AddProjectsDialogCommand { get; }
 
         public string Message { get; set; } //test property
+        public Project CurrentProject { get; set; }
+        public UserAccount CurrentUserAccount { get; set; }
         public DisplayProjectsViewModel DisplayProjectsVM { get; set; }
 
-        public ProjectsViewModel()
+        public ProjectsViewModel(UserAccount userAccount)
         {
             DisplayProjectsVM = new DisplayProjectsViewModel();
+            CurrentProject = new Project();
+            CurrentUserAccount = userAccount;
 
             AddProjectCommand = new DelegateCommand(Add);
             AllProjectsCommand = new DelegateCommand(AllProjects);
@@ -32,7 +37,7 @@ namespace Paraject.MVVM.ViewModels
 
         public void Add()
         {
-            MessageBox.Show("sfdsf");
+            MessageBox.Show($"{CurrentUserAccount.Id} {CurrentUserAccount.Username} {CurrentUserAccount.DateCreated}");
         }
 
         #region Display Project/s Methods

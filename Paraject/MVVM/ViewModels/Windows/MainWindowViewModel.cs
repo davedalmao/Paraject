@@ -69,7 +69,7 @@ namespace Paraject.MVVM.ViewModels.Windows
 
             //pass currentUserAccount to the ViewModels that need to access the User's details
             DashboardVM = new DashboardViewModel();
-            ProjectsVM = new ProjectsViewModel();
+            ProjectsVM = new ProjectsViewModel(currentUserAccount);
             ProfileVM = new UserAccountViewModel();
             ProjectIdeasVM = new ProjectIdeasViewModel();
             OptionsVM = new OptionsViewModel();

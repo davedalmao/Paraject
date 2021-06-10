@@ -30,6 +30,7 @@
             <!--Converters-->
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 
+
             <!--Binding the View to its ViewModel-->
 
             <!--Login Window-->
@@ -61,7 +62,6 @@
             <DataTemplate DataType="{x:Type viewModel:UserAccountViewModel}">
                 <view:UserAccountView />
             </DataTemplate>
-
 
             <!--Project Ideas-->
             <DataTemplate DataType="{x:Type viewModel:ProjectIdeasViewModel}">
