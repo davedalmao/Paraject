@@ -71,26 +71,32 @@
 
                 <!--Left Group-->
                 <StackPanel Grid.Column="0">
-                    <!--Project Logo-->
-                    <Image x:Name="imagebox"
-                           Width="190"
-                           Height="115"
-                           HorizontalAlignment="Left" />
+                    <StackPanel Width="190"
+                                HorizontalAlignment="Left">
+                        <!--Project Logo-->
+                        <Image Name="ProjectLogo"
+                               MaxWidth="190"
+                               Height="115"
+                               HorizontalAlignment="Center"
+                               RenderOptions.BitmapScalingMode="HighQuality"
+                               RenderOptions.EdgeMode="Aliased"
+                               SnapsToDevicePixels="True" />
 
-                    <!--Add Project Logo Button-->
-                    <Button Content="Add Logo"
-                            Margin="0,12,0,0"
-                            Height="36"
-                            Width="190"
-                            Background="#0093C4"
-                            HorizontalAlignment="Left"
-                            Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
-                            Style="{StaticResource GeneralButtonTheme}"
-                            Command="{Binding SelectProjectLogoCommand}" />
+                        <!--Add Project Logo Button-->
+                        <Button Content="Add Logo"
+                                Margin="0,18,0,0"
+                                Height="36"
+                                Width="190"
+                                Background="#0093C4"
+                                HorizontalAlignment="Left"
+                                Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
+                                Style="{StaticResource GeneralButtonTheme}"
+                                Click="Button_Click" />
+                    </StackPanel>
 
                     <!--ProjectOption TextBlock-->
                     <TextBlock Text="Project Option"
-                               Margin="0,46,0,6"
+                               Margin="0,40,0,6"
                                FontSize="19"
                                Foreground="#B8BDC1" />
 
