@@ -19,11 +19,9 @@ namespace Paraject.MVVM.ViewModels
         public string TestMessage { get; set; } //test property
         public Project CurrentProject { get; set; }
         public UserAccount CurrentUserAccount { get; set; }
-        //public DisplayProjectsViewModel DisplayProjectsVM { get; set; }
 
         public ProjectsViewModel(UserAccount userAccount)
         {
-            //DisplayProjectsVM = new DisplayProjectsViewModel();
             CurrentProject = new Project();
             CurrentUserAccount = userAccount;
 
