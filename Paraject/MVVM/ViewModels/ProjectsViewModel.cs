@@ -3,6 +3,7 @@ using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -11,6 +12,7 @@ namespace Paraject.MVVM.ViewModels
     public class ProjectsViewModel : BaseViewModel
     {
         private readonly ProjectRepository _projectRepository;
+        public event EventHandler Closed; //The Window (AddProjectModalDialog) closes itself when this event is executed
 
         public ICommand AddProjectCommand { get; }
         public ICommand AllProjectsCommand { get; }
@@ -44,6 +46,7 @@ namespace Paraject.MVVM.ViewModels
             AllProjects();
         }
 
+        #region Add Project Methods
         public void Add()
         {
             //Validate if a Project has a name
@@ -58,12 +61,15 @@ namespace Paraject.MVVM.ViewModels
                 MessageBox.Show("A project should have a name");
             }
         }
-
-        private static void AddValidatedProjectToDB(bool isAdded)
+        private void AddValidatedProjectToDB(bool isAdded)
         {
             if (isAdded)
             {
                 MessageBox.Show("Project Created");
+
+                //close the AddProjectModalDialog if  Creating a Project is successful
+                MainWindowViewModel.Overlay = false;
+                Close();
             }
 
             else
@@ -71,7 +77,7 @@ namespace Paraject.MVVM.ViewModels
                 MessageBox.Show("Error occured, cannot create project");
             }
         }
-
+        #endregion
 
         #region Display Project/s Methods
         public void AllProjects()
@@ -97,6 +103,10 @@ namespace Paraject.MVVM.ViewModels
             AddProjectModalDialog addProjectModalDialog = new AddProjectModalDialog();
             addProjectModalDialog.DataContext = this;
             addProjectModalDialog.ShowDialog();
+        }
+        private void Close() //The method that executes Closed EventHandler
+        {
+            Closed?.Invoke(this, EventArgs.Empty);
         }
         #endregion
     }
