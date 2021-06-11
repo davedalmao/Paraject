@@ -52,11 +52,6 @@
                 <view:ProjectsView />
             </DataTemplate>
 
-            <!--Display Projects-->
-            <DataTemplate DataType="{x:Type viewModel:DisplayProjectsViewModel}">
-                <view:DisplayProjectsView />
-            </DataTemplate>
-
             <!--Profile-->
             <DataTemplate DataType="{x:Type viewModel:UserAccountViewModel}">
                 <view:UserAccountView />

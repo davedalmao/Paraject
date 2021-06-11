@@ -16,14 +16,14 @@ namespace Paraject.MVVM.ViewModels
         public ICommand PaidProjectsCommand { get; }
         public ICommand AddProjectsDialogCommand { get; }
 
-        public string Message { get; set; } //test property
+        public string TestMessage { get; set; } //test property
         public Project CurrentProject { get; set; }
         public UserAccount CurrentUserAccount { get; set; }
-        public DisplayProjectsViewModel DisplayProjectsVM { get; set; }
+        //public DisplayProjectsViewModel DisplayProjectsVM { get; set; }
 
         public ProjectsViewModel(UserAccount userAccount)
         {
-            DisplayProjectsVM = new DisplayProjectsViewModel();
+            //DisplayProjectsVM = new DisplayProjectsViewModel();
             CurrentProject = new Project();
             CurrentUserAccount = userAccount;
 
@@ -45,15 +45,15 @@ namespace Paraject.MVVM.ViewModels
         #region Display Project/s Methods
         public void AllProjects()
         {
-            Message = "all";
+            TestMessage = "all";
         }
         public void PersonalProjects()
         {
-            Message = "personal";
+            TestMessage = "personal";
         }
         public void PaidProjects()
         {
-            Message = "paid";
+            TestMessage = "paid";
         }
         #endregion
 

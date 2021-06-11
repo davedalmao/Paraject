@@ -57,9 +57,10 @@
                 Style="{StaticResource GeneralButtonTheme}"
                 Command="{Binding AddProjectsDialogCommand}" />
 
-        <ContentControl Grid.Column="0"
-                        Grid.ColumnSpan="4"
-                        Grid.Row="1"
-                        Content="{Binding DisplayProjectsVM}" />
+        <TextBlock Text="{Binding TestMessage}"
+                   FontSize="100"
+                   Foreground="Beige"
+                   Grid.Row="1"
+                   Grid.ColumnSpan="4" />
     </Grid>
 </UserControl>
