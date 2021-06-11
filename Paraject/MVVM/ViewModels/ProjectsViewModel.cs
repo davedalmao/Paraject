@@ -1,8 +1,8 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
-using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -10,6 +10,8 @@ namespace Paraject.MVVM.ViewModels
 {
     public class ProjectsViewModel : BaseViewModel
     {
+        private readonly ProjectRepository _projectRepository;
+
         public ICommand AddProjectCommand { get; }
         public ICommand AllProjectsCommand { get; }
         public ICommand PersonalProjectsCommand { get; }
@@ -22,21 +24,40 @@ namespace Paraject.MVVM.ViewModels
 
         public ProjectsViewModel(UserAccount userAccount)
         {
+            //Repository
+            _projectRepository = new ProjectRepository();
+
+            //Models
             CurrentProject = new Project();
             CurrentUserAccount = userAccount;
 
-            AddProjectCommand = new DelegateCommand(Add);
+            //Project Displays in ProjectsView
             AllProjectsCommand = new DelegateCommand(AllProjects);
             PersonalProjectsCommand = new DelegateCommand(PersonalProjects);
             PaidProjectsCommand = new DelegateCommand(PaidProjects);
-            AddProjectsDialogCommand = new DelegateCommand(ShowAddProjectsDialog);
 
+            //Commands in the AddProjectsModalDialog
+            AddProjectsDialogCommand = new DelegateCommand(ShowAddProjectsDialog);
+            AddProjectCommand = new DelegateCommand(Add);
+
+            //Default Project Display
             AllProjects();
         }
 
         public void Add()
         {
-            MessageBox.Show($"User Id Fk: {CurrentUserAccount.Id} \nName: {CurrentProject.Name} \nDecription: {CurrentProject.Description} \nOption: {CurrentProject.Option} \nDeadline: {CurrentProject.Deadline} \nDate Created: {DateTime.Now}");
+            //MessageBox.Show($"User Id Fk: {CurrentUserAccount.Id} \nName: {CurrentProject.Name} \nDecription: {CurrentProject.Description} \nOption: {CurrentProject.Option} \nDeadline: {CurrentProject.Deadline} \nDate Created: {DateTime.Now}");
+            bool isAdded = _projectRepository.Add(CurrentProject, CurrentUserAccount.Id);
+
+            if (isAdded)
+            {
+                MessageBox.Show("Project Created");
+            }
+
+            else
+            {
+                MessageBox.Show("Error occured, cannot create project");
+            }
         }
 
 

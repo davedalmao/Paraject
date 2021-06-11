@@ -1,4 +1,5 @@
-﻿using Paraject.Core.Repositories.Interfaces;
+﻿using Paraject.Core.Enums;
+using Paraject.Core.Repositories.Interfaces;
 using Paraject.Core.Utilities;
 using Paraject.MVVM.Models;
 using System;
@@ -30,7 +31,7 @@ namespace Paraject.Core.Repositories
             bool isAdded = false;
 
             using (SqlConnection con = new(_connectionString))
-            using (SqlCommand cmd = new("spAddProject", con))
+            using (SqlCommand cmd = new("Project.spAddProject", con))
             {
                 try
                 {
@@ -41,7 +42,7 @@ namespace Paraject.Core.Repositories
                     cmd.Parameters.Add("@project_name", SqlDbType.NVarChar, 50).Value = project.Name;
                     cmd.Parameters.Add("@project_description", SqlDbType.NVarChar, 500).Value = project.Description;
                     cmd.Parameters.Add("@project_option", SqlDbType.NVarChar, 50).Value = project.Option;
-                    cmd.Parameters.Add("@project_status", SqlDbType.NVarChar, 12).Value = project.Status;
+                    cmd.Parameters.Add("@project_status", SqlDbType.NVarChar, 12).Value = Enum.GetName(Status.Open);
                     cmd.Parameters.Add("@project_deadline", SqlDbType.DateTime2).Value = project.Deadline;
                     cmd.Parameters.Add("@date_created", SqlDbType.DateTime2).Value = DateTime.Now;
 
