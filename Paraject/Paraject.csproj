@@ -29,6 +29,7 @@
     <None Remove="UiDesign\Icons\WindowStateButtons\lightMin.png" />
     <None Remove="UiDesign\Images\dashboardImage.svg" />
     <None Remove="UiDesign\Images\loginGraphic.svg" />
+    <None Remove="UiDesign\Images\Logo\defaultProjectLogo.png" />
     <None Remove="UiDesign\Images\Logo\parajectLogo.svg" />
     <None Remove="UiDesign\Images\Logo\parajectLogoDark.svg" />
     <None Remove="UiDesign\Images\parajectLogo.png" />
@@ -141,6 +142,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Icons\SideBarIcons\options.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Images\Logo\defaultProjectLogo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Images\Logo\parajectLogo.svg">
