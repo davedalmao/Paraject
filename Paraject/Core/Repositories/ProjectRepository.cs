@@ -230,6 +230,17 @@ namespace Paraject.Core.Repositories
                 }
                 catch (SqlException ex)
                 {
+                    if (ex.Number == 2627)// Violation of unique constraint (Name should be unique)
+                    {
+                        MessageBox.Show($"{project.Name} Already Exist !!!");
+                    }
+                    else
+                    {
+                        MessageBox.Show($"An SQL error occured while processing data. \nError: { ex.Message }");
+                    }
+                }
+                catch (Exception ex)
+                {
                     MessageBox.Show(ex.ToString());
                 }
             }
