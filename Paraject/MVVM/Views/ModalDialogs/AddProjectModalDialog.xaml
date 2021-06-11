@@ -104,6 +104,7 @@
                               ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:ProjectOptions}}}"
                               Style="{StaticResource ComboBoxTheme}"
                               FontSize="15"
+                              SelectedIndex="1"
                               Foreground="#B8BDC1"
                               Text="{Binding CurrentProject.Option}" />
 

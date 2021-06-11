@@ -11,8 +11,8 @@ namespace Paraject.Core.Repositories
 {
     public enum ProjectOptions
     {
-        Paid,
-        Personal
+        Personal,
+        Paid
     }
 
     public class ProjectRepository : IProjectRepository
