@@ -23,6 +23,7 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
+        <!--All Projects Display-->
         <custom:MenuItem Grid.Column="0"
                          Grid.Row="0"
                          Content="All Projects"
@@ -31,6 +32,7 @@
                          Style="{StaticResource VerticalMenuButtonTheme}"
                          Command="{Binding AllProjectsCommand}" />
 
+        <!--Personal Projects Display-->
         <custom:MenuItem Grid.Column="1"
                          Grid.Row="0"
                          Content="Personal Projects"
@@ -38,6 +40,7 @@
                          Style="{StaticResource VerticalMenuButtonTheme}"
                          Command="{Binding PersonalProjectsCommand}" />
 
+        <!--Paid Projects Display-->
         <custom:MenuItem Grid.Column="2"
                          Grid.Row="0"
                          Content="Paid Projects"
@@ -45,6 +48,7 @@
                          Style="{StaticResource VerticalMenuButtonTheme}"
                          Command="{Binding PaidProjectsCommand}" />
 
+        <!--Add New Project Button-->
         <Button Content="Add New Project"
                 Grid.Column="3"
                 Grid.Row="0"
@@ -57,9 +61,11 @@
                 Style="{StaticResource GeneralButtonTheme}"
                 Command="{Binding AddProjectsDialogCommand}" />
 
-        <ContentControl Grid.Column="0"
-                        Grid.ColumnSpan="4"
-                        Grid.Row="1"
-                        Content="{Binding DisplayProjectsVM}" />
+        <!--Test Element-->
+        <TextBlock Text="{Binding TestMessage}"
+                   FontSize="100"
+                   Foreground="Beige"
+                   Grid.Row="1"
+                   Grid.ColumnSpan="4" />
     </Grid>
 </UserControl>
