@@ -46,9 +46,21 @@ namespace Paraject.MVVM.ViewModels
 
         public void Add()
         {
-            //MessageBox.Show($"User Id Fk: {CurrentUserAccount.Id} \nName: {CurrentProject.Name} \nDecription: {CurrentProject.Description} \nOption: {CurrentProject.Option} \nDeadline: {CurrentProject.Deadline} \nDate Created: {DateTime.Now}");
-            bool isAdded = _projectRepository.Add(CurrentProject, CurrentUserAccount.Id);
+            //Validate if a Project has a name
+            if (!string.IsNullOrWhiteSpace(CurrentProject.Name))
+            {
+                bool isAdded = _projectRepository.Add(CurrentProject, CurrentUserAccount.Id);
+                AddValidatedProjectToDB(isAdded);
+            }
 
+            else
+            {
+                MessageBox.Show("A project should have a name");
+            }
+        }
+
+        private static void AddValidatedProjectToDB(bool isAdded)
+        {
             if (isAdded)
             {
                 MessageBox.Show("Project Created");
