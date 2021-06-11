@@ -28,7 +28,8 @@
 
     <Border Background="#222529"
             CornerRadius="20">
-        <Grid Margin="25,20,25,40">
+        <Grid Margin="25,20,25,40"
+              x:Name="LayoutRoot">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -89,8 +90,10 @@
                                HorizontalAlignment="Center"
                                RenderOptions.BitmapScalingMode="HighQuality"
                                RenderOptions.EdgeMode="Aliased"
-                               SnapsToDevicePixels="True" />
+                               SnapsToDevicePixels="True"
+                               Source="{Binding CurrentProject.Logo}" />
 
+                        <!--Command="{Binding AddProjectLogoCommand}"-->
                         <!--Add Project Logo Button-->
                         <Button Content="Add Logo"
                                 Margin="0,18,0,0"
@@ -99,7 +102,8 @@
                                 Background="#0093C4"
                                 HorizontalAlignment="Left"
                                 Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
-                                Style="{StaticResource GeneralButtonTheme}" />
+                                Style="{StaticResource GeneralButtonTheme}"
+                                Command="{Binding AddProjectLogoCommand}" />
                     </StackPanel>
 
                     <!--ProjectOption TextBlock-->

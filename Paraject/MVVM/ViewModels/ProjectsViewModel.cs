@@ -1,4 +1,5 @@
-﻿using Paraject.Core.Commands;
+﻿using Microsoft.Win32;
+using Paraject.Core.Commands;
 using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
@@ -6,6 +7,7 @@ using Paraject.MVVM.Views.ModalDialogs;
 using System;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace Paraject.MVVM.ViewModels
 {
@@ -15,6 +17,7 @@ namespace Paraject.MVVM.ViewModels
         public event EventHandler Closed; //The Window (AddProjectModalDialog) closes itself when this event is executed
 
         public ICommand AddProjectCommand { get; }
+        public ICommand AddProjectLogoCommand { get; }
         public ICommand AllProjectsCommand { get; }
         public ICommand PersonalProjectsCommand { get; }
         public ICommand PaidProjectsCommand { get; }
@@ -44,6 +47,25 @@ namespace Paraject.MVVM.ViewModels
 
             //Default Project Display
             AllProjects();
+
+            //Test items:
+            AddProjectLogoCommand = new DelegateCommand(ProjectLogoAsync);
+        }
+
+        private void ProjectLogoAsync()
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Select the project's logo";
+            ofd.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+                         "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+                         "Portable Network Graphic (*.png)|*.png";
+            if (ofd.ShowDialog() == true)
+            {
+                CurrentProject.Logo = new BitmapImage();
+                CurrentProject.Logo.BeginInit();
+                CurrentProject.Logo.UriSource = new Uri(ofd.FileName, UriKind.Absolute);
+                CurrentProject.Logo.EndInit();
+            }
         }
 
         #region Add Project Methods
@@ -66,9 +88,9 @@ namespace Paraject.MVVM.ViewModels
             if (isAdded)
             {
                 MessageBox.Show("Project Created");
+                MainWindowViewModel.Overlay = false;
 
                 //close the AddProjectModalDialog if  Creating a Project is successful
-                MainWindowViewModel.Overlay = false;
                 Close();
             }
 
