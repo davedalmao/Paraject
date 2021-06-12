@@ -45,8 +45,7 @@ namespace Paraject.Core.Repositories
                     cmd.Parameters.Add("@project_status", SqlDbType.NVarChar, 12).Value = Enum.GetName(Status.Open);
                     cmd.Parameters.Add("@project_deadline", SqlDbType.DateTime2).Value = project.Deadline;
                     cmd.Parameters.Add("@date_created", SqlDbType.DateTime2).Value = DateTime.Now;
-
-                    if (project.Logo is not null) { AddLogo(userId); }
+                    cmd.Parameters.Add("@project_logo", SqlDbType.VarBinary).Value = project.Logo;
 
                     int NoOfRowsAffected = cmd.ExecuteNonQuery();
                     isAdded = NoOfRowsAffected > 0;
@@ -69,10 +68,6 @@ namespace Paraject.Core.Repositories
             }
             return isAdded;
         }
-        public void AddLogo(int userId)
-        {
-            throw new NotImplementedException();
-        }
         public Project Get(int id)
         {
             Project project = null;
@@ -86,7 +81,7 @@ namespace Paraject.Core.Repositories
 
                 cmd.Parameters.Add("@project_id", SqlDbType.Int).Value = id;
 
-                var sqlDataReader = cmd.ExecuteReader();
+                SqlDataReader sqlDataReader = cmd.ExecuteReader();
                 if (sqlDataReader.HasRows)
                 {
                     //Reads a single Project
@@ -123,7 +118,7 @@ namespace Paraject.Core.Repositories
                 {
                     con.Open();
                     cmd.CommandType = CommandType.StoredProcedure;
-                    var sqlDataReader = cmd.ExecuteReader();
+                    SqlDataReader sqlDataReader = cmd.ExecuteReader();
                     if (sqlDataReader.HasRows)
                     {
                         Project project = null;
@@ -174,7 +169,7 @@ namespace Paraject.Core.Repositories
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@project_option", SqlDbType.NVarChar, 50).Value = projectOption;
 
-                    var sqlDataReader = cmd.ExecuteReader();
+                    SqlDataReader sqlDataReader = cmd.ExecuteReader();
                     if (sqlDataReader.HasRows)
                     {
                         Project project = null;
@@ -230,6 +225,7 @@ namespace Paraject.Core.Repositories
                     cmd.Parameters.Add("@project_option", SqlDbType.NVarChar, 50).Value = project.Option;
                     cmd.Parameters.Add("@project_status", SqlDbType.NVarChar, 12).Value = project.Status;
                     cmd.Parameters.Add("@project_deadline", SqlDbType.DateTime2).Value = project.Deadline;
+                    cmd.Parameters.Add("@project_logo", SqlDbType.VarBinary).Value = project.Logo;
 
                     int NoOfRowsAffected = cmd.ExecuteNonQuery();
                     isUpdated = NoOfRowsAffected > 0;
@@ -278,7 +274,5 @@ namespace Paraject.Core.Repositories
 
             return isDeleted;
         }
-
-
     }
 }
