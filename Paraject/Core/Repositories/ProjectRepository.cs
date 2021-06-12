@@ -46,6 +46,8 @@ namespace Paraject.Core.Repositories
                     cmd.Parameters.Add("@project_deadline", SqlDbType.DateTime2).Value = project.Deadline;
                     cmd.Parameters.Add("@date_created", SqlDbType.DateTime2).Value = DateTime.Now;
 
+                    if (project.Logo is not null) { AddLogo(userId); }
+
                     int NoOfRowsAffected = cmd.ExecuteNonQuery();
                     isAdded = NoOfRowsAffected > 0;
                 }
@@ -66,6 +68,10 @@ namespace Paraject.Core.Repositories
                 }
             }
             return isAdded;
+        }
+        public void AddLogo(int userId)
+        {
+            throw new NotImplementedException();
         }
         public Project Get(int id)
         {
@@ -272,5 +278,7 @@ namespace Paraject.Core.Repositories
 
             return isDeleted;
         }
+
+
     }
 }

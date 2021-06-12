@@ -6,6 +6,7 @@ namespace Paraject.Core.Repositories.Interfaces
     interface IProjectRepository
     {
         public bool Add(Project project, int userId);
+        public void AddLogo(int userId);
         public Project Get(int id);
         public IEnumerable<Project> GetAll();
         public IEnumerable<Project> FindAll(ProjectOptions projectOption);
