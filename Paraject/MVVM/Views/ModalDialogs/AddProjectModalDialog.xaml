@@ -95,7 +95,7 @@
                                 <Binding Path="CurrentProject.Logo">
                                     <!--The default image if Logo is null-->
                                     <Binding.TargetNullValue>
-                                        <ImageSource>/UiDesign/Images/Logo/defaultProjectLogo.png</ImageSource>
+                                        <ImageSource>/UiDesign/Images/Logo/defaultProjectLogo1.png</ImageSource>
                                     </Binding.TargetNullValue>
                                 </Binding>
                             </Image.Source>
