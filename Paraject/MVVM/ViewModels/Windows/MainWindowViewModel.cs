@@ -74,7 +74,7 @@ namespace Paraject.MVVM.ViewModels.Windows
             ProjectIdeasVM = new ProjectIdeasViewModel();
             OptionsVM = new OptionsViewModel();
 
-            CurrentView = DashboardVM;
+            CurrentView = ProjectsVM;
 
             DashboardViewCommand = new NavigationCommand(o => { CurrentView = DashboardVM; });
             ProjectsViewCommand = new NavigationCommand(o => { CurrentView = ProjectsVM; });
