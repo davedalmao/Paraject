@@ -44,29 +44,12 @@ namespace Paraject.MVVM.ViewModels
             //Commands in the AddProjectsModalDialog
             AddProjectsDialogCommand = new DelegateCommand(ShowAddProjectsDialog);
             AddProjectCommand = new DelegateCommand(Add);
+            AddProjectLogoCommand = new DelegateCommand(LoadProjectLogo);
 
             //Default Project Display
             AllProjects();
-
-            //Test items:
-            AddProjectLogoCommand = new DelegateCommand(LoadProjectLogo);
         }
 
-        private void LoadProjectLogo()
-        {
-            OpenFileDialog openFile = new OpenFileDialog
-            {
-                Title = "Select the project's logo",
-                Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
-                         "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-                         "Portable Network Graphic (*.png)|*.png"
-            };
-
-            if (openFile.ShowDialog() == true)
-            {
-                CurrentProject.Logo = Image.FromFile(openFile.FileName);
-            }
-        }
 
         #region Add Project Methods
         public void Add()
@@ -125,6 +108,21 @@ namespace Paraject.MVVM.ViewModels
             AddProjectModalDialog addProjectModalDialog = new AddProjectModalDialog();
             addProjectModalDialog.DataContext = this;
             addProjectModalDialog.ShowDialog();
+        }
+        private void LoadProjectLogo()
+        {
+            OpenFileDialog openFile = new OpenFileDialog
+            {
+                Title = "Select the project's logo",
+                Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+                         "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+                         "Portable Network Graphic (*.png)|*.png"
+            };
+
+            if (openFile.ShowDialog() == true)
+            {
+                CurrentProject.Logo = Image.FromFile(openFile.FileName);
+            }
         }
         private void Close() //The method that executes Closed EventHandler
         {

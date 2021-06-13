@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.Globalization;
+using System.IO;
 using System.Windows.Data;
+using System.Windows.Media.Imaging;
 
 namespace Paraject.Core.Converters
 {
@@ -11,13 +14,13 @@ namespace Paraject.Core.Converters
         {
             if (value == null) { return null; }
 
-            var image = (System.Drawing.Image)value;
-            var bitmap = new System.Windows.Media.Imaging.BitmapImage();
+            Image image = (Image)value;
+            BitmapImage bitmap = new BitmapImage();
 
             bitmap.BeginInit();
             System.IO.MemoryStream memoryStream = new System.IO.MemoryStream();
             image.Save(memoryStream, ImageFormat.Png);
-            memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
+            memoryStream.Seek(0, SeekOrigin.Begin);
             bitmap.StreamSource = memoryStream;
             bitmap.EndInit();
 

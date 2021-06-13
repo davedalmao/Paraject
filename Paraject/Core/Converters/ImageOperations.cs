@@ -5,7 +5,7 @@ namespace Paraject.Core.Converters
 {
     public static class ImageOperations
     {
-        public static byte[] ImageToBytes(Image userImage) //Get bytes(varbinary) of the image
+        public static byte[] ImageToBytes(Image userImage) //Get bytes(varbinary) of the image (bytes is going to be saved to the database as varbinary(max))
         {
             if (userImage == null) { return null; }
             using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
