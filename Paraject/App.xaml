@@ -6,6 +6,7 @@
              xmlns:viewModel="clr-namespace:Paraject.MVVM.ViewModels"
              xmlns:windowView="clr-namespace:Paraject.MVVM.Views.Windows"
              xmlns:windowViewModel="clr-namespace:Paraject.MVVM.ViewModels.Windows"
+             xmlns:converter="clr-namespace:Paraject.Core.Converters"
              StartupUri="/MVVM/Views/Windows/LoginWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -29,6 +30,7 @@
 
             <!--Converters-->
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <converter:ImageToImageSourceConverter x:Key="ImageToImageSourceConverter" />
 
             <!--Binding the View to its ViewModel-->
 

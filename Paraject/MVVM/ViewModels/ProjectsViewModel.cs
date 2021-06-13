@@ -5,9 +5,9 @@ using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
 using System;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
 
 namespace Paraject.MVVM.ViewModels
 {
@@ -49,22 +49,22 @@ namespace Paraject.MVVM.ViewModels
             AllProjects();
 
             //Test items:
-            AddProjectLogoCommand = new DelegateCommand(ProjectLogoAsync);
+            AddProjectLogoCommand = new DelegateCommand(LoadProjectLogo);
         }
 
-        private void ProjectLogoAsync()
+        private void LoadProjectLogo()
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Title = "Select the project's logo";
-            ofd.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
-                         "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-                         "Portable Network Graphic (*.png)|*.png";
-            if (ofd.ShowDialog() == true)
+            OpenFileDialog openFile = new OpenFileDialog
             {
-                CurrentProject.Logo = new BitmapImage();
-                CurrentProject.Logo.BeginInit();
-                CurrentProject.Logo.UriSource = new Uri(ofd.FileName, UriKind.Absolute);
-                CurrentProject.Logo.EndInit();
+                Title = "Select the project's logo",
+                Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+                         "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+                         "Portable Network Graphic (*.png)|*.png"
+            };
+
+            if (openFile.ShowDialog() == true)
+            {
+                CurrentProject.Logo = Image.FromFile(openFile.FileName);
             }
         }
 

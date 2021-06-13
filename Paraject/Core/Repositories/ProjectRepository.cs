@@ -1,4 +1,5 @@
-﻿using Paraject.Core.Enums;
+﻿using Paraject.Core.Converters;
+using Paraject.Core.Enums;
 using Paraject.Core.Repositories.Interfaces;
 using Paraject.Core.Utilities;
 using Paraject.MVVM.Models;
@@ -44,8 +45,8 @@ namespace Paraject.Core.Repositories
                     cmd.Parameters.Add("@project_option", SqlDbType.NVarChar, 50).Value = project.Option;
                     cmd.Parameters.Add("@project_status", SqlDbType.NVarChar, 12).Value = Enum.GetName(Status.Open);
                     cmd.Parameters.Add("@project_deadline", SqlDbType.DateTime2).Value = project.Deadline;
+                    cmd.Parameters.Add("@project_logo", SqlDbType.VarBinary).Value = ImageOperations.ImageToBytes(project.Logo);
                     cmd.Parameters.Add("@date_created", SqlDbType.DateTime2).Value = DateTime.Now;
-                    cmd.Parameters.Add("@project_logo", SqlDbType.VarBinary).Value = project.Logo;
 
                     int NoOfRowsAffected = cmd.ExecuteNonQuery();
                     isAdded = NoOfRowsAffected > 0;

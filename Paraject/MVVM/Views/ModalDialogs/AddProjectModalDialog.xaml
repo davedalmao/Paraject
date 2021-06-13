@@ -90,16 +90,18 @@
                                HorizontalAlignment="Center"
                                RenderOptions.BitmapScalingMode="HighQuality"
                                RenderOptions.EdgeMode="Aliased"
-                               SnapsToDevicePixels="True">
-                            <Image.Source>
+                               SnapsToDevicePixels="True"
+                               Source="{Binding Path=CurrentProject.Logo, Converter={StaticResource ImageToImageSourceConverter}}" />
+                        <!--<Image.Source>
                                 <Binding Path="CurrentProject.Logo">
-                                    <!--The default image if Logo is null-->
+                                    -->
+                        <!--The default image if Logo is null-->
+                        <!--
                                     <Binding.TargetNullValue>
                                         <ImageSource>/UiDesign/Images/Logo/defaultProjectLogo1.png</ImageSource>
                                     </Binding.TargetNullValue>
                                 </Binding>
-                            </Image.Source>
-                        </Image>
+                            </Image.Source>-->
 
                         <!--Add Project Logo Button-->
                         <Button Content="Add Logo"
