@@ -1,5 +1,4 @@
-﻿using Paraject.MVVM.ViewModels.Windows;
-using System.Windows;
+﻿using System.Windows;
 
 namespace Paraject.MVVM.Views.ModalDialogs
 {
@@ -13,12 +12,6 @@ namespace Paraject.MVVM.Views.ModalDialogs
             InitializeComponent();
             MouseDown += delegate { DragMove(); };
             this.Owner = Application.Current.MainWindow;
-        }
-        private void CloseModal(object sender, RoutedEventArgs e)
-        {
-            //Remove the Overlay from MainWindow before closing the dialog
-            MainWindowViewModel.Overlay = false;
-            Close();
         }
     }
 }

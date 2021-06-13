@@ -14,7 +14,6 @@ namespace Paraject.MVVM.ViewModels
     public class ProjectsViewModel : BaseViewModel
     {
         private readonly ProjectRepository _projectRepository;
-        public event EventHandler Closed; //The Window (AddProjectModalDialog) closes itself when this event is executed
 
         public ICommand AddProjectCommand { get; }
         public ICommand AddProjectLogoCommand { get; }
@@ -22,6 +21,7 @@ namespace Paraject.MVVM.ViewModels
         public ICommand PersonalProjectsCommand { get; }
         public ICommand PaidProjectsCommand { get; }
         public ICommand AddProjectsDialogCommand { get; }
+        public ICommand CloseModalDialogCommand { get; }
 
         public string TestMessage { get; set; } //test property
         public Project CurrentProject { get; set; }
@@ -45,6 +45,7 @@ namespace Paraject.MVVM.ViewModels
             AddProjectsDialogCommand = new DelegateCommand(ShowAddProjectsDialog);
             AddProjectCommand = new DelegateCommand(Add);
             AddProjectLogoCommand = new DelegateCommand(LoadProjectLogo);
+            CloseModalDialogCommand = new DelegateCommand(SetProjectDefaultThenCloseModal);
 
             //Default Project Display
             AllProjects();
@@ -74,7 +75,8 @@ namespace Paraject.MVVM.ViewModels
                 MainWindowViewModel.Overlay = false;
 
                 //close the AddProjectModalDialog if  Creating a Project is successful
-                Close();
+                //Set Project's default values after closing AddProjectModalDialog
+                SetProjectDefaultThenCloseModal();
             }
 
             else
@@ -124,9 +126,24 @@ namespace Paraject.MVVM.ViewModels
                 CurrentProject.Logo = Image.FromFile(openFile.FileName);
             }
         }
-        private void Close() //The method that executes Closed EventHandler
+        private void SetProjectDefaultThenCloseModal()
         {
-            Closed?.Invoke(this, EventArgs.Empty);
+            //Set Project object to default values
+            CurrentProject.Name = "";
+            CurrentProject.Description = "";
+            CurrentProject.Option = Enum.GetName(ProjectOptions.Personal);
+            CurrentProject.Deadline = null;
+            CurrentProject.Logo = null;
+            MainWindowViewModel.Overlay = false;
+
+            //Close the Modal
+            foreach (Window currentModal in Application.Current.Windows)
+            {
+                if (currentModal.DataContext == this)
+                {
+                    currentModal.Close();
+                }
+            }
         }
         #endregion
     }

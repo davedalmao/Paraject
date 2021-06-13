@@ -1,5 +1,4 @@
-﻿<Window x:Name="this"
-        x:Class="Paraject.MVVM.Views.ModalDialogs.AddProjectModalDialog"
+﻿<Window x:Class="Paraject.MVVM.Views.ModalDialogs.AddProjectModalDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,7 +7,6 @@
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
         xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
         xmlns:enums="clr-namespace:Paraject.Core.Repositories"
-        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="CanResize"
@@ -18,14 +16,6 @@
         Width="764"
         Height="500"
         FontFamily="{StaticResource NunitoBold}">
-    <i:Interaction.Triggers>
-        <i:EventTrigger SourceObject="{Binding}"
-                        EventName="Closed">
-            <i:CallMethodAction TargetObject="{Binding ElementName=this}"
-                                MethodName="Close" />
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
-
     <Border Background="#222529"
             CornerRadius="20">
         <Grid Margin="25,20,25,40"
@@ -64,7 +54,7 @@
                 <Button Style="{StaticResource PlainButtonTheme}"
                         Grid.Column="1"
                         HorizontalAlignment="Right"
-                        Click="CloseModal">
+                        Command="{Binding CloseModalDialogCommand}">
                     <Image Source="/UiDesign/Icons/WindowStateButtons/close.png"
                            Width="28"
                            Height="28"

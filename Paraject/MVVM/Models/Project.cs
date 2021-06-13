@@ -18,7 +18,7 @@ namespace Paraject.MVVM.Models
         public string Description { get; set; }
         public string Option { get; set; } = Enum.GetName(ProjectOptions.Personal);
         public string Status { get; set; }
-        public DateTime? Deadline { get; set; } = null;
+        public DateTime? Deadline { get; set; }
         public DateTime DateCreated { get; set; }
     }
 }
