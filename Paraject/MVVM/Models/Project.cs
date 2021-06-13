@@ -2,6 +2,7 @@
 using PropertyChanged;
 using System;
 using System.ComponentModel;
+using System.Drawing;
 
 namespace Paraject.MVVM.Models
 {
@@ -10,6 +11,7 @@ namespace Paraject.MVVM.Models
     public class Project : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
+        public Image Logo { get; set; }
         public int Id { get; set; }
         public int User_Id_Fk { get; set; }
         public string Name { get; set; }

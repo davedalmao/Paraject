@@ -14,7 +14,6 @@ namespace Paraject.MVVM.Views.ModalDialogs
             MouseDown += delegate { DragMove(); };
             this.Owner = Application.Current.MainWindow;
         }
-
         private void CloseModal(object sender, RoutedEventArgs e)
         {
             //Remove the Overlay from MainWindow before closing the dialog

@@ -1,4 +1,5 @@
-﻿<Window x:Class="Paraject.MVVM.Views.ModalDialogs.AddProjectModalDialog"
+﻿<Window x:Name="this"
+        x:Class="Paraject.MVVM.Views.ModalDialogs.AddProjectModalDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,6 +8,7 @@
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
         xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
         xmlns:enums="clr-namespace:Paraject.Core.Repositories"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="CanResize"
@@ -16,9 +18,18 @@
         Width="764"
         Height="500"
         FontFamily="{StaticResource NunitoBold}">
+    <i:Interaction.Triggers>
+        <i:EventTrigger SourceObject="{Binding}"
+                        EventName="Closed">
+            <i:CallMethodAction TargetObject="{Binding ElementName=this}"
+                                MethodName="Close" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Border Background="#222529"
             CornerRadius="20">
-        <Grid Margin="25,20,25,40">
+        <Grid Margin="25,20,25,40"
+              x:Name="LayoutRoot">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -79,7 +90,19 @@
                                HorizontalAlignment="Center"
                                RenderOptions.BitmapScalingMode="HighQuality"
                                RenderOptions.EdgeMode="Aliased"
-                               SnapsToDevicePixels="True" />
+                               SnapsToDevicePixels="True">
+                            <Image.Source>
+                                <!--Binded Image (Logo) Source-->
+                                <Binding Path="CurrentProject.Logo"
+                                         Converter="{StaticResource ImageToImageSourceConverter}">
+
+                                    <!--Default Image (Logo) Image-->
+                                    <Binding.TargetNullValue>
+                                        <ImageSource>/UiDesign/Images/Logo/defaultProjectLogo1.png</ImageSource>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
 
                         <!--Add Project Logo Button-->
                         <Button Content="Add Logo"
@@ -89,7 +112,8 @@
                                 Background="#0093C4"
                                 HorizontalAlignment="Left"
                                 Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
-                                Style="{StaticResource GeneralButtonTheme}" />
+                                Style="{StaticResource GeneralButtonTheme}"
+                                Command="{Binding AddProjectLogoCommand}" />
                     </StackPanel>
 
                     <!--ProjectOption TextBlock-->

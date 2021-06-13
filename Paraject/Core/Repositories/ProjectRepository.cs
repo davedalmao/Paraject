@@ -1,4 +1,6 @@
-﻿using Paraject.Core.Repositories.Interfaces;
+﻿using Paraject.Core.Converters;
+using Paraject.Core.Enums;
+using Paraject.Core.Repositories.Interfaces;
 using Paraject.Core.Utilities;
 using Paraject.MVVM.Models;
 using System;
@@ -30,7 +32,7 @@ namespace Paraject.Core.Repositories
             bool isAdded = false;
 
             using (SqlConnection con = new(_connectionString))
-            using (SqlCommand cmd = new("spAddProject", con))
+            using (SqlCommand cmd = new("Project.spAddProject", con))
             {
                 try
                 {
@@ -41,8 +43,9 @@ namespace Paraject.Core.Repositories
                     cmd.Parameters.Add("@project_name", SqlDbType.NVarChar, 50).Value = project.Name;
                     cmd.Parameters.Add("@project_description", SqlDbType.NVarChar, 500).Value = project.Description;
                     cmd.Parameters.Add("@project_option", SqlDbType.NVarChar, 50).Value = project.Option;
-                    cmd.Parameters.Add("@project_status", SqlDbType.NVarChar, 12).Value = project.Status;
+                    cmd.Parameters.Add("@project_status", SqlDbType.NVarChar, 12).Value = Enum.GetName(Status.Open);
                     cmd.Parameters.Add("@project_deadline", SqlDbType.DateTime2).Value = project.Deadline;
+                    cmd.Parameters.Add("@project_logo", SqlDbType.VarBinary).Value = ImageOperations.ImageToBytes(project.Logo);
                     cmd.Parameters.Add("@date_created", SqlDbType.DateTime2).Value = DateTime.Now;
 
                     int NoOfRowsAffected = cmd.ExecuteNonQuery();
@@ -79,7 +82,7 @@ namespace Paraject.Core.Repositories
 
                 cmd.Parameters.Add("@project_id", SqlDbType.Int).Value = id;
 
-                var sqlDataReader = cmd.ExecuteReader();
+                SqlDataReader sqlDataReader = cmd.ExecuteReader();
                 if (sqlDataReader.HasRows)
                 {
                     //Reads a single Project
@@ -116,7 +119,7 @@ namespace Paraject.Core.Repositories
                 {
                     con.Open();
                     cmd.CommandType = CommandType.StoredProcedure;
-                    var sqlDataReader = cmd.ExecuteReader();
+                    SqlDataReader sqlDataReader = cmd.ExecuteReader();
                     if (sqlDataReader.HasRows)
                     {
                         Project project = null;
@@ -167,7 +170,7 @@ namespace Paraject.Core.Repositories
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@project_option", SqlDbType.NVarChar, 50).Value = projectOption;
 
-                    var sqlDataReader = cmd.ExecuteReader();
+                    SqlDataReader sqlDataReader = cmd.ExecuteReader();
                     if (sqlDataReader.HasRows)
                     {
                         Project project = null;
@@ -223,11 +226,23 @@ namespace Paraject.Core.Repositories
                     cmd.Parameters.Add("@project_option", SqlDbType.NVarChar, 50).Value = project.Option;
                     cmd.Parameters.Add("@project_status", SqlDbType.NVarChar, 12).Value = project.Status;
                     cmd.Parameters.Add("@project_deadline", SqlDbType.DateTime2).Value = project.Deadline;
+                    cmd.Parameters.Add("@project_logo", SqlDbType.VarBinary).Value = project.Logo;
 
                     int NoOfRowsAffected = cmd.ExecuteNonQuery();
                     isUpdated = NoOfRowsAffected > 0;
                 }
                 catch (SqlException ex)
+                {
+                    if (ex.Number == 2627)// Violation of unique constraint (Name should be unique)
+                    {
+                        MessageBox.Show($"{project.Name} Already Exist !!!");
+                    }
+                    else
+                    {
+                        MessageBox.Show($"An SQL error occured while processing data. \nError: { ex.Message }");
+                    }
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
                 }

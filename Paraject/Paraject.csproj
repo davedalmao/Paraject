@@ -29,6 +29,7 @@
     <None Remove="UiDesign\Icons\WindowStateButtons\lightMin.png" />
     <None Remove="UiDesign\Images\dashboardImage.svg" />
     <None Remove="UiDesign\Images\loginGraphic.svg" />
+    <None Remove="UiDesign\Images\Logo\defaultProjectLogo1.png" />
     <None Remove="UiDesign\Images\Logo\parajectLogo.svg" />
     <None Remove="UiDesign\Images\Logo\parajectLogoDark.svg" />
     <None Remove="UiDesign\Images\parajectLogo.png" />
@@ -71,6 +72,7 @@
     <PackageReference Include="PropertyChanged.Fody" Version="3.3.3" />
     <PackageReference Include="SharpVectors" Version="1.7.1" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -141,6 +143,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Icons\SideBarIcons\options.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Images\Logo\defaultProjectLogo1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Images\Logo\parajectLogo.svg">
