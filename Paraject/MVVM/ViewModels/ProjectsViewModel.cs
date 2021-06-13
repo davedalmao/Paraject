@@ -38,8 +38,6 @@ namespace Paraject.MVVM.ViewModels
 
             //Default Project Display
             AllProjects();
-
-            //Test tingz
             Projects = new ObservableCollection<Project>(_projectRepository.GetAll(CurrentUserAccount.Id));
         }
 
@@ -64,7 +62,6 @@ namespace Paraject.MVVM.ViewModels
         #endregion
 
         public ObservableCollection<Project> Projects { get; set; }
-        public string TestMessage { get; set; } //test property
 
         #region Add Project Methods
         public void Add()
@@ -103,15 +100,15 @@ namespace Paraject.MVVM.ViewModels
         #region Display Project/s Methods
         public void AllProjects()
         {
-            TestMessage = "all";
+            Projects = new ObservableCollection<Project>(_projectRepository.GetAll(CurrentUserAccount.Id));
         }
         public void PersonalProjects()
         {
-            TestMessage = "personal";
+            Projects = new ObservableCollection<Project>(_projectRepository.FindAll(CurrentUserAccount.Id, ProjectOptions.Personal));
         }
         public void PaidProjects()
         {
-            TestMessage = "paid";
+            Projects = new ObservableCollection<Project>(_projectRepository.FindAll(CurrentUserAccount.Id, ProjectOptions.Paid));
         }
         #endregion
 

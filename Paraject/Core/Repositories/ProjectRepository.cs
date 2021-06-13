@@ -186,10 +186,10 @@ namespace Paraject.Core.Repositories
                                 Id = sqlDataReader.GetInt32(0),
                                 User_Id_Fk = sqlDataReader.GetInt32(1),
                                 Name = sqlDataReader.GetString(2),
-                                Description = sqlDataReader.GetString(3),
+                                Description = sqlDataReader.IsDBNull(3) ? null : sqlDataReader.GetString(3),
                                 Option = sqlDataReader.GetString(4),
                                 Status = sqlDataReader.GetString(5),
-                                Deadline = sqlDataReader.GetDateTime(6),
+                                Deadline = sqlDataReader.IsDBNull(6) ? null : sqlDataReader.GetDateTime(6),
                                 DateCreated = sqlDataReader.GetDateTime(7)
                             };
 
