@@ -10,6 +10,7 @@
              mc:Ignorable="d"
              Width="732"
              Height="544.63"
+             Foreground="Beige"
              Background="Transparent">
     <Grid Margin="65,33,65,33">
         <Grid.ColumnDefinitions>
@@ -61,11 +62,32 @@
                 Style="{StaticResource GeneralButtonTheme}"
                 Command="{Binding AddProjectsDialogCommand}" />
 
-        <!--Test Element-->
-        <TextBlock Text="{Binding TestMessage}"
-                   FontSize="100"
-                   Foreground="Beige"
-                   Grid.Row="1"
-                   Grid.ColumnSpan="4" />
+        <!--Project Cards-->
+        <ItemsControl ItemsSource="{Binding Projects}"
+                      Grid.Row="1"
+                      Grid.ColumnSpan="4">
+            <!--remove after debugging-->
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <!--This is what the card would look like-->
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="red"
+                            BorderThickness="1"
+                            Margin="10"
+                            Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="{Binding User_Id_Fk}" />
+                            <TextBlock Text="{Binding Name}" />
+                            <TextBlock Text="{Binding Option}" />
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </UserControl>
