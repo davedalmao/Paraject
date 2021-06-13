@@ -74,7 +74,7 @@ namespace Paraject.Core.Repositories
             Project project = null;
 
             using SqlConnection con = new(_connectionString);
-            using SqlCommand cmd = new("spGetProject", con);
+            using SqlCommand cmd = new("Project.spGetProject", con);
             try
             {
                 con.Open();
@@ -113,7 +113,7 @@ namespace Paraject.Core.Repositories
             List<Project> projects = new();
 
             using (SqlConnection con = new(_connectionString))
-            using (SqlCommand cmd = new("spGetAllProjects", con))
+            using (SqlCommand cmd = new("Project.spGetAllProjects", con))
             {
                 try
                 {
@@ -162,7 +162,7 @@ namespace Paraject.Core.Repositories
             List<Project> projects = new();
 
             using (SqlConnection con = new(_connectionString))
-            using (SqlCommand cmd = new("spFindAllProjects", con))
+            using (SqlCommand cmd = new("Project.spFindAllProjects", con))
             {
                 try
                 {
@@ -213,7 +213,7 @@ namespace Paraject.Core.Repositories
             bool isUpdated = false;
 
             using (SqlConnection con = new(_connectionString))
-            using (SqlCommand cmd = new("spUpdateProject", con))
+            using (SqlCommand cmd = new("Project.spUpdateProject", con))
             {
                 try
                 {
@@ -257,7 +257,7 @@ namespace Paraject.Core.Repositories
             if (id != 0)
             {
                 using SqlConnection con = new(_connectionString);
-                using SqlCommand cmd = new("spDeleteProject", con);
+                using SqlCommand cmd = new("Project.spDeleteProject", con);
                 try
                 {
                     con.Open();
