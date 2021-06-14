@@ -88,6 +88,23 @@
 
                             <TextBlock Text="{Binding Option}" />
                             <TextBlock Text="{Binding Deadline}" />
+
+                            <Image MaxWidth="61.59"
+                                   Height="61.59"
+                                   RenderOptions.BitmapScalingMode="HighQuality"
+                                   RenderOptions.EdgeMode="Aliased"
+                                   SnapsToDevicePixels="True">
+                                <Image.Source>
+                                    <Binding Path="Logo"
+                                             Converter="{StaticResource ImageToImageSourceConverter}">
+
+                                        <!--Default Image (Logo) Image-->
+                                        <Binding.TargetNullValue>
+                                            <ImageSource>/UiDesign/Images/Logo/defaultProjectLogo1.png</ImageSource>
+                                        </Binding.TargetNullValue>
+                                    </Binding>
+                                </Image.Source>
+                            </Image>
                         </StackPanel>
                     </Border>
                 </DataTemplate>
