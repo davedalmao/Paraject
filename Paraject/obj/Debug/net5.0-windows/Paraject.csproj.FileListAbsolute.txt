@@ -76,3 +76,4 @@ D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\ru
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\UiDesign\Fonts\ArbutusSlab-Regular.ttf
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\bin\Debug\net5.0-windows\UiDesign\Fonts\Signika-Regular.ttf
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\UiDesign\Theme\ProjectStatusTheme.baml
