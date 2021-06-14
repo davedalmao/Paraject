@@ -6,13 +6,13 @@
             <Trigger Property="Text"
                      Value="InProgress">
                 <Setter Property="Foreground"
-                        Value="Green" />
+                        Value="#2ECC71" />
             </Trigger>
 
             <Trigger Property="Text"
                      Value="Open">
                 <Setter Property="Foreground"
-                        Value="Orange" />
+                        Value="#E67E22" />
             </Trigger>
         </Style.Triggers>
     </Style>

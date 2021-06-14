@@ -58,15 +58,17 @@
                 Background="#F54342"
                 HorizontalAlignment="Right"
                 Tag="/UiDesign/Icons/ButtonIcons/add.svg"
-                Margin="0,0,0,25"
+                Margin="0,0,0,28"
                 Style="{StaticResource GeneralButtonTheme}"
                 Command="{Binding AddProjectsDialogCommand}" />
 
-        <ScrollViewer Grid.Row="1"
+        <ScrollViewer Style="{StaticResource ScrollbarTheme}"
+                      Grid.Row="1"
                       Grid.ColumnSpan="4"
-                      Height="420">
+                      Height="432">
             <!--Project Cards-->
             <ItemsControl ItemsSource="{Binding Projects}">
+
                 <!--This is what the card would look like-->
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>

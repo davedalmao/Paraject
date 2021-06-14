@@ -92,6 +92,9 @@
     <Page Update="UiDesign\Theme\ProjectStatusTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="UiDesign\Theme\ScrollbarTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="UiDesign\Theme\TextOnlyButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
