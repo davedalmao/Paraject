@@ -92,8 +92,8 @@
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
 
-                            <Image MaxWidth="61.59"
-                                   Height="61.59"
+                            <Image MaxWidth="65"
+                                   Height="65"
                                    Margin="0,0,25,0"
                                    Grid.Column="0"
                                    Grid.Row="0"
@@ -120,6 +120,9 @@
                                        Grid.Row="0"
                                        Foreground="#EBEDF2"
                                        FontSize="17.06"
+                                       Margin="0,0,69,0"
+                                       TextTrimming="CharacterEllipsis"
+                                       VerticalAlignment="Center"
                                        FontFamily="{StaticResource ArbutusSlabRegular}" />
 
                             <!--Project Description-->
@@ -128,6 +131,9 @@
                                        Grid.Row="1"
                                        Foreground="#83868A"
                                        FontSize="14.5"
+                                       Margin="0,0,69,0"
+                                       TextTrimming="CharacterEllipsis"
+                                       VerticalAlignment="Center"
                                        FontFamily="{StaticResource SignikaRegular}" />
 
                             <!--Project Option-->
@@ -136,6 +142,7 @@
                                        Grid.Row="0"
                                        Foreground="#2ECC71"
                                        FontSize="14.59"
+                                       VerticalAlignment="Center"
                                        FontFamily="{StaticResource NunitoBold}" />
 
                             <!--Project Deadline-->
@@ -144,6 +151,7 @@
                                        Grid.Row="1"
                                        Foreground="#83868A"
                                        FontSize="14"
+                                       VerticalAlignment="Center"
                                        FontFamily="{StaticResource SignikaRegular}" />
 
 
