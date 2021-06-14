@@ -129,8 +129,7 @@
                                Foreground="#B8BDC1" />
 
                     <!--Deadline DateTimePicker-->
-                    <DatePicker x:Name="DeadlineDatePicker"
-                                Style="{StaticResource DatePickerTheme}"
+                    <DatePicker Style="{StaticResource DatePickerTheme}"
                                 FontSize="15"
                                 SelectedDate="{Binding CurrentProject.Deadline}" />
                 </StackPanel>
