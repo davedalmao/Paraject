@@ -11,7 +11,6 @@ namespace Paraject.MVVM.Models
     public class Project : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
-        public Image Logo { get; set; }
         public int Id { get; set; }
         public int User_Id_Fk { get; set; }
         public string Name { get; set; }
@@ -20,5 +19,6 @@ namespace Paraject.MVVM.Models
         public string Status { get; set; }
         public string Deadline { get; set; } //string data tyep (instead of DateTime) so that I can change the Date's format
         public DateTime DateCreated { get; set; }
+        public Image Logo { get; set; }
     }
 }

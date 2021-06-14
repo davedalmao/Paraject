@@ -17,5 +17,14 @@ namespace Paraject.Core.Converters
                 return ms.ToArray();
             }
         }
+
+        public static Image BytesToImage(byte[] buffer) //Get image from database
+        {
+            using (System.IO.MemoryStream ms = new System.IO.MemoryStream(buffer))
+            {
+                return Image.FromStream(ms);
+            }
+        }
+
     }
 }

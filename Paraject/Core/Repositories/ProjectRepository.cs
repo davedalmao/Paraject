@@ -136,7 +136,8 @@ namespace Paraject.Core.Repositories
                                 Option = sqlDataReader.GetString(4),
                                 Status = sqlDataReader.GetString(5),
                                 Deadline = sqlDataReader.IsDBNull(6) ? "--" : sqlDataReader.GetDateTime(6).ToShortDateString(),
-                                DateCreated = sqlDataReader.GetDateTime(7)
+                                DateCreated = sqlDataReader.GetDateTime(7),
+                                Logo = sqlDataReader.IsDBNull(8) ? null : ImageOperations.BytesToImage((byte[])sqlDataReader.GetValue(8))
                             };
 
                             projects.Add(project);
@@ -186,7 +187,8 @@ namespace Paraject.Core.Repositories
                                 Option = sqlDataReader.GetString(4),
                                 Status = sqlDataReader.GetString(5),
                                 Deadline = sqlDataReader.IsDBNull(6) ? "--" : sqlDataReader.GetDateTime(6).ToShortDateString(),
-                                DateCreated = sqlDataReader.GetDateTime(7)
+                                DateCreated = sqlDataReader.GetDateTime(7),
+                                Logo = sqlDataReader.IsDBNull(8) ? null : ImageOperations.BytesToImage((byte[])sqlDataReader.GetValue(8))
                             };
 
                             projects.Add(project);
