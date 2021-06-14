@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("uidesign/fonts/arbutusslab-regular.ttf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("uidesign/fonts/merriweather-bold.ttf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("uidesign/fonts/merriweather-regular.ttf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("uidesign/fonts/nunito-bold.ttf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("uidesign/fonts/nunito-regular.ttf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("uidesign/fonts/signika-regular.ttf")]
 
 

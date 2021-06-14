@@ -162,7 +162,6 @@
                              Height="185"
                              FontSize="15"
                              TextWrapping="Wrap"
-                             AcceptsReturn="True"
                              Style="{StaticResource TextBoxTheme}"
                              VerticalScrollBarVisibility="Auto"
                              VerticalContentAlignment="Top"
