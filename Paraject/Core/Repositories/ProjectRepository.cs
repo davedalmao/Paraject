@@ -69,7 +69,7 @@ namespace Paraject.Core.Repositories
             }
             return isAdded;
         }
-        public Project Get(int id)
+        public Project Get(int userId)
         {
             Project project = null;
 
@@ -80,7 +80,7 @@ namespace Paraject.Core.Repositories
                 con.Open();
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add("@project_id", SqlDbType.Int).Value = id;
+                cmd.Parameters.Add("@project_id", SqlDbType.Int).Value = userId;
 
                 SqlDataReader sqlDataReader = cmd.ExecuteReader();
                 if (sqlDataReader.HasRows)
@@ -95,7 +95,7 @@ namespace Paraject.Core.Repositories
                         Description = sqlDataReader.GetString(3),
                         Option = sqlDataReader.GetString(4),
                         Status = sqlDataReader.GetString(5),
-                        Deadline = sqlDataReader.GetDateTime(6),
+                        Deadline = sqlDataReader.GetString(6),
                         DateCreated = sqlDataReader.GetDateTime(7)
                     };
                 }
@@ -108,7 +108,7 @@ namespace Paraject.Core.Repositories
 
             return project;
         }
-        public IEnumerable<Project> GetAll()
+        public IEnumerable<Project> GetAll(int userId)
         {
             List<Project> projects = new();
 
@@ -119,24 +119,25 @@ namespace Paraject.Core.Repositories
                 {
                     con.Open();
                     cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@user_id", SqlDbType.Int).Value = userId;
+
                     SqlDataReader sqlDataReader = cmd.ExecuteReader();
                     if (sqlDataReader.HasRows)
                     {
-                        Project project = null;
-
                         //reading multiple Projects
                         while (sqlDataReader.Read())
                         {
-                            project = new Project
+                            Project project = new()
                             {
                                 Id = sqlDataReader.GetInt32(0),
                                 User_Id_Fk = sqlDataReader.GetInt32(1),
                                 Name = sqlDataReader.GetString(2),
-                                Description = sqlDataReader.GetString(3),
+                                Description = sqlDataReader.IsDBNull(3) ? "--" : sqlDataReader.GetString(3),
                                 Option = sqlDataReader.GetString(4),
                                 Status = sqlDataReader.GetString(5),
-                                Deadline = sqlDataReader.GetDateTime(6),
-                                DateCreated = sqlDataReader.GetDateTime(7)
+                                Deadline = sqlDataReader.IsDBNull(6) ? "--" : sqlDataReader.GetDateTime(6).ToShortDateString(),
+                                DateCreated = sqlDataReader.GetDateTime(7),
+                                Logo = sqlDataReader.IsDBNull(8) ? null : ImageOperations.BytesToImage((byte[])sqlDataReader.GetValue(8))
                             };
 
                             projects.Add(project);
@@ -157,7 +158,7 @@ namespace Paraject.Core.Repositories
 
             return projects;
         }
-        public IEnumerable<Project> FindAll(ProjectOptions projectOption)
+        public IEnumerable<Project> FindAll(int userId, ProjectOptions projectOption)
         {
             List<Project> projects = new();
 
@@ -168,26 +169,26 @@ namespace Paraject.Core.Repositories
                 {
                     con.Open();
                     cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@user_id", SqlDbType.Int).Value = userId;
                     cmd.Parameters.Add("@project_option", SqlDbType.NVarChar, 50).Value = projectOption;
 
                     SqlDataReader sqlDataReader = cmd.ExecuteReader();
                     if (sqlDataReader.HasRows)
                     {
-                        Project project = null;
-
                         //reading multiple Projects
                         while (sqlDataReader.Read())
                         {
-                            project = new Project
+                            Project project = new()
                             {
                                 Id = sqlDataReader.GetInt32(0),
                                 User_Id_Fk = sqlDataReader.GetInt32(1),
                                 Name = sqlDataReader.GetString(2),
-                                Description = sqlDataReader.GetString(3),
+                                Description = sqlDataReader.IsDBNull(3) ? "--" : sqlDataReader.GetString(3),
                                 Option = sqlDataReader.GetString(4),
                                 Status = sqlDataReader.GetString(5),
-                                Deadline = sqlDataReader.GetDateTime(6),
-                                DateCreated = sqlDataReader.GetDateTime(7)
+                                Deadline = sqlDataReader.IsDBNull(6) ? "--" : sqlDataReader.GetDateTime(6).ToShortDateString(),
+                                DateCreated = sqlDataReader.GetDateTime(7),
+                                Logo = sqlDataReader.IsDBNull(8) ? null : ImageOperations.BytesToImage((byte[])sqlDataReader.GetValue(8))
                             };
 
                             projects.Add(project);
@@ -250,11 +251,11 @@ namespace Paraject.Core.Repositories
 
             return isUpdated;
         }
-        public bool Delete(int id)
+        public bool Delete(int userId)
         {
             bool isDeleted = false;
 
-            if (id != 0)
+            if (userId != 0)
             {
                 using SqlConnection con = new(_connectionString);
                 using SqlCommand cmd = new("Project.spDeleteProject", con);
@@ -262,7 +263,7 @@ namespace Paraject.Core.Repositories
                 {
                     con.Open();
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@project_id", SqlDbType.Int).Value = id;
+                    cmd.Parameters.Add("@project_id", SqlDbType.Int).Value = userId;
 
                     int NoOfRowsAffected = cmd.ExecuteNonQuery();
                     isDeleted = NoOfRowsAffected > 0;

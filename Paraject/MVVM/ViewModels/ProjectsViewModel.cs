@@ -5,6 +5,7 @@ using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
 using System;
+using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Windows;
 using System.Windows.Input;
@@ -14,18 +15,6 @@ namespace Paraject.MVVM.ViewModels
     public class ProjectsViewModel : BaseViewModel
     {
         private readonly ProjectRepository _projectRepository;
-
-        public ICommand AddProjectCommand { get; }
-        public ICommand AddProjectLogoCommand { get; }
-        public ICommand AllProjectsCommand { get; }
-        public ICommand PersonalProjectsCommand { get; }
-        public ICommand PaidProjectsCommand { get; }
-        public ICommand AddProjectsDialogCommand { get; }
-        public ICommand CloseModalDialogCommand { get; }
-
-        public string TestMessage { get; set; } //test property
-        public Project CurrentProject { get; set; }
-        public UserAccount CurrentUserAccount { get; set; }
 
         public ProjectsViewModel(UserAccount userAccount)
         {
@@ -43,14 +32,36 @@ namespace Paraject.MVVM.ViewModels
 
             //Commands in the AddProjectsModalDialog
             AddProjectsDialogCommand = new DelegateCommand(ShowAddProjectsDialog);
+            CloseModalDialogCommand = new DelegateCommand(SetProjectDefaultThenCloseModal);
             AddProjectCommand = new DelegateCommand(Add);
             AddProjectLogoCommand = new DelegateCommand(LoadProjectLogo);
-            CloseModalDialogCommand = new DelegateCommand(SetProjectDefaultThenCloseModal);
 
             //Default Project Display
             AllProjects();
+            Projects = new ObservableCollection<Project>(_projectRepository.GetAll(CurrentUserAccount.Id));
         }
 
+        #region Commands
+        //Add Projects Commands
+        public ICommand AddProjectCommand { get; }
+        public ICommand AddProjectLogoCommand { get; }
+
+        //Display Projects Commands
+        public ICommand AllProjectsCommand { get; }
+        public ICommand PersonalProjectsCommand { get; }
+        public ICommand PaidProjectsCommand { get; }
+
+        //Show and Close AddProjectModalDialog
+        public ICommand AddProjectsDialogCommand { get; }
+        public ICommand CloseModalDialogCommand { get; }
+        #endregion
+
+        #region Models
+        public Project CurrentProject { get; set; }
+        public UserAccount CurrentUserAccount { get; set; }
+        #endregion
+
+        public ObservableCollection<Project> Projects { get; set; }
 
         #region Add Project Methods
         public void Add()
@@ -89,15 +100,15 @@ namespace Paraject.MVVM.ViewModels
         #region Display Project/s Methods
         public void AllProjects()
         {
-            TestMessage = "all";
+            Projects = new ObservableCollection<Project>(_projectRepository.GetAll(CurrentUserAccount.Id));
         }
         public void PersonalProjects()
         {
-            TestMessage = "personal";
+            Projects = new ObservableCollection<Project>(_projectRepository.FindAll(CurrentUserAccount.Id, ProjectOptions.Personal));
         }
         public void PaidProjects()
         {
-            TestMessage = "paid";
+            Projects = new ObservableCollection<Project>(_projectRepository.FindAll(CurrentUserAccount.Id, ProjectOptions.Paid));
         }
         #endregion
 

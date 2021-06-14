@@ -10,6 +10,7 @@
              mc:Ignorable="d"
              Width="732"
              Height="544.63"
+             Foreground="Beige"
              Background="Transparent">
     <Grid Margin="65,33,65,33">
         <Grid.ColumnDefinitions>
@@ -57,15 +58,104 @@
                 Background="#F54342"
                 HorizontalAlignment="Right"
                 Tag="/UiDesign/Icons/ButtonIcons/add.svg"
-                Margin="0,0,0,25"
+                Margin="0,0,0,28"
                 Style="{StaticResource GeneralButtonTheme}"
                 Command="{Binding AddProjectsDialogCommand}" />
 
-        <!--Test Element-->
-        <TextBlock Text="{Binding TestMessage}"
-                   FontSize="100"
-                   Foreground="Beige"
-                   Grid.Row="1"
-                   Grid.ColumnSpan="4" />
+        <ScrollViewer Style="{StaticResource ScrollbarTheme}"
+                      Grid.Row="1"
+                      Grid.ColumnSpan="4"
+                      Height="432">
+            <!--Project Cards-->
+            <ItemsControl ItemsSource="{Binding Projects}">
+
+                <!--This is what the card would look like-->
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="#2A2D32"
+                                CornerRadius="8"
+                                Margin="0,0,15,30"
+                                Padding="26.53, 16">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+                                <Image MaxWidth="65"
+                                       Height="65"
+                                       Margin="0,0,25,0"
+                                       Grid.Column="0"
+                                       Grid.Row="0"
+                                       Grid.RowSpan="2"
+                                       RenderOptions.BitmapScalingMode="HighQuality"
+                                       RenderOptions.EdgeMode="Aliased"
+                                       SnapsToDevicePixels="True">
+                                    <Image.Source>
+                                        <!--Binded Image (Logo) Source-->
+                                        <Binding Path="Logo"
+                                                 Converter="{StaticResource ImageToImageSourceConverter}">
+
+                                            <!--Default Image (Logo) Image-->
+                                            <Binding.TargetNullValue>
+                                                <ImageSource>/UiDesign/Images/Logo/defaultProjectLogo1.png</ImageSource>
+                                            </Binding.TargetNullValue>
+                                        </Binding>
+                                    </Image.Source>
+                                </Image>
+
+                                <!--Project Name-->
+                                <TextBlock Text="{Binding Name}"
+                                           Grid.Column="1"
+                                           Grid.Row="0"
+                                           Foreground="#EBEDF2"
+                                           FontSize="17.06"
+                                           Margin="0,0,69,0"
+                                           TextTrimming="CharacterEllipsis"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{StaticResource ArbutusSlabRegular}" />
+
+                                <!--Project Description-->
+                                <TextBlock Text="{Binding Description}"
+                                           Grid.Column="1"
+                                           Grid.Row="1"
+                                           Foreground="#83868A"
+                                           FontSize="14.5"
+                                           Margin="0,0,69,0"
+                                           TextTrimming="CharacterEllipsis"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{StaticResource SignikaRegular}" />
+
+                                <!--Project Status-->
+                                <TextBlock Text="{Binding Status}"
+                                           Grid.Column="2"
+                                           Grid.Row="0"
+                                           FontSize="14.59"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Right"
+                                           Style="{StaticResource ProjectStatusTheme}"
+                                           FontFamily="{StaticResource NunitoBold}" />
+
+                                <!--Project Deadline-->
+                                <TextBlock Text="{Binding Deadline}"
+                                           Grid.Column="2"
+                                           Grid.Row="1"
+                                           Foreground="#83868A"
+                                           FontSize="14"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Right"
+                                           FontFamily="{StaticResource SignikaRegular}" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </UserControl>

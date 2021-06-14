@@ -22,11 +22,15 @@
                 <ResourceDictionary Source="/UiDesign/Theme/ComboBoxTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/DatePickerTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/DatePickerCalendarTheme.xaml" />
+                <ResourceDictionary Source="/UiDesign/Theme/ProjectStatusTheme.xaml" />
+                <ResourceDictionary Source="/UiDesign/Theme/ScrollbarTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--Fontstyles-->
             <FontFamily x:Key="NunitoBold">/UiDesign/Fonts/Nunito-Bold.ttf#Nunito</FontFamily>
             <FontFamily x:Key="MerriweatherBold">/UiDesign/Fonts/Merriweather-Bold.ttf#Merriweather</FontFamily>
+            <FontFamily x:Key="ArbutusSlabRegular">/UiDesign/Fonts/ArbutusSlab-Regular.ttf#Arbutus Slab</FontFamily>
+            <FontFamily x:Key="SignikaRegular">/UiDesign/Fonts/Signika-Regular.ttf#Signika</FontFamily>
 
             <!--Converters-->
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />

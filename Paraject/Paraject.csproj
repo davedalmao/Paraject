@@ -14,10 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="UiDesign\Fonts\ArbutusSlab-Regular.ttf" />
     <None Remove="UiDesign\Fonts\Merriweather-Bold.ttf" />
-    <None Remove="UiDesign\Fonts\Merriweather-Regular.ttf" />
     <None Remove="UiDesign\Fonts\Nunito-Bold.ttf" />
-    <None Remove="UiDesign\Fonts\Nunito-Regular.ttf" />
+    <None Remove="UiDesign\Fonts\Signika-Regular.ttf" />
     <None Remove="UiDesign\Icons\ButtonIcons\add.svg" />
     <None Remove="UiDesign\Icons\ButtonIcons\addProjectLogo.svg" />
     <None Remove="UiDesign\Icons\ButtonIcons\delete.svg" />
@@ -53,16 +53,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="UiDesign\Fonts\Merriweather-Bold.ttf">
+    <Content Include="UiDesign\Fonts\ArbutusSlab-Regular.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="UiDesign\Fonts\Merriweather-Regular.ttf">
+    <Content Include="UiDesign\Fonts\Merriweather-Bold.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="UiDesign\Fonts\Nunito-Bold.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="UiDesign\Fonts\Nunito-Regular.ttf">
+    <Content Include="UiDesign\Fonts\Signika-Regular.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
