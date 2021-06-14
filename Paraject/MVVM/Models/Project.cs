@@ -18,7 +18,7 @@ namespace Paraject.MVVM.Models
         public string Description { get; set; }
         public string Option { get; set; } = Enum.GetName(ProjectOptions.Personal);
         public string Status { get; set; }
-        public DateTime? Deadline { get; set; }
+        public string Deadline { get; set; } //string data tyep (instead of DateTime) so that I can change the Date's format
         public DateTime DateCreated { get; set; }
     }
 }

@@ -95,7 +95,7 @@ namespace Paraject.Core.Repositories
                         Description = sqlDataReader.GetString(3),
                         Option = sqlDataReader.GetString(4),
                         Status = sqlDataReader.GetString(5),
-                        Deadline = sqlDataReader.GetDateTime(6),
+                        Deadline = sqlDataReader.GetString(6),
                         DateCreated = sqlDataReader.GetDateTime(7)
                     };
                 }
@@ -137,7 +137,7 @@ namespace Paraject.Core.Repositories
                                 Description = sqlDataReader.IsDBNull(3) ? null : sqlDataReader.GetString(3),
                                 Option = sqlDataReader.GetString(4),
                                 Status = sqlDataReader.GetString(5),
-                                Deadline = sqlDataReader.IsDBNull(6) ? null : sqlDataReader.GetDateTime(6),
+                                Deadline = sqlDataReader.IsDBNull(6) ? null : sqlDataReader.GetDateTime(6).ToShortDateString(),
                                 DateCreated = sqlDataReader.GetDateTime(7)
                             };
 
@@ -189,7 +189,7 @@ namespace Paraject.Core.Repositories
                                 Description = sqlDataReader.IsDBNull(3) ? null : sqlDataReader.GetString(3),
                                 Option = sqlDataReader.GetString(4),
                                 Status = sqlDataReader.GetString(5),
-                                Deadline = sqlDataReader.IsDBNull(6) ? null : sqlDataReader.GetDateTime(6),
+                                Deadline = sqlDataReader.IsDBNull(6) ? null : sqlDataReader.GetDateTime(6).ToShortDateString(),
                                 DateCreated = sqlDataReader.GetDateTime(7)
                             };
 
