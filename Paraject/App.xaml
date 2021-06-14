@@ -26,6 +26,69 @@
                 <ResourceDictionary Source="/UiDesign/Theme/ScrollbarTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
+            <!--Project 
+                Colors-->
+            <!--Accent Color-->
+            <SolidColorBrush x:Key="AccentColor"
+                             Color="#F54342" />
+            <!--Buttons-->
+            <SolidColorBrush x:Key="GeneralAddOrCreateButton"
+                             Color="#F54342" />
+            <SolidColorBrush x:Key="AddProjectIdeaButton"
+                             Color="#36B038" />
+            <SolidColorBrush x:Key="AddFileButton"
+                             Color="#36B038" />
+            <SolidColorBrush x:Key="ViewNotesButton"
+                             Color="#36B038" />
+            <SolidColorBrush x:Key="AddNoteButton"
+                             Color="#0093C4" />
+            <SolidColorBrush x:Key="AddOrSelectImageButton"
+                             Color="#0093C4" />
+            <SolidColorBrush x:Key="UpdateOrEditButton"
+                             Color="#D2B330" />
+            <SolidColorBrush x:Key="DeleteButton"
+                             Color="#FA9033" />
+
+            <!--Status Colors-->
+            <SolidColorBrush x:Key="InProgress"
+                             Color="#2ECC71" />
+            <SolidColorBrush x:Key="Open"
+                             Color="#E67E22" />
+
+            <!--Priority Colors-->
+            <SolidColorBrush x:Key="High"
+                             Color="#FF2732" />
+            <SolidColorBrush x:Key="Med"
+                             Color="#EECC41" />
+            <SolidColorBrush x:Key="Low"
+                             Color="#2ECC71" />
+
+            <!--Task Category-->
+            <SolidColorBrush x:Key="DatabaseColor"
+                             Color="#B26743" />
+            <SolidColorBrush x:Key="FrontendUIColor"
+                             Color="#3498DB" />
+            <SolidColorBrush x:Key="FrontendUXColor"
+                             Color="#E67E22" />
+            <SolidColorBrush x:Key="BackendColor"
+                             Color="#9B59B6" />
+
+            <!--DateTime Color-->
+            <SolidColorBrush x:Key="NullDateTimeColor"
+                             Color="#F57272" />
+
+            <!--Font Colors-->
+            <SolidColorBrush x:Key="MainFont"
+                             Color="#B8BDC1" />
+            <SolidColorBrush x:Key="CardBodyFont"
+                             Color="#A7AAAF" />
+            <SolidColorBrush x:Key="CardFooterFont"
+                             Color="#686A6F" />
+            <SolidColorBrush x:Key="NavbarFont"
+                             Color="#7D8083" />
+            <SolidColorBrush x:Key="SelectedItemFont"
+                             Color="#F54342" />
+
             <!--Fontstyles-->
             <FontFamily x:Key="NunitoBold">/UiDesign/Fonts/Nunito-Bold.ttf#Nunito</FontFamily>
             <FontFamily x:Key="MerriweatherBold">/UiDesign/Fonts/Merriweather-Bold.ttf#Merriweather</FontFamily>
@@ -36,7 +99,12 @@
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
             <converter:ImageToImageSourceConverter x:Key="ImageToImageSourceConverter" />
 
-            <!--Binding the View to its ViewModel-->
+            <!--Binding 
+                the 
+                View 
+                to 
+                its 
+                ViewModel-->
 
             <!--Login Window-->
             <DataTemplate DataType="{x:Type windowViewModel:LoginWindowViewModel}">
