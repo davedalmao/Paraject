@@ -124,8 +124,6 @@ namespace Paraject.Core.Repositories
                     SqlDataReader sqlDataReader = cmd.ExecuteReader();
                     if (sqlDataReader.HasRows)
                     {
-                        //Project project = null;
-
                         //reading multiple Projects
                         while (sqlDataReader.Read())
                         {
@@ -134,10 +132,10 @@ namespace Paraject.Core.Repositories
                                 Id = sqlDataReader.GetInt32(0),
                                 User_Id_Fk = sqlDataReader.GetInt32(1),
                                 Name = sqlDataReader.GetString(2),
-                                Description = sqlDataReader.IsDBNull(3) ? null : sqlDataReader.GetString(3),
+                                Description = sqlDataReader.IsDBNull(3) ? "--" : sqlDataReader.GetString(3),
                                 Option = sqlDataReader.GetString(4),
                                 Status = sqlDataReader.GetString(5),
-                                Deadline = sqlDataReader.IsDBNull(6) ? null : sqlDataReader.GetDateTime(6).ToShortDateString(),
+                                Deadline = sqlDataReader.IsDBNull(6) ? "--" : sqlDataReader.GetDateTime(6).ToShortDateString(),
                                 DateCreated = sqlDataReader.GetDateTime(7)
                             };
 
@@ -176,20 +174,18 @@ namespace Paraject.Core.Repositories
                     SqlDataReader sqlDataReader = cmd.ExecuteReader();
                     if (sqlDataReader.HasRows)
                     {
-                        Project project = null;
-
                         //reading multiple Projects
                         while (sqlDataReader.Read())
                         {
-                            project = new Project
+                            Project project = new()
                             {
                                 Id = sqlDataReader.GetInt32(0),
                                 User_Id_Fk = sqlDataReader.GetInt32(1),
                                 Name = sqlDataReader.GetString(2),
-                                Description = sqlDataReader.IsDBNull(3) ? null : sqlDataReader.GetString(3),
+                                Description = sqlDataReader.IsDBNull(3) ? "--" : sqlDataReader.GetString(3),
                                 Option = sqlDataReader.GetString(4),
                                 Status = sqlDataReader.GetString(5),
-                                Deadline = sqlDataReader.IsDBNull(6) ? null : sqlDataReader.GetDateTime(6).ToShortDateString(),
+                                Deadline = sqlDataReader.IsDBNull(6) ? "--" : sqlDataReader.GetDateTime(6).ToShortDateString(),
                                 DateCreated = sqlDataReader.GetDateTime(7)
                             };
 
