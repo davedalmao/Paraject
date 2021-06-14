@@ -62,103 +62,99 @@
                 Style="{StaticResource GeneralButtonTheme}"
                 Command="{Binding AddProjectsDialogCommand}" />
 
-        <!--Project Cards-->
-        <ItemsControl ItemsSource="{Binding Projects}"
-                      Grid.Row="1"
-                      Grid.ColumnSpan="4">
-            <!--remove after debugging-->
-            <!--<ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>-->
+        <ScrollViewer Grid.Row="1"
+                      Grid.ColumnSpan="4"
+                      Height="420">
+            <!--Project Cards-->
+            <ItemsControl ItemsSource="{Binding Projects}">
 
-            <!--This is what the card would look like-->
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Border Background="#2A2D32"
-                            CornerRadius="8"
-                            Margin="0,0,0,30"
-                            Padding="26.53, 16">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="auto" />
-                            </Grid.ColumnDefinitions>
+                <!--This is what the card would look like-->
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="#2A2D32"
+                                CornerRadius="8"
+                                Margin="0,0,0,30"
+                                Padding="26.53, 16">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
 
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto" />
-                                <RowDefinition Height="auto" />
-                            </Grid.RowDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
 
-                            <Image MaxWidth="65"
-                                   Height="65"
-                                   Margin="0,0,25,0"
-                                   Grid.Column="0"
-                                   Grid.Row="0"
-                                   Grid.RowSpan="2"
-                                   RenderOptions.BitmapScalingMode="HighQuality"
-                                   RenderOptions.EdgeMode="Aliased"
-                                   SnapsToDevicePixels="True">
-                                <Image.Source>
-                                    <!--Binded Image (Logo) Source-->
-                                    <Binding Path="Logo"
-                                             Converter="{StaticResource ImageToImageSourceConverter}">
-
-                                        <!--Default Image (Logo) Image-->
-                                        <Binding.TargetNullValue>
-                                            <ImageSource>/UiDesign/Images/Logo/defaultProjectLogo1.png</ImageSource>
-                                        </Binding.TargetNullValue>
-                                    </Binding>
-                                </Image.Source>
-                            </Image>
-
-                            <!--Project Name-->
-                            <TextBlock Text="{Binding Name}"
-                                       Grid.Column="1"
+                                <Image MaxWidth="65"
+                                       Height="65"
+                                       Margin="0,0,25,0"
+                                       Grid.Column="0"
                                        Grid.Row="0"
-                                       Foreground="#EBEDF2"
-                                       FontSize="17.06"
-                                       Margin="0,0,69,0"
-                                       TextTrimming="CharacterEllipsis"
-                                       VerticalAlignment="Center"
-                                       FontFamily="{StaticResource ArbutusSlabRegular}" />
+                                       Grid.RowSpan="2"
+                                       RenderOptions.BitmapScalingMode="HighQuality"
+                                       RenderOptions.EdgeMode="Aliased"
+                                       SnapsToDevicePixels="True">
+                                    <Image.Source>
+                                        <!--Binded Image (Logo) Source-->
+                                        <Binding Path="Logo"
+                                                 Converter="{StaticResource ImageToImageSourceConverter}">
 
-                            <!--Project Description-->
-                            <TextBlock Text="{Binding Description}"
-                                       Grid.Column="1"
-                                       Grid.Row="1"
-                                       Foreground="#83868A"
-                                       FontSize="14.5"
-                                       Margin="0,0,69,0"
-                                       TextTrimming="CharacterEllipsis"
-                                       VerticalAlignment="Center"
-                                       FontFamily="{StaticResource SignikaRegular}" />
+                                            <!--Default Image (Logo) Image-->
+                                            <Binding.TargetNullValue>
+                                                <ImageSource>/UiDesign/Images/Logo/defaultProjectLogo1.png</ImageSource>
+                                            </Binding.TargetNullValue>
+                                        </Binding>
+                                    </Image.Source>
+                                </Image>
 
-                            <!--Project Option-->
-                            <TextBlock Text="{Binding Option}"
-                                       Grid.Column="2"
-                                       Grid.Row="0"
-                                       Foreground="#2ECC71"
-                                       FontSize="14.59"
-                                       VerticalAlignment="Center"
-                                       FontFamily="{StaticResource NunitoBold}" />
+                                <!--Project Name-->
+                                <TextBlock Text="{Binding Name}"
+                                           Grid.Column="1"
+                                           Grid.Row="0"
+                                           Foreground="#EBEDF2"
+                                           FontSize="17.06"
+                                           Margin="0,0,69,0"
+                                           TextTrimming="CharacterEllipsis"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{StaticResource ArbutusSlabRegular}" />
 
-                            <!--Project Deadline-->
-                            <TextBlock Text="{Binding Deadline}"
-                                       Grid.Column="2"
-                                       Grid.Row="1"
-                                       Foreground="#83868A"
-                                       FontSize="14"
-                                       VerticalAlignment="Center"
-                                       FontFamily="{StaticResource SignikaRegular}" />
+                                <!--Project Description-->
+                                <TextBlock Text="{Binding Description}"
+                                           Grid.Column="1"
+                                           Grid.Row="1"
+                                           Foreground="#83868A"
+                                           FontSize="14.5"
+                                           Margin="0,0,69,0"
+                                           TextTrimming="CharacterEllipsis"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{StaticResource SignikaRegular}" />
+
+                                <!--Project Option-->
+                                <TextBlock Text="{Binding Option}"
+                                           Grid.Column="2"
+                                           Grid.Row="0"
+                                           Foreground="#2ECC71"
+                                           FontSize="14.59"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{StaticResource NunitoBold}" />
+
+                                <!--Project Deadline-->
+                                <TextBlock Text="{Binding Deadline}"
+                                           Grid.Column="2"
+                                           Grid.Row="1"
+                                           Foreground="#83868A"
+                                           FontSize="14"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{StaticResource SignikaRegular}" />
 
 
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </UserControl>
