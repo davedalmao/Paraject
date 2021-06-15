@@ -23,7 +23,7 @@
         <TextBlock Text="Project Ideas"
                    FontFamily="{StaticResource NunitoBold}"
                    FontSize="25"
-                   Foreground="#B8BDC1" />
+                   Foreground="{StaticResource MainFontColor}" />
 
 
         <Border Grid.Column="1"
@@ -34,7 +34,7 @@
                 Grid.Row="0"
                 Height="36"
                 Width="169"
-                Background="#36B038"
+                Background="{StaticResource Green}"
                 Tag="/UiDesign/Icons/ButtonIcons/add.svg"
                 Style="{StaticResource GeneralButtonTheme}" />
     </Grid>
