@@ -10,7 +10,6 @@
              mc:Ignorable="d"
              Width="732"
              Height="544.63"
-             Foreground="Beige"
              Background="Transparent">
     <Grid Margin="65,33,65,33">
         <Grid.ColumnDefinitions>
@@ -55,7 +54,7 @@
                 Grid.Row="0"
                 Height="36"
                 Width="169"
-                Background="#F54342"
+                Background="{StaticResource AccentColor}"
                 HorizontalAlignment="Right"
                 Tag="/UiDesign/Icons/ButtonIcons/add.svg"
                 Margin="0,0,0,28"
@@ -72,7 +71,7 @@
                 <!--This is what the card would look like-->
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border Background="#2A2D32"
+                        <Border Background="{StaticResource ProjectCard}"
                                 CornerRadius="8"
                                 Margin="0,0,15,30"
                                 Padding="26.53, 16">
@@ -114,7 +113,7 @@
                                 <TextBlock Text="{Binding Name}"
                                            Grid.Column="1"
                                            Grid.Row="0"
-                                           Foreground="#EBEDF2"
+                                           Foreground="{StaticResource White}"
                                            FontSize="17.06"
                                            Margin="0,0,69,0"
                                            TextTrimming="CharacterEllipsis"
