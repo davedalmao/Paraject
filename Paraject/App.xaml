@@ -65,7 +65,7 @@
                              Color="#B8BDC1" />
             <SolidColorBrush x:Key="CardBody"
                              Color="#A7AAAF" />
-            <SolidColorBrush x:Key="CardFooter"
+            <SolidColorBrush x:Key="Footer"
                              Color="#686A6F" />
             <SolidColorBrush x:Key="NavbarFont"
                              Color="#7D8083" />

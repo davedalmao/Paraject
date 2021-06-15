@@ -11,6 +11,7 @@
              Width="732"
              Height="544.63"
              Background="Transparent"
+             Foreground="{StaticResource MainFontColor}"
              DataContext="{Binding Path=DataContext, 
                                    RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
 
@@ -46,7 +47,7 @@
                     Grid.Row="1"
                     Height="36"
                     Width="164"
-                    Background="#0093C4"
+                    Background="{StaticResource Blue}"
                     Margin="0,12,0,0"
                     Tag="/UiDesign/Icons/ButtonIcons/image.svg"
                     Style="{StaticResource GeneralButtonTheme}" />
@@ -73,7 +74,6 @@
             <TextBlock Text="Username"
                        Grid.Row="0"
                        Grid.Column="0"
-                       Foreground="#B8BDC1"
                        FontSize="19"
                        Margin="0,0,0,6"
                        FontFamily="{StaticResource NunitoBold}" />
@@ -93,7 +93,6 @@
                        Grid.Column="0"
                        Grid.Row="2"
                        Margin="0,44.5,0,6"
-                       Foreground="#B8BDC1"
                        FontSize="19"
                        FontFamily="{StaticResource NunitoBold}" />
 
@@ -113,7 +112,7 @@
                     Grid.Column="0"
                     Height="40"
                     Width="164"
-                    Background="#D2B330"
+                    Background="{StaticResource Yellow}"
                     Margin="0,50,0,0"
                     Tag="/UiDesign/Icons/ButtonIcons/update.svg"
                     Style="{StaticResource GeneralButtonTheme}"
@@ -125,7 +124,7 @@
                     Grid.Column="1"
                     Height="40"
                     Width="164"
-                    Background="#FA9033"
+                    Background="{StaticResource Orange}"
                     Margin="0,50,0,0"
                     Tag="/UiDesign/Icons/ButtonIcons/delete.svg"
                     Style="{StaticResource GeneralButtonTheme}"
@@ -139,16 +138,15 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom">
                 <TextBlock Text="Account Created: "
-                           Foreground="#686A6F"
+                           Foreground="{StaticResource Footer}"
                            FontSize="15"
                            FontFamily="{StaticResource NunitoBold}" />
 
                 <TextBlock Text="{Binding CurrentUserAccount.DateCreated}"
-                           Foreground="#686A6F"
+                           Foreground="{StaticResource Footer}"
                            FontSize="15"
                            FontFamily="{StaticResource NunitoBold}" />
             </StackPanel>
-
         </Grid>
     </Grid>
 </UserControl>
