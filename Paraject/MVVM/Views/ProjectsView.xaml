@@ -103,7 +103,7 @@
 
                                             <!--Default Image (Logo) Image-->
                                             <Binding.TargetNullValue>
-                                                <ImageSource>/UiDesign/Images/Logo/defaultProjectLogo1.png</ImageSource>
+                                                <ImageSource>/UiDesign/Images/Logo/defaultProjectLogo.png</ImageSource>
                                             </Binding.TargetNullValue>
                                         </Binding>
                                     </Image.Source>
