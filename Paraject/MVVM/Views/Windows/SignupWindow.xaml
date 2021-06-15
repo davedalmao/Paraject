@@ -21,6 +21,7 @@
         Background="Transparent"
         FontFamily="{StaticResource NunitoBold}"
         MouseDown="Window_MouseDown"
+        Foreground="{StaticResource MainFontColor}"
         FocusManager.FocusedElement="{Binding ElementName=UsernameTextBox}">
 
     <!--This code SHOWS LoginWindow and then CLOSES SignupWindow(this window)-->
@@ -65,15 +66,14 @@
                     <svgc1:SvgViewbox Source="/UiDesign/Images/signupGraphic.svg" />
                 </UserControl>
 
-                <!--Login Redirect-->
+                <!--Login Text (redirect)-->
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom">
                     <TextBlock Text="Already have an account?"
-                               Foreground="#B8BDC1"
                                FontSize="15" />
                     <Button  Content="Login"
-                             Foreground="#F54342"
+                             Foreground="{StaticResource AccentColor}"
                              FontSize="15"
                              Margin="10,0,0,0"
                              Command="{Binding LoginWindowRedirectCommand}"
@@ -124,7 +124,6 @@
                     <!--Create Account Text-->
                     <TextBlock  Grid.Row="0"
                                 Text="Create Account"
-                                Foreground="#B8BDC1"
                                 FontSize="26"
                                 Margin="0,0,0,23"
                                 FontFamily="{StaticResource MerriweatherBold}"
@@ -133,7 +132,6 @@
                     <!--Username TextBlock-->
                     <TextBlock  Grid.Row="1"
                                 Text="Username"
-                                Foreground="#B8BDC1"
                                 FontSize="16"
                                 Margin="0,0,0,6"
                                 FontFamily="{StaticResource NunitoBold}" />
@@ -151,7 +149,6 @@
                     <!--Password TextBlock-->
                     <TextBlock Grid.Row="3"
                                Text="Password"
-                               Foreground="#B8BDC1"
                                FontSize="16"
                                Margin="0,00,0,6"
                                FontFamily="{StaticResource NunitoBold}" />
@@ -169,7 +166,6 @@
                     <!--Confirm Password TextBlock-->
                     <TextBlock Grid.Row="5"
                                Text="Confirm Password"
-                               Foreground="#B8BDC1"
                                FontSize="16"
                                Margin="0,00,0,6"
                                FontFamily="{StaticResource NunitoBold}" />
@@ -187,7 +183,7 @@
                              Content="Create Account"
                              Height="40"
                              Width="303"
-                             Background="#F54342"
+                             Background="{StaticResource AccentColor}"
                              FontSize="16"
                              Margin="0,38,0,0"
                              Command="{Binding Path=AddCommand}"

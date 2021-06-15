@@ -108,7 +108,7 @@
                         Style="{StaticResource TextOnlyButtonTheme}"
                         Command="{Binding LoginCommand}" />
 
-                <!--Signup Text-->
+                <!--Signup Text (redirect)-->
                 <StackPanel Grid.Row="6"
                             Orientation="Horizontal"
                             HorizontalAlignment="Center"
