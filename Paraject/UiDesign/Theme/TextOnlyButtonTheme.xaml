@@ -15,7 +15,7 @@
                             <!--Button Text-->
                             <Border Height="{TemplateBinding Height}">
                                 <TextBlock Text="{TemplateBinding Property=Content}"
-                                           Foreground="#EBEDF2"
+                                           Foreground="{DynamicResource White}"
                                            FontSize="{TemplateBinding FontSize}"
                                            FontWeight="Bold"
                                            FontFamily="{StaticResource NunitoBold}"
