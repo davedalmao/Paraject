@@ -134,7 +134,7 @@ namespace Paraject.Core.Repositories
                                 Name = sqlDataReader.GetString(2),
                                 Description = sqlDataReader.IsDBNull(3) ? "--" : sqlDataReader.GetString(3),
                                 Option = sqlDataReader.GetString(4),
-                                Status = sqlDataReader.GetString(5),
+                                Status = sqlDataReader.GetString(5).Equals("InProgress", StringComparison.Ordinal) ? "In Progress" : "Open",
                                 Deadline = sqlDataReader.IsDBNull(6) ? null : sqlDataReader.GetDateTime(6),
                                 DateCreated = sqlDataReader.GetDateTime(7),
                                 Logo = sqlDataReader.IsDBNull(8) ? null : ImageOperations.BytesToImage((byte[])sqlDataReader.GetValue(8))
@@ -185,7 +185,7 @@ namespace Paraject.Core.Repositories
                                 Name = sqlDataReader.GetString(2),
                                 Description = sqlDataReader.IsDBNull(3) ? "--" : sqlDataReader.GetString(3),
                                 Option = sqlDataReader.GetString(4),
-                                Status = sqlDataReader.GetString(5),
+                                Status = sqlDataReader.GetString(5).Equals("InProgress", StringComparison.Ordinal) ? "In Progress" : "Open",
                                 Deadline = sqlDataReader.IsDBNull(6) ? null : sqlDataReader.GetDateTime(6),
                                 DateCreated = sqlDataReader.GetDateTime(7),
                                 Logo = sqlDataReader.IsDBNull(8) ? null : ImageOperations.BytesToImage((byte[])sqlDataReader.GetValue(8))

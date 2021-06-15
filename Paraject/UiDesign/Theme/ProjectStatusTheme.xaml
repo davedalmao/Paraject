@@ -4,7 +4,7 @@
            x:Key="ProjectStatusTheme">
         <Style.Triggers>
             <Trigger Property="Text"
-                     Value="InProgress">
+                     Value="In Progress">
                 <Setter Property="Foreground"
                         Value="{DynamicResource Green}" />
             </Trigger>
