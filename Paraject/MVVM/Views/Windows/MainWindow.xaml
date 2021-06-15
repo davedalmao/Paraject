@@ -21,7 +21,7 @@
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
-        FontFamily="/UiDesign/Fonts/#Nunito">
+        FontFamily="{StaticResource NunitoBold}">
     <Border Background="{StaticResource MainBackground}"
             CornerRadius="20">
         <!--The Grid that houses the overlay and the MainWindow content-->
@@ -137,7 +137,7 @@
                                HorizontalAlignment="Center"
                                Foreground="{StaticResource MainFontColor}"
                                FontSize="18"
-                               FontFamily="/UiDesign/Fonts/#Merriweather"
+                               FontFamily="{StaticResource MerriweatherBold}"
                                FontWeight="Bold" />
                 </StackPanel>
 

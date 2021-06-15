@@ -133,8 +133,7 @@
                     <TextBlock  Grid.Row="1"
                                 Text="Username"
                                 FontSize="16"
-                                Margin="0,0,0,6"
-                                FontFamily="{StaticResource NunitoBold}" />
+                                Margin="0,0,0,6" />
 
                     <!--Username Textbox-->
                     <TextBox x:Name="UsernameTextBox"
@@ -150,8 +149,7 @@
                     <TextBlock Grid.Row="3"
                                Text="Password"
                                FontSize="16"
-                               Margin="0,00,0,6"
-                               FontFamily="{StaticResource NunitoBold}" />
+                               Margin="0,00,0,6" />
 
 
                     <!--Password Textbox-->
@@ -167,8 +165,7 @@
                     <TextBlock Grid.Row="5"
                                Text="Confirm Password"
                                FontSize="16"
-                               Margin="0,00,0,6"
-                               FontFamily="{StaticResource NunitoBold}" />
+                               Margin="0,00,0,6" />
 
                     <!--Confirm Password Textbox-->
                     <custom:BindablePasswordBox  Grid.Row="6"

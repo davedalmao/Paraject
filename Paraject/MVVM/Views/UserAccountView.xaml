@@ -11,6 +11,7 @@
              Width="732"
              Height="544.63"
              Background="Transparent"
+             FontFamily="{StaticResource NunitoBold}"
              Foreground="{StaticResource MainFontColor}"
              DataContext="{Binding Path=DataContext, 
                                    RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
@@ -75,8 +76,7 @@
                        Grid.Row="0"
                        Grid.Column="0"
                        FontSize="19"
-                       Margin="0,0,0,6"
-                       FontFamily="{StaticResource NunitoBold}" />
+                       Margin="0,0,0,6" />
 
             <!--Username Textbox-->
             <TextBox Grid.Column="0"
@@ -93,8 +93,7 @@
                        Grid.Column="0"
                        Grid.Row="2"
                        Margin="0,44.5,0,6"
-                       FontSize="19"
-                       FontFamily="{StaticResource NunitoBold}" />
+                       FontSize="19" />
 
             <!--Password Textbox-->
             <usercontrols:BindablePasswordBox Grid.Column="0"
@@ -139,13 +138,11 @@
                         VerticalAlignment="Bottom">
                 <TextBlock Text="Account Created: "
                            Foreground="{StaticResource Footer}"
-                           FontSize="15"
-                           FontFamily="{StaticResource NunitoBold}" />
+                           FontSize="15" />
 
                 <TextBlock Text="{Binding CurrentUserAccount.DateCreated}"
                            Foreground="{StaticResource Footer}"
-                           FontSize="15"
-                           FontFamily="{StaticResource NunitoBold}" />
+                           FontSize="15" />
             </StackPanel>
         </Grid>
     </Grid>
