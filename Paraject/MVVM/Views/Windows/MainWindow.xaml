@@ -22,7 +22,7 @@
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
         FontFamily="/UiDesign/Fonts/#Nunito">
-    <Border Background="#222529"
+    <Border Background="{StaticResource MainBackground}"
             CornerRadius="20">
         <!--The Grid that houses the overlay and the MainWindow content-->
         <Grid>
@@ -47,22 +47,22 @@
                 </Grid.RowDefinitions>
 
                 <!--Sidebar color-->
-                <Border Background="#25282C"
+                <Border Background="{StaticResource Navbar}"
                         Grid.Column="0"
                         Grid.Row="0"
                         CornerRadius="20,0,0,0" />
-                <Border Background="#25282C"
+                <Border Background="{StaticResource Navbar}"
                         Grid.Column="0"
                         Grid.Row="1"
                         Padding="0,40,0,0" />
-                <Border Background="#25282C"
+                <Border Background="{StaticResource Navbar}"
                         Grid.Column="0"
                         Grid.Row="2"
                         Padding="0,53,0,0" />
-                <Border Background="#25282C"
+                <Border Background="{StaticResource Navbar}"
                         Grid.Column="0"
                         Grid.Row="3" />
-                <Border Background="#25282C"
+                <Border Background="{StaticResource Navbar}"
                         Grid.Column="0"
                         Grid.Row="4"
                         CornerRadius="0,0,0,20" />
@@ -135,7 +135,7 @@
                     <TextBlock Text="{Binding CurrentUserAccount.Username}"
                                Height="23.21"
                                HorizontalAlignment="Center"
-                               Foreground="#B8BDC1"
+                               Foreground="{StaticResource MainFontColor}"
                                FontSize="18"
                                FontFamily="/UiDesign/Fonts/#Merriweather"
                                FontWeight="Bold" />

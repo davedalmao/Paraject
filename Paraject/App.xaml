@@ -51,6 +51,8 @@
             <!--Color Palette-->
             <SolidColorBrush x:Key="MainBackground"
                              Color="#222529" />
+            <SolidColorBrush x:Key="Navbar"
+                             Color="#25282C" />
             <SolidColorBrush x:Key="ProjectCard"
                              Color="#2A2D32" />
             <SolidColorBrush x:Key="InputField"
@@ -65,7 +67,7 @@
                              Color="#A7AAAF" />
             <SolidColorBrush x:Key="CardFooter"
                              Color="#686A6F" />
-            <SolidColorBrush x:Key="Navbar"
+            <SolidColorBrush x:Key="NavbarFont"
                              Color="#7D8083" />
 
             <!--Fontstyles-->
