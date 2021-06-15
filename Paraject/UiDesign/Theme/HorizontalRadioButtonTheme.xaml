@@ -2,7 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
                     xmlns:custom="clr-namespace:Paraject.Core.CustomControls">
-    <FontFamily x:Key="NunitoBold">/UiDesign/Fonts/Nunito-Bold.ttf#Nunito</FontFamily>
     <Style TargetType="{x:Type custom:MenuItem}"
            x:Key="HorizontalMenuButtonTheme">
         <!--The controls inside the menu item (radio button)-->
@@ -28,8 +27,7 @@
                                    VerticalAlignment="Top"
                                    Foreground="{DynamicResource NavbarFont}"
                                    FontSize="14.59"
-                                   FontWeight="Bold"
-                                   FontFamily="{StaticResource NunitoBold}"
+                                   FontFamily="{DynamicResource NunitoBold}"
                                    Margin="12,0,0,0"
                                    Grid.Column="1"
                                    Cursor="Hand"

@@ -1,6 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <FontFamily x:Key="NunitoBold">/UiDesign/Fonts/Nunito-Bold.ttf#Nunito</FontFamily>
     <Style TargetType="{x:Type RadioButton}"
            x:Key="VerticalMenuButtonTheme">
         <!--The controls inside the menu item (radio button)-->
@@ -19,8 +18,7 @@
                                    HorizontalAlignment="Center"
                                    Foreground="{DynamicResource MainFontColor}"
                                    FontSize="14.59"
-                                   FontWeight="Bold"
-                                   FontFamily="{StaticResource NunitoBold}"
+                                   FontFamily="{DynamicResource NunitoBold}"
                                    Grid.Column="0"
                                    Cursor="Hand"
                                    Height="19.9"
