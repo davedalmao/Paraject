@@ -15,8 +15,9 @@
         Background="Transparent"
         Width="764"
         Height="500"
-        FontFamily="{StaticResource NunitoBold}">
-    <Border Background="#222529"
+        FontFamily="{StaticResource NunitoBold}"
+        Foreground="{StaticResource MainFontColor}">
+    <Border Background="{StaticResource MainBackground}"
             CornerRadius="20">
         <Grid Margin="25,20,25,40"
               x:Name="LayoutRoot">
@@ -46,7 +47,6 @@
                     </UserControl>
                     <TextBlock Text="Add Project"
                                FontSize="25"
-                               Foreground="#B8BDC1"
                                HorizontalAlignment="Center" />
                 </StackPanel>
 
@@ -99,7 +99,7 @@
                                 Margin="0,18,0,0"
                                 Height="36"
                                 Width="190"
-                                Background="#0093C4"
+                                Background="{StaticResource Blue}"
                                 HorizontalAlignment="Left"
                                 Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
                                 Style="{StaticResource GeneralButtonTheme}"
@@ -109,8 +109,7 @@
                     <!--ProjectOption TextBlock-->
                     <TextBlock Text="Project Option"
                                Margin="0,40,0,6"
-                               FontSize="19"
-                               Foreground="#B8BDC1" />
+                               FontSize="19" />
 
                     <!--ProjectOption ComboBox-->
                     <ComboBox Width="294"
@@ -119,14 +118,12 @@
                               Style="{StaticResource ComboBoxTheme}"
                               FontSize="15"
                               SelectedIndex="1"
-                              Foreground="#B8BDC1"
                               Text="{Binding CurrentProject.Option}" />
 
                     <!--Deadline TextBlock-->
                     <TextBlock Text="Deadline"
                                Margin="0,18,0,6"
-                               FontSize="19"
-                               Foreground="#B8BDC1" />
+                               FontSize="19" />
 
                     <!--Deadline DateTimePicker-->
                     <DatePicker Style="{StaticResource DatePickerTheme}"
@@ -140,7 +137,6 @@
                     <!--ProjectName TextBlock-->
                     <TextBlock Text="Project Name"
                                FontSize="19"
-                               Foreground="#B8BDC1"
                                Margin="0,0,0,6" />
 
                     <!--ProjectName TextBox-->
@@ -153,7 +149,6 @@
                     <!--Description TextBlock-->
                     <TextBlock Text="Description (optional)"
                                FontSize="19"
-                               Foreground="#B8BDC1"
                                Margin="0,22,0,6" />
 
                     <!--Description Multiline TextBox-->
@@ -173,7 +168,7 @@
                             Margin="0,22,0,0"
                             Height="40"
                             Width="294"
-                            Background="#F54342"
+                            Background="{StaticResource AccentColor}"
                             VerticalAlignment="Bottom"
                             Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
                             Style="{StaticResource GeneralButtonTheme}"

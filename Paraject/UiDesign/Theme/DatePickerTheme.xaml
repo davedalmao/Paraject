@@ -446,7 +446,7 @@
                                                 <ContentControl.Template>
                                                     <ControlTemplate>
                                                         <TextBlock Text="NO DEADLINE"
-                                                                   Foreground="#F57272" />
+                                                                   Foreground="{DynamicResource Pink}" />
                                                     </ControlTemplate>
                                                 </ContentControl.Template>
                                             </ContentControl>
