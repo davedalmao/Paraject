@@ -5,9 +5,9 @@
         <Setter Property="Background"
                 Value="Transparent" />
         <Setter Property="Foreground"
-                Value="#B8BDC1" />
+                Value="{DynamicResource MainFontColor}" />
         <Setter Property="CaretBrush"
-                Value="#B8BDC1" />
+                Value="{DynamicResource MainFontColor}" />
         <Setter Property="Padding"
                 Value="20,0,20,0" />
         <Setter Property="VerticalContentAlignment"
@@ -16,7 +16,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Border CornerRadius="12"
-                            Background="#2E3135">
+                            Background="{DynamicResource InputField}">
                         <ScrollViewer x:Name="PART_ContentHost"
                                       Focusable="false"
                                       HorizontalScrollBarVisibility="Hidden"
