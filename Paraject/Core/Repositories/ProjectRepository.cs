@@ -45,7 +45,7 @@ namespace Paraject.Core.Repositories
                     cmd.Parameters.Add("@project_option", SqlDbType.NVarChar, 50).Value = project.Option;
                     cmd.Parameters.Add("@project_status", SqlDbType.NVarChar, 12).Value = Enum.GetName(Status.Open);
                     cmd.Parameters.Add("@project_deadline", SqlDbType.DateTime2).Value = project.Deadline;
-                    cmd.Parameters.Add("@project_logo", SqlDbType.VarBinary).Value = ImageOperations.ImageToBytes(project.Logo);
+                    cmd.Parameters.Add("@project_logo", SqlDbType.VarBinary).Value = ImageConverter.ImageToBytes(project.Logo);
                     cmd.Parameters.Add("@date_created", SqlDbType.DateTime2).Value = DateTime.Now;
 
                     int NoOfRowsAffected = cmd.ExecuteNonQuery();
@@ -137,7 +137,7 @@ namespace Paraject.Core.Repositories
                                 Status = sqlDataReader.GetString(5).Equals("InProgress", StringComparison.Ordinal) ? "In Progress" : "Open",
                                 Deadline = sqlDataReader.IsDBNull(6) ? null : sqlDataReader.GetDateTime(6),
                                 DateCreated = sqlDataReader.GetDateTime(7),
-                                Logo = sqlDataReader.IsDBNull(8) ? null : ImageOperations.BytesToImage((byte[])sqlDataReader.GetValue(8))
+                                Logo = sqlDataReader.IsDBNull(8) ? null : ImageConverter.BytesToImage((byte[])sqlDataReader.GetValue(8))
                             };
 
                             projects.Add(project);
@@ -188,7 +188,7 @@ namespace Paraject.Core.Repositories
                                 Status = sqlDataReader.GetString(5).Equals("InProgress", StringComparison.Ordinal) ? "In Progress" : "Open",
                                 Deadline = sqlDataReader.IsDBNull(6) ? null : sqlDataReader.GetDateTime(6),
                                 DateCreated = sqlDataReader.GetDateTime(7),
-                                Logo = sqlDataReader.IsDBNull(8) ? null : ImageOperations.BytesToImage((byte[])sqlDataReader.GetValue(8))
+                                Logo = sqlDataReader.IsDBNull(8) ? null : ImageConverter.BytesToImage((byte[])sqlDataReader.GetValue(8))
                             };
 
                             projects.Add(project);

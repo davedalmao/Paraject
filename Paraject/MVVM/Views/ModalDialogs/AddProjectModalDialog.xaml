@@ -86,6 +86,7 @@
                                 <Binding Path="CurrentProject.Logo"
                                          Converter="{StaticResource ImageToImageSourceConverter}">
 
+
                                     <!--Default Image (Logo) Image-->
                                     <Binding.TargetNullValue>
                                         <ImageSource>/UiDesign/Images/Logo/defaultProjectLogo.png</ImageSource>

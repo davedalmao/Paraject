@@ -16,9 +16,8 @@ namespace Paraject.Core.Converters
 
             Image image = (Image)value;
             BitmapImage bitmap = new BitmapImage();
-
             bitmap.BeginInit();
-            System.IO.MemoryStream memoryStream = new System.IO.MemoryStream();
+            MemoryStream memoryStream = new MemoryStream();
             image.Save(memoryStream, ImageFormat.Png);
             memoryStream.Seek(0, SeekOrigin.Begin);
             bitmap.StreamSource = memoryStream;
