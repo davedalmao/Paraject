@@ -46,6 +46,16 @@
             <SolidColorBrush x:Key="Pink"
                              Color="#F57272" />
 
+            <!--Color Palette-->
+            <SolidColorBrush x:Key="MainBackground"
+                             Color="#222529" />
+            <SolidColorBrush x:Key="ProjectCard"
+                             Color="#2A2D32" />
+            <SolidColorBrush x:Key="InputField"
+                             Color="#2E3135" />
+            <SolidColorBrush x:Key="Scrollbar"
+                             Color="#89898A" />
+
             <!--Font Colors-->
             <SolidColorBrush x:Key="MainFontColor"
                              Color="#B8BDC1" />
