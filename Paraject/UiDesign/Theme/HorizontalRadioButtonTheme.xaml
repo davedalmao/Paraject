@@ -26,7 +26,7 @@
                         <TextBlock x:Name="SidebarRadioButtonMenuText"
                                    Text="{TemplateBinding Property=Content}"
                                    VerticalAlignment="Top"
-                                   Foreground="#7D8083"
+                                   Foreground="{DynamicResource Navbar}"
                                    FontSize="14.59"
                                    FontWeight="Bold"
                                    FontFamily="{StaticResource NunitoBold}"
@@ -40,7 +40,7 @@
                                  Value="True">
                             <Setter TargetName="SidebarRadioButtonMenuText"
                                     Property="Foreground"
-                                    Value="#F54342" />
+                                    Value="{DynamicResource AccentColor}" />
                             <Setter TargetName="SidebarRadioButtonMenuIcon"
                                     Property="Source"
                                     Value="{Binding SelectedImageUriString, RelativeSource={RelativeSource AncestorType={x:Type custom:MenuItem}}}" />
