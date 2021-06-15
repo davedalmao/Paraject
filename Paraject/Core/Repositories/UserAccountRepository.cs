@@ -22,7 +22,7 @@ namespace Paraject.Core.Repositories
             bool isAdded = false;
 
             using (SqlConnection con = new(_connectionString))
-            using (SqlCommand cmd = new("spAddUserAccount", con))
+            using (SqlCommand cmd = new("UserAccount.spAddUserAccount", con))
             {
                 try
                 {
@@ -59,7 +59,7 @@ namespace Paraject.Core.Repositories
             UserAccount userAccount = null;
 
             using SqlConnection con = new(_connectionString);
-            using SqlCommand cmd = new("spGetUserAccount", con);
+            using SqlCommand cmd = new("UserAccount.spGetUserAccount", con);
             try
             {
                 con.Open();
@@ -93,7 +93,7 @@ namespace Paraject.Core.Repositories
             bool isUpdated = false;
 
             using (SqlConnection con = new(_connectionString))
-            using (SqlCommand cmd = new("spUpdateUserAccount", con))
+            using (SqlCommand cmd = new("UserAccount.spUpdateUserAccount", con))
             {
                 try
                 {
@@ -131,7 +131,7 @@ namespace Paraject.Core.Repositories
             if (id != 0)
             {
                 using SqlConnection con = new(_connectionString);
-                using SqlCommand cmd = new("spDeleteUserAccount", con);
+                using SqlCommand cmd = new("UserAccount.spDeleteUserAccount", con);
                 try
                 {
                     con.Open();
@@ -153,7 +153,7 @@ namespace Paraject.Core.Repositories
             bool userExists = false;
 
             using (SqlConnection con = new(_connectionString))
-            using (SqlCommand cmd = new("spLoginUserAccount", con))
+            using (SqlCommand cmd = new("UserAccount.spLoginUserAccount", con))
             {
                 try
                 {
@@ -177,7 +177,7 @@ namespace Paraject.Core.Repositories
             bool idExists = false;
 
             using (SqlConnection con = new(_connectionString))
-            using (SqlCommand cmd = new("spCheckUserAccountId", con))
+            using (SqlCommand cmd = new("UserAccount.spCheckUserAccountId", con))
             {
                 try
                 {
