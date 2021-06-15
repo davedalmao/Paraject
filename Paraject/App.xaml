@@ -45,6 +45,8 @@
                              Color="#9B59B6" />
             <SolidColorBrush x:Key="Pink"
                              Color="#F57272" />
+            <SolidColorBrush x:Key="White"
+                             Color="#EBEDF2" />
 
             <!--Color Palette-->
             <SolidColorBrush x:Key="MainBackground"

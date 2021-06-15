@@ -31,7 +31,7 @@
                             <Border Grid.Column="1"
                                     Height="{TemplateBinding Height}">
                                 <TextBlock Text="{TemplateBinding Property=Content}"
-                                           Foreground="#EBEDF2"
+                                           Foreground="{DynamicResource White}"
                                            FontSize="14.59"
                                            FontWeight="Bold"
                                            FontFamily="{StaticResource NunitoBold}"
