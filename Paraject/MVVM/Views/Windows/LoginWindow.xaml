@@ -18,8 +18,9 @@
          AllowsTransparency="True"
          WindowStartupLocation="CenterScreen"
          Background="Transparent"
-         FontFamily="{StaticResource NunitoBold}"
          MouseDown="Window_MouseDown"
+         FontFamily="{StaticResource NunitoBold}"
+         Foreground="{StaticResource MainFontColor}"
          FocusManager.FocusedElement="{Binding ElementName=UsernameTextBox}">
 
     <!--This code SHOWS SignupWindow and then CLOSES LoginWindow(this window)-->
@@ -33,7 +34,7 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
-    <Border Background="#222529"
+    <Border Background="{StaticResource MainBackground}"
             CornerRadius="22">
         <!--Main Grid-->
         <Grid>
@@ -58,7 +59,6 @@
                 <!--Login Text-->
                 <TextBlock Text="Login"
                            Grid.Row="0"
-                           Foreground="#B8BDC1"
                            FontSize="25"
                            FontFamily="{StaticResource MerriweatherBold}"
                            HorizontalAlignment="Center" />
@@ -66,7 +66,6 @@
                 <!--Username TextBlock-->
                 <TextBlock Text="Username"
                            Grid.Row="1"
-                           Foreground="#B8BDC1"
                            FontSize="19"
                            Margin="0,38,0,6"
                            FontFamily="{StaticResource NunitoBold}" />
@@ -84,7 +83,6 @@
                 <!--Password TextBlock-->
                 <TextBlock Text="Password"
                            Grid.Row="3"
-                           Foreground="#B8BDC1"
                            FontSize="19"
                            Margin="0,30,0,6"
                            FontFamily="{StaticResource NunitoBold}" />
@@ -104,21 +102,21 @@
                         Grid.Row="5"
                         Height="38.27"
                         Width="285"
-                        Background="#F54342"
+                        Background="{StaticResource AccentColor}"
                         Margin="0,82,0,8"
                         FontSize="16"
                         Style="{StaticResource TextOnlyButtonTheme}"
                         Command="{Binding LoginCommand}" />
 
+                <!--Signup Text-->
                 <StackPanel Grid.Row="6"
                             Orientation="Horizontal"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom">
                     <TextBlock Text="Don't have an account?"
-                               Foreground="#B8BDC1"
                                FontSize="16.31" />
                     <Button  Content="Sign Up"
-                             Foreground="#F54342"
+                             Foreground="{StaticResource AccentColor}"
                              FontSize="16.31"
                              Margin="10,0,0,0"
                              Command="{Binding SignUpWindowRedirectCommand}"
