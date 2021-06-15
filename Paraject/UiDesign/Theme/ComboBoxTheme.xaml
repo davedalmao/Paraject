@@ -8,22 +8,22 @@
                 <ColumnDefinition />
                 <ColumnDefinition Width="40" />
             </Grid.ColumnDefinitions>
-            <!--ComboBox arrow dropdown-->
+            <!--ComboBox  dropdown-->
             <Border x:Name="Border"
                     Grid.ColumnSpan="2"
                     CornerRadius="12"
-                    Background="#2E3135"
+                    Background="{DynamicResource InputField}"
                     BorderThickness="0" />
 
-            <!--ComboBox input-->
+            <!--ComboBox input (or its "TextBox")-->
             <Border Grid.Column="0"
-                    Background="#2E3135"
+                    Background="{DynamicResource InputField}"
                     CornerRadius="12,0,0,12" />
 
             <!--ComboBox arrow dropdown fill-->
             <Path x:Name="Arrow"
                   Grid.Column="1"
-                  Fill="#B8BDC1"
+                  Fill="{DynamicResource MainFontColor}"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
                   Data="M 0 0 L 5 5 L 10 0"
