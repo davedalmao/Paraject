@@ -79,7 +79,7 @@
                     <!--Scrollbar Color-->
                     <!--Adjust the margin based on the Items control spacing (of its elements [ItemsControl.ItemTemplate])-->
                     <Border CornerRadius="4"
-                            Background="#89898A"
+                            Background="{DynamicResource Scrollbar}"
                             Width="8"
                             Margin="0,0,0,30" />
                 </ControlTemplate>
