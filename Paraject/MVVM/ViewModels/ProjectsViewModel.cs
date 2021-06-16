@@ -36,10 +36,17 @@ namespace Paraject.MVVM.ViewModels
             AddProjectCommand = new DelegateCommand(Add);
             AddProjectLogoCommand = new DelegateCommand(LoadProjectLogo);
 
+            //Redirect to TasksView
+            //TasksViewCommand = new DelegateCommand(NavigateToTasksView);
+            TasksViewCommand = new NavigationCommand(NavigateToTasksView);
+
             //Default Project Display
             AllProjects();
             Projects = new ObservableCollection<Project>(_projectRepository.GetAll(CurrentUserAccount.Id));
         }
+
+        public ObservableCollection<Project> Projects { get; set; }
+        public TasksViewModel TasksVM { get; set; }
 
         #region Commands
         //Add Projects Commands
@@ -54,6 +61,9 @@ namespace Paraject.MVVM.ViewModels
         //Show and Close AddProjectModalDialog
         public ICommand AddProjectsDialogCommand { get; }
         public ICommand CloseModalDialogCommand { get; }
+
+        //Redirect to TasksView
+        public ICommand TasksViewCommand { get; }
         #endregion
 
         #region Models
@@ -61,7 +71,13 @@ namespace Paraject.MVVM.ViewModels
         public UserAccount CurrentUserAccount { get; set; }
         #endregion
 
-        public ObservableCollection<Project> Projects { get; set; }
+        public void NavigateToTasksView(object projectId)
+        {
+            //change currentview to tasks vm
+            int? currentProjectId = projectId as int?;
+            TasksVM = new TasksViewModel(currentProjectId);
+            MainWindowViewModel.CurrentView = TasksVM;
+        }
 
         #region Add Project Methods
         public void Add()

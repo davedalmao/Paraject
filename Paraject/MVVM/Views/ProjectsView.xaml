@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Paraject.MVVM.Views"
              xmlns:custom="clr-namespace:Paraject.Core.CustomControls"
+             xmlns:model="clr-namespace:Paraject.MVVM.Models"
              xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
              d:DataContext="{d:DesignInstance Type=viewmodels:ProjectsViewModel}"
              mc:Ignorable="d"
@@ -67,15 +68,20 @@
                       Height="432"
                       Background="Blue">
             <!--Project Cards-->
-            <ItemsControl ItemsSource="{Binding Projects}">
+            <ItemsControl x:Name="Projects"
+                          ItemsSource="{Binding Projects}">
 
                 <!--This is what the card would look like-->
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border Background="{StaticResource ProjectCard}"
-                                CornerRadius="8"
-                                Margin="0,10,15,20"
-                                Padding="26.53, 16">
+                        <!--I set the CommandParameter to Id to get the Id of the selected card item-->
+                        <Button  Margin="0,10,15,20"
+                                 Padding="26.53, 16"
+                                 Background="{StaticResource ProjectCard}"
+                                 Style="{StaticResource PlainButtonTheme}"
+                                 Command="{Binding ElementName=Projects, 
+                                                  Path=DataContext.TasksViewCommand}"
+                                 CommandParameter="{Binding Id}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto" />
@@ -152,7 +158,7 @@
                                            HorizontalAlignment="Right"
                                            FontFamily="{StaticResource SignikaRegular}" />
                             </Grid>
-                        </Border>
+                        </Button>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

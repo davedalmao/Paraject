@@ -13,50 +13,14 @@ namespace Paraject.MVVM.ViewModels.Windows
     {
         private readonly UserAccountRepository _userAccountRepository;
         private static bool _overlay;
+        private static object _currentView;
 
         //Event handler for static property (MainWindowOverlay), since PropertyChanged.Fody (nuget package) doesn't notify static property changes
         //The static property name in this ViewModel is Overlay. The event name is therefore OverlayChanged (or else it will not notify the changes)
         public static event EventHandler OverlayChanged;
-        public static bool Overlay
-        {
-            get { return _overlay; }
-            set
-            {
-                _overlay = value;
-                if (OverlayChanged is not null)
-                    OverlayChanged(null, EventArgs.Empty);
-            }
-        }
+        public static event EventHandler CurrentViewChanged;
 
-        public UserAccount CurrentUserAccount { get; set; }
-        public object CurrentView { get; set; }
-
-
-        #region Commands 
-        //Navigation Commands
-        public ICommand DashboardViewCommand { get; }
-        public ICommand ProjectsViewCommand { get; }
-        public ICommand ProfileViewCommand { get; }
-        public ICommand ProjectIdeasViewCommand { get; }
-        public ICommand OptionsViewCommand { get; }
-
-        // Update/Delete UserAccount Commands
-        public ICommand UpdateCurrentUserCommand { get; }
-        public ICommand DeleteCurrentUserCommand { get; }
-
-        //MainWindow Command
-        public ICommand LogoutCommand { get; }
-        #endregion
-
-        #region ViewModels (that will navigate to their associated Views)
-        public DashboardViewModel DashboardVM { get; set; }
-        public ProjectsViewModel ProjectsVM { get; set; }
-        public UserAccountViewModel ProfileVM { get; set; }
-        public ProjectIdeasViewModel ProjectIdeasVM { get; set; }
-        public OptionsViewModel OptionsVM { get; set; }
-        #endregion
-
-        #region Contructor
+        #region Constructor
         public MainWindowViewModel(UserAccount currentUserAccount)
         {
             CurrentUserAccount = currentUserAccount;
@@ -84,6 +48,52 @@ namespace Paraject.MVVM.ViewModels.Windows
 
             Get();
         }
+        #endregion
+
+        public UserAccount CurrentUserAccount { get; set; }
+        public static bool Overlay
+        {
+            get { return _overlay; }
+            set
+            {
+                _overlay = value;
+                if (OverlayChanged is not null)
+                    OverlayChanged(null, EventArgs.Empty);
+            }
+        }
+        public static object CurrentView
+        {
+            get { return _currentView; }
+            set
+            {
+                _currentView = value;
+                if (CurrentViewChanged is not null)
+                    CurrentViewChanged(null, EventArgs.Empty);
+            }
+        }
+
+        #region Commands 
+        //Navigation Commands
+        public ICommand DashboardViewCommand { get; }
+        public ICommand ProjectsViewCommand { get; }
+        public ICommand ProfileViewCommand { get; }
+        public ICommand ProjectIdeasViewCommand { get; }
+        public ICommand OptionsViewCommand { get; }
+
+        // Update/Delete UserAccount Commands
+        public ICommand UpdateCurrentUserCommand { get; }
+        public ICommand DeleteCurrentUserCommand { get; }
+
+        //MainWindow Command
+        public ICommand LogoutCommand { get; }
+        #endregion
+
+        #region ViewModels (that will navigate to their associated Views)
+        public DashboardViewModel DashboardVM { get; set; }
+        public ProjectsViewModel ProjectsVM { get; set; }
+        public UserAccountViewModel ProfileVM { get; set; }
+        public ProjectIdeasViewModel ProjectIdeasVM { get; set; }
+        public OptionsViewModel OptionsVM { get; set; }
         #endregion
 
         #region Methods Used in UserAccountView
@@ -164,6 +174,7 @@ namespace Paraject.MVVM.ViewModels.Windows
         }
         #endregion
 
+        #region Window Methods
         public void Logout()
         {
             MessageBoxResult Result = MessageBox.Show("Do you want Logout?", "Logout Account", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -183,5 +194,6 @@ namespace Paraject.MVVM.ViewModels.Windows
             loginWindow.Show();
             CloseMainWindow();
         }
+        #endregion
     }
 }
