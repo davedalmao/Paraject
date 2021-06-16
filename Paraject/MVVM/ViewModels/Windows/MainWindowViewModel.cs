@@ -15,10 +15,12 @@ namespace Paraject.MVVM.ViewModels.Windows
         private static bool _overlay;
         private static object _currentView;
 
+        #region EventHandlers
         //Event handler for static property (MainWindowOverlay), since PropertyChanged.Fody (nuget package) doesn't notify static property changes
         //The static property name in this ViewModel is Overlay. The event name is therefore OverlayChanged (or else it will not notify the changes)
         public static event EventHandler OverlayChanged;
         public static event EventHandler CurrentViewChanged;
+        #endregion
 
         #region Constructor
         public MainWindowViewModel(UserAccount currentUserAccount)
@@ -40,16 +42,17 @@ namespace Paraject.MVVM.ViewModels.Windows
 
             CurrentView = ProjectsVM;
 
-            DashboardViewCommand = new NavigationCommand(o => { CurrentView = DashboardVM; });
-            ProjectsViewCommand = new NavigationCommand(o => { CurrentView = ProjectsVM; });
-            ProfileViewCommand = new NavigationCommand(o => { CurrentView = ProfileVM; });
-            ProjectIdeasViewCommand = new NavigationCommand(o => { CurrentView = ProjectIdeasVM; });
-            OptionsViewCommand = new NavigationCommand(o => { CurrentView = OptionsVM; });
+            DashboardViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = DashboardVM; });
+            ProjectsViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectsVM; });
+            ProfileViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProfileVM; });
+            ProjectIdeasViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectIdeasVM; });
+            OptionsViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = OptionsVM; });
 
             Get();
         }
         #endregion
 
+        #region Properties
         public UserAccount CurrentUserAccount { get; set; }
         public static bool Overlay
         {
@@ -72,6 +75,14 @@ namespace Paraject.MVVM.ViewModels.Windows
             }
         }
 
+        #region ViewModels (that will navigate to their associated Views)
+        public DashboardViewModel DashboardVM { get; set; }
+        public ProjectsViewModel ProjectsVM { get; set; }
+        public UserAccountViewModel ProfileVM { get; set; }
+        public ProjectIdeasViewModel ProjectIdeasVM { get; set; }
+        public OptionsViewModel OptionsVM { get; set; }
+        #endregion
+
         #region Commands 
         //Navigation Commands
         public ICommand DashboardViewCommand { get; }
@@ -87,13 +98,6 @@ namespace Paraject.MVVM.ViewModels.Windows
         //MainWindow Command
         public ICommand LogoutCommand { get; }
         #endregion
-
-        #region ViewModels (that will navigate to their associated Views)
-        public DashboardViewModel DashboardVM { get; set; }
-        public ProjectsViewModel ProjectsVM { get; set; }
-        public UserAccountViewModel ProfileVM { get; set; }
-        public ProjectIdeasViewModel ProjectIdeasVM { get; set; }
-        public OptionsViewModel OptionsVM { get; set; }
         #endregion
 
         #region Methods Used in UserAccountView

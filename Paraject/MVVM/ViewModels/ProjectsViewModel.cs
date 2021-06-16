@@ -38,7 +38,7 @@ namespace Paraject.MVVM.ViewModels
 
             //Redirect to TasksView
             //TasksViewCommand = new DelegateCommand(NavigateToTasksView);
-            TasksViewCommand = new NavigationCommand(NavigateToTasksView);
+            TasksViewCommand = new ParameterizedDelegateCommand(NavigateToTasksView);
 
             //Default Project Display
             AllProjects();
