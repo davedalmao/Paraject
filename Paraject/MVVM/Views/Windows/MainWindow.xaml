@@ -224,7 +224,7 @@
                 <!--Where the views are going to be displayed-->
                 <ContentControl  Grid.Column="1"
                                  Grid.RowSpan="5"
-                                 Content="{Binding CurrentView}"
+                                 Content="{Binding Path=(windowViewModel:MainWindowViewModel.CurrentView)}"
                                  Margin="0,40,0,0" />
             </Grid>
 
