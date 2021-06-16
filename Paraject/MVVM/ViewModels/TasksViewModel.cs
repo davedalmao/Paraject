@@ -2,11 +2,11 @@
 {
     public class TasksViewModel : BaseViewModel
     {
-        public TasksViewModel(int projectId)
+        public TasksViewModel(int? projectId)
         {
             Test = projectId;
         }
 
-        public int Test { get; set; }
+        public int? Test { get; set; }
     }
 }

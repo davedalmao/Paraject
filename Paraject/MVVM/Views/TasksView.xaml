@@ -8,8 +8,8 @@
              d:DataContext="{d:DesignInstance Type=viewmodels:TasksViewModel}"
              mc:Ignorable="d"
              Width="732"
-             Height="544.63"
-             Background="red">
+             Height="574"
+             Background="Transparent">
     <Grid HorizontalAlignment="Center"
           VerticalAlignment="Center">
         <TextBlock Text="{Binding Test}"

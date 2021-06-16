@@ -46,6 +46,7 @@ namespace Paraject.MVVM.ViewModels
         }
 
         public ObservableCollection<Project> Projects { get; set; }
+        public TasksViewModel TasksVM { get; set; }
 
         #region Commands
         //Add Projects Commands
@@ -70,10 +71,12 @@ namespace Paraject.MVVM.ViewModels
         public UserAccount CurrentUserAccount { get; set; }
         #endregion
 
-        public void NavigateToTasksView(object s)
+        public void NavigateToTasksView(object projectId)
         {
             //change currentview to tasks vm
-            MessageBox.Show($"Project Id: {s}");
+            int? currentProjectId = projectId as int?;
+            TasksVM = new TasksViewModel(currentProjectId);
+            MainWindowViewModel.CurrentView = TasksVM;
         }
 
         #region Add Project Methods
