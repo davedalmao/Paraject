@@ -72,6 +72,7 @@ namespace Paraject.MVVM.ViewModels
 
         public void NavigateToTasksView(object s)
         {
+            //change currentview to tasks vm
             MessageBox.Show($"Project Id: {s}");
         }
 

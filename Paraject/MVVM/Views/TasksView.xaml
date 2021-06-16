@@ -4,11 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Paraject.MVVM.Views"
+             xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:TasksViewModel}"
              mc:Ignorable="d"
              Width="732"
              Height="544.63"
-             Background="Transparent">
-    <Grid>
-
+             Background="red">
+    <Grid HorizontalAlignment="Center"
+          VerticalAlignment="Center">
+        <TextBlock Text="{Binding Test}"
+                   FontSize="100"
+                   Foreground="White" />
     </Grid>
 </UserControl>

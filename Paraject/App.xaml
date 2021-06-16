@@ -121,6 +121,11 @@
             <DataTemplate DataType="{x:Type viewModel:OptionsViewModel}">
                 <view:OptionsView />
             </DataTemplate>
+
+            <!--Tasks-->
+            <DataTemplate DataType="{x:Type viewModel:TasksViewModel}">
+                <view:TasksView />
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
