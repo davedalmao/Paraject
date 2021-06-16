@@ -5,15 +5,69 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Paraject.MVVM.Views"
              xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
+             xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
+             xmlns:custom="clr-namespace:Paraject.Core.CustomControls"
              d:DataContext="{d:DesignInstance Type=viewmodels:TasksViewModel}"
              mc:Ignorable="d"
              Width="732"
              Height="574"
+             FontFamily="{StaticResource NunitoBold}"
+             Foreground="{StaticResource MainFontColor}"
              Background="Transparent">
-    <Grid HorizontalAlignment="Center"
-          VerticalAlignment="Center">
-        <TextBlock Text="{Binding Test}"
-                   FontSize="100"
-                   Foreground="White" />
+    <Grid Margin="50,8,50,30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--TasksView Header-->
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="0">
+            <!--Back (to ProjectsView) Button-->
+            <Button  Style="{StaticResource PlainButtonTheme}"
+                     Background="Transparent">
+                <UserControl Width="28"
+                             Height="28">
+                    <svgc1:SvgViewbox Source="/UiDesign/Icons/backArrow.svg"
+                                      Cursor="Hand" />
+                </UserControl>
+            </Button>
+
+            <!--Selected Project Name-->
+            <TextBlock Text="{Binding Test}"
+                       FontSize="25"
+                       Margin="8,0,0,0" />
+        </StackPanel>
+
+        <!--TasksView Navigation-->
+        <DockPanel Grid.Row="1"
+                   Margin="0,20,0,35">
+            <!--FinishLine Type Tasks-->
+            <custom:MenuItem Content="Finish Line"
+                             IsChecked="True"
+                             Style="{StaticResource VerticalMenuButtonTheme}" />
+
+            <!--ExtraFeatures Type Tasks-->
+            <custom:MenuItem Content="Extra Features"
+                             Style="{StaticResource VerticalMenuButtonTheme}" />
+
+            <!--Compeleted Type Tasks-->
+            <custom:MenuItem Content="Completed Tasks"
+                             Style="{StaticResource VerticalMenuButtonTheme}" />
+
+            <!--Project Notes-->
+            <custom:MenuItem Content="Notes"
+                             Style="{StaticResource VerticalMenuButtonTheme}" />
+
+            <!--Project Details-->
+            <custom:MenuItem Content="Project Details"
+                             HorizontalAlignment="Right"
+                             Margin="0"
+                             Style="{StaticResource VerticalMenuButtonTheme}" />
+        </DockPanel>
+
+        <!--Where the views are going to be displayed-->
+        <ContentControl Grid.Row="2" />
     </Grid>
 </UserControl>
