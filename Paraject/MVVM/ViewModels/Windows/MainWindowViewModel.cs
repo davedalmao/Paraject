@@ -75,7 +75,7 @@ namespace Paraject.MVVM.ViewModels.Windows
             }
         }
 
-        #region ViewModels (that will navigate to their associated Views)
+        #region ViewModels (that will navigate with their associated Views)
         public DashboardViewModel DashboardVM { get; set; }
         public ProjectsViewModel ProjectsVM { get; set; }
         public UserAccountViewModel ProfileVM { get; set; }

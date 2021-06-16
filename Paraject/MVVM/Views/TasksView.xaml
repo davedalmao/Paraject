@@ -46,25 +46,30 @@
             <!--FinishLine Type Tasks-->
             <custom:MenuItem Content="Finish Line"
                              IsChecked="True"
-                             Style="{StaticResource VerticalMenuButtonTheme}" />
+                             Style="{StaticResource VerticalMenuButtonTheme}"
+                             Command="{Binding TasksTodoViewCommand}" />
 
             <!--ExtraFeatures Type Tasks-->
             <custom:MenuItem Content="Extra Features"
-                             Style="{StaticResource VerticalMenuButtonTheme}" />
+                             Style="{StaticResource VerticalMenuButtonTheme}"
+                             Command="{Binding TasksTodoViewCommand}" />
 
             <!--Compeleted Type Tasks-->
             <custom:MenuItem Content="Completed Tasks"
-                             Style="{StaticResource VerticalMenuButtonTheme}" />
+                             Style="{StaticResource VerticalMenuButtonTheme}"
+                             Command="{Binding CompletedTasksViewCommand}" />
 
             <!--Project Notes-->
             <custom:MenuItem Content="Notes"
-                             Style="{StaticResource VerticalMenuButtonTheme}" />
+                             Style="{StaticResource VerticalMenuButtonTheme}"
+                             Command="{Binding ProjectNotesViewCommand}" />
 
             <!--Project Details-->
             <custom:MenuItem Content="Project Details"
                              HorizontalAlignment="Right"
                              Margin="0"
-                             Style="{StaticResource VerticalMenuButtonTheme}" />
+                             Style="{StaticResource VerticalMenuButtonTheme}"
+                             Command="{Binding ProjectDetailsViewCommand}" />
         </DockPanel>
 
         <!--Where the views are going to be displayed-->
