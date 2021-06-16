@@ -18,6 +18,9 @@ namespace Paraject.MVVM.ViewModels
             CompletedTasksViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = CompletedTasksVM; });
             ProjectNotesViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectNotesVM; });
             ProjectDetailsViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectDetailsVM; });
+
+            //Test tingz
+            Test = projectId;
         }
 
         public int? Test { get; set; }
