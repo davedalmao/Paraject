@@ -72,8 +72,8 @@
                 <!--This is what the card would look like-->
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border Background="{StaticResource ProjectCard}"
-                                CornerRadius="8"
+                        <Button Background="{StaticResource ProjectCard}"
+                                Style="{StaticResource PlainButtonTheme}"
                                 Margin="0,10,15,20"
                                 Padding="26.53, 16">
                             <Grid>
@@ -152,7 +152,7 @@
                                            HorizontalAlignment="Right"
                                            FontFamily="{StaticResource SignikaRegular}" />
                             </Grid>
-                        </Border>
+                        </Button>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
