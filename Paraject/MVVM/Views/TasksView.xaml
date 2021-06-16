@@ -68,6 +68,7 @@
         </DockPanel>
 
         <!--Where the views are going to be displayed-->
-        <ContentControl Grid.Row="2" />
+        <ContentControl Grid.Row="2"
+                        Content="{Binding CurrentView}" />
     </Grid>
 </UserControl>

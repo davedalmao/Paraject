@@ -126,6 +126,26 @@
             <DataTemplate DataType="{x:Type viewModel:TasksViewModel}">
                 <view:TasksView />
             </DataTemplate>
+
+            <!--Tasks Todo-->
+            <DataTemplate DataType="{x:Type viewModel:TasksTodoViewModel}">
+                <view:TasksTodoView />
+            </DataTemplate>
+
+            <!--Completed Tasks-->
+            <DataTemplate DataType="{x:Type viewModel:CompletedTasksViewModel}">
+                <view:CompletedTasksView />
+            </DataTemplate>
+
+            <!--Project Notes-->
+            <DataTemplate DataType="{x:Type viewModel:ProjectNotesViewModel}">
+                <view:ProjectNotesView />
+            </DataTemplate>
+
+            <!--Project Details-->
+            <DataTemplate DataType="{x:Type viewModel:ProjectDetailsViewModel}">
+                <view:ProjectDetailsView />
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

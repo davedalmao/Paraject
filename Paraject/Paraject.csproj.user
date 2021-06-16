@@ -12,6 +12,9 @@
     <Compile Update="Core\CustomControls\UserControls\BindablePasswordBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="MVVM\Views\CompletedTasksView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MVVM\Views\DashboardView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -19,6 +22,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="MVVM\Views\OptionsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\Views\ProjectDetailsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\Views\ProjectNotesView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\Views\TasksTodoView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="MVVM\Views\TasksView.xaml.cs">
@@ -47,6 +59,9 @@
     <Page Update="Core\CustomControls\UserControls\BindablePasswordBox.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="MVVM\Views\CompletedTasksView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MVVM\Views\DashboardView.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -54,6 +69,15 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\OptionsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\Views\ProjectDetailsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\Views\ProjectNotesView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\Views\TasksTodoView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\TasksView.xaml">
