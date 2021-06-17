@@ -93,6 +93,7 @@
                                       IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
                                       ClickMode="Press" />
 
+                        <!--Change the ComboBox padding here-->
                         <ContentPresenter Name="ContentSite"
                                           IsHitTestVisible="False"
                                           Content="{TemplateBinding SelectionBoxItem}"
@@ -100,7 +101,7 @@
                                           ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
                                           VerticalAlignment="Center"
                                           HorizontalAlignment="Left"
-                                          Margin="20,0" />
+                                          Margin="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ComboBox}}, Path=Padding}" />
 
                         <TextBox x:Name="PART_EditableTextBox"
                                  Style="{x:Null}"
