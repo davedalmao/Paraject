@@ -69,15 +69,28 @@ namespace Paraject.Core.Repositories
                 var sqlDataReader = cmd.ExecuteReader();
                 if (sqlDataReader.HasRows)
                 {
+                    //Move to the first record.  If no records, get out.
+                    if (!sqlDataReader.Read()) return null;
+
+                    //Ordinals (Gets the column number from the database based on the [column name] passed in GetOrdinal method)
+                    int userAccountId = sqlDataReader.GetOrdinal("user_id");
+                    int usernameFromDb = sqlDataReader.GetOrdinal("username");
+                    int password = sqlDataReader.GetOrdinal("password");
+                    int dateCreated = sqlDataReader.GetOrdinal("date_created");
+
                     //Reads a single UserAccount
-                    sqlDataReader.Read();
-                    userAccount = new UserAccount
+                    //Remember, we're already on the first record, so use do/while here.
+                    do
                     {
-                        Id = sqlDataReader.GetInt32(0),
-                        Username = sqlDataReader.GetString(1),
-                        Password = sqlDataReader.GetString(2),
-                        DateCreated = sqlDataReader.GetDateTime(3)
-                    };
+                        userAccount = new UserAccount
+                        {
+                            Id = sqlDataReader.GetInt32(userAccountId),
+                            Username = sqlDataReader.GetString(usernameFromDb),
+                            Password = sqlDataReader.GetString(password),
+                            DateCreated = sqlDataReader.GetDateTime(dateCreated)
+                        };
+                    }
+                    while (sqlDataReader.Read());
                 }
                 sqlDataReader.Close();
             }
