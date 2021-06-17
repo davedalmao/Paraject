@@ -107,6 +107,9 @@
     <Page Update="UiDesign\Theme\ComboBoxTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="UiDesign\Theme\ComboBoxTheme2.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="UiDesign\Theme\DatePickerCalendarTheme.xaml">
       <SubType>Designer</SubType>
     </Page>

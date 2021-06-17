@@ -118,6 +118,7 @@
                               Width="294"
                               Height="42"
                               FontSize="15"
+                              Padding="20,0"
                               ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:ProjectOptions}}}"
                               Style="{StaticResource ComboBoxTheme}"
                               Background="{StaticResource InputField}"
