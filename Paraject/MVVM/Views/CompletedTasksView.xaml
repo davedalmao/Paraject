@@ -5,10 +5,35 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Paraject.MVVM.Views"
              mc:Ignorable="d"
-             Width="732"
+             Width="632"
              Height="444.5"
-             Background="Blue">
+             Background="Transparent">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
 
+        <!--Task Filters-->
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal">
+            <!--Task Category ComboBox-->
+            <ComboBox Height="20"
+                      Width="123"
+                      Style="{StaticResource ComboBoxTheme}" />
+
+            <!--Task Type ComboBox-->
+            <ComboBox Margin="22,0"
+                      Height="20"
+                      Width="143"
+                      Style="{StaticResource ComboBoxTheme}" />
+        </StackPanel>
+
+        <!--Completed Tasks Display-->
+        <ScrollViewer Style="{StaticResource ScrollbarTheme}"
+                      Height="408"
+                      Grid.Row="1">
+
+        </ScrollViewer>
     </Grid>
 </UserControl>

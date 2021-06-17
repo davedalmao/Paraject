@@ -113,12 +113,13 @@
                                FontSize="19" />
 
                     <!--ProjectOption ComboBox-->
-                    <ComboBox Width="294"
+                    <ComboBox SelectedIndex="0"
+                              Width="294"
                               Height="42"
+                              FontSize="15"
                               ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:ProjectOptions}}}"
                               Style="{StaticResource ComboBoxTheme}"
-                              FontSize="15"
-                              SelectedIndex="1"
+                              Background="{StaticResource InputField}"
                               Text="{Binding CurrentProject.Option}" />
 
                     <!--Deadline TextBlock-->
