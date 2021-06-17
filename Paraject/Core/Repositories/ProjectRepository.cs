@@ -85,18 +85,33 @@ namespace Paraject.Core.Repositories
                 SqlDataReader sqlDataReader = cmd.ExecuteReader();
                 if (sqlDataReader.HasRows)
                 {
+                    //Move to the first record.  If no records, get out.
+                    if (!sqlDataReader.Read()) return null;
+
+                    //Ordinals (Gets the column number from the database based on the [column name] passed in GetOrdinal method)
+                    int projectId = sqlDataReader.GetOrdinal("project_id");
+                    int userIdFk = sqlDataReader.GetOrdinal("user_id");
+                    int projectName = sqlDataReader.GetOrdinal("project_name");
+                    int projectDescription = sqlDataReader.GetOrdinal("project_description");
+                    int projectOption = sqlDataReader.GetOrdinal("project_option");
+                    int projectStatus = sqlDataReader.GetOrdinal("project_status");
+                    int projectDeadline = sqlDataReader.GetOrdinal("project_deadline");
+                    int dateCreated = sqlDataReader.GetOrdinal("date_created");
+                    int projectLogo = sqlDataReader.GetOrdinal("project_logo");
+
                     //Reads a single Project
                     sqlDataReader.Read();
                     project = new Project()
                     {
-                        Id = sqlDataReader.GetInt32(0),
-                        User_Id_Fk = sqlDataReader.GetInt32(1),
-                        Name = sqlDataReader.GetString(2),
-                        Description = sqlDataReader.GetString(3),
-                        Option = sqlDataReader.GetString(4),
-                        Status = sqlDataReader.GetString(5),
-                        Deadline = sqlDataReader.GetDateTime(6),
-                        DateCreated = sqlDataReader.GetDateTime(7)
+                        Id = sqlDataReader.GetInt32(projectId),
+                        User_Id_Fk = sqlDataReader.GetInt32(userIdFk),
+                        Name = sqlDataReader.GetString(projectName),
+                        Description = sqlDataReader.GetString(projectDescription),
+                        Option = sqlDataReader.GetString(projectOption),
+                        Status = sqlDataReader.GetString(projectStatus),
+                        Deadline = sqlDataReader.GetDateTime(projectDeadline),
+                        DateCreated = sqlDataReader.GetDateTime(dateCreated),
+                        Logo = sqlDataReader.IsDBNull(projectLogo) ? null : ImageConverter.BytesToImage((byte[])sqlDataReader.GetValue(projectLogo))
                     };
                 }
                 sqlDataReader.Close();
@@ -124,24 +139,40 @@ namespace Paraject.Core.Repositories
                     SqlDataReader sqlDataReader = cmd.ExecuteReader();
                     if (sqlDataReader.HasRows)
                     {
-                        //reading multiple Projects
-                        while (sqlDataReader.Read())
+                        //Move to the first record.  If no records, get out.
+                        if (!sqlDataReader.Read()) return null;
+
+                        //Ordinals (Gets the column number from the database based on the [column name] passed in GetOrdinal method)
+                        int projectId = sqlDataReader.GetOrdinal("project_id");
+                        int userIdFk = sqlDataReader.GetOrdinal("user_id");
+                        int projectName = sqlDataReader.GetOrdinal("project_name");
+                        int projectDescription = sqlDataReader.GetOrdinal("project_description");
+                        int projectOption = sqlDataReader.GetOrdinal("project_option");
+                        int projectStatus = sqlDataReader.GetOrdinal("project_status");
+                        int projectDeadline = sqlDataReader.GetOrdinal("project_deadline");
+                        int dateCreated = sqlDataReader.GetOrdinal("date_created");
+                        int projectLogo = sqlDataReader.GetOrdinal("project_logo");
+
+                        //reading multiple Projects (Add a Project object to the projects List if SqlDataReader returns a row from the Database)
+                        //Remember, we're already on the first record, so use do/while here.
+                        do
                         {
                             Project project = new()
                             {
-                                Id = sqlDataReader.GetInt32(0),
-                                User_Id_Fk = sqlDataReader.GetInt32(1),
-                                Name = sqlDataReader.GetString(2),
-                                Description = sqlDataReader.IsDBNull(3) ? "--" : sqlDataReader.GetString(3),
-                                Option = sqlDataReader.GetString(4),
-                                Status = sqlDataReader.GetString(5).Equals("InProgress", StringComparison.Ordinal) ? "In Progress" : "Open",
-                                Deadline = sqlDataReader.IsDBNull(6) ? null : sqlDataReader.GetDateTime(6),
-                                DateCreated = sqlDataReader.GetDateTime(7),
-                                Logo = sqlDataReader.IsDBNull(8) ? null : ImageConverter.BytesToImage((byte[])sqlDataReader.GetValue(8))
+                                Id = sqlDataReader.GetInt32(projectId),
+                                User_Id_Fk = sqlDataReader.GetInt32(userIdFk),
+                                Name = sqlDataReader.GetString(projectName),
+                                Description = sqlDataReader.IsDBNull(projectDescription) ? "--" : sqlDataReader.GetString(projectDescription),
+                                Option = sqlDataReader.GetString(projectOption),
+                                Status = sqlDataReader.GetString(projectStatus).Equals("InProgress", StringComparison.Ordinal) ? "In Progress" : "Open",
+                                Deadline = sqlDataReader.IsDBNull(projectDeadline) ? null : sqlDataReader.GetDateTime(projectDeadline),
+                                DateCreated = sqlDataReader.GetDateTime(dateCreated),
+                                Logo = sqlDataReader.IsDBNull(projectLogo) ? null : ImageConverter.BytesToImage((byte[])sqlDataReader.GetValue(projectLogo))
                             };
 
                             projects.Add(project);
                         }
+                        while (sqlDataReader.Read());
                     }
                     sqlDataReader.Close();
                 }
@@ -175,24 +206,41 @@ namespace Paraject.Core.Repositories
                     SqlDataReader sqlDataReader = cmd.ExecuteReader();
                     if (sqlDataReader.HasRows)
                     {
-                        //reading multiple Projects
-                        while (sqlDataReader.Read())
+                        // Move to the first record.  If no records, get out.
+                        if (!sqlDataReader.Read()) return null;
+
+                        //Ordinals (Gets the column number from the database based on the [column name] passed in GetOrdinal method)
+                        int projectId = sqlDataReader.GetOrdinal("project_id");
+                        int userIdFk = sqlDataReader.GetOrdinal("user_id");
+                        int projectName = sqlDataReader.GetOrdinal("project_name");
+                        int projectDescription = sqlDataReader.GetOrdinal("project_description");
+                        int projectOptionFromDb = sqlDataReader.GetOrdinal("project_option");
+                        int projectStatus = sqlDataReader.GetOrdinal("project_status");
+                        int projectDeadline = sqlDataReader.GetOrdinal("project_deadline");
+                        int dateCreated = sqlDataReader.GetOrdinal("date_created");
+                        int projectLogo = sqlDataReader.GetOrdinal("project_logo");
+
+                        //reading multiple Projects (Add a Project object to the projects List if SqlDataReader returns a row from the Database)
+                        //Remember, we're already on the first record, so use do/while here.
+                        do
                         {
                             Project project = new()
                             {
-                                Id = sqlDataReader.GetInt32(0),
-                                User_Id_Fk = sqlDataReader.GetInt32(1),
-                                Name = sqlDataReader.GetString(2),
-                                Description = sqlDataReader.IsDBNull(3) ? "--" : sqlDataReader.GetString(3),
-                                Option = sqlDataReader.GetString(4),
-                                Status = sqlDataReader.GetString(5).Equals("InProgress", StringComparison.Ordinal) ? "In Progress" : "Open",
-                                Deadline = sqlDataReader.IsDBNull(6) ? null : sqlDataReader.GetDateTime(6),
-                                DateCreated = sqlDataReader.GetDateTime(7),
-                                Logo = sqlDataReader.IsDBNull(8) ? null : ImageConverter.BytesToImage((byte[])sqlDataReader.GetValue(8))
+                                Id = sqlDataReader.GetInt32(projectId),
+                                User_Id_Fk = sqlDataReader.GetInt32(userIdFk),
+                                Name = sqlDataReader.GetString(projectName),
+                                Description = sqlDataReader.IsDBNull(projectDescription) ? "--" : sqlDataReader.GetString(projectDescription),
+                                Option = sqlDataReader.GetString(projectOptionFromDb),
+                                Status = sqlDataReader.GetString(projectStatus).Equals("InProgress", StringComparison.Ordinal) ? "In Progress" : "Open",
+                                Deadline = sqlDataReader.IsDBNull(projectDeadline) ? null : sqlDataReader.GetDateTime(projectDeadline),
+                                DateCreated = sqlDataReader.GetDateTime(dateCreated),
+                                Logo = sqlDataReader.IsDBNull(projectLogo) ? null : ImageConverter.BytesToImage((byte[])sqlDataReader.GetValue(projectLogo))
                             };
 
                             projects.Add(project);
                         }
+                        //reading multiple Projects
+                        while (sqlDataReader.Read());
                     }
                     sqlDataReader.Close();
                 }
