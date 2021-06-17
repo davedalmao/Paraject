@@ -34,8 +34,7 @@
                 <TextBox Width="291"
                          Height="42"
                          FontSize="15"
-                         Style="{StaticResource TextBoxTheme}"
-                         Text="{Binding CurrentProject.Name}" />
+                         Style="{StaticResource TextBoxTheme}" />
 
                 <!--ProjectStatus TextBlock-->
                 <TextBlock Text="Project Status"
@@ -91,7 +90,7 @@
                 </StackPanel>
 
                 <!--ProjectOption TextBlock-->
-                <TextBlock Text="Project Status"
+                <TextBlock Text="Project Option"
                            FontSize="16.5"
                            Margin="0,27,0,3" />
 
@@ -139,7 +138,7 @@
                     Height="40"
                     Width="185"
                     Margin="0,0,15,0"
-                    Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
+                    Tag="/UiDesign/Icons/ButtonIcons/update.svg"
                     Background="{StaticResource Yellow}"
                     Style="{StaticResource GeneralButtonTheme}" />
 
@@ -148,7 +147,7 @@
                     Grid.Column="2"
                     Height="40"
                     Width="185"
-                    Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
+                    Tag="/UiDesign/Icons/ButtonIcons/delete.svg"
                     Background="{StaticResource Orange}"
                     Style="{StaticResource GeneralButtonTheme}" />
         </Grid>
