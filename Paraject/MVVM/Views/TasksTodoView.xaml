@@ -7,7 +7,7 @@
              mc:Ignorable="d"
              Width="732"
              Height="444.5"
-             Background="Red">
+             Background="Transparent">
     <Grid>
 
     </Grid>

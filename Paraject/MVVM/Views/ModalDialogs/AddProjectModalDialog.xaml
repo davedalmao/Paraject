@@ -117,6 +117,7 @@
                               Height="42"
                               ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:ProjectOptions}}}"
                               Style="{StaticResource ComboBoxTheme}"
+                              Background="{StaticResource InputField}"
                               FontSize="15"
                               SelectedIndex="1"
                               Text="{Binding CurrentProject.Option}" />
