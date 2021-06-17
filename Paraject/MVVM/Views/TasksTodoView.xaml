@@ -10,7 +10,8 @@
              Width="632"
              Height="444.5"
              Background="Transparent"
-             Foreground="{StaticResource MainFontColor}">
+             Foreground="{StaticResource MainFontColor}"
+             FontFamily="{StaticResource NunitoBold}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -21,29 +22,30 @@
         <DockPanel Grid.Row="0">
             <!--Task Status ComboBox-->
             <ComboBox SelectedIndex="0"
-                      Height="20"
-                      Width="115"
-                      FontSize="15"
-                      Background="Transparent"
-                      Style="{StaticResource ComboBoxTheme}"
+                      Height="36"
+                      Width="125"
+                      FontSize="14.59"
+                      Background="{StaticResource InputField}"
+                      Style="{StaticResource ComboBoxTheme2}"
                       ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Status}}}" />
 
             <!--Task Priority ComboBox-->
             <ComboBox SelectedIndex="0"
-                      Height="20"
-                      Width="75"
-                      FontSize="15"
-                      Background="Transparent"
-                      Style="{StaticResource ComboBoxTheme}"
+                      Height="36"
+                      Width="116"
+                      FontSize="14.59"
+                      Margin="20,0"
+                      Background="{StaticResource InputField}"
+                      Style="{StaticResource ComboBoxTheme2}"
                       ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Priority}}}" />
 
             <!--Task Category ComboBox-->
             <ComboBox SelectedIndex="0"
-                      Height="20"
-                      Width="155"
-                      FontSize="15"
-                      Background="Transparent"
-                      Style="{StaticResource ComboBoxTheme}"
+                      Height="36"
+                      Width="166"
+                      FontSize="14.59"
+                      Background="{StaticResource InputField}"
+                      Style="{StaticResource ComboBoxTheme2}"
                       ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Category}}}" />
 
             <!--Add New Task Button-->
