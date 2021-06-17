@@ -72,6 +72,7 @@
 
                 <!--Left Group-->
                 <StackPanel Grid.Column="0">
+                    <!--Project Logo and Add Logo Group-->
                     <StackPanel Width="190"
                                 HorizontalAlignment="Left">
                         <!--Project Logo-->
