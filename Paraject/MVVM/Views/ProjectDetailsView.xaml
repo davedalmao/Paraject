@@ -114,8 +114,45 @@
         </Grid>
 
         <!--Project Deadline and Action Buttons-->
-        <DockPanel Grid.Row="1">
+        <Grid Grid.Row="1"
+              Margin="0,40,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <!--Date Created-->
+            <StackPanel Orientation="Horizontal"
+                        Grid.Column="0">
+                <TextBlock Text="Date Created: "
+                           FontSize="15"
+                           Foreground="{StaticResource Darkest}" />
 
-        </DockPanel>
+                <TextBlock Text="test text"
+                           FontSize="15"
+                           Foreground="{StaticResource Darkest}" />
+            </StackPanel>
+
+            <!--Update Project Button-->
+            <Button Content="Update Project"
+                    Grid.Column="1"
+                    Height="40"
+                    Width="185"
+                    Margin="0,0,15,0"
+                    Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
+                    Background="{StaticResource Yellow}"
+                    Style="{StaticResource GeneralButtonTheme}" />
+
+            <!--Delete Project Button-->
+            <Button Content="Delete Project"
+                    Grid.Column="2"
+                    Height="40"
+                    Width="185"
+                    Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
+                    Background="{StaticResource Orange}"
+                    Style="{StaticResource GeneralButtonTheme}" />
+        </Grid>
     </Grid>
 </UserControl>
+
+    

@@ -137,11 +137,11 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom">
                 <TextBlock Text="Account Created: "
-                           Foreground="{StaticResource Footer}"
+                           Foreground="{StaticResource Darkest}"
                            FontSize="15" />
 
                 <TextBlock Text="{Binding CurrentUserAccount.DateCreated}"
-                           Foreground="{StaticResource Footer}"
+                           Foreground="{StaticResource Darkest}"
                            FontSize="15" />
             </StackPanel>
         </Grid>
