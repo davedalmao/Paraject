@@ -5,10 +5,75 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Paraject.MVVM.Views"
              mc:Ignorable="d"
-             Width="732"
+             Width="632"
              Height="444.5"
-             Background="Yellow">
+             Background="Transparent"
+             Foreground="{StaticResource MainFontColor}"
+             FontFamily="{StaticResource NunitoBold}">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
 
+        <!--Project Details Data/Input Fields-->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <!--Left Input Fields-->
+            <StackPanel Grid.Column="0">
+                <!--ProjectName TextBlock-->
+                <TextBlock Text="Project Name"
+                           FontSize="16.5"
+                           Margin="0,0,0,3" />
+
+                <!--ProjectName TextBox-->
+                <TextBox Width="291"
+                         Height="42"
+                         FontSize="15"
+                         Style="{StaticResource TextBoxTheme}"
+                         Text="{Binding CurrentProject.Name}" />
+
+                <!--ProjectStatus TextBlock-->
+                <TextBlock Text="Project Status"
+                           FontSize="16.5"
+                           Margin="0,20,0,3" />
+
+                <!--ProjectStatus ComboBox-->
+                <ComboBox Width="291"
+                          Height="42"
+                          FontSize="15"
+                          Margin="0,0,0,20"
+                          Style="{StaticResource ComboBoxTheme}"
+                          Background="{StaticResource InputField}" />
+
+                <!--Description TextBlock-->
+                <TextBlock Text="Description (optional)"
+                           FontSize="16.5"
+                           Margin="0,0,0,3" />
+
+                <!--Description Multiline TextBox-->
+                <TextBox Width="291"
+                         Height="125.5"
+                         FontSize="15"
+                         TextWrapping="Wrap"
+                         Style="{StaticResource TextBoxTheme}"
+                         VerticalScrollBarVisibility="Auto"
+                         VerticalContentAlignment="Top"
+                         Padding="20" />
+            </StackPanel>
+
+            <!--Right Input Fields-->
+            <StackPanel Grid.Column="1">
+
+            </StackPanel>
+        </Grid>
+
+        <!--Project Deadline and Action Buttons-->
+        <DockPanel Grid.Row="1">
+
+        </DockPanel>
     </Grid>
 </UserControl>
