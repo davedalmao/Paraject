@@ -2,6 +2,7 @@
 using Paraject.Core.Commands;
 using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.Windows;
 using System.Drawing;
 using System.Windows;
 using System.Windows.Input;
@@ -14,8 +15,9 @@ namespace Paraject.MVVM.ViewModels
         private readonly UserAccountRepository _userAccountRepository;
         public ProjectDetailsViewModel(Project currentProject)
         {
-            //Repository
+            //Repositories
             _projectRepository = new ProjectRepository();
+            _userAccountRepository = new UserAccountRepository();
 
             //Project Model
             CurrentProject = currentProject;
@@ -87,8 +89,8 @@ namespace Paraject.MVVM.ViewModels
                 MessageBox.Show("Project deleted successfully");
 
                 //redirect to ProjectsView after a successful DELETE operation
-                //ProjectsVM = new ProjectsViewModel(_userAccountRepository.Get(CurrentProject.User_Id_Fk));
-                //MainWindowViewModel.CurrentView = ProjectsVM;
+                ProjectsVM = new ProjectsViewModel(_userAccountRepository.GetById(CurrentProject.User_Id_Fk));
+                MainWindowViewModel.CurrentView = ProjectsVM;
             }
             else
             {
