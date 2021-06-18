@@ -1,11 +1,12 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.MVVM.Models;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
 {
     public class TasksViewModel : BaseViewModel
     {
-        public TasksViewModel(int? projectId)
+        public TasksViewModel(Project currentProject)
         {
             TasksTodoVM = new TasksTodoViewModel();
             CompletedTasksVM = new CompletedTasksViewModel();
@@ -19,11 +20,10 @@ namespace Paraject.MVVM.ViewModels
             ProjectNotesViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectNotesVM; });
             ProjectDetailsViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectDetailsVM; });
 
-            //Test tingz
-            Test = projectId;
+            CurrentProject = currentProject;
         }
 
-        public int? Test { get; set; }
+        public Project CurrentProject { get; set; }
         public object CurrentView { get; set; }
 
         #region ViewModels (that will navigate with their associated Views)

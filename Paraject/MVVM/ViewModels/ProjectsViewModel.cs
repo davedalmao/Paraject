@@ -37,7 +37,6 @@ namespace Paraject.MVVM.ViewModels
             AddProjectLogoCommand = new DelegateCommand(LoadProjectLogo);
 
             //Redirect to TasksView
-            //TasksViewCommand = new DelegateCommand(NavigateToTasksView);
             TasksViewCommand = new ParameterizedDelegateCommand(NavigateToTasksView);
 
             //Default Project Display
@@ -71,11 +70,18 @@ namespace Paraject.MVVM.ViewModels
         public UserAccount CurrentUserAccount { get; set; }
         #endregion
 
-        public void NavigateToTasksView(object projectId)
+        public void NavigateToTasksView(object projectId) //the argument passed to this parameter is in ProjectsView (a "CommandParameter" for a Project card)
         {
-            //change currentview to tasks vm
-            int? currentProjectId = projectId as int?;
-            TasksVM = new TasksViewModel(currentProjectId);
+            //the selected project card from ProjectsView
+            bool a = int.TryParse(projectId.ToString(), out int b);
+            if (a)
+            {
+
+                Project selectedProject = _projectRepository.Get(b);
+
+                //change CurrenView to TasksView
+                TasksVM = new TasksViewModel(selectedProject);
+            }
             MainWindowViewModel.CurrentView = TasksVM;
         }
 
