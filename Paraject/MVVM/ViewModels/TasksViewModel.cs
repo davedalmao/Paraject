@@ -11,7 +11,7 @@ namespace Paraject.MVVM.ViewModels
             TasksTodoVM = new TasksTodoViewModel();
             CompletedTasksVM = new CompletedTasksViewModel();
             ProjectNotesVM = new ProjectNotesViewModel();
-            ProjectDetailsVM = new ProjectDetailsViewModel();
+            ProjectDetailsVM = new ProjectDetailsViewModel(currentProject);
 
             CurrentView = TasksTodoVM;
 
