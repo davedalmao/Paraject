@@ -54,12 +54,59 @@ namespace Paraject.Core.Repositories
             }
             return isAdded;
         }
-        public UserAccount Get(string username)
+        public UserAccount GetById(int id)
         {
             UserAccount userAccount = null;
 
             using SqlConnection con = new(_connectionString);
-            using SqlCommand cmd = new("UserAccount.spGetUserAccount", con);
+            using SqlCommand cmd = new("UserAccount.spGetUserAccountById", con);
+            try
+            {
+                con.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@user_id", SqlDbType.Int).Value = id;
+
+                var sqlDataReader = cmd.ExecuteReader();
+                if (sqlDataReader.HasRows)
+                {
+                    //Move to the first record.  If no records, get out.
+                    if (!sqlDataReader.Read()) return null;
+
+                    //Ordinals (Gets the column number from the database based on the [column name] passed in GetOrdinal method)
+                    int userAccountId = sqlDataReader.GetOrdinal("user_id");
+                    int usernameFromDb = sqlDataReader.GetOrdinal("username");
+                    int password = sqlDataReader.GetOrdinal("password");
+                    int dateCreated = sqlDataReader.GetOrdinal("date_created");
+
+                    //Reads a single UserAccount
+                    //Remember, we're already on the first record, so use do/while here.
+                    do
+                    {
+                        userAccount = new UserAccount
+                        {
+                            Id = sqlDataReader.GetInt32(userAccountId),
+                            Username = sqlDataReader.GetString(usernameFromDb),
+                            Password = sqlDataReader.GetString(password),
+                            DateCreated = sqlDataReader.GetDateTime(dateCreated)
+                        };
+                    }
+                    while (sqlDataReader.Read());
+                }
+                sqlDataReader.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return userAccount;
+        }
+        public UserAccount GetByUsername(string username)
+        {
+            UserAccount userAccount = null;
+
+            using SqlConnection con = new(_connectionString);
+            using SqlCommand cmd = new("UserAccount.spGetUserAccountByName", con);
             try
             {
                 con.Open();
