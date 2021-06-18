@@ -36,7 +36,7 @@ namespace Paraject.MVVM.ViewModels
             AddProjectCommand = new DelegateCommand(Add);
             AddProjectLogoCommand = new DelegateCommand(LoadProjectLogo);
 
-            //Redirect to TasksView
+            //Redirect to TasksView when a Project card is selected (to view a Project's tasks)
             TasksViewCommand = new ParameterizedDelegateCommand(NavigateToTasksView);
 
             //Default Project Display
