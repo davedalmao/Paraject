@@ -73,15 +73,10 @@ namespace Paraject.MVVM.ViewModels
         public void NavigateToTasksView(object projectId) //the argument passed to this parameter is in ProjectsView (a "CommandParameter" for a Project card)
         {
             //the selected project card from ProjectsView
-            bool a = int.TryParse(projectId.ToString(), out int b);
-            if (a)
-            {
+            Project selectedProject = _projectRepository.Get((int)projectId);
 
-                Project selectedProject = _projectRepository.Get(b);
-
-                //change CurrenView to TasksView
-                TasksVM = new TasksViewModel(selectedProject);
-            }
+            //change CurrenView to TasksView
+            TasksVM = new TasksViewModel(selectedProject);
             MainWindowViewModel.CurrentView = TasksVM;
         }
 
