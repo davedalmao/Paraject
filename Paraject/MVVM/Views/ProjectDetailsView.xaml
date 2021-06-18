@@ -108,7 +108,8 @@
                             Background="{StaticResource Blue}"
                             HorizontalAlignment="Right"
                             Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
-                            Style="{StaticResource GeneralButtonTheme}" />
+                            Style="{StaticResource GeneralButtonTheme}"
+                            Command="{Binding AddOrChangeLogoCommand}" />
                 </StackPanel>
 
                 <!--ProjectOption TextBlock-->
