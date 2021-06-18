@@ -279,7 +279,7 @@ namespace Paraject.Core.Repositories
                     cmd.Parameters.Add("@project_option", SqlDbType.NVarChar, 50).Value = project.Option;
                     cmd.Parameters.Add("@project_status", SqlDbType.NVarChar, 12).Value = project.Status;
                     cmd.Parameters.Add("@project_deadline", SqlDbType.DateTime2).Value = project.Deadline;
-                    cmd.Parameters.Add("@project_logo", SqlDbType.VarBinary).Value = project.Logo;
+                    cmd.Parameters.Add("@project_logo", SqlDbType.VarBinary).Value = ImageConverter.ImageToBytes(project.Logo);
 
                     int NoOfRowsAffected = cmd.ExecuteNonQuery();
                     isUpdated = NoOfRowsAffected > 0;
