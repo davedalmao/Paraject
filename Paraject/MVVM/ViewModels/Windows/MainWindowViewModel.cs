@@ -103,7 +103,7 @@ namespace Paraject.MVVM.ViewModels.Windows
         #region Methods Used in UserAccountView
         public void Get()
         {
-            UserAccount userAccount = _userAccountRepository.Get(CurrentUserAccount.Username);
+            UserAccount userAccount = _userAccountRepository.GetByUsername(CurrentUserAccount.Username);
 
             if (userAccount is not null)
             {

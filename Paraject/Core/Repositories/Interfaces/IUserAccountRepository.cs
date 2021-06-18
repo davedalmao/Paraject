@@ -4,7 +4,8 @@ namespace Paraject.Core.Repositories.Interfaces
 {
     interface IUserAccountRepository
     {
-        public UserAccount Get(string username);
+        public UserAccount GetByUsername(string username);
+        public UserAccount GetById(int id);
         public bool AccountExistsInDatabase(UserAccount userAccount);
         public bool IdExistsInDatabase(int id);
         public bool Add(UserAccount userAccount);
