@@ -72,7 +72,24 @@ namespace Paraject.MVVM.ViewModels
         }
         private void Delete()
         {
-            MessageBox.Show("Delete");
+            MessageBoxResult Result = MessageBox.Show($"Do you want to DELETE {CurrentProject.Name}?", "Delete Operation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (Result == MessageBoxResult.Yes)
+            {
+                DeleteProject();
+            }
+        }
+        private void DeleteProject()
+        {
+            bool isDeleted = _projectRepository.Delete(CurrentProject.Id);
+            if (isDeleted)
+            {
+                MessageBox.Show("Project deleted successfully");
+                //redirect to ProjectsView 
+            }
+            else
+            {
+                MessageBox.Show("An error occurred, cannot delete project");
+            }
         }
         #endregion
     }
