@@ -44,8 +44,14 @@ namespace Paraject.MVVM.ViewModels
             Projects = new ObservableCollection<Project>(_projectRepository.GetAll(CurrentUserAccount.Id));
         }
 
+        #region Properties
         public ObservableCollection<Project> Projects { get; set; }
         public TasksViewModel TasksVM { get; set; }
+
+        #region Models
+        public Project CurrentProject { get; set; }
+        public UserAccount CurrentUserAccount { get; set; }
+        #endregion
 
         #region Commands
         //Add Projects Commands
@@ -64,12 +70,9 @@ namespace Paraject.MVVM.ViewModels
         //Redirect to TasksView
         public ICommand TasksViewCommand { get; }
         #endregion
-
-        #region Models
-        public Project CurrentProject { get; set; }
-        public UserAccount CurrentUserAccount { get; set; }
         #endregion
 
+        #region Methods
         public void NavigateToTasksView(object projectId) //the argument passed to this parameter is in ProjectsView (a "CommandParameter" for a Project card)
         {
             //the selected project card from ProjectsView
@@ -173,6 +176,7 @@ namespace Paraject.MVVM.ViewModels
                 }
             }
         }
+        #endregion
         #endregion
     }
 }
