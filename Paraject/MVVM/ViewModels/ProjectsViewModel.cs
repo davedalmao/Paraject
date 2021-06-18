@@ -75,7 +75,7 @@ namespace Paraject.MVVM.ViewModels
             //the selected project card from ProjectsView
             Project selectedProject = _projectRepository.Get((int)projectId);
 
-            //change CurrenView to TasksView
+            //change CurrenView (of the MainWindow) to TasksView
             TasksVM = new TasksViewModel(selectedProject);
             MainWindowViewModel.CurrentView = TasksVM;
         }
