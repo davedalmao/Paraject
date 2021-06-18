@@ -169,7 +169,8 @@
                     Margin="0,0,15,0"
                     Tag="/UiDesign/Icons/ButtonIcons/update.svg"
                     Background="{StaticResource Yellow}"
-                    Style="{StaticResource GeneralButtonTheme}" />
+                    Style="{StaticResource GeneralButtonTheme}"
+                    Command="{Binding UpdateProjectCommand}" />
 
             <!--Delete Project Button-->
             <Button Content="Delete Project"
@@ -178,7 +179,8 @@
                     Width="185"
                     Tag="/UiDesign/Icons/ButtonIcons/delete.svg"
                     Background="{StaticResource Orange}"
-                    Style="{StaticResource GeneralButtonTheme}" />
+                    Style="{StaticResource GeneralButtonTheme}"
+                    Command="{Binding DeleteProjectCommand}" />
         </Grid>
     </Grid>
 </UserControl>
