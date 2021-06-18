@@ -11,6 +11,7 @@ namespace Paraject.MVVM.ViewModels
     public class ProjectDetailsViewModel : BaseViewModel
     {
         private readonly ProjectRepository _projectRepository;
+        private readonly UserAccountRepository _userAccountRepository;
         public ProjectDetailsViewModel(Project currentProject)
         {
             //Repository
@@ -28,7 +29,7 @@ namespace Paraject.MVVM.ViewModels
         #region Properties
         //Model
         public Project CurrentProject { get; set; }
-
+        public ProjectsViewModel ProjectsVM { get; set; }
         //Commands
         public ICommand AddOrChangeLogoCommand { get; }
         public ICommand UpdateProjectCommand { get; }
@@ -84,7 +85,10 @@ namespace Paraject.MVVM.ViewModels
             if (isDeleted)
             {
                 MessageBox.Show("Project deleted successfully");
-                //redirect to ProjectsView 
+
+                //redirect to ProjectsView after a successful DELETE operation
+                //ProjectsVM = new ProjectsViewModel(_userAccountRepository.Get(CurrentProject.User_Id_Fk));
+                //MainWindowViewModel.CurrentView = ProjectsVM;
             }
             else
             {

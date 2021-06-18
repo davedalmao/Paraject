@@ -81,7 +81,7 @@ namespace Paraject.MVVM.ViewModels.Windows
         }
         private void ShowMainWindow()
         {
-            UserAccount userToLogin = _userAccountRepository.Get(CurrentUserAccount.Username);
+            UserAccount userToLogin = _userAccountRepository.GetByUsername(CurrentUserAccount.Username);
             MainWindow mainWindow = new(userToLogin);
             mainWindow.Show();
             Close(); //Closes SignupWindow when MainWindow is present
