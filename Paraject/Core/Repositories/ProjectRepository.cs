@@ -86,7 +86,7 @@ namespace Paraject.Core.Repositories
                 if (sqlDataReader.HasRows)
                 {
                     //Move to the first record.  If no records, get out.
-                    if (!sqlDataReader.Read()) return null;
+                    if (!sqlDataReader.Read()) { return null; }
 
                     //Ordinals (Gets the column number from the database based on the [column name] passed in GetOrdinal method)
                     int projectId = sqlDataReader.GetOrdinal("project_id");
@@ -100,19 +100,23 @@ namespace Paraject.Core.Repositories
                     int projectLogo = sqlDataReader.GetOrdinal("project_logo");
 
                     //Reads a single Project
-                    sqlDataReader.Read();
-                    project = new Project()
+                    //Remember, we're already on the first record, so use do/while here.
+                    do
                     {
-                        Id = sqlDataReader.GetInt32(projectId),
-                        User_Id_Fk = sqlDataReader.GetInt32(userIdFk),
-                        Name = sqlDataReader.GetString(projectName),
-                        Description = sqlDataReader.GetString(projectDescription),
-                        Option = sqlDataReader.GetString(projectOption),
-                        Status = sqlDataReader.GetString(projectStatus),
-                        Deadline = sqlDataReader.GetDateTime(projectDeadline),
-                        DateCreated = sqlDataReader.GetDateTime(dateCreated),
-                        Logo = sqlDataReader.IsDBNull(projectLogo) ? null : ImageConverter.BytesToImage((byte[])sqlDataReader.GetValue(projectLogo))
-                    };
+                        project = new Project()
+                        {
+                            Id = sqlDataReader.GetInt32(projectId),
+                            User_Id_Fk = sqlDataReader.GetInt32(userIdFk),
+                            Name = sqlDataReader.GetString(projectName),
+                            Description = sqlDataReader.IsDBNull(projectDescription) ? "--" : sqlDataReader.GetString(projectDescription),
+                            Option = sqlDataReader.GetString(projectOption),
+                            Status = sqlDataReader.GetString(projectStatus),
+                            Deadline = sqlDataReader.IsDBNull(projectDeadline) ? null : sqlDataReader.GetDateTime(projectDeadline),
+                            DateCreated = sqlDataReader.GetDateTime(dateCreated),
+                            Logo = sqlDataReader.IsDBNull(projectLogo) ? null : ImageConverter.BytesToImage((byte[])sqlDataReader.GetValue(projectLogo))
+                        };
+                    }
+                    while (sqlDataReader.Read());
                 }
                 sqlDataReader.Close();
             }

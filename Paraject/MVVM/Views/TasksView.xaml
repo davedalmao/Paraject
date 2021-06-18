@@ -35,7 +35,7 @@
             </Button>
 
             <!--Selected Project Name-->
-            <TextBlock Text="{Binding Test}"
+            <TextBlock Text="{Binding CurrentProject.Name}"
                        FontSize="25"
                        Margin="8,0,0,0" />
         </StackPanel>
