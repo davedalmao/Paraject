@@ -36,8 +36,7 @@ namespace Paraject.MVVM.ViewModels
             AddProjectCommand = new DelegateCommand(Add);
             AddProjectLogoCommand = new DelegateCommand(LoadProjectLogo);
 
-            //Redirect to TasksView
-            //TasksViewCommand = new DelegateCommand(NavigateToTasksView);
+            //Redirect to TasksView when a Project card is selected (to view a Project's tasks)
             TasksViewCommand = new ParameterizedDelegateCommand(NavigateToTasksView);
 
             //Default Project Display
@@ -45,8 +44,14 @@ namespace Paraject.MVVM.ViewModels
             Projects = new ObservableCollection<Project>(_projectRepository.GetAll(CurrentUserAccount.Id));
         }
 
+        #region Properties
         public ObservableCollection<Project> Projects { get; set; }
         public TasksViewModel TasksVM { get; set; }
+
+        #region Models
+        public Project CurrentProject { get; set; }
+        public UserAccount CurrentUserAccount { get; set; }
+        #endregion
 
         #region Commands
         //Add Projects Commands
@@ -65,17 +70,16 @@ namespace Paraject.MVVM.ViewModels
         //Redirect to TasksView
         public ICommand TasksViewCommand { get; }
         #endregion
-
-        #region Models
-        public Project CurrentProject { get; set; }
-        public UserAccount CurrentUserAccount { get; set; }
         #endregion
 
-        public void NavigateToTasksView(object projectId)
+        #region Methods
+        public void NavigateToTasksView(object projectId) //the argument passed to this parameter is in ProjectsView (a "CommandParameter" for a Project card)
         {
-            //change currentview to tasks vm
-            int? currentProjectId = projectId as int?;
-            TasksVM = new TasksViewModel(currentProjectId);
+            //the selected project card from ProjectsView
+            Project selectedProject = _projectRepository.Get((int)projectId);
+
+            //change CurrenView (of the MainWindow) to TasksView
+            TasksVM = new TasksViewModel(selectedProject);
             MainWindowViewModel.CurrentView = TasksVM;
         }
 
@@ -172,6 +176,7 @@ namespace Paraject.MVVM.ViewModels
                 }
             }
         }
+        #endregion
         #endregion
     }
 }
