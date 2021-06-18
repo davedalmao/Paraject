@@ -155,7 +155,9 @@
 
                 <TextBlock Text="{Binding CurrentProject.DateCreated}"
                            FontSize="15"
-                           Foreground="{StaticResource Darkest}" />
+                           Foreground="{StaticResource Darkest}"
+                           TextWrapping="Wrap"
+                           Width="98" />
             </StackPanel>
 
             <!--Update Project Button-->
