@@ -41,7 +41,11 @@ namespace Paraject.MVVM.ViewModels
 
             //Default Project Display
             AllProjects();
-            Projects = new ObservableCollection<Project>(_projectRepository.GetAll(CurrentUserAccount.Id));
+        }
+
+        ~ProjectsViewModel()
+        {
+            MessageBox.Show("gone");
         }
 
         #region Properties
@@ -159,13 +163,14 @@ namespace Paraject.MVVM.ViewModels
         }
         private void SetProjectDefaultThenCloseModal()
         {
+            MainWindowViewModel.Overlay = false;
+
             //Set Project object to default values
             CurrentProject.Name = "";
             CurrentProject.Description = "";
             CurrentProject.Option = Enum.GetName(ProjectOptions.Personal);
             CurrentProject.Deadline = null;
             CurrentProject.Logo = null;
-            MainWindowViewModel.Overlay = false;
 
             //Close the Modal
             foreach (Window currentModal in Application.Current.Windows)

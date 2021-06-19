@@ -7,6 +7,8 @@
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
         xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
         xmlns:enums="clr-namespace:Paraject.Core.Repositories"
+        xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
+        d:DataContext="{d:DesignInstance Type=viewmodels:ProjectsViewModel}"
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="CanResize"

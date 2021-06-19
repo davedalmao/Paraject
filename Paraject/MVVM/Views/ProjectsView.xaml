@@ -70,7 +70,7 @@
                       Background="Blue">
             <!--Project Cards-->
             <ItemsControl x:Name="Projects"
-                          ItemsSource="{Binding Projects, Mode=TwoWay}">
+                          ItemsSource="{Binding Projects}">
 
                 <!--This is what the card would look like-->
                 <ItemsControl.ItemTemplate>
@@ -118,7 +118,7 @@
                                 </Image>
 
                                 <!--Project Name-->
-                                <TextBlock Text="{Binding Name}"
+                                <TextBlock Text="{Binding Name, Mode=OneWay}"
                                            Grid.Column="1"
                                            Grid.Row="0"
                                            Foreground="{StaticResource White}"
@@ -129,7 +129,7 @@
                                            FontFamily="{StaticResource ArbutusSlabRegular}" />
 
                                 <!--Project Description-->
-                                <TextBlock Text="{Binding Description}"
+                                <TextBlock Text="{Binding Description, Mode=OneWay}"
                                            Grid.Column="1"
                                            Grid.Row="1"
                                            Foreground="#83868A"

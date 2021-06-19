@@ -43,7 +43,7 @@ namespace Paraject.MVVM.ViewModels.Windows
             CurrentView = ProjectsVM;
 
             DashboardViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = DashboardVM; });
-            ProjectsViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectsVM; });
+            ProjectsViewCommand = new DelegateCommand(NavigateToProjectsView);
             ProfileViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProfileVM; });
             ProjectIdeasViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectIdeasVM; });
             OptionsViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = OptionsVM; });
@@ -51,6 +51,7 @@ namespace Paraject.MVVM.ViewModels.Windows
             Get();
         }
         #endregion
+
 
         #region Properties
         public UserAccount CurrentUserAccount { get; set; }
@@ -98,6 +99,14 @@ namespace Paraject.MVVM.ViewModels.Windows
         //MainWindow Command
         public ICommand LogoutCommand { get; }
         #endregion
+        #endregion
+
+        #region Navigation Methods
+        public void NavigateToProjectsView()
+        {
+            ProjectsVM = new ProjectsViewModel(CurrentUserAccount);
+            CurrentView = ProjectsVM;
+        }
         #endregion
 
         #region Methods Used in UserAccountView
