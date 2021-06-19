@@ -26,6 +26,7 @@
                     Grid.Row="0">
             <!--Back (to ProjectsView) Button-->
             <Button  Style="{StaticResource PlainButtonTheme}"
+                     Command="{Binding ProjectsViewCommand}"
                      Background="Transparent">
                 <UserControl Width="28"
                              Height="28">
