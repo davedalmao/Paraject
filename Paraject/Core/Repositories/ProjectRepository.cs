@@ -105,7 +105,7 @@ namespace Paraject.Core.Repositories
                     {
                         project = new Project()
                         {
-                            Id = sqlDataReader.GetInt32(projectId),
+                            Id = sqlDataReader.GetInt32(projectIdFromDb),
                             User_Id_Fk = sqlDataReader.GetInt32(userIdFk),
                             Name = sqlDataReader.GetString(projectName),
                             Description = sqlDataReader.IsDBNull(projectDescription) ? "--" : sqlDataReader.GetString(projectDescription),
@@ -121,6 +121,10 @@ namespace Paraject.Core.Repositories
                 sqlDataReader.Close();
             }
             catch (SqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }

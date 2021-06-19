@@ -70,7 +70,7 @@
                       Background="Blue">
             <!--Project Cards-->
             <ItemsControl x:Name="Projects"
-                          ItemsSource="{Binding Projects}">
+                          ItemsSource="{Binding Projects, Mode=TwoWay}">
 
                 <!--This is what the card would look like-->
                 <ItemsControl.ItemTemplate>
