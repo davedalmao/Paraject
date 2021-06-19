@@ -43,14 +43,11 @@ namespace Paraject.MVVM.ViewModels
             AllProjects();
         }
 
-        ~ProjectsViewModel()
-        {
-            MessageBox.Show("gone");
-        }
 
         #region Properties
         public ObservableCollection<Project> Projects { get; set; }
         public TasksViewModel TasksVM { get; set; }
+        public ProjectsViewModel ProjectsVM { get; set; }
 
         #region Models
         public Project CurrentProject { get; set; }
@@ -164,6 +161,7 @@ namespace Paraject.MVVM.ViewModels
         private void SetProjectDefaultThenCloseModal()
         {
             MainWindowViewModel.Overlay = false;
+            NavigateToProjectsView();
 
             //Set Project object to default values
             CurrentProject.Name = "";
@@ -181,6 +179,12 @@ namespace Paraject.MVVM.ViewModels
                 }
             }
         }
+        public void NavigateToProjectsView()
+        {
+            ProjectsVM = new ProjectsViewModel(CurrentUserAccount);
+            MainWindowViewModel.CurrentView = ProjectsVM;
+        }
+
         #endregion
         #endregion
     }
