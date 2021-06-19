@@ -27,12 +27,14 @@
             <!--Back (to ProjectsView) Button-->
             <Button  Style="{StaticResource PlainButtonTheme}"
                      Command="{Binding ProjectsViewCommand}"
-                     Background="Transparent">
-                <UserControl Width="28"
-                             Height="28">
-                    <svgc1:SvgViewbox Source="/UiDesign/Icons/backArrow.svg"
-                                      Cursor="Hand" />
-                </UserControl>
+                     Background="Transparent"
+                     Cursor="Hand"
+                     Width="28"
+                     Height="28">
+                <Image Source="/UiDesign/Icons/backArrow.png"
+                       RenderOptions.BitmapScalingMode="HighQuality"
+                       RenderOptions.EdgeMode="Aliased"
+                       SnapsToDevicePixels="True" />
             </Button>
 
             <!--Selected Project Name-->
