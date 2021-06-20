@@ -1,5 +1,4 @@
-﻿using Paraject.Core.Repositories;
-using System;
+﻿using System;
 using System.Windows.Markup;
 
 namespace Paraject.Core.Enums.EnumBinding
@@ -10,7 +9,6 @@ namespace Paraject.Core.Enums.EnumBinding
     public class EnumBindingSourceExtension : MarkupExtension
     {
         public Type EnumType { get; private set; }
-        public ProjectOptions ProjectOptions { get; set; }
 
         public EnumBindingSourceExtension(Type enumType)
         {
