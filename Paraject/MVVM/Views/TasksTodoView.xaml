@@ -30,7 +30,7 @@
                       Style="{StaticResource ComboBoxTheme2}">
                 <ComboBox.ItemsSource>
                     <CompositeCollection>
-                        <sys:String>All Statuses</sys:String>
+                        <sys:String>Show All</sys:String>
                         <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Status}}}" />
                     </CompositeCollection>
                 </ComboBox.ItemsSource>
@@ -61,7 +61,7 @@
                       Style="{StaticResource ComboBoxTheme2}">
                 <ComboBox.ItemsSource>
                     <CompositeCollection>
-                        <sys:String>All Categories</sys:String>
+                        <sys:String>Show All</sys:String>
                         <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Category}}}" />
                     </CompositeCollection>
                 </ComboBox.ItemsSource>
