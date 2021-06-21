@@ -1,9 +1,18 @@
-﻿namespace Paraject.Core.Enums
+﻿using Paraject.Core.Enums.EnumBinding;
+using System.ComponentModel;
+
+//If items here are changed, modify ProjectRepository.cs, and ProjectStatusTheme.xaml
+namespace Paraject.Core.Enums
 {
-    //If items here are changed, modify ProjectRepository.cs, and ProjectStatusTheme.xaml
+    //This reads the Enum "Description" instead of the Enum itself (when displayed in a ComboBox)
+    [TypeConverter(typeof(EnumDescriptionTypeConverter))]
+
     public enum Status
     {
+        [Description("In Progress")]
         InProgress,
+
+        [Description("Open")]
         Open
     }
 }
