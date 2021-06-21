@@ -81,7 +81,6 @@
             <!--Converters-->
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
             <converter:ImageToImageSourceConverter x:Key="ImageToImageSourceConverter" />
-            <enums:CamelCaseConverter x:Key="CamelCaseConverter" />
 
             <!--Binding 
                 the 
