@@ -22,36 +22,45 @@
         <!--Task Filters-->
         <StackPanel Grid.Row="0"
                     Orientation="Horizontal">
-            <!--Task Category ComboBox-->
-            <ComboBox SelectedIndex="0"
-                      Height="36"
-                      Width="166"
-                      FontSize="15"
-                      Background="{StaticResource InputField}"
-                      Style="{StaticResource ComboBoxTheme2}">
-                <ComboBox.ItemsSource>
-                    <CompositeCollection>
-                        <sys:String>Show All</sys:String>
-                        <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Category}}}" />
-                    </CompositeCollection>
-                </ComboBox.ItemsSource>
-            </ComboBox>
+            <StackPanel>
+                <TextBlock Text="Task Category:"
+                           FontSize="12.5"
+                           Margin="0,0,0,4.5" />
+                <!--Task Category ComboBox-->
+                <ComboBox SelectedIndex="0"
+                          Height="36"
+                          Width="166"
+                          FontSize="15"
+                          Background="{StaticResource InputField}"
+                          Style="{StaticResource ComboBoxTheme2}">
+                    <ComboBox.ItemsSource>
+                        <CompositeCollection>
+                            <sys:String>Show All</sys:String>
+                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Category}}}" />
+                        </CompositeCollection>
+                    </ComboBox.ItemsSource>
+                </ComboBox>
+            </StackPanel>
 
-            <!--Task Type ComboBox-->
-            <ComboBox SelectedIndex="0"
-                      Margin="22,0"
-                      Height="36"
-                      Width="142"
-                      FontSize="15"
-                      Background="{StaticResource InputField}"
-                      Style="{StaticResource ComboBoxTheme2}">
-                <ComboBox.ItemsSource>
-                    <CompositeCollection>
-                        <sys:String>Show All</sys:String>
-                        <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:TaskType}}}" />
-                    </CompositeCollection>
-                </ComboBox.ItemsSource>
-            </ComboBox>
+            <StackPanel  Margin="22,0">
+                <TextBlock Text="Task Type:"
+                           FontSize="12.5"
+                           Margin="0,0,0,4.5" />
+                <!--Task Type ComboBox-->
+                <ComboBox SelectedIndex="0"
+                          Height="36"
+                          Width="142"
+                          FontSize="15"
+                          Background="{StaticResource InputField}"
+                          Style="{StaticResource ComboBoxTheme2}">
+                    <ComboBox.ItemsSource>
+                        <CompositeCollection>
+                            <sys:String>Show All</sys:String>
+                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:TaskType}}}" />
+                        </CompositeCollection>
+                    </ComboBox.ItemsSource>
+                </ComboBox>
+            </StackPanel>
         </StackPanel>
 
         <!--Completed Tasks Display-->
