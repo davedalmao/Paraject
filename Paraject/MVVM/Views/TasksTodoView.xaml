@@ -7,12 +7,25 @@
              xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
              xmlns:enums="clr-namespace:Paraject.Core.Enums"
              xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+             xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
              mc:Ignorable="d"
              Width="632"
              Height="444.5"
              Background="Transparent"
              Foreground="{StaticResource MainFontColor}"
              FontFamily="{StaticResource NunitoBold}">
+
+    <UserControl.Resources>
+        <!--TaskCategory Source-->
+        <ObjectDataProvider MethodName="GetValues"
+                            ObjectType="{x:Type sys:Enum}"
+                            x:Key="CategoryDataProvider">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enums:Category" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -53,7 +66,8 @@
             </ComboBox>
 
             <!--Task Category ComboBox-->
-            <ComboBox SelectedIndex="0"
+            <ComboBox x:Name="tc"
+                      SelectedIndex="0"
                       Height="36"
                       Width="166"
                       FontSize="14.59"
