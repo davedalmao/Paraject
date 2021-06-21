@@ -4,11 +4,11 @@ using System.Windows.Markup;
 namespace Paraject.Core.Enums.EnumBinding
 {
     /// <summary>
-    /// This class is used for BINDING Enums
+    /// This class is used for BINDING Enums (to a ComboBox)
     /// </summary>
     public class EnumBindingSourceExtension : MarkupExtension
     {
-        public Type EnumType { get; private set; }
+        public Type EnumType { get; set; }
 
         public EnumBindingSourceExtension(Type enumType)
         {
