@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Paraject.MVVM.Views"
              xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
              xmlns:enums="clr-namespace:Paraject.Core.Enums"
+             xmlns:sys="clr-namespace:System;assembly=System.Runtime"
              mc:Ignorable="d"
              Width="632"
              Height="444.5"
@@ -22,23 +23,35 @@
         <StackPanel Grid.Row="0"
                     Orientation="Horizontal">
             <!--Task Category ComboBox-->
-            <ComboBox SelectedIndex="1"
+            <ComboBox SelectedIndex="0"
                       Height="36"
                       Width="166"
                       FontSize="15"
                       Background="{StaticResource InputField}"
-                      Style="{StaticResource ComboBoxTheme2}"
-                      ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Category}}}" />
+                      Style="{StaticResource ComboBoxTheme2}">
+                <ComboBox.ItemsSource>
+                    <CompositeCollection>
+                        <sys:String>Show All</sys:String>
+                        <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Category}}}" />
+                    </CompositeCollection>
+                </ComboBox.ItemsSource>
+            </ComboBox>
 
             <!--Task Type ComboBox-->
-            <ComboBox SelectedIndex="1"
+            <ComboBox SelectedIndex="0"
                       Margin="22,0"
                       Height="36"
                       Width="142"
                       FontSize="15"
                       Background="{StaticResource InputField}"
-                      Style="{StaticResource ComboBoxTheme2}"
-                      ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:TaskType}}}" />
+                      Style="{StaticResource ComboBoxTheme2}">
+                <ComboBox.ItemsSource>
+                    <CompositeCollection>
+                        <sys:String>Show All</sys:String>
+                        <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:TaskType}}}" />
+                    </CompositeCollection>
+                </ComboBox.ItemsSource>
+            </ComboBox>
         </StackPanel>
 
         <!--Completed Tasks Display-->
