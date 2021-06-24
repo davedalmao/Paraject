@@ -43,6 +43,10 @@ namespace Paraject.MVVM.ViewModels
             AllProjects();
         }
 
+        ~ProjectsViewModel()
+        {
+            MessageBox.Show("bye");
+        }
 
         #region Properties
         public ObservableCollection<Project> Projects { get; set; }

@@ -52,7 +52,6 @@ namespace Paraject.MVVM.ViewModels.Windows
         }
         #endregion
 
-
         #region Properties
         public UserAccount CurrentUserAccount { get; set; }
         public static bool Overlay
