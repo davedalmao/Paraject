@@ -1,5 +1,4 @@
 ﻿using Paraject.Core.Commands;
-using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using System.Windows.Input;
@@ -8,12 +7,14 @@ namespace Paraject.MVVM.ViewModels
 {
     public class TasksViewModel : BaseViewModel
     {
-        private readonly UserAccountRepository _userAccountRepository;
+        private readonly ProjectsViewModel _projectsViewModel;
 
-        public TasksViewModel(Project currentProject)
+        public TasksViewModel(ProjectsViewModel projectsViewModel, Project currentProject)
         {
-            _userAccountRepository = new UserAccountRepository();
+            CurrentProject = currentProject;
+            _projectsViewModel = projectsViewModel;
 
+            //TasksView child Views
             TasksTodoVM = new TasksTodoViewModel();
             CompletedTasksVM = new CompletedTasksViewModel();
             ProjectNotesVM = new ProjectNotesViewModel();
@@ -26,9 +27,7 @@ namespace Paraject.MVVM.ViewModels
             CompletedTasksViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = CompletedTasksVM; });
             ProjectNotesViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectNotesVM; });
             ProjectDetailsViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectDetailsVM; });
-            ProjectsViewCommand = new DelegateCommand(NavigateToProjectsView);
-
-            CurrentProject = currentProject;
+            ProjectsViewCommand = new DelegateCommand(NavigateBackToProjectsView);
         }
 
         public Project CurrentProject { get; set; }
@@ -53,9 +52,9 @@ namespace Paraject.MVVM.ViewModels
         #endregion
 
         #region Navigation Methods
-        public void NavigateToProjectsView()
+        public void NavigateBackToProjectsView()
         {
-            ProjectsVM = new ProjectsViewModel(_userAccountRepository.GetById(CurrentProject.User_Id_Fk));
+            ProjectsVM = _projectsViewModel;
             MainWindowViewModel.CurrentView = ProjectsVM;
         }
         #endregion

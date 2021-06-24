@@ -43,11 +43,6 @@ namespace Paraject.MVVM.ViewModels
             AllProjects();
         }
 
-        ~ProjectsViewModel()
-        {
-            MessageBox.Show("bye");
-        }
-
         #region Properties
         public ObservableCollection<Project> Projects { get; set; }
         public TasksViewModel TasksVM { get; set; }
@@ -84,7 +79,7 @@ namespace Paraject.MVVM.ViewModels
             Project selectedProject = _projectRepository.Get((int)projectId);
 
             //change CurrenView (of the MainWindow) to TasksView
-            TasksVM = new TasksViewModel(selectedProject);
+            TasksVM = new TasksViewModel(this, selectedProject);
             MainWindowViewModel.CurrentView = TasksVM;
         }
 
