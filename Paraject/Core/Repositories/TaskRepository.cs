@@ -61,23 +61,78 @@ namespace Paraject.Core.Repositories
             }
             return isAdded;
         }
-
-        public bool Delete(int taskId)
+        public Task Get(int taskId)
         {
-            throw new NotImplementedException();
-        }
+            Task task = null;
+            using (SqlConnection con = new(_connectionString))
+            using (SqlCommand cmd = new("Task.spGetTask", con))
+            {
+                try
+                {
+                    con.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
 
+                    cmd.Parameters.Add("@task_id", SqlDbType.Int).Value = taskId;
+
+                    SqlDataReader sqlDataReader = cmd.ExecuteReader();
+                    if (sqlDataReader.HasRows)
+                    {
+                        //Move to the first record.  If no records, get out.
+                        if (!sqlDataReader.Read()) { return null; }
+
+                        int taskIdFromDb = sqlDataReader.GetOrdinal("task_id");
+                        int projectIdFk = sqlDataReader.GetOrdinal("project_id");
+                        int taskSubject = sqlDataReader.GetOrdinal("task_subject");
+                        int taskType = sqlDataReader.GetOrdinal("task_type");
+                        int taskDescription = sqlDataReader.GetOrdinal("task_description");
+                        int taskStatus = sqlDataReader.GetOrdinal("task_status");
+                        int taskCategory = sqlDataReader.GetOrdinal("task_category");
+                        int taskPriority = sqlDataReader.GetOrdinal("task_priority");
+                        int taskDeadline = sqlDataReader.GetOrdinal("task_deadline");
+                        int dateCreated = sqlDataReader.GetOrdinal("date_created");
+
+                        //Reads a single Task
+                        //Remember, we're already on the first record, so use do/while here.
+                        do
+                        {
+                            task = new Task()
+                            {
+                                Id = sqlDataReader.GetInt32(taskIdFromDb),
+                                Project_Id_Fk = sqlDataReader.GetInt32(projectIdFk),
+                                Subject = sqlDataReader.GetString(taskSubject),
+                                Type = sqlDataReader.GetString(taskType),
+                                Description = sqlDataReader.GetString(taskDescription),
+                                Status = sqlDataReader.GetString(taskStatus),
+                                Category = sqlDataReader.GetString(taskCategory),
+                                Priority = sqlDataReader.GetString(taskPriority),
+                                Deadline = sqlDataReader.IsDBNull(taskDeadline) ? null : sqlDataReader.GetDateTime(taskDeadline),
+                                DateCreated = sqlDataReader.GetDateTime(dateCreated)
+                            };
+                        }
+                        while (sqlDataReader.Read());
+                    }
+                    sqlDataReader.Close();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            return task;
+        }
         public IEnumerable<Task> FindAll(int projectId, Status taskStatus, Priority taskPriority, Category taskCategory)
         {
             throw new NotImplementedException();
         }
-
-        public Task Get(int taskId)
+        public bool Update(Task task)
         {
             throw new NotImplementedException();
         }
-
-        public bool Update(Task task)
+        public bool Delete(int taskId)
         {
             throw new NotImplementedException();
         }
