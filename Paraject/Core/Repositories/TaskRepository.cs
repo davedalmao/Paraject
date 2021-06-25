@@ -248,7 +248,33 @@ namespace Paraject.Core.Repositories
         }
         public bool Delete(int taskId)
         {
-            throw new NotImplementedException();
+            bool isDeleted = false;
+
+            if (taskId <= 0) { return false; }
+
+            using (SqlConnection con = new(_connectionString))
+            using (SqlCommand cmd = new("Task.spDeleteTask", con))
+            {
+                try
+                {
+                    con.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@task_id", SqlDbType.Int).Value = taskId;
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    isDeleted = rowsAffected > 0;
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+
+            return isDeleted;
         }
     }
 }
