@@ -160,7 +160,6 @@ namespace Paraject.MVVM.ViewModels
         private void SetProjectDefaultThenCloseModal()
         {
             MainWindowViewModel.Overlay = false;
-            NavigateToProjectsView();
 
             //Set Project object to default values
             CurrentProject.Name = "";
@@ -177,11 +176,6 @@ namespace Paraject.MVVM.ViewModels
                     currentModal.Close();
                 }
             }
-        }
-        public void NavigateToProjectsView()
-        {
-            ProjectsVM = new ProjectsViewModel(CurrentUserAccount);
-            MainWindowViewModel.CurrentView = ProjectsVM;
         }
 
         #endregion
