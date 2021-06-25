@@ -25,7 +25,7 @@
 
             <!--Modal Header-->
             <Grid Grid.Row="0"
-                  Margin="0,0,0,25">
+                  Margin="0,0,0,20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="auto" />
@@ -56,6 +56,123 @@
                            Height="28"
                            Cursor="Hand" />
                 </Button>
+            </Grid>
+
+            <!--Modal Content-->
+            <Grid Grid.Row="1"
+                  HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+
+
+                <!--Left Input Fields-->
+                <StackPanel Grid.Column="0"
+                            Margin="0,0,49,0">
+                    <!--Task Subject TextBlock-->
+                    <TextBlock Text="Subject"
+                               FontSize="18"
+                               Margin="0,0,0,6" />
+
+                    <!--Task Subject TextBox-->
+                    <TextBox Width="294"
+                             Height="42"
+                             FontSize="15"
+                             Style="{StaticResource TextBoxTheme}" />
+
+                    <!--Task Subject TextBlock-->
+                    <TextBlock Text="Type"
+                               FontSize="18"
+                               Margin="0,23,0,6" />
+
+                    <!--Task Type ComboBox-->
+                    <ComboBox SelectedIndex="0"
+                              Width="294"
+                              Height="42"
+                              FontSize="15"
+                              Padding="20,0"
+                              Margin="0,0,0,23"
+                              Style="{StaticResource ComboBoxTheme}"
+                              Background="{StaticResource InputField}" />
+
+                    <!--Task Description TextBlock-->
+                    <TextBlock Text="Description (optional)"
+                               FontSize="18"
+                               Margin="0,0,0,6" />
+
+                    <!--Task Description TextBox-->
+                    <TextBox Width="294"
+                             Height="164"
+                             FontSize="15"
+                             TextWrapping="Wrap"
+                             Style="{StaticResource TextBoxTheme}"
+                             VerticalScrollBarVisibility="Auto"
+                             VerticalContentAlignment="Top"
+                             Padding="20" />
+                </StackPanel>
+
+                <!--Right Input Fields-->
+                <Grid  Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0">
+                        <!--Task Category TextBlock-->
+                        <TextBlock Text="Category"
+                                   FontSize="18"
+                                   Margin="0,0,0,6" />
+
+                        <!--Task Category TextBox-->
+                        <ComboBox SelectedIndex="0"
+                                  Width="294"
+                                  Height="42"
+                                  FontSize="15"
+                                  Padding="20,0"
+                                  Style="{StaticResource ComboBoxTheme}"
+                                  Background="{StaticResource InputField}" />
+
+                        <!--Task Priority TextBlock-->
+                        <TextBlock Text="Priority"
+                                   FontSize="18"
+                                   Margin="0,23,0,6" />
+
+                        <!--Task Priority ComboBox-->
+                        <ComboBox SelectedIndex="0"
+                                  Width="294"
+                                  Height="42"
+                                  FontSize="15"
+                                  Padding="20,0"
+                                  Margin="0,0,0,23"
+                                  Style="{StaticResource ComboBoxTheme}"
+                                  Background="{StaticResource InputField}" />
+
+                        <!--Task Deadline TextBlock-->
+                        <TextBlock Text="Deadline"
+                                   FontSize="18"
+                                   Margin="0,0,0,6" />
+
+                        <!--Deadline DateTimePicker-->
+                        <DatePicker Style="{StaticResource DatePickerTheme}"
+                                    FontSize="15" />
+
+                    </StackPanel>
+
+                    <!--Create Task Button-->
+                    <Button Content="Create Task"
+                            Grid.Row="1"
+                            Margin="0,22,0,0"
+                            Height="40"
+                            Width="294"
+                            Background="{StaticResource AccentColor}"
+                            VerticalAlignment="Bottom"
+                            Tag="/UiDesign/Icons/ModalDialogIcons/addTaskIcon.svg"
+                            Style="{StaticResource GeneralButtonTheme}"
+                            DockPanel.Dock="Bottom" />
+                </Grid>
             </Grid>
         </Grid>
     </Border>
