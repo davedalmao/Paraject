@@ -22,6 +22,7 @@ namespace Paraject.Core.Repositories
         public bool Add(Task task, int projectId)
         {
             bool isAdded = false;
+
             using (SqlConnection con = new(_connectionString))
             using (SqlCommand cmd = new("Task.spAddTask", con))
             {
@@ -59,11 +60,13 @@ namespace Paraject.Core.Repositories
                     MessageBox.Show(ex.ToString());
                 }
             }
+
             return isAdded;
         }
         public Task Get(int taskId)
         {
             Task task = null;
+
             using (SqlConnection con = new(_connectionString))
             using (SqlCommand cmd = new("Task.spGetTask", con))
             {
@@ -123,6 +126,7 @@ namespace Paraject.Core.Repositories
                     MessageBox.Show(ex.ToString());
                 }
             }
+
             return task;
         }
         public IEnumerable<Task> FindAll(int projectId, Status taskStatus, Priority taskPriority, Category taskCategory)
@@ -200,7 +204,47 @@ namespace Paraject.Core.Repositories
         }
         public bool Update(Task task)
         {
-            throw new NotImplementedException();
+            bool isUpdated = false;
+
+            using (SqlConnection con = new(_connectionString))
+            using (SqlCommand cmd = new("Task.spUpdateTask", con))
+            {
+                try
+                {
+                    con.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@task_id", SqlDbType.Int).Value = task.Id;
+                    cmd.Parameters.Add("@task_subject", SqlDbType.NVarChar, 50).Value = task.Subject;
+                    cmd.Parameters.Add("@task_type", SqlDbType.NVarChar, 50).Value = task.Type;
+                    cmd.Parameters.Add("@task_description", SqlDbType.NVarChar, 500).Value = task.Description;
+                    cmd.Parameters.Add("@task_status", SqlDbType.NVarChar, 20).Value = Enum.GetName(Status.Open);
+                    cmd.Parameters.Add("@task_category", SqlDbType.NVarChar, 50).Value = task.Category;
+                    cmd.Parameters.Add("@task_priority", SqlDbType.NVarChar, 4).Value = task.Priority;
+                    cmd.Parameters.Add("@task_deadline", SqlDbType.DateTime2).Value = task.Deadline;
+
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    isUpdated = rowsAffected > 0;
+                }
+                catch (SqlException ex)
+                {
+                    if (ex.Number == 2627)// Violation of unique constraint (Subject should be unique)
+                    {
+                        MessageBox.Show($"{task.Subject} Already Exist !!!");
+                    }
+                    else
+                    {
+                        MessageBox.Show($"An SQL error occured while processing data. \nError: { ex.Message }");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+
+            return isUpdated;
         }
         public bool Delete(int taskId)
         {
