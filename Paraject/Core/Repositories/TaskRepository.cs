@@ -80,6 +80,7 @@ namespace Paraject.Core.Repositories
                         //Move to the first record.  If no records, get out.
                         if (!sqlDataReader.Read()) { return null; }
 
+                        //Ordinals (Gets the column number from the database based on the [column name] passed in GetOrdinal method)
                         int taskIdFromDb = sqlDataReader.GetOrdinal("task_id");
                         int projectIdFk = sqlDataReader.GetOrdinal("project_id");
                         int taskSubject = sqlDataReader.GetOrdinal("task_subject");
@@ -126,7 +127,76 @@ namespace Paraject.Core.Repositories
         }
         public IEnumerable<Task> FindAll(int projectId, Status taskStatus, Priority taskPriority, Category taskCategory)
         {
-            throw new NotImplementedException();
+            List<Task> tasks = null;
+
+            using (SqlConnection con = new(_connectionString))
+            using (SqlCommand cmd = new("Task.spFindAllTasks", con))
+            {
+                try
+                {
+                    con.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@project_id", SqlDbType.Int).Value = projectId;
+                    cmd.Parameters.Add("@task_status", SqlDbType.NVarChar, 20).Value = taskStatus;
+                    cmd.Parameters.Add("@task_priority", SqlDbType.NVarChar, 4).Value = taskPriority;
+                    cmd.Parameters.Add("@task_category", SqlDbType.NVarChar, 50).Value = taskCategory;
+
+                    SqlDataReader sqlDataReader = cmd.ExecuteReader();
+                    if (sqlDataReader.HasRows)
+                    {
+                        // Move to the first record.  If no records, get out.
+                        if (!sqlDataReader.Read()) return null;
+
+                        //Ordinals (Gets the column number from the database based on the [column name] passed in GetOrdinal method)
+                        int taskIdFromDb = sqlDataReader.GetOrdinal("task_id");
+                        int projectIdFk = sqlDataReader.GetOrdinal("project_id");
+                        int taskSubject = sqlDataReader.GetOrdinal("task_subject");
+                        int taskType = sqlDataReader.GetOrdinal("task_type");
+                        int taskDescription = sqlDataReader.GetOrdinal("task_description");
+                        int taskStatusFromDb = sqlDataReader.GetOrdinal("task_status");
+                        int taskCategoryFromDb = sqlDataReader.GetOrdinal("task_category");
+                        int taskPriorityFromDb = sqlDataReader.GetOrdinal("task_priority");
+                        int taskDeadline = sqlDataReader.GetOrdinal("task_deadline");
+                        int dateCreated = sqlDataReader.GetOrdinal("date_created");
+
+                        //reading multiple Tasks (Add a Task object to the tasks List if SqlDataReader returns a row from the Database)
+                        //Remember, we're already on the first record, so use do/while here.
+                        do
+                        {
+                            Task task = new()
+                            {
+                                Id = sqlDataReader.GetInt32(taskIdFromDb),
+                                Project_Id_Fk = sqlDataReader.GetInt32(projectIdFk),
+                                Subject = sqlDataReader.GetString(taskSubject),
+                                Type = sqlDataReader.GetString(taskType),
+                                Description = sqlDataReader.GetString(taskDescription),
+                                Status = sqlDataReader.GetString(taskStatusFromDb),
+                                Category = sqlDataReader.GetString(taskCategoryFromDb),
+                                Priority = sqlDataReader.GetString(taskPriorityFromDb),
+                                Deadline = sqlDataReader.IsDBNull(taskDeadline) ? null : sqlDataReader.GetDateTime(taskDeadline),
+                                DateCreated = sqlDataReader.GetDateTime(dateCreated)
+                            };
+
+                            tasks.Add(task);
+                        }
+                        //reading multiple Projects
+                        while (sqlDataReader.Read());
+                    }
+                    sqlDataReader.Close();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+
+            return tasks;
         }
         public bool Update(Task task)
         {
