@@ -50,7 +50,8 @@
                 <!--Close Button-->
                 <Button Style="{StaticResource PlainButtonTheme}"
                         Grid.Column="1"
-                        HorizontalAlignment="Right">
+                        HorizontalAlignment="Right"
+                        Command="{Binding CloseModalCommand}">
                     <Image Source="/UiDesign/Icons/WindowStateButtons/close.png"
                            Width="28"
                            Height="28"
