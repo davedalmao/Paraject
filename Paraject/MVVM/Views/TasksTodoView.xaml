@@ -8,6 +8,7 @@
              xmlns:enums="clr-namespace:Paraject.Core.Enums"
              xmlns:sys="clr-namespace:System;assembly=System.Runtime"
              xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:TasksTodoViewModel}"
              mc:Ignorable="d"
              Width="632"
              Height="444.5"
@@ -102,7 +103,8 @@
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
                     Tag="/UiDesign/Icons/ButtonIcons/add.svg"
-                    Style="{StaticResource GeneralButtonTheme}" />
+                    Style="{StaticResource GeneralButtonTheme}"
+                    Command="{Binding AddTaskModalDialogCommand}" />
         </DockPanel>
 
         <!--Tasks Display-->

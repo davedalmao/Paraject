@@ -11,7 +11,7 @@ namespace Paraject.MVVM.Views.ModalDialogs
         {
             InitializeComponent();
             MouseDown += delegate { DragMove(); };
-            //this.Owner = Application.Current.MainWindow;
+            this.Owner = Application.Current.MainWindow;
         }
     }
 }

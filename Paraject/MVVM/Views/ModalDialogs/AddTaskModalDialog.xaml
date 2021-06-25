@@ -171,6 +171,7 @@
                             VerticalAlignment="Bottom"
                             Tag="/UiDesign/Icons/ModalDialogIcons/addTaskIcon.svg"
                             Style="{StaticResource GeneralButtonTheme}"
+                            Command="{Binding AddTaskCommand}"
                             DockPanel.Dock="Bottom" />
                 </Grid>
             </Grid>
