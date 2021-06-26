@@ -103,7 +103,6 @@ namespace Paraject.MVVM.ViewModels
             if (isAdded)
             {
                 MessageBox.Show("Project Created");
-                MainWindowViewModel.Overlay = false;
 
                 //close the AddProjectModalDialog if  Creating a Project is successful
                 //Set Project's default values after closing AddProjectModalDialog
@@ -160,7 +159,6 @@ namespace Paraject.MVVM.ViewModels
         private void SetProjectDefaultThenCloseModal()
         {
             MainWindowViewModel.Overlay = false;
-            NavigateToProjectsView();
 
             //Set Project object to default values
             CurrentProject.Name = "";
@@ -177,11 +175,6 @@ namespace Paraject.MVVM.ViewModels
                     currentModal.Close();
                 }
             }
-        }
-        public void NavigateToProjectsView()
-        {
-            ProjectsVM = new ProjectsViewModel(CurrentUserAccount);
-            MainWindowViewModel.CurrentView = ProjectsVM;
         }
 
         #endregion
