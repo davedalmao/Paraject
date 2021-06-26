@@ -6,7 +6,7 @@ namespace Paraject.Core.Enums
     //This reads the Enum "Description" instead of the Enum itself (when displayed in a ComboBox)
     [TypeConverter(typeof(EnumDescriptionTypeConverter))]
 
-    public enum Category
+    public enum Categories
     {
         [Description("Database")]
         Database,
