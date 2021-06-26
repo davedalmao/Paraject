@@ -36,7 +36,7 @@
                     <ComboBox.ItemsSource>
                         <CompositeCollection>
                             <sys:String>Show All</sys:String>
-                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Category}}}" />
+                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Categories}}}" />
                         </CompositeCollection>
                     </ComboBox.ItemsSource>
                 </ComboBox>
@@ -56,7 +56,7 @@
                     <ComboBox.ItemsSource>
                         <CompositeCollection>
                             <sys:String>Show All</sys:String>
-                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:TaskType}}}" />
+                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:TaskTypes}}}" />
                         </CompositeCollection>
                     </ComboBox.ItemsSource>
                 </ComboBox>
