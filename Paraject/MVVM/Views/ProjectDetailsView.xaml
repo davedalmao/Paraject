@@ -56,7 +56,7 @@
                           Style="{StaticResource ComboBoxTheme}"
                           Background="{StaticResource InputField}"
                           Text="{Binding CurrentProject.Status}"
-                          ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type StatusEnum:Status}}}" />
+                          ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type StatusEnum:Statuses}}}" />
 
                 <!--ProjectDescription TextBlock-->
                 <TextBlock Text="Description (optional)"

@@ -26,7 +26,7 @@
                     Grid.Row="0">
             <!--Back (to ProjectsView) Button-->
             <Button  Style="{StaticResource PlainButtonTheme}"
-                     Command="{Binding ProjectsViewCommand}"
+                     Command="{Binding NavigateBackToProjectsViewCommand}"
                      Background="Transparent"
                      Cursor="Hand"
                      Width="28"
