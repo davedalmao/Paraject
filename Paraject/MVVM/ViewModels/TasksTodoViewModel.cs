@@ -22,9 +22,15 @@ namespace Paraject.MVVM.ViewModels
             ShowAddTaskModalDialogCommand = new DelegateCommand(ShowAddTaskModalDialog);
             CloseModalCommand = new DelegateCommand(SetTaskDefaultThenCloseModal);
             AddTaskCommand = new DelegateCommand(Add);
+            FilterTasksCommand = new DelegateCommand(FilterTasks);
         }
 
         #region Properties
+        //ComboBox (default) Filter Bindings
+        public string StatusFilter { get; set; } = "Show All";
+        public string PriorityFilter { get; set; } = "Show All";
+        public string CategoryFilter { get; set; } = "Show All";
+
         //Model
         public Task CurrentTask { get; set; }
 
@@ -32,9 +38,14 @@ namespace Paraject.MVVM.ViewModels
         public ICommand ShowAddTaskModalDialogCommand { get; }
         public ICommand CloseModalCommand { get; }
         public ICommand AddTaskCommand { get; }
+        public ICommand FilterTasksCommand { get; }
         #endregion
 
         #region Methods
+        private void FilterTasks()
+        {
+            MessageBox.Show($"Status: {StatusFilter}, Priority: {PriorityFilter}, Category: {CategoryFilter}");
+        }
         private void ShowAddTaskModalDialog()
         {
             //Show overlay from MainWindow
