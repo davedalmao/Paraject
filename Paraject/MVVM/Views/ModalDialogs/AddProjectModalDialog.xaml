@@ -115,8 +115,7 @@
                                FontSize="19" />
 
                     <!--ProjectOption ComboBox-->
-                    <ComboBox SelectedIndex="0"
-                              Width="294"
+                    <ComboBox Width="294"
                               Height="42"
                               FontSize="15"
                               Padding="20,0"

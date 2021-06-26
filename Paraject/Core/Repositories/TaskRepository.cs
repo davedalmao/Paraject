@@ -35,7 +35,7 @@ namespace Paraject.Core.Repositories
                     cmd.Parameters.Add("@task_subject", SqlDbType.NVarChar, 50).Value = task.Subject;
                     cmd.Parameters.Add("@task_type", SqlDbType.NVarChar, 50).Value = task.Type;
                     cmd.Parameters.Add("@task_description", SqlDbType.NVarChar, 500).Value = task.Description;
-                    cmd.Parameters.Add("@task_status", SqlDbType.NVarChar, 20).Value = Enum.GetName(Status.Open);
+                    cmd.Parameters.Add("@task_status", SqlDbType.NVarChar, 20).Value = Enum.GetName(Statuses.Open);
                     cmd.Parameters.Add("@task_category", SqlDbType.NVarChar, 50).Value = task.Category;
                     cmd.Parameters.Add("@task_priority", SqlDbType.NVarChar, 4).Value = task.Priority;
                     cmd.Parameters.Add("@task_deadline", SqlDbType.DateTime2).Value = task.Deadline;
@@ -129,7 +129,7 @@ namespace Paraject.Core.Repositories
 
             return task;
         }
-        public IEnumerable<Task> FindAll(int projectId, Status taskStatus, Priority taskPriority, Category taskCategory)
+        public IEnumerable<Task> FindAll(int projectId, Statuses taskStatus, Priorities taskPriority, Categories taskCategory)
         {
             List<Task> tasks = null;
 
@@ -218,7 +218,7 @@ namespace Paraject.Core.Repositories
                     cmd.Parameters.Add("@task_subject", SqlDbType.NVarChar, 50).Value = task.Subject;
                     cmd.Parameters.Add("@task_type", SqlDbType.NVarChar, 50).Value = task.Type;
                     cmd.Parameters.Add("@task_description", SqlDbType.NVarChar, 500).Value = task.Description;
-                    cmd.Parameters.Add("@task_status", SqlDbType.NVarChar, 20).Value = Enum.GetName(Status.Open);
+                    cmd.Parameters.Add("@task_status", SqlDbType.NVarChar, 20).Value = Enum.GetName(Statuses.Open);
                     cmd.Parameters.Add("@task_category", SqlDbType.NVarChar, 50).Value = task.Category;
                     cmd.Parameters.Add("@task_priority", SqlDbType.NVarChar, 4).Value = task.Priority;
                     cmd.Parameters.Add("@task_deadline", SqlDbType.DateTime2).Value = task.Deadline;

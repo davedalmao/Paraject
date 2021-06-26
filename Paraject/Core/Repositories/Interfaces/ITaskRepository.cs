@@ -9,7 +9,7 @@ namespace Paraject.Core.Repositories.Interfaces
     {
         public bool Add(Task task, int projectId);
         public Task Get(int taskId);
-        public IEnumerable<Task> FindAll(int projectId, Status taskStatus, Priority taskPriority, Category taskCategory);
+        public IEnumerable<Task> FindAll(int projectId, Statuses taskStatus, Priorities taskPriority, Categories taskCategory);
         public bool Update(Task task);
         public bool Delete(int taskId);
     }
