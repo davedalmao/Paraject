@@ -48,8 +48,8 @@ namespace Paraject.Core.Repositories
                     cmd.Parameters.Add("@project_logo", SqlDbType.VarBinary).Value = ImageConverter.ImageToBytes(project.Logo);
                     cmd.Parameters.Add("@date_created", SqlDbType.DateTime2).Value = DateTime.Now;
 
-                    int NoOfRowsAffected = cmd.ExecuteNonQuery();
-                    isAdded = NoOfRowsAffected > 0;
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    isAdded = rowsAffected > 0;
                 }
                 catch (SqlException ex)
                 {
@@ -285,8 +285,8 @@ namespace Paraject.Core.Repositories
                     cmd.Parameters.Add("@project_deadline", SqlDbType.DateTime2).Value = project.Deadline;
                     cmd.Parameters.Add("@project_logo", SqlDbType.VarBinary).Value = ImageConverter.ImageToBytes(project.Logo);
 
-                    int NoOfRowsAffected = cmd.ExecuteNonQuery();
-                    isUpdated = NoOfRowsAffected > 0;
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    isUpdated = rowsAffected > 0;
                 }
                 catch (SqlException ex)
                 {
@@ -321,8 +321,8 @@ namespace Paraject.Core.Repositories
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@project_id", SqlDbType.Int).Value = projectId;
 
-                    int NoOfRowsAffected = cmd.ExecuteNonQuery();
-                    isDeleted = NoOfRowsAffected > 0;
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    isDeleted = rowsAffected > 0;
                 }
                 catch (SqlException ex)
                 {
