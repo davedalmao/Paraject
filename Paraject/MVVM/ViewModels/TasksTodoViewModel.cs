@@ -1,4 +1,5 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
@@ -10,9 +11,11 @@ namespace Paraject.MVVM.ViewModels
     public class TasksTodoViewModel : BaseViewModel
     {
         private readonly int _projectId;
+        private readonly TaskRepository _taskRepository;
         public TasksTodoViewModel(int projectId)
         {
             _projectId = projectId;
+            _taskRepository = new TaskRepository();
             CurrentTask = new Task();
 
             ShowAddTaskModalDialogCommand = new DelegateCommand(ShowAddTaskModalDialog);
@@ -54,7 +57,29 @@ namespace Paraject.MVVM.ViewModels
         }
         private void Add()
         {
-            MessageBox.Show($"Subject: {CurrentTask.Subject} \nType: {CurrentTask.Type} \nDescription: {CurrentTask.Description} \nCategory: {CurrentTask.Category} \nPriority: {CurrentTask.Priority} \nDeadline: {CurrentTask.Deadline}");
+            if (!string.IsNullOrWhiteSpace(CurrentTask.Subject))
+            {
+                bool isAdded = _taskRepository.Add(CurrentTask, _projectId);
+                CheckTaskCreation(isAdded);
+            }
+
+            else
+            {
+                MessageBox.Show("A task should have a subject");
+            }
+        }
+        private void CheckTaskCreation(bool isAdded)
+        {
+            if (isAdded)
+            {
+                MessageBox.Show("Task Created");
+                SetTaskDefaultThenCloseModal();
+            }
+
+            else
+            {
+                MessageBox.Show("Error occured, cannot create task");
+            }
         }
         #endregion
     }
