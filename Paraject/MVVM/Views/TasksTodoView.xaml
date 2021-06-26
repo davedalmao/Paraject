@@ -93,7 +93,7 @@
                     VerticalAlignment="Bottom"
                     Tag="/UiDesign/Icons/ButtonIcons/add.svg"
                     Style="{StaticResource GeneralButtonTheme}"
-                    Command="{Binding AddTaskModalDialogCommand}" />
+                    Command="{Binding ShowAddTaskModalDialogCommand}" />
         </DockPanel>
 
         <!--Tasks Display-->

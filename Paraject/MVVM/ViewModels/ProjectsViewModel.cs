@@ -103,7 +103,6 @@ namespace Paraject.MVVM.ViewModels
             if (isAdded)
             {
                 MessageBox.Show("Project Created");
-                MainWindowViewModel.Overlay = false;
 
                 //close the AddProjectModalDialog if  Creating a Project is successful
                 //Set Project's default values after closing AddProjectModalDialog
