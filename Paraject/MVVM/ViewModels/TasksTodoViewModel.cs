@@ -47,6 +47,10 @@ namespace Paraject.MVVM.ViewModels
         {
             MainWindowViewModel.Overlay = false;
 
+            //To erase the last input values in AddProjectModalDialog
+            CurrentTask = null;
+            CurrentTask = new Task();
+
             foreach (Window currentModal in Application.Current.Windows)
             {
                 if (currentModal.DataContext == this)
