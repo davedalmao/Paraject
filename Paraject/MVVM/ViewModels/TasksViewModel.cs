@@ -31,8 +31,10 @@ namespace Paraject.MVVM.ViewModels
             NavigateBackToProjectsViewCommand = new DelegateCommand(NavigateBackToProjectsView);
         }
 
+        #region Properties
         public Project CurrentProject { get; set; }
         public object CurrentView { get; set; }
+        #endregion
 
         #region ViewModels (that will navigate with their associated Views)
         public ProjectsViewModel ProjectsVM { get; set; }
