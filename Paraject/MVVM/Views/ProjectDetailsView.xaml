@@ -8,6 +8,7 @@
              xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
              xmlns:ProjectOptionsEnum="clr-namespace:Paraject.Core.Repositories"
              xmlns:StatusEnum="clr-namespace:Paraject.Core.Enums"
+             xmlns:sys="clr-namespace:System;assembly=System.Runtime"
              d:DataContext="{d:DesignInstance Type=viewmodels:ProjectDetailsViewModel}"
              mc:Ignorable="d"
              Width="632"
@@ -55,8 +56,14 @@
                           Margin="0,0,0,20"
                           Style="{StaticResource ComboBoxTheme}"
                           Background="{StaticResource InputField}"
-                          Text="{Binding CurrentProject.Status}"
-                          ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type StatusEnum:Statuses}}}" />
+                          Text="{Binding CurrentProject.Status}">
+                    <ComboBox.ItemsSource>
+                        <CompositeCollection>
+                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type StatusEnum:Statuses}}}" />
+                            <sys:String>Completed</sys:String>
+                        </CompositeCollection>
+                    </ComboBox.ItemsSource>
+                </ComboBox>
 
                 <!--ProjectDescription TextBlock-->
                 <TextBlock Text="Description (optional)"
