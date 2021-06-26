@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paraject.MVVM.Views.ModalDialogs"
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
+        xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
+        xmlns:enums="clr-namespace:Paraject.Core.Enums"
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="CanResize"
@@ -96,7 +98,8 @@
                               Padding="20,0"
                               Margin="0,0,0,23"
                               Style="{StaticResource ComboBoxTheme}"
-                              Background="{StaticResource InputField}" />
+                              Background="{StaticResource InputField}"
+                              ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:TaskType}}}" />
 
                     <!--Task Description TextBlock-->
                     <TextBlock Text="Description (optional)"
@@ -134,7 +137,8 @@
                                   FontSize="15"
                                   Padding="20,0"
                                   Style="{StaticResource ComboBoxTheme}"
-                                  Background="{StaticResource InputField}" />
+                                  Background="{StaticResource InputField}"
+                                  ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Category}}}" />
 
                         <!--Task Priority TextBlock-->
                         <TextBlock Text="Priority"
@@ -149,7 +153,8 @@
                                   Padding="20,0"
                                   Margin="0,0,0,23"
                                   Style="{StaticResource ComboBoxTheme}"
-                                  Background="{StaticResource InputField}" />
+                                  Background="{StaticResource InputField}"
+                                  ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Priority}}}" />
 
                         <!--Task Deadline TextBlock-->
                         <TextBlock Text="Deadline"
