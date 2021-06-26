@@ -12,6 +12,7 @@ namespace Paraject.MVVM.ViewModels
     {
         private readonly int _projectId;
         private readonly TaskRepository _taskRepository;
+
         public TasksTodoViewModel(int projectId)
         {
             _projectId = projectId;
