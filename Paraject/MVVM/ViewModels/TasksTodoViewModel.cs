@@ -12,6 +12,7 @@ namespace Paraject.MVVM.ViewModels
     {
         private readonly int _projectId;
         private readonly TaskRepository _taskRepository;
+
         public TasksTodoViewModel(int projectId)
         {
             _projectId = projectId;
@@ -46,6 +47,10 @@ namespace Paraject.MVVM.ViewModels
         private void SetTaskDefaultThenCloseModal()
         {
             MainWindowViewModel.Overlay = false;
+
+            //To erase the last input values in AddProjectModalDialog
+            CurrentTask = null;
+            CurrentTask = new Task();
 
             foreach (Window currentModal in Application.Current.Windows)
             {
