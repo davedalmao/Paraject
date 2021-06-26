@@ -4,7 +4,6 @@ using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
-using System;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Windows;
@@ -160,12 +159,9 @@ namespace Paraject.MVVM.ViewModels
         {
             MainWindowViewModel.Overlay = false;
 
-            //Set Project object to default values
-            CurrentProject.Name = "";
-            CurrentProject.Description = "";
-            CurrentProject.Option = Enum.GetName(ProjectOptions.Personal);
-            CurrentProject.Deadline = null;
-            CurrentProject.Logo = null;
+            //To erase the last input values in AddProjectModalDialog
+            CurrentProject = null;
+            CurrentProject = new Project();
 
             //Close the Modal
             foreach (Window currentModal in Application.Current.Windows)
