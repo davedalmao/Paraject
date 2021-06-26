@@ -16,17 +16,6 @@
              Foreground="{StaticResource MainFontColor}"
              FontFamily="{StaticResource NunitoBold}">
 
-    <UserControl.Resources>
-        <!--TaskCategory Source-->
-        <ObjectDataProvider MethodName="GetValues"
-                            ObjectType="{x:Type sys:Enum}"
-                            x:Key="CategoryDataProvider">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="enums:Category" />
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-    </UserControl.Resources>
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -49,7 +38,7 @@
                     <ComboBox.ItemsSource>
                         <CompositeCollection>
                             <sys:String>Show All</sys:String>
-                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Status}}}" />
+                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Statuses}}}" />
                         </CompositeCollection>
                     </ComboBox.ItemsSource>
                 </ComboBox>
@@ -69,7 +58,7 @@
                     <ComboBox.ItemsSource>
                         <CompositeCollection>
                             <sys:String>Show All</sys:String>
-                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Priority}}}" />
+                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Priorities}}}" />
                         </CompositeCollection>
                     </ComboBox.ItemsSource>
                 </ComboBox>
@@ -90,7 +79,7 @@
                     <ComboBox.ItemsSource>
                         <CompositeCollection>
                             <sys:String>Show All</sys:String>
-                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Category}}}" />
+                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Categories}}}" />
                         </CompositeCollection>
                     </ComboBox.ItemsSource>
                 </ComboBox>

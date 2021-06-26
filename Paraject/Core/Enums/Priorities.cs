@@ -1,6 +1,6 @@
 ﻿namespace Paraject.Core.Enums
 {
-    public enum Priority
+    public enum Priorities
     {
         Low,
         Med,

@@ -1,4 +1,5 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
 using System.Windows;
@@ -8,28 +9,36 @@ namespace Paraject.MVVM.ViewModels
 {
     public class TasksTodoViewModel : BaseViewModel
     {
-        //test
         private readonly int _projectId;
         public TasksTodoViewModel(int projectId)
         {
             _projectId = projectId;
-            AddTaskModalDialogCommand = new DelegateCommand(DisplayModal);
-            AddTaskCommand = new DelegateCommand(Test);
+            CurrentTask = new Task();
+
+            ShowAddTaskModalDialogCommand = new DelegateCommand(ShowAddTaskModalDialog);
             CloseModalCommand = new DelegateCommand(SetTaskDefaultThenCloseModal);
+            AddTaskCommand = new DelegateCommand(Add);
         }
 
-        public ICommand AddTaskModalDialogCommand { get; }
-        public ICommand AddTaskCommand { get; }
-        public ICommand CloseModalCommand { get; }
+        #region Properties
+        //Model
+        public Task CurrentTask { get; set; }
 
-        private void DisplayModal()
+        //Commands
+        public ICommand ShowAddTaskModalDialogCommand { get; }
+        public ICommand CloseModalCommand { get; }
+        public ICommand AddTaskCommand { get; }
+        #endregion
+
+        #region Methods
+        private void ShowAddTaskModalDialog()
         {
             //Show overlay from MainWindow
             MainWindowViewModel.Overlay = true;
 
             AddTaskModalDialog addTaskModalDialog = new();
             addTaskModalDialog.DataContext = this;
-            addTaskModalDialog.Show();
+            addTaskModalDialog.ShowDialog();
         }
         private void SetTaskDefaultThenCloseModal()
         {
@@ -43,9 +52,10 @@ namespace Paraject.MVVM.ViewModels
                 }
             }
         }
-        private void Test()
+        private void Add()
         {
-            MessageBox.Show($"{_projectId}");
+            MessageBox.Show($"Subject: {CurrentTask.Subject} \nType: {CurrentTask.Type} \nDescription: {CurrentTask.Description} \nCategory: {CurrentTask.Category} \nPriority: {CurrentTask.Priority} \nDeadline: {CurrentTask.Deadline}");
         }
+        #endregion
     }
 }
