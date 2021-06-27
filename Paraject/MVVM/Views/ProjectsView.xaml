@@ -66,8 +66,7 @@
         <ScrollViewer Style="{StaticResource ScrollbarTheme}"
                       Grid.Row="1"
                       Grid.ColumnSpan="4"
-                      Height="432"
-                      Background="Blue">
+                      Height="432">
             <!--Project Cards-->
             <ItemsControl x:Name="Projects"
                           ItemsSource="{Binding Projects}">
