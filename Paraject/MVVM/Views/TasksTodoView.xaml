@@ -139,7 +139,8 @@
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid Columns="3"
-                                     Background="Green" />
+                                     Background="Green"
+                                     VerticalAlignment="Top" />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
 
@@ -163,7 +164,8 @@
                                 <!--Task Priority Indicator-->
                                 <Border Grid.Row="0"
                                         Height="6"
-                                        Background="{StaticResource AccentColor}"
+                                        Tag="{Binding Priority}"
+                                        Style="{StaticResource PriorityIndicatorTheme}"
                                         CornerRadius="2.3" />
 
                                 <!--Task Category-->
