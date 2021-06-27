@@ -3,6 +3,8 @@ using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
+using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 
@@ -23,10 +25,15 @@ namespace Paraject.MVVM.ViewModels
             CloseModalCommand = new DelegateCommand(SetTaskDefaultThenCloseModal);
             AddTaskCommand = new DelegateCommand(Add);
             FilterTasksCommand = new DelegateCommand(FilterTasks);
+
+            //default tasks display
+            FinishLineTasks();
         }
 
         #region Properties
-        //ComboBox (default) Filter Bindings
+        public ObservableCollection<Task> Tasks { get; set; }
+
+        //ComboBox Filter Bindings
         public string StatusFilter { get; set; } = "Show All";
         public string PriorityFilter { get; set; } = "Show All";
         public string CategoryFilter { get; set; } = "Show All";
@@ -42,9 +49,29 @@ namespace Paraject.MVVM.ViewModels
         #endregion
 
         #region Methods
+        private void FinishLineTasks()
+        {
+            try
+            {
+                Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, "FinishLine", StatusFilter, PriorityFilter, CategoryFilter));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         private void FilterTasks()
         {
-            MessageBox.Show($"Status: {StatusFilter}, Priority: {PriorityFilter}, Category: {CategoryFilter}");
+            try
+            {
+                //MessageBox.Show($"Status: {StatusFilter}, Priority: {PriorityFilter}, Category: {CategoryFilter}");
+                FinishLineTasks();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
         private void ShowAddTaskModalDialog()
         {

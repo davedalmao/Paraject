@@ -132,7 +132,25 @@
         <ScrollViewer Style="{StaticResource ScrollbarTheme}"
                       Height="408"
                       Grid.Row="1">
+            <ItemsControl x:Name="Tasks"
+                          ItemsSource="{Binding Tasks}">
 
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Red"
+                                BorderThickness="1"
+                                Margin="10"
+                                Padding="10">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Subject}" />
+                                <TextBlock Text="{Binding Status}" />
+                                <TextBlock Text="{Binding Priority}" />
+                                <TextBlock Text="{Binding Category}" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </ScrollViewer>
     </Grid>
 </UserControl>
