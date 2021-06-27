@@ -128,6 +128,9 @@
     <Page Update="UiDesign\Theme\HorizontalRadioButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="UiDesign\Theme\PriorityIndicatorTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="UiDesign\Theme\ProjectStatusTheme.xaml">
       <SubType>Designer</SubType>
     </Page>

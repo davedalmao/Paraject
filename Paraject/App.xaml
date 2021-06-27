@@ -27,6 +27,7 @@
                 <ResourceDictionary Source="/UiDesign/Theme/ProjectStatusTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/ScrollbarTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/TaskCategoryTheme.xaml" />
+                <ResourceDictionary Source="/UiDesign/Theme/PriorityIndicatorTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--Project Colors-->
