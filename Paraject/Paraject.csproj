@@ -25,9 +25,12 @@
     <None Remove="UiDesign\Icons\ButtonIcons\delete.svg" />
     <None Remove="UiDesign\Icons\ButtonIcons\image.svg" />
     <None Remove="UiDesign\Icons\ButtonIcons\update.svg" />
+    <None Remove="UiDesign\Icons\Calendar\grayCalendar.svg" />
+    <None Remove="UiDesign\Icons\Calendar\pinkCalendar.svg" />
     <None Remove="UiDesign\Icons\ModalDialogIcons\addProjectIcon.svg" />
     <None Remove="UiDesign\Icons\ModalDialogIcons\addTaskIcon.svg" />
     <None Remove="UiDesign\Icons\Password\showPassword.svg" />
+    <None Remove="UiDesign\Icons\subtask.svg" />
     <None Remove="UiDesign\Icons\WindowStateButtons\lightClose.png" />
     <None Remove="UiDesign\Icons\WindowStateButtons\lightMin.png" />
     <None Remove="UiDesign\Images\dashboardImage.svg" />
@@ -100,6 +103,12 @@
     <Resource Include="UiDesign\Icons\ButtonIcons\update.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="UiDesign\Icons\Calendar\grayCalendar.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Icons\Calendar\pinkCalendar.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="UiDesign\Icons\ModalDialogIcons\addProjectIcon.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -107,6 +116,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Icons\Password\showPassword.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Icons\subtask.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Icons\WindowStateButtons\lightClose.png">

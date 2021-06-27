@@ -55,7 +55,7 @@
                              Color="#222529" />
             <SolidColorBrush x:Key="Navbar"
                              Color="#25282C" />
-            <SolidColorBrush x:Key="ProjectCard"
+            <SolidColorBrush x:Key="Card"
                              Color="#2A2D32" />
             <SolidColorBrush x:Key="InputField"
                              Color="#2E3135" />
