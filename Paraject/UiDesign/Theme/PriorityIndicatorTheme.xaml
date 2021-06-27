@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="{x:Type TextBlock}"
+           x:Key="PriorityIndicatorTheme">
+        <Style.Triggers>
+            <Trigger Property="Text"
+                     Value="Low">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Green}" />
+            </Trigger>
+
+            <Trigger Property="Text"
+                     Value="Med">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Yellow}" />
+            </Trigger>
+
+            <Trigger Property="Text"
+                     Value="High">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Red}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>
