@@ -20,13 +20,13 @@ namespace Paraject.Core.Enums
         [Description("UI Design")]
         UiDesign,
 
-        [Description("Ui Bug")]
+        [Description("UI Bug")]
         UiBug,
 
-        [Description("Ux Design")]
+        [Description("UX Design")]
         UxDesign,
 
-        [Description("Ux Bug")]
+        [Description("UX Bug")]
         UxBug,
 
         [Description("Backend")]

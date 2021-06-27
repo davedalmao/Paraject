@@ -26,6 +26,7 @@
                 <ResourceDictionary Source="/UiDesign/Theme/DatePickerCalendarTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/ProjectStatusTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/ScrollbarTheme.xaml" />
+                <ResourceDictionary Source="/UiDesign/Theme/TaskCategoryTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--Project Colors-->

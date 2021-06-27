@@ -169,7 +169,7 @@
                                 <!--Task Category-->
                                 <TextBlock Grid.Row="1"
                                            Text="{Binding Category}"
-                                           Foreground="{StaticResource AccentColor}"
+                                           Style="{StaticResource TaskCategoryTheme}"
                                            FontSize="15"
                                            Margin="0,12,0,0" />
 
