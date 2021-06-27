@@ -12,27 +12,27 @@ namespace Paraject.Core.Enums
         Database,
 
         [Description("Database Design")]
-        DatabaseDesign,
+        Database_Design,
 
         [Description("Database Bug")]
-        DatabaseBug,
+        Database_Bug,
 
         [Description("UI Design")]
-        UIDesign,
+        UI_Design,
 
         [Description("UI Bug")]
-        UIBug,
+        UI_Bug,
 
         [Description("UX Design")]
-        UXDesign,
+        UX_Design,
 
         [Description("UX Bug")]
-        UXBug,
+        UX_Bug,
 
         [Description("Backend")]
         Backend,
 
         [Description("Backend Bug")]
-        BackendBug
+        Backend_Bug
     }
 }
