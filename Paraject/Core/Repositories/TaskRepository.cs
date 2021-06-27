@@ -1,5 +1,4 @@
-﻿using Paraject.Core.Converters;
-using Paraject.Core.Enums;
+﻿using Paraject.Core.Enums;
 using Paraject.Core.Repositories.Interfaces;
 using Paraject.Core.Utilities;
 using Paraject.MVVM.Models;
@@ -178,7 +177,7 @@ namespace Paraject.Core.Repositories
                                 Type = sqlDataReader.GetString(taskTypeFromDb),
                                 Description = sqlDataReader.IsDBNull(taskDescription) ? "--" : sqlDataReader.GetString(taskDescription),
                                 Status = sqlDataReader.GetString(taskStatusFromDb),
-                                Category = CamelCaseConverter.CamelCaseWithSpaces(sqlDataReader.GetString(taskCategoryFromDb)),
+                                Category = sqlDataReader.GetString(taskCategoryFromDb).Replace("_", " "),
                                 Priority = sqlDataReader.GetString(taskPriorityFromDb),
                                 Deadline = sqlDataReader.IsDBNull(taskDeadline) ? null : sqlDataReader.GetDateTime(taskDeadline),
                                 DateCreated = sqlDataReader.GetDateTime(dateCreated)

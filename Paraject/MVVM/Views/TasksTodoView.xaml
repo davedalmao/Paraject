@@ -173,9 +173,9 @@
                                            FontSize="15"
                                            Margin="0,12,0,0" />
 
-                                <!--Task Description-->
+                                <!--Task Subject-->
                                 <TextBlock Grid.Row="2"
-                                           Text="{Binding Description}"
+                                           Text="{Binding Subject}"
                                            FontSize="14"
                                            VerticalAlignment="Center"
                                            Foreground="{StaticResource MainFontColor}" />
