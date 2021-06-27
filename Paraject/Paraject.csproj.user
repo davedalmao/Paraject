@@ -134,6 +134,9 @@
     <Page Update="UiDesign\Theme\ScrollbarTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="UiDesign\Theme\TaskCategoryTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="UiDesign\Theme\TextOnlyButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
