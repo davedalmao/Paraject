@@ -9,6 +9,7 @@
              xmlns:sys="clr-namespace:System;assembly=System.Runtime"
              xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
              d:DataContext="{d:DesignInstance Type=viewmodels:TasksTodoViewModel}"
              mc:Ignorable="d"
              Width="632"
@@ -24,7 +25,8 @@
         </Grid.RowDefinitions>
 
         <!--Task Filters and a Add New Task Button-->
-        <DockPanel Grid.Row="0">
+        <DockPanel Grid.Row="0"
+                   Margin="0,0,0,20">
             <!--Task Status ComboBox-->
             <StackPanel>
                 <TextBlock Text="Task Status:"
@@ -130,24 +132,95 @@
 
         <!--Tasks Display-->
         <ScrollViewer Style="{StaticResource ScrollbarTheme}"
-                      Height="408"
+                      Height="351"
                       Grid.Row="1">
             <ItemsControl x:Name="Tasks"
                           ItemsSource="{Binding Tasks}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="3"
+                                     Background="Green" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="Red"
-                                BorderThickness="1"
-                                Margin="10"
-                                Padding="10">
-                            <StackPanel>
-                                <TextBlock Text="{Binding Subject}" />
-                                <TextBlock Text="{Binding Status}" />
-                                <TextBlock Text="{Binding Priority}" />
-                                <TextBlock Text="{Binding Category}" />
-                            </StackPanel>
-                        </Border>
+                        <Button  Margin="0,10,0,16"
+                                 Padding="18,5,18,11"
+                                 Height="153"
+                                 Width="192"
+                                 Background="{StaticResource Card}"
+                                 Style="{StaticResource PlainButtonTheme}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+                                <!--Task Priority Indicator-->
+                                <Border Grid.Row="0"
+                                        Height="6"
+                                        Background="{StaticResource AccentColor}"
+                                        CornerRadius="2.3" />
+
+                                <!--Task Category-->
+                                <TextBlock Grid.Row="1"
+                                           Text="{Binding Category}"
+                                           Foreground="{StaticResource AccentColor}"
+                                           FontSize="15"
+                                           Margin="0,12,0,0" />
+
+                                <!--Task Description-->
+                                <TextBlock Grid.Row="2"
+                                           Text="{Binding Description}"
+                                           FontSize="14"
+                                           VerticalAlignment="Center"
+                                           Foreground="{StaticResource MainFontColor}" />
+
+                                <!--Card Footer-->
+                                <Grid Grid.Row="3">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!--Deadline-->
+                                    <StackPanel Orientation="Horizontal"
+                                                Grid.Column="0">
+                                        <!--Deadline Image-->
+                                        <UserControl Width="12.5"
+                                                     Height="12.5"
+                                                     Margin="0,0,3.75,0">
+                                            <svgc1:SvgViewbox Source="/UiDesign/Icons/Calendar/grayCalendar.svg" />
+                                        </UserControl>
+
+                                        <!--Deadline Details-->
+                                        <TextBlock Text="{Binding DateCreated, StringFormat={}{0:MM/dd/yyyy}}"
+                                                   Foreground="{StaticResource Darkest}"
+                                                   FontSize="11" />
+                                    </StackPanel>
+
+                                    <!--Subtask Count-->
+                                    <StackPanel Orientation="Horizontal"
+                                                Grid.Column="1">
+                                        <!--Subtask Image-->
+                                        <UserControl Width="12.5"
+                                                     Height="12.5"
+                                                     Margin="0,0,3.75,0">
+                                            <svgc1:SvgViewbox Source="/UiDesign/Icons/subtask.svg" />
+                                        </UserControl>
+
+                                        <!--Subtask Count-->
+                                        <TextBlock Text="0"
+                                                   Foreground="{StaticResource Darkest}"
+                                                   FontSize="11" />
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </Button>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
