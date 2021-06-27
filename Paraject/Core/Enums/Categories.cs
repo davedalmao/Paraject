@@ -18,16 +18,16 @@ namespace Paraject.Core.Enums
         DatabaseBug,
 
         [Description("UI Design")]
-        UiDesign,
+        UIDesign,
 
         [Description("UI Bug")]
-        UiBug,
+        UIBug,
 
         [Description("UX Design")]
-        UxDesign,
+        UXDesign,
 
         [Description("UX Bug")]
-        UxBug,
+        UXBug,
 
         [Description("Backend")]
         Backend,
