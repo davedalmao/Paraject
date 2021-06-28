@@ -18,6 +18,11 @@
              Foreground="{StaticResource MainFontColor}"
              FontFamily="{StaticResource NunitoBold}">
 
+    <FrameworkElement.Resources>
+
+    </FrameworkElement.Resources>
+
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
