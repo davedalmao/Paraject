@@ -14,7 +14,7 @@
              FontFamily="{StaticResource NunitoBold}"
              Foreground="{StaticResource MainFontColor}"
              Background="Transparent">
-    <Grid Margin="50,8,50,30">
+    <Grid Margin="30,8,45,30">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
@@ -23,7 +23,8 @@
 
         <!--TasksView Header-->
         <StackPanel Orientation="Horizontal"
-                    Grid.Row="0">
+                    Grid.Row="0"
+                    Margin="5,0,0,0">
             <!--Back (to ProjectsView) Button-->
             <Button  Style="{StaticResource PlainButtonTheme}"
                      Command="{Binding NavigateBackToProjectsViewCommand}"
@@ -47,7 +48,7 @@
 
         <!--TasksView Navigation-->
         <DockPanel Grid.Row="1"
-                   Margin="0,20,0,35">
+                   Margin="11,20,0,35">
             <!--FinishLine Type Tasks-->
             <custom:MenuItem Content="Finish Line"
                              IsChecked="True"
