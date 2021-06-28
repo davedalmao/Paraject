@@ -14,11 +14,11 @@ namespace Paraject.MVVM.ViewModels
     {
         private readonly int _projectId;
         private readonly TaskRepository _taskRepository;
-
         public TasksTodoViewModel(int projectId)
         {
             _projectId = projectId;
             _taskRepository = new TaskRepository();
+
             CurrentTask = new Task();
 
             ShowAddTaskModalDialogCommand = new DelegateCommand(ShowAddTaskModalDialog);
@@ -51,14 +51,7 @@ namespace Paraject.MVVM.ViewModels
         #region Methods
         private void FinishLineTasks()
         {
-            try
-            {
-                Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, "FinishLine", StatusFilter, PriorityFilter, CategoryFilter));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, "FinishLine", StatusFilter, PriorityFilter, CategoryFilter));
         }
 
         private void FilterTasks()
