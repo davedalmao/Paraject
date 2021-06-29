@@ -135,7 +135,7 @@
                       Height="346"
                       Grid.Row="1">
             <ItemsControl x:Name="Tasks"
-                          ItemsSource="{Binding GridTasks}">
+                          ItemsSource="{Binding CardTasksGrid}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <!--<WrapPanel Background="Transparent" />-->

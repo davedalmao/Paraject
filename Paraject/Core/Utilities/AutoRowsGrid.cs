@@ -4,7 +4,7 @@ using System.Windows.Controls;
 
 namespace Paraject.Core.Utilities
 {
-    public static class AutoRowsGrid
+    public class AutoRowsGrid
     {
         /// <summary> Returns the value of the ChildrenCount attached property for <paramref name = "grid" />. </summary>
         /// <param name = "grid"> <see cref = "Grid" /> whose property value will be returned. </param>
