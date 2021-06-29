@@ -10,9 +10,10 @@
              xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
+             xmlns:grid="clr-namespace:Paraject.Core.Utilities"
              d:DataContext="{d:DesignInstance Type=viewmodels:TasksTodoViewModel}"
              mc:Ignorable="d"
-             Width="656"
+             Width="632"
              Height="444.5"
              Background="Transparent"
              Foreground="{StaticResource MainFontColor}"
@@ -25,7 +26,7 @@
 
         <!--Task Filters and a Add New Task Button-->
         <DockPanel Grid.Row="0"
-                   Margin="8,0,0,17">
+                   Margin="0,0,0,15">
             <!--Task Status ComboBox-->
             <StackPanel>
                 <TextBlock Text="Task Status:"
@@ -131,19 +132,37 @@
 
         <!--Tasks Display-->
         <ScrollViewer Style="{StaticResource ScrollbarTheme}"
-                      Height="353"
+                      Height="346"
                       Grid.Row="1">
             <ItemsControl x:Name="Tasks"
-                          ItemsSource="{Binding Tasks}">
+                          ItemsSource="{Binding GridTasks}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel Background="Transparent" />
+                        <!--<WrapPanel Background="Transparent" />-->
+                        <Grid grid:AutoRowsGrid.ChildrenCount="{Binding  Items.Count, ElementName=Tasks}"
+                              VerticalAlignment="Top"
+                              Background="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                        </Grid>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
 
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="Grid.Row"
+                                Value="{Binding Row}" />
+                        <Setter Property="Grid.Column"
+                                Value="{Binding Column}" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button  Margin="9,10,15,14"
+                        <Button  Margin="0,10,0,14"
                                  Height="153"
                                  Width="188"
                                  Background="{StaticResource Card}"
@@ -160,7 +179,7 @@
                                         Height="6"
                                         Width="169"
                                         Margin="0,6,0,0"
-                                        Tag="{Binding Priority}"
+                                        Tag="{Binding Content.Priority}"
                                         Style="{StaticResource PriorityIndicatorTheme}"
                                         CornerRadius="2.3" />
 
@@ -174,14 +193,14 @@
                                     </Grid.RowDefinitions>
                                     <!--Task Category-->
                                     <TextBlock Grid.Row="0"
-                                               Text="{Binding Category}"
+                                               Text="{Binding Content.Category}"
                                                Style="{StaticResource TaskCategoryTheme}"
                                                FontSize="15"
                                                Margin="0,12,0,0" />
 
                                     <!--Task Subject-->
                                     <TextBlock Grid.Row="1"
-                                               Text="{Binding Subject}"
+                                               Text="{Binding Content.Subject}"
                                                FontSize="14"
                                                VerticalAlignment="Center"
                                                Foreground="{StaticResource MainFontColor}" />
@@ -204,7 +223,7 @@
                                             </UserControl>
 
                                             <!--Deadline Details-->
-                                            <TextBlock Text="{Binding Deadline, StringFormat={}{0:MM/dd/yyyy}}"
+                                            <TextBlock Text="{Binding Content.Deadline, StringFormat={}{0:MM/dd/yyyy}}"
                                                        Foreground="{StaticResource Darkest}"
                                                        FontSize="11" />
                                         </StackPanel>
