@@ -15,7 +15,6 @@ namespace Paraject.MVVM.ViewModels
     {
         private readonly int _projectId;
         private readonly TaskRepository _taskRepository;
-        // private TaskTypes _tasktype;
         private int _row;
         private int _column;
 
