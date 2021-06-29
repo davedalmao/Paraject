@@ -129,7 +129,7 @@ namespace Paraject.Core.Repositories
 
             return task;
         }
-        public IEnumerable<Task> FindAll(int projectId, string taskType, string taskStatus, string taskPriority, string taskCategory)
+        public IEnumerable<Task> FindAll(int projectId, TaskTypes taskType, string taskStatus, string taskPriority, string taskCategory)
         {
             List<Task> tasks = new();
 

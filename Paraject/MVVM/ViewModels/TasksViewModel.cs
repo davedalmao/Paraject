@@ -1,4 +1,5 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.Core.Enums;
 using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
@@ -16,15 +17,17 @@ namespace Paraject.MVVM.ViewModels
             _userAccountRepository = new UserAccountRepository();
 
             //TasksView child Views
-            TasksTodoVM = new TasksTodoViewModel(currentProject.Id);
+            TasksTodoVMFinishLine = new TasksTodoViewModel(currentProject.Id, TaskTypes.FinishLine);
+            TasksTodoVMExtraFeatures = new TasksTodoViewModel(currentProject.Id, TaskTypes.ExtraFeature);
             CompletedTasksVM = new CompletedTasksViewModel();
             ProjectNotesVM = new ProjectNotesViewModel();
             ProjectDetailsVM = new ProjectDetailsViewModel(projectsViewModel, currentProject);
 
-            CurrentView = TasksTodoVM;
+            CurrentView = TasksTodoVMFinishLine;
 
             //TasksView child Views
-            TasksTodoViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = TasksTodoVM; });
+            FinishLineTasksCommand = new ParameterizedDelegateCommand(o => { CurrentView = TasksTodoVMFinishLine; });
+            ExtraFeaturesTasksCommand = new ParameterizedDelegateCommand(o => { CurrentView = TasksTodoVMExtraFeatures; });
             CompletedTasksViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = CompletedTasksVM; });
             ProjectNotesViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectNotesVM; });
             ProjectDetailsViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectDetailsVM; });
@@ -40,7 +43,8 @@ namespace Paraject.MVVM.ViewModels
         public ProjectsViewModel ProjectsVM { get; set; }
 
         //TasksView child Views
-        public TasksTodoViewModel TasksTodoVM { get; set; }
+        public TasksTodoViewModel TasksTodoVMFinishLine { get; set; }
+        public TasksTodoViewModel TasksTodoVMExtraFeatures { get; set; }
         public CompletedTasksViewModel CompletedTasksVM { get; set; }
         public ProjectNotesViewModel ProjectNotesVM { get; set; }
         public ProjectDetailsViewModel ProjectDetailsVM { get; set; }
@@ -48,7 +52,8 @@ namespace Paraject.MVVM.ViewModels
 
         #region Commands
         public ICommand NavigateBackToProjectsViewCommand { get; }
-        public ICommand TasksTodoViewCommand { get; }
+        public ICommand FinishLineTasksCommand { get; }
+        public ICommand ExtraFeaturesTasksCommand { get; }
         public ICommand CompletedTasksViewCommand { get; }
         public ICommand ProjectNotesViewCommand { get; }
         public ICommand ProjectDetailsViewCommand { get; }

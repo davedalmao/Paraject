@@ -1,12 +1,16 @@
-﻿namespace Paraject.MVVM.Models
+﻿using PropertyChanged;
+using System.ComponentModel;
+
+namespace Paraject.MVVM.Models
 {
-    public class GridTileData
+    [AddINotifyPropertyChangedInterface]
+    public class GridTileData : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
+
         public object Content { get; set; }
         public int Row { get; set; }
         public int Column { get; set; }
-
-        public GridTileData() { }
 
         public GridTileData(object content, int row, int column)
         {
