@@ -15,8 +15,6 @@ namespace Paraject.MVVM.ViewModels
     {
         private readonly int _projectId;
         private readonly TaskRepository _taskRepository;
-        private int _row;
-        private int _column;
 
         public TasksTodoViewModel(int projectId, TaskTypes taskTypes)
         {
@@ -64,27 +62,27 @@ namespace Paraject.MVVM.ViewModels
         #region Methods
         private void CardGridLocations()
         {
-            _row = -1;
-            _column = -1;
+            int row = -1;
+            int column = -1;
 
             for (int i = 0; i < Tasks.Count; i++)
             {
-                if (_column == 2)
+                if (column == 2)
                 {
-                    _column = 0;
+                    column = 0;
                 }
 
                 else
                 {
-                    _column++;
+                    column++;
                 }
 
                 if (i % 3 == 0)
                 {
-                    _row++;
+                    row++;
                 }
 
-                GridTileData td = new(Tasks[i], _row, _column);
+                GridTileData td = new(Tasks[i], row, column);
                 CardTasksGrid.Add(td);
             }
         }

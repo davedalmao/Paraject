@@ -221,7 +221,9 @@
                                             </UserControl>
 
                                             <!--Deadline Details-->
-                                            <TextBlock Text="{Binding Content.Deadline, StringFormat={}{0:MM/dd/yyyy}}"
+                                            <TextBlock Text="{Binding Content.Deadline, 
+                                                                      StringFormat={}{0:MM/dd/yyyy}, 
+                                                                      TargetNullValue=NO DEADLINE}"
                                                        Foreground="{StaticResource Darkest}"
                                                        FontSize="11" />
                                         </StackPanel>

@@ -149,6 +149,9 @@
     <Page Update="UiDesign\Theme\PlainButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="UiDesign\Theme\TextWithImageTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="UiDesign\Theme\VerticalRadioButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
