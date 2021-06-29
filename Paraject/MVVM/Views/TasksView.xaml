@@ -14,7 +14,7 @@
              FontFamily="{StaticResource NunitoBold}"
              Foreground="{StaticResource MainFontColor}"
              Background="Transparent">
-    <Grid Margin="45,8,45,25">
+    <Grid Margin="40,8,40,25">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />

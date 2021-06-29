@@ -13,8 +13,6 @@
              xmlns:grid="clr-namespace:Paraject.Core.Utilities"
              d:DataContext="{d:DesignInstance Type=viewmodels:TasksTodoViewModel}"
              mc:Ignorable="d"
-             Width="632"
-             Height="444.5"
              Background="Transparent"
              Foreground="{StaticResource MainFontColor}"
              FontFamily="{StaticResource NunitoBold}">
