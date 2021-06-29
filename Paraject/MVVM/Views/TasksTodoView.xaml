@@ -136,18 +136,19 @@
                           ItemsSource="{Binding CardTasksGrid}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <Grid grid:AutoRowsGrid.ChildrenCount="{Binding  Items.Count, ElementName=Tasks}"
+                        <Grid grid:AutoRowsGrid.ChildrenCount="{Binding Items.Count, ElementName=Tasks}"
                               VerticalAlignment="Top"
                               Background="Transparent">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="192" />
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="192" />
                             </Grid.ColumnDefinitions>
                         </Grid>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
 
+                <!--Defined in /Utilities/AutoRowsGrid.cs-->
                 <ItemsControl.ItemContainerStyle>
                     <Style TargetType="ContentPresenter">
                         <Setter Property="Grid.Row"
@@ -161,7 +162,7 @@
                     <DataTemplate>
                         <Button  Margin="0,10,0,14"
                                  Height="153"
-                                 Width="188"
+                                 Width="192"
                                  Background="{StaticResource Card}"
                                  Style="{StaticResource PlainButtonTheme}">
 
