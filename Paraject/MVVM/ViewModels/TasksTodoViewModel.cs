@@ -14,12 +14,18 @@ namespace Paraject.MVVM.ViewModels
     {
         private readonly int _projectId;
         private readonly TaskRepository _taskRepository;
+        private int _row;
+        private int _column;
         public TasksTodoViewModel(int projectId)
         {
             _projectId = projectId;
             _taskRepository = new TaskRepository();
 
+            _row = -1;
+            _column = -1;
+
             CurrentTask = new Task();
+            GridTasks = new ObservableCollection<GridTileData>();
 
             ShowAddTaskModalDialogCommand = new DelegateCommand(ShowAddTaskModalDialog);
             CloseModalCommand = new DelegateCommand(SetTaskDefaultThenCloseModal);
@@ -32,6 +38,7 @@ namespace Paraject.MVVM.ViewModels
 
         #region Properties
         public ObservableCollection<Task> Tasks { get; set; }
+        public ObservableCollection<GridTileData> GridTasks { get; set; }
 
         //ComboBox Filter Bindings
         public string StatusFilter { get; set; } = "Show All";
@@ -52,6 +59,32 @@ namespace Paraject.MVVM.ViewModels
         private void FinishLineTasks()
         {
             Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, "FinishLine", StatusFilter, PriorityFilter, CategoryFilter));
+            CardGridLocations();
+        }
+
+        private void CardGridLocations()
+        {
+            for (int i = 0; i < Tasks.Count; i++)
+            {
+                if (_column == 2)
+                {
+                    _column = 0;
+                }
+
+                else
+                {
+                    _column++;
+                }
+
+                if (i % 3 == 0)
+                {
+                    _row++;
+                }
+
+                GridTileData td = new GridTileData(Tasks[i], _row, _column);
+
+                GridTasks.Add(td);
+            }
         }
 
         private void FilterTasks()

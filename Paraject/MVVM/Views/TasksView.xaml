@@ -10,11 +10,11 @@
              d:DataContext="{d:DesignInstance Type=viewmodels:TasksViewModel}"
              mc:Ignorable="d"
              Width="732"
-             Height="574"
+             Height="574.63"
              FontFamily="{StaticResource NunitoBold}"
              Foreground="{StaticResource MainFontColor}"
              Background="Transparent">
-    <Grid Margin="30,8,45,30">
+    <Grid Margin="45,8,45,25">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
@@ -23,8 +23,7 @@
 
         <!--TasksView Header-->
         <StackPanel Orientation="Horizontal"
-                    Grid.Row="0"
-                    Margin="5,0,0,0">
+                    Grid.Row="0">
             <!--Back (to ProjectsView) Button-->
             <Button  Style="{StaticResource PlainButtonTheme}"
                      Command="{Binding NavigateBackToProjectsViewCommand}"
@@ -48,7 +47,7 @@
 
         <!--TasksView Navigation-->
         <DockPanel Grid.Row="1"
-                   Margin="11,20,0,35">
+                   Margin="0,20,0,32">
             <!--FinishLine Type Tasks-->
             <custom:MenuItem Content="Finish Line"
                              IsChecked="True"
