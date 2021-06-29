@@ -138,7 +138,6 @@
                           ItemsSource="{Binding CardTasksGrid}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <!--<WrapPanel Background="Transparent" />-->
                         <Grid grid:AutoRowsGrid.ChildrenCount="{Binding  Items.Count, ElementName=Tasks}"
                               VerticalAlignment="Top"
                               Background="Transparent">

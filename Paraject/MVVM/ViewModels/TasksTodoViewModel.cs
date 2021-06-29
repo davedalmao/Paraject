@@ -4,6 +4,7 @@ using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
@@ -14,33 +15,34 @@ namespace Paraject.MVVM.ViewModels
     {
         private readonly int _projectId;
         private readonly TaskRepository _taskRepository;
-        private TaskTypes _tasktype;
+        // private TaskTypes _tasktype;
         private int _row;
         private int _column;
 
         public TasksTodoViewModel(int projectId, TaskTypes taskTypes)
         {
             _projectId = projectId;
-            _tasktype = taskTypes;
+            CurrentTaskType = taskTypes;
 
             _taskRepository = new TaskRepository();
-
-
 
             CurrentTask = new Task();
             CardTasksGrid = new ObservableCollection<GridTileData>();
 
             ShowAddTaskModalDialogCommand = new DelegateCommand(ShowAddTaskModalDialog);
-            CloseModalCommand = new DelegateCommand(SetTaskDefaultThenCloseModal);
+            CloseModalCommand = new DelegateCommand(CloseModal);
             AddTaskCommand = new DelegateCommand(Add);
             FilterTasksCommand = new DelegateCommand(FilterTasks);
 
             //default tasks display
-            Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, _tasktype, StatusFilter, PriorityFilter, CategoryFilter));
+            Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, CurrentTaskType, StatusFilter, PriorityFilter, CategoryFilter));
             CardGridLocations();
         }
 
         #region Properties
+        //TaskType (FinishLine or ExtraFeature)
+        public TaskTypes CurrentTaskType { get; set; }
+
         //Collections
         public ObservableCollection<Task> Tasks { get; set; }
         public ObservableCollection<GridTileData> CardTasksGrid { get; set; }
@@ -61,8 +63,6 @@ namespace Paraject.MVVM.ViewModels
         #endregion
 
         #region Methods
-
-
         private void CardGridLocations()
         {
             _row = -1;
@@ -89,31 +89,21 @@ namespace Paraject.MVVM.ViewModels
                 CardTasksGrid.Add(td);
             }
         }
-
-
         private void ShowAddTaskModalDialog()
         {
             //Show overlay from MainWindow
             MainWindowViewModel.Overlay = true;
 
             AddTaskModalDialog addTaskModalDialog = new();
+            CurrentTask.Type = Enum.GetName(CurrentTaskType);
             addTaskModalDialog.DataContext = this;
             addTaskModalDialog.ShowDialog();
         }
-        private void SetTaskDefaultThenCloseModal()
+        private void CloseModal()
         {
             MainWindowViewModel.Overlay = false;
 
-            //To erase the last input values in AddProjectModalDialog, and Display the newly added Task after a successful add operation
-            CurrentTask = null;
-            Tasks = null;
-            CardTasksGrid = null;
-
-            CurrentTask = new Task();
-            Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, _tasktype, StatusFilter, PriorityFilter, CategoryFilter));
-            CardTasksGrid = new ObservableCollection<GridTileData>();
-
-            CardGridLocations();
+            SetTaskDefault();
 
             foreach (Window currentModal in Application.Current.Windows)
             {
@@ -122,6 +112,19 @@ namespace Paraject.MVVM.ViewModels
                     currentModal.Close();
                 }
             }
+        }
+        private void SetTaskDefault()
+        {
+            //To erase the last input values in AddProjectModalDialog, and Display the newly added Task after a successful add operation
+            CurrentTask = null;
+            Tasks = null;
+            CardTasksGrid = null;
+
+            CurrentTask = new Task();
+            Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, CurrentTaskType, StatusFilter, PriorityFilter, CategoryFilter));
+            CardTasksGrid = new ObservableCollection<GridTileData>();
+
+            CardGridLocations();
         }
         private void Add()
         {
@@ -141,7 +144,7 @@ namespace Paraject.MVVM.ViewModels
             if (isAdded)
             {
                 MessageBox.Show("Task Created");
-                SetTaskDefaultThenCloseModal();
+                CloseModal();
             }
 
             else
@@ -149,13 +152,6 @@ namespace Paraject.MVVM.ViewModels
                 MessageBox.Show("Error occured, cannot create task");
             }
         }
-
-        //private void FinishLineTasks()
-        //{
-        //    Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, _tasktype, StatusFilter, PriorityFilter, CategoryFilter));
-        //    CardGridLocations();
-        //}
-
         private void FilterTasks()
         {
             //try
