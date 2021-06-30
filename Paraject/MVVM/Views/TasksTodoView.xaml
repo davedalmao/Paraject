@@ -222,7 +222,7 @@
 
                                             <!--Deadline Details-->
                                             <TextBlock Text="{Binding Content.Deadline, 
-                                                                      StringFormat={}{0:MM/dd/yyyy}, 
+                                                                      StringFormat={}{0:MM / dd / yyyy}, 
                                                                       TargetNullValue=NO DEADLINE}"
                                                        Foreground="{StaticResource Darkest}"
                                                        FontSize="11" />
