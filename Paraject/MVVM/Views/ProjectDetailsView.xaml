@@ -56,14 +56,8 @@
                           Margin="0,0,0,20"
                           Style="{StaticResource ComboBoxTheme}"
                           Background="{StaticResource InputField}"
-                          Text="{Binding CurrentProject.Status}">
-                    <ComboBox.ItemsSource>
-                        <CompositeCollection>
-                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type StatusEnum:Statuses}}}" />
-                            <sys:String>Completed</sys:String>
-                        </CompositeCollection>
-                    </ComboBox.ItemsSource>
-                </ComboBox>
+                          Text="{Binding CurrentProject.Status}"
+                          ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type StatusEnum:Statuses}}}" />
 
                 <!--ProjectDescription TextBlock-->
                 <TextBlock Text="Description (optional)"
