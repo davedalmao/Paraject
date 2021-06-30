@@ -70,5 +70,6 @@ namespace Paraject.MVVM.ViewModels
             CurrentView = TasksTodoVM;
         }
         #endregion
+
     }
 }
