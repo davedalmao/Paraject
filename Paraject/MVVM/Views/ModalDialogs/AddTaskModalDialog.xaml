@@ -16,7 +16,7 @@
         WindowStartupLocation="CenterOwner"
         Background="Transparent"
         Width="764"
-        Height="509"
+        Height="469"
         FontFamily="{StaticResource NunitoBold}"
         Foreground="{StaticResource MainFontColor}">
     <Border Background="{StaticResource MainBackground}"
@@ -46,7 +46,15 @@
                         <svgc1:SvgViewbox Cursor="Hand"
                                           Source="/UiDesign/Icons/ModalDialogIcons/addTaskIcon.svg" />
                     </UserControl>
-                    <TextBlock Text="Create a New Task"
+                    <TextBlock Text="Create a New "
+                               FontSize="25"
+                               HorizontalAlignment="Center" />
+
+                    <TextBlock Text="{Binding CurrentTaskType}"
+                               FontSize="25"
+                               HorizontalAlignment="Center" />
+
+                    <TextBlock Text=" Task"
                                FontSize="25"
                                HorizontalAlignment="Center" />
                 </StackPanel>
@@ -88,13 +96,13 @@
                              Style="{StaticResource TextBoxTheme}"
                              Text="{Binding CurrentTask.Subject}" />
 
-                    <!--Task Subject TextBlock-->
-                    <TextBlock Text="Type"
+                    <!--Task Type TextBlock-->
+                    <!--<TextBlock Text="Type"
                                FontSize="18"
-                               Margin="0,23,0,6" />
+                               Margin="0,23,0,6" />-->
 
                     <!--Task Type ComboBox-->
-                    <ComboBox Width="294"
+                    <!--<ComboBox Width="294"
                               Height="42"
                               FontSize="15"
                               Padding="20,0"
@@ -102,16 +110,16 @@
                               Style="{StaticResource ComboBoxTheme}"
                               Background="{StaticResource InputField}"
                               ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:TaskTypes}}}"
-                              Text="{Binding CurrentTask.Type}" />
+                              Text="{Binding CurrentTask.Type}" />-->
 
                     <!--Task Description TextBlock-->
                     <TextBlock Text="Description (optional)"
                                FontSize="18"
-                               Margin="0,0,0,6" />
+                               Margin="0,23,0,6" />
 
                     <!--Task Description TextBox-->
                     <TextBox Width="294"
-                             Height="164"
+                             Height="215"
                              FontSize="15"
                              TextWrapping="Wrap"
                              Style="{StaticResource TextBoxTheme}"
@@ -174,7 +182,7 @@
                     <!--Create Task Button-->
                     <Button Content="Create Task"
                             Grid.Row="1"
-                            Margin="0,22,0,0"
+                            Margin="0,40,0,0"
                             Height="40"
                             Width="294"
                             Background="{StaticResource AccentColor}"

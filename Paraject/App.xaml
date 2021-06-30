@@ -26,6 +26,9 @@
                 <ResourceDictionary Source="/UiDesign/Theme/DatePickerCalendarTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/ProjectStatusTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/ScrollbarTheme.xaml" />
+                <ResourceDictionary Source="/UiDesign/Theme/TaskCategoryTheme.xaml" />
+                <ResourceDictionary Source="/UiDesign/Theme/PriorityIndicatorTheme.xaml" />
+                <ResourceDictionary Source="/UiDesign/Theme/TextWithImageTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--Project Colors-->
@@ -55,7 +58,7 @@
                              Color="#222529" />
             <SolidColorBrush x:Key="Navbar"
                              Color="#25282C" />
-            <SolidColorBrush x:Key="ProjectCard"
+            <SolidColorBrush x:Key="Card"
                              Color="#2A2D32" />
             <SolidColorBrush x:Key="InputField"
                              Color="#2E3135" />
