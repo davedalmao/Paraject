@@ -206,7 +206,7 @@
                                             <ColumnDefinition Width="auto" />
                                         </Grid.ColumnDefinitions>
 
-                                        <!--Deadline-->
+                                        <!--Task Deadline-->
                                         <StackPanel Orientation="Horizontal"
                                                     Grid.Column="0">
                                             <!--Deadline Image-->
