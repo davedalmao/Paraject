@@ -2,5 +2,9 @@
 {
     public class CompletedTasksViewModel : BaseViewModel
     {
+        public CompletedTasksViewModel(int projectId)
+        {
+
+        }
     }
 }
