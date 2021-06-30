@@ -19,7 +19,7 @@ namespace Paraject.MVVM.ViewModels
 
             //TasksView child Views
             TasksTodoVM = new TasksTodoViewModel(currentProject.Id, TaskTypes.FinishLine);
-            CompletedTasksVM = new CompletedTasksViewModel();
+            CompletedTasksVM = new CompletedTasksViewModel(currentProject.Id);
             ProjectNotesVM = new ProjectNotesViewModel();
             ProjectDetailsVM = new ProjectDetailsViewModel(projectsViewModel, currentProject);
 
