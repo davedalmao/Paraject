@@ -1,7 +1,9 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.Core.Enums;
 using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
+using System;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
@@ -16,7 +18,7 @@ namespace Paraject.MVVM.ViewModels
             _userAccountRepository = new UserAccountRepository();
 
             //TasksView child Views
-            TasksTodoVM = new TasksTodoViewModel(currentProject.Id);
+            TasksTodoVM = new TasksTodoViewModel(currentProject.Id, TaskTypes.FinishLine);
             CompletedTasksVM = new CompletedTasksViewModel();
             ProjectNotesVM = new ProjectNotesViewModel();
             ProjectDetailsVM = new ProjectDetailsViewModel(projectsViewModel, currentProject);
@@ -24,7 +26,7 @@ namespace Paraject.MVVM.ViewModels
             CurrentView = TasksTodoVM;
 
             //TasksView child Views
-            TasksTodoViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = TasksTodoVM; });
+            TasksTodoViewCommand = new ParameterizedDelegateCommand(NavigateToTasksTodoView);
             CompletedTasksViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = CompletedTasksVM; });
             ProjectNotesViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectNotesVM; });
             ProjectDetailsViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectDetailsVM; });
@@ -61,7 +63,12 @@ namespace Paraject.MVVM.ViewModels
             ProjectsVM = projectsViewModel;
             MainWindowViewModel.CurrentView = ProjectsVM;
         }
+        private void NavigateToTasksTodoView(object taskType) //the argument passed to this parameter is in TasksView (a "CommandParameter" from a Tab header)
+        {
+            TaskTypes type = (TaskTypes)Enum.Parse(typeof(TaskTypes), taskType.ToString());
+            TasksTodoVM = new TasksTodoViewModel(CurrentProject.Id, type);
+            CurrentView = TasksTodoVM;
+        }
         #endregion
-
     }
 }

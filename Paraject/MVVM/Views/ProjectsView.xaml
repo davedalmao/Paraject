@@ -66,8 +66,7 @@
         <ScrollViewer Style="{StaticResource ScrollbarTheme}"
                       Grid.Row="1"
                       Grid.ColumnSpan="4"
-                      Height="432"
-                      Background="Blue">
+                      Height="432">
             <!--Project Cards-->
             <ItemsControl x:Name="Projects"
                           ItemsSource="{Binding Projects}">
@@ -76,9 +75,9 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <!--I set the CommandParameter to Id to get the Id of the selected card item-->
-                        <Button  Margin="0,10,15,20"
+                        <Button  Margin="0,10,0,20"
                                  Padding="26.53, 16"
-                                 Background="{StaticResource ProjectCard}"
+                                 Background="{StaticResource Card}"
                                  Style="{StaticResource PlainButtonTheme}"
                                  Command="{Binding ElementName=Projects, 
                                                   Path=DataContext.TasksViewCommand}"

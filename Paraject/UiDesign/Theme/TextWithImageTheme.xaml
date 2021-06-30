@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/">
+    <Style TargetType="TextBlock"
+           x:Key="TextWithImageTheme">
+        <!--The controls inside the menu item (radio button)-->
+        <!--<Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBlock">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <UserControl Width="18.57"
+                                     Height="18.57"
+                                     Grid.Column="0"
+                                     VerticalAlignment="Top">
+                            <svgc1:SvgViewbox Source="{Binding DefaultImageUriString, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </UserControl>
+
+                        <TextBlock Text="{TemplateBinding Text}"
+                                   VerticalAlignment="Top"
+                                   Foreground="{DynamicResource NavbarFont}"
+                                   FontSize="14.59"
+                                   FontFamily="{DynamicResource NunitoBold}"
+                                   Margin="12,0,0,0"
+                                   Grid.Column="1"
+                                   Cursor="Hand"
+                                   Height="19.9" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>-->
+        <Style.Triggers>
+            <Trigger Property="Text"
+                     Value="NO DEADLINE">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Pink}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>
