@@ -52,12 +52,14 @@
             <custom:MenuItem Content="Finish Line"
                              IsChecked="True"
                              Style="{StaticResource VerticalMenuButtonTheme}"
-                             Command="{Binding FinishLineTasksCommand}" />
+                             Command="{Binding TasksTodoViewCommand}"
+                             CommandParameter="FinishLine" />
 
             <!--ExtraFeatures Type Tasks-->
             <custom:MenuItem Content="Extra Features"
                              Style="{StaticResource VerticalMenuButtonTheme}"
-                             Command="{Binding ExtraFeaturesTasksCommand}" />
+                             Command="{Binding TasksTodoViewCommand}"
+                             CommandParameter="ExtraFeature" />
 
             <!--Compeleted Type Tasks-->
             <custom:MenuItem Content="Completed Tasks"
