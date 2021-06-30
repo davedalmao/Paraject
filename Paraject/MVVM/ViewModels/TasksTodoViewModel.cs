@@ -16,47 +16,49 @@ namespace Paraject.MVVM.ViewModels
         private readonly int _projectId;
         private readonly TaskRepository _taskRepository;
 
-        public TasksTodoViewModel(int projectId, TaskTypes taskTypes)
+        public TasksTodoViewModel(int projectId, TaskTypes taskType)
         {
-            _projectId = projectId;
-            CurrentTaskType = taskTypes;
-
             _taskRepository = new TaskRepository();
+
+            _projectId = projectId;
+            CurrentTaskType = taskType;
 
             CurrentTask = new Task();
             CardTasksGrid = new ObservableCollection<GridTileData>();
 
+            //Commands
             ShowAddTaskModalDialogCommand = new DelegateCommand(ShowAddTaskModalDialog);
             CloseModalCommand = new DelegateCommand(CloseModal);
             AddTaskCommand = new DelegateCommand(Add);
             FilterTasksCommand = new DelegateCommand(FilterTasks);
 
-            //default tasks display
+            //Default tasks display
             Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, CurrentTaskType, StatusFilter, PriorityFilter, CategoryFilter));
-            CardGridLocations();
+            TaskCardGridLocation();
         }
 
         #region Properties
-        //TaskType (FinishLine or ExtraFeature)
         public TaskTypes CurrentTaskType { get; set; }
 
-        //Collections
+        public Task CurrentTask { get; set; }
+
+        #region Collections
         public ObservableCollection<Task> Tasks { get; set; }
         public ObservableCollection<GridTileData> CardTasksGrid { get; set; }
+        #endregion
 
-        //ComboBox Filter Bindings
+        #region ComboBox Filter Bindings
         public string StatusFilter { get; set; } = "Show All";
         public string PriorityFilter { get; set; } = "Show All";
         public string CategoryFilter { get; set; } = "Show All";
+        #endregion
 
-        //Model
-        public Task CurrentTask { get; set; }
-
-        //Commands
+        #region Commands
         public ICommand ShowAddTaskModalDialogCommand { get; }
         public ICommand CloseModalCommand { get; }
         public ICommand AddTaskCommand { get; }
         public ICommand FilterTasksCommand { get; }
+        #endregion
         #endregion
 
         #region Methods
@@ -94,7 +96,7 @@ namespace Paraject.MVVM.ViewModels
             SetValuesForTasksCollection();
 
             SetNewGridDisplay();
-            CardGridLocations();
+            TaskCardGridLocation();
         }
         private void SetCurrentTaskDefaultValues()
         {
@@ -142,7 +144,7 @@ namespace Paraject.MVVM.ViewModels
         }
         #endregion
 
-        private void CardGridLocations()
+        private void TaskCardGridLocation()
         {
             int row = -1;
             int column = -1;
@@ -168,11 +170,12 @@ namespace Paraject.MVVM.ViewModels
                 CardTasksGrid.Add(td);
             }
         }
+
         private void FilterTasks()
         {
             SetValuesForTasksCollection();
             SetNewGridDisplay();
-            CardGridLocations();
+            TaskCardGridLocation();
         }
         #endregion
     }
