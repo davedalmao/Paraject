@@ -13,9 +13,6 @@ namespace Paraject.Core.Enums
         InProgress,
 
         [Description("Open")]
-        Open,
-
-        [Description("Completed")]
-        Completed
+        Open
     }
 }
