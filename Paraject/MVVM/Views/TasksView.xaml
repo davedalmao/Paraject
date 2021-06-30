@@ -10,11 +10,11 @@
              d:DataContext="{d:DesignInstance Type=viewmodels:TasksViewModel}"
              mc:Ignorable="d"
              Width="732"
-             Height="574"
+             Height="574.63"
              FontFamily="{StaticResource NunitoBold}"
              Foreground="{StaticResource MainFontColor}"
              Background="Transparent">
-    <Grid Margin="50,8,50,30">
+    <Grid Margin="40,8,40,25">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
@@ -47,17 +47,19 @@
 
         <!--TasksView Navigation-->
         <DockPanel Grid.Row="1"
-                   Margin="0,20,0,35">
+                   Margin="0,20,0,32">
             <!--FinishLine Type Tasks-->
             <custom:MenuItem Content="Finish Line"
                              IsChecked="True"
                              Style="{StaticResource VerticalMenuButtonTheme}"
-                             Command="{Binding TasksTodoViewCommand}" />
+                             Command="{Binding TasksTodoViewCommand}"
+                             CommandParameter="FinishLine" />
 
             <!--ExtraFeatures Type Tasks-->
             <custom:MenuItem Content="Extra Features"
                              Style="{StaticResource VerticalMenuButtonTheme}"
-                             Command="{Binding TasksTodoViewCommand}" />
+                             Command="{Binding TasksTodoViewCommand}"
+                             CommandParameter="ExtraFeature" />
 
             <!--Compeleted Type Tasks-->
             <custom:MenuItem Content="Completed Tasks"
