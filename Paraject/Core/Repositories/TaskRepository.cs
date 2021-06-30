@@ -129,9 +129,9 @@ namespace Paraject.Core.Repositories
 
             return task;
         }
-        public IEnumerable<Task> FindAll(int projectId, Statuses taskStatus, Priorities taskPriority, Categories taskCategory)
+        public IEnumerable<Task> FindAll(int projectId, TaskTypes taskType, string taskStatus, string taskPriority, string taskCategory)
         {
-            List<Task> tasks = null;
+            List<Task> tasks = new();
 
             using (SqlConnection con = new(_connectionString))
             using (SqlCommand cmd = new("Task.spFindAllTasks", con))
@@ -142,8 +142,9 @@ namespace Paraject.Core.Repositories
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("@project_id", SqlDbType.Int).Value = projectId;
+                    cmd.Parameters.Add("@task_type", SqlDbType.NVarChar, 50).Value = taskType;
                     cmd.Parameters.Add("@task_status", SqlDbType.NVarChar, 20).Value = taskStatus;
-                    cmd.Parameters.Add("@task_priority", SqlDbType.NVarChar, 4).Value = taskPriority;
+                    cmd.Parameters.Add("@task_priority", SqlDbType.NVarChar, 8).Value = taskPriority;
                     cmd.Parameters.Add("@task_category", SqlDbType.NVarChar, 50).Value = taskCategory;
 
                     SqlDataReader sqlDataReader = cmd.ExecuteReader();
@@ -156,7 +157,7 @@ namespace Paraject.Core.Repositories
                         int taskIdFromDb = sqlDataReader.GetOrdinal("task_id");
                         int projectIdFk = sqlDataReader.GetOrdinal("project_id");
                         int taskSubject = sqlDataReader.GetOrdinal("task_subject");
-                        int taskType = sqlDataReader.GetOrdinal("task_type");
+                        int taskTypeFromDb = sqlDataReader.GetOrdinal("task_type");
                         int taskDescription = sqlDataReader.GetOrdinal("task_description");
                         int taskStatusFromDb = sqlDataReader.GetOrdinal("task_status");
                         int taskCategoryFromDb = sqlDataReader.GetOrdinal("task_category");
@@ -173,10 +174,10 @@ namespace Paraject.Core.Repositories
                                 Id = sqlDataReader.GetInt32(taskIdFromDb),
                                 Project_Id_Fk = sqlDataReader.GetInt32(projectIdFk),
                                 Subject = sqlDataReader.GetString(taskSubject),
-                                Type = sqlDataReader.GetString(taskType),
-                                Description = sqlDataReader.GetString(taskDescription),
+                                Type = sqlDataReader.GetString(taskTypeFromDb),
+                                Description = sqlDataReader.IsDBNull(taskDescription) ? "--" : sqlDataReader.GetString(taskDescription),
                                 Status = sqlDataReader.GetString(taskStatusFromDb),
-                                Category = sqlDataReader.GetString(taskCategoryFromDb),
+                                Category = sqlDataReader.GetString(taskCategoryFromDb).Replace("_", " "),
                                 Priority = sqlDataReader.GetString(taskPriorityFromDb),
                                 Deadline = sqlDataReader.IsDBNull(taskDeadline) ? null : sqlDataReader.GetDateTime(taskDeadline),
                                 DateCreated = sqlDataReader.GetDateTime(dateCreated)

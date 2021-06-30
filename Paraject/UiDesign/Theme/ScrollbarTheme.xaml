@@ -98,8 +98,7 @@
 
             <!--Scrollbar Background-->
             <Border Grid.RowSpan="3"
-                    CornerRadius="2"
-                    Background="Transparent" />
+                    CornerRadius="2" />
 
             <RepeatButton Grid.Row="0"
                           Style="{StaticResource ScrollBarLineButton}"
@@ -172,12 +171,15 @@
 
                         <ScrollContentPresenter Grid.Column="0" />
 
+                        <!--Change Scrollbar Margin here-->
                         <ScrollBar Name="PART_VerticalScrollBar"
                                    Value="{TemplateBinding VerticalOffset}"
                                    Maximum="{TemplateBinding ScrollableHeight}"
                                    ViewportSize="{TemplateBinding ViewportHeight}"
                                    Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
-                                   Grid.Column="1" />
+                                   Grid.Column="1"
+                                   Margin="10,0,0,0" />
+                        <!--Margin="12,0,0,0"-->
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

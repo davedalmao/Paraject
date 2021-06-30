@@ -72,7 +72,7 @@ namespace Paraject.MVVM.ViewModels
         #endregion
 
         #region Methods
-        public void NavigateToTasksView(object projectId) //the argument passed to this parameter is in ProjectsView (a "CommandParameter" for a Project card)
+        public void NavigateToTasksView(object projectId) //the argument passed to this parameter is in ProjectsView (a "CommandParameter" from a Project card)
         {
             //the selected project card from ProjectsView
             Project selectedProject = _projectRepository.Get((int)projectId);
