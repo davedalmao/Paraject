@@ -1,10 +1,8 @@
 ﻿using Paraject.Core.Commands;
-using Paraject.Core.Enums;
 using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
-using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
@@ -16,7 +14,7 @@ namespace Paraject.MVVM.ViewModels
         private readonly int _projectId;
         private readonly TaskRepository _taskRepository;
 
-        public TasksTodoViewModel(int projectId, TaskTypes taskType)
+        public TasksTodoViewModel(int projectId, string taskType)
         {
             _taskRepository = new TaskRepository();
 
@@ -38,7 +36,7 @@ namespace Paraject.MVVM.ViewModels
         }
 
         #region Properties
-        public TaskTypes CurrentTaskType { get; set; }
+        public string CurrentTaskType { get; set; }
 
         public Task CurrentTask { get; set; }
 
@@ -69,7 +67,7 @@ namespace Paraject.MVVM.ViewModels
             MainWindowViewModel.Overlay = true;
 
             AddTaskModalDialog addTaskModalDialog = new();
-            CurrentTask.Type = Enum.GetName(CurrentTaskType);
+            CurrentTask.Type = CurrentTaskType;
             addTaskModalDialog.DataContext = this;
             addTaskModalDialog.ShowDialog();
         }
