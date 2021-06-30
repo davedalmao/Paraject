@@ -1,6 +1,8 @@
-﻿using Paraject.Core.Repositories;
+﻿using Paraject.Core.Commands;
+using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
 {
@@ -11,18 +13,27 @@ namespace Paraject.MVVM.ViewModels
 
         public CompletedTasksViewModel(int projectId)
         {
+            _taskRepository = new TaskRepository();
             _projectId = projectId;
+            FilterTasksCommand = new DelegateCommand(FilterTasks);
+
+            CardTasksGrid = new ObservableCollection<GridTileData>();
+            CompletedTasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, CurrentTaskType, "Completed", null, CategoryFilter));
+            TaskCardGridLocation();
         }
 
         public ObservableCollection<Task> CompletedTasks { get; set; }
         public ObservableCollection<GridTileData> CardTasksGrid { get; set; }
+
         public string CurrentTaskType { get; set; } = "Show All";
         public string CategoryFilter { get; set; } = "Show All";
+
+        public ICommand FilterTasksCommand { get; }
 
         private void SetValuesForTasksCollection()
         {
             CompletedTasks = null;
-            //CompletedTasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, CurrentTaskType, StatusFilter, PriorityFilter, CategoryFilter));
+            CompletedTasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, CurrentTaskType, "Completed", null, CategoryFilter));
         }
         private void SetNewGridDisplay()
         {
@@ -54,6 +65,12 @@ namespace Paraject.MVVM.ViewModels
                 GridTileData td = new(CompletedTasks[i], row, column);
                 CardTasksGrid.Add(td);
             }
+        }
+        private void FilterTasks()
+        {
+            SetValuesForTasksCollection();
+            SetNewGridDisplay();
+            TaskCardGridLocation();
         }
     }
 }
