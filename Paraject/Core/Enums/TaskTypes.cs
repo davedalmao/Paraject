@@ -8,9 +8,9 @@ namespace Paraject.Core.Enums
     public enum TaskTypes
     {
         [Description("Finish Line")]
-        FinishLine,
+        Finish_Line,
 
         [Description("Extra Feature")]
-        ExtraFeature
+        Extra_Feature
     }
 }

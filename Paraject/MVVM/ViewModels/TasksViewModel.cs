@@ -1,22 +1,21 @@
 ﻿using Paraject.Core.Commands;
-using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
+using System;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
 {
     public class TasksViewModel : BaseViewModel
     {
-        private readonly UserAccountRepository _userAccountRepository;
+        private static object _currentView;
 
         public TasksViewModel(ProjectsViewModel projectsViewModel, Project currentProject)
         {
             CurrentProject = currentProject;
-            _userAccountRepository = new UserAccountRepository();
 
             //TasksView child Views
-            TasksTodoVM = new TasksTodoViewModel(currentProject.Id, "FinishLine");
+            TasksTodoVM = new TasksTodoViewModel(currentProject.Id, "Finish_Line");
             CompletedTasksVM = new CompletedTasksViewModel(currentProject.Id);
             ProjectNotesVM = new ProjectNotesViewModel();
             ProjectDetailsVM = new ProjectDetailsViewModel(projectsViewModel, currentProject);
@@ -31,9 +30,20 @@ namespace Paraject.MVVM.ViewModels
             NavigateBackToProjectsViewCommand = new DelegateCommand(NavigateBackToProjectsView);
         }
 
+        public static event EventHandler CurrentViewChanged;
+
         #region Properties
         public Project CurrentProject { get; set; }
-        public object CurrentView { get; set; }
+        public static object CurrentView
+        {
+            get { return _currentView; }
+            set
+            {
+                _currentView = value;
+                if (CurrentViewChanged is not null)
+                    CurrentViewChanged(null, EventArgs.Empty);
+            }
+        }
         #endregion
 
         #region ViewModels (that will navigate with their associated Views)
@@ -57,7 +67,7 @@ namespace Paraject.MVVM.ViewModels
         #region Navigation Methods
         public void NavigateBackToProjectsView()
         {
-            ProjectsViewModel projectsViewModel = new ProjectsViewModel(_userAccountRepository.GetById(CurrentProject.User_Id_Fk));
+            ProjectsViewModel projectsViewModel = new ProjectsViewModel(CurrentProject.User_Id_Fk);
             ProjectsVM = projectsViewModel;
             MainWindowViewModel.CurrentView = ProjectsVM;
         }
