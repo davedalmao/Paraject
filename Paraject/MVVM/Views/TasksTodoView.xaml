@@ -133,8 +133,7 @@
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <Grid grid:AutoRowsGrid.ChildrenCount="{Binding Items.Count, ElementName=Tasks}"
-                              VerticalAlignment="Top"
-                              Background="Transparent">
+                              VerticalAlignment="Top">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="192" />
                                 <ColumnDefinition Width="*" />
