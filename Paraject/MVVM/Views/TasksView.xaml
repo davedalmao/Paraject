@@ -81,6 +81,6 @@
 
         <!--Where the views are going to be displayed-->
         <ContentControl Grid.Row="2"
-                        Content="{Binding CurrentView}" />
+                        Content="{Binding Path=(viewmodels:TasksViewModel.CurrentView)}" />
     </Grid>
 </UserControl>

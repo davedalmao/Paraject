@@ -8,7 +8,8 @@
         xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
         xmlns:enums="clr-namespace:Paraject.Core.Enums"
         xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
-        d:DataContext="{d:DesignInstance Type=viewmodels:TasksTodoViewModel}"
+        xmlns:modaldialogs="clr-namespace:Paraject.MVVM.ViewModels.ModalDialogs"
+        d:DataContext="{d:DesignInstance Type=modaldialogs:AddTaskModalDialogViewModel}"
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="CanResize"
@@ -50,7 +51,7 @@
                                FontSize="25"
                                HorizontalAlignment="Center" />
 
-                    <TextBlock Text="{Binding CurrentTaskType}"
+                    <TextBlock Text="{Binding CurrentTask.Type}"
                                FontSize="25"
                                HorizontalAlignment="Center" />
 

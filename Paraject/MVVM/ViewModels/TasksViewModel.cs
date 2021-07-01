@@ -1,12 +1,15 @@
 ﻿using Paraject.Core.Commands;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
+using System;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
 {
     public class TasksViewModel : BaseViewModel
     {
+        private static object _currentView;
+
         public TasksViewModel(ProjectsViewModel projectsViewModel, Project currentProject)
         {
             CurrentProject = currentProject;
@@ -27,9 +30,20 @@ namespace Paraject.MVVM.ViewModels
             NavigateBackToProjectsViewCommand = new DelegateCommand(NavigateBackToProjectsView);
         }
 
+        public static event EventHandler CurrentViewChanged;
+
         #region Properties
         public Project CurrentProject { get; set; }
-        public object CurrentView { get; set; }
+        public static object CurrentView
+        {
+            get { return _currentView; }
+            set
+            {
+                _currentView = value;
+                if (CurrentViewChanged is not null)
+                    CurrentViewChanged(null, EventArgs.Empty);
+            }
+        }
         #endregion
 
         #region ViewModels (that will navigate with their associated Views)
