@@ -17,19 +17,27 @@ namespace Paraject.MVVM.ViewModels
             _projectId = projectId;
             FilterTasksCommand = new DelegateCommand(FilterTasks);
 
-            CardTasksGrid = new ObservableCollection<GridTileData>();
-            CompletedTasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, CurrentTaskType, "Completed", null, CategoryFilter));
-            TaskCardGridLocation();
+            DisplayAllFilteredTasks();
         }
 
+        #region Properties
+        #region Collections
         public ObservableCollection<Task> CompletedTasks { get; set; }
         public ObservableCollection<GridTileData> CardTasksGrid { get; set; }
+        #endregion
 
+        #region ComboBox Filter Bindings
         public string CurrentTaskType { get; set; } = "Show All";
         public string CategoryFilter { get; set; } = "Show All";
+        #endregion
 
+        #region Command
         public ICommand FilterTasksCommand { get; }
+        #endregion
+        #endregion
 
+        #region Methods
+        #region Reset Methods
         private void SetValuesForTasksCollection()
         {
             CompletedTasks = null;
@@ -40,6 +48,14 @@ namespace Paraject.MVVM.ViewModels
             CardTasksGrid = null;
             CardTasksGrid = new ObservableCollection<GridTileData>();
         }
+        private void FilterTasks()
+        {
+            SetValuesForTasksCollection();
+            SetNewGridDisplay();
+            TaskCardGridLocation();
+        }
+        #endregion
+
         private void TaskCardGridLocation()
         {
             int row = -1;
@@ -66,11 +82,13 @@ namespace Paraject.MVVM.ViewModels
                 CardTasksGrid.Add(td);
             }
         }
-        private void FilterTasks()
+
+        private void DisplayAllFilteredTasks()
         {
             SetValuesForTasksCollection();
             SetNewGridDisplay();
             TaskCardGridLocation();
         }
+        #endregion
     }
 }
