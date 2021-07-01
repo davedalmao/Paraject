@@ -16,8 +16,6 @@
              Background="Transparent"
              Foreground="{StaticResource MainFontColor}"
              FontFamily="{StaticResource NunitoBold}">
-    <!--Width="632"-->
-    <!--Height="444.5"-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -28,6 +26,34 @@
         <StackPanel Grid.Row="0"
                     Orientation="Horizontal"
                     Margin="0,0,0,15">
+            <StackPanel  Margin="0,0,22,0">
+                <TextBlock Text="Task Type:"
+                           FontSize="12.5"
+                           Margin="0,0,0,4.5" />
+                <!--Task Type ComboBox-->
+                <ComboBox Height="36"
+                          Width="142"
+                          FontSize="15"
+                          Background="{StaticResource InputField}"
+                          Style="{StaticResource ComboBoxTheme2}"
+                          SelectedValue="{Binding CurrentTaskType}">
+                    <!--Enum ItemSource-->
+                    <ComboBox.ItemsSource>
+                        <CompositeCollection>
+                            <sys:String>Show All</sys:String>
+                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:TaskTypes}}}" />
+                        </CompositeCollection>
+                    </ComboBox.ItemsSource>
+
+                    <!--Triggers a Command when the selected item of a ComboBox changes-->
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding FilterTasksCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+            </StackPanel>
+
             <StackPanel>
                 <TextBlock Text="Task Category:"
                            FontSize="12.5"
@@ -55,34 +81,6 @@
                     </i:Interaction.Triggers>
                 </ComboBox>
             </StackPanel>
-
-            <StackPanel  Margin="22,0">
-                <TextBlock Text="Task Type:"
-                           FontSize="12.5"
-                           Margin="0,0,0,4.5" />
-                <!--Task Type ComboBox-->
-                <ComboBox Height="36"
-                          Width="142"
-                          FontSize="15"
-                          Background="{StaticResource InputField}"
-                          Style="{StaticResource ComboBoxTheme2}"
-                          SelectedValue="{Binding CurrentTaskType}">
-                    <!--Enum ItemSource-->
-                    <ComboBox.ItemsSource>
-                        <CompositeCollection>
-                            <sys:String>Show All</sys:String>
-                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:TaskTypes}}}" />
-                        </CompositeCollection>
-                    </ComboBox.ItemsSource>
-
-                    <!--Triggers a Command when the selected item of a ComboBox changes-->
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="SelectionChanged">
-                            <i:InvokeCommandAction Command="{Binding FilterTasksCommand}" />
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </ComboBox>
-            </StackPanel>
         </StackPanel>
 
         <!--Completed Tasks Display-->
@@ -94,8 +92,7 @@
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <Grid grid:AutoRowsGrid.ChildrenCount="{Binding Items.Count, ElementName=CompletedTasks}"
-                              VerticalAlignment="Top"
-                              Background="Transparent">
+                              VerticalAlignment="Top">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="192" />
                                 <ColumnDefinition Width="*" />
