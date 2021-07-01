@@ -18,7 +18,11 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             _taskRepository = new TaskRepository();
             _projectId = projectId;
 
-            CurrentTask = new Task();
+            CurrentTask = new Task()
+            {
+                Type = taskType
+            };
+
             CurrentTaskType = taskType.Replace("_", " ");
 
             CloseModalCommand = new DelegateCommand(CloseModal);
