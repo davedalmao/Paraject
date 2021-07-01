@@ -53,6 +53,7 @@
 
                     <TextBlock Text="{Binding CurrentTask.Type}"
                                FontSize="25"
+                               Foreground="{StaticResource Pink}"
                                HorizontalAlignment="Center" />
 
                     <TextBlock Text=" Task"
