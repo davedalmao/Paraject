@@ -53,13 +53,13 @@
                              IsChecked="True"
                              Style="{StaticResource VerticalMenuButtonTheme}"
                              Command="{Binding TasksTodoViewCommand}"
-                             CommandParameter="FinishLine" />
+                             CommandParameter="Finish_Line" />
 
             <!--ExtraFeatures Type Tasks-->
             <custom:MenuItem Content="Extra Features"
                              Style="{StaticResource VerticalMenuButtonTheme}"
                              Command="{Binding TasksTodoViewCommand}"
-                             CommandParameter="ExtraFeature" />
+                             CommandParameter="Extra_Feature" />
 
             <!--Compeleted Type Tasks-->
             <custom:MenuItem Content="Completed Tasks"
