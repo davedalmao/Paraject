@@ -1,10 +1,10 @@
 ﻿using Paraject.Core.Commands;
 using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.ModalDialogs;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
 using System.Collections.ObjectModel;
-using System.Windows;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
@@ -13,130 +13,53 @@ namespace Paraject.MVVM.ViewModels
     {
         private readonly int _projectId;
         private readonly TaskRepository _taskRepository;
+        private readonly string _currentTaskType;
 
         public TasksTodoViewModel(int projectId, string taskType)
         {
             _taskRepository = new TaskRepository();
             _projectId = projectId;
-            CurrentTaskType = taskType;
-            CurrentTask = new Task();
+            _currentTaskType = taskType;
 
-            //Commands
             ShowAddTaskModalDialogCommand = new DelegateCommand(ShowAddTaskModalDialog);
-            CloseModalCommand = new DelegateCommand(CloseModal);
-            AddTaskCommand = new DelegateCommand(Add);
             FilterTasksCommand = new DelegateCommand(DisplayAllFilteredTasks);
 
             DisplayAllFilteredTasks();
         }
 
         #region Properties
-        public string CurrentTaskType { get; set; }
-
-        public Task CurrentTask { get; set; }
-
-        #region Collections
         public ObservableCollection<Task> Tasks { get; set; }
         public ObservableCollection<GridTileData> CardTasksGrid { get; set; }
-        #endregion
 
-        #region ComboBox Filter Bindings
         public string StatusFilter { get; set; } = "Show All";
         public string PriorityFilter { get; set; } = "Show All";
         public string CategoryFilter { get; set; } = "Show All";
-        #endregion
 
-        #region Commands
         public ICommand ShowAddTaskModalDialogCommand { get; }
-        public ICommand CloseModalCommand { get; }
-        public ICommand AddTaskCommand { get; }
         public ICommand FilterTasksCommand { get; }
-        #endregion
         #endregion
 
         #region Methods
-        #region AddTaskModalDialog Methods
         private void ShowAddTaskModalDialog()
         {
-            //Show overlay from MainWindow
             MainWindowViewModel.Overlay = true;
 
+            AddTaskModalDialogViewModel addTaskModalDialogViewModel = new AddTaskModalDialogViewModel(_projectId, _currentTaskType);
+
             AddTaskModalDialog addTaskModalDialog = new();
-            CurrentTask.Type = CurrentTaskType;
-            addTaskModalDialog.DataContext = this;
+            addTaskModalDialog.DataContext = addTaskModalDialogViewModel;
             addTaskModalDialog.ShowDialog();
-        }
-        private void CloseModal()
-        {
-            MainWindowViewModel.Overlay = false;
-
-            ResetValues();
-
-            foreach (Window currentModal in Application.Current.Windows)
-            {
-                if (currentModal.DataContext == this)
-                {
-                    currentModal.Close();
-                }
-            }
-        }
-        #endregion
-
-        #region Reset Methods
-        private void ResetValues()
-        {
-            SetCurrentTaskDefaultValues();
-            SetValuesForTasksCollection();
-
-            SetNewGridDisplay();
-            TaskCardGridLocation();
-        }
-        private void SetCurrentTaskDefaultValues()
-        {
-            CurrentTask = null;
-            CurrentTask = new Task();
         }
         private void SetValuesForTasksCollection()
         {
             Tasks = null;
-            Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, CurrentTaskType, StatusFilter, PriorityFilter, CategoryFilter));
+            Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, _currentTaskType, StatusFilter, PriorityFilter, CategoryFilter));
         }
         private void SetNewGridDisplay()
         {
             CardTasksGrid = null;
             CardTasksGrid = new ObservableCollection<GridTileData>();
         }
-        #endregion
-
-        #region Add Task Methods
-        private void Add()
-        {
-            if (!string.IsNullOrWhiteSpace(CurrentTask.Subject))
-            {
-                bool isAdded = _taskRepository.Add(CurrentTask, _projectId);
-                CheckTaskCreation(isAdded);
-            }
-
-            else
-            {
-                MessageBox.Show("A task should have a subject");
-            }
-        }
-        private void CheckTaskCreation(bool isAdded)
-        {
-            if (isAdded)
-            {
-                MessageBox.Show("Task Created");
-                CloseModal();
-            }
-
-            else
-            {
-                MessageBox.Show("Error occured, cannot create task");
-            }
-        }
-        #endregion
-
         private void TaskCardGridLocation()
         {
             int row = -1;
@@ -163,7 +86,6 @@ namespace Paraject.MVVM.ViewModels
                 CardTasksGrid.Add(td);
             }
         }
-
         private void DisplayAllFilteredTasks()
         {
             SetValuesForTasksCollection();

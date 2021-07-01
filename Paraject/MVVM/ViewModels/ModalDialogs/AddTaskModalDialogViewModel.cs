@@ -1,0 +1,86 @@
+﻿using Paraject.Core.Commands;
+using Paraject.Core.Repositories;
+using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.Windows;
+
+using System.Windows;
+using System.Windows.Input;
+
+namespace Paraject.MVVM.ViewModels.ModalDialogs
+{
+    public class AddTaskModalDialogViewModel : BaseViewModel
+    {
+        private readonly TaskRepository _taskRepository;
+        private readonly int _projectId;
+
+        public AddTaskModalDialogViewModel(int projectId, string taskType)
+        {
+            _taskRepository = new TaskRepository();
+            _projectId = projectId;
+            CurrentTask = new Task
+            {
+                Type = taskType
+            };
+
+            CloseModalCommand = new DelegateCommand(CloseModal);
+            AddTaskCommand = new DelegateCommand(Add);
+        }
+
+        #region Properties
+        public Task CurrentTask { get; set; }
+        public ICommand AddTaskCommand { get; }
+        public ICommand CloseModalCommand { get; }
+        #endregion
+
+        #region Methods
+        private void CloseModal()
+        {
+            MainWindowViewModel.Overlay = false;
+
+            SetCurrentTaskDefaultValues();
+
+            foreach (Window currentModal in Application.Current.Windows)
+            {
+                if (currentModal.DataContext == this)
+                {
+                    currentModal.Close();
+                }
+            }
+        }
+        private void Add()
+        {
+            if (!string.IsNullOrWhiteSpace(CurrentTask.Subject))
+            {
+                bool isAdded = _taskRepository.Add(CurrentTask, _projectId);
+                AddOperationResult(isAdded);
+            }
+
+            else
+            {
+                MessageBox.Show("A task should have a subject");
+            }
+        }
+        private void AddOperationResult(bool isAdded)
+        {
+            if (isAdded)
+            {
+                TasksTodoViewModel tasksTodoViewModel = new TasksTodoViewModel(_projectId, CurrentTask.Type);
+                TasksViewModel.CurrentView = tasksTodoViewModel;
+
+                MessageBox.Show("Task Created");
+                CloseModal();
+            }
+
+            else
+            {
+                MessageBox.Show("Error occured, cannot create task");
+            }
+        }
+        private void SetCurrentTaskDefaultValues()
+        {
+            CurrentTask = null;
+            CurrentTask = new Task();
+        }
+        #endregion
+    }
+}
