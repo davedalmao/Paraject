@@ -1,5 +1,4 @@
 ﻿using Paraject.Core.Commands;
-using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using System.Windows.Input;
@@ -8,12 +7,9 @@ namespace Paraject.MVVM.ViewModels
 {
     public class TasksViewModel : BaseViewModel
     {
-        private readonly UserAccountRepository _userAccountRepository;
-
         public TasksViewModel(ProjectsViewModel projectsViewModel, Project currentProject)
         {
             CurrentProject = currentProject;
-            _userAccountRepository = new UserAccountRepository();
 
             //TasksView child Views
             TasksTodoVM = new TasksTodoViewModel(currentProject.Id, "FinishLine");
@@ -57,7 +53,7 @@ namespace Paraject.MVVM.ViewModels
         #region Navigation Methods
         public void NavigateBackToProjectsView()
         {
-            ProjectsViewModel projectsViewModel = new ProjectsViewModel(_userAccountRepository.GetById(CurrentProject.User_Id_Fk));
+            ProjectsViewModel projectsViewModel = new ProjectsViewModel(CurrentProject.User_Id_Fk);
             ProjectsVM = projectsViewModel;
             MainWindowViewModel.CurrentView = ProjectsVM;
         }

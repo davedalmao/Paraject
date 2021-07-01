@@ -60,7 +60,7 @@
                 Tag="/UiDesign/Icons/ButtonIcons/add.svg"
                 Margin="0,0,0,22"
                 Style="{StaticResource GeneralButtonTheme}"
-                Command="{Binding AddProjectsDialogCommand}" />
+                Command="{Binding ShowAddProjectsDialogCommand}" />
 
         <!--Project Cards Display-->
         <ScrollViewer Style="{StaticResource ScrollbarTheme}"
@@ -79,8 +79,8 @@
                                  Padding="26.53, 16"
                                  Background="{StaticResource Card}"
                                  Style="{StaticResource PlainButtonTheme}"
-                                 Command="{Binding ElementName=Projects, 
-                                                  Path=DataContext.TasksViewCommand}"
+                                 Command="{Binding ElementName=Projects,
+                                                   Path=DataContext.TasksViewCommand}"
                                  CommandParameter="{Binding Id}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
