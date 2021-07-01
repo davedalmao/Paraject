@@ -17,22 +17,17 @@ namespace Paraject.MVVM.ViewModels
         public TasksTodoViewModel(int projectId, string taskType)
         {
             _taskRepository = new TaskRepository();
-
             _projectId = projectId;
             CurrentTaskType = taskType;
-
             CurrentTask = new Task();
-            CardTasksGrid = new ObservableCollection<GridTileData>();
 
             //Commands
             ShowAddTaskModalDialogCommand = new DelegateCommand(ShowAddTaskModalDialog);
             CloseModalCommand = new DelegateCommand(CloseModal);
             AddTaskCommand = new DelegateCommand(Add);
-            FilterTasksCommand = new DelegateCommand(FilterTasks);
+            FilterTasksCommand = new DelegateCommand(DisplayAllFilteredTasks);
 
-            //Default tasks display
-            Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, CurrentTaskType, StatusFilter, PriorityFilter, CategoryFilter));
-            TaskCardGridLocation();
+            DisplayAllFilteredTasks();
         }
 
         #region Properties
@@ -169,7 +164,7 @@ namespace Paraject.MVVM.ViewModels
             }
         }
 
-        private void FilterTasks()
+        private void DisplayAllFilteredTasks()
         {
             SetValuesForTasksCollection();
             SetNewGridDisplay();
