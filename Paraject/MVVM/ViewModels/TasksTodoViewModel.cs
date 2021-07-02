@@ -5,6 +5,7 @@ using Paraject.MVVM.ViewModels.ModalDialogs;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
@@ -23,6 +24,7 @@ namespace Paraject.MVVM.ViewModels
 
             ShowAddTaskModalDialogCommand = new DelegateCommand(ShowAddTaskModalDialog);
             FilterTasksCommand = new DelegateCommand(DisplayAllFilteredTasks);
+            NavigateToTaskDetailsViewCommand = new ParameterizedDelegateCommand(NavigateToTaskDetailsView);
 
             DisplayAllFilteredTasks();
         }
@@ -37,6 +39,7 @@ namespace Paraject.MVVM.ViewModels
 
         public ICommand ShowAddTaskModalDialogCommand { get; }
         public ICommand FilterTasksCommand { get; }
+        public ICommand NavigateToTaskDetailsViewCommand { get; }
         #endregion
 
         #region Methods
@@ -91,6 +94,14 @@ namespace Paraject.MVVM.ViewModels
             SetValuesForTasksCollection();
             SetNewGridDisplay();
             TaskCardGridLocation();
+        }
+        public void NavigateToTaskDetailsView(object taskId) //the argument passed to this parameter is in ProjectsView (a "CommandParameter" from a Project card)
+        {
+            //Project selectedProject = _projectRepository.Get((int)projectId);
+
+            //TasksVM = new TasksViewModel(this, selectedProject);
+            //MainWindowViewModel.CurrentView = TasksVM;
+            MessageBox.Show($"Task Id: {taskId}");
         }
         #endregion
     }

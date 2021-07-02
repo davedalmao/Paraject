@@ -159,7 +159,9 @@
                                  Height="153"
                                  Width="192"
                                  Background="{StaticResource Card}"
-                                 Style="{StaticResource PlainButtonTheme}">
+                                 Style="{StaticResource PlainButtonTheme}"
+                                 Command="{Binding ElementName=Tasks, Path=DataContext.NavigateToTaskDetailsViewCommand}"
+                                 CommandParameter="{Binding Content.Id}">
 
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -172,9 +174,9 @@
                                         Height="6"
                                         Width="169"
                                         Margin="0,6,0,0"
+                                        CornerRadius="2.3"
                                         Tag="{Binding Content.Priority}"
-                                        Style="{StaticResource PriorityIndicatorTheme}"
-                                        CornerRadius="2.3" />
+                                        Style="{StaticResource PriorityIndicatorTheme}" />
 
                                 <!--Task Details-->
                                 <Grid Grid.Row="1"
