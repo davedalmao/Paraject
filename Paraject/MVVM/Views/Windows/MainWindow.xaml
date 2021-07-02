@@ -21,7 +21,8 @@
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
-        FontFamily="{StaticResource NunitoBold}">
+        FontFamily="{StaticResource NunitoBold}"
+        MouseDown="MainWindowMouseDown">
     <Border Background="{StaticResource MainBackground}"
             CornerRadius="20">
         <!--The Grid that houses the overlay and the MainWindow content-->

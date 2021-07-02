@@ -2,6 +2,7 @@
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Paraject.MVVM.Views.Windows
 {
@@ -18,7 +19,6 @@ namespace Paraject.MVVM.Views.Windows
 
             _viewModel = new MainWindowViewModel(currentUserAccount);
             DataContext = _viewModel;
-            MouseDown += delegate { DragMove(); };
         }
 
 
@@ -46,6 +46,11 @@ namespace Paraject.MVVM.Views.Windows
             {
                 WindowState = WindowState.Normal;
             }
+        }
+
+        private void MainWindowMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left) { DragMove(); }
         }
     }
 }
