@@ -24,6 +24,7 @@
     <None Remove="UiDesign\Icons\ButtonIcons\addProjectLogo.svg" />
     <None Remove="UiDesign\Icons\ButtonIcons\delete.svg" />
     <None Remove="UiDesign\Icons\ButtonIcons\image.svg" />
+    <None Remove="UiDesign\Icons\ButtonIcons\subtask.svg" />
     <None Remove="UiDesign\Icons\ButtonIcons\update.svg" />
     <None Remove="UiDesign\Icons\Calendar\grayCalendar.svg" />
     <None Remove="UiDesign\Icons\Calendar\pinkCalendar.svg" />
@@ -98,6 +99,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Icons\ButtonIcons\image.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Icons\ButtonIcons\subtask.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Icons\ButtonIcons\update.svg">
