@@ -55,7 +55,6 @@ namespace Paraject.MVVM.ViewModels
             TaskCardGridLocation();
         }
         #endregion
-
         private void TaskCardGridLocation()
         {
             int row = -1;
