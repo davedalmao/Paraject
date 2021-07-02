@@ -1,0 +1,213 @@
+﻿<UserControl x:Class="Paraject.MVVM.Views.TaskDetailsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Paraject.MVVM.Views"
+             mc:Ignorable="d"
+             Background="Transparent"
+             Foreground="{StaticResource MainFontColor}"
+             FontFamily="{StaticResource NunitoBold}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <!--TaskDetails Header-->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+
+            <!--TaskDetails Header Text-->
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="0">
+                <!--Back (to TasksView) Button-->
+                <Button  Style="{StaticResource PlainButtonTheme}"
+                         Command="{Binding NavigateBackToProjectsViewCommand}"
+                         Background="Transparent"
+                         Cursor="Hand"
+                         Width="28"
+                         Height="28">
+                    <Image Source="/UiDesign/Icons/backArrow.png"
+                           RenderOptions.BitmapScalingMode="HighQuality"
+                           RenderOptions.EdgeMode="Aliased"
+                           SnapsToDevicePixels="True" />
+                </Button>
+
+                <!--Task Details-->
+                <TextBlock Text="Task Details"
+                           TextTrimming="CharacterEllipsis"
+                           FontSize="25"
+                           Margin="8,0,0,0" />
+            </StackPanel>
+
+            <!--Add New Subtask Button-->
+            <Button Grid.Column="1"
+                    Content="Add New Subtask"
+                    Height="36"
+                    Width="178"
+                    Background="{StaticResource AccentColor}"
+                    Tag="/UiDesign/Icons/ButtonIcons/subtask.svg"
+                    Style="{StaticResource GeneralButtonTheme}" />
+
+            <!--Add New Subtask Button-->
+            <Button Grid.Column="2"
+                    Content="View Subtask"
+                    Height="36"
+                    Width="178"
+                    Background="{StaticResource Green}"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Margin="15,0,0,0"
+                    Tag="/UiDesign/Icons/ButtonIcons/add.svg"
+                    Style="{StaticResource GeneralButtonTheme}" />
+        </Grid>
+
+        <!--TaskDetails Input/Display Fields-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+
+            <!--Left Input/Display Fields-->
+            <StackPanel Grid.Column="0">
+                <!--Task Subject TextBlock-->
+                <TextBlock Text="Subject"
+                           FontSize="18"
+                           Margin="0,0,0,6" />
+
+                <!--Task Subject TextBox-->
+                <TextBox Width="294"
+                         Height="42"
+                         FontSize="15"
+                         Style="{StaticResource TextBoxTheme}" />
+
+                <!--Task Type TextBlock-->
+                <TextBlock Text="Type"
+                           FontSize="18"
+                           Margin="0,23,0,6" />
+
+                <!--Task Type TextBox-->
+                <ComboBox Width="294"
+                          Height="42"
+                          FontSize="15"
+                          Padding="20,0"
+                          Margin="0,0,0,23"
+                          Style="{StaticResource ComboBoxTheme}"
+                          Background="{StaticResource InputField}" />
+
+                <!--Task Description TextBlock-->
+                <TextBlock Text="Description (optional)"
+                           FontSize="18"
+                           Margin="0,0,0,6" />
+
+                <!--Task Description TextBox-->
+                <TextBox Width="294"
+                         Height="138"
+                         FontSize="15"
+                         TextWrapping="Wrap"
+                         Style="{StaticResource TextBoxTheme}"
+                         VerticalScrollBarVisibility="Auto"
+                         VerticalContentAlignment="Top"
+                         Padding="20" />
+            </StackPanel>
+
+            <!--Left Input/Display Fields-->
+            <StackPanel Grid.Column="1">
+                <!--Task Status TextBlock-->
+                <TextBlock Text="Status"
+                           FontSize="18"
+                           Margin="0,0,0,6" />
+
+                <!--Task Status TextBox-->
+                <ComboBox Width="294"
+                          Height="42"
+                          FontSize="15"
+                          Padding="20,0"
+                          Style="{StaticResource ComboBoxTheme}"
+                          Background="{StaticResource InputField}" />
+
+                <!--Task Category TextBlock-->
+                <TextBlock Text="Category"
+                           FontSize="18"
+                           Margin="0,23,0,6" />
+
+                <!--Task Category TextBox-->
+                <ComboBox Width="294"
+                          Height="42"
+                          FontSize="15"
+                          Padding="20,0"
+                          Style="{StaticResource ComboBoxTheme}"
+                          Background="{StaticResource InputField}" />
+
+                <!--Task Priority TextBlock-->
+                <TextBlock Text="Priority"
+                           FontSize="18"
+                           Margin="0,23,0,6" />
+
+                <!--Task Priority TextBox-->
+                <ComboBox Width="294"
+                          Height="42"
+                          FontSize="15"
+                          Padding="20,0"
+                          Style="{StaticResource ComboBoxTheme}"
+                          Background="{StaticResource InputField}" />
+
+                <!--Task Deadline TextBlock-->
+                <TextBlock Text="Deadline"
+                           FontSize="18"
+                           Margin="0,23,0,6" />
+
+                <!--Deadline DateTimePicker-->
+                <DatePicker Style="{StaticResource DatePickerTheme}"
+                            FontSize="15" />
+            </StackPanel>
+        </Grid>
+
+        <!--Footer-->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <!--Date Created-->
+            <StackPanel Orientation="Horizontal"
+                        Grid.Column="0">
+                <TextBlock Text="Date Created: "
+                           FontSize="15"
+                           Foreground="{StaticResource Darkest}" />
+
+                <TextBlock FontSize="15"
+                           Foreground="{StaticResource Darkest}"
+                           TextWrapping="Wrap"
+                           Width="98" />
+            </StackPanel>
+
+            <!--Update Task Button-->
+            <Button Content="Update Task"
+                    Grid.Column="1"
+                    Height="40"
+                    Width="160"
+                    Margin="0,0,26,0"
+                    Tag="/UiDesign/Icons/ButtonIcons/update.svg"
+                    Background="{StaticResource Yellow}"
+                    Style="{StaticResource GeneralButtonTheme}" />
+
+            <!--Delete Task Button-->
+            <Button Content="Delete Task"
+                    Grid.Column="2"
+                    Height="40"
+                    Width="160"
+                    Tag="/UiDesign/Icons/ButtonIcons/delete.svg"
+                    Background="{StaticResource Orange}"
+                    Style="{StaticResource GeneralButtonTheme}" />
+        </Grid>
+    </Grid>
+</UserControl>

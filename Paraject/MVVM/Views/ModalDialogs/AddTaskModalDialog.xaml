@@ -98,22 +98,6 @@
                              Style="{StaticResource TextBoxTheme}"
                              Text="{Binding CurrentTask.Subject}" />
 
-                    <!--Task Type TextBlock-->
-                    <!--<TextBlock Text="Type"
-                               FontSize="18"
-                               Margin="0,23,0,6" />-->
-
-                    <!--Task Type ComboBox-->
-                    <!--<ComboBox Width="294"
-                              Height="42"
-                              FontSize="15"
-                              Padding="20,0"
-                              Margin="0,0,0,23"
-                              Style="{StaticResource ComboBoxTheme}"
-                              Background="{StaticResource InputField}"
-                              ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:TaskTypes}}}"
-                              Text="{Binding CurrentTask.Type}" />-->
-
                     <!--Task Description TextBlock-->
                     <TextBlock Text="Description (optional)"
                                FontSize="18"
