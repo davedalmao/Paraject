@@ -5,6 +5,7 @@ using Paraject.MVVM.ViewModels.ModalDialogs;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
@@ -22,6 +23,7 @@ namespace Paraject.MVVM.ViewModels
             AllProjectsCommand = new DelegateCommand(DisplayAllProjects);
             PersonalProjectsCommand = new DelegateCommand(DisplayPersonalProjects);
             PaidProjectsCommand = new DelegateCommand(DisplayPaidProjects);
+            CompletedProjectsCommand = new DelegateCommand(DisplayCompletedProjects);
 
             ShowAddProjectsDialogCommand = new DelegateCommand(ShowAddProjectModalDialog);
 
@@ -36,6 +38,7 @@ namespace Paraject.MVVM.ViewModels
         public ICommand AllProjectsCommand { get; }
         public ICommand PersonalProjectsCommand { get; }
         public ICommand PaidProjectsCommand { get; }
+        public ICommand CompletedProjectsCommand { get; }
         public ICommand ShowAddProjectsDialogCommand { get; }
         public ICommand TasksViewCommand { get; }
         #endregion
@@ -52,6 +55,10 @@ namespace Paraject.MVVM.ViewModels
         public void DisplayPaidProjects()
         {
             Projects = new ObservableCollection<Project>(_projectRepository.FindAll(_currentUserId, ProjectOptions.Paid));
+        }
+        private void DisplayCompletedProjects()
+        {
+            Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId).Where(project => project.Status == "Completed"));
         }
         public void ShowAddProjectModalDialog()
         {
