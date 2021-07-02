@@ -22,12 +22,15 @@ namespace Paraject.MVVM.ViewModels
             AllProjectsCommand = new DelegateCommand(DisplayAllProjects);
             PersonalProjectsCommand = new DelegateCommand(DisplayPersonalProjects);
             PaidProjectsCommand = new DelegateCommand(DisplayPaidProjects);
+            CompletedProjectsCommand = new DelegateCommand(DisplayCompletedProjects);
 
             ShowAddProjectsDialogCommand = new DelegateCommand(ShowAddProjectModalDialog);
 
             TasksViewCommand = new ParameterizedDelegateCommand(NavigateToTasksView); //Redirect to TasksView if a Project card is selected (to view a Project's task/s)
             DisplayAllProjects();
         }
+
+
 
         #region Properties
         public ObservableCollection<Project> Projects { get; set; }
@@ -36,6 +39,7 @@ namespace Paraject.MVVM.ViewModels
         public ICommand AllProjectsCommand { get; }
         public ICommand PersonalProjectsCommand { get; }
         public ICommand PaidProjectsCommand { get; }
+        public ICommand CompletedProjectsCommand { get; }
         public ICommand ShowAddProjectsDialogCommand { get; }
         public ICommand TasksViewCommand { get; }
         #endregion
@@ -52,6 +56,10 @@ namespace Paraject.MVVM.ViewModels
         public void DisplayPaidProjects()
         {
             Projects = new ObservableCollection<Project>(_projectRepository.FindAll(_currentUserId, ProjectOptions.Paid));
+        }
+        private void DisplayCompletedProjects()
+        {
+            Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId));
         }
         public void ShowAddProjectModalDialog()
         {

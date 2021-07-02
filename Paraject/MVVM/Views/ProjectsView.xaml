@@ -59,7 +59,7 @@
                          Content="Completed"
                          VerticalAlignment="Top"
                          Style="{StaticResource VerticalMenuButtonTheme}"
-                         Command="{Binding PaidProjectsCommand}" />
+                         Command="{Binding CompletedProjectsCommand}" />
 
         <!--Add New Project Button-->
         <Button Content="Add New Project"

@@ -10,7 +10,7 @@ namespace Paraject.Core.Enums
     public enum Statuses
     {
         [Description("In Progress")]
-        InProgress,
+        In_Progress,
 
         [Description("Open")]
         Open

@@ -82,7 +82,6 @@ namespace Paraject.MVVM.ViewModels
                 CardTasksGrid.Add(td);
             }
         }
-
         private void DisplayAllFilteredTasks()
         {
             SetValuesForTasksCollection();
