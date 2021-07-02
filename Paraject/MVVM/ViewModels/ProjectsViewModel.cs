@@ -5,6 +5,7 @@ using Paraject.MVVM.ViewModels.ModalDialogs;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
@@ -59,7 +60,7 @@ namespace Paraject.MVVM.ViewModels
         }
         private void DisplayCompletedProjects()
         {
-            Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId));
+            Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId).Where(project => project.Status == "Completed"));
         }
         public void ShowAddProjectModalDialog()
         {
