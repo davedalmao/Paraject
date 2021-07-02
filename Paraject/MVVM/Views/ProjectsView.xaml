@@ -17,6 +17,7 @@
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -30,28 +31,39 @@
                          Content="All Projects"
                          IsChecked="True"
                          VerticalAlignment="Top"
+                         Margin="0,0,22,0"
                          Style="{StaticResource VerticalMenuButtonTheme}"
                          Command="{Binding AllProjectsCommand}" />
 
         <!--Personal Projects Display-->
         <custom:MenuItem Grid.Column="1"
                          Grid.Row="0"
-                         Content="Personal Projects"
+                         Content="Personal"
                          VerticalAlignment="Top"
+                         Margin="0,0,22,0"
                          Style="{StaticResource VerticalMenuButtonTheme}"
                          Command="{Binding PersonalProjectsCommand}" />
 
         <!--Paid Projects Display-->
         <custom:MenuItem Grid.Column="2"
                          Grid.Row="0"
-                         Content="Paid Projects"
+                         Content="Paid"
+                         VerticalAlignment="Top"
+                         Margin="0,0,22,0"
+                         Style="{StaticResource VerticalMenuButtonTheme}"
+                         Command="{Binding PaidProjectsCommand}" />
+
+        <!--Completed Projects Display-->
+        <custom:MenuItem Grid.Column="3"
+                         Grid.Row="0"
+                         Content="Completed"
                          VerticalAlignment="Top"
                          Style="{StaticResource VerticalMenuButtonTheme}"
                          Command="{Binding PaidProjectsCommand}" />
 
         <!--Add New Project Button-->
         <Button Content="Add New Project"
-                Grid.Column="3"
+                Grid.Column="4"
                 Grid.Row="0"
                 Height="36"
                 Width="169"
@@ -65,7 +77,7 @@
         <!--Project Cards Display-->
         <ScrollViewer Style="{StaticResource ScrollbarTheme}"
                       Grid.Row="1"
-                      Grid.ColumnSpan="4"
+                      Grid.ColumnSpan="5"
                       Height="432">
             <!--Project Cards-->
             <ItemsControl x:Name="Projects"
@@ -91,7 +103,7 @@
 
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
-                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
 
                                 <Image MaxWidth="65"
