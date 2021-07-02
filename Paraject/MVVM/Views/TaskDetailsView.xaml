@@ -16,7 +16,8 @@
         </Grid.RowDefinitions>
 
         <!--TaskDetails Header-->
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0"
+              Margin="38,30,38,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="auto" />
@@ -28,7 +29,6 @@
                         Grid.Row="0">
                 <!--Back (to TasksView) Button-->
                 <Button  Style="{StaticResource PlainButtonTheme}"
-                         Command="{Binding NavigateBackToProjectsViewCommand}"
                          Background="Transparent"
                          Cursor="Hand"
                          Width="28"
@@ -69,14 +69,17 @@
         </Grid>
 
         <!--TaskDetails Input/Display Fields-->
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1"
+              VerticalAlignment="Center"
+              Margin="50,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
 
             <!--Left Input/Display Fields-->
-            <StackPanel Grid.Column="0">
+            <StackPanel Grid.Column="0"
+                        HorizontalAlignment="Left">
                 <!--Task Subject TextBlock-->
                 <TextBlock Text="Subject"
                            FontSize="18"
@@ -171,7 +174,8 @@
         </Grid>
 
         <!--Footer-->
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2"
+              Margin="50,0,50,30">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="auto" />
