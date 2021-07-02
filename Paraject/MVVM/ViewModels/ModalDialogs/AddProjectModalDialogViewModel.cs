@@ -82,15 +82,13 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Please input a valid image. \n{ex.ToString()}");
+                    MessageBox.Show($"Please input a valid image.\n \n{ex}");
                 }
             }
         }
         private void CloseModalDialog()
         {
             MainWindowViewModel.Overlay = false;
-
-            SetProjectDefaultValues();
 
             foreach (Window currentModal in Application.Current.Windows)
             {
@@ -99,12 +97,6 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                     currentModal.Close();
                 }
             }
-        }
-        private void SetProjectDefaultValues()
-        {
-            //To erase the last input values in AddProjectModalDialog
-            CurrentProject = null;
-            CurrentProject = new Project();
         }
         #endregion
     }
