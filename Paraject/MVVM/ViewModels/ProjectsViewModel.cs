@@ -31,8 +31,6 @@ namespace Paraject.MVVM.ViewModels
             DisplayAllProjects();
         }
 
-
-
         #region Properties
         public ObservableCollection<Project> Projects { get; set; }
         public TasksViewModel TasksVM { get; set; }
