@@ -17,11 +17,7 @@ namespace Paraject.MVVM.ViewModels
         public ProjectDetailsViewModel(ProjectsViewModel projectsViewModel, Project currentProject)
         {
             _projectsViewModel = projectsViewModel;
-
-            //Repository
             _projectRepository = new ProjectRepository();
-
-            //Project Model
             CurrentProject = currentProject;
 
             //Commands
@@ -31,10 +27,7 @@ namespace Paraject.MVVM.ViewModels
         }
 
         #region Properties
-        //Model
         public Project CurrentProject { get; set; }
-        public ProjectsViewModel ProjectsVM { get; set; }
-        //Commands
         public ICommand AddOrChangeLogoCommand { get; }
         public ICommand UpdateProjectCommand { get; }
         public ICommand DeleteProjectCommand { get; }
@@ -90,9 +83,9 @@ namespace Paraject.MVVM.ViewModels
             {
                 MessageBox.Show("Project deleted successfully");
 
-                //redirect to ProjectsView after a successful DELETE operation
-                ProjectsVM = _projectsViewModel;
-                MainWindowViewModel.CurrentView = ProjectsVM;
+                //redirect to ProjectsView after a successful DELETE operation, and refresh the View with the new records
+                _projectsViewModel.DisplayAllProjects();
+                MainWindowViewModel.CurrentView = _projectsViewModel;
             }
             else
             {
