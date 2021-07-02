@@ -239,7 +239,7 @@ namespace Paraject.Core.Repositories
                                 Name = sqlDataReader.GetString(projectName),
                                 Description = sqlDataReader.IsDBNull(projectDescription) ? "--" : sqlDataReader.GetString(projectDescription),
                                 Option = sqlDataReader.GetString(projectOptionFromDb),
-                                Status = sqlDataReader.GetString(projectStatus).Equals("InProgress", StringComparison.Ordinal) ? "In Progress" : "Open",
+                                Status = sqlDataReader.GetString(projectStatus).Replace("_", " "),
                                 Deadline = sqlDataReader.IsDBNull(projectDeadline) ? null : sqlDataReader.GetDateTime(projectDeadline),
                                 DateCreated = sqlDataReader.GetDateTime(dateCreated),
                                 Logo = sqlDataReader.IsDBNull(projectLogo) ? null : ImageConverter.BytesToImage((byte[])sqlDataReader.GetValue(projectLogo))
