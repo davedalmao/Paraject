@@ -5,7 +5,6 @@ using Paraject.MVVM.ViewModels.ModalDialogs;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
 using System.Collections.ObjectModel;
-using System.Windows;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
@@ -97,11 +96,10 @@ namespace Paraject.MVVM.ViewModels
         }
         public void NavigateToTaskDetailsView(object taskId) //the argument passed to this parameter is in ProjectsView (a "CommandParameter" from a Project card)
         {
-            //Project selectedProject = _projectRepository.Get((int)projectId);
+            Task selectedTask = _taskRepository.Get((int)taskId);
+            TaskDetailsViewModel taskDetailsViewModel = new TaskDetailsViewModel(selectedTask);
 
-            //TasksVM = new TasksViewModel(this, selectedProject);
-            //MainWindowViewModel.CurrentView = TasksVM;
-            MessageBox.Show($"Task Id: {taskId}");
+            MainWindowViewModel.CurrentView = taskDetailsViewModel;
         }
         #endregion
     }
