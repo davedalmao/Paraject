@@ -55,7 +55,6 @@ namespace Paraject.MVVM.ViewModels
             TaskCardGridLocation();
         }
         #endregion
-
         private void TaskCardGridLocation()
         {
             int row = -1;
@@ -82,7 +81,6 @@ namespace Paraject.MVVM.ViewModels
                 CardTasksGrid.Add(td);
             }
         }
-
         private void DisplayAllFilteredTasks()
         {
             SetValuesForTasksCollection();
