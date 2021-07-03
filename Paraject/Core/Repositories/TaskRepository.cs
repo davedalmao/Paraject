@@ -105,7 +105,7 @@ namespace Paraject.Core.Repositories
                                 Project_Id_Fk = sqlDataReader.GetInt32(projectIdFk),
                                 Subject = sqlDataReader.GetString(taskSubject),
                                 Type = sqlDataReader.GetString(taskType),
-                                Description = sqlDataReader.GetString(taskDescription),
+                                Description = sqlDataReader.IsDBNull(taskDescription) ? "--" : sqlDataReader.GetString(taskDescription),
                                 Status = sqlDataReader.GetString(taskStatus),
                                 Category = sqlDataReader.GetString(taskCategory),
                                 Priority = sqlDataReader.GetString(taskPriority),
