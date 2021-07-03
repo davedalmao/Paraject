@@ -7,6 +7,8 @@
              xmlns:enum="clr-namespace:Paraject.Core.Enums"
              xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
              mc:Ignorable="d"
+             MaxWidth="800"
+             MaxHeight="650"
              Background="Transparent"
              Foreground="{StaticResource MainFontColor}"
              FontFamily="{StaticResource NunitoBold}">
