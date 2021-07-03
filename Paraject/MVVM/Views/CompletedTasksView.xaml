@@ -118,7 +118,10 @@
                                  Height="153"
                                  Width="192"
                                  Background="{StaticResource Card}"
-                                 Style="{StaticResource PlainButtonTheme}">
+                                 Style="{StaticResource PlainButtonTheme}"
+                                 Command="{Binding ElementName=CompletedTasks, Path=DataContext.NavigateToTaskDetailsViewCommand}"
+                                 CommandParameter="{Binding Content.Id}">
+
                             <!--Completed Tasks Details-->
                             <Grid Margin="18">
                                 <Grid.RowDefinitions>
