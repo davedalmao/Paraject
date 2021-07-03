@@ -23,7 +23,6 @@ namespace Paraject.MVVM.ViewModels
             FilterTasksCommand = new DelegateCommand(FilterTasks);
             NavigateToTaskDetailsViewCommand = new ParameterizedDelegateCommand(NavigateToTaskDetailsView);
 
-
             DisplayAllFilteredTasks();
         }
 
@@ -82,7 +81,7 @@ namespace Paraject.MVVM.ViewModels
                 CardTasksGrid.Add(td);
             }
         }
-        private void DisplayAllFilteredTasks()
+        public void DisplayAllFilteredTasks()
         {
             SetValuesForTasksCollection();
             SetNewGridDisplay();
