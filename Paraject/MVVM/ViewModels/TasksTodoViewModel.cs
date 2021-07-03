@@ -5,6 +5,7 @@ using Paraject.MVVM.ViewModels.ModalDialogs;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
@@ -52,10 +53,11 @@ namespace Paraject.MVVM.ViewModels
             addTaskModalDialog.DataContext = addTaskModalDialogViewModel;
             addTaskModalDialog.ShowDialog();
         }
-        private void SetValuesForTasksCollection()
+        private void GetValuesForTasksCollection()
         {
             Tasks = null;
-            Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, _currentTaskType, StatusFilter, PriorityFilter, CategoryFilter));
+            Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, _currentTaskType, StatusFilter, PriorityFilter, CategoryFilter)
+                                                                  .Where(task => task.Status != "Completed"));
         }
         private void SetNewGridDisplay()
         {
@@ -91,7 +93,7 @@ namespace Paraject.MVVM.ViewModels
         }
         private void DisplayAllFilteredTasks()
         {
-            SetValuesForTasksCollection();
+            GetValuesForTasksCollection();
             SetNewGridDisplay();
             TaskCardGridLocation();
         }
