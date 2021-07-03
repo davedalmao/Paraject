@@ -21,19 +21,13 @@ namespace Paraject.MVVM.ViewModels
         }
 
         #region Properties
-        #region Collections
         public ObservableCollection<Task> CompletedTasks { get; set; }
         public ObservableCollection<GridTileData> CardTasksGrid { get; set; }
-        #endregion
 
-        #region ComboBox Filter Bindings
         public string CurrentTaskType { get; set; } = "Show All";
         public string CategoryFilter { get; set; } = "Show All";
-        #endregion
 
-        #region Command
         public ICommand FilterTasksCommand { get; }
-        #endregion
         #endregion
 
         #region Methods
@@ -87,6 +81,13 @@ namespace Paraject.MVVM.ViewModels
             SetValuesForTasksCollection();
             SetNewGridDisplay();
             TaskCardGridLocation();
+        }
+        public void NavigateToTaskDetailsView(object taskId) //the argument passed to this parameter is in ProjectsView (a "CommandParameter" from a Project card)
+        {
+            Task selectedTask = _taskRepository.Get((int)taskId);
+            //TaskDetailsViewModel taskDetailsViewModel = new TaskDetailsViewModel(this, _tasksViewModel, selectedTask);
+
+            //MainWindowViewModel.CurrentView = taskDetailsViewModel;
         }
         #endregion
     }
