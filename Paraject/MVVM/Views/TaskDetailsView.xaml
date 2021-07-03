@@ -6,6 +6,8 @@
              xmlns:local="clr-namespace:Paraject.MVVM.Views"
              xmlns:enum="clr-namespace:Paraject.Core.Enums"
              xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
+             xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:TaskDetailsViewModel}"
              mc:Ignorable="d"
              MaxWidth="800"
              MaxHeight="650"
@@ -93,7 +95,8 @@
                 <TextBox Width="294"
                          Height="42"
                          FontSize="15"
-                         Style="{StaticResource TextBoxTheme}" />
+                         Style="{StaticResource TextBoxTheme}"
+                         Text="{Binding CurrentTask.Subject}" />
 
                 <!--Task Type TextBlock-->
                 <TextBlock Text="Type"
@@ -108,7 +111,8 @@
                           Margin="0,0,0,23"
                           Style="{StaticResource ComboBoxTheme}"
                           Background="{StaticResource InputField}"
-                          ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enum:TaskTypes}}}" />
+                          ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enum:TaskTypes}}}"
+                          Text="{Binding CurrentTask.Type}" />
 
 
                 <!--Task Description TextBlock-->
@@ -122,6 +126,7 @@
                          FontSize="15"
                          TextWrapping="Wrap"
                          Style="{StaticResource TextBoxTheme}"
+                         Text="{Binding CurrentTask.Description}"
                          VerticalScrollBarVisibility="Auto"
                          VerticalContentAlignment="Top"
                          Padding="20" />
@@ -141,7 +146,8 @@
                           Padding="20,0"
                           Style="{StaticResource ComboBoxTheme}"
                           Background="{StaticResource InputField}"
-                          ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enum:Statuses}}}" />
+                          ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enum:Statuses}}}"
+                          Text="{Binding CurrentTask.Status}" />
 
                 <!--Task Category TextBlock-->
                 <TextBlock Text="Category"
@@ -155,7 +161,8 @@
                           Padding="20,0"
                           Style="{StaticResource ComboBoxTheme}"
                           Background="{StaticResource InputField}"
-                          ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enum:Categories}}}" />
+                          ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enum:Categories}}}"
+                          Text="{Binding CurrentTask.Category}" />
 
                 <!--Task Priority TextBlock-->
                 <TextBlock Text="Priority"
@@ -169,7 +176,8 @@
                           Padding="20,0"
                           Style="{StaticResource ComboBoxTheme}"
                           Background="{StaticResource InputField}"
-                          ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enum:Priorities}}}" />
+                          ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enum:Priorities}}}"
+                          Text="{Binding CurrentTask.Priority}" />
 
                 <!--Task Deadline TextBlock-->
                 <TextBlock Text="Deadline"
@@ -178,7 +186,8 @@
 
                 <!--Deadline DateTimePicker-->
                 <DatePicker Style="{StaticResource DatePickerTheme}"
-                            FontSize="15" />
+                            FontSize="15"
+                            SelectedDate="{Binding CurrentTask.Deadline}" />
             </StackPanel>
         </Grid>
 
@@ -197,7 +206,8 @@
                            FontSize="15"
                            Foreground="{StaticResource Darkest}" />
 
-                <TextBlock FontSize="15"
+                <TextBlock Text="{Binding CurrentTask.DateCreated}"
+                           FontSize="15"
                            Foreground="{StaticResource Darkest}"
                            TextWrapping="Wrap"
                            Width="98" />
