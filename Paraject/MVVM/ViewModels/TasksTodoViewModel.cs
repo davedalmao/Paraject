@@ -20,6 +20,7 @@ namespace Paraject.MVVM.ViewModels
         public TasksTodoViewModel(TasksViewModel tasksViewModel, int projectId, string taskType)
         {
             _taskRepository = new TaskRepository();
+
             _projectId = projectId;
             _currentTaskType = taskType;
             _tasksViewModel = tasksViewModel;
