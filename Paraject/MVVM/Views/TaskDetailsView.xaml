@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Paraject.MVVM.Views"
+             xmlns:enum="clr-namespace:Paraject.Core.Enums"
+             xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
              mc:Ignorable="d"
              Background="Transparent"
              Foreground="{StaticResource MainFontColor}"
@@ -50,21 +52,21 @@
             <Button Grid.Column="1"
                     Content="Add New Subtask"
                     Height="36"
-                    Width="178"
+                    Width="188"
                     Background="{StaticResource AccentColor}"
-                    Tag="/UiDesign/Icons/ButtonIcons/subtask.svg"
+                    Tag="/UiDesign/Icons/ButtonIcons/add.svg"
                     Style="{StaticResource GeneralButtonTheme}" />
 
             <!--Add New Subtask Button-->
             <Button Grid.Column="2"
-                    Content="View Subtask"
+                    Content="View Subtasks"
                     Height="36"
-                    Width="178"
+                    Width="188"
                     Background="{StaticResource Green}"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
                     Margin="15,0,0,0"
-                    Tag="/UiDesign/Icons/ButtonIcons/add.svg"
+                    Tag="/UiDesign/Icons/ButtonIcons/subtask.svg"
                     Style="{StaticResource GeneralButtonTheme}" />
         </Grid>
 
@@ -103,7 +105,9 @@
                           Padding="20,0"
                           Margin="0,0,0,23"
                           Style="{StaticResource ComboBoxTheme}"
-                          Background="{StaticResource InputField}" />
+                          Background="{StaticResource InputField}"
+                          ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enum:TaskTypes}}}" />
+
 
                 <!--Task Description TextBlock-->
                 <TextBlock Text="Description (optional)"
@@ -134,7 +138,8 @@
                           FontSize="15"
                           Padding="20,0"
                           Style="{StaticResource ComboBoxTheme}"
-                          Background="{StaticResource InputField}" />
+                          Background="{StaticResource InputField}"
+                          ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enum:Statuses}}}" />
 
                 <!--Task Category TextBlock-->
                 <TextBlock Text="Category"
@@ -147,7 +152,8 @@
                           FontSize="15"
                           Padding="20,0"
                           Style="{StaticResource ComboBoxTheme}"
-                          Background="{StaticResource InputField}" />
+                          Background="{StaticResource InputField}"
+                          ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enum:Categories}}}" />
 
                 <!--Task Priority TextBlock-->
                 <TextBlock Text="Priority"
@@ -160,7 +166,8 @@
                           FontSize="15"
                           Padding="20,0"
                           Style="{StaticResource ComboBoxTheme}"
-                          Background="{StaticResource InputField}" />
+                          Background="{StaticResource InputField}"
+                          ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enum:Priorities}}}" />
 
                 <!--Task Deadline TextBlock-->
                 <TextBlock Text="Deadline"
