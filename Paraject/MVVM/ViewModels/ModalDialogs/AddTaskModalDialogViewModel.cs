@@ -12,17 +12,18 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
     {
         private readonly TaskRepository _taskRepository;
         private readonly int _projectId;
+        private TasksViewModel _tasksViewModel;
 
-        public AddTaskModalDialogViewModel(int projectId, string taskType)
+        public AddTaskModalDialogViewModel(TasksViewModel tasksViewModel, int projectId, string taskType)
         {
             _taskRepository = new TaskRepository();
             _projectId = projectId;
+            _tasksViewModel = tasksViewModel;
 
             CurrentTask = new Task()
             {
                 Type = taskType
             };
-
             CurrentTaskType = taskType.Replace("_", " ");
 
             CloseModalCommand = new DelegateCommand(CloseModal);
@@ -68,7 +69,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         {
             if (isAdded)
             {
-                TasksTodoViewModel tasksTodoViewModel = new TasksTodoViewModel(_projectId, CurrentTask.Type);
+                TasksTodoViewModel tasksTodoViewModel = new TasksTodoViewModel(_tasksViewModel, _projectId, CurrentTask.Type);
                 TasksViewModel.CurrentView = tasksTodoViewModel;
 
                 MessageBox.Show("Task Created");

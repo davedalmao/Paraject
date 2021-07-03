@@ -15,12 +15,14 @@ namespace Paraject.MVVM.ViewModels
         private readonly int _projectId;
         private readonly TaskRepository _taskRepository;
         private readonly string _currentTaskType;
+        private TasksViewModel _tasksViewModel;
 
-        public TasksTodoViewModel(int projectId, string taskType)
+        public TasksTodoViewModel(TasksViewModel tasksViewModel, int projectId, string taskType)
         {
             _taskRepository = new TaskRepository();
             _projectId = projectId;
             _currentTaskType = taskType;
+            _tasksViewModel = tasksViewModel;
 
             ShowAddTaskModalDialogCommand = new DelegateCommand(ShowAddTaskModalDialog);
             FilterTasksCommand = new DelegateCommand(DisplayAllFilteredTasks);
@@ -47,7 +49,7 @@ namespace Paraject.MVVM.ViewModels
         {
             MainWindowViewModel.Overlay = true;
 
-            AddTaskModalDialogViewModel addTaskModalDialogViewModel = new AddTaskModalDialogViewModel(_projectId, _currentTaskType);
+            AddTaskModalDialogViewModel addTaskModalDialogViewModel = new AddTaskModalDialogViewModel(_tasksViewModel, _projectId, _currentTaskType);
 
             AddTaskModalDialog addTaskModalDialog = new();
             addTaskModalDialog.DataContext = addTaskModalDialogViewModel;
@@ -91,7 +93,7 @@ namespace Paraject.MVVM.ViewModels
                 CardTasksGrid.Add(td);
             }
         }
-        private void DisplayAllFilteredTasks()
+        public void DisplayAllFilteredTasks()
         {
             GetValuesForTasksCollection();
             SetNewGridDisplay();
@@ -100,7 +102,7 @@ namespace Paraject.MVVM.ViewModels
         public void NavigateToTaskDetailsView(object taskId) //the argument passed to this parameter is in ProjectsView (a "CommandParameter" from a Project card)
         {
             Task selectedTask = _taskRepository.Get((int)taskId);
-            TaskDetailsViewModel taskDetailsViewModel = new TaskDetailsViewModel(selectedTask);
+            TaskDetailsViewModel taskDetailsViewModel = new TaskDetailsViewModel(this, _tasksViewModel, selectedTask);
 
             MainWindowViewModel.CurrentView = taskDetailsViewModel;
         }

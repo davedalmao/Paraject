@@ -238,7 +238,8 @@
                     Width="160"
                     Tag="/UiDesign/Icons/ButtonIcons/delete.svg"
                     Background="{StaticResource Orange}"
-                    Style="{StaticResource GeneralButtonTheme}" />
+                    Style="{StaticResource GeneralButtonTheme}"
+                    Command="{Binding DeleteTaskCommand}" />
         </Grid>
     </Grid>
 </UserControl>

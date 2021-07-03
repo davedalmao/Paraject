@@ -14,15 +14,15 @@ namespace Paraject.MVVM.ViewModels
         {
             CurrentProject = currentProject;
 
-            //TasksView child Views
-            TasksTodoVM = new TasksTodoViewModel(currentProject.Id, "Finish_Line");
+            //TasksView child Views (ViewModels)
+            TasksTodoVM = new TasksTodoViewModel(this, currentProject.Id, "Finish_Line");
             CompletedTasksVM = new CompletedTasksViewModel(currentProject.Id);
             ProjectNotesVM = new ProjectNotesViewModel();
             ProjectDetailsVM = new ProjectDetailsViewModel(projectsViewModel, currentProject);
 
             CurrentView = TasksTodoVM;
 
-            //TasksView child Views
+            //TasksView child Views (Navigation)
             TasksTodoViewCommand = new ParameterizedDelegateCommand(NavigateToTasksTodoView);
             CompletedTasksViewCommand = new DelegateCommand(NavigateToCompletedTasksView);
             ProjectNotesViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectNotesVM; });
@@ -44,6 +44,11 @@ namespace Paraject.MVVM.ViewModels
                     CurrentViewChanged(null, EventArgs.Empty);
             }
         }
+
+        //RadioButtons in TasksView
+        public bool FinishLineButtonIsChecked { get; set; } = true; //default selected RadioButton
+        public bool ExtraFeaturesButtonIsChecked { get; set; }
+        public bool CompletedButtonIsChecked { get; set; }
         #endregion
 
         #region ViewModels (that will navigate with their associated Views)
@@ -73,7 +78,7 @@ namespace Paraject.MVVM.ViewModels
         }
         private void NavigateToTasksTodoView(object taskType) //the argument passed to this parameter is in TasksView (a "CommandParameter" from a Tab header)
         {
-            TasksTodoVM = new TasksTodoViewModel(CurrentProject.Id, taskType.ToString());
+            TasksTodoVM = new TasksTodoViewModel(this, CurrentProject.Id, taskType.ToString());
             CurrentView = TasksTodoVM;
         }
         private void NavigateToCompletedTasksView()
@@ -82,6 +87,5 @@ namespace Paraject.MVVM.ViewModels
             CurrentView = CompletedTasksVM;
         }
         #endregion
-
     }
 }
