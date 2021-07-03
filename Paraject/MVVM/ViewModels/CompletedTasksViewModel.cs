@@ -60,6 +60,7 @@ namespace Paraject.MVVM.ViewModels
             int row = -1;
             int column = -1;
 
+            //This is for a 3 column grid, with n number of rows
             for (int i = 0; i < CompletedTasks.Count; i++)
             {
                 if (column == 2)
