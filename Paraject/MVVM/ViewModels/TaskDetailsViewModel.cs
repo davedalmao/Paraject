@@ -73,6 +73,7 @@ namespace Paraject.MVVM.ViewModels
                 //redirect to TasksView after a successful DELETE operation, and refresh the View in TasksTodoView (child View of TasksView) with the new records
                 TasksTodoViewModel taskTodoViewModel = _taskTodoViewModel as TasksTodoViewModel;
                 taskTodoViewModel.DisplayAllFilteredTasks();
+
                 MainWindowViewModel.CurrentView = _tasksViewModel;
             }
             else

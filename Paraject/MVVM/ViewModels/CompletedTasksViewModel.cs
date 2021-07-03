@@ -1,6 +1,7 @@
 ﻿using Paraject.Core.Commands;
 using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.Windows;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -9,13 +10,19 @@ namespace Paraject.MVVM.ViewModels
     public class CompletedTasksViewModel : BaseViewModel
     {
         private readonly TaskRepository _taskRepository;
+        private readonly TasksViewModel _tasksViewModel;
         private readonly int _projectId;
 
-        public CompletedTasksViewModel(int projectId)
+        public CompletedTasksViewModel(TasksViewModel tasksViewModel, int projectId)
         {
             _taskRepository = new TaskRepository();
+
+            _tasksViewModel = tasksViewModel;
             _projectId = projectId;
+
             FilterTasksCommand = new DelegateCommand(FilterTasks);
+            NavigateToTaskDetailsViewCommand = new ParameterizedDelegateCommand(NavigateToTaskDetailsView);
+
 
             DisplayAllFilteredTasks();
         }
@@ -28,10 +35,10 @@ namespace Paraject.MVVM.ViewModels
         public string CategoryFilter { get; set; } = "Show All";
 
         public ICommand FilterTasksCommand { get; }
+        public ICommand NavigateToTaskDetailsViewCommand { get; }
         #endregion
 
         #region Methods
-        #region Reset Methods
         private void SetValuesForTasksCollection()
         {
             CompletedTasks = null;
@@ -48,7 +55,6 @@ namespace Paraject.MVVM.ViewModels
             SetNewGridDisplay();
             TaskCardGridLocation();
         }
-        #endregion
         private void TaskCardGridLocation()
         {
             int row = -1;
@@ -82,12 +88,12 @@ namespace Paraject.MVVM.ViewModels
             SetNewGridDisplay();
             TaskCardGridLocation();
         }
-        public void NavigateToTaskDetailsView(object taskId) //the argument passed to this parameter is in ProjectsView (a "CommandParameter" from a Project card)
+        public void NavigateToTaskDetailsView(object taskId) //the argument passed to this parameter is in CompletedTasksView (a "CommandParameter" from a Task card)
         {
             Task selectedTask = _taskRepository.Get((int)taskId);
-            //TaskDetailsViewModel taskDetailsViewModel = new TaskDetailsViewModel(this, _tasksViewModel, selectedTask);
+            TaskDetailsViewModel taskDetailsViewModel = new TaskDetailsViewModel(this, _tasksViewModel, selectedTask);
 
-            //MainWindowViewModel.CurrentView = taskDetailsViewModel;
+            MainWindowViewModel.CurrentView = taskDetailsViewModel;
         }
         #endregion
     }
