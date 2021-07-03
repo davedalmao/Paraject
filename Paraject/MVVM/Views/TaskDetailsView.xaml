@@ -228,7 +228,8 @@
                     Margin="0,0,26,0"
                     Tag="/UiDesign/Icons/ButtonIcons/update.svg"
                     Background="{StaticResource Yellow}"
-                    Style="{StaticResource GeneralButtonTheme}" />
+                    Style="{StaticResource GeneralButtonTheme}"
+                    Command="{Binding UpdateTaskCommand}" />
 
             <!--Delete Task Button-->
             <Button Content="Delete Task"

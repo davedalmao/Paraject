@@ -219,7 +219,7 @@ namespace Paraject.Core.Repositories
                     cmd.Parameters.Add("@task_subject", SqlDbType.NVarChar, 50).Value = task.Subject;
                     cmd.Parameters.Add("@task_type", SqlDbType.NVarChar, 50).Value = task.Type;
                     cmd.Parameters.Add("@task_description", SqlDbType.NVarChar, 500).Value = task.Description;
-                    cmd.Parameters.Add("@task_status", SqlDbType.NVarChar, 20).Value = Enum.GetName(Statuses.Open);
+                    cmd.Parameters.Add("@task_status", SqlDbType.NVarChar, 20).Value = task.Status;
                     cmd.Parameters.Add("@task_category", SqlDbType.NVarChar, 50).Value = task.Category;
                     cmd.Parameters.Add("@task_priority", SqlDbType.NVarChar, 4).Value = task.Priority;
                     cmd.Parameters.Add("@task_deadline", SqlDbType.DateTime2).Value = task.Deadline;
