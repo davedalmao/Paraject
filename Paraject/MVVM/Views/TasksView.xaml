@@ -50,19 +50,21 @@
                    Margin="0,20,0,32">
             <!--FinishLine Type Tasks-->
             <custom:MenuItem Content="Finish Line"
-                             IsChecked="True"
+                             IsChecked="{Binding FinishLineButtonIsChecked}"
                              Style="{StaticResource VerticalMenuButtonTheme}"
                              Command="{Binding TasksTodoViewCommand}"
                              CommandParameter="Finish_Line" />
 
             <!--ExtraFeatures Type Tasks-->
             <custom:MenuItem Content="Extra Features"
+                             IsChecked="{Binding ExtraFeaturesButtonIsChecked}"
                              Style="{StaticResource VerticalMenuButtonTheme}"
                              Command="{Binding TasksTodoViewCommand}"
                              CommandParameter="Extra_Feature" />
 
             <!--Compeleted Type Tasks-->
             <custom:MenuItem Content="Completed Tasks"
+                             IsChecked="{Binding CompletedButtonIsChecked}"
                              Style="{StaticResource VerticalMenuButtonTheme}"
                              Command="{Binding CompletedTasksViewCommand}" />
 
