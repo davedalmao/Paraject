@@ -7,6 +7,7 @@
              xmlns:enum="clr-namespace:Paraject.Core.Enums"
              xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
              xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
+             xmlns:sys="clr-namespace:System;assembly=System.Runtime"
              d:DataContext="{d:DesignInstance Type=viewmodels:TaskDetailsViewModel}"
              mc:Ignorable="d"
              MaxWidth="800"
@@ -145,9 +146,15 @@
                           FontSize="15"
                           Padding="20,0"
                           Style="{StaticResource ComboBoxTheme}"
-                          Background="{StaticResource InputField}"
-                          ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enum:Statuses}}}"
-                          Text="{Binding CurrentTask.Status}" />
+                          Text="{Binding CurrentTask.Status}"
+                          Background="{StaticResource InputField}">
+                    <ComboBox.ItemsSource>
+                        <CompositeCollection>
+                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enum:Statuses}}}" />
+                            <sys:String>Completed</sys:String>
+                        </CompositeCollection>
+                    </ComboBox.ItemsSource>
+                </ComboBox>
 
                 <!--Task Category TextBlock-->
                 <TextBlock Text="Category"
