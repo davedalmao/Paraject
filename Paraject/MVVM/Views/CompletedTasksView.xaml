@@ -36,7 +36,8 @@
                           FontSize="15"
                           Background="{StaticResource InputField}"
                           Style="{StaticResource ComboBoxTheme2}"
-                          SelectedValue="{Binding CurrentTaskType}">
+                          SelectedValue="{Binding CurrentTaskType}"
+                          Text="{Binding CurrentTaskType}">
                     <!--Enum ItemSource-->
                     <ComboBox.ItemsSource>
                         <CompositeCollection>
@@ -64,7 +65,8 @@
                           FontSize="15"
                           Background="{StaticResource InputField}"
                           Style="{StaticResource ComboBoxTheme2}"
-                          SelectedValue="{Binding CategoryFilter}">
+                          SelectedValue="{Binding CategoryFilter}"
+                          Text="{Binding CategoryFilter}">
                     <!--Enum ItemSource-->
                     <ComboBox.ItemsSource>
                         <CompositeCollection>

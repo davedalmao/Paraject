@@ -36,7 +36,8 @@
                           FontSize="14.59"
                           Background="{StaticResource InputField}"
                           Style="{StaticResource ComboBoxTheme2}"
-                          SelectedValue="{Binding StatusFilter}">
+                          SelectedValue="{Binding StatusFilter}"
+                          Text="{Binding StatusFilter}">
                     <!--Enum ItemSource-->
                     <ComboBox.ItemsSource>
                         <CompositeCollection>
@@ -65,7 +66,8 @@
                           FontSize="14.59"
                           Background="{StaticResource InputField}"
                           Style="{StaticResource ComboBoxTheme2}"
-                          SelectedValue="{Binding PriorityFilter}">
+                          SelectedValue="{Binding PriorityFilter}"
+                          Text="{Binding PriorityFilter}">
                     <!--Enum ItemSource-->
                     <ComboBox.ItemsSource>
                         <CompositeCollection>
@@ -94,7 +96,8 @@
                           FontSize="14.59"
                           Background="{StaticResource InputField}"
                           Style="{StaticResource ComboBoxTheme2}"
-                          SelectedValue="{Binding CategoryFilter}">
+                          SelectedValue="{Binding CategoryFilter}"
+                          Text="{Binding CategoryFilter}">
                     <!--Enum ItemSource-->
                     <ComboBox.ItemsSource>
                         <CompositeCollection>

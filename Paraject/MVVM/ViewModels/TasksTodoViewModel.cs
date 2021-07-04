@@ -29,6 +29,10 @@ namespace Paraject.MVVM.ViewModels
             FilterTasksCommand = new DelegateCommand(DisplayAllFilteredTasks);
             NavigateToTaskDetailsViewCommand = new ParameterizedDelegateCommand(NavigateToTaskDetailsView);
 
+            //StatusFilter = "Open";
+            //PriorityFilter = "High";
+            //CategoryFilter = "Database";
+
             DisplayAllFilteredTasks();
         }
 
@@ -39,6 +43,10 @@ namespace Paraject.MVVM.ViewModels
         public string StatusFilter { get; set; } = "Show All";
         public string PriorityFilter { get; set; } = "Show All";
         public string CategoryFilter { get; set; } = "Show All";
+
+        //public string StatusFilter { get; set; }
+        //public string PriorityFilter { get; set; }
+        //public string CategoryFilter { get; set; }
 
         public ICommand ShowAddTaskModalDialogCommand { get; }
         public ICommand FilterTasksCommand { get; }
