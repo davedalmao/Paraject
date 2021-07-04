@@ -43,12 +43,12 @@
                          Style="{StaticResource TextBoxTheme}"
                          Text="{Binding CurrentProject.Name}" />
 
-                <!--ProjectStatus TextBlock-->
-                <TextBlock Text="Project Status"
+                <!--ProjectOption TextBlock-->
+                <TextBlock Text="Project Option"
                            FontSize="16.5"
                            Margin="0,20,0,3" />
 
-                <!--ProjectStatus ComboBox-->
+                <!--ProjectOption ComboBox-->
                 <ComboBox Width="291"
                           Height="42"
                           FontSize="15"
@@ -56,14 +56,8 @@
                           Margin="0,0,0,20"
                           Style="{StaticResource ComboBoxTheme}"
                           Background="{StaticResource InputField}"
-                          Text="{Binding CurrentProject.Status}">
-                    <ComboBox.ItemsSource>
-                        <CompositeCollection>
-                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type StatusEnum:Statuses}}}" />
-                            <sys:String>Completed</sys:String>
-                        </CompositeCollection>
-                    </ComboBox.ItemsSource>
-                </ComboBox>
+                          Text="{Binding CurrentProject.Option}"
+                          ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type ProjectOptionsEnum:ProjectOptions}}}" />
 
                 <!--ProjectDescription TextBlock-->
                 <TextBlock Text="Description (optional)"
@@ -78,7 +72,7 @@
                          Style="{StaticResource TextBoxTheme}"
                          VerticalScrollBarVisibility="Auto"
                          VerticalContentAlignment="Top"
-                         Padding="20"
+                         Padding="20,10"
                          Text="{Binding CurrentProject.Description}" />
             </StackPanel>
 
@@ -119,20 +113,27 @@
                             Command="{Binding AddOrChangeLogoCommand}" />
                 </StackPanel>
 
-                <!--ProjectOption TextBlock-->
-                <TextBlock Text="Project Option"
+                <!--ProjectStatus TextBlock-->
+                <TextBlock Text="Project Status"
                            FontSize="16.5"
                            Margin="0,27,0,3" />
 
-                <!--ProjectOption ComboBox-->
+                <!--ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type ProjectOptionsEnum:ProjectOptions}}}"-->
+                <!--ProjectStatus ComboBox-->
                 <ComboBox Width="291"
                           Height="42"
                           FontSize="15"
                           Padding="20,0"
                           Style="{StaticResource ComboBoxTheme}"
                           Background="{StaticResource InputField}"
-                          Text="{Binding CurrentProject.Option}"
-                          ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type ProjectOptionsEnum:ProjectOptions}}}" />
+                          Text="{Binding CurrentProject.Status}">
+                    <ComboBox.ItemsSource>
+                        <CompositeCollection>
+                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type StatusEnum:Statuses}}}" />
+                            <sys:String>Completed</sys:String>
+                        </CompositeCollection>
+                    </ComboBox.ItemsSource>
+                </ComboBox>
 
                 <!--Deadline TextBlock-->
                 <TextBlock Text="Deadline"
