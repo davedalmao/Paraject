@@ -11,12 +11,6 @@ using System.Windows;
 
 namespace Paraject.Core.Repositories
 {
-    public enum ProjectOptions
-    {
-        Personal,
-        Paid
-    }
-
     public class ProjectRepository : IProjectRepository
     {
         private readonly string _connectionString;
