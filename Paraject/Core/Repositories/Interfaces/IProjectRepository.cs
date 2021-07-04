@@ -1,4 +1,5 @@
-﻿using Paraject.MVVM.Models;
+﻿using Paraject.Core.Enums;
+using Paraject.MVVM.Models;
 using System.Collections.Generic;
 
 namespace Paraject.Core.Repositories.Interfaces
