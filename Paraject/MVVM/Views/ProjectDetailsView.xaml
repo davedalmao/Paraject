@@ -68,11 +68,13 @@
                 <TextBox Width="291"
                          Height="130"
                          FontSize="15"
+                         Padding="20,10"
                          TextWrapping="Wrap"
+                         TextBlock.LineHeight="23"
+                         TextBlock.LineStackingStrategy="BlockLineHeight"
                          Style="{StaticResource TextBoxTheme}"
                          VerticalScrollBarVisibility="Auto"
                          VerticalContentAlignment="Top"
-                         Padding="20,10"
                          Text="{Binding CurrentProject.Description}" />
             </StackPanel>
 
