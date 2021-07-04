@@ -34,7 +34,7 @@ namespace Paraject.Core.Repositories
                     cmd.Parameters.Add("@project_id", SqlDbType.Int).Value = projectId;
                     cmd.Parameters.Add("@task_subject", SqlDbType.NVarChar, 50).Value = task.Subject;
                     cmd.Parameters.Add("@task_type", SqlDbType.NVarChar, 50).Value = task.Type;
-                    cmd.Parameters.Add("@task_description", SqlDbType.NVarChar, 500).Value = task.Description;
+                    cmd.Parameters.Add("@task_description", SqlDbType.NVarChar, 1515).Value = task.Description;
                     cmd.Parameters.Add("@task_status", SqlDbType.NVarChar, 20).Value = Enum.GetName(Statuses.Open);
                     cmd.Parameters.Add("@task_category", SqlDbType.NVarChar, 50).Value = task.Category;
                     cmd.Parameters.Add("@task_priority", SqlDbType.NVarChar, 4).Value = task.Priority;
@@ -218,7 +218,7 @@ namespace Paraject.Core.Repositories
                     cmd.Parameters.Add("@task_id", SqlDbType.Int).Value = task.Id;
                     cmd.Parameters.Add("@task_subject", SqlDbType.NVarChar, 50).Value = task.Subject;
                     cmd.Parameters.Add("@task_type", SqlDbType.NVarChar, 50).Value = task.Type;
-                    cmd.Parameters.Add("@task_description", SqlDbType.NVarChar, 500).Value = task.Description;
+                    cmd.Parameters.Add("@task_description", SqlDbType.NVarChar, 1515).Value = task.Description;
                     cmd.Parameters.Add("@task_status", SqlDbType.NVarChar, 20).Value = task.Status;
                     cmd.Parameters.Add("@task_category", SqlDbType.NVarChar, 50).Value = task.Category;
                     cmd.Parameters.Add("@task_priority", SqlDbType.NVarChar, 4).Value = task.Priority;

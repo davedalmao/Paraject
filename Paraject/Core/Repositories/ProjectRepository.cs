@@ -41,7 +41,7 @@ namespace Paraject.Core.Repositories
 
                     cmd.Parameters.Add("@user_id", SqlDbType.Int).Value = userId;
                     cmd.Parameters.Add("@project_name", SqlDbType.NVarChar, 50).Value = project.Name;
-                    cmd.Parameters.Add("@project_description", SqlDbType.NVarChar, 500).Value = string.IsNullOrWhiteSpace(project.Description) ? null : project.Description;
+                    cmd.Parameters.Add("@project_description", SqlDbType.NVarChar, 1515).Value = string.IsNullOrWhiteSpace(project.Description) ? null : project.Description;
                     cmd.Parameters.Add("@project_option", SqlDbType.NVarChar, 50).Value = project.Option;
                     cmd.Parameters.Add("@project_status", SqlDbType.NVarChar, 12).Value = Enum.GetName(Statuses.Open);
                     cmd.Parameters.Add("@project_deadline", SqlDbType.DateTime2).Value = project.Deadline;
@@ -279,7 +279,7 @@ namespace Paraject.Core.Repositories
 
                     cmd.Parameters.Add("@project_id", SqlDbType.Int).Value = project.Id;
                     cmd.Parameters.Add("@project_name", SqlDbType.NVarChar, 50).Value = project.Name;
-                    cmd.Parameters.Add("@project_description", SqlDbType.NVarChar, 500).Value = string.IsNullOrWhiteSpace(project.Description) ? null : project.Description;
+                    cmd.Parameters.Add("@project_description", SqlDbType.NVarChar, 1515).Value = string.IsNullOrWhiteSpace(project.Description) ? null : project.Description;
                     cmd.Parameters.Add("@project_option", SqlDbType.NVarChar, 50).Value = project.Option;
                     cmd.Parameters.Add("@project_status", SqlDbType.NVarChar, 12).Value = project.Status;
                     cmd.Parameters.Add("@project_deadline", SqlDbType.DateTime2).Value = project.Deadline;
