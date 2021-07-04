@@ -34,12 +34,11 @@ namespace Paraject.MVVM.ViewModels
         #region Properties
         public ObservableCollection<Project> Projects { get; set; }
 
+        //RadioButtons in ProjectsView
         public bool AllProjectsButtonIsChecked { get; set; } = true; //default selected RadioButton
         public bool PersonalButtonIsChecked { get; set; }
         public bool PaidButtonIsChecked { get; set; }
         public bool CompletedButtonIsChecked { get; set; }
-
-        public TasksViewModel TasksVM { get; set; }
 
         public ICommand AllProjectsCommand { get; }
         public ICommand PersonalProjectsCommand { get; }
@@ -80,8 +79,8 @@ namespace Paraject.MVVM.ViewModels
         {
             Project selectedProject = _projectRepository.Get((int)projectId);
 
-            TasksVM = new TasksViewModel(this, selectedProject);
-            MainWindowViewModel.CurrentView = TasksVM;
+            TasksViewModel tasksViewModel = new TasksViewModel(this, selectedProject);
+            MainWindowViewModel.CurrentView = tasksViewModel;
         }
         #endregion
     }
