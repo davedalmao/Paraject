@@ -11,8 +11,6 @@ using System.Windows;
 
 namespace Paraject.Core.Repositories
 {
-
-
     public class ProjectRepository : IProjectRepository
     {
         private readonly string _connectionString;
