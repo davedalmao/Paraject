@@ -33,6 +33,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         #region Properties
         public Task CurrentTask { get; set; }
         public string CurrentTaskType { get; set; }
+
         public ICommand AddTaskCommand { get; }
         public ICommand CloseModalCommand { get; }
         #endregion
