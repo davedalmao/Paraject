@@ -19,7 +19,7 @@ namespace Paraject.MVVM.ViewModels
         /// </summary>
         /// <param name="refreshTaskCollection">refreshes the Collection in the ChildView (TasksTodoView/CompletedTasksView) after a certain action is invoked</param>
         /// <param name="tasksViewModel">this is passed to save the UI state of TasksView when navigating back to it</param>
-        /// <param name="selectedTask"></param>
+        /// <param name="selectedTask">the selected task in TasksTodoView/CompletedTasksview</param>
         public TaskDetailsViewModel(Action refreshTaskCollection, TasksViewModel tasksViewModel, Task selectedTask)
         {
             _taskRepository = new TaskRepository();
