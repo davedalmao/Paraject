@@ -9,9 +9,11 @@ namespace Paraject.MVVM.ViewModels
     public class TasksViewModel : BaseViewModel
     {
         private static object _currentView;
+        private readonly ProjectsViewModel _projectsViewModel;
 
         public TasksViewModel(ProjectsViewModel projectsViewModel, Project currentProject)
         {
+            _projectsViewModel = projectsViewModel;
             CurrentProject = currentProject;
 
             //TasksView child Views (ViewModels)
@@ -49,19 +51,14 @@ namespace Paraject.MVVM.ViewModels
         public bool FinishLineButtonIsChecked { get; set; } = true; //default selected RadioButton
         public bool ExtraFeaturesButtonIsChecked { get; set; }
         public bool CompletedButtonIsChecked { get; set; }
-        #endregion
-
-        #region ViewModels (that will navigate with their associated Views)
-        public ProjectsViewModel ProjectsVM { get; set; }
 
         //TasksView child Views
         public TasksTodoViewModel TasksTodoVM { get; set; }
         public CompletedTasksViewModel CompletedTasksVM { get; set; }
         public ProjectNotesViewModel ProjectNotesVM { get; set; }
         public ProjectDetailsViewModel ProjectDetailsVM { get; set; }
-        #endregion
 
-        #region Commands
+        //Commands
         public ICommand NavigateBackToProjectsViewCommand { get; }
         public ICommand TasksTodoViewCommand { get; }
         public ICommand CompletedTasksViewCommand { get; }
@@ -72,9 +69,7 @@ namespace Paraject.MVVM.ViewModels
         #region Navigation Methods
         public void NavigateBackToProjectsView()
         {
-            ProjectsViewModel projectsViewModel = new ProjectsViewModel(CurrentProject.User_Id_Fk);
-            ProjectsVM = projectsViewModel;
-            MainWindowViewModel.CurrentView = ProjectsVM;
+            MainWindowViewModel.CurrentView = _projectsViewModel;
         }
         private void NavigateToTasksTodoView(object taskType) //the argument passed to this parameter is in TasksView (a "CommandParameter" from a Tab header)
         {
