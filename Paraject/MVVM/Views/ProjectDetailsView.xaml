@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:Paraject.MVVM.Views"
              xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
              xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
-             xmlns:ProjectOptionsEnum="clr-namespace:Paraject.Core.Repositories"
-             xmlns:StatusEnum="clr-namespace:Paraject.Core.Enums"
+             xmlns:enums="clr-namespace:Paraject.Core.Enums"
              xmlns:sys="clr-namespace:System;assembly=System.Runtime"
              d:DataContext="{d:DesignInstance Type=viewmodels:ProjectDetailsViewModel}"
              mc:Ignorable="d"
@@ -57,7 +56,7 @@
                           Style="{StaticResource ComboBoxTheme}"
                           Background="{StaticResource InputField}"
                           Text="{Binding CurrentProject.Option}"
-                          ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type ProjectOptionsEnum:ProjectOptions}}}" />
+                          ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:ProjectOptions}}}" />
 
                 <!--ProjectDescription TextBlock-->
                 <TextBlock Text="Description (optional)"
@@ -120,7 +119,6 @@
                            FontSize="16.5"
                            Margin="0,27,0,3" />
 
-                <!--ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type ProjectOptionsEnum:ProjectOptions}}}"-->
                 <!--ProjectStatus ComboBox-->
                 <ComboBox Width="291"
                           Height="42"
@@ -131,7 +129,7 @@
                           Text="{Binding CurrentProject.Status}">
                     <ComboBox.ItemsSource>
                         <CompositeCollection>
-                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type StatusEnum:Statuses}}}" />
+                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Statuses}}}" />
                             <sys:String>Completed</sys:String>
                         </CompositeCollection>
                     </ComboBox.ItemsSource>

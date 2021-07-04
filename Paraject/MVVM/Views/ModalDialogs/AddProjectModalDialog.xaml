@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Paraject.MVVM.Views.ModalDialogs"
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
         xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
-        xmlns:enums="clr-namespace:Paraject.Core.Repositories"
+        xmlns:enums="clr-namespace:Paraject.Core.Enums"
         xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
         xmlns:modaldialogs="clr-namespace:Paraject.MVVM.ViewModels.ModalDialogs"
         d:DataContext="{d:DesignInstance Type=modaldialogs:AddProjectModalDialogViewModel}"

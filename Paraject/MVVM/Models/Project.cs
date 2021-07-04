@@ -1,4 +1,4 @@
-﻿using Paraject.Core.Repositories;
+﻿using Paraject.Core.Enums;
 using PropertyChanged;
 using System;
 using System.ComponentModel;
