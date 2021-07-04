@@ -2,6 +2,7 @@
 using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -10,19 +11,20 @@ namespace Paraject.MVVM.ViewModels
     public class TaskDetailsViewModel : BaseViewModel
     {
         private readonly TaskRepository _taskRepository;
-        private BaseViewModel _currentTaskRelatedViewModel;
-        private TasksViewModel _tasksViewModel;
+        private readonly Action _refreshTaskCollection;
+        private readonly TasksViewModel _tasksViewModel;
 
         /// <summary>
         /// This displays the details of the selectedTask
         /// </summary>
-        /// <param name="currentTaskRelatedViewModel">ONLY PASS: TasksTodoViewModel and TaskCompletedViewModel</param>
+        /// <param name="refreshTaskCollection">refreshes the Collection in the ChildView (TasksTodoView/CompletedTasksView) after a certain action is invoked</param>
         /// <param name="tasksViewModel">this is passed to save the UI state of TasksView when navigating back to it</param>
         /// <param name="selectedTask"></param>
-        public TaskDetailsViewModel(BaseViewModel currentTaskRelatedViewModel, TasksViewModel tasksViewModel, Task selectedTask)
+        public TaskDetailsViewModel(Action refreshTaskCollection, TasksViewModel tasksViewModel, Task selectedTask)
         {
             _taskRepository = new TaskRepository();
-            _currentTaskRelatedViewModel = currentTaskRelatedViewModel;
+            _refreshTaskCollection = refreshTaskCollection;
+
             _tasksViewModel = tasksViewModel;
             CurrentTask = selectedTask;
             UpdateTaskCommand = new DelegateCommand(Update);
@@ -32,6 +34,7 @@ namespace Paraject.MVVM.ViewModels
 
         #region Properties
         public Task CurrentTask { get; set; }
+
         public ICommand UpdateTaskCommand { get; }
         public ICommand DeleteTaskCommand { get; }
         public ICommand NavigateBackToTasksViewCommand { get; }
@@ -73,8 +76,8 @@ namespace Paraject.MVVM.ViewModels
                 MessageBox.Show("Task deleted successfully");
 
                 //redirect to TasksView (parent View) after a successful DELETE operation, and
-                //refresh the Tasks Collection in TasksTodoView/CompletedTasksView (child View/s of TasksView) with the new records
-                DisplayChildViewAndRefreshTaskCollection();
+                //refreshes the Tasks Collection in TasksTodoView/CompletedTasksView (child View/s of TasksView) with the new records
+                _refreshTaskCollection();
                 MainWindowViewModel.CurrentView = _tasksViewModel;
             }
             else
@@ -84,22 +87,8 @@ namespace Paraject.MVVM.ViewModels
         }
         private void NavigateBackToTasksView()
         {
-            DisplayChildViewAndRefreshTaskCollection();
+            _refreshTaskCollection();
             MainWindowViewModel.CurrentView = _tasksViewModel;
-        }
-        private void DisplayChildViewAndRefreshTaskCollection()
-        {
-            if (_currentTaskRelatedViewModel is TasksTodoViewModel)
-            {
-                TasksTodoViewModel taskTodoViewModel = _currentTaskRelatedViewModel as TasksTodoViewModel;
-                //MessageBox.Show(taskTodoViewModel.CategoryFilter);
-                taskTodoViewModel.DisplayAllFilteredTasks();
-            }
-            else if (_currentTaskRelatedViewModel is CompletedTasksViewModel)
-            {
-                CompletedTasksViewModel completedTasksViewModel = _currentTaskRelatedViewModel as CompletedTasksViewModel;
-                completedTasksViewModel.DisplayAllFilteredTasks();
-            }
         }
         #endregion
     }

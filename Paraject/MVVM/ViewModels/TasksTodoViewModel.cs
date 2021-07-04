@@ -15,7 +15,7 @@ namespace Paraject.MVVM.ViewModels
         private readonly int _projectId;
         private readonly TaskRepository _taskRepository;
         private readonly string _currentTaskType;
-        private TasksViewModel _tasksViewModel;
+        private readonly TasksViewModel _tasksViewModel;
 
         public TasksTodoViewModel(TasksViewModel tasksViewModel, int projectId, string taskType)
         {
@@ -103,7 +103,7 @@ namespace Paraject.MVVM.ViewModels
         public void NavigateToTaskDetailsView(object taskId) //the argument passed to this parameter is in ProjectsView (a "CommandParameter" from a Project card)
         {
             Task selectedTask = _taskRepository.Get((int)taskId);
-            TaskDetailsViewModel taskDetailsViewModel = new TaskDetailsViewModel(this, _tasksViewModel, selectedTask);
+            TaskDetailsViewModel taskDetailsViewModel = new TaskDetailsViewModel(DisplayAllFilteredTasks, _tasksViewModel, selectedTask);
 
             MainWindowViewModel.CurrentView = taskDetailsViewModel;
         }

@@ -90,7 +90,7 @@ namespace Paraject.MVVM.ViewModels
         public void NavigateToTaskDetailsView(object taskId) //the argument passed to this parameter is in CompletedTasksView (a "CommandParameter" from a Task card)
         {
             Task selectedTask = _taskRepository.Get((int)taskId);
-            TaskDetailsViewModel taskDetailsViewModel = new TaskDetailsViewModel(this, _tasksViewModel, selectedTask);
+            TaskDetailsViewModel taskDetailsViewModel = new TaskDetailsViewModel(DisplayAllFilteredTasks, _tasksViewModel, selectedTask);
 
             MainWindowViewModel.CurrentView = taskDetailsViewModel;
         }
