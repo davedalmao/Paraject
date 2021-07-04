@@ -27,12 +27,14 @@ namespace Paraject.MVVM.ViewModels
             CurrentTask = selectedTask;
             UpdateTaskCommand = new DelegateCommand(Update);
             DeleteTaskCommand = new DelegateCommand(Delete);
+            NavigateBackToTasksViewCommand = new DelegateCommand(NavigateBackToTasksView);
         }
 
         #region Properties
         public Task CurrentTask { get; set; }
         public ICommand UpdateTaskCommand { get; }
         public ICommand DeleteTaskCommand { get; }
+        public ICommand NavigateBackToTasksViewCommand { get; }
         #endregion
 
         #region Methods
@@ -80,11 +82,17 @@ namespace Paraject.MVVM.ViewModels
                 MessageBox.Show("An error occurred, cannot delete task");
             }
         }
+        private void NavigateBackToTasksView()
+        {
+            DisplayChildViewAndRefreshTaskCollection();
+            MainWindowViewModel.CurrentView = _tasksViewModel;
+        }
         private void DisplayChildViewAndRefreshTaskCollection()
         {
             if (_currentTaskRelatedViewModel is TasksTodoViewModel)
             {
                 TasksTodoViewModel taskTodoViewModel = _currentTaskRelatedViewModel as TasksTodoViewModel;
+                //MessageBox.Show(taskTodoViewModel.CategoryFilter);
                 taskTodoViewModel.DisplayAllFilteredTasks();
             }
             else if (_currentTaskRelatedViewModel is CompletedTasksViewModel)
