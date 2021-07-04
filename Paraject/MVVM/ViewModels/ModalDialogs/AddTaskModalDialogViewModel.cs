@@ -13,14 +13,12 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         private readonly TaskRepository _taskRepository;
         private readonly Action _refreshTaskCollection;
         private readonly int _projectId;
-        //private TasksViewModel _tasksViewModel;
 
         public AddTaskModalDialogViewModel(Action refreshTaskCollection, int projectId, string taskType)
         {
             _taskRepository = new TaskRepository();
             _refreshTaskCollection = refreshTaskCollection;
             _projectId = projectId;
-            //_tasksViewModel = tasksViewModel;
 
             CurrentTask = new Task()
             {
@@ -72,8 +70,6 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         {
             if (isAdded)
             {
-                //TasksTodoViewModel tasksTodoViewModel = new TasksTodoViewModel(_tasksViewModel, _projectId, CurrentTask.Type);
-                //TasksViewModel.CurrentView = tasksTodoViewModel;
                 MessageBox.Show("Task Created");
                 _refreshTaskCollection();
                 CloseModal();
