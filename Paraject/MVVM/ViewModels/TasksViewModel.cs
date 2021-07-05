@@ -10,10 +10,12 @@ namespace Paraject.MVVM.ViewModels
     {
         private static object _currentView;
         private readonly ProjectsViewModel _projectsViewModel;
+        private readonly Action _refreshProjectsCollection;
 
-        public TasksViewModel(ProjectsViewModel projectsViewModel, Project currentProject)
+        public TasksViewModel(ProjectsViewModel projectsViewModel, Action refreshProjectsCollection, Project currentProject)
         {
             _projectsViewModel = projectsViewModel;
+            _refreshProjectsCollection = refreshProjectsCollection;
             CurrentProject = currentProject;
 
             //TasksView child Views (ViewModels)
@@ -69,6 +71,7 @@ namespace Paraject.MVVM.ViewModels
         #region Navigation Methods
         public void NavigateBackToProjectsView()
         {
+            _refreshProjectsCollection();
             MainWindowViewModel.CurrentView = _projectsViewModel;
         }
         private void NavigateToTasksTodoView(object taskType) //the argument passed to this parameter is in TasksView (a "CommandParameter" from a Tab header)
