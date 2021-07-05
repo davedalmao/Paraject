@@ -83,8 +83,8 @@ namespace Paraject.MVVM.ViewModels
             {
                 MessageBox.Show("Project deleted successfully");
 
-                //redirect to ProjectsView after a successful DELETE operation, and refresh the View with the new records
-                _projectsViewModel.DisplayAllProjects();
+                //redirect to ProjectsView after a successful DELETE operation, and refresh the View with the appropriate records
+                _projectsViewModel.RefreshProjects();
                 MainWindowViewModel.CurrentView = _projectsViewModel;
             }
             else
