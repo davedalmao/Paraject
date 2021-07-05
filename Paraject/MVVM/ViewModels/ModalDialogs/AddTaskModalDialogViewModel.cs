@@ -70,8 +70,8 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         {
             if (isAdded)
             {
-                MessageBox.Show("Task Created");
                 _refreshTaskCollection();
+                MessageBox.Show("Task Created");
                 CloseModal();
             }
 
