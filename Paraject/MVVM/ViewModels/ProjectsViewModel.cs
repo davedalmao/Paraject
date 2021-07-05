@@ -102,7 +102,7 @@ namespace Paraject.MVVM.ViewModels
         {
             Project selectedProject = _projectRepository.Get((int)projectId);
 
-            TasksViewModel tasksViewModel = new TasksViewModel(this, selectedProject);
+            TasksViewModel tasksViewModel = new TasksViewModel(this, RefreshProjects, selectedProject);
             MainWindowViewModel.CurrentView = tasksViewModel;
         }
         #endregion
