@@ -13,11 +13,13 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
     public class AddProjectModalDialogViewModel : BaseViewModel
     {
         private readonly ProjectRepository _projectRepository;
+        private readonly Action _refreshProjectsCollection;
         private readonly int _currentUserId;
 
-        public AddProjectModalDialogViewModel(int currentUserId)
+        public AddProjectModalDialogViewModel(Action refreshProjectsCollection, int currentUserId)
         {
             _projectRepository = new ProjectRepository();
+            _refreshProjectsCollection = refreshProjectsCollection;
             _currentUserId = currentUserId;
 
             CurrentProject = new Project();
@@ -52,9 +54,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         {
             if (isAdded)
             {
-                ProjectsViewModel projectsViewModel = new(_currentUserId);
-                MainWindowViewModel.CurrentView = projectsViewModel;
-
+                _refreshProjectsCollection();
                 MessageBox.Show("Project Created");
                 CloseModalDialog();
             }

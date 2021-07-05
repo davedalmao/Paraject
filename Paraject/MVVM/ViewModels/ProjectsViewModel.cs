@@ -66,11 +66,33 @@ namespace Paraject.MVVM.ViewModels
         {
             Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId).Where(project => project.Status == "Completed"));
         }
+        public void RefreshProjects()
+        {
+            if (PersonalButtonIsChecked)
+            {
+                DisplayPersonalProjects();
+            }
+
+            else if (PaidButtonIsChecked)
+            {
+                DisplayPaidProjects();
+            }
+
+            else if (CompletedButtonIsChecked)
+            {
+                DisplayCompletedProjects();
+            }
+
+            else
+            {
+                DisplayAllProjects();
+            }
+        }
         public void ShowAddProjectModalDialog()
         {
             MainWindowViewModel.Overlay = true;
 
-            AddProjectModalDialogViewModel addProjectModalDialogViewModel = new AddProjectModalDialogViewModel(_currentUserId);
+            AddProjectModalDialogViewModel addProjectModalDialogViewModel = new AddProjectModalDialogViewModel(RefreshProjects, _currentUserId);
 
             AddProjectModalDialog addProjectModalDialog = new AddProjectModalDialog();
             addProjectModalDialog.DataContext = addProjectModalDialogViewModel;
