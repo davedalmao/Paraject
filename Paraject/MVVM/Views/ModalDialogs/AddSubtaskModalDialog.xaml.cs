@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 
 namespace Paraject.MVVM.Views.ModalDialogs
 {
@@ -10,8 +11,12 @@ namespace Paraject.MVVM.Views.ModalDialogs
         public AddSubtaskModalDialog()
         {
             InitializeComponent();
-            MouseDown += delegate { DragMove(); };
             this.Owner = Application.Current.MainWindow;
+        }
+
+        private void AddSubtaskModalDialogMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left) { DragMove(); }
         }
     }
 }
