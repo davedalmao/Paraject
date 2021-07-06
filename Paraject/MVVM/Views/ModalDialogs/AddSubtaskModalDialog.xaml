@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paraject.MVVM.Views.ModalDialogs"
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
+        xmlns:modaldialogs="clr-namespace:Paraject.MVVM.ViewModels.ModalDialogs"
+        d:DataContext="{d:DesignInstance Type=modaldialogs:AddSubtaskModalDialogViewModel}"
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="CanResize"
@@ -80,7 +82,8 @@
                     <TextBox Width="294"
                              Height="42"
                              FontSize="15"
-                             Style="{StaticResource TextBoxTheme}" />
+                             Style="{StaticResource TextBoxTheme}"
+                             Text="{Binding CurrentSubtask.Subject}" />
 
                     <!--Subtask Priority TextBlock-->
                     <TextBlock Text="Priority"
@@ -93,7 +96,8 @@
                               FontSize="15"
                               Padding="20,0"
                               Style="{StaticResource ComboBoxTheme}"
-                              Background="{StaticResource InputField}" />
+                              Background="{StaticResource InputField}"
+                              Text="{Binding CurrentSubtask.Priority}" />
 
                     <!--Deadline TextBlock-->
                     <TextBlock Text="Deadline"
@@ -102,7 +106,8 @@
 
                     <!--Deadline DateTimePicker-->
                     <DatePicker Style="{StaticResource DatePickerTheme}"
-                                FontSize="15" />
+                                FontSize="15"
+                                SelectedDate="{Binding CurrentSubtask.Deadline}" />
 
                     <!--Create Project Button-->
                     <Button Content="Create New Project"
@@ -112,7 +117,8 @@
                             Background="{StaticResource AccentColor}"
                             VerticalAlignment="Bottom"
                             Tag="/UiDesign/Icons/ButtonIcons/subtask.svg"
-                            Style="{StaticResource GeneralButtonTheme}" />
+                            Style="{StaticResource GeneralButtonTheme}"
+                            Command="{Binding AddSubtaskCommand}" />
                 </StackPanel>
 
                 <!--Right Group-->
@@ -130,7 +136,8 @@
                              Style="{StaticResource TextBoxTheme}"
                              VerticalScrollBarVisibility="Auto"
                              VerticalContentAlignment="Top"
-                             Padding="20" />
+                             Padding="20"
+                             Text="{Binding CurrentSubtask.Description}" />
                 </StackPanel>
             </Grid>
         </Grid>
