@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:Paraject.MVVM.Views.ModalDialogs"
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
         xmlns:modaldialogs="clr-namespace:Paraject.MVVM.ViewModels.ModalDialogs"
+        xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
+        xmlns:enums="clr-namespace:Paraject.Core.Enums"
         d:DataContext="{d:DesignInstance Type=modaldialogs:AddSubtaskModalDialogViewModel}"
         mc:Ignorable="d"
         WindowStyle="None"
@@ -95,6 +97,7 @@
                               Height="42"
                               FontSize="15"
                               Padding="20,0"
+                              ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Priorities}}}"
                               Style="{StaticResource ComboBoxTheme}"
                               Background="{StaticResource InputField}"
                               Text="{Binding CurrentSubtask.Priority}" />
@@ -110,7 +113,7 @@
                                 SelectedDate="{Binding CurrentSubtask.Deadline}" />
 
                     <!--Create Project Button-->
-                    <Button Content="Create New Project"
+                    <Button Content="Create New Subtask"
                             Margin="0,59,0,0"
                             Height="40"
                             Width="294"
