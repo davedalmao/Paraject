@@ -174,6 +174,7 @@ namespace Paraject.Core.Repositories
 
                             projects.Add(project);
                         }
+                        //reading multiple Projects
                         while (sqlDataReader.Read());
                     }
                     sqlDataReader.Close();
