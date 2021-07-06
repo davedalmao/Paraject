@@ -61,7 +61,8 @@
                     Width="188"
                     Background="{StaticResource AccentColor}"
                     Tag="/UiDesign/Icons/ButtonIcons/add.svg"
-                    Style="{StaticResource GeneralButtonTheme}" />
+                    Style="{StaticResource GeneralButtonTheme}"
+                    Command="{Binding ShowAddSubtaskModalDialogCommand}" />
 
             <!--Add New Subtask Button-->
             <Button Grid.Column="2"
