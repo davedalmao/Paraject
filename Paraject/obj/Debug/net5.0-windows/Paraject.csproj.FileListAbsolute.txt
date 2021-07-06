@@ -96,3 +96,5 @@ D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\Ui
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\UiDesign\Theme\TextWithImageTheme.baml
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\TaskDetailsView.g.cs
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\TaskDetailsView.baml
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ModalDialogs\AddSubtaskModalDialog.g.cs
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ModalDialogs\AddSubtaskModalDialog.baml
