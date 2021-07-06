@@ -1,7 +1,9 @@
 ﻿using Paraject.Core.Commands;
 using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.ModalDialogs;
 using Paraject.MVVM.ViewModels.Windows;
+using Paraject.MVVM.Views.ModalDialogs;
 using System;
 using System.Windows;
 using System.Windows.Input;
@@ -29,6 +31,7 @@ namespace Paraject.MVVM.ViewModels
             CurrentTask = selectedTask;
             UpdateTaskCommand = new DelegateCommand(Update);
             DeleteTaskCommand = new DelegateCommand(Delete);
+            ShowAddSubtaskModalDialogCommand = new DelegateCommand(ShowAddSubtaskModalDialog);
             NavigateBackToTasksViewCommand = new DelegateCommand(NavigateBackToTasksView);
         }
 
@@ -37,6 +40,7 @@ namespace Paraject.MVVM.ViewModels
 
         public ICommand UpdateTaskCommand { get; }
         public ICommand DeleteTaskCommand { get; }
+        public ICommand ShowAddSubtaskModalDialogCommand { get; }
         public ICommand NavigateBackToTasksViewCommand { get; }
         #endregion
 
@@ -84,6 +88,16 @@ namespace Paraject.MVVM.ViewModels
             {
                 MessageBox.Show("An error occurred, cannot delete task");
             }
+        }
+        private void ShowAddSubtaskModalDialog()
+        {
+            MainWindowViewModel.Overlay = true;
+
+            AddSubtaskModalDialogViewModel addSubtaskModalDialogViewModel = new AddSubtaskModalDialogViewModel(CurrentTask.Id);
+
+            AddSubtaskModalDialog addSubtaskModalDialog = new AddSubtaskModalDialog();
+            addSubtaskModalDialog.DataContext = addSubtaskModalDialogViewModel;
+            addSubtaskModalDialog.Show();
         }
         private void NavigateBackToTasksView()
         {
