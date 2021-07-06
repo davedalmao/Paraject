@@ -1,4 +1,5 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using System.Windows;
@@ -8,22 +9,48 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 {
     public class AddSubtaskModalDialogViewModel : BaseViewModel
     {
-        public AddSubtaskModalDialogViewModel()
+        private readonly SubtaskRepository _subtaskRepository;
+        private readonly int _taskId;
+
+        public AddSubtaskModalDialogViewModel(int taskId)
         {
+            _subtaskRepository = new SubtaskRepository();
+            _taskId = taskId;
+
             CurrentSubtask = new Subtask();
             AddSubtaskCommand = new DelegateCommand(Add);
             CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
         }
 
-
-
         public Subtask CurrentSubtask { get; set; }
         public ICommand CloseModalDialogCommand { get; }
         public ICommand AddSubtaskCommand { get; }
 
-        private void Add()
+        public void Add()
         {
-            MessageBox.Show($"Subject: {CurrentSubtask.Subject} \nPriority: {CurrentSubtask.Priority} \nDeadline: {CurrentSubtask.Deadline} \nDescription: {CurrentSubtask.Description}");
+            if (!string.IsNullOrWhiteSpace(CurrentSubtask.Subject))
+            {
+                bool isAdded = _subtaskRepository.Add(CurrentSubtask, _taskId);
+                AddOperationResult(isAdded);
+            }
+
+            else
+            {
+                MessageBox.Show("A subtask should have a subject");
+            }
+        }
+        private void AddOperationResult(bool isAdded)
+        {
+            if (isAdded)
+            {
+                MessageBox.Show("Subtask Created");
+                CloseModalDialog();
+            }
+
+            else
+            {
+                MessageBox.Show("Error occured, cannot create subtask");
+            }
         }
         private void CloseModalDialog()
         {
