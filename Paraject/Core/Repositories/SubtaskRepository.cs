@@ -243,7 +243,33 @@ namespace Paraject.Core.Repositories
         }
         public bool Update(Subtask subtask)
         {
-            throw new NotImplementedException();
+            bool isUpdated = false;
+
+            using (SqlConnection con = new(_connectionString))
+            using (SqlCommand cmd = new("Subtask.spUpdateSubtask", con))
+            {
+                try
+                {
+                    con.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@subtask_id", SqlDbType.Int).Value = subtask.Id;
+                    cmd.Parameters.Add("@subtask_subject", SqlDbType.NVarChar, 50).Value = subtask.Subject;
+                    cmd.Parameters.Add("@subtask_status", SqlDbType.NVarChar, 20).Value = subtask.Status;
+                    cmd.Parameters.Add("@subtask_priority", SqlDbType.NVarChar, 4).Value = subtask.Priority;
+                    cmd.Parameters.Add("@subtask_description", SqlDbType.NVarChar, 1515).Value = string.IsNullOrWhiteSpace(subtask.Description) ? null : subtask.Description;
+                    cmd.Parameters.Add("@subtask_deadline", SqlDbType.DateTime2).Value = subtask.Deadline;
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    isUpdated = rowsAffected > 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+
+            return isUpdated;
         }
         public bool Delete(int subtaskId)
         {
