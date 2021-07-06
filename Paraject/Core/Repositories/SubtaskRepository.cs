@@ -180,7 +180,7 @@ namespace Paraject.Core.Repositories
             List<Subtask> subtasks = new();
 
             using (SqlConnection con = new(_connectionString))
-            using (SqlCommand cmd = new("Subtask.spFindAllSubasks", con))
+            using (SqlCommand cmd = new("Subtask.spFindAllSubtasks", con))
             {
                 try
                 {
@@ -273,7 +273,27 @@ namespace Paraject.Core.Repositories
         }
         public bool Delete(int subtaskId)
         {
-            throw new NotImplementedException();
+            bool isDeleted = false;
+
+            if (subtaskId <= 0) { return false; }
+
+            using SqlConnection con = new(_connectionString);
+            using SqlCommand cmd = new("Subtask.spDeleteSubtask", con);
+            try
+            {
+                con.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@subtask_id", SqlDbType.Int).Value = subtaskId;
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+                isDeleted = rowsAffected > 0;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return isDeleted;
         }
     }
 }
