@@ -22,10 +22,13 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
         }
 
+        #region Properties
         public Subtask CurrentSubtask { get; set; }
         public ICommand CloseModalDialogCommand { get; }
         public ICommand AddSubtaskCommand { get; }
+        #endregion
 
+        #region Methods
         public void Add()
         {
             if (!string.IsNullOrWhiteSpace(CurrentSubtask.Subject))
@@ -43,8 +46,9 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         {
             if (isAdded)
             {
-                MessageBox.Show("Subtask Created");
+                //messagebox issue (this is just temporary, we're going to use a custom MessageBox anyway)
                 CloseModalDialog();
+                MessageBox.Show("Subtask Created");
             }
 
             else
@@ -64,5 +68,6 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 }
             }
         }
+        #endregion
     }
 }
