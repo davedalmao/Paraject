@@ -113,7 +113,66 @@ namespace Paraject.Core.Repositories
         }
         public IEnumerable<Subtask> GetAll(int taskId)
         {
-            throw new NotImplementedException();
+            List<Subtask> subtasks = new();
+
+            using (SqlConnection con = new(_connectionString))
+            using (SqlCommand cmd = new("Subtask.spGetAllSubtasks", con))
+            {
+                try
+                {
+                    con.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@task_id", SqlDbType.Int).Value = taskId;
+
+                    SqlDataReader sqlDataReader = cmd.ExecuteReader();
+                    if (sqlDataReader.HasRows)
+                    {
+                        //Move to the first record.  If no records, get out.
+                        if (!sqlDataReader.Read()) { return null; }
+
+                        //Ordinals (Gets the column number from the database based on the [column name] passed in GetOrdinal method)
+                        int subtaskIdFromDb = sqlDataReader.GetOrdinal("subtask_id");
+                        int taskIdFk = sqlDataReader.GetOrdinal("task_id");
+                        int subtaskSubject = sqlDataReader.GetOrdinal("subtask_subject");
+                        int subtaskStatus = sqlDataReader.GetOrdinal("subtask_status");
+                        int subtaskPriority = sqlDataReader.GetOrdinal("subtask_priority");
+                        int subtaskDescription = sqlDataReader.GetOrdinal("subtask_description");
+                        int subtaskDeadline = sqlDataReader.GetOrdinal("subtask_deadline");
+                        int dateCreated = sqlDataReader.GetOrdinal("date_created");
+
+                        //Reads a single Project
+                        //Remember, we're already on the first record, so use do/while here.
+                        do
+                        {
+                            Subtask subtask = new()
+                            {
+                                Id = sqlDataReader.GetInt32(subtaskIdFromDb),
+                                Task_Id_Fk = sqlDataReader.GetInt32(taskIdFk),
+                                Subject = sqlDataReader.GetString(subtaskSubject),
+                                Status = sqlDataReader.GetString(subtaskStatus),
+                                Priority = sqlDataReader.GetString(subtaskPriority),
+                                Description = sqlDataReader.IsDBNull(subtaskDescription) ? "--" : sqlDataReader.GetString(subtaskDescription),
+                                Deadline = sqlDataReader.IsDBNull(subtaskDeadline) ? null : sqlDataReader.GetDateTime(subtaskDeadline),
+                                DateCreated = sqlDataReader.GetDateTime(dateCreated)
+                            };
+
+                            subtasks.Add(subtask);
+                        }
+                        while (sqlDataReader.Read());
+                    }
+                    sqlDataReader.Close();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+
+            return subtasks;
         }
         public IEnumerable<Subtask> FindAll(int taskId, string subtaskStatus, string subtaskPriority)
         {
