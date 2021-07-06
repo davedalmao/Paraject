@@ -18,7 +18,8 @@
         Width="764"
         Height="492"
         FontFamily="{StaticResource NunitoBold}"
-        Foreground="{StaticResource MainFontColor}">
+        Foreground="{StaticResource MainFontColor}"
+        MouseDown="AddSubtaskModalDialogMouseDown">
     <Border Background="{StaticResource MainBackground}"
             CornerRadius="20">
         <Grid Margin="25,20,25,40"
