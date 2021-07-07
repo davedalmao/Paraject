@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="Paraject.MVVM.Views.SubtasksView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Paraject.MVVM.Views"
+             xmlns:custom="clr-namespace:Paraject.Core.CustomControls"
+             mc:Ignorable="d"
+             MaxWidth="800"
+             MaxHeight="650"
+             Background="Transparent"
+             Foreground="{StaticResource MainFontColor}"
+             FontFamily="{StaticResource NunitoBold}">
+    <Grid Margin="40,8,40,25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--SubtasksView Header-->
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="0">
+            <!--Back (to TaskDetails) Button-->
+            <Button  Style="{StaticResource PlainButtonTheme}"
+                     Background="Transparent"
+                     Cursor="Hand"
+                     Width="28"
+                     Height="28">
+                <Image Source="/UiDesign/Icons/backArrow.png"
+                       RenderOptions.BitmapScalingMode="HighQuality"
+                       RenderOptions.EdgeMode="Aliased"
+                       SnapsToDevicePixels="True" />
+            </Button>
+
+            <!--Header text-->
+            <TextBlock Text="All subtasks for this Task  "
+                       TextTrimming="CharacterEllipsis"
+                       FontSize="25"
+                       Margin="8,0,0,0" />
+
+            <!--Task Category-->
+            <TextBlock Text=""
+                       TextTrimming="CharacterEllipsis"
+                       FontSize="25"
+                       Margin="8,0,0,0" />
+        </StackPanel>
+
+        <!--Subtask Filters-->
+        <DockPanel Grid.Row="1"
+                   Margin="0,20,0,32">
+            <!--Subtasks Todo Filter-->
+            <custom:MenuItem Content="Subtasks Todo"
+                             IsChecked="True"
+                             Style="{StaticResource VerticalMenuButtonTheme}" />
+
+            <!--Completed Subtasks Filter-->
+            <custom:MenuItem Content="Completed Subtasks"
+                             Style="{StaticResource VerticalMenuButtonTheme}" />
+
+
+            <!--Add New Subtask Button-->
+            <Button Content="Add New Subtask"
+                    Height="36"
+                    Width="216"
+                    Background="{StaticResource AccentColor}"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Tag="/UiDesign/Icons/ButtonIcons/add.svg"
+                    Style="{StaticResource GeneralButtonTheme}" />
+        </DockPanel>
+
+        <!--Subtask Todo Filters-->
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    Margin="0,0,0,15">
+            <!--Subtask Status ComboBox-->
+            <StackPanel>
+                <TextBlock Text="Subtask Status:"
+                           FontSize="13"
+                           Margin="0,0,0,4.5" />
+
+                <ComboBox Height="36"
+                          Width="125"
+                          FontSize="14.59"
+                          Background="{StaticResource InputField}"
+                          Style="{StaticResource ComboBoxTheme2}" />
+            </StackPanel>
+
+            <!--Subtask Priority ComboBox-->
+            <StackPanel Margin="18,0">
+                <TextBlock Text="Subtask Priority:"
+                           FontSize="13"
+                           Margin="0,0,0,4.5" />
+
+                <ComboBox Height="36"
+                          Width="116"
+                          FontSize="14.59"
+                          Background="{StaticResource InputField}"
+                          Style="{StaticResource ComboBoxTheme2}" />
+            </StackPanel>
+        </StackPanel>
+
+        <!--Subtasks Display-->
+        <ScrollViewer Style="{StaticResource ScrollbarTheme}"
+                      Height="346"
+                      Grid.Row="3">
+
+        </ScrollViewer>
+    </Grid>
+</UserControl>
