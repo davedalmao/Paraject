@@ -33,7 +33,9 @@ namespace Paraject.MVVM.ViewModels
             DeleteTaskCommand = new DelegateCommand(Delete);
             ShowAddSubtaskModalDialogCommand = new DelegateCommand(ShowAddSubtaskModalDialog);
             NavigateBackToTasksViewCommand = new DelegateCommand(NavigateBackToTasksView);
+            NavigateToSubtasksViewCommand = new DelegateCommand(NavigateToSubtasksView);
         }
+
 
         #region Properties
         public Task CurrentTask { get; set; }
@@ -42,6 +44,7 @@ namespace Paraject.MVVM.ViewModels
         public ICommand DeleteTaskCommand { get; }
         public ICommand ShowAddSubtaskModalDialogCommand { get; }
         public ICommand NavigateBackToTasksViewCommand { get; }
+        public ICommand NavigateToSubtasksViewCommand { get; }
         #endregion
 
         #region Methods
@@ -103,6 +106,10 @@ namespace Paraject.MVVM.ViewModels
         {
             _refreshTaskCollection();
             MainWindowViewModel.CurrentView = _tasksViewModel;
+        }
+        private void NavigateToSubtasksView()
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }
