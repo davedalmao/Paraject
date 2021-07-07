@@ -10,6 +10,7 @@
              xmlns:enums="clr-namespace:Paraject.Core.Enums"
              xmlns:sys="clr-namespace:System;assembly=System.Runtime"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:grid="clr-namespace:Paraject.Core.Utilities"
              d:DataContext="{d:DesignInstance Type=viewmodels:SubtasksViewModel}"
              mc:Ignorable="d"
              MaxWidth="800"
@@ -147,7 +148,40 @@
         <ScrollViewer Style="{StaticResource ScrollbarTheme}"
                       Height="346"
                       Grid.Row="3">
+            <ItemsControl x:Name="Subtasks"
+                          ItemsSource="{Binding CardSubtasksGrid}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Grid grid:AutoRowsGrid.ChildrenCount="{Binding Items.Count, ElementName=Tasks}"
+                              VerticalAlignment="Top">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="192" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="192" />
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
 
+                <!--Defined in /Utilities/AutoRowsGrid.cs-->
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="Grid.Row"
+                                Value="{Binding Row}" />
+                        <Setter Property="Grid.Column"
+                                Value="{Binding Column}" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Content.Subject}" />
+                            <TextBlock Text="{Binding Content.Task_Id_Fk}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </ScrollViewer>
     </Grid>
 </UserControl>
