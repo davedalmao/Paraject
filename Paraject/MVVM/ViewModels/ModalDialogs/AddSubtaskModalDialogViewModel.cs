@@ -2,6 +2,7 @@
 using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -10,11 +11,13 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
     public class AddSubtaskModalDialogViewModel : BaseViewModel
     {
         private readonly SubtaskRepository _subtaskRepository;
+        private readonly Action _refreshSubtasksCollection;
         private readonly int _taskId;
 
-        public AddSubtaskModalDialogViewModel(int taskId)
+        public AddSubtaskModalDialogViewModel(int taskId, Action refreshSubtasksCollection = null)
         {
             _subtaskRepository = new SubtaskRepository();
+            _refreshSubtasksCollection = refreshSubtasksCollection;
             _taskId = taskId;
 
             CurrentSubtask = new Subtask();
@@ -47,6 +50,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isAdded)
             {
                 //messagebox issue (this is just temporary, we're going to use a custom MessageBox anyway)
+                _refreshSubtasksCollection();
                 CloseModalDialog();
                 MessageBox.Show("Subtask Created");
             }

@@ -4,12 +4,14 @@ FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\Core\CustomControls\UserCo
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\CompletedTasksView.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\DashboardView.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\ModalDialogs\AddProjectModalDialog.xaml;;
+FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\ModalDialogs\AddSubtaskModalDialog.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\ModalDialogs\AddTaskModalDialog.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\OptionsView.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\ProjectDetailsView.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\ProjectIdeasView.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\ProjectNotesView.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\ProjectsView.xaml;;
+FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\SubtasksView.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\TaskDetailsView.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\TasksTodoView.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\TasksView.xaml;;
@@ -20,5 +22,4 @@ FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\Windows\SignupW
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\UiDesign\Theme\BindablePasswordBoxTheme.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\UiDesign\Theme\ComboBoxTheme2.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\UiDesign\Theme\HorizontalRadioButtonTheme.xaml;;
-FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\ModalDialogs\AddSubtaskModalDialog.xaml;;
 
