@@ -109,7 +109,9 @@ namespace Paraject.MVVM.ViewModels
         }
         private void NavigateToSubtasksView()
         {
-            throw new NotImplementedException();
+            SubtasksViewModel subtasksViewModel = new SubtasksViewModel();
+
+            MainWindowViewModel.CurrentView = subtasksViewModel;
         }
         #endregion
     }
