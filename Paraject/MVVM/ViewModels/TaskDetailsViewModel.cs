@@ -109,7 +109,7 @@ namespace Paraject.MVVM.ViewModels
         }
         private void NavigateToSubtasksView()
         {
-            SubtasksViewModel subtasksViewModel = new SubtasksViewModel();
+            SubtasksViewModel subtasksViewModel = new SubtasksViewModel(this);
 
             MainWindowViewModel.CurrentView = subtasksViewModel;
         }
