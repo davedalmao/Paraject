@@ -21,10 +21,13 @@ namespace Paraject.MVVM.ViewModels
             _taskId = taskId;
 
             NavigateBackToTaskDetailsViewCommand = new DelegateCommand(NavigateBackToTaskDetailsView);
-            FilterTasksCommand = new DelegateCommand(DisplayAllFilteredTasks);
+            FilterSubtasksCommand = new DelegateCommand(DisplayAllFilteredTasks);
+            DisplaySubtasksTodoCommand = new DelegateCommand(DisplaySubtasksTodo);
+            DisplayCompletedSubtasksCommand = new DelegateCommand(DisplayCompletedSubtasks);
 
             DisplayAllFilteredTasks();
         }
+        #region Properties
         public ObservableCollection<Subtask> Subtasks { get; set; }
         public ObservableCollection<GridTileData> CardSubtasksGrid { get; set; }
 
@@ -32,21 +35,27 @@ namespace Paraject.MVVM.ViewModels
         public string PriorityFilter { get; set; } = "Show All";
 
         public ICommand NavigateBackToTaskDetailsViewCommand { get; }
-        public ICommand FilterTasksCommand { get; }
+        public ICommand FilterSubtasksCommand { get; }
+        public ICommand DisplaySubtasksTodoCommand { get; }
+        public ICommand DisplayCompletedSubtasksCommand { get; }
+        #endregion
 
-
+        #region Methods
         private void NavigateBackToTaskDetailsView()
         {
             MainWindowViewModel.CurrentView = _taskDetailsViewModel;
         }
-
-        private void GetValuesForSubtasksCollection()
+        private void DisplaySubtasksTodo()
         {
-            Subtasks = null;
             Subtasks = new ObservableCollection<Subtask>(_subtaskRepository.FindAll(_taskId, StatusFilter, PriorityFilter)
                                                                            .Where(subtask => subtask.Status != "Completed"));
-            //Subtasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, _currentTaskType, StatusFilter, PriorityFilter, CategoryFilter)
-            //                                                      .Where(task => task.Status != "Completed"));
+            TaskCardGridDisplayAndLocation();
+        }
+        private void DisplayCompletedSubtasks()
+        {
+            Subtasks = new ObservableCollection<Subtask>(_subtaskRepository.GetAll(_taskId)
+                                                                           .Where(subtask => subtask.Status == "Completed"));
+            TaskCardGridDisplayAndLocation();
         }
         private void SetNewGridDisplay()
         {
@@ -82,10 +91,14 @@ namespace Paraject.MVVM.ViewModels
         }
         private void DisplayAllFilteredTasks()
         {
-            //MessageBox.Show($"Status: {StatusFilter} \nPriority: {PriorityFilter}");
-            GetValuesForSubtasksCollection();
+            DisplaySubtasksTodo();
+            TaskCardGridDisplayAndLocation();
+        }
+        private void TaskCardGridDisplayAndLocation()
+        {
             SetNewGridDisplay();
             SubtaskCardGridLocation();
         }
+        #endregion
     }
 }
