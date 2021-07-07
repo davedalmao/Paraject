@@ -150,7 +150,10 @@ namespace Paraject.Core.Repositories
                                 Task_Id_Fk = sqlDataReader.GetInt32(taskIdFk),
                                 Subject = sqlDataReader.GetString(subtaskSubject),
                                 Status = sqlDataReader.GetString(subtaskStatus),
-                                Priority = sqlDataReader.GetString(subtaskPriority),
+
+                                //when I query for Completed(status) subtasks, Priority property has no value, therefore not showing the Priority in the UI (Subtask Card)
+                                Priority = (sqlDataReader.GetString(subtaskStatus) == "Completed") ? null : sqlDataReader.GetString(subtaskPriority),
+
                                 Description = sqlDataReader.IsDBNull(subtaskDescription) ? "--" : sqlDataReader.GetString(subtaskDescription),
                                 Deadline = sqlDataReader.IsDBNull(subtaskDeadline) ? null : sqlDataReader.GetDateTime(subtaskDeadline),
                                 DateCreated = sqlDataReader.GetDateTime(dateCreated)
