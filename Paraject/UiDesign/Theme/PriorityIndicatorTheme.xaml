@@ -20,6 +20,12 @@
                 <Setter Property="Background"
                         Value="{DynamicResource Red}" />
             </Trigger>
+
+            <Trigger Property="Tag"
+                     Value="{x:Null}">
+                <Setter Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
         </Style.Triggers>
     </Style>
 </ResourceDictionary>
