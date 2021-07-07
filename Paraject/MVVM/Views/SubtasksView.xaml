@@ -152,7 +152,7 @@
                           ItemsSource="{Binding CardSubtasksGrid}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <Grid grid:AutoRowsGrid.ChildrenCount="{Binding Items.Count, ElementName=Tasks}"
+                        <Grid grid:AutoRowsGrid.ChildrenCount="{Binding Items.Count, ElementName=Subtasks}"
                               VerticalAlignment="Top">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="192" />
@@ -175,10 +175,14 @@
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel>
-                            <TextBlock Text="{Binding Content.Subject}" />
-                            <TextBlock Text="{Binding Content.Task_Id_Fk}" />
-                        </StackPanel>
+                        <Border BorderBrush="red"
+                                BorderThickness="1">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Content.Subject}" />
+                                <TextBlock Text="{Binding Content.Task_Id_Fk}" />
+                                <TextBlock Text="{Binding Content.Priority}" />
+                            </StackPanel>
+                        </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
