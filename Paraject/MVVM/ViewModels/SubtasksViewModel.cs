@@ -1,5 +1,6 @@
 ﻿using Paraject.Core.Commands;
 using Paraject.MVVM.ViewModels.Windows;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
@@ -10,15 +11,25 @@ namespace Paraject.MVVM.ViewModels
 
         public SubtasksViewModel(TaskDetailsViewModel taskDetailsViewModel)
         {
-            NavigateBackToTaskDetailsViewCommand = new DelegateCommand(NavigateBackToTaskDetailsView);
             _taskDetailsViewModel = taskDetailsViewModel;
+            NavigateBackToTaskDetailsViewCommand = new DelegateCommand(NavigateBackToTaskDetailsView);
+            FilterTasksCommand = new DelegateCommand(DisplayAllFilteredTasks);
         }
 
+        public string StatusFilter { get; set; } = "Show All";
+        public string PriorityFilter { get; set; } = "Show All";
         public ICommand NavigateBackToTaskDetailsViewCommand { get; }
+        public ICommand FilterTasksCommand { get; }
 
-        public void NavigateBackToTaskDetailsView()
+
+        private void NavigateBackToTaskDetailsView()
         {
             MainWindowViewModel.CurrentView = _taskDetailsViewModel;
+        }
+
+        private void DisplayAllFilteredTasks()
+        {
+            MessageBox.Show($"Status: {StatusFilter} \nPriority: {PriorityFilter}");
         }
     }
 }
