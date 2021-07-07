@@ -36,7 +36,6 @@ namespace Paraject.MVVM.ViewModels
             NavigateToSubtasksViewCommand = new DelegateCommand(NavigateToSubtasksView);
         }
 
-
         #region Properties
         public Task CurrentTask { get; set; }
 

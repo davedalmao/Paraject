@@ -61,11 +61,13 @@
             <!--Subtasks Todo Filter-->
             <custom:MenuItem Content="Subtasks Todo"
                              IsChecked="True"
-                             Style="{StaticResource VerticalMenuButtonTheme}" />
+                             Style="{StaticResource VerticalMenuButtonTheme}"
+                             Command="{Binding DisplaySubtasksTodoCommand}" />
 
             <!--Completed Subtasks Filter-->
             <custom:MenuItem Content="Completed Subtasks"
-                             Style="{StaticResource VerticalMenuButtonTheme}" />
+                             Style="{StaticResource VerticalMenuButtonTheme}"
+                             Command="{Binding DisplayCompletedSubtasksCommand}" />
 
 
             <!--Add New Subtask Button-->
@@ -107,7 +109,7 @@
                     <!--Triggers a Command when the selected item of a ComboBox changes-->
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
-                            <i:InvokeCommandAction Command="{Binding FilterTasksCommand}" />
+                            <i:InvokeCommandAction Command="{Binding FilterSubtasksCommand}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </ComboBox>
@@ -137,7 +139,7 @@
                     <!--Triggers a Command when the selected item of a ComboBox changes-->
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
-                            <i:InvokeCommandAction Command="{Binding FilterTasksCommand}" />
+                            <i:InvokeCommandAction Command="{Binding FilterSubtasksCommand}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </ComboBox>
