@@ -1,7 +1,9 @@
 ﻿using Paraject.Core.Commands;
 using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.ModalDialogs;
 using Paraject.MVVM.ViewModels.Windows;
+using Paraject.MVVM.Views.ModalDialogs;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -22,13 +24,15 @@ namespace Paraject.MVVM.ViewModels
             _taskId = taskId;
 
             NavigateBackToTaskDetailsViewCommand = new DelegateCommand(NavigateBackToTaskDetailsView);
-            FilterSubtasksCommand = new DelegateCommand(DisplayAllFilteredTasks);
+            FilterSubtasksCommand = new DelegateCommand(DisplayAllFilteredSubtasks);
             DisplaySubtasksTodoCommand = new DelegateCommand(DisplaySubtasksTodo);
             DisplayCompletedSubtasksCommand = new DelegateCommand(DisplayCompletedSubtasks);
+            ShowAddSubtaskModalDialogCommand = new DelegateCommand(ShowAddSubtaskModalDialog);
             ShowSubtaskDetailsModalDialogCommand = new ParameterizedDelegateCommand(ShowSubtaskDetailsModalDialog);
 
-            DisplayAllFilteredTasks();
+            DisplayAllFilteredSubtasks();
         }
+
         #region Properties
         public ObservableCollection<Subtask> Subtasks { get; set; }
         public ObservableCollection<GridTileData> CardSubtasksGrid { get; set; }
@@ -44,6 +48,7 @@ namespace Paraject.MVVM.ViewModels
         public ICommand DisplaySubtasksTodoCommand { get; }
         public ICommand DisplayCompletedSubtasksCommand { get; }
         public ICommand ShowSubtaskDetailsModalDialogCommand { get; }
+        public ICommand ShowAddSubtaskModalDialogCommand { get; }
         #endregion
 
         #region Methods
@@ -51,9 +56,31 @@ namespace Paraject.MVVM.ViewModels
         {
             MainWindowViewModel.CurrentView = _taskDetailsViewModel;
         }
+
         private void ShowSubtaskDetailsModalDialog(object subtaskId)
         {
             MessageBox.Show(subtaskId.ToString());
+        }
+        private void ShowAddSubtaskModalDialog()
+        {
+            MainWindowViewModel.Overlay = true;
+
+            AddSubtaskModalDialogViewModel addSubtaskModalDialogViewModel = new AddSubtaskModalDialogViewModel(_taskId, DisplayNewSubtasksCollection);
+            AddSubtaskModalDialog addSubtaskModalDialog = new AddSubtaskModalDialog();
+            addSubtaskModalDialog.DataContext = addSubtaskModalDialogViewModel;
+            addSubtaskModalDialog.Show();
+        }
+
+        private void DisplayNewSubtasksCollection()
+        {
+            if (CompletedSubtasksIsChecked)
+            {
+                DisplayCompletedSubtasks();
+            }
+            else
+            {
+                DisplaySubtasksTodo();
+            }
         }
         private void DisplaySubtasksTodo()
         {
@@ -79,6 +106,12 @@ namespace Paraject.MVVM.ViewModels
 
             TaskCardGridDisplayAndLocation();
         }
+        private void DisplayAllFilteredSubtasks()
+        {
+            DisplaySubtasksTodo();
+            TaskCardGridDisplayAndLocation();
+        }
+
         private void SetNewGridDisplay()
         {
             CardSubtasksGrid = null;
@@ -110,11 +143,6 @@ namespace Paraject.MVVM.ViewModels
                 GridTileData td = new(Subtasks[i], row, column);
                 CardSubtasksGrid.Add(td);
             }
-        }
-        private void DisplayAllFilteredTasks()
-        {
-            DisplaySubtasksTodo();
-            TaskCardGridDisplayAndLocation();
         }
         private void TaskCardGridDisplayAndLocation()
         {

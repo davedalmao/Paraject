@@ -80,7 +80,8 @@
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
                     Tag="/UiDesign/Icons/ButtonIcons/add.svg"
-                    Style="{StaticResource GeneralButtonTheme}" />
+                    Style="{StaticResource GeneralButtonTheme}"
+                    Command="{Binding ShowAddSubtaskModalDialogCommand}" />
         </DockPanel>
 
         <!--Subtask Todo Filters-->
