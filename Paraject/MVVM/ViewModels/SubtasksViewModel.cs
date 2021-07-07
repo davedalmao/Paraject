@@ -4,6 +4,7 @@ using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
@@ -24,6 +25,7 @@ namespace Paraject.MVVM.ViewModels
             FilterSubtasksCommand = new DelegateCommand(DisplayAllFilteredTasks);
             DisplaySubtasksTodoCommand = new DelegateCommand(DisplaySubtasksTodo);
             DisplayCompletedSubtasksCommand = new DelegateCommand(DisplayCompletedSubtasks);
+            ShowSubtaskDetailsModalDialogCommand = new ParameterizedDelegateCommand(ShowSubtaskDetailsModalDialog);
 
             DisplayAllFilteredTasks();
         }
@@ -41,12 +43,17 @@ namespace Paraject.MVVM.ViewModels
         public ICommand FilterSubtasksCommand { get; }
         public ICommand DisplaySubtasksTodoCommand { get; }
         public ICommand DisplayCompletedSubtasksCommand { get; }
+        public ICommand ShowSubtaskDetailsModalDialogCommand { get; }
         #endregion
 
         #region Methods
         private void NavigateBackToTaskDetailsView()
         {
             MainWindowViewModel.CurrentView = _taskDetailsViewModel;
+        }
+        private void ShowSubtaskDetailsModalDialog(object subtaskId)
+        {
+            MessageBox.Show(subtaskId.ToString());
         }
         private void DisplaySubtasksTodo()
         {
