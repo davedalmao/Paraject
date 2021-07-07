@@ -156,6 +156,11 @@
             <DataTemplate DataType="{x:Type viewModel:TaskDetailsViewModel}">
                 <view:TaskDetailsView />
             </DataTemplate>
+
+            <!--Subtasks-->
+            <DataTemplate DataType="{x:Type viewModel:SubtasksViewModel}">
+                <view:SubtasksView />
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
