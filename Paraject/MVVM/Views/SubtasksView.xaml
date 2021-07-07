@@ -1,0 +1,257 @@
+﻿<UserControl x:Class="Paraject.MVVM.Views.SubtasksView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Paraject.MVVM.Views"
+             xmlns:custom="clr-namespace:Paraject.Core.CustomControls"
+             xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
+             xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
+             xmlns:enums="clr-namespace:Paraject.Core.Enums"
+             xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:grid="clr-namespace:Paraject.Core.Utilities"
+             xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
+             d:DataContext="{d:DesignInstance Type=viewmodels:SubtasksViewModel}"
+             mc:Ignorable="d"
+             MaxWidth="800"
+             MaxHeight="650"
+             Background="Transparent"
+             Foreground="{StaticResource MainFontColor}"
+             FontFamily="{StaticResource NunitoBold}">
+    <Grid Margin="40,8,40,25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--SubtasksView Header-->
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="0">
+            <!--Back (to TaskDetails) Button-->
+            <Button  Style="{StaticResource PlainButtonTheme}"
+                     Command="{Binding NavigateBackToTaskDetailsViewCommand}"
+                     Background="Transparent"
+                     Cursor="Hand"
+                     Width="28"
+                     Height="28">
+                <Image Source="/UiDesign/Icons/backArrow.png"
+                       RenderOptions.BitmapScalingMode="HighQuality"
+                       RenderOptions.EdgeMode="Aliased"
+                       SnapsToDevicePixels="True" />
+            </Button>
+
+            <!--Header text-->
+            <TextBlock Text="All subtasks for this Task  "
+                       TextTrimming="CharacterEllipsis"
+                       FontSize="25"
+                       Margin="8,0,0,0" />
+
+            <!--Task Category-->
+            <TextBlock Text=""
+                       TextTrimming="CharacterEllipsis"
+                       FontSize="25"
+                       Margin="8,0,0,0" />
+        </StackPanel>
+
+        <!--Subtask Filters-->
+        <DockPanel Grid.Row="1"
+                   Margin="0,20,0,0">
+            <!--Subtasks Todo Filter-->
+            <custom:MenuItem Content="Subtasks Todo"
+                             IsChecked="True"
+                             Style="{StaticResource VerticalMenuButtonTheme}"
+                             Command="{Binding DisplaySubtasksTodoCommand}" />
+
+            <!--Completed Subtasks Filter-->
+            <custom:MenuItem Content="Completed Subtasks"
+                             IsChecked="{Binding CompletedSubtasksIsChecked}"
+                             Style="{StaticResource VerticalMenuButtonTheme}"
+                             Command="{Binding DisplayCompletedSubtasksCommand}" />
+
+
+            <!--Add New Subtask Button-->
+            <Button Content="Add New Subtask"
+                    Height="36"
+                    Width="216"
+                    Background="{StaticResource AccentColor}"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Tag="/UiDesign/Icons/ButtonIcons/add.svg"
+                    Style="{StaticResource GeneralButtonTheme}"
+                    Command="{Binding ShowAddSubtaskModalDialogCommand}" />
+        </DockPanel>
+
+        <!--Subtask Todo Filters-->
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    Margin="0,32,0,15"
+                    Visibility="{Binding ComboBoxesRowVisibility,
+                                         Converter={StaticResource BooleanToVisibilityConverter}}">
+            <!--Subtask Status ComboBox-->
+            <StackPanel>
+                <TextBlock Text="Subtask Status:"
+                           FontSize="13"
+                           Margin="0,0,0,4.5" />
+
+                <ComboBox Height="36"
+                          Width="125"
+                          FontSize="14.59"
+                          Background="{StaticResource InputField}"
+                          Style="{StaticResource ComboBoxTheme2}"
+                          SelectedValue="{Binding StatusFilter}"
+                          Text="{Binding StatusFilter}">
+                    <!--Enum ItemSource-->
+                    <ComboBox.ItemsSource>
+                        <CompositeCollection>
+                            <sys:String>Show All</sys:String>
+                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Statuses}}}" />
+                        </CompositeCollection>
+                    </ComboBox.ItemsSource>
+
+                    <!--Triggers a Command when the selected item of a ComboBox changes-->
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding FilterSubtasksCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+            </StackPanel>
+
+            <!--Subtask Priority ComboBox-->
+            <StackPanel Margin="18,0">
+                <TextBlock Text="Subtask Priority:"
+                           FontSize="13"
+                           Margin="0,0,0,4.5" />
+
+                <ComboBox Height="36"
+                          Width="116"
+                          FontSize="14.59"
+                          Background="{StaticResource InputField}"
+                          Style="{StaticResource ComboBoxTheme2}"
+                          SelectedValue="{Binding PriorityFilter}"
+                          Text="{Binding PriorityFilter}">
+                    <!--Enum ItemSource-->
+                    <ComboBox.ItemsSource>
+                        <CompositeCollection>
+                            <sys:String>Show All</sys:String>
+                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Priorities}}}" />
+                        </CompositeCollection>
+                    </ComboBox.ItemsSource>
+
+                    <!--Triggers a Command when the selected item of a ComboBox changes-->
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding FilterSubtasksCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+
+        <!--Subtasks Display-->
+        <ScrollViewer Style="{StaticResource ScrollbarTheme}"
+                      Height="346"
+                      Grid.Row="3">
+            <ItemsControl x:Name="Subtasks"
+                          ItemsSource="{Binding CardSubtasksGrid}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Grid grid:AutoRowsGrid.ChildrenCount="{Binding Items.Count, ElementName=Subtasks}"
+                              VerticalAlignment="Top">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="192" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="192" />
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <!--Defined in /Utilities/AutoRowsGrid.cs-->
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="Grid.Row"
+                                Value="{Binding Row}" />
+                        <Setter Property="Grid.Column"
+                                Value="{Binding Column}" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button  Margin="0,10,0,14"
+                                 Height="153"
+                                 Width="192"
+                                 Background="{StaticResource Card}"
+                                 Style="{StaticResource PlainButtonTheme}"
+                                 Command="{Binding ElementName=Subtasks, Path=DataContext.ShowSubtaskDetailsModalDialogCommand}"
+                                 CommandParameter="{Binding Content.Id}">
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <!--Subtask Priority Indicator-->
+                                <Border Grid.Row="0"
+                                        Height="6"
+                                        Width="169"
+                                        Margin="0,6,0,0"
+                                        CornerRadius="2.3"
+                                        Tag="{Binding Content.Priority}"
+                                        Style="{StaticResource PriorityIndicatorTheme}" />
+
+                                <!--Subtask Details-->
+                                <Grid Grid.Row="1"
+                                      Margin="18,5,18,11">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <!--Subtask Subject-->
+                                    <TextBlock Grid.Row="0"
+                                               Text="{Binding Content.Subject}"
+                                               Foreground="{StaticResource Blue}"
+                                               TextTrimming="CharacterEllipsis"
+                                               FontSize="15"
+                                               Margin="0,12,0,0" />
+
+                                    <!--Subtask Description-->
+                                    <TextBlock Grid.Row="1"
+                                               Text="{Binding Content.Description}"
+                                               FontSize="14"
+                                               VerticalAlignment="Center"
+                                               Foreground="{StaticResource MainFontColor}" />
+
+                                    <!--Card Footer-->
+                                    <!--Subtask Deadline-->
+                                    <StackPanel Orientation="Horizontal"
+                                                Grid.Row="2">
+                                        <!--Deadline Image-->
+                                        <UserControl Width="12.5"
+                                                     Height="12.5"
+                                                     Margin="0,0,3.75,0">
+                                            <svgc1:SvgViewbox Source="/UiDesign/Icons/Calendar/grayCalendar.svg" />
+                                        </UserControl>
+
+                                        <!--Deadline Details-->
+                                        <TextBlock Text="{Binding Content.Deadline, 
+                                                                      StringFormat={}{0:MM / dd / yyyy}, 
+                                                                      TargetNullValue=NO DEADLINE}"
+                                                   Foreground="{StaticResource Darkest}"
+                                                   FontSize="11" />
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

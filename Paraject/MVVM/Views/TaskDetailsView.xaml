@@ -74,7 +74,8 @@
                     VerticalAlignment="Bottom"
                     Margin="15,0,0,0"
                     Tag="/UiDesign/Icons/ButtonIcons/subtask.svg"
-                    Style="{StaticResource GeneralButtonTheme}" />
+                    Style="{StaticResource GeneralButtonTheme}"
+                    Command="{Binding NavigateToSubtasksViewCommand}" />
         </Grid>
 
         <!--TaskDetails Input/Display Fields-->
