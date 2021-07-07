@@ -66,6 +66,7 @@
 
             <!--Completed Subtasks Filter-->
             <custom:MenuItem Content="Completed Subtasks"
+                             IsChecked="{Binding CompletedSubtasksIsChecked}"
                              Style="{StaticResource VerticalMenuButtonTheme}"
                              Command="{Binding DisplayCompletedSubtasksCommand}" />
 
@@ -84,7 +85,9 @@
         <!--Subtask Todo Filters-->
         <StackPanel Grid.Row="2"
                     Orientation="Horizontal"
-                    Margin="0,0,0,15">
+                    Margin="0,0,0,15"
+                    Visibility="{Binding ComboBoxesRowVisibility,
+                                         Converter={StaticResource BooleanToVisibilityConverter}}">
             <!--Subtask Status ComboBox-->
             <StackPanel>
                 <TextBlock Text="Subtask Status:"

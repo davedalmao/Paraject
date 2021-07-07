@@ -34,6 +34,9 @@ namespace Paraject.MVVM.ViewModels
         public string StatusFilter { get; set; } = "Show All";
         public string PriorityFilter { get; set; } = "Show All";
 
+        public bool CompletedSubtasksIsChecked { get; set; }
+        public bool ComboBoxesRowVisibility { get; set; } = true;
+
         public ICommand NavigateBackToTaskDetailsViewCommand { get; }
         public ICommand FilterSubtasksCommand { get; }
         public ICommand DisplaySubtasksTodoCommand { get; }
@@ -49,12 +52,24 @@ namespace Paraject.MVVM.ViewModels
         {
             Subtasks = new ObservableCollection<Subtask>(_subtaskRepository.FindAll(_taskId, StatusFilter, PriorityFilter)
                                                                            .Where(subtask => subtask.Status != "Completed"));
+            if (!ComboBoxesRowVisibility)
+            {
+                ComboBoxesRowVisibility = true;
+
+                //Just Comment this out if you want to remember the last selected items in the ComboBoxes
+                StatusFilter = "Show All";
+                PriorityFilter = "Show All";
+            }
+
             TaskCardGridDisplayAndLocation();
         }
         private void DisplayCompletedSubtasks()
         {
             Subtasks = new ObservableCollection<Subtask>(_subtaskRepository.GetAll(_taskId)
                                                                            .Where(subtask => subtask.Status == "Completed"));
+
+            if (CompletedSubtasksIsChecked) { ComboBoxesRowVisibility = false; }
+
             TaskCardGridDisplayAndLocation();
         }
         private void SetNewGridDisplay()
