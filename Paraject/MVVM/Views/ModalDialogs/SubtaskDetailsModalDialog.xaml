@@ -57,7 +57,7 @@
                 <Button Style="{StaticResource PlainButtonTheme}"
                         Grid.Column="1"
                         HorizontalAlignment="Right"
-                        Command="{Binding CloseModalCommand}">
+                        Command="{Binding CloseModalDialogCommand}">
                     <Image Source="/UiDesign/Icons/WindowStateButtons/close.png"
                            Width="28"
                            Height="28"

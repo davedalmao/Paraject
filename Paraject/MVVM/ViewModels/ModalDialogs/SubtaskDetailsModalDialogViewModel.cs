@@ -1,6 +1,7 @@
 ﻿using Paraject.Core.Commands;
 using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.Windows;
 using System;
 using System.Windows;
 using System.Windows.Input;
@@ -23,10 +24,12 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             UpdateSubtaskCommand = new DelegateCommand(Update);
             DeleteSubtaskCommand = new DelegateCommand(Delete);
+            CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
         }
 
         public ICommand UpdateSubtaskCommand { get; }
         public ICommand DeleteSubtaskCommand { get; }
+        public ICommand CloseModalDialogCommand { get; }
 
         public Subtask CurrentSubtask { get; set; }
 
@@ -39,5 +42,19 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         {
             MessageBox.Show(_subtaskId.ToString());
         }
+
+        private void CloseModalDialog()
+        {
+            MainWindowViewModel.Overlay = false;
+
+            foreach (Window currentModal in Application.Current.Windows)
+            {
+                if (currentModal.DataContext == this)
+                {
+                    currentModal.Close();
+                }
+            }
+        }
+
     }
 }
