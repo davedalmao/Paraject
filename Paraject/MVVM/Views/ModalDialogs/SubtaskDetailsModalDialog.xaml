@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paraject.MVVM.Views.ModalDialogs"
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
+        xmlns:modaldialogs="clr-namespace:Paraject.MVVM.ViewModels.ModalDialogs"
+        d:DataContext="{d:DesignInstance Type=modaldialogs:SubtaskDetailsModalDialogViewModel}"
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="CanResize"
@@ -82,7 +84,8 @@
                     <TextBox Width="294"
                              Height="42"
                              FontSize="15"
-                             Style="{StaticResource TextBoxTheme}" />
+                             Style="{StaticResource TextBoxTheme}"
+                             Text="{Binding CurrentSubtask.Subject}" />
 
                     <!--Subtask Status TextBlock-->
                     <TextBlock Text="Status"
@@ -95,7 +98,8 @@
                               FontSize="15"
                               Padding="20,0"
                               Style="{StaticResource ComboBoxTheme}"
-                              Background="{StaticResource InputField}" />
+                              Background="{StaticResource InputField}"
+                              Text="{Binding CurrentSubtask.Status}" />
 
                     <!--Subtask Priority TextBlock-->
                     <TextBlock Text="Priority"
@@ -108,7 +112,8 @@
                               FontSize="15"
                               Padding="20,0"
                               Style="{StaticResource ComboBoxTheme}"
-                              Background="{StaticResource InputField}" />
+                              Background="{StaticResource InputField}"
+                              Text="{Binding CurrentSubtask.Priority}" />
 
                     <!--Task Deadline TextBlock-->
                     <TextBlock Text="Deadline"
@@ -117,7 +122,8 @@
 
                     <!--Deadline DateTimePicker-->
                     <DatePicker Style="{StaticResource DatePickerTheme}"
-                                FontSize="15" />
+                                FontSize="15"
+                                SelectedDate="{Binding CurrentSubtask.Deadline}" />
                 </StackPanel>
 
                 <StackPanel Grid.Column="1">
@@ -135,7 +141,7 @@
                              VerticalScrollBarVisibility="Auto"
                              VerticalContentAlignment="Top"
                              Padding="20"
-                             Text="{Binding CurrentTask.Description}" />
+                             Text="{Binding CurrentSubtask.Description}" />
                 </StackPanel>
             </Grid>
 
@@ -169,7 +175,8 @@
                         Margin="0,0,15,0"
                         Tag="/UiDesign/Icons/ButtonIcons/update.svg"
                         Background="{StaticResource Yellow}"
-                        Style="{StaticResource GeneralButtonTheme}" />
+                        Style="{StaticResource GeneralButtonTheme}"
+                        Command="{Binding UpdateSubtaskCommand}" />
 
                 <!--Delete Subtask Button-->
                 <Button Content="Delete Subtask"
@@ -178,7 +185,8 @@
                         Width="160"
                         Tag="/UiDesign/Icons/ButtonIcons/delete.svg"
                         Background="{StaticResource Orange}"
-                        Style="{StaticResource GeneralButtonTheme}" />
+                        Style="{StaticResource GeneralButtonTheme}"
+                        Command="{Binding DeleteSubtaskCommand}" />
             </Grid>
         </Grid>
     </Border>

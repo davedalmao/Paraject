@@ -27,6 +27,9 @@
     <Compile Update="MVVM\Views\ModalDialogs\AddTaskModalDialog.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="MVVM\Views\ModalDialogs\SubtaskDetailsModalDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MVVM\Views\OptionsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -84,6 +87,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\ModalDialogs\AddTaskModalDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\Views\ModalDialogs\SubtaskDetailsModalDialog.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\OptionsView.xaml">
