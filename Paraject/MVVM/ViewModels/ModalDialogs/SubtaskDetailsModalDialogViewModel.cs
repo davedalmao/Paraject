@@ -29,13 +29,15 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             CurrentSubtask = _subtaskRepository.Get(subtaskId);
         }
 
+        #region Properties
         public Subtask CurrentSubtask { get; set; }
 
         public ICommand UpdateSubtaskCommand { get; }
         public ICommand DeleteSubtaskCommand { get; }
         public ICommand CloseModalDialogCommand { get; }
+        #endregion
 
-
+        #region Methods
         private void Update()
         {
             MessageBox.Show($"Subject:{CurrentSubtask.Subject} \nStatus: {CurrentSubtask.Status} \nPriority: {CurrentSubtask.Priority} \nDeadline: {CurrentSubtask.Deadline} \nDate Created: {CurrentSubtask.DateCreated} \nDescripiton:{CurrentSubtask.Description}");
@@ -58,5 +60,6 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 }
             }
         }
+        #endregion
     }
 }
