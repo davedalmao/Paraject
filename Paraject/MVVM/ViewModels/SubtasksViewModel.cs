@@ -14,13 +14,14 @@ namespace Paraject.MVVM.ViewModels
     {
         private readonly TaskDetailsViewModel _taskDetailsViewModel;
         private readonly SubtaskRepository _subtaskRepository;
-        private readonly int _taskId;
+        //private readonly int _taskId;
 
-        public SubtasksViewModel(TaskDetailsViewModel taskDetailsViewModel, int taskId)
+        public SubtasksViewModel(TaskDetailsViewModel taskDetailsViewModel, Task currentTask)
         {
             _subtaskRepository = new SubtaskRepository();
             _taskDetailsViewModel = taskDetailsViewModel;
-            _taskId = taskId;
+            CurrentTask = currentTask;
+            //_taskId = currentTask;
 
             NavigateBackToTaskDetailsViewCommand = new DelegateCommand(NavigateBackToTaskDetailsView);
             FilterSubtasksCommand = new DelegateCommand(DisplayAllFilteredSubtasks);
@@ -33,6 +34,9 @@ namespace Paraject.MVVM.ViewModels
         }
 
         #region Properties
+        public Task CurrentTask { get; set; }
+        public string CurrentTaskCategory => $"[ {CurrentTask.Category} ]";
+
         public ObservableCollection<Subtask> Subtasks { get; set; }
         public ObservableCollection<GridTileData> CardSubtasksGrid { get; set; }
 
@@ -71,7 +75,7 @@ namespace Paraject.MVVM.ViewModels
         {
             MainWindowViewModel.Overlay = true;
 
-            AddSubtaskModalDialogViewModel addSubtaskModalDialogViewModel = new AddSubtaskModalDialogViewModel(_taskId, DisplayNewSubtasksCollection);
+            AddSubtaskModalDialogViewModel addSubtaskModalDialogViewModel = new AddSubtaskModalDialogViewModel(CurrentTask.Id, DisplayNewSubtasksCollection);
             AddSubtaskModalDialog addSubtaskModalDialog = new AddSubtaskModalDialog();
             addSubtaskModalDialog.DataContext = addSubtaskModalDialogViewModel;
             addSubtaskModalDialog.Show();
@@ -90,7 +94,7 @@ namespace Paraject.MVVM.ViewModels
         }
         private void DisplaySubtasksTodo()
         {
-            Subtasks = new ObservableCollection<Subtask>(_subtaskRepository.FindAll(_taskId, StatusFilter, PriorityFilter)
+            Subtasks = new ObservableCollection<Subtask>(_subtaskRepository.FindAll(CurrentTask.Id, StatusFilter, PriorityFilter)
                                                                            .Where(subtask => subtask.Status != "Completed"));
             if (!ComboBoxesRowVisibility)
             {
@@ -105,7 +109,7 @@ namespace Paraject.MVVM.ViewModels
         }
         private void DisplayCompletedSubtasks()
         {
-            Subtasks = new ObservableCollection<Subtask>(_subtaskRepository.GetAll(_taskId)
+            Subtasks = new ObservableCollection<Subtask>(_subtaskRepository.GetAll(CurrentTask.Id)
                                                                            .Where(subtask => subtask.Status == "Completed"));
 
             if (CompletedSubtasksIsChecked) { ComboBoxesRowVisibility = false; }

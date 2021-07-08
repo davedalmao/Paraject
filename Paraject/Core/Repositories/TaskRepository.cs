@@ -107,7 +107,7 @@ namespace Paraject.Core.Repositories
                                 Type = sqlDataReader.GetString(taskType),
                                 Description = sqlDataReader.IsDBNull(taskDescription) ? "--" : sqlDataReader.GetString(taskDescription),
                                 Status = sqlDataReader.GetString(taskStatus),
-                                Category = sqlDataReader.GetString(taskCategory),
+                                Category = sqlDataReader.GetString(taskCategory).Replace("_", " "),
                                 Priority = sqlDataReader.GetString(taskPriority),
                                 Deadline = sqlDataReader.IsDBNull(taskDeadline) ? null : sqlDataReader.GetDateTime(taskDeadline),
                                 DateCreated = sqlDataReader.GetDateTime(dateCreated)
