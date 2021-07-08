@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paraject.MVVM.Views.ModalDialogs"
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
+        xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
+        xmlns:enums="clr-namespace:Paraject.Core.Enums"
         xmlns:modaldialogs="clr-namespace:Paraject.MVVM.ViewModels.ModalDialogs"
         d:DataContext="{d:DesignInstance Type=modaldialogs:SubtaskDetailsModalDialogViewModel}"
         mc:Ignorable="d"
@@ -99,6 +101,7 @@
                               Padding="20,0"
                               Style="{StaticResource ComboBoxTheme}"
                               Background="{StaticResource InputField}"
+                              ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Statuses}}}"
                               Text="{Binding CurrentSubtask.Status}" />
 
                     <!--Subtask Priority TextBlock-->
@@ -113,6 +116,7 @@
                               Padding="20,0"
                               Style="{StaticResource ComboBoxTheme}"
                               Background="{StaticResource InputField}"
+                              ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Priorities}}}"
                               Text="{Binding CurrentSubtask.Priority}" />
 
                     <!--Task Deadline TextBlock-->
