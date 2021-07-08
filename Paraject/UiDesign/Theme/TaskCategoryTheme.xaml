@@ -3,7 +3,7 @@
     <Style TargetType="{x:Type TextBlock}"
            x:Key="TaskCategoryTheme">
         <Style.Triggers>
-            <!--Without Brackets-->
+            <!--Without Brackets (Text Property)-->
             <Trigger Property="Text"
                      Value="Database">
                 <Setter Property="Foreground"
@@ -53,6 +53,61 @@
             </Trigger>
 
             <Trigger Property="Text"
+                     Value="Backend Bug">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Violet}" />
+            </Trigger>
+
+            <!--Without Brackets (Tag Property)-->
+            <Trigger Property="Tag"
+                     Value="Database">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Brown}" />
+            </Trigger>
+
+            <Trigger Property="Tag"
+                     Value="Database Design">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Brown}" />
+            </Trigger>
+
+            <Trigger Property="Tag"
+                     Value="Database Bug">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Brown}" />
+            </Trigger>
+
+            <Trigger Property="Tag"
+                     Value="UI Design">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Blue}" />
+            </Trigger>
+
+            <Trigger Property="Tag"
+                     Value="UI Bug">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Blue}" />
+            </Trigger>
+
+            <Trigger Property="Tag"
+                     Value="UX Design">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Orange}" />
+            </Trigger>
+
+            <Trigger Property="Tag"
+                     Value="UX Bug">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Orange}" />
+            </Trigger>
+
+            <Trigger Property="Tag"
+                     Value="Backend">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Violet}" />
+            </Trigger>
+
+            <Trigger Property="Tag"
                      Value="Backend Bug">
                 <Setter Property="Foreground"
                         Value="{DynamicResource Violet}" />
