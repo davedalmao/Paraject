@@ -66,7 +66,25 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         }
         private void Delete()
         {
-            MessageBox.Show(_subtaskId.ToString());
+            MessageBoxResult Result = MessageBox.Show("Do you want to DELETE this subtask?", "Delete Operation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (Result == MessageBoxResult.Yes)
+            {
+                DeleteSubtask();
+            }
+        }
+        private void DeleteSubtask()
+        {
+            bool isDeleted = _subtaskRepository.Delete(_subtaskId);
+            if (isDeleted)
+            {
+                _refreshSubtasksCollection();
+                MessageBox.Show("Subtask deleted successfully");
+                CloseModalDialog();
+            }
+            else
+            {
+                MessageBox.Show("An error occurred, cannot delete subtask");
+            }
         }
         private void CloseModalDialog()
         {
