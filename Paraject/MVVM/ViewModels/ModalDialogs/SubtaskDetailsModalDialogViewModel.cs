@@ -25,6 +25,8 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             UpdateSubtaskCommand = new DelegateCommand(Update);
             DeleteSubtaskCommand = new DelegateCommand(Delete);
             CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
+
+            CurrentSubtask = _subtaskRepository.Get(subtaskId);
         }
 
         public Subtask CurrentSubtask { get; set; }
@@ -36,7 +38,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
         private void Update()
         {
-            MessageBox.Show($"Subject:{CurrentSubtask.Subject} \nStatus: {CurrentSubtask.Status} \nPriority: {CurrentSubtask.Priority} \nDeadline: {CurrentSubtask.Deadline} \nDate Created: {CurrentSubtask.DateCreated} \nDescripiton:{CurrentSubtask.Deadline}");
+            MessageBox.Show($"Subject:{CurrentSubtask.Subject} \nStatus: {CurrentSubtask.Status} \nPriority: {CurrentSubtask.Priority} \nDeadline: {CurrentSubtask.Deadline} \nDate Created: {CurrentSubtask.DateCreated} \nDescripiton:{CurrentSubtask.Description}");
         }
 
         private void Delete()

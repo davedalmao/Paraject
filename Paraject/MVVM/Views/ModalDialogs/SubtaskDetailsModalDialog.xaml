@@ -164,7 +164,7 @@
                                FontSize="15"
                                Foreground="{StaticResource Darkest}" />
 
-                    <TextBlock Text="MM/DD/YY"
+                    <TextBlock Text="{Binding CurrentSubtask.DateCreated}"
                                FontSize="15"
                                Foreground="{StaticResource Darkest}"
                                TextWrapping="Wrap"
