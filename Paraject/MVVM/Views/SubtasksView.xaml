@@ -217,7 +217,8 @@
                                     <!--Subtask Subject-->
                                     <TextBlock Grid.Row="0"
                                                Text="{Binding Content.Subject}"
-                                               Foreground="{StaticResource Blue}"
+                                               Tag="{Binding ElementName=Subtasks, Path=DataContext.CurrentTask.Category}"
+                                               Style="{StaticResource TaskCategoryTheme}"
                                                TextTrimming="CharacterEllipsis"
                                                FontSize="15"
                                                Margin="0,12,0,0" />
