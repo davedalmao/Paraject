@@ -8,6 +8,7 @@
         xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
         xmlns:enums="clr-namespace:Paraject.Core.Enums"
         xmlns:modaldialogs="clr-namespace:Paraject.MVVM.ViewModels.ModalDialogs"
+        xmlns:sys="clr-namespace:System;assembly=System.Runtime"
         d:DataContext="{d:DesignInstance Type=modaldialogs:SubtaskDetailsModalDialogViewModel}"
         mc:Ignorable="d"
         WindowStyle="None"
@@ -101,8 +102,14 @@
                               Padding="20,0"
                               Style="{StaticResource ComboBoxTheme}"
                               Background="{StaticResource InputField}"
-                              ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Statuses}}}"
-                              Text="{Binding CurrentSubtask.Status}" />
+                              Text="{Binding CurrentSubtask.Status}">
+                        <ComboBox.ItemsSource>
+                            <CompositeCollection>
+                                <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Statuses}}}" />
+                                <sys:String>Completed</sys:String>
+                            </CompositeCollection>
+                        </ComboBox.ItemsSource>
+                    </ComboBox>
 
                     <!--Subtask Priority TextBlock-->
                     <TextBlock Text="Priority"
