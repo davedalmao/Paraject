@@ -51,6 +51,7 @@
 
             <!--Task Category-->
             <TextBlock Text="{Binding CurrentTaskCategory}"
+                       Style="{StaticResource TaskCategoryTheme}"
                        TextTrimming="CharacterEllipsis"
                        FontSize="25"
                        Margin="8,0,0,0" />
