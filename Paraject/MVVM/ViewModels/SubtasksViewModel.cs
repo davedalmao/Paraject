@@ -6,7 +6,6 @@ using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
@@ -59,7 +58,14 @@ namespace Paraject.MVVM.ViewModels
 
         private void ShowSubtaskDetailsModalDialog(object subtaskId)
         {
-            MessageBox.Show(subtaskId.ToString());
+            MainWindowViewModel.Overlay = true;
+
+            int selectedSubtask = (int)subtaskId;
+            SubtaskDetailsModalDialogViewModel subtaskDetailsModalDialogViewModel = new(DisplayNewSubtasksCollection, selectedSubtask);
+
+            SubtaskDetailsModalDialog subtaskDetailsModalDialog = new SubtaskDetailsModalDialog();
+            subtaskDetailsModalDialog.DataContext = subtaskDetailsModalDialogViewModel;
+            subtaskDetailsModalDialog.Show();
         }
         private void ShowAddSubtaskModalDialog()
         {
