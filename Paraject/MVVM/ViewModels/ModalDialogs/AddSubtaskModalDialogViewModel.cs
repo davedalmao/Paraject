@@ -50,9 +50,9 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isAdded)
             {
                 //messagebox issue (this is just temporary, we're going to use a custom MessageBox anyway)
-                _refreshSubtasksCollection();
-                CloseModalDialog();
+                _refreshSubtasksCollection?.Invoke();
                 MessageBox.Show("Subtask Created");
+                CloseModalDialog();
             }
 
             else
