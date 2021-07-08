@@ -40,14 +40,34 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         #region Methods
         private void Update()
         {
-            MessageBox.Show($"Subject:{CurrentSubtask.Subject} \nStatus: {CurrentSubtask.Status} \nPriority: {CurrentSubtask.Priority} \nDeadline: {CurrentSubtask.Deadline} \nDate Created: {CurrentSubtask.DateCreated} \nDescripiton:{CurrentSubtask.Description}");
-        }
+            if (!string.IsNullOrWhiteSpace(CurrentSubtask.Subject))
+            {
+                bool isUpdated = _subtaskRepository.Update(CurrentSubtask);
+                UpdateOperationResult(isUpdated);
+            }
 
+            else
+            {
+                MessageBox.Show("A subtask should have a subject");
+            }
+        }
+        private void UpdateOperationResult(bool isUpdated)
+        {
+            if (isUpdated)
+            {
+                _refreshSubtasksCollection();
+                MessageBox.Show("Subtask updated successfully");
+                CloseModalDialog();
+            }
+            else
+            {
+                MessageBox.Show("Error occured, cannot update the subtask");
+            }
+        }
         private void Delete()
         {
             MessageBox.Show(_subtaskId.ToString());
         }
-
         private void CloseModalDialog()
         {
             MainWindowViewModel.Overlay = false;
