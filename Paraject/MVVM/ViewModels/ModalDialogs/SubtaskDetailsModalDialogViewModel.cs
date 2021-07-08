@@ -27,11 +27,12 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
         }
 
+        public Subtask CurrentSubtask { get; set; }
+
         public ICommand UpdateSubtaskCommand { get; }
         public ICommand DeleteSubtaskCommand { get; }
         public ICommand CloseModalDialogCommand { get; }
 
-        public Subtask CurrentSubtask { get; set; }
 
         private void Update()
         {
@@ -55,6 +56,5 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 }
             }
         }
-
     }
 }
