@@ -102,3 +102,5 @@ D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MV
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\SubtasksView.baml
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ModalDialogs\SubtaskDetailsModalDialog.g.cs
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ModalDialogs\SubtaskDetailsModalDialog.baml
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\AllSubtasksView.g.cs
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\AllSubtasksView.baml

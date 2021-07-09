@@ -1,164 +1,55 @@
 ﻿using Paraject.Core.Commands;
-using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
-using Paraject.MVVM.ViewModels.ModalDialogs;
 using Paraject.MVVM.ViewModels.Windows;
-using Paraject.MVVM.Views.ModalDialogs;
-using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
 {
     public class SubtasksViewModel : BaseViewModel
     {
-        private readonly TaskDetailsViewModel _taskDetailsViewModel;
-        private readonly SubtaskRepository _subtaskRepository;
-        //private readonly int _taskId;
+        private readonly TasksViewModel _tasksViewModel;
 
-        public SubtasksViewModel(TaskDetailsViewModel taskDetailsViewModel, Task currentTask)
+        public SubtasksViewModel(TasksViewModel taskDetailsViewModel, Task currentTask)
         {
-            _subtaskRepository = new SubtaskRepository();
-            _taskDetailsViewModel = taskDetailsViewModel;
+            _tasksViewModel = taskDetailsViewModel;
             CurrentTask = currentTask;
-            //_taskId = currentTask;
+
+            AllSubtasksVM = new AllSubtasksViewModel();
+            TaskDetailsVM = new TaskDetailsViewModel(taskDetailsViewModel, currentTask);
+
+            CurrentChildView = AllSubtasksVM;
 
             NavigateBackToTaskDetailsViewCommand = new DelegateCommand(NavigateBackToTaskDetailsView);
-            FilterSubtasksCommand = new DelegateCommand(DisplayAllFilteredSubtasks);
-            DisplaySubtasksTodoCommand = new DelegateCommand(DisplaySubtasksTodo);
-            DisplayCompletedSubtasksCommand = new DelegateCommand(DisplayCompletedSubtasks);
-            ShowAddSubtaskModalDialogCommand = new DelegateCommand(ShowAddSubtaskModalDialog);
-            ShowSubtaskDetailsModalDialogCommand = new ParameterizedDelegateCommand(ShowSubtaskDetailsModalDialog);
-
-            DisplayAllFilteredSubtasks();
+            SubtasksTodoCommand = new ParameterizedDelegateCommand(o => { CurrentChildView = AllSubtasksVM; });
+            CompletedSubtasksCommand = new ParameterizedDelegateCommand(o => { CurrentChildView = AllSubtasksVM; });
+            TaskDetailsCommand = new ParameterizedDelegateCommand(o => { CurrentChildView = TaskDetailsVM; });
         }
 
         #region Properties
         public Task CurrentTask { get; set; }
         public string CurrentTaskCategory => $"[ {CurrentTask.Category} ]";
 
-        public ObservableCollection<Subtask> Subtasks { get; set; }
-        public ObservableCollection<GridTileData> CardSubtasksGrid { get; set; }
+        public object CurrentChildView { get; set; }
 
-        public string StatusFilter { get; set; } = "Show All";
-        public string PriorityFilter { get; set; } = "Show All";
+        //Child Views
+        public AllSubtasksViewModel AllSubtasksVM { get; set; }
+        public TaskDetailsViewModel TaskDetailsVM { get; set; }
 
         public bool CompletedSubtasksIsChecked { get; set; }
         public bool ComboBoxesRowVisibility { get; set; } = true;
 
         public ICommand NavigateBackToTaskDetailsViewCommand { get; }
-        public ICommand FilterSubtasksCommand { get; }
-        public ICommand DisplaySubtasksTodoCommand { get; }
-        public ICommand DisplayCompletedSubtasksCommand { get; }
-        public ICommand ShowSubtaskDetailsModalDialogCommand { get; }
-        public ICommand ShowAddSubtaskModalDialogCommand { get; }
+        public ICommand SubtasksTodoCommand { get; }
+        public ICommand CompletedSubtasksCommand { get; }
+        public ICommand TaskDetailsCommand { get; }
         #endregion
 
         #region Methods
         private void NavigateBackToTaskDetailsView()
         {
-            MainWindowViewModel.CurrentView = _taskDetailsViewModel;
+            MainWindowViewModel.CurrentView = _tasksViewModel;
         }
 
-        private void ShowSubtaskDetailsModalDialog(object subtaskId)
-        {
-            MainWindowViewModel.Overlay = true;
-
-            int selectedSubtask = (int)subtaskId;
-            SubtaskDetailsModalDialogViewModel subtaskDetailsModalDialogViewModel = new(DisplayNewSubtasksCollection, selectedSubtask);
-
-            SubtaskDetailsModalDialog subtaskDetailsModalDialog = new SubtaskDetailsModalDialog();
-            subtaskDetailsModalDialog.DataContext = subtaskDetailsModalDialogViewModel;
-            subtaskDetailsModalDialog.Show();
-        }
-        private void ShowAddSubtaskModalDialog()
-        {
-            MainWindowViewModel.Overlay = true;
-
-            AddSubtaskModalDialogViewModel addSubtaskModalDialogViewModel = new AddSubtaskModalDialogViewModel(CurrentTask.Id, DisplayNewSubtasksCollection);
-            AddSubtaskModalDialog addSubtaskModalDialog = new AddSubtaskModalDialog();
-            addSubtaskModalDialog.DataContext = addSubtaskModalDialogViewModel;
-            addSubtaskModalDialog.Show();
-        }
-
-        private void DisplayNewSubtasksCollection()
-        {
-            if (CompletedSubtasksIsChecked)
-            {
-                DisplayCompletedSubtasks();
-            }
-            else
-            {
-                DisplaySubtasksTodo();
-            }
-        }
-        private void DisplaySubtasksTodo()
-        {
-            Subtasks = new ObservableCollection<Subtask>(_subtaskRepository.FindAll(CurrentTask.Id, StatusFilter, PriorityFilter)
-                                                                           .Where(subtask => subtask.Status != "Completed"));
-            if (!ComboBoxesRowVisibility)
-            {
-                ComboBoxesRowVisibility = true;
-
-                //Just Comment this out if you want to remember the last selected items in the ComboBoxes
-                StatusFilter = "Show All";
-                PriorityFilter = "Show All";
-            }
-
-            TaskCardGridDisplayAndLocation();
-        }
-        private void DisplayCompletedSubtasks()
-        {
-            Subtasks = new ObservableCollection<Subtask>(_subtaskRepository.GetAll(CurrentTask.Id)
-                                                                           .Where(subtask => subtask.Status == "Completed"));
-
-            if (CompletedSubtasksIsChecked) { ComboBoxesRowVisibility = false; }
-
-            TaskCardGridDisplayAndLocation();
-        }
-        private void DisplayAllFilteredSubtasks()
-        {
-            DisplaySubtasksTodo();
-            TaskCardGridDisplayAndLocation();
-        }
-
-        private void SetNewGridDisplay()
-        {
-            CardSubtasksGrid = null;
-            CardSubtasksGrid = new ObservableCollection<GridTileData>();
-        }
-        private void SubtaskCardGridLocation()
-        {
-            int row = -1;
-            int column = -1;
-
-            //This is for a 3 column grid, with n number of rows
-            for (int i = 0; i < Subtasks.Count; i++)
-            {
-                if (column == 2)
-                {
-                    column = 0;
-                }
-
-                else
-                {
-                    column++;
-                }
-
-                if (i % 3 == 0)
-                {
-                    row++;
-                }
-
-                GridTileData td = new(Subtasks[i], row, column);
-                CardSubtasksGrid.Add(td);
-            }
-        }
-        private void TaskCardGridDisplayAndLocation()
-        {
-            SetNewGridDisplay();
-            SubtaskCardGridLocation();
-        }
         #endregion
     }
 }
