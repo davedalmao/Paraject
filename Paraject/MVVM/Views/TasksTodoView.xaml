@@ -239,7 +239,7 @@
                                             </UserControl>
 
                                             <!--Subtask Count-->
-                                            <TextBlock Text="0"
+                                            <TextBlock Text="{Binding Content.SubtaskCount}"
                                                        Foreground="{StaticResource Darkest}"
                                                        FontSize="11" />
                                         </StackPanel>

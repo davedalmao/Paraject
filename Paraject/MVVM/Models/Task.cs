@@ -20,5 +20,6 @@ namespace Paraject.MVVM.Models
         public string Priority { get; set; } = Enum.GetName(Priorities.Low);
         public DateTime? Deadline { get; set; }
         public DateTime DateCreated { get; set; }
+        public int SubtaskCount { get; set; }
     }
 }
