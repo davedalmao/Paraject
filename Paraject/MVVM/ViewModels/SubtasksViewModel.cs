@@ -7,11 +7,11 @@ namespace Paraject.MVVM.ViewModels
 {
     public class SubtasksViewModel : BaseViewModel
     {
-        private readonly TaskDetailsViewModel _taskDetailsViewModel;
+        private readonly TasksViewModel _tasksViewModel;
 
-        public SubtasksViewModel(TaskDetailsViewModel taskDetailsViewModel, Task currentTask)
+        public SubtasksViewModel(TasksViewModel taskDetailsViewModel, Task currentTask)
         {
-            _taskDetailsViewModel = taskDetailsViewModel;
+            _tasksViewModel = taskDetailsViewModel;
             CurrentTask = currentTask;
 
             NavigateBackToTaskDetailsViewCommand = new DelegateCommand(NavigateBackToTaskDetailsView);
@@ -31,7 +31,7 @@ namespace Paraject.MVVM.ViewModels
         #region Methods
         private void NavigateBackToTaskDetailsView()
         {
-            MainWindowViewModel.CurrentView = _taskDetailsViewModel;
+            MainWindowViewModel.CurrentView = _tasksViewModel;
         }
         #endregion
     }
