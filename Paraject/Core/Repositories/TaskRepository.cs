@@ -164,6 +164,7 @@ namespace Paraject.Core.Repositories
                         int taskPriorityFromDb = sqlDataReader.GetOrdinal("task_priority");
                         int taskDeadline = sqlDataReader.GetOrdinal("task_deadline");
                         int dateCreated = sqlDataReader.GetOrdinal("date_created");
+                        int subtaskCount = sqlDataReader.GetOrdinal("subtask_count"); // subtask_count is not a column in Subtask table, this is just an alias found in spFindAllTasks
 
                         //reading multiple Tasks (Add a Task object to the tasks List if SqlDataReader returns a row from the Database)
                         //Remember, we're already on the first record, so use do/while here.
@@ -180,7 +181,8 @@ namespace Paraject.Core.Repositories
                                 Category = sqlDataReader.GetString(taskCategoryFromDb).Replace("_", " "),
                                 Priority = sqlDataReader.GetString(taskPriorityFromDb),
                                 Deadline = sqlDataReader.IsDBNull(taskDeadline) ? null : sqlDataReader.GetDateTime(taskDeadline),
-                                DateCreated = sqlDataReader.GetDateTime(dateCreated)
+                                DateCreated = sqlDataReader.GetDateTime(dateCreated),
+                                SubtaskCount = sqlDataReader.IsDBNull(subtaskCount) ? 0 : sqlDataReader.GetInt32(subtaskCount)
                             };
 
                             tasks.Add(task);
