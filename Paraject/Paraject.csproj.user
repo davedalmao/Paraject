@@ -12,6 +12,9 @@
     <Compile Update="Core\CustomControls\UserControls\BindablePasswordBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="MVVM\Views\AllSubtasksView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MVVM\Views\CompletedTasksView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -72,6 +75,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Core\CustomControls\UserControls\BindablePasswordBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\Views\AllSubtasksView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\CompletedTasksView.xaml">
