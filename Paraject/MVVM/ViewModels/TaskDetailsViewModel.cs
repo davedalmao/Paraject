@@ -4,7 +4,6 @@ using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.ModalDialogs;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
-using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -13,7 +12,7 @@ namespace Paraject.MVVM.ViewModels
     public class TaskDetailsViewModel : BaseViewModel
     {
         private readonly TaskRepository _taskRepository;
-        private readonly Action _refreshTaskCollection;
+        //private readonly Action _refreshTaskCollection;
         private readonly TasksViewModel _tasksViewModel;
 
         /// <summary>
@@ -22,10 +21,10 @@ namespace Paraject.MVVM.ViewModels
         /// <param name="refreshTaskCollection">refreshes the Collection in the ChildView (TasksTodoView/CompletedTasksView) after a certain action is invoked</param>
         /// <param name="tasksViewModel">this is passed to save the UI state of TasksView when navigating back to it</param>
         /// <param name="selectedTask">the selected task in TasksTodoView/CompletedTasksview</param>
-        public TaskDetailsViewModel(Action refreshTaskCollection, TasksViewModel tasksViewModel, Task selectedTask)
+        public TaskDetailsViewModel(TasksViewModel tasksViewModel, Task selectedTask)
         {
             _taskRepository = new TaskRepository();
-            _refreshTaskCollection = refreshTaskCollection;
+            //_refreshTaskCollection = refreshTaskCollection;
 
             _tasksViewModel = tasksViewModel;
             CurrentTask = selectedTask;
@@ -83,7 +82,10 @@ namespace Paraject.MVVM.ViewModels
 
                 //redirect to TasksView (parent View) after a successful DELETE operation, and
                 //refreshes the Tasks Collection in TasksTodoView/CompletedTasksView (child View/s of TasksView) with the new records
-                _refreshTaskCollection();
+
+
+
+                //_refreshTaskCollection();
                 MainWindowViewModel.CurrentView = _tasksViewModel;
             }
             else
@@ -103,14 +105,14 @@ namespace Paraject.MVVM.ViewModels
         }
         private void NavigateBackToTasksView()
         {
-            _refreshTaskCollection();
+            //_refreshTaskCollection();
             MainWindowViewModel.CurrentView = _tasksViewModel;
         }
         private void NavigateToSubtasksView()
         {
-            SubtasksViewModel subtasksViewModel = new SubtasksViewModel(this, CurrentTask);
+            //SubtasksViewModel subtasksViewModel = new SubtasksViewModel(this, CurrentTask);
 
-            MainWindowViewModel.CurrentView = subtasksViewModel;
+            //MainWindowViewModel.CurrentView = subtasksViewModel;
         }
         #endregion
     }
