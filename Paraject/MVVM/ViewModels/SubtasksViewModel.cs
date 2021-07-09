@@ -14,18 +14,34 @@ namespace Paraject.MVVM.ViewModels
             _tasksViewModel = taskDetailsViewModel;
             CurrentTask = currentTask;
 
-            NavigateBackToTaskDetailsViewCommand = new DelegateCommand(NavigateBackToTaskDetailsView);
+            AllSubtasksVM = new AllSubtasksViewModel();
+            TaskDetailsVM = new TaskDetailsViewModel(taskDetailsViewModel, currentTask);
 
+            CurrentChildView = AllSubtasksVM;
+
+            NavigateBackToTaskDetailsViewCommand = new DelegateCommand(NavigateBackToTaskDetailsView);
+            SubtasksTodoCommand = new ParameterizedDelegateCommand(o => { CurrentChildView = AllSubtasksVM; });
+            CompletedSubtasksCommand = new ParameterizedDelegateCommand(o => { CurrentChildView = AllSubtasksVM; });
+            TaskDetailsCommand = new ParameterizedDelegateCommand(o => { CurrentChildView = TaskDetailsVM; });
         }
 
         #region Properties
         public Task CurrentTask { get; set; }
         public string CurrentTaskCategory => $"[ {CurrentTask.Category} ]";
 
+        public object CurrentChildView { get; set; }
+
+        //Child Views
+        public AllSubtasksViewModel AllSubtasksVM { get; set; }
+        public TaskDetailsViewModel TaskDetailsVM { get; set; }
+
         public bool CompletedSubtasksIsChecked { get; set; }
         public bool ComboBoxesRowVisibility { get; set; } = true;
 
         public ICommand NavigateBackToTaskDetailsViewCommand { get; }
+        public ICommand SubtasksTodoCommand { get; }
+        public ICommand CompletedSubtasksCommand { get; }
+        public ICommand TaskDetailsCommand { get; }
         #endregion
 
         #region Methods
@@ -33,6 +49,7 @@ namespace Paraject.MVVM.ViewModels
         {
             MainWindowViewModel.CurrentView = _tasksViewModel;
         }
+
         #endregion
     }
 }

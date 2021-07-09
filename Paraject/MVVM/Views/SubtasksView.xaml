@@ -62,22 +62,26 @@
             <!--Subtasks Todo Filter-->
             <custom:MenuItem Content="Subtasks Todo"
                              IsChecked="True"
-                             Style="{StaticResource VerticalMenuButtonTheme}" />
+                             Style="{StaticResource VerticalMenuButtonTheme}"
+                             Command="{Binding SubtasksTodoCommand}" />
 
             <!--Completed Subtasks Filter-->
             <custom:MenuItem Content="Completed Subtasks"
                              IsChecked="{Binding CompletedSubtasksIsChecked}"
-                             Style="{StaticResource VerticalMenuButtonTheme}" />
+                             Style="{StaticResource VerticalMenuButtonTheme}"
+                             Command="{Binding CompletedSubtasksCommand}" />
 
 
             <!--Task Details-->
             <custom:MenuItem Content="Task Details"
                              HorizontalAlignment="Right"
                              Margin="0"
-                             Style="{StaticResource VerticalMenuButtonTheme}" />
+                             Style="{StaticResource VerticalMenuButtonTheme}"
+                             Command="{Binding TaskDetailsCommand}" />
         </DockPanel>
 
         <!--SubtasksView's Content-->
-        <ContentControl Grid.Row="2" />
+        <ContentControl Grid.Row="2"
+                        Content="{Binding CurrentChildView}" />
     </Grid>
 </UserControl>
