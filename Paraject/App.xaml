@@ -161,6 +161,11 @@
             <DataTemplate DataType="{x:Type viewModel:SubtasksViewModel}">
                 <view:SubtasksView />
             </DataTemplate>
+
+            <!--AllSubtasks (display subtasks todo, and completed subtasks here)-->
+            <DataTemplate DataType="{x:Type viewModel:AllSubtasksViewModel}">
+                <view:AllSubtasksView />
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
