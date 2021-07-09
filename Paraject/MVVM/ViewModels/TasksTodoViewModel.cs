@@ -27,7 +27,7 @@ namespace Paraject.MVVM.ViewModels
 
             ShowAddTaskModalDialogCommand = new DelegateCommand(ShowAddTaskModalDialog);
             FilterTasksCommand = new DelegateCommand(DisplayAllFilteredTasks);
-            NavigateToTaskDetailsViewCommand = new ParameterizedDelegateCommand(NavigateToTaskDetailsView);
+            NavigateToSubtasksViewCommand = new ParameterizedDelegateCommand(NavigateToSubtasksView);
 
             DisplayAllFilteredTasks();
         }
@@ -42,7 +42,7 @@ namespace Paraject.MVVM.ViewModels
 
         public ICommand ShowAddTaskModalDialogCommand { get; }
         public ICommand FilterTasksCommand { get; }
-        public ICommand NavigateToTaskDetailsViewCommand { get; }
+        public ICommand NavigateToSubtasksViewCommand { get; }
         #endregion
 
         #region Methods
@@ -100,12 +100,12 @@ namespace Paraject.MVVM.ViewModels
             SetNewGridDisplay();
             TaskCardGridLocation();
         }
-        public void NavigateToTaskDetailsView(object taskId) //the argument passed to this parameter is in ProjectsView (a "CommandParameter" from a Project card)
+        public void NavigateToSubtasksView(object taskId) //the argument passed to this parameter is in ProjectsView (a "CommandParameter" from a Project card)
         {
             Task selectedTask = _taskRepository.Get((int)taskId);
-            TaskDetailsViewModel taskDetailsViewModel = new TaskDetailsViewModel(DisplayAllFilteredTasks, _tasksViewModel, selectedTask);
+            SubtasksViewModel subtasksViewModel = new SubtasksViewModel(_tasksViewModel, selectedTask);
 
-            MainWindowViewModel.CurrentView = taskDetailsViewModel;
+            MainWindowViewModel.CurrentView = subtasksViewModel;
         }
         #endregion
     }
