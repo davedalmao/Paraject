@@ -66,37 +66,37 @@
             </Trigger>
 
             <Trigger Property="Tag"
-                     Value="Database Design">
+                     Value="Database_Design">
                 <Setter Property="Foreground"
                         Value="{DynamicResource Brown}" />
             </Trigger>
 
             <Trigger Property="Tag"
-                     Value="Database Bug">
+                     Value="Database_Bug">
                 <Setter Property="Foreground"
                         Value="{DynamicResource Brown}" />
             </Trigger>
 
             <Trigger Property="Tag"
-                     Value="UI Design">
+                     Value="UI_Design">
                 <Setter Property="Foreground"
                         Value="{DynamicResource Blue}" />
             </Trigger>
 
             <Trigger Property="Tag"
-                     Value="UI Bug">
+                     Value="UI_Bug">
                 <Setter Property="Foreground"
                         Value="{DynamicResource Blue}" />
             </Trigger>
 
             <Trigger Property="Tag"
-                     Value="UX Design">
+                     Value="UX_Design">
                 <Setter Property="Foreground"
                         Value="{DynamicResource Orange}" />
             </Trigger>
 
             <Trigger Property="Tag"
-                     Value="UX Bug">
+                     Value="UX_Bug">
                 <Setter Property="Foreground"
                         Value="{DynamicResource Orange}" />
             </Trigger>
@@ -108,7 +108,7 @@
             </Trigger>
 
             <Trigger Property="Tag"
-                     Value="Backend Bug">
+                     Value="Backend_Bug">
                 <Setter Property="Foreground"
                         Value="{DynamicResource Violet}" />
             </Trigger>
