@@ -129,10 +129,75 @@
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="Red"
-                                BorderThickness="1">
-                            <TextBlock Text="{Binding Content.Subject}" />
-                        </Border>
+                        <Button  Margin="0,10,0,14"
+                                 Height="153"
+                                 Width="192"
+                                 Background="{StaticResource Card}"
+                                 Style="{StaticResource PlainButtonTheme}"
+                                 Command="{Binding ElementName=Subtasks, Path=DataContext.ShowSubtaskDetailsModalDialogCommand}"
+                                 CommandParameter="{Binding Content.Id}">
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <!--Subtask Priority Indicator-->
+                                <Border Grid.Row="0"
+                                        Height="6"
+                                        Width="169"
+                                        Margin="0,6,0,0"
+                                        CornerRadius="2.3"
+                                        Tag="{Binding Content.Priority}"
+                                        Style="{StaticResource PriorityIndicatorTheme}" />
+
+                                <!--Subtask Details-->
+                                <Grid Grid.Row="1"
+                                      Margin="18,5,18,11">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <!--Subtask Subject-->
+                                    <TextBlock Grid.Row="0"
+                                               Text="{Binding Content.Subject}"
+                                               Tag="{Binding ElementName=Subtasks, Path=DataContext.CurrentTask.Category}"
+                                               Style="{StaticResource TaskCategoryTheme}"
+                                               TextTrimming="CharacterEllipsis"
+                                               FontSize="15"
+                                               Margin="0,12,0,0" />
+
+                                    <!--Subtask Description-->
+                                    <TextBlock Grid.Row="1"
+                                               Text="{Binding Content.Description}"
+                                               FontSize="14"
+                                               VerticalAlignment="Center"
+                                               Foreground="{StaticResource MainFontColor}" />
+
+                                    <!--Card Footer-->
+                                    <!--Subtask Deadline-->
+                                    <StackPanel Orientation="Horizontal"
+                                                Grid.Row="2">
+                                        <!--Deadline Image-->
+                                        <UserControl Width="12.5"
+                                                     Height="12.5"
+                                                     Margin="0,0,3.75,0">
+                                            <svgc1:SvgViewbox Source="/UiDesign/Icons/Calendar/grayCalendar.svg" />
+                                        </UserControl>
+
+                                        <!--Deadline Details-->
+                                        <TextBlock Text="{Binding Content.Deadline, 
+                                                                      StringFormat={}{0:MM / dd / yyyy}, 
+                                                                      TargetNullValue=NO DEADLINE}"
+                                                   Foreground="{StaticResource Darkest}"
+                                                   FontSize="11" />
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </Button>
+
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
