@@ -1,6 +1,9 @@
 ﻿using Paraject.Core.Commands;
 using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.ModalDialogs;
+using Paraject.MVVM.ViewModels.Windows;
+using Paraject.MVVM.Views.ModalDialogs;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
@@ -18,6 +21,7 @@ namespace Paraject.MVVM.ViewModels
             CurrentTask = currentTask;
 
             FilterSubtasksCommand = new DelegateCommand(DisplaySubtasksTodo);
+            ShowAddSubtaskModalDialogCommand = new DelegateCommand(ShowAddSubtaskModalDialog);
 
             DisplayAllFilteredSubtasks(filterType);
         }
@@ -98,6 +102,16 @@ namespace Paraject.MVVM.ViewModels
                 GridTileData td = new(Subtasks[i], row, column);
                 CardSubtasksGrid.Add(td);
             }
+        }
+
+        private void ShowAddSubtaskModalDialog()
+        {
+            MainWindowViewModel.Overlay = true;
+
+            AddSubtaskModalDialogViewModel addSubtaskModalDialogViewModel = new AddSubtaskModalDialogViewModel(CurrentTask.Id, DisplaySubtasksTodo);
+            AddSubtaskModalDialog addSubtaskModalDialog = new AddSubtaskModalDialog();
+            addSubtaskModalDialog.DataContext = addSubtaskModalDialogViewModel;
+            addSubtaskModalDialog.Show();
         }
         #endregion
     }

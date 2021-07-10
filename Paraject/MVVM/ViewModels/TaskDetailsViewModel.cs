@@ -1,9 +1,7 @@
 ﻿using Paraject.Core.Commands;
 using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
-using Paraject.MVVM.ViewModels.ModalDialogs;
 using Paraject.MVVM.ViewModels.Windows;
-using Paraject.MVVM.Views.ModalDialogs;
 using System.Windows;
 using System.Windows.Input;
 
@@ -97,11 +95,11 @@ namespace Paraject.MVVM.ViewModels
         {
             MainWindowViewModel.Overlay = true;
 
-            AddSubtaskModalDialogViewModel addSubtaskModalDialogViewModel = new AddSubtaskModalDialogViewModel(CurrentTask.Id);
+            //AddSubtaskModalDialogViewModel addSubtaskModalDialogViewModel = new AddSubtaskModalDialogViewModel(CurrentTask.Id);
 
-            AddSubtaskModalDialog addSubtaskModalDialog = new AddSubtaskModalDialog();
-            addSubtaskModalDialog.DataContext = addSubtaskModalDialogViewModel;
-            addSubtaskModalDialog.Show();
+            //AddSubtaskModalDialog addSubtaskModalDialog = new AddSubtaskModalDialog();
+            //addSubtaskModalDialog.DataContext = addSubtaskModalDialogViewModel;
+            //addSubtaskModalDialog.Show();
         }
         private void NavigateBackToTasksView()
         {
