@@ -20,8 +20,7 @@ namespace Paraject.MVVM.ViewModels
             CurrentChildView = AllSubtasksVM;
 
             NavigateBackToTaskDetailsViewCommand = new DelegateCommand(NavigateBackToTaskDetailsView);
-            SubtasksTodoCommand = new ParameterizedDelegateCommand(o => { CurrentChildView = AllSubtasksVM; });
-            CompletedSubtasksCommand = new ParameterizedDelegateCommand(o => { CurrentChildView = AllSubtasksVM; });
+            SubtasksFilterCommand = new ParameterizedDelegateCommand(DisplayFilteredSubtasks);
             TaskDetailsCommand = new ParameterizedDelegateCommand(o => { CurrentChildView = TaskDetailsVM; });
         }
 
@@ -39,8 +38,7 @@ namespace Paraject.MVVM.ViewModels
         public bool ComboBoxesRowVisibility { get; set; } = true;
 
         public ICommand NavigateBackToTaskDetailsViewCommand { get; }
-        public ICommand SubtasksTodoCommand { get; }
-        public ICommand CompletedSubtasksCommand { get; }
+        public ICommand SubtasksFilterCommand { get; }
         public ICommand TaskDetailsCommand { get; }
         #endregion
 
@@ -49,7 +47,11 @@ namespace Paraject.MVVM.ViewModels
         {
             MainWindowViewModel.CurrentView = _tasksViewModel;
         }
-
+        private void DisplayFilteredSubtasks(object filter)
+        {
+            AllSubtasksVM = new AllSubtasksViewModel();
+            CurrentChildView = AllSubtasksVM;
+        }
         #endregion
     }
 }
