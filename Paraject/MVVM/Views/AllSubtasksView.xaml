@@ -4,9 +4,105 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Paraject.MVVM.Views"
+             xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
+             xmlns:enums="clr-namespace:Paraject.Core.Enums"
+             xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:grid="clr-namespace:Paraject.Core.Utilities"
+             xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
+             xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:AllSubtasksViewModel}"
              mc:Ignorable="d"
-             Background="Red">
+             Background="Transparent"
+             Foreground="{StaticResource MainFontColor}"
+             FontFamily="{StaticResource NunitoBold}">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <!--Subtask Todo Filters-->
+        <DockPanel Grid.Row="0"
+                   Margin="0,32,0,15"
+                   Visibility="{Binding ComboBoxesRowVisibility,
+                                         Converter={StaticResource BooleanToVisibilityConverter}}">
+            <!--Subtask Status ComboBox-->
+            <StackPanel>
+                <TextBlock Text="Subtask Status:"
+                           FontSize="13"
+                           Margin="0,0,0,4.5" />
 
+                <ComboBox Height="36"
+                          Width="125"
+                          FontSize="14.59"
+                          Background="{StaticResource InputField}"
+                          Style="{StaticResource ComboBoxTheme2}"
+                          SelectedValue="{Binding StatusFilter}"
+                          Text="{Binding StatusFilter}">
+                    <!--Enum ItemSource-->
+                    <ComboBox.ItemsSource>
+                        <CompositeCollection>
+                            <sys:String>Show All</sys:String>
+                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Statuses}}}" />
+                        </CompositeCollection>
+                    </ComboBox.ItemsSource>
+
+                    <!--Triggers a Command when the selected item of a ComboBox changes-->
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding FilterSubtasksCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+            </StackPanel>
+
+            <!--Subtask Priority ComboBox-->
+            <StackPanel Margin="18,0">
+                <TextBlock Text="Subtask Priority:"
+                           FontSize="13"
+                           Margin="0,0,0,4.5" />
+
+                <ComboBox Height="36"
+                          Width="116"
+                          FontSize="14.59"
+                          Background="{StaticResource InputField}"
+                          Style="{StaticResource ComboBoxTheme2}"
+                          SelectedValue="{Binding PriorityFilter}"
+                          Text="{Binding PriorityFilter}">
+                    <!--Enum ItemSource-->
+                    <ComboBox.ItemsSource>
+                        <CompositeCollection>
+                            <sys:String>Show All</sys:String>
+                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Priorities}}}" />
+                        </CompositeCollection>
+                    </ComboBox.ItemsSource>
+
+                    <!--Triggers a Command when the selected item of a ComboBox changes-->
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding FilterSubtasksCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+            </StackPanel>
+
+            <!--Add Subtask Button-->
+            <Button Content="Add New Subtask"
+                    Height="36"
+                    Width="216"
+                    Background="{StaticResource AccentColor}"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Tag="/UiDesign/Icons/ButtonIcons/add.svg"
+                    Style="{StaticResource GeneralButtonTheme}"
+                    Command="{Binding ShowAddSubtaskModalDialogCommand}" />
+        </DockPanel>
+
+        <!--Subtasks Display-->
+        <ScrollViewer Style="{StaticResource ScrollbarTheme}"
+                      Height="346"
+                      Grid.Row="3">
+
+        </ScrollViewer>
     </Grid>
 </UserControl>
