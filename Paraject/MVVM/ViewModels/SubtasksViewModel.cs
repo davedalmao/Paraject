@@ -27,7 +27,8 @@ namespace Paraject.MVVM.ViewModels
 
         #region Properties
         public Task CurrentTask { get; set; }
-        public string CurrentTaskCategory => $"[ {CurrentTask.Category} ]";
+        public string CurrentTaskCategory => $"[ {CurrentTask.Category.Replace("_", " ")} ]";
+
 
         public object CurrentChildView { get; set; }
 
