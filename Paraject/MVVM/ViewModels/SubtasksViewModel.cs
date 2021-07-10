@@ -1,6 +1,7 @@
 ﻿using Paraject.Core.Commands;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
+using System;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
@@ -9,13 +10,13 @@ namespace Paraject.MVVM.ViewModels
     {
         private readonly TasksViewModel _tasksViewModel;
 
-        public SubtasksViewModel(TasksViewModel taskDetailsViewModel, Task currentTask)
+        public SubtasksViewModel(Action refreshTaskCollection, TasksViewModel taskDetailsViewModel, Task currentTask)
         {
             _tasksViewModel = taskDetailsViewModel;
             CurrentTask = currentTask;
 
             AllSubtasksVM = new AllSubtasksViewModel("SubtasksTodo", true, currentTask);
-            TaskDetailsVM = new TaskDetailsViewModel(taskDetailsViewModel, currentTask);
+            TaskDetailsVM = new TaskDetailsViewModel(refreshTaskCollection, taskDetailsViewModel, currentTask);
 
             CurrentChildView = AllSubtasksVM;
 

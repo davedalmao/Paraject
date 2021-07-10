@@ -103,7 +103,7 @@ namespace Paraject.MVVM.ViewModels
         public void NavigateToSubtasksView(object taskId) //the argument passed to this parameter is in ProjectsView (a "CommandParameter" from a Project card)
         {
             Task selectedTask = _taskRepository.Get((int)taskId);
-            SubtasksViewModel subtasksViewModel = new SubtasksViewModel(_tasksViewModel, selectedTask);
+            SubtasksViewModel subtasksViewModel = new SubtasksViewModel(DisplayAllFilteredTasks, _tasksViewModel, selectedTask);
 
             MainWindowViewModel.CurrentView = subtasksViewModel;
         }
