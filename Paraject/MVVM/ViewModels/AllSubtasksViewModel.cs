@@ -11,13 +11,13 @@ namespace Paraject.MVVM.ViewModels
         private readonly SubtaskRepository _subtaskRepository;
         private readonly int _taskId;
 
-        public AllSubtasksViewModel(bool isCompletedButtonChecked, int taskId)
+        public AllSubtasksViewModel(string filterType, bool isCompletedButtonChecked, int taskId)
         {
             _subtaskRepository = new SubtaskRepository();
             _taskId = taskId;
             InputRowVisibility = isCompletedButtonChecked;
 
-            DisplayAllFilteredSubtasks();
+            DisplayAllFilteredSubtasks(filterType);
         }
 
         #region Properties
@@ -50,10 +50,28 @@ namespace Paraject.MVVM.ViewModels
 
             SubtaskCardGridDisplayAndLocation();
         }
-        private void DisplayAllFilteredSubtasks()
+        private void DisplayCompletedSubtasks()
         {
-            DisplaySubtasksTodo();
+            Subtasks = new ObservableCollection<Subtask>(_subtaskRepository.GetAll(_taskId)
+                                                                           .Where(subtask => subtask.Status == "Completed"));
+
+            //if (CompletedSubtasksIsChecked) { ComboBoxesRowVisibility = false; }
+
             SubtaskCardGridDisplayAndLocation();
+        }
+
+        private void DisplayAllFilteredSubtasks(string filterType)
+        {
+            //DisplaySubtasksTodo();
+            //SubtaskCardGridDisplayAndLocation();
+
+            if (filterType == "SubtasksTodo") //this is a CommandParameter in SubtasksView
+            {
+                DisplaySubtasksTodo();
+                return;
+            }
+
+            DisplayCompletedSubtasks();
         }
 
         private void SubtaskCardGridDisplayAndLocation()
