@@ -9,18 +9,18 @@ namespace Paraject.MVVM.ViewModels
     public class AllSubtasksViewModel : BaseViewModel
     {
         private readonly SubtaskRepository _subtaskRepository;
-        private readonly int _taskId;
 
-        public AllSubtasksViewModel(string filterType, bool isCompletedButtonChecked, int taskId)
+        public AllSubtasksViewModel(string filterType, bool isCompletedButtonChecked, Task currentTask)
         {
             _subtaskRepository = new SubtaskRepository();
-            _taskId = taskId;
             InputRowVisibility = isCompletedButtonChecked;
+            CurrentTask = currentTask;
 
             DisplayAllFilteredSubtasks(filterType);
         }
 
         #region Properties
+        public Task CurrentTask { get; set; } // I used a Property here instead of an int field for Id because I will bind Task.Category to the UI
         public ObservableCollection<Subtask> Subtasks { get; set; }
         public ObservableCollection<GridTileData> CardSubtasksGrid { get; set; }
 
@@ -37,7 +37,7 @@ namespace Paraject.MVVM.ViewModels
         #region Methods
         private void DisplaySubtasksTodo()
         {
-            Subtasks = new ObservableCollection<Subtask>(_subtaskRepository.FindAll(_taskId, StatusFilter, PriorityFilter)
+            Subtasks = new ObservableCollection<Subtask>(_subtaskRepository.FindAll(CurrentTask.Id, StatusFilter, PriorityFilter)
                                                                            .Where(subtask => subtask.Status != "Completed"));
             //if (!ComboBoxesRowVisibility)
             //{
@@ -52,7 +52,7 @@ namespace Paraject.MVVM.ViewModels
         }
         private void DisplayCompletedSubtasks()
         {
-            Subtasks = new ObservableCollection<Subtask>(_subtaskRepository.GetAll(_taskId)
+            Subtasks = new ObservableCollection<Subtask>(_subtaskRepository.GetAll(CurrentTask.Id)
                                                                            .Where(subtask => subtask.Status == "Completed"));
 
             //if (CompletedSubtasksIsChecked) { ComboBoxesRowVisibility = false; }
@@ -62,9 +62,6 @@ namespace Paraject.MVVM.ViewModels
 
         private void DisplayAllFilteredSubtasks(string filterType)
         {
-            //DisplaySubtasksTodo();
-            //SubtaskCardGridDisplayAndLocation();
-
             if (filterType == "SubtasksTodo") //this is a CommandParameter in SubtasksView
             {
                 DisplaySubtasksTodo();
