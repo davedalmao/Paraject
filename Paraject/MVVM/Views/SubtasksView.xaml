@@ -63,13 +63,15 @@
             <custom:MenuItem Content="Subtasks Todo"
                              IsChecked="True"
                              Style="{StaticResource VerticalMenuButtonTheme}"
-                             Command="{Binding SubtasksTodoCommand}" />
+                             Command="{Binding SubtasksFilterCommand}"
+                             CommandParameter="SubtasksTodo" />
 
             <!--Completed Subtasks Filter-->
             <custom:MenuItem Content="Completed Subtasks"
                              IsChecked="{Binding CompletedSubtasksIsChecked}"
                              Style="{StaticResource VerticalMenuButtonTheme}"
-                             Command="{Binding CompletedSubtasksCommand}" />
+                             Command="{Binding SubtasksFilterCommand}"
+                             CommandParameter="Completed" />
 
 
             <!--Task Details-->
