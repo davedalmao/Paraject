@@ -17,71 +17,15 @@
              FontFamily="{StaticResource NunitoBold}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <!--TaskDetails Header-->
-        <Grid Grid.Row="0"
-              Margin="38,30,38,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="auto" />
-            </Grid.ColumnDefinitions>
-
-            <!--TaskDetails Header Text-->
-            <StackPanel Orientation="Horizontal"
-                        Grid.Row="0">
-                <!--Back (to TasksView) Button-->
-                <Button  Style="{StaticResource PlainButtonTheme}"
-                         Command="{Binding NavigateBackToTasksViewCommand}"
-                         Background="Transparent"
-                         Cursor="Hand"
-                         Width="28"
-                         Height="28">
-                    <Image Source="/UiDesign/Icons/backArrow.png"
-                           RenderOptions.BitmapScalingMode="HighQuality"
-                           RenderOptions.EdgeMode="Aliased"
-                           SnapsToDevicePixels="True" />
-                </Button>
-
-                <!--Task Details-->
-                <TextBlock Text="Task Details"
-                           TextTrimming="CharacterEllipsis"
-                           FontSize="25"
-                           Margin="8,0,0,0" />
-            </StackPanel>
-
-            <!--Add New Subtask Button-->
-            <Button Grid.Column="1"
-                    Content="Add New Subtask"
-                    Height="36"
-                    Width="188"
-                    Background="{StaticResource AccentColor}"
-                    Tag="/UiDesign/Icons/ButtonIcons/add.svg"
-                    Style="{StaticResource GeneralButtonTheme}"
-                    Command="{Binding ShowAddSubtaskModalDialogCommand}" />
-
-            <!--Add New Subtask Button-->
-            <Button Grid.Column="2"
-                    Content="View Subtasks"
-                    Height="36"
-                    Width="188"
-                    Background="{StaticResource Green}"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom"
-                    Margin="15,0,0,0"
-                    Tag="/UiDesign/Icons/ButtonIcons/subtask.svg"
-                    Style="{StaticResource GeneralButtonTheme}"
-                    Command="{Binding NavigateToSubtasksViewCommand}" />
-        </Grid>
 
         <!--TaskDetails Input/Display Fields-->
-        <Grid Grid.Row="1"
+        <Grid Grid.Row="0"
               VerticalAlignment="Center"
-              Margin="50,0">
+              Margin="5,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="auto" />
@@ -205,7 +149,7 @@
 
         <!--Footer-->
         <Grid Grid.Row="2"
-              Margin="50,0,50,30">
+              Margin="8,12,8,5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="auto" />
