@@ -1,4 +1,5 @@
-﻿using Paraject.MVVM.Models;
+﻿using Paraject.Core.Repositories;
+using Paraject.MVVM.Models;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -6,8 +7,10 @@ namespace Paraject.MVVM.ViewModels
 {
     public class AllSubtasksViewModel : BaseViewModel
     {
+        private readonly SubtaskRepository _subtaskRepository;
         public AllSubtasksViewModel(bool isCompletedButtonChecked)
         {
+            _subtaskRepository = new SubtaskRepository();
             InputRowVisibility = isCompletedButtonChecked;
         }
 

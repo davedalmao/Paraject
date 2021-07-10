@@ -102,7 +102,40 @@
         <ScrollViewer Style="{StaticResource ScrollbarTheme}"
                       Height="346"
                       Grid.Row="3">
+            <ItemsControl x:Name="Subtasks"
+                          ItemsSource="{Binding CardSubtasksGrid}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Grid grid:AutoRowsGrid.ChildrenCount="{Binding Items.Count, ElementName=Subtasks}"
+                              VerticalAlignment="Top">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="192" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="192" />
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
 
+                <!--Defined in /Utilities/AutoRowsGrid.cs-->
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="Grid.Row"
+                                Value="{Binding Row}" />
+                        <Setter Property="Grid.Column"
+                                Value="{Binding Column}" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Red"
+                                BorderThickness="1">
+                            <TextBlock Text="{Binding Content.Subject}" />
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </ScrollViewer>
     </Grid>
 </UserControl>
