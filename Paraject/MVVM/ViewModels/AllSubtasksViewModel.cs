@@ -17,11 +17,13 @@ namespace Paraject.MVVM.ViewModels
         public AllSubtasksViewModel(string filterType, bool isCompletedButtonChecked, Task currentTask)
         {
             _subtaskRepository = new SubtaskRepository();
+
             InputRowVisibility = isCompletedButtonChecked;
             CurrentTask = currentTask;
 
             FilterSubtasksCommand = new DelegateCommand(DisplaySubtasksTodo);
             ShowAddSubtaskModalDialogCommand = new DelegateCommand(ShowAddSubtaskModalDialog);
+            ShowSubtaskDetailsModalDialogCommand = new ParameterizedDelegateCommand(ShowSubtaskDetailsModalDialog);
 
             DisplayAllFilteredSubtasks(filterType);
         }
@@ -112,6 +114,17 @@ namespace Paraject.MVVM.ViewModels
             AddSubtaskModalDialog addSubtaskModalDialog = new AddSubtaskModalDialog();
             addSubtaskModalDialog.DataContext = addSubtaskModalDialogViewModel;
             addSubtaskModalDialog.Show();
+        }
+        private void ShowSubtaskDetailsModalDialog(object subtaskId)
+        {
+            MainWindowViewModel.Overlay = true;
+
+            int selectedSubtask = (int)subtaskId;
+            SubtaskDetailsModalDialogViewModel subtaskDetailsModalDialogViewModel = new(DisplaySubtasksTodo, selectedSubtask);
+
+            SubtaskDetailsModalDialog subtaskDetailsModalDialog = new SubtaskDetailsModalDialog();
+            subtaskDetailsModalDialog.DataContext = subtaskDetailsModalDialogViewModel;
+            subtaskDetailsModalDialog.Show();
         }
         #endregion
     }
