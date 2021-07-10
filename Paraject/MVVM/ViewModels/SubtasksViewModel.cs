@@ -14,7 +14,7 @@ namespace Paraject.MVVM.ViewModels
             _tasksViewModel = taskDetailsViewModel;
             CurrentTask = currentTask;
 
-            AllSubtasksVM = new AllSubtasksViewModel();
+            AllSubtasksVM = new AllSubtasksViewModel(true);
             TaskDetailsVM = new TaskDetailsViewModel(taskDetailsViewModel, currentTask);
 
             CurrentChildView = AllSubtasksVM;
@@ -49,7 +49,9 @@ namespace Paraject.MVVM.ViewModels
         }
         private void DisplayFilteredSubtasks(object filter)
         {
-            AllSubtasksVM = new AllSubtasksViewModel();
+            bool isCompletedButtonChecked = filter.ToString() == "SubtasksTodo";
+
+            AllSubtasksVM = new AllSubtasksViewModel(isCompletedButtonChecked);
             CurrentChildView = AllSubtasksVM;
         }
         #endregion

@@ -24,7 +24,7 @@
         <!--Subtask Todo Filters-->
         <DockPanel Grid.Row="0"
                    Margin="0,32,0,15"
-                   Visibility="{Binding ComboBoxesRowVisibility,
+                   Visibility="{Binding InputRowVisibility,
                                          Converter={StaticResource BooleanToVisibilityConverter}}">
             <!--Subtask Status ComboBox-->
             <StackPanel>
