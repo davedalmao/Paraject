@@ -1,4 +1,5 @@
-﻿using Paraject.Core.Repositories;
+﻿using Paraject.Core.Commands;
+using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -16,11 +17,14 @@ namespace Paraject.MVVM.ViewModels
             InputRowVisibility = isCompletedButtonChecked;
             CurrentTask = currentTask;
 
+            FilterSubtasksCommand = new DelegateCommand(DisplaySubtasksTodo);
+
             DisplayAllFilteredSubtasks(filterType);
         }
 
         #region Properties
         public Task CurrentTask { get; set; } // I used a Property here instead of an int field for Id because I will bind Task.Category to the UI
+
         public ObservableCollection<Subtask> Subtasks { get; set; }
         public ObservableCollection<GridTileData> CardSubtasksGrid { get; set; }
 
@@ -39,30 +43,17 @@ namespace Paraject.MVVM.ViewModels
         {
             Subtasks = new ObservableCollection<Subtask>(_subtaskRepository.FindAll(CurrentTask.Id, StatusFilter, PriorityFilter)
                                                                            .Where(subtask => subtask.Status != "Completed"));
-            //if (!ComboBoxesRowVisibility)
-            //{
-            //    ComboBoxesRowVisibility = true;
-
-            //    //Just Comment this out if you want to remember the last selected items in the ComboBoxes
-            //    StatusFilter = "Show All";
-            //    PriorityFilter = "Show All";
-            //}
-
             SubtaskCardGridDisplayAndLocation();
         }
         private void DisplayCompletedSubtasks()
         {
             Subtasks = new ObservableCollection<Subtask>(_subtaskRepository.GetAll(CurrentTask.Id)
                                                                            .Where(subtask => subtask.Status == "Completed"));
-
-            //if (CompletedSubtasksIsChecked) { ComboBoxesRowVisibility = false; }
-
             SubtaskCardGridDisplayAndLocation();
         }
-
-        private void DisplayAllFilteredSubtasks(string filterType)
+        private void DisplayAllFilteredSubtasks(object filterType)
         {
-            if (filterType == "SubtasksTodo") //this is a CommandParameter in SubtasksView
+            if (filterType.ToString() == "SubtasksTodo") //this is a CommandParameter in SubtasksView
             {
                 DisplaySubtasksTodo();
                 return;
