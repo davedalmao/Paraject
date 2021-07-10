@@ -2,6 +2,7 @@
 using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -10,7 +11,7 @@ namespace Paraject.MVVM.ViewModels
     public class TaskDetailsViewModel : BaseViewModel
     {
         private readonly TaskRepository _taskRepository;
-        //private readonly Action _refreshTaskCollection;
+        private readonly Action _refreshTaskCollection;
         private readonly TasksViewModel _tasksViewModel;
 
         /// <summary>
@@ -19,18 +20,16 @@ namespace Paraject.MVVM.ViewModels
         /// <param name="refreshTaskCollection">refreshes the Collection in the ChildView (TasksTodoView/CompletedTasksView) after a certain action is invoked</param>
         /// <param name="tasksViewModel">this is passed to save the UI state of TasksView when navigating back to it</param>
         /// <param name="selectedTask">the selected task in TasksTodoView/CompletedTasksview</param>
-        public TaskDetailsViewModel(TasksViewModel tasksViewModel, Task selectedTask)
+        public TaskDetailsViewModel(Action refreshTaskCollection, TasksViewModel tasksViewModel, Task selectedTask)
         {
             _taskRepository = new TaskRepository();
-            //_refreshTaskCollection = refreshTaskCollection;
 
+            _refreshTaskCollection = refreshTaskCollection;
             _tasksViewModel = tasksViewModel;
             CurrentTask = selectedTask;
+
             UpdateTaskCommand = new DelegateCommand(Update);
             DeleteTaskCommand = new DelegateCommand(Delete);
-            ShowAddSubtaskModalDialogCommand = new DelegateCommand(ShowAddSubtaskModalDialog);
-            NavigateBackToTasksViewCommand = new DelegateCommand(NavigateBackToTasksView);
-            NavigateToSubtasksViewCommand = new DelegateCommand(NavigateToSubtasksView);
         }
 
         #region Properties
@@ -38,9 +37,6 @@ namespace Paraject.MVVM.ViewModels
 
         public ICommand UpdateTaskCommand { get; }
         public ICommand DeleteTaskCommand { get; }
-        public ICommand ShowAddSubtaskModalDialogCommand { get; }
-        public ICommand NavigateBackToTasksViewCommand { get; }
-        public ICommand NavigateToSubtasksViewCommand { get; }
         #endregion
 
         #region Methods
@@ -51,6 +47,7 @@ namespace Paraject.MVVM.ViewModels
                 bool isUpdated = _taskRepository.Update(CurrentTask);
                 if (isUpdated)
                 {
+                    _refreshTaskCollection();
                     MessageBox.Show("Task updated successfully");
                 }
                 else
@@ -78,39 +75,15 @@ namespace Paraject.MVVM.ViewModels
             {
                 MessageBox.Show("Task deleted successfully");
 
-                //redirect to TasksView (parent View) after a successful DELETE operation, and
-                //refreshes the Tasks Collection in TasksTodoView/CompletedTasksView (child View/s of TasksView) with the new records
-
-
-
-                //_refreshTaskCollection();
+                //redirect to TasksView(parent View) after a successful DELETE operation, and
+                //refreshes the Tasks Collection in TasksTodoViewCompletedTasksView(child Views of TasksView) with the new records
+                _refreshTaskCollection();
                 MainWindowViewModel.CurrentView = _tasksViewModel;
             }
             else
             {
                 MessageBox.Show("An error occurred, cannot delete task");
             }
-        }
-        private void ShowAddSubtaskModalDialog()
-        {
-            MainWindowViewModel.Overlay = true;
-
-            //AddSubtaskModalDialogViewModel addSubtaskModalDialogViewModel = new AddSubtaskModalDialogViewModel(CurrentTask.Id);
-
-            //AddSubtaskModalDialog addSubtaskModalDialog = new AddSubtaskModalDialog();
-            //addSubtaskModalDialog.DataContext = addSubtaskModalDialogViewModel;
-            //addSubtaskModalDialog.Show();
-        }
-        private void NavigateBackToTasksView()
-        {
-            //_refreshTaskCollection();
-            MainWindowViewModel.CurrentView = _tasksViewModel;
-        }
-        private void NavigateToSubtasksView()
-        {
-            //SubtasksViewModel subtasksViewModel = new SubtasksViewModel(this, CurrentTask);
-
-            //MainWindowViewModel.CurrentView = subtasksViewModel;
         }
         #endregion
     }
