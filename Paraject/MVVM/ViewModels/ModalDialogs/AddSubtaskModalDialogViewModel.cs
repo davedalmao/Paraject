@@ -14,7 +14,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         private readonly Action _refreshSubtasksCollection;
         private readonly int _taskId;
 
-        public AddSubtaskModalDialogViewModel(int taskId, Action refreshSubtasksCollection = null)
+        public AddSubtaskModalDialogViewModel(int taskId, Action refreshSubtasksCollection)
         {
             _subtaskRepository = new SubtaskRepository();
             _refreshSubtasksCollection = refreshSubtasksCollection;
@@ -50,7 +50,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isAdded)
             {
                 //messagebox issue (this is just temporary, we're going to use a custom MessageBox anyway)
-                _refreshSubtasksCollection?.Invoke();
+                _refreshSubtasksCollection();
                 MessageBox.Show("Subtask Created");
                 CloseModalDialog();
             }
