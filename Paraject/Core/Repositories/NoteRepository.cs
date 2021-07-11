@@ -53,7 +53,59 @@ namespace Paraject.Core.Repositories
         }
         public Note Get(int noteId)
         {
-            throw new NotImplementedException();
+            Note note = null;
+
+            using (SqlConnection con = new(_connectionString))
+            using (SqlCommand cmd = new("Note.spGetNote", con))
+            {
+                try
+                {
+                    con.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@note_id", SqlDbType.Int).Value = noteId;
+
+                    SqlDataReader sqlDataReader = cmd.ExecuteReader();
+                    if (sqlDataReader.HasRows)
+                    {
+                        //Move to the first record.  If no records, get out.
+                        if (!sqlDataReader.Read()) { return null; }
+
+                        //Ordinals (Gets the column number from the database based on the [column name] passed in GetOrdinal method)
+                        int noteIdFromDb = sqlDataReader.GetOrdinal("note_id");
+                        int projectIdFk = sqlDataReader.GetOrdinal("project_id");
+                        int noteSubject = sqlDataReader.GetOrdinal("note_subject");
+                        int noteDescription = sqlDataReader.GetOrdinal("note_description");
+                        int dateCreated = sqlDataReader.GetOrdinal("date_created");
+
+                        //Reads a single Note
+                        //Remember, we're already on the first record, so use do/while here.
+                        do
+                        {
+                            note = new Note()
+                            {
+                                Id = sqlDataReader.GetInt32(noteIdFromDb),
+                                Project_Id_Fk = sqlDataReader.GetInt32(projectIdFk),
+                                Subject = sqlDataReader.GetString(noteSubject),
+                                Description = sqlDataReader.GetString(noteDescription),
+                                DateCreated = sqlDataReader.GetDateTime(dateCreated)
+                            };
+                        }
+                        while (sqlDataReader.Read());
+                    }
+                    sqlDataReader.Close();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show($"An SQL error occured while processing data. \nError: { ex.Message }");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+
+            return note;
         }
         public IEnumerable<Note> GetAll(int projectId)
         {
