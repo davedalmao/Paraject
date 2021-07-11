@@ -27,13 +27,10 @@ namespace Paraject.MVVM.ViewModels
 
         #region Properties
         public Task CurrentTask { get; set; }
-        public string CurrentTaskCategory => $"[ {CurrentTask.Category.Replace("_", " ")} ]";
-
-
         public object CurrentChildView { get; set; }
 
         //Child Views
-        public AllSubtasksViewModel AllSubtasksVM { get; set; }
+        public AllSubtasksViewModel AllSubtasksVM { get; set; } //Subtasks Todo and Completed Subtasks tab
         public TaskDetailsViewModel TaskDetailsVM { get; set; }
 
         public bool CompletedSubtasksIsChecked { get; set; }
