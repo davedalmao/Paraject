@@ -21,7 +21,7 @@ namespace Paraject.MVVM.ViewModels
             _projectId = projectId;
 
             FilterTasksCommand = new DelegateCommand(FilterTasks);
-            NavigateToTaskDetailsViewCommand = new ParameterizedDelegateCommand(NavigateToTaskDetailsView);
+            NavigateToSubtasksViewCommand = new ParameterizedDelegateCommand(NavigateToSubtasksView);
 
             DisplayAllFilteredTasks();
         }
@@ -34,7 +34,7 @@ namespace Paraject.MVVM.ViewModels
         public string CategoryFilter { get; set; } = "Show All";
 
         public ICommand FilterTasksCommand { get; }
-        public ICommand NavigateToTaskDetailsViewCommand { get; }
+        public ICommand NavigateToSubtasksViewCommand { get; }
         #endregion
 
         #region Methods
@@ -87,13 +87,11 @@ namespace Paraject.MVVM.ViewModels
             SetNewGridDisplay();
             TaskCardGridLocation();
         }
-        public void NavigateToTaskDetailsView(object taskId) //the argument passed to this parameter is in CompletedTasksView (a "CommandParameter" from a Task card)
+        public void NavigateToSubtasksView(object taskId) //the argument passed to this parameter is in CompletedTasksView (a "CommandParameter" from a Task card)
         {
             Task selectedTask = _taskRepository.Get((int)taskId);
-            //TaskDetailsViewModel taskDetailsViewModel = new TaskDetailsViewModel(_tasksViewModel, selectedTask);
-            //TaskDetailsViewModel taskDetailsViewModel = new TaskDetailsViewModel(DisplayAllFilteredTasks, _tasksViewModel, selectedTask);
-
-            //MainWindowViewModel.CurrentView = taskDetailsViewModel;
+            SubtasksViewModel subtasksViewModel = new SubtasksViewModel(DisplayAllFilteredTasks, _tasksViewModel, selectedTask);
+            MainWindowViewModel.CurrentView = subtasksViewModel;
         }
         #endregion
     }
