@@ -109,7 +109,62 @@ namespace Paraject.Core.Repositories
         }
         public IEnumerable<Note> GetAll(int projectId)
         {
-            throw new NotImplementedException();
+            List<Note> notes = new();
+
+            using (SqlConnection con = new(_connectionString))
+            using (SqlCommand cmd = new("Note.spGetAllNotes", con))
+            {
+                try
+                {
+                    con.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@project_id", SqlDbType.Int).Value = projectId;
+
+                    SqlDataReader sqlDataReader = cmd.ExecuteReader();
+                    if (sqlDataReader.HasRows)
+                    {
+                        //Move to the first record.  If no records, get out.
+                        if (!sqlDataReader.Read()) { return null; }
+
+                        //Ordinals (Gets the column number from the database based on the [column name] passed in GetOrdinal method)
+                        int noteIdFromDb = sqlDataReader.GetOrdinal("note_id");
+                        int projectIdFk = sqlDataReader.GetOrdinal("project_id");
+                        int noteSubject = sqlDataReader.GetOrdinal("note_subject");
+                        int noteDescription = sqlDataReader.GetOrdinal("note_description");
+                        int dateCreated = sqlDataReader.GetOrdinal("date_created");
+
+                        //reading multiple Notes (Add a Note object to the notes List if SqlDataReader returns a row from the Database)
+                        //Remember, we're already on the first record, so use do/while here.
+                        do
+                        {
+                            Note note = new()
+                            {
+                                Id = sqlDataReader.GetInt32(noteIdFromDb),
+                                Project_Id_Fk = sqlDataReader.GetInt32(projectIdFk),
+                                Subject = sqlDataReader.GetString(noteSubject),
+                                Description = sqlDataReader.IsDBNull(noteDescription) ? "--" : sqlDataReader.GetString(noteDescription),
+                                DateCreated = sqlDataReader.GetDateTime(dateCreated)
+                            };
+
+                            notes.Add(note);
+                        }
+                        //reading multiple Notes
+                        while (sqlDataReader.Read());
+                    }
+                    sqlDataReader.Close();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show($"An SQL error occured while processing data. \nError: { ex.Message }");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+
+            return notes;
         }
         public bool Update(Note note)
         {
