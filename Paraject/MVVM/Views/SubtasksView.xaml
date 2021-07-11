@@ -25,7 +25,7 @@
                     Grid.Row="0">
             <!--Back (to TasksView) Button-->
             <Button  Style="{StaticResource PlainButtonTheme}"
-                     Command="{Binding NavigateBackToTaskDetailsViewCommand}"
+                     Command="{Binding NavigateBackToTasksViewCommand}"
                      Background="Transparent"
                      Cursor="Hand"
                      Width="28"
