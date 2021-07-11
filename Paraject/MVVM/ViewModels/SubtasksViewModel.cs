@@ -8,10 +8,12 @@ namespace Paraject.MVVM.ViewModels
 {
     public class SubtasksViewModel : BaseViewModel
     {
+        private readonly Action _refreshTaskCollection;
         private readonly TasksViewModel _tasksViewModel;
 
         public SubtasksViewModel(Action refreshTaskCollection, TasksViewModel taskDetailsViewModel, Task currentTask)
         {
+            _refreshTaskCollection = refreshTaskCollection;
             _tasksViewModel = taskDetailsViewModel;
             CurrentTask = currentTask;
 
@@ -20,7 +22,7 @@ namespace Paraject.MVVM.ViewModels
 
             CurrentChildView = AllSubtasksVM;
 
-            NavigateBackToTaskDetailsViewCommand = new DelegateCommand(NavigateBackToTaskDetailsView);
+            NavigateBackToTasksViewCommand = new DelegateCommand(NavigateBackToTasksView);
             SubtasksFilterCommand = new ParameterizedDelegateCommand(DisplayFilteredSubtasks);
             TaskDetailsCommand = new ParameterizedDelegateCommand(o => { CurrentChildView = TaskDetailsVM; });
         }
@@ -35,14 +37,15 @@ namespace Paraject.MVVM.ViewModels
 
         public bool CompletedSubtasksButtonIsChecked { get; set; } //Hides the input row in AllSubtasksView if false
 
-        public ICommand NavigateBackToTaskDetailsViewCommand { get; }
+        public ICommand NavigateBackToTasksViewCommand { get; }
         public ICommand SubtasksFilterCommand { get; }
         public ICommand TaskDetailsCommand { get; }
         #endregion
 
         #region Methods
-        private void NavigateBackToTaskDetailsView()
+        private void NavigateBackToTasksView()
         {
+            _refreshTaskCollection();
             MainWindowViewModel.CurrentView = _tasksViewModel;
         }
         private void DisplayFilteredSubtasks(object filterType)
