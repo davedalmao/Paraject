@@ -23,7 +23,7 @@
         <!--SubtasksView Header-->
         <StackPanel Orientation="Horizontal"
                     Grid.Row="0">
-            <!--Back (to TaskDetails) Button-->
+            <!--Back (to TasksView) Button-->
             <Button  Style="{StaticResource PlainButtonTheme}"
                      Command="{Binding NavigateBackToTaskDetailsViewCommand}"
                      Background="Transparent"
