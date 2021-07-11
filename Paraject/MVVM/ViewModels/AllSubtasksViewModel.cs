@@ -13,10 +13,12 @@ namespace Paraject.MVVM.ViewModels
     public class AllSubtasksViewModel : BaseViewModel
     {
         private readonly SubtaskRepository _subtaskRepository;
+        private readonly string _filterType;
 
         public AllSubtasksViewModel(string filterType, bool isInputRowDisplayed, Task currentTask)
         {
             _subtaskRepository = new SubtaskRepository();
+            _filterType = filterType;
 
             InputRowVisibility = isInputRowDisplayed;
             CurrentTask = currentTask;
@@ -25,7 +27,7 @@ namespace Paraject.MVVM.ViewModels
             ShowAddSubtaskModalDialogCommand = new DelegateCommand(ShowAddSubtaskModalDialog);
             ShowSubtaskDetailsModalDialogCommand = new ParameterizedDelegateCommand(ShowSubtaskDetailsModalDialog);
 
-            DisplayAllFilteredSubtasks(filterType);
+            DisplayAllFilteredSubtasks();
         }
 
         #region Properties
@@ -57,9 +59,10 @@ namespace Paraject.MVVM.ViewModels
                                                                            .Where(subtask => subtask.Status == "Completed"));
             SubtaskCardGridDisplayAndLocation();
         }
-        private void DisplayAllFilteredSubtasks(object filterType)
+        private void DisplayAllFilteredSubtasks()
         {
-            if (filterType.ToString() == "SubtasksTodo") //this is a CommandParameter in SubtasksView
+            // I used the _filterType field here instead of passing a parameter to this method and initialize it in the constructor, so that I can reuse this method in another method: ShowSubtaskDetailsModalDialog (to load the Subtasks collection with the proper values - completed subtasks or not)
+            if (_filterType == "SubtasksTodo")
             {
                 DisplaySubtasksTodo();
                 return;
@@ -120,7 +123,7 @@ namespace Paraject.MVVM.ViewModels
             MainWindowViewModel.Overlay = true;
 
             int selectedSubtask = (int)subtaskId;
-            SubtaskDetailsModalDialogViewModel subtaskDetailsModalDialogViewModel = new(DisplaySubtasksTodo, selectedSubtask);
+            SubtaskDetailsModalDialogViewModel subtaskDetailsModalDialogViewModel = new SubtaskDetailsModalDialogViewModel(DisplayAllFilteredSubtasks, selectedSubtask);
 
             SubtaskDetailsModalDialog subtaskDetailsModalDialog = new SubtaskDetailsModalDialog();
             subtaskDetailsModalDialog.DataContext = subtaskDetailsModalDialogViewModel;

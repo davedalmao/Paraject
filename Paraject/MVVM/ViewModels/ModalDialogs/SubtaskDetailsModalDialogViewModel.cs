@@ -64,6 +64,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 MessageBox.Show("Error occured, cannot update the subtask");
             }
         }
+
         private void Delete()
         {
             MessageBoxResult Result = MessageBox.Show("Do you want to DELETE this subtask?", "Delete Operation", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -86,6 +87,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 MessageBox.Show("An error occurred, cannot delete subtask");
             }
         }
+
         private void CloseModalDialog()
         {
             MainWindowViewModel.Overlay = false;
