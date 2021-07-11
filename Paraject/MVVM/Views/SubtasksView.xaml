@@ -64,7 +64,7 @@
 
             <!--Completed Subtasks Filter-->
             <custom:MenuItem Content="Completed Subtasks"
-                             IsChecked="{Binding CompletedSubtasksIsChecked}"
+                             IsChecked="{Binding CompletedSubtasksButtonIsChecked}"
                              Style="{StaticResource VerticalMenuButtonTheme}"
                              Command="{Binding SubtasksFilterCommand}"
                              CommandParameter="Completed" />
