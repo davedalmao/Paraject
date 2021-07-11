@@ -14,11 +14,11 @@ namespace Paraject.MVVM.ViewModels
     {
         private readonly SubtaskRepository _subtaskRepository;
 
-        public AllSubtasksViewModel(string filterType, bool isCompletedButtonChecked, Task currentTask)
+        public AllSubtasksViewModel(string filterType, bool isInputRowDisplayed, Task currentTask)
         {
             _subtaskRepository = new SubtaskRepository();
 
-            InputRowVisibility = isCompletedButtonChecked;
+            InputRowVisibility = isInputRowDisplayed;
             CurrentTask = currentTask;
 
             FilterSubtasksCommand = new DelegateCommand(DisplaySubtasksTodo);

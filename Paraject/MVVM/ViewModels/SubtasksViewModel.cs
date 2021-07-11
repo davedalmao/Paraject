@@ -33,8 +33,7 @@ namespace Paraject.MVVM.ViewModels
         public AllSubtasksViewModel AllSubtasksVM { get; set; } //Subtasks Todo and Completed Subtasks tab
         public TaskDetailsViewModel TaskDetailsVM { get; set; }
 
-        public bool CompletedSubtasksIsChecked { get; set; }
-        public bool ComboBoxesRowVisibility { get; set; } = true;
+        public bool CompletedSubtasksButtonIsChecked { get; set; } //Hides the input row in AllSubtasksView if false
 
         public ICommand NavigateBackToTaskDetailsViewCommand { get; }
         public ICommand SubtasksFilterCommand { get; }
@@ -46,12 +45,9 @@ namespace Paraject.MVVM.ViewModels
         {
             MainWindowViewModel.CurrentView = _tasksViewModel;
         }
-        private void DisplayFilteredSubtasks(object filter)
+        private void DisplayFilteredSubtasks(object filterType)
         {
-            string filterType = filter.ToString();
-            bool isCompletedButtonChecked = filterType == "SubtasksTodo";
-
-            AllSubtasksVM = new AllSubtasksViewModel(filterType, isCompletedButtonChecked, CurrentTask);
+            AllSubtasksVM = new AllSubtasksViewModel(filterType.ToString(), !CompletedSubtasksButtonIsChecked, CurrentTask);
             CurrentChildView = AllSubtasksVM;
         }
         #endregion
