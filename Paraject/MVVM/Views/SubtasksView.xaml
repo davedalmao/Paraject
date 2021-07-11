@@ -23,7 +23,7 @@
         <!--SubtasksView Header-->
         <StackPanel Orientation="Horizontal"
                     Grid.Row="0">
-            <!--Back (to TaskDetails) Button-->
+            <!--Back (to TasksView) Button-->
             <Button  Style="{StaticResource PlainButtonTheme}"
                      Command="{Binding NavigateBackToTaskDetailsViewCommand}"
                      Background="Transparent"
@@ -43,7 +43,9 @@
                        Margin="8,0,0,0" />
 
             <!--Task Category-->
-            <TextBlock Text="{Binding CurrentTaskCategory}"
+            <TextBlock Text="{Binding CurrentTask.Category,
+                                      UpdateSourceTrigger=PropertyChanged,
+                                      Converter={StaticResource UnderscoreToSpaceConverter}}"
                        Style="{StaticResource TaskCategoryTheme}"
                        TextTrimming="CharacterEllipsis"
                        FontSize="25"
