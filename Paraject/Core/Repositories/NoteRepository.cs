@@ -199,7 +199,33 @@ namespace Paraject.Core.Repositories
         }
         public bool Delete(int noteId)
         {
-            throw new NotImplementedException();
+            bool isDeleted = false;
+
+            if (noteId <= 0) { return false; }
+
+            using (SqlConnection con = new(_connectionString))
+            using (SqlCommand cmd = new("Note.spDeleteNote", con))
+            {
+                try
+                {
+                    con.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@note_id", SqlDbType.Int).Value = noteId;
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    isDeleted = rowsAffected > 0;
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+
+            return isDeleted;
         }
     }
 }
