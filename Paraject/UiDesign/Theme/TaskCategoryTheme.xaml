@@ -3,7 +3,7 @@
     <Style TargetType="{x:Type TextBlock}"
            x:Key="TaskCategoryTheme">
         <Style.Triggers>
-            <!--Without Brackets (Text Property)-->
+            <!--#region Without Brackets (Text Property)-->
             <Trigger Property="Text"
                      Value="Database">
                 <Setter Property="Foreground"
@@ -57,8 +57,9 @@
                 <Setter Property="Foreground"
                         Value="{DynamicResource Violet}" />
             </Trigger>
+            <!--#endregion-->
 
-            <!--Without Brackets (Tag Property)-->
+            <!--#region Without Brackets (Tag Property)-->
             <Trigger Property="Tag"
                      Value="Database">
                 <Setter Property="Foreground"
@@ -112,8 +113,9 @@
                 <Setter Property="Foreground"
                         Value="{DynamicResource Violet}" />
             </Trigger>
+            <!--#endregion-->
 
-            <!--With Brackets (set in SubtaskView's CurrentTaskCategory Property)-->
+            <!--#region With Brackets (set in SubtaskView's CurrentTask.Category Property)-->
             <Trigger Property="Text"
                      Value="[ Database ]">
                 <Setter Property="Foreground"
@@ -167,6 +169,7 @@
                 <Setter Property="Foreground"
                         Value="{DynamicResource Violet}" />
             </Trigger>
+            <!--#endregion-->
         </Style.Triggers>
     </Style>
 </ResourceDictionary>

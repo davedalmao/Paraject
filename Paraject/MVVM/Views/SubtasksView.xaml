@@ -43,7 +43,9 @@
                        Margin="8,0,0,0" />
 
             <!--Task Category-->
-            <TextBlock Text="{Binding CurrentTask.Category}"
+            <TextBlock Text="{Binding CurrentTask.Category,
+                                      UpdateSourceTrigger=PropertyChanged,
+                                      Converter={StaticResource UnderscoreToSpaceConverter}}"
                        Style="{StaticResource TaskCategoryTheme}"
                        TextTrimming="CharacterEllipsis"
                        FontSize="25"
