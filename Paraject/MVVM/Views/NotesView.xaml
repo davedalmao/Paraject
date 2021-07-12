@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Paraject.MVVM.Views"
              xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
              xmlns:grid="clr-namespace:Paraject.Core.Utilities"
+             xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
              d:DataContext="{d:DesignInstance Type=viewmodels:NotesViewModel}"
              mc:Ignorable="d"
              Background="Transparent"
@@ -21,6 +22,7 @@
             <!--Page Description-->
             <TextBlock Text="General Notes for this Project"
                        Foreground="{StaticResource Darkest}"
+                       VerticalAlignment="Center"
                        FontSize="18" />
 
             <!--Add New Note Button-->
@@ -36,7 +38,8 @@
 
         <!--General Project Notes Display-->
         <ScrollViewer Style="{StaticResource ScrollbarTheme}"
-                      Height="346"
+                      Height="354"
+                      Margin="0,20,0,0"
                       Grid.Row="1">
             <ItemsControl x:Name="Notes"
                           ItemsSource="{Binding NoteCardsGrid}">
@@ -66,13 +69,58 @@
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="Red"
-                                BorderThickness="1">
-                            <StackPanel>
-                                <TextBlock Text="{Binding Content.Subject}" />
-                                <TextBlock Text="{Binding Content.Description}" />
-                            </StackPanel>
-                        </Border>
+                        <Button  Margin="0,10,0,14"
+                                 Height="142"
+                                 Width="192"
+                                 Background="{StaticResource Card}"
+                                 Style="{StaticResource PlainButtonTheme}"
+                                 CommandParameter="{Binding Content.Id}">
+
+
+                            <!--Note Details-->
+                            <Grid Margin="18,5,18,11">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <!--Note Subject-->
+                                <TextBlock Grid.Row="0"
+                                           Text="{Binding Content.Subject}"
+                                           Style="{StaticResource TaskCategoryTheme}"
+                                           Foreground="{StaticResource AccentColor}"
+                                           TextTrimming="CharacterEllipsis"
+                                           FontSize="15"
+                                           Margin="0,12,0,0" />
+
+                                <!--Note Description-->
+                                <TextBlock Grid.Row="1"
+                                           Text="{Binding Content.Description}"
+                                           FontSize="14"
+                                           TextWrapping="Wrap"
+                                           MaxHeight="69"
+                                           TextTrimming="CharacterEllipsis"
+                                           VerticalAlignment="Center"
+                                           Foreground="{StaticResource MainFontColor}" />
+
+                                <!--Note Date Created-->
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Row="2">
+                                    <!--Date Image-->
+                                    <UserControl Width="12.5"
+                                                 Height="12.5"
+                                                 Margin="0,0,3.75,0">
+                                        <svgc1:SvgViewbox Source="/UiDesign/Icons/Calendar/grayCalendar.svg" />
+                                    </UserControl>
+
+                                    <!--Date Created Details-->
+                                    <TextBlock Text="{Binding Content.DateCreated, 
+                                                              StringFormat={}{0:MM / dd / yyyy}}"
+                                               Foreground="{StaticResource Darkest}"
+                                               FontSize="11" />
+                                </StackPanel>
+                            </Grid>
+                        </Button>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
