@@ -79,7 +79,7 @@ namespace Paraject.MVVM.ViewModels
         {
             MainWindowViewModel.Overlay = true;
 
-            NoteModalDialogViewModel noteModalDialogViewModel = new NoteModalDialogViewModel(_currentProjectId, ModalFunctionality.Add);
+            NoteModalDialogViewModel noteModalDialogViewModel = new NoteModalDialogViewModel(DisplayAllNotes, _currentProjectId, ModalFunctionality.Add);
 
             NoteModalDialog noteModalDialog = new()
             {
