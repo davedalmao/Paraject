@@ -43,11 +43,11 @@
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Center"
                             Grid.Column="0">
-                    <UserControl Width="28"
-                                 Height="28"
+                    <UserControl Width="26"
+                                 Height="26"
                                  Margin="0,0,8,0">
                         <svgc1:SvgViewbox Cursor="Hand"
-                                          Source="/UiDesign/Icons/ModalDialogIcons/subtask.svg" />
+                                          Source="/UiDesign/Icons/ModalDialogIcons/note.svg" />
                     </UserControl>
 
                     <TextBlock Text="{Binding ModalHeaderText}"
