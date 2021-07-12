@@ -30,6 +30,7 @@
     <None Remove="UiDesign\Icons\Calendar\pinkCalendar.svg" />
     <None Remove="UiDesign\Icons\ModalDialogIcons\addProjectIcon.svg" />
     <None Remove="UiDesign\Icons\ModalDialogIcons\addTaskIcon.svg" />
+    <None Remove="UiDesign\Icons\ModalDialogIcons\note.svg" />
     <None Remove="UiDesign\Icons\ModalDialogIcons\subtask.svg" />
     <None Remove="UiDesign\Icons\Password\showPassword.svg" />
     <None Remove="UiDesign\Icons\subtask.svg" />
@@ -118,6 +119,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Icons\ModalDialogIcons\addTaskIcon.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Icons\ModalDialogIcons\note.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Icons\ModalDialogIcons\subtask.svg">
