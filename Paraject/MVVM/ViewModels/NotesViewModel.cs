@@ -7,9 +7,12 @@ namespace Paraject.MVVM.ViewModels
 {
     public class NotesViewModel : BaseViewModel
     {
-        public NotesViewModel()
+        private readonly int _currentProjectId;
+
+        public NotesViewModel(int currentProjectId)
         {
             ShowNoteModalDialogCommand = new DelegateCommand(ShowNoteModalDialog);
+            _currentProjectId = currentProjectId;
         }
 
         public ICommand ShowNoteModalDialogCommand { get; }
@@ -18,7 +21,10 @@ namespace Paraject.MVVM.ViewModels
         {
             MainWindowViewModel.Overlay = true;
 
+            NoteModalDialogViewModel noteModalDialogViewModel = new NoteModalDialogViewModel(_currentProjectId, "Add");
+
             NoteModalDialog noteModalDialog = new NoteModalDialog();
+            noteModalDialog.DataContext = noteModalDialogViewModel;
             noteModalDialog.ShowDialog();
         }
     }

@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paraject.MVVM.Views.ModalDialogs"
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
+        xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
+        d:DataContext="{d:DesignInstance Type=viewmodels:NoteModalDialogViewModel}"
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="CanResize"
@@ -16,8 +18,10 @@
         Foreground="{StaticResource MainFontColor}"
         MouseDown="NoteModalDialogMouseDown">
     <Border Background="{StaticResource MainBackground}"
-            CornerRadius="20">
-        <Grid Margin="25,30">
+            CornerRadius="20"
+            VerticalAlignment="Center">
+        <Grid Margin="25,30"
+              VerticalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -46,7 +50,7 @@
                                           Source="/UiDesign/Icons/ModalDialogIcons/subtask.svg" />
                     </UserControl>
 
-                    <TextBlock Text="Add a Note for this Project"
+                    <TextBlock Text="{Binding ModalHeaderText}"
                                FontSize="25"
                                HorizontalAlignment="Center" />
                 </StackPanel>
@@ -89,6 +93,7 @@
                 <TextBox Width="315"
                          Height="185"
                          FontSize="15"
+                         Margin="0,0,0,28"
                          TextWrapping="Wrap"
                          Style="{StaticResource TextBoxTheme}"
                          VerticalScrollBarVisibility="Auto"
@@ -100,18 +105,20 @@
             <!--Create Note Button-->
             <Button Grid.Row="3"
                     Content="Create New Note"
-                    Margin="0,28,0,0"
                     Height="40"
                     Width="315"
                     Background="{StaticResource AccentColor}"
-                    VerticalAlignment="Bottom"
                     Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
-                    Style="{StaticResource GeneralButtonTheme}" />
+                    Style="{StaticResource GeneralButtonTheme}"
+                    Visibility="{Binding IsAddNoteActive, 
+                                         Converter={StaticResource BooleanToVisibilityConverter}}" />
 
             <!--Date Created-->
-            <StackPanel Orientation="Horizontal"
-                        Margin="65,22,0,22"
-                        Grid.Row="4">
+            <StackPanel Grid.Row="4"
+                        Orientation="Horizontal"
+                        Margin="65,0,0,22"
+                        Visibility="{Binding IsModifyNoteActive, 
+                                         Converter={StaticResource BooleanToVisibilityConverter}}">
                 <TextBlock Text="Date Created: "
                            FontSize="15"
                            Foreground="{StaticResource Darkest}" />
@@ -124,7 +131,9 @@
             <!--Update and Delete Note Button-->
             <StackPanel Grid.Row="5"
                         Orientation="Horizontal"
-                        HorizontalAlignment="Center">
+                        HorizontalAlignment="Center"
+                        Visibility="{Binding IsModifyNoteActive, 
+                                         Converter={StaticResource BooleanToVisibilityConverter}}">
                 <!--Update Note Button-->
                 <Button Content="Update Note"
                         Height="40"
@@ -142,6 +151,7 @@
                         Background="{StaticResource Orange}"
                         Style="{StaticResource GeneralButtonTheme}" />
             </StackPanel>
+
         </Grid>
     </Border>
 </Window>
