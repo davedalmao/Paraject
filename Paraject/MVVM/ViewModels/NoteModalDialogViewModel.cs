@@ -1,4 +1,5 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.Core.Enums;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using System.Windows;
@@ -9,7 +10,7 @@ namespace Paraject.MVVM.ViewModels
     public class NoteModalDialogViewModel : BaseViewModel
     {
         //Add A Note for this Project
-        public NoteModalDialogViewModel(int currentProjectId, string modalFunctionality)
+        public NoteModalDialogViewModel(int currentProjectId, ModalFunctionality modalFunctionality)
         {
             CurrentNote = new Note();
 
@@ -28,16 +29,16 @@ namespace Paraject.MVVM.ViewModels
         #endregion
 
         #region Methods
-        public void ModalDisplay(string modalFunctionality)
+        public void ModalDisplay(ModalFunctionality modalFunctionality)
         {
-            if (modalFunctionality == "Add")
+            if (modalFunctionality == ModalFunctionality.Add)
             {
                 ModalHeaderText = "Add a Note for this Project";
                 IsAddNoteActive = true;
                 IsModifyNoteActive = false;
             }
 
-            else if (modalFunctionality == "Modify")
+            else if (modalFunctionality == ModalFunctionality.Modify)
             {
                 ModalHeaderText = "Note’s Details";
                 IsModifyNoteActive = true;
