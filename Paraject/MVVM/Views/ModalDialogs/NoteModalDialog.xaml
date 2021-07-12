@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paraject.MVVM.Views.ModalDialogs"
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
+        xmlns:modaldialogs="clr-namespace:Paraject.MVVM.ViewModels.ModalDialogs"
+        d:DataContext="{d:DesignInstance Type=modaldialogs:NoteModalDialogViewModel}"
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="CanResize"

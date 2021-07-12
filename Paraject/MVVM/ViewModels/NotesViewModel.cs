@@ -1,5 +1,6 @@
 ﻿using Paraject.Core.Commands;
 using Paraject.Core.Enums;
+using Paraject.MVVM.ViewModels.ModalDialogs;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
 using System.Windows.Input;

@@ -5,7 +5,7 @@ using Paraject.MVVM.ViewModels.Windows;
 using System.Windows;
 using System.Windows.Input;
 
-namespace Paraject.MVVM.ViewModels
+namespace Paraject.MVVM.ViewModels.ModalDialogs
 {
     public class NoteModalDialogViewModel : BaseViewModel
     {
