@@ -14,6 +14,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             CurrentNote = new Note();
 
             CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
+            AddNoteCommand = new DelegateCommand(Add);
 
             ModalDisplay(modalFunctionality);
         }
@@ -24,10 +25,15 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         public bool IsAddNoteActive { get; set; }
         public bool IsModifyNoteActive { get; set; }
 
+        public ICommand AddNoteCommand { get; }
         public ICommand CloseModalDialogCommand { get; }
         #endregion
 
         #region Methods
+        public void Add()
+        {
+            MessageBox.Show($"Subject: {CurrentNote.Subject} \nDescription: {CurrentNote.Description}");
+        }
         public void ModalDisplay(ModalFunctionality modalFunctionality)
         {
             if (modalFunctionality == ModalFunctionality.Add)
