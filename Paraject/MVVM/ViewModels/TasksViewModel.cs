@@ -21,7 +21,7 @@ namespace Paraject.MVVM.ViewModels
             //TasksView child Views (ViewModels)
             TasksTodoVM = new TasksTodoViewModel(this, currentProject.Id, "Finish_Line");
             CompletedTasksVM = new CompletedTasksViewModel(this, currentProject.Id);
-            ProjectNotesVM = new ProjectNotesViewModel();
+            NotesVM = new NotesViewModel();
             ProjectDetailsVM = new ProjectDetailsViewModel(projectsViewModel, currentProject);
 
             CurrentView = TasksTodoVM;
@@ -29,7 +29,7 @@ namespace Paraject.MVVM.ViewModels
             //TasksView child Views (Navigation)
             TasksTodoViewCommand = new ParameterizedDelegateCommand(NavigateToTasksTodoView);
             CompletedTasksViewCommand = new DelegateCommand(NavigateToCompletedTasksView);
-            ProjectNotesViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectNotesVM; });
+            ProjectNotesViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = NotesVM; });
             ProjectDetailsViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectDetailsVM; });
             NavigateBackToProjectsViewCommand = new DelegateCommand(NavigateBackToProjectsView);
         }
@@ -57,7 +57,7 @@ namespace Paraject.MVVM.ViewModels
         //TasksView child Views
         public TasksTodoViewModel TasksTodoVM { get; set; }
         public CompletedTasksViewModel CompletedTasksVM { get; set; }
-        public ProjectNotesViewModel ProjectNotesVM { get; set; }
+        public NotesViewModel NotesVM { get; set; }
         public ProjectDetailsViewModel ProjectDetailsVM { get; set; }
 
         //Commands
