@@ -1,4 +1,5 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.Core.Enums;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
 using System.Windows.Input;
@@ -21,10 +22,12 @@ namespace Paraject.MVVM.ViewModels
         {
             MainWindowViewModel.Overlay = true;
 
-            NoteModalDialogViewModel noteModalDialogViewModel = new NoteModalDialogViewModel(_currentProjectId, "Add");
+            NoteModalDialogViewModel noteModalDialogViewModel = new NoteModalDialogViewModel(_currentProjectId, ModalFunctionality.Add);
 
-            NoteModalDialog noteModalDialog = new NoteModalDialog();
-            noteModalDialog.DataContext = noteModalDialogViewModel;
+            NoteModalDialog noteModalDialog = new()
+            {
+                DataContext = noteModalDialogViewModel
+            };
             noteModalDialog.ShowDialog();
         }
     }
