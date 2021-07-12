@@ -3,6 +3,7 @@ using Paraject.Core.Enums;
 using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -11,11 +12,13 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
     public class NoteModalDialogViewModel : BaseViewModel
     {
         private readonly NoteRepository _noteRepository;
+        private readonly Action _refreshNotesCollection;
         private readonly int _currentProjectId;
 
-        public NoteModalDialogViewModel(int currentProjectId, ModalFunctionality modalFunctionality)
+        public NoteModalDialogViewModel(Action refreshNotesCollection, int currentProjectId, ModalFunctionality modalFunctionality)
         {
             _noteRepository = new NoteRepository();
+            _refreshNotesCollection = refreshNotesCollection;
             _currentProjectId = currentProjectId;
             CurrentNote = new Note();
 
@@ -24,6 +27,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             ModalDisplay(modalFunctionality);
         }
+
         #region Properties
         public Note CurrentNote { get; set; }
         public string ModalHeaderText { get; set; }
@@ -54,6 +58,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isAdded)
             {
                 //refresh Notes collection in NotesView//
+                _refreshNotesCollection();
                 MessageBox.Show("Note Created");
                 CloseModalDialog();
             }
