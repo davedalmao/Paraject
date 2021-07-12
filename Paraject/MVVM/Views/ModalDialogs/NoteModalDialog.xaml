@@ -79,7 +79,8 @@
                 <TextBox Width="315"
                          Height="42"
                          FontSize="15"
-                         Style="{StaticResource TextBoxTheme}" />
+                         Style="{StaticResource TextBoxTheme}"
+                         Text="{Binding CurrentNote.Subject}" />
             </StackPanel>
 
             <!--Note Description-->
@@ -95,11 +96,12 @@
                          Height="185"
                          FontSize="15"
                          Margin="0,0,0,28"
+                         Padding="20"
                          TextWrapping="Wrap"
                          Style="{StaticResource TextBoxTheme}"
+                         Text="{Binding CurrentNote.Description}"
                          VerticalScrollBarVisibility="Auto"
-                         VerticalContentAlignment="Top"
-                         Padding="20" />
+                         VerticalContentAlignment="Top" />
             </StackPanel>
 
 
@@ -112,7 +114,8 @@
                     Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
                     Style="{StaticResource GeneralButtonTheme}"
                     Visibility="{Binding IsAddNoteActive, 
-                                         Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                         Converter={StaticResource BooleanToVisibilityConverter}}"
+                    Command="{Binding AddNoteCommand}" />
 
             <!--Date Created-->
             <StackPanel Grid.Row="4"
