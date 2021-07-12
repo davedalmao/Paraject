@@ -9,7 +9,6 @@ namespace Paraject.MVVM.ViewModels
 {
     public class NoteModalDialogViewModel : BaseViewModel
     {
-        //Add A Note for this Project
         public NoteModalDialogViewModel(int currentProjectId, ModalFunctionality modalFunctionality)
         {
             CurrentNote = new Note();
