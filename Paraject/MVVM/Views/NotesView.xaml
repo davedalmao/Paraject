@@ -87,7 +87,6 @@
                                 <!--Note Subject-->
                                 <TextBlock Grid.Row="0"
                                            Text="{Binding Content.Subject}"
-                                           Style="{StaticResource TaskCategoryTheme}"
                                            Foreground="{StaticResource AccentColor}"
                                            TextTrimming="CharacterEllipsis"
                                            FontSize="15"
