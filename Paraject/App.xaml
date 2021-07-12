@@ -144,8 +144,8 @@
             </DataTemplate>
 
             <!--Project Notes-->
-            <DataTemplate DataType="{x:Type viewModel:ProjectNotesViewModel}">
-                <view:ProjectNotesView />
+            <DataTemplate DataType="{x:Type viewModel:NotesViewModel}">
+                <view:NotesView />
             </DataTemplate>
 
             <!--Project Details-->
