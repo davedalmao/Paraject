@@ -29,7 +29,8 @@
                     Background="{StaticResource AccentColor}"
                     HorizontalAlignment="Right"
                     Tag="/UiDesign/Icons/ButtonIcons/add.svg"
-                    Style="{StaticResource GeneralButtonTheme}" />
+                    Style="{StaticResource GeneralButtonTheme}"
+                    Command="{Binding ShowNoteModalDialogCommand}" />
         </DockPanel>
 
         <!--General Project Notes Display-->
