@@ -1,4 +1,8 @@
-﻿using Paraject.MVVM.Models;
+﻿using Paraject.Core.Commands;
+using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.Windows;
+using System.Windows;
+using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
 {
@@ -9,14 +13,21 @@ namespace Paraject.MVVM.ViewModels
         {
             CurrentNote = new Note();
 
+            CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
+
             ModalDisplay(modalFunctionality);
         }
+        #region Properties
         public Note CurrentNote { get; set; }
         public string ModalHeaderText { get; set; }
 
         public bool IsAddNoteActive { get; set; }
         public bool IsModifyNoteActive { get; set; }
 
+        public ICommand CloseModalDialogCommand { get; }
+        #endregion
+
+        #region Methods
         public void ModalDisplay(string modalFunctionality)
         {
             if (modalFunctionality == "Add")
@@ -33,5 +44,18 @@ namespace Paraject.MVVM.ViewModels
                 IsAddNoteActive = false;
             }
         }
+        private void CloseModalDialog()
+        {
+            MainWindowViewModel.Overlay = false;
+
+            foreach (Window currentModal in Application.Current.Windows)
+            {
+                if (currentModal.DataContext == this)
+                {
+                    currentModal.Close();
+                }
+            }
+        }
+        #endregion
     }
 }
