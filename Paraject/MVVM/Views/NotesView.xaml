@@ -5,10 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Paraject.MVVM.Views"
              xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
+             xmlns:grid="clr-namespace:Paraject.Core.Utilities"
+             xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
              d:DataContext="{d:DesignInstance Type=viewmodels:NotesViewModel}"
              mc:Ignorable="d"
-             Width="632"
-             Height="444.5"
              Background="Transparent"
              FontFamily="{StaticResource NunitoBold}">
     <Grid>
@@ -22,6 +22,7 @@
             <!--Page Description-->
             <TextBlock Text="General Notes for this Project"
                        Foreground="{StaticResource Darkest}"
+                       VerticalAlignment="Center"
                        FontSize="18" />
 
             <!--Add New Note Button-->
@@ -37,9 +38,92 @@
 
         <!--General Project Notes Display-->
         <ScrollViewer Style="{StaticResource ScrollbarTheme}"
-                      Height="408"
+                      Height="354"
+                      Margin="0,20,0,0"
                       Grid.Row="1">
+            <ItemsControl x:Name="Notes"
+                          ItemsSource="{Binding NoteCardsGrid}">
 
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Grid grid:AutoRowsGrid.ChildrenCount="{Binding Items.Count, ElementName=Notes}"
+                              VerticalAlignment="Top">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="192" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="192" />
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <!--Defined in /Utilities/AutoRowsGrid.cs-->
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="Grid.Row"
+                                Value="{Binding Row}" />
+                        <Setter Property="Grid.Column"
+                                Value="{Binding Column}" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button  Margin="0,10,0,14"
+                                 Height="142"
+                                 Width="192"
+                                 Background="{StaticResource Card}"
+                                 Style="{StaticResource PlainButtonTheme}"
+                                 CommandParameter="{Binding Content.Id}">
+
+
+                            <!--Note Details-->
+                            <Grid Margin="18,5,18,11">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <!--Note Subject-->
+                                <TextBlock Grid.Row="0"
+                                           Text="{Binding Content.Subject}"
+                                           Style="{StaticResource TaskCategoryTheme}"
+                                           Foreground="{StaticResource AccentColor}"
+                                           TextTrimming="CharacterEllipsis"
+                                           FontSize="15"
+                                           Margin="0,12,0,0" />
+
+                                <!--Note Description-->
+                                <TextBlock Grid.Row="1"
+                                           Text="{Binding Content.Description}"
+                                           FontSize="14"
+                                           TextWrapping="Wrap"
+                                           MaxHeight="69"
+                                           TextTrimming="CharacterEllipsis"
+                                           VerticalAlignment="Center"
+                                           Foreground="{StaticResource MainFontColor}" />
+
+                                <!--Note Date Created-->
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Row="2">
+                                    <!--Date Image-->
+                                    <UserControl Width="12.5"
+                                                 Height="12.5"
+                                                 Margin="0,0,3.75,0">
+                                        <svgc1:SvgViewbox Source="/UiDesign/Icons/Calendar/grayCalendar.svg" />
+                                    </UserControl>
+
+                                    <!--Date Created Details-->
+                                    <TextBlock Text="{Binding Content.DateCreated, 
+                                                              StringFormat={}{0:MM / dd / yyyy}}"
+                                               Foreground="{StaticResource Darkest}"
+                                               FontSize="11" />
+                                </StackPanel>
+                            </Grid>
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </ScrollViewer>
     </Grid>
 </UserControl>
