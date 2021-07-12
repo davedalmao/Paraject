@@ -49,7 +49,6 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 MessageBox.Show("A note should have a subject");
             }
         }
-
         private void AddOperationResult(bool isAdded)
         {
             if (isAdded)
