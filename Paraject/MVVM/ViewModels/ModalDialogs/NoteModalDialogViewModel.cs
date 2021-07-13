@@ -1,5 +1,4 @@
 ﻿using Paraject.Core.Commands;
-using Paraject.Core.Enums;
 using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
@@ -15,7 +14,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         private readonly Action _refreshNotesCollection;
         private readonly int _currentProjectId;
 
-        public NoteModalDialogViewModel(Action refreshNotesCollection, int currentProjectId, ModalFunctionality modalFunctionality)
+        public NoteModalDialogViewModel(Action refreshNotesCollection, int currentProjectId)
         {
             _noteRepository = new NoteRepository();
             _refreshNotesCollection = refreshNotesCollection;
@@ -25,7 +24,6 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
             AddNoteCommand = new DelegateCommand(Add);
 
-            ModalDisplay(modalFunctionality);
         }
 
         #region Properties
@@ -69,22 +67,6 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             }
         }
 
-        public void ModalDisplay(ModalFunctionality modalFunctionality)
-        {
-            if (modalFunctionality == ModalFunctionality.Add)
-            {
-                ModalHeaderText = "Add a Note for this Project";
-                IsAddNoteActive = true;
-                IsModifyNoteActive = false;
-            }
-
-            else if (modalFunctionality == ModalFunctionality.Modify)
-            {
-                ModalHeaderText = "Note’s Details";
-                IsModifyNoteActive = true;
-                IsAddNoteActive = false;
-            }
-        }
         private void CloseModalDialog()
         {
             MainWindowViewModel.Overlay = false;

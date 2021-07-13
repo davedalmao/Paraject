@@ -20,6 +20,8 @@ namespace Paraject.MVVM.ViewModels
             _currentProjectId = currentProjectId;
 
             ShowAddNoteModalDialogCommand = new DelegateCommand(ShowAddNoteModalDialog);
+            ShowNoteDetailsModalDialogCommand = new DelegateCommand(ShowNoteDetailsModalDialog);
+
             DisplayAllNotes();
         }
 
@@ -28,6 +30,7 @@ namespace Paraject.MVVM.ViewModels
         public ObservableCollection<GridTileData> NoteCardsGrid { get; set; }
 
         public ICommand ShowAddNoteModalDialogCommand { get; }
+        public ICommand ShowNoteDetailsModalDialogCommand { get; }
         #endregion
 
         #region Methods
@@ -83,6 +86,17 @@ namespace Paraject.MVVM.ViewModels
             AddNoteModalDialog addNoteModalDialog = new AddNoteModalDialog();
             addNoteModalDialog.DataContext = addNoteModalDialogViewModel;
             addNoteModalDialog.ShowDialog();
+        }
+
+        public void ShowNoteDetailsModalDialog()
+        {
+            MainWindowViewModel.Overlay = true;
+
+            NoteDetailsModalDialogViewModel noteDetailsModalDialogViewModel = new NoteDetailsModalDialogViewModel();
+
+            NoteDetailsModalDialog noteDetailsModalDialog = new NoteDetailsModalDialog();
+            noteDetailsModalDialog.DataContext = noteDetailsModalDialogViewModel;
+            noteDetailsModalDialog.ShowDialog();
         }
         #endregion
     }
