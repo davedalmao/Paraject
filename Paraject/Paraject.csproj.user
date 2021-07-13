@@ -21,6 +21,9 @@
     <Compile Update="MVVM\Views\DashboardView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="MVVM\Views\ModalDialogs\AddNoteModalDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MVVM\Views\ModalDialogs\AddProjectModalDialog.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -87,6 +90,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\DashboardView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\Views\ModalDialogs\AddNoteModalDialog.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\ModalDialogs\AddProjectModalDialog.xaml">
