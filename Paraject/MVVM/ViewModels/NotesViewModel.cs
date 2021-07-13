@@ -1,8 +1,6 @@
 ﻿using Paraject.Core.Commands;
-using Paraject.Core.Enums;
 using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
-using Paraject.MVVM.ViewModels.ModalDialogs;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
 using System.Collections.ObjectModel;
@@ -20,7 +18,7 @@ namespace Paraject.MVVM.ViewModels
             _noteRepository = new NoteRepository();
             _currentProjectId = currentProjectId;
 
-            ShowNoteModalDialogCommand = new DelegateCommand(ShowNoteModalDialog);
+            ShowAddNoteModalDialogCommand = new DelegateCommand(ShowAddNoteModalDialog);
             DisplayAllNotes();
         }
 
@@ -28,7 +26,7 @@ namespace Paraject.MVVM.ViewModels
         public ObservableCollection<Note> Notes { get; set; }
         public ObservableCollection<GridTileData> NoteCardsGrid { get; set; }
 
-        public ICommand ShowNoteModalDialogCommand { get; }
+        public ICommand ShowAddNoteModalDialogCommand { get; }
         #endregion
 
         #region Methods
@@ -75,17 +73,12 @@ namespace Paraject.MVVM.ViewModels
             }
         }
 
-        public void ShowNoteModalDialog()
+        public void ShowAddNoteModalDialog()
         {
             MainWindowViewModel.Overlay = true;
 
-            NoteModalDialogViewModel noteModalDialogViewModel = new NoteModalDialogViewModel(DisplayAllNotes, _currentProjectId, ModalFunctionality.Add);
-
-            NoteModalDialog noteModalDialog = new()
-            {
-                DataContext = noteModalDialogViewModel
-            };
-            noteModalDialog.ShowDialog();
+            AddNoteModalDialog addNoteModalDialog = new AddNoteModalDialog();
+            addNoteModalDialog.ShowDialog();
         }
         #endregion
     }

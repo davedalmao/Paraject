@@ -54,8 +54,7 @@
                 <!--Close Button-->
                 <Button Style="{StaticResource PlainButtonTheme}"
                         Grid.Column="1"
-                        HorizontalAlignment="Right"
-                        Command="{Binding CloseModalDialogCommand}">
+                        HorizontalAlignment="Right">
                     <Image Source="/UiDesign/Icons/WindowStateButtons/close.png"
                            Width="28"
                            Height="28"
@@ -75,8 +74,7 @@
                 <TextBox Width="315"
                          Height="42"
                          FontSize="15"
-                         Style="{StaticResource TextBoxTheme}"
-                         Text="{Binding CurrentNote.Subject}" />
+                         Style="{StaticResource TextBoxTheme}" />
             </StackPanel>
 
             <!--Note Description-->
@@ -95,7 +93,6 @@
                          Padding="20"
                          TextWrapping="Wrap"
                          Style="{StaticResource TextBoxTheme}"
-                         Text="{Binding CurrentNote.Description}"
                          VerticalScrollBarVisibility="Auto"
                          VerticalContentAlignment="Top" />
             </StackPanel>

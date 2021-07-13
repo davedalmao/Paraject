@@ -33,7 +33,7 @@
                     HorizontalAlignment="Right"
                     Tag="/UiDesign/Icons/ButtonIcons/add.svg"
                     Style="{StaticResource GeneralButtonTheme}"
-                    Command="{Binding ShowNoteModalDialogCommand}" />
+                    Command="{Binding ShowAddNoteModalDialogCommand}" />
         </DockPanel>
 
         <!--General Project Notes Display-->
