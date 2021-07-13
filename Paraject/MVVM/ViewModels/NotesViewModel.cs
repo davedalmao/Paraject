@@ -1,6 +1,7 @@
 ﻿using Paraject.Core.Commands;
 using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.ModalDialogs;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
 using System.Collections.ObjectModel;
@@ -77,7 +78,10 @@ namespace Paraject.MVVM.ViewModels
         {
             MainWindowViewModel.Overlay = true;
 
+            AddNoteModalDialogViewModel addNoteModalDialogViewModel = new AddNoteModalDialogViewModel(DisplayAllNotes, _currentProjectId);
+
             AddNoteModalDialog addNoteModalDialog = new AddNoteModalDialog();
+            addNoteModalDialog.DataContext = addNoteModalDialogViewModel;
             addNoteModalDialog.ShowDialog();
         }
         #endregion
