@@ -6,36 +6,37 @@
              xmlns:local="clr-namespace:Paraject.MVVM.Views"
              xmlns:custom="clr-namespace:Paraject.Core.CustomControls"
              mc:Ignorable="d"
-             Width="732"
-             Height="544.63"
+             FontFamily="{StaticResource NunitoBold}"
+             Foreground="{StaticResource MainFontColor}"
              Background="Transparent">
-    <Grid Margin="50,30,50,30">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="auto" />
-        </Grid.ColumnDefinitions>
+    <Grid Margin="50,30">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Project Ideas"
-                   FontFamily="{StaticResource NunitoBold}"
-                   FontSize="25"
-                   Foreground="{StaticResource MainFontColor}" />
+        <!--Project Ideas Header-->
+        <DockPanel Grid.Row="0">
+            <!--Header Text-->
+            <TextBlock Text="Project Ideas"
+                       FontSize="25" />
 
+            <!--Add Project Idea Button-->
+            <Button Content="Add Project Idea"
+                    Height="36"
+                    Width="180"
+                    HorizontalAlignment="Right"
+                    Background="{StaticResource Green}"
+                    Tag="/UiDesign/Icons/ButtonIcons/add.svg"
+                    Style="{StaticResource GeneralButtonTheme}" />
+        </DockPanel>
 
-        <Border Grid.Column="1"
-                Grid.Row="0" />
+        <!--Project Ideas Display-->
+        <ScrollViewer Style="{StaticResource ScrollbarTheme}"
+                      Height="438"
+                      Background="Red"
+                      Grid.Row="1">
 
-        <Button Content="Add New Project"
-                Grid.Column="2"
-                Grid.Row="0"
-                Height="36"
-                Width="169"
-                Background="{StaticResource Green}"
-                Tag="/UiDesign/Icons/ButtonIcons/add.svg"
-                Style="{StaticResource GeneralButtonTheme}" />
+        </ScrollViewer>
     </Grid>
 </UserControl>
