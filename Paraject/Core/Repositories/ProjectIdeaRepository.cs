@@ -173,7 +173,35 @@ namespace Paraject.Core.Repositories
         }
         public bool Update(ProjectIdea projectIdea)
         {
-            throw new NotImplementedException();
+            bool isUpdated = false;
+
+            using (SqlConnection con = new(_connectionString))
+            using (SqlCommand cmd = new("Project_Idea.spUpdateProjectIdea", con))
+            {
+                try
+                {
+                    con.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@project_idea_id", SqlDbType.Int).Value = projectIdea.Id;
+                    cmd.Parameters.Add("@project_idea_name", SqlDbType.NVarChar, 50).Value = projectIdea.Name;
+                    cmd.Parameters.Add("@project_idea_description", SqlDbType.NVarChar, 1515).Value = string.IsNullOrWhiteSpace(projectIdea.Description) ? null : projectIdea.Description;
+                    cmd.Parameters.Add("@project_idea_features", SqlDbType.NVarChar, 1515).Value = projectIdea.Features;
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    isUpdated = rowsAffected > 0;
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show($"An SQL error occured while processing data. \nError: { ex.Message }");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+
+            return isUpdated;
         }
         public bool Delete(int projectIdeaId)
         {
