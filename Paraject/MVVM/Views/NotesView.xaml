@@ -75,7 +75,8 @@
                                  Background="{StaticResource Card}"
                                  Style="{StaticResource PlainButtonTheme}"
                                  Command="{Binding ElementName=Notes, 
-                                                   Path=DataContext.ShowNoteDetailsModalDialogCommand}">
+                                                   Path=DataContext.ShowNoteDetailsModalDialogCommand}"
+                                 CommandParameter="{Binding Content.Id}">
 
 
                             <!--Note Details-->

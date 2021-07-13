@@ -1,4 +1,5 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using System.Windows;
@@ -8,9 +9,17 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 {
     public class NoteDetailsModalDialogViewModel : BaseViewModel
     {
-        public NoteDetailsModalDialogViewModel()
+        private readonly int _noteId;
+        private readonly NoteRepository _noteRepository;
+
+        public NoteDetailsModalDialogViewModel(int noteId)
         {
+            _noteRepository = new NoteRepository();
+            _noteId = noteId;
+
             CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
+
+            CurrentNote = _noteRepository.Get(noteId);
         }
 
         #region Properties
