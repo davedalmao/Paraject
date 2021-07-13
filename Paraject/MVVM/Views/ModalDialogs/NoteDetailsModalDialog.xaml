@@ -75,7 +75,7 @@
                            Margin="0,0,0,6" />
 
                 <!--Subject TextBox-->
-                <TextBox Width="315"
+                <TextBox Width="350"
                          Height="42"
                          FontSize="15"
                          Style="{StaticResource TextBoxTheme}"
@@ -91,7 +91,7 @@
                            Margin="0,25,0,6" />
 
                 <!--Description Multiline TextBox-->
-                <TextBox Width="315"
+                <TextBox Width="350"
                          Height="185"
                          FontSize="15"
                          Margin="0,0,0,28"
@@ -109,7 +109,7 @@
             <!--Date Created-->
             <StackPanel Grid.Row="3"
                         Orientation="Horizontal"
-                        Margin="65,0,65,22">
+                        Margin="50,0,50,22">
                 <TextBlock Text="Date Created: "
                            FontSize="15"
                            Foreground="{StaticResource Darkest}" />
@@ -126,7 +126,7 @@
                 <!--Update Note Button-->
                 <Button Content="Update Note"
                         Height="40"
-                        Width="150"
+                        Width="165"
                         Margin="0,0,15,0"
                         Tag="/UiDesign/Icons/ButtonIcons/update.svg"
                         Background="{StaticResource Yellow}"
@@ -136,7 +136,7 @@
                 <!--Delete Note Button-->
                 <Button Content="Delete Note"
                         Height="40"
-                        Width="150"
+                        Width="165"
                         Tag="/UiDesign/Icons/ButtonIcons/delete.svg"
                         Background="{StaticResource Orange}"
                         Style="{StaticResource GeneralButtonTheme}"
