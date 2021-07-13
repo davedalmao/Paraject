@@ -205,7 +205,33 @@ namespace Paraject.Core.Repositories
         }
         public bool Delete(int projectIdeaId)
         {
-            throw new NotImplementedException();
+            bool isDeleted = false;
+
+            if (projectIdeaId <= 0) { return false; }
+
+            using (SqlConnection con = new(_connectionString))
+            using (SqlCommand cmd = new("Project_Idea.spDeleteProjectIdea", con))
+            {
+                try
+                {
+                    con.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@project_idea_id", SqlDbType.Int).Value = projectIdeaId;
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    isDeleted = rowsAffected > 0;
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show($"An SQL error occured while processing data. \nError: { ex.Message }");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+
+            return isDeleted;
         }
     }
 }
