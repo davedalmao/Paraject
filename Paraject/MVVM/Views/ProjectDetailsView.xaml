@@ -157,16 +157,19 @@
             </Grid.ColumnDefinitions>
             <!--Date Created-->
             <StackPanel Orientation="Horizontal"
-                        Grid.Column="0">
+                        Grid.Column="0"
+                        >
                 <TextBlock Text="Date Created: "
                            FontSize="15"
                            Foreground="{StaticResource Darkest}" />
 
-                <TextBlock Text="{Binding CurrentProject.DateCreated}"
+                <TextBlock Text="{Binding CurrentProject.DateCreated,
+                    StringFormat={}{0:MM / dd / yyyy  hh : mm tt}}"
                            FontSize="15"
                            Foreground="{StaticResource Darkest}"
                            TextWrapping="Wrap"
-                           Width="98" />
+                           Width="100" 
+                         />
             </StackPanel>
 
             <!--Update Project Button-->
