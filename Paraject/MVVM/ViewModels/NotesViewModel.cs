@@ -92,7 +92,7 @@ namespace Paraject.MVVM.ViewModels
             MainWindowViewModel.Overlay = true;
 
             int selectedNote = (int)noteId;
-            NoteDetailsModalDialogViewModel noteDetailsModalDialogViewModel = new NoteDetailsModalDialogViewModel(selectedNote);
+            NoteDetailsModalDialogViewModel noteDetailsModalDialogViewModel = new NoteDetailsModalDialogViewModel(DisplayAllNotes, selectedNote);
 
             NoteDetailsModalDialog noteDetailsModalDialog = new NoteDetailsModalDialog();
             noteDetailsModalDialog.DataContext = noteDetailsModalDialogViewModel;
