@@ -20,7 +20,7 @@ namespace Paraject.MVVM.ViewModels
             _currentProjectId = currentProjectId;
 
             ShowAddNoteModalDialogCommand = new DelegateCommand(ShowAddNoteModalDialog);
-            ShowNoteDetailsModalDialogCommand = new DelegateCommand(ShowNoteDetailsModalDialog);
+            ShowNoteDetailsModalDialogCommand = new ParameterizedDelegateCommand(ShowNoteDetailsModalDialog);
 
             DisplayAllNotes();
         }
@@ -87,12 +87,12 @@ namespace Paraject.MVVM.ViewModels
             addNoteModalDialog.DataContext = addNoteModalDialogViewModel;
             addNoteModalDialog.ShowDialog();
         }
-
-        public void ShowNoteDetailsModalDialog()
+        public void ShowNoteDetailsModalDialog(object noteId)
         {
             MainWindowViewModel.Overlay = true;
 
-            NoteDetailsModalDialogViewModel noteDetailsModalDialogViewModel = new NoteDetailsModalDialogViewModel();
+            int selectedNote = (int)noteId;
+            NoteDetailsModalDialogViewModel noteDetailsModalDialogViewModel = new NoteDetailsModalDialogViewModel(selectedNote);
 
             NoteDetailsModalDialog noteDetailsModalDialog = new NoteDetailsModalDialog();
             noteDetailsModalDialog.DataContext = noteDetailsModalDialogViewModel;

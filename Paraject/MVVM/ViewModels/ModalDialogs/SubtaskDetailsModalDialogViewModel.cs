@@ -20,8 +20,6 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             _refreshSubtasksCollection = refreshSubtasksCollection;
             _subtaskId = subtaskId;
 
-            CurrentSubtask = new Subtask();
-
             UpdateSubtaskCommand = new DelegateCommand(Update);
             DeleteSubtaskCommand = new DelegateCommand(Delete);
             CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
