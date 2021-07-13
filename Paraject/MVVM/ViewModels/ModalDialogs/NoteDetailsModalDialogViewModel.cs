@@ -29,9 +29,10 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
         #region Properties
         public Note CurrentNote { get; set; }
-        public ICommand CloseModalDialogCommand { get; }
+
         public ICommand UpdateNoteCommand { get; }
         public ICommand DeleteNoteCommand { get; }
+        public ICommand CloseModalDialogCommand { get; }
         #endregion
 
         #region Methods
