@@ -78,7 +78,8 @@
                 <TextBox Width="315"
                          Height="42"
                          FontSize="15"
-                         Style="{StaticResource TextBoxTheme}" />
+                         Style="{StaticResource TextBoxTheme}"
+                         Text="{Binding CurrentNote.Subject}" />
             </StackPanel>
 
             <!--Note Description-->
@@ -97,6 +98,7 @@
                          Padding="20"
                          TextWrapping="Wrap"
                          Style="{StaticResource TextBoxTheme}"
+                         Text="{Binding CurrentNote.Description}"
                          VerticalScrollBarVisibility="Auto"
                          VerticalContentAlignment="Top" />
             </StackPanel>
@@ -107,12 +109,12 @@
             <!--Date Created-->
             <StackPanel Grid.Row="3"
                         Orientation="Horizontal"
-                        Margin="65,0,0,22">
+                        Margin="65,0,65,22">
                 <TextBlock Text="Date Created: "
                            FontSize="15"
                            Foreground="{StaticResource Darkest}" />
 
-                <TextBlock Text="08 / 15 / 2020"
+                <TextBlock Text="{Binding CurrentNote.DateCreated}"
                            FontSize="15"
                            Foreground="{StaticResource Darkest}" />
             </StackPanel>
@@ -128,7 +130,8 @@
                         Margin="0,0,15,0"
                         Tag="/UiDesign/Icons/ButtonIcons/update.svg"
                         Background="{StaticResource Yellow}"
-                        Style="{StaticResource GeneralButtonTheme}" />
+                        Style="{StaticResource GeneralButtonTheme}"
+                        Command="{Binding UpdateNoteCommand}" />
 
                 <!--Delete Note Button-->
                 <Button Content="Delete Note"
@@ -136,7 +139,8 @@
                         Width="150"
                         Tag="/UiDesign/Icons/ButtonIcons/delete.svg"
                         Background="{StaticResource Orange}"
-                        Style="{StaticResource GeneralButtonTheme}" />
+                        Style="{StaticResource GeneralButtonTheme}"
+                        Command="{Binding DeleteNoteCommand}" />
             </StackPanel>
         </Grid>
     </Border>
