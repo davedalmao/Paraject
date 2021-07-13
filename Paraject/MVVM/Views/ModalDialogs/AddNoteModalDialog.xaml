@@ -107,7 +107,7 @@
                     Content="Create New Note"
                     Height="40"
                     Width="350"
-                    Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
+                    Tag="/UiDesign/Icons/ModalDialogIcons/note.svg"
                     Background="{StaticResource AccentColor}"
                     Style="{StaticResource GeneralButtonTheme}"
                     Command="{Binding AddNoteCommand}" />
