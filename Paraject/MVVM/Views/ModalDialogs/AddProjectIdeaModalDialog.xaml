@@ -18,6 +18,7 @@
         Foreground="{StaticResource MainFontColor}"
         MouseDown="AddProjectIdeaModalDialogMouseDown">
     <Border Background="{StaticResource MainBackground}"
+            VerticalAlignment="Center"
             CornerRadius="20">
         <Grid Margin="25,20,25,30">
             <Grid.RowDefinitions>

@@ -7,7 +7,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 {
     public class AddProjectIdeaModalDialogViewModel : BaseViewModel
     {
-        public AddProjectIdeaModalDialogViewModel()
+        public AddProjectIdeaModalDialogViewModel(int currentUserId)
         {
             CurrentProjectIdea = new ProjectIdea();
             AddProjectIdeaCommand = new DelegateCommand(Add);
