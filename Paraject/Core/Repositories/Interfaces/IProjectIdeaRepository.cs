@@ -5,7 +5,7 @@ namespace Paraject.Core.Repositories.Interfaces
 {
     public interface IProjectIdeaRepository
     {
-        public bool Add(ProjectIdea projectIdea, int userId);
+        public bool Add(ProjectIdea projectIdea);
         public ProjectIdea Get(int projectIdeaId);
         public IEnumerable<ProjectIdea> GetAll(int userId);
         public bool Update(ProjectIdea projectIdea);
