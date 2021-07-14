@@ -2,6 +2,7 @@
 using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -10,11 +11,13 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
     public class ProjectIdeaDetailsModalDialogViewModel : BaseViewModel
     {
         private readonly int _projectIdeaId;
+        private readonly Action _refreshProjectIdeasCollection;
         private readonly ProjectIdeaRepository _projectIdeaRepository;
 
-        public ProjectIdeaDetailsModalDialogViewModel(int projectIdeaId)
+        public ProjectIdeaDetailsModalDialogViewModel(Action refreshProjectIdeasCollection, int projectIdeaId)
         {
             _projectIdeaRepository = new ProjectIdeaRepository();
+            _refreshProjectIdeasCollection = refreshProjectIdeasCollection;
             _projectIdeaId = projectIdeaId;
 
             CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
@@ -50,7 +53,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         {
             if (isUpdated)
             {
-                // _refreshNotesCollection();
+                _refreshProjectIdeasCollection();
                 MessageBox.Show("Project Idea updated successfully");
                 CloseModalDialog();
             }
@@ -73,7 +76,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             bool isDeleted = _projectIdeaRepository.Delete(_projectIdeaId);
             if (isDeleted)
             {
-                //_refreshNotesCollection();
+                _refreshProjectIdeasCollection();
                 MessageBox.Show("Note deleted successfully");
                 CloseModalDialog();
             }
