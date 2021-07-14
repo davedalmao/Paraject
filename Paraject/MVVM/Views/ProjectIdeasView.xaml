@@ -19,10 +19,11 @@
         </Grid.RowDefinitions>
 
         <!--Project Ideas Header-->
-        <DockPanel Grid.Row="0">
+        <DockPanel Grid.Row="0"
+                   Margin="0,0,0,5">
             <!--Header Text-->
             <TextBlock Text="Project Ideas"
-                       FontSize="25" />
+                       FontSize="30" />
 
             <!--Add Project Idea Button-->
             <Button Content="Add Project Idea"
@@ -37,7 +38,7 @@
 
         <!--Project Ideas Display-->
         <ScrollViewer Style="{StaticResource ScrollbarTheme}"
-                      Height="438"
+                      Height="450"
                       Grid.Row="1">
             <ItemsControl x:Name="ProjectIdeas"
                           ItemsSource="{Binding ProjectIdeaCardsGrid}">
