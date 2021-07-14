@@ -85,7 +85,7 @@
                              Text="{Binding CurrentProjectIdea.Name}" />
 
                     <!--ProjectIdea Description TextBlock-->
-                    <TextBlock Text="Description (optional)"
+                    <TextBlock Text="Description"
                                FontSize="19"
                                Margin="0,25,0,6" />
 
