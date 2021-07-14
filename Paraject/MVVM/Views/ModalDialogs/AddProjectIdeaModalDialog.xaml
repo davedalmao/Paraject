@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paraject.MVVM.Views.ModalDialogs"
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
+        xmlns:modaldialogs="clr-namespace:Paraject.MVVM.ViewModels.ModalDialogs"
+        d:DataContext="{d:DesignInstance Type=modaldialogs:AddProjectIdeaModalDialogViewModel}"
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="CanResize"
@@ -50,8 +52,7 @@
                 <!--Close Button-->
                 <Button Style="{StaticResource PlainButtonTheme}"
                         Grid.Column="1"
-                        HorizontalAlignment="Right"
-                        Command="{Binding CloseModalDialogCommand}">
+                        HorizontalAlignment="Right">
                     <Image Source="/UiDesign/Icons/WindowStateButtons/close.png"
                            Width="28"
                            Height="28"
@@ -78,7 +79,8 @@
                     <TextBox Width="312"
                              Height="42"
                              FontSize="15"
-                             Style="{StaticResource TextBoxTheme}" />
+                             Style="{StaticResource TextBoxTheme}"
+                             Text="{Binding CurrentProjectIdea.Name}" />
 
                     <!--ProjectIdea Description TextBlock-->
                     <TextBlock Text="Description (optional)"
@@ -91,6 +93,7 @@
                              FontSize="15"
                              TextWrapping="Wrap"
                              Style="{StaticResource TextBoxTheme}"
+                             Text="{Binding CurrentProjectIdea.Description}"
                              VerticalScrollBarVisibility="Auto"
                              VerticalContentAlignment="Top"
                              Padding="20" />
@@ -109,6 +112,7 @@
                              FontSize="15"
                              TextWrapping="Wrap"
                              Style="{StaticResource TextBoxTheme}"
+                             Text="{Binding CurrentProjectIdea.Features}"
                              VerticalScrollBarVisibility="Auto"
                              VerticalContentAlignment="Top"
                              Padding="20" />
@@ -118,10 +122,11 @@
                             Margin="0,22,0,0"
                             Height="40"
                             Width="312"
-                            Background="{StaticResource AccentColor}"
                             VerticalAlignment="Bottom"
                             Tag="/UiDesign/Icons/ModalDialogIcons/projectIdea.svg"
-                            Style="{StaticResource GeneralButtonTheme}" />
+                            Background="{StaticResource AccentColor}"
+                            Style="{StaticResource GeneralButtonTheme}"
+                            Command="{Binding AddProjectIdeaCommand}" />
                 </StackPanel>
             </Grid>
         </Grid>
