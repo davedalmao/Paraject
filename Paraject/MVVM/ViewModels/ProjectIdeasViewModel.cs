@@ -81,9 +81,9 @@ namespace Paraject.MVVM.ViewModels
         {
             MainWindowViewModel.Overlay = true;
 
-            AddProjectIdeaModalDialogViewModel addProjectIdeaModalDialogViewModel = new AddProjectIdeaModalDialogViewModel(DisplayProjectIdeas, _currentUserId);
+            AddProjectIdeaModalDialogViewModel addProjectIdeaModalDialogViewModel = new(DisplayProjectIdeas, _currentUserId);
 
-            AddProjectIdeaModalDialog addProjectIdeaModalDialog = new AddProjectIdeaModalDialog();
+            AddProjectIdeaModalDialog addProjectIdeaModalDialog = new();
             addProjectIdeaModalDialog.DataContext = addProjectIdeaModalDialogViewModel;
             addProjectIdeaModalDialog.ShowDialog();
         }
@@ -92,9 +92,9 @@ namespace Paraject.MVVM.ViewModels
             MainWindowViewModel.Overlay = true;
 
             int selectedProjectIdea = (int)projectIdeaId;
-            ProjectIdeaDetailsModalDialogViewModel projectIdeaDetailsModalDialogViewModel = new ProjectIdeaDetailsModalDialogViewModel(selectedProjectIdea);
+            ProjectIdeaDetailsModalDialogViewModel projectIdeaDetailsModalDialogViewModel = new(DisplayProjectIdeas, selectedProjectIdea);
 
-            ProjectIdeaDetailsModalDialog projectIdeaDetailsModalDialog = new ProjectIdeaDetailsModalDialog();
+            ProjectIdeaDetailsModalDialog projectIdeaDetailsModalDialog = new();
             projectIdeaDetailsModalDialog.DataContext = projectIdeaDetailsModalDialogViewModel;
             projectIdeaDetailsModalDialog.ShowDialog();
         }
