@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Paraject.MVVM.Views"
-             xmlns:custom="clr-namespace:Paraject.Core.CustomControls"
+             xmlns:viewmodel="clr-namespace:Paraject.MVVM.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodel:ProjectIdeasViewModel}"
              mc:Ignorable="d"
              FontFamily="{StaticResource NunitoBold}"
              Foreground="{StaticResource MainFontColor}"
@@ -26,9 +27,10 @@
                     Height="36"
                     Width="180"
                     HorizontalAlignment="Right"
-                    Background="{StaticResource Green}"
                     Tag="/UiDesign/Icons/ButtonIcons/add.svg"
-                    Style="{StaticResource GeneralButtonTheme}" />
+                    Background="{StaticResource Green}"
+                    Style="{StaticResource GeneralButtonTheme}"
+                    Command="{Binding ShowAddProjectIdeaModalDialogCommand}" />
         </DockPanel>
 
         <!--Project Ideas Display-->
