@@ -19,6 +19,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
             UpdateProjectIdeaCommand = new DelegateCommand(Update);
+            DeleteProjectIdeaCommand = new DelegateCommand(Delete);
 
             CurrentProjectIdea = _projectIdeaRepository.Get(projectIdeaId);
         }
@@ -56,6 +57,29 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             else
             {
                 MessageBox.Show("Error occured, cannot update the Project Idea");
+            }
+        }
+
+        private void Delete()
+        {
+            MessageBoxResult Result = MessageBox.Show("Do you want to DELETE this note?", "Delete Operation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (Result == MessageBoxResult.Yes)
+            {
+                DeleteNote();
+            }
+        }
+        private void DeleteNote()
+        {
+            bool isDeleted = _projectIdeaRepository.Delete(_projectIdeaId);
+            if (isDeleted)
+            {
+                //_refreshNotesCollection();
+                MessageBox.Show("Note deleted successfully");
+                CloseModalDialog();
+            }
+            else
+            {
+                MessageBox.Show("An error occurred, cannot delete Note");
             }
         }
 
