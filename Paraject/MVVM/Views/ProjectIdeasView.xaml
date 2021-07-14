@@ -75,6 +75,7 @@
                                  Width="192"
                                  Background="{StaticResource Card}"
                                  Style="{StaticResource PlainButtonTheme}"
+                                 Command="{Binding ElementName=ProjectIdeas, Path=DataContext.ShowProjectIdeaDetailsModalDialogCommand}"
                                  CommandParameter="{Binding Content.Id}">
 
 

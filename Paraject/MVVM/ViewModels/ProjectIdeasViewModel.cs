@@ -20,6 +20,7 @@ namespace Paraject.MVVM.ViewModels
             _currentUserId = currentUserId;
 
             ShowAddProjectIdeaModalDialogCommand = new DelegateCommand(ShowAddProjectIdeaModalDialog);
+            ShowProjectIdeaDetailsModalDialogCommand = new ParameterizedDelegateCommand(ShowProjectIdeaDetailsModalDialog);
 
             DisplayProjectIdeas();
         }
@@ -28,6 +29,7 @@ namespace Paraject.MVVM.ViewModels
         public ObservableCollection<ProjectIdea> ProjectIdeas { get; set; }
         public ObservableCollection<GridTileData> ProjectIdeaCardsGrid { get; set; }
         public ICommand ShowAddProjectIdeaModalDialogCommand { get; }
+        public ICommand ShowProjectIdeaDetailsModalDialogCommand { get; }
         #endregion
 
         #region Methods
@@ -84,6 +86,17 @@ namespace Paraject.MVVM.ViewModels
             AddProjectIdeaModalDialog addProjectIdeaModalDialog = new AddProjectIdeaModalDialog();
             addProjectIdeaModalDialog.DataContext = addProjectIdeaModalDialogViewModel;
             addProjectIdeaModalDialog.ShowDialog();
+        }
+        private void ShowProjectIdeaDetailsModalDialog(object projectIdeaId)
+        {
+            MainWindowViewModel.Overlay = true;
+
+            int selectedProjectIdea = (int)projectIdeaId;
+            ProjectIdeaDetailsModalDialogViewModel projectIdeaDetailsModalDialogViewModel = new ProjectIdeaDetailsModalDialogViewModel(selectedProjectIdea);
+
+            ProjectIdeaDetailsModalDialog projectIdeaDetailsModalDialog = new ProjectIdeaDetailsModalDialog();
+            projectIdeaDetailsModalDialog.DataContext = projectIdeaDetailsModalDialogViewModel;
+            projectIdeaDetailsModalDialog.ShowDialog();
         }
         #endregion
     }
