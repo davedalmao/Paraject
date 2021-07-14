@@ -68,21 +68,21 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             MessageBoxResult Result = MessageBox.Show("Do you want to DELETE this note?", "Delete Operation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (Result == MessageBoxResult.Yes)
             {
-                DeleteNote();
+                DeleteProjectIdea();
             }
         }
-        private void DeleteNote()
+        private void DeleteProjectIdea()
         {
             bool isDeleted = _projectIdeaRepository.Delete(_projectIdeaId);
             if (isDeleted)
             {
                 _refreshProjectIdeasCollection();
-                MessageBox.Show("Note deleted successfully");
+                MessageBox.Show("Project Idea deleted successfully");
                 CloseModalDialog();
             }
             else
             {
-                MessageBox.Show("An error occurred, cannot delete Note");
+                MessageBox.Show("An error occurred, cannot delete Project Idea");
             }
         }
 
