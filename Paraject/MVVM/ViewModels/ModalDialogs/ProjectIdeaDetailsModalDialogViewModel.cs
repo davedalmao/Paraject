@@ -18,6 +18,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             _projectIdeaId = projectIdeaId;
 
             CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
+            UpdateProjectIdeaCommand = new DelegateCommand(Update);
 
             CurrentProjectIdea = _projectIdeaRepository.Get(projectIdeaId);
         }
@@ -32,6 +33,32 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         #endregion
 
         #region Methods
+        private void Update()
+        {
+            if (!string.IsNullOrWhiteSpace(CurrentProjectIdea.Name))
+            {
+                bool isUpdated = _projectIdeaRepository.Update(CurrentProjectIdea);
+                UpdateOperationResult(isUpdated);
+            }
+            else
+            {
+                MessageBox.Show("A Project Idea should have a name");
+            }
+        }
+        private void UpdateOperationResult(bool isUpdated)
+        {
+            if (isUpdated)
+            {
+                // _refreshNotesCollection();
+                MessageBox.Show("Project Idea updated successfully");
+                CloseModalDialog();
+            }
+            else
+            {
+                MessageBox.Show("Error occured, cannot update the Project Idea");
+            }
+        }
+
         private void CloseModalDialog()
         {
             MainWindowViewModel.Overlay = false;
