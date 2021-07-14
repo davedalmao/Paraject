@@ -2,6 +2,7 @@
 using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -10,13 +11,17 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
     public class AddProjectIdeaModalDialogViewModel : BaseViewModel
     {
         private readonly ProjectIdeaRepository _projectIdeaRepository;
-        public AddProjectIdeaModalDialogViewModel(int currentUserId)
+        private readonly Action _refreshProjectIdeasCollection;
+
+        public AddProjectIdeaModalDialogViewModel(Action refreshProjectIdeasCollection, int currentUserId)
         {
             _projectIdeaRepository = new ProjectIdeaRepository();
             CurrentProjectIdea = new ProjectIdea()
             {
                 User_Id_Fk = currentUserId
             };
+
+            _refreshProjectIdeasCollection = refreshProjectIdeasCollection;
 
             AddProjectIdeaCommand = new DelegateCommand(Add);
             CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
@@ -47,7 +52,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isAdded)
             {
                 //messagebox issue (this is just temporary, we're going to use a custom MessageBox anyway)
-                // _refreshSubtasksCollection();
+                _refreshProjectIdeasCollection();
                 MessageBox.Show("Project Idea Added");
                 CloseModalDialog();
             }
@@ -57,6 +62,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 MessageBox.Show("Error occured, cannot create project idea");
             }
         }
+
         private void CloseModalDialog()
         {
             MainWindowViewModel.Overlay = false;
