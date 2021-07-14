@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
 {
-    public class ProjectIdeasViewModel
+    public class ProjectIdeasViewModel : BaseViewModel
     {
         private readonly int _currentUserId;
         private readonly ProjectIdeaRepository _projectIdeaRepository;
@@ -79,7 +79,7 @@ namespace Paraject.MVVM.ViewModels
         {
             MainWindowViewModel.Overlay = true;
 
-            AddProjectIdeaModalDialogViewModel addProjectIdeaModalDialogViewModel = new AddProjectIdeaModalDialogViewModel(_currentUserId);
+            AddProjectIdeaModalDialogViewModel addProjectIdeaModalDialogViewModel = new AddProjectIdeaModalDialogViewModel(DisplayProjectIdeas, _currentUserId);
 
             AddProjectIdeaModalDialog addProjectIdeaModalDialog = new AddProjectIdeaModalDialog();
             addProjectIdeaModalDialog.DataContext = addProjectIdeaModalDialogViewModel;
