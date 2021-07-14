@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Paraject.MVVM.Views"
              xmlns:viewmodel="clr-namespace:Paraject.MVVM.ViewModels"
+             xmlns:grid="clr-namespace:Paraject.Core.Utilities"
              d:DataContext="{d:DesignInstance Type=viewmodel:ProjectIdeasViewModel}"
              mc:Ignorable="d"
              FontFamily="{StaticResource NunitoBold}"
@@ -36,9 +37,49 @@
         <!--Project Ideas Display-->
         <ScrollViewer Style="{StaticResource ScrollbarTheme}"
                       Height="438"
-                      Background="Red"
                       Grid.Row="1">
+            <ItemsControl x:Name="ProjectIdeas"
+                          ItemsSource="{Binding ProjectIdeaCardsGrid}">
 
+                <!--A 3 column Grid to display Project Idea Cards-->
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Grid grid:AutoRowsGrid.ChildrenCount="{Binding Items.Count, ElementName=ProjectIdeas}"
+                              VerticalAlignment="Top">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="192" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="192" />
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <!--To display dynamic rows-->
+                <!--(Defined in /Utilities/AutoRowsGrid.cs)-->
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="Grid.Row"
+                                Value="{Binding Row}" />
+                        <Setter Property="Grid.Column"
+                                Value="{Binding Column}" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+
+                <!--A Project Idea Card-->
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Red"
+                                BorderThickness="1">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Content.Name}" />
+                                <TextBlock Text="{Binding Content.Description}" />
+                                <TextBlock Text="{Binding Content.Features}" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </ScrollViewer>
     </Grid>
 </UserControl>
