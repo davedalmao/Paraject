@@ -37,7 +37,7 @@ namespace Paraject.MVVM.ViewModels.Windows
             DashboardVM = new DashboardViewModel();
             ProjectsVM = new ProjectsViewModel(currentUserAccount.Id);
             ProfileVM = new UserAccountViewModel();
-            ProjectIdeasVM = new ProjectIdeasViewModel();
+            ProjectIdeasVM = new ProjectIdeasViewModel(currentUserAccount.Id);
             OptionsVM = new OptionsViewModel();
 
             CurrentView = ProjectsVM;
