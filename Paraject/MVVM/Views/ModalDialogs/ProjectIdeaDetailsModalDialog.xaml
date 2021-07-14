@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paraject.MVVM.Views.ModalDialogs"
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
+        xmlns:modaldialogs="clr-namespace:Paraject.MVVM.ViewModels.ModalDialogs"
+        d:DataContext="{d:DesignInstance Type=modaldialogs:ProjectIdeaDetailsModalDialogViewModel}"
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="CanResize"
@@ -14,7 +16,7 @@
         Width="764"
         FontFamily="{StaticResource NunitoBold}"
         Foreground="{StaticResource MainFontColor}"
-        MouseDown="AddProjectIdeaModalDialogMouseDown">
+        MouseDown="ProjectIdeaDetailsModalDialogMouseDown">
     <Border Background="{StaticResource MainBackground}"
             VerticalAlignment="Center"
             CornerRadius="20">
@@ -80,7 +82,8 @@
                     <TextBox Width="312"
                              Height="42"
                              FontSize="15"
-                             Style="{StaticResource TextBoxTheme}" />
+                             Style="{StaticResource TextBoxTheme}"
+                             Text="{Binding CurrentProjectIdea.Name}" />
 
                     <!--ProjectIdea Description TextBlock-->
                     <TextBlock Text="Description"
@@ -93,6 +96,7 @@
                              FontSize="15"
                              TextWrapping="Wrap"
                              Style="{StaticResource TextBoxTheme}"
+                             Text="{Binding CurrentProjectIdea.Description}"
                              VerticalScrollBarVisibility="Auto"
                              VerticalContentAlignment="Top"
                              Padding="20" />
@@ -113,6 +117,7 @@
                              FontSize="15"
                              TextWrapping="Wrap"
                              Style="{StaticResource TextBoxTheme}"
+                             Text="{Binding CurrentProjectIdea.Features}"
                              VerticalScrollBarVisibility="Auto"
                              VerticalContentAlignment="Top"
                              Padding="20" />
@@ -136,7 +141,8 @@
                                FontSize="15"
                                Foreground="{StaticResource Darkest}" />
 
-                    <TextBlock Text=""
+                    <TextBlock Text="{Binding CurrentProjectIdea.DateCreated,
+                    StringFormat={}{0:MM / dd / yyyy  hh : mm tt}}"
                                FontSize="15"
                                TextWrapping="Wrap"
                                Width="100"
@@ -149,10 +155,11 @@
                         Grid.Column="1"
                         Height="40"
                         Width="185"
-                        Margin="0,0,15,0"
+                        Margin="0,0,18,0"
                         Tag="/UiDesign/Icons/ButtonIcons/update.svg"
                         Background="{StaticResource Yellow}"
-                        Style="{StaticResource GeneralButtonTheme}" />
+                        Style="{StaticResource GeneralButtonTheme}"
+                        Command="{Binding UpdateProjectIdeaCommand}" />
 
                 <!--Delete Project Idea Button-->
                 <Button Content="Delete Project Idea"
@@ -161,7 +168,8 @@
                         Width="185"
                         Tag="/UiDesign/Icons/ButtonIcons/delete.svg"
                         Background="{StaticResource Orange}"
-                        Style="{StaticResource GeneralButtonTheme}" />
+                        Style="{StaticResource GeneralButtonTheme}"
+                        Command="{Binding DeleteProjectIdeaCommand}" />
             </Grid>
         </Grid>
     </Border>
