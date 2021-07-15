@@ -20,7 +20,7 @@ namespace Paraject.Core.Repositories
 
         }
 
-        public bool Add(Subtask subtask, int taskId)
+        public bool Add(Subtask subtask)
         {
             bool isAdded = false;
 
@@ -32,7 +32,7 @@ namespace Paraject.Core.Repositories
                     con.Open();
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add("@task_id", SqlDbType.Int).Value = taskId;
+                    cmd.Parameters.Add("@task_id", SqlDbType.Int).Value = subtask.Task_Id_Fk;
                     cmd.Parameters.Add("@subtask_subject", SqlDbType.NVarChar, 50).Value = subtask.Subject;
                     cmd.Parameters.Add("@subtask_status", SqlDbType.NVarChar, 20).Value = Enum.GetName(Statuses.Open);
                     cmd.Parameters.Add("@subtask_priority", SqlDbType.NVarChar, 4).Value = subtask.Priority;

@@ -19,7 +19,8 @@ namespace Paraject.Core.Repositories
             _connectionString = ConnectionString.config;
 
         }
-        public bool Add(Task task, int projectId)
+
+        public bool Add(Task task)
         {
             bool isAdded = false;
 
@@ -31,7 +32,7 @@ namespace Paraject.Core.Repositories
                     con.Open();
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add("@project_id", SqlDbType.Int).Value = projectId;
+                    cmd.Parameters.Add("@project_id", SqlDbType.Int).Value = task.Project_Id_Fk;
                     cmd.Parameters.Add("@task_subject", SqlDbType.NVarChar, 50).Value = task.Subject;
                     cmd.Parameters.Add("@task_type", SqlDbType.NVarChar, 50).Value = task.Type;
                     cmd.Parameters.Add("@task_description", SqlDbType.NVarChar, 1515).Value = task.Description;
