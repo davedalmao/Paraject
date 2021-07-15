@@ -12,13 +12,13 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
     {
         private readonly TaskRepository _taskRepository;
         private readonly Action _refreshTaskCollection;
-        private readonly int _projectId;
+        private readonly int _currentProjectId;
 
-        public AddTaskModalDialogViewModel(Action refreshTaskCollection, int projectId, string taskType)
+        public AddTaskModalDialogViewModel(Action refreshTaskCollection, int currentProjectId, string taskType)
         {
             _taskRepository = new TaskRepository();
             _refreshTaskCollection = refreshTaskCollection;
-            _projectId = projectId;
+            _currentProjectId = currentProjectId;
 
             CurrentTask = new Task()
             {
@@ -57,7 +57,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         {
             if (!string.IsNullOrWhiteSpace(CurrentTask.Subject))
             {
-                bool isAdded = _taskRepository.Add(CurrentTask, _projectId);
+                bool isAdded = _taskRepository.Add(CurrentTask, _currentProjectId);
                 AddOperationResult(isAdded);
             }
 
