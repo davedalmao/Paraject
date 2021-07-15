@@ -5,7 +5,7 @@ namespace Paraject.Core.Repositories.Interfaces
 {
     public interface ISubtaskRepository
     {
-        public bool Add(Subtask subtask, int taskId);
+        public bool Add(Subtask subtask);
         public Subtask Get(int subtaskId);
         public IEnumerable<Subtask> GetAll(int taskId);
         public IEnumerable<Subtask> FindAll(int taskId, string subtaskStatus, string subtaskPriority);

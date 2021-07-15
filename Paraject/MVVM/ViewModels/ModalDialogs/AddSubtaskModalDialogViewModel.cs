@@ -12,15 +12,17 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
     {
         private readonly SubtaskRepository _subtaskRepository;
         private readonly Action _refreshSubtasksCollection;
-        private readonly int _currentTaskId;
 
         public AddSubtaskModalDialogViewModel(int currentTaskId, Action refreshSubtasksCollection)
         {
             _subtaskRepository = new SubtaskRepository();
             _refreshSubtasksCollection = refreshSubtasksCollection;
-            _currentTaskId = currentTaskId;
 
-            CurrentSubtask = new Subtask();
+            CurrentSubtask = new Subtask()
+            {
+                Task_Id_Fk = currentTaskId
+            };
+
             AddSubtaskCommand = new DelegateCommand(Add);
             CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
         }
@@ -36,7 +38,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         {
             if (!string.IsNullOrWhiteSpace(CurrentSubtask.Subject))
             {
-                bool isAdded = _subtaskRepository.Add(CurrentSubtask, _currentTaskId);
+                bool isAdded = _subtaskRepository.Add(CurrentSubtask);
                 AddOperationResult(isAdded);
             }
 
@@ -60,6 +62,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 MessageBox.Show("Error occured, cannot create subtask");
             }
         }
+
         private void CloseModalDialog()
         {
             MainWindowViewModel.Overlay = false;

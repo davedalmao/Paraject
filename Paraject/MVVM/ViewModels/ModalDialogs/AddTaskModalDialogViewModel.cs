@@ -12,17 +12,16 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
     {
         private readonly TaskRepository _taskRepository;
         private readonly Action _refreshTaskCollection;
-        private readonly int _currentProjectId;
 
         public AddTaskModalDialogViewModel(Action refreshTaskCollection, int currentProjectId, string taskType)
         {
             _taskRepository = new TaskRepository();
             _refreshTaskCollection = refreshTaskCollection;
-            _currentProjectId = currentProjectId;
 
             CurrentTask = new Task()
             {
-                Type = taskType
+                Type = taskType,
+                Project_Id_Fk = currentProjectId
             };
             CurrentTaskType = taskType.Replace("_", " ");
 
@@ -39,25 +38,11 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         #endregion
 
         #region Methods
-        private void CloseModal()
-        {
-            MainWindowViewModel.Overlay = false;
-
-            SetCurrentTaskDefaultValues();
-
-            foreach (Window currentModal in Application.Current.Windows)
-            {
-                if (currentModal.DataContext == this)
-                {
-                    currentModal.Close();
-                }
-            }
-        }
         private void Add()
         {
             if (!string.IsNullOrWhiteSpace(CurrentTask.Subject))
             {
-                bool isAdded = _taskRepository.Add(CurrentTask, _currentProjectId);
+                bool isAdded = _taskRepository.Add(CurrentTask);
                 AddOperationResult(isAdded);
             }
 
@@ -80,10 +65,25 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 MessageBox.Show("Error occured, cannot create task");
             }
         }
+
         private void SetCurrentTaskDefaultValues()
         {
             CurrentTask = null;
             CurrentTask = new Task();
+        }
+        private void CloseModal()
+        {
+            MainWindowViewModel.Overlay = false;
+
+            SetCurrentTaskDefaultValues();
+
+            foreach (Window currentModal in Application.Current.Windows)
+            {
+                if (currentModal.DataContext == this)
+                {
+                    currentModal.Close();
+                }
+            }
         }
         #endregion
     }
