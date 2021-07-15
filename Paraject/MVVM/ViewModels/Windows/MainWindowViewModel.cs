@@ -31,7 +31,7 @@ namespace Paraject.MVVM.ViewModels.Windows
             ProjectIdeasVM = new ProjectIdeasViewModel(currentUserAccount.Id);
             OptionsVM = new OptionsViewModel();
 
-            CurrentView = ProjectsVM;
+            CurrentView = DashboardVM;
 
             DashboardViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = DashboardVM; });
             ProjectsViewCommand = new DelegateCommand(NavigateToProjectsView);
@@ -81,15 +81,13 @@ namespace Paraject.MVVM.ViewModels.Windows
         public ICommand LogoutCommand { get; }
         #endregion
 
-        #region Navigation Methods
-        public void NavigateToProjectsView() // to reload project everytime we click the navbar option "Projects"
+        #region Methods
+        public void NavigateToProjectsView() // to reload Projects Collection everytime we click the navbar option "Projects"
         {
             ProjectsVM = new ProjectsViewModel(CurrentUserAccount.Id);
             CurrentView = ProjectsVM;
         }
-        #endregion
 
-        #region Window Methods
         public void Logout()
         {
             MessageBoxResult Result = MessageBox.Show("Do you want Logout?", "Logout Account", MessageBoxButton.YesNo, MessageBoxImage.Question);
