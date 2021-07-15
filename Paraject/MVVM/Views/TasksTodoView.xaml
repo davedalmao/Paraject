@@ -236,12 +236,12 @@
                                             <UserControl Width="12.5"
                                                          Height="12.5"
                                                          Margin="0,0,3.75,0">
-                                                <svgc1:SvgViewbox Style="{DynamicResource SubtaskCountIconTheme}" />
+                                                <svgc1:SvgViewbox Style="{StaticResource SubtaskCountIconTheme}" />
                                             </UserControl>
 
                                             <!--Subtask Count-->
                                             <TextBlock Text="{Binding Content.SubtaskCount}"
-                                                       Foreground="{StaticResource Darkest}"
+                                                       Style="{StaticResource SubtaskCountValueTheme}"
                                                        FontSize="11" />
                                         </StackPanel>
                                     </Grid>
