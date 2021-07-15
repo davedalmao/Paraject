@@ -25,6 +25,7 @@ namespace Paraject.MVVM.ViewModels
 
         #region Properties
         public UserAccount CurrentUserAccount { get; set; }
+
         public ICommand UpdateCurrentUserCommand { get; }
         public ICommand DeleteCurrentUserCommand { get; }
         #endregion
