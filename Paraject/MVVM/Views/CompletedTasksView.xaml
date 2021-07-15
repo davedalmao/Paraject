@@ -176,7 +176,7 @@
                                         <UserControl Width="12.5"
                                                      Height="12.5"
                                                      Margin="0,0,3.75,0">
-                                            <svgc1:SvgViewbox Source="/UiDesign/Icons/subtask.svg" />
+                                            <svgc1:SvgViewbox Source="/UiDesign/Icons/graySubtask.svg" />
                                         </UserControl>
 
                                         <!--Subtask Count-->

@@ -176,6 +176,12 @@
     <Page Update="UiDesign\Theme\DatePickerTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="UiDesign\Theme\DeadlineIconTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UiDesign\Theme\DeadlineTextTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="UiDesign\Theme\GeneralButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -189,6 +195,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UiDesign\Theme\ScrollbarTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UiDesign\Theme\SubtaskCountIconTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UiDesign\Theme\SubtaskCountValueTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UiDesign\Theme\TaskCategoryTheme.xaml">

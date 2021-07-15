@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+    <Style TargetType="{x:Type svgc1:SvgViewbox}"
+           x:Key="SubtaskCountIconTheme">
+
+        <!--Default Icon For Subtask Count (if it's value is not null)-->
+        <Setter Property="Source"
+                Value="/UiDesign/Icons/pinkSubtask.svg" />
+
+        <!--Icon for Subtask Count if value is 0-->
+        <Style.Triggers>
+            <!--Content.SubtaskCount is in TasksTodoView.xaml-->
+            <DataTrigger Binding="{Binding Content.SubtaskCount}"
+                         Value="0">
+                <Setter Property="Source"
+                        Value="/UiDesign/Icons/graySubtask.svg" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>
