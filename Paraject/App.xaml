@@ -30,6 +30,7 @@
                 <ResourceDictionary Source="/UiDesign/Theme/PriorityIndicatorTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/TextWithImageTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/DeadlineIconTheme.xaml" />
+                <ResourceDictionary Source="/UiDesign/Theme/DeadlineTextTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--Project Colors-->
