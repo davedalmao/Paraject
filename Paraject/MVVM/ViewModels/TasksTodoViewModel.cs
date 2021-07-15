@@ -46,15 +46,11 @@ namespace Paraject.MVVM.ViewModels
         #endregion
 
         #region Methods
-        private void ShowAddTaskModalDialog()
+        public void DisplayAllFilteredTasks()
         {
-            MainWindowViewModel.Overlay = true;
-
-            AddTaskModalDialogViewModel addTaskModalDialogViewModel = new AddTaskModalDialogViewModel(DisplayAllFilteredTasks, _projectId, _currentTaskType);
-
-            AddTaskModalDialog addTaskModalDialog = new();
-            addTaskModalDialog.DataContext = addTaskModalDialogViewModel;
-            addTaskModalDialog.ShowDialog();
+            GetValuesForTasksCollection();
+            SetNewGridDisplay();
+            TaskCardGridLocation();
         }
         private void GetValuesForTasksCollection()
         {
@@ -94,11 +90,16 @@ namespace Paraject.MVVM.ViewModels
                 CardTasksGrid.Add(td);
             }
         }
-        public void DisplayAllFilteredTasks()
+
+        private void ShowAddTaskModalDialog()
         {
-            GetValuesForTasksCollection();
-            SetNewGridDisplay();
-            TaskCardGridLocation();
+            MainWindowViewModel.Overlay = true;
+
+            AddTaskModalDialogViewModel addTaskModalDialogViewModel = new AddTaskModalDialogViewModel(DisplayAllFilteredTasks, _projectId, _currentTaskType);
+
+            AddTaskModalDialog addTaskModalDialog = new();
+            addTaskModalDialog.DataContext = addTaskModalDialogViewModel;
+            addTaskModalDialog.ShowDialog();
         }
         public void NavigateToSubtasksView(object taskId) //the argument passed to this parameter is in ProjectsView (a "CommandParameter" from a Project card)
         {
