@@ -217,14 +217,15 @@
                                             <UserControl Width="12.5"
                                                          Height="12.5"
                                                          Margin="0,0,3.75,0">
-                                                <svgc1:SvgViewbox Source="/UiDesign/Icons/Calendar/grayCalendar.svg" />
+                                                <svgc1:SvgViewbox Tag="{Binding Content.Deadline}"
+                                                                  Style="{StaticResource DeadlineIconTheme}" />
                                             </UserControl>
 
                                             <!--Deadline Details-->
                                             <TextBlock Text="{Binding Content.Deadline, 
                                                                       StringFormat={}{0:MM / dd / yyyy}, 
                                                                       TargetNullValue=NO DEADLINE}"
-                                                       Foreground="{StaticResource Darkest}"
+                                                       Style="{StaticResource DeadlineTextTheme}"
                                                        FontSize="11" />
                                         </StackPanel>
 
@@ -235,12 +236,12 @@
                                             <UserControl Width="12.5"
                                                          Height="12.5"
                                                          Margin="0,0,3.75,0">
-                                                <svgc1:SvgViewbox Source="/UiDesign/Icons/subtask.svg" />
+                                                <svgc1:SvgViewbox Style="{StaticResource SubtaskCountIconTheme}" />
                                             </UserControl>
 
                                             <!--Subtask Count-->
                                             <TextBlock Text="{Binding Content.SubtaskCount}"
-                                                       Foreground="{StaticResource Darkest}"
+                                                       Style="{StaticResource SubtaskCountValueTheme}"
                                                        FontSize="11" />
                                         </StackPanel>
                                     </Grid>
