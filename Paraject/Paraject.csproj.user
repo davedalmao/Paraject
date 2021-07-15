@@ -176,6 +176,9 @@
     <Page Update="UiDesign\Theme\DatePickerTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="UiDesign\Theme\DeadlineIconTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="UiDesign\Theme\GeneralButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
