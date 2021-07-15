@@ -1,4 +1,5 @@
-﻿using Paraject.Core.Repositories;
+﻿using Paraject.Core.Commands;
+using Paraject.Core.Repositories;
 using Paraject.Core.Utilities;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.Views.Windows;
@@ -17,31 +18,18 @@ namespace Paraject.MVVM.ViewModels
             _userAccountRepository = new UserAccountRepository();
             CurrentUserAccount = currentUserAccount;
 
-            GetUserAccountDetails();
+            UpdateCurrentUserCommand = new DelegateCommand(Update);
+            DeleteCurrentUserCommand = new DelegateCommand(Delete);
+
         }
 
+        #region Properties
         public UserAccount CurrentUserAccount { get; set; }
         public ICommand UpdateCurrentUserCommand { get; }
         public ICommand DeleteCurrentUserCommand { get; }
+        #endregion
 
         #region Methods 
-        public void GetUserAccountDetails()
-        {
-            UserAccount userAccount = _userAccountRepository.GetByUsername(CurrentUserAccount.Username);
-
-            if (userAccount is not null)
-            {
-                CurrentUserAccount.Id = userAccount.Id;
-                CurrentUserAccount.Username = userAccount.Username;
-                CurrentUserAccount.Password = userAccount.Password;
-                CurrentUserAccount.DateCreated = userAccount.DateCreated;
-            }
-            else
-            {
-                MessageBox.Show("User Account not Found!");
-            }
-        }
-
         public void Update()
         {
             try
@@ -115,6 +103,5 @@ namespace Paraject.MVVM.ViewModels
                 CloseWindow.CloseParent();
         }
         #endregion
-
     }
 }

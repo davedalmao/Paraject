@@ -82,7 +82,7 @@ namespace Paraject.MVVM.ViewModels.Windows
         #endregion
 
         #region Navigation Methods
-        public void NavigateToProjectsView()
+        public void NavigateToProjectsView() // to reload project everytime we click the navbar option "Projects"
         {
             ProjectsVM = new ProjectsViewModel(CurrentUserAccount.Id);
             CurrentView = ProjectsVM;
