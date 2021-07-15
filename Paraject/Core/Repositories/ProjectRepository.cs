@@ -21,7 +21,7 @@ namespace Paraject.Core.Repositories
 
         }
 
-        public bool Add(Project project, int userId)
+        public bool Add(Project project)
         {
             bool isAdded = false;
 
@@ -33,7 +33,7 @@ namespace Paraject.Core.Repositories
                     con.Open();
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add("@user_id", SqlDbType.Int).Value = userId;
+                    cmd.Parameters.Add("@user_id", SqlDbType.Int).Value = project.User_Id_Fk;
                     cmd.Parameters.Add("@project_name", SqlDbType.NVarChar, 50).Value = project.Name;
                     cmd.Parameters.Add("@project_description", SqlDbType.NVarChar, 1515).Value = string.IsNullOrWhiteSpace(project.Description) ? null : project.Description;
                     cmd.Parameters.Add("@project_option", SqlDbType.NVarChar, 50).Value = project.Option;

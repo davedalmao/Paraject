@@ -14,15 +14,16 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
     {
         private readonly ProjectRepository _projectRepository;
         private readonly Action _refreshProjectsCollection;
-        private readonly int _currentUserId;
 
         public AddProjectModalDialogViewModel(Action refreshProjectsCollection, int currentUserId)
         {
             _projectRepository = new ProjectRepository();
             _refreshProjectsCollection = refreshProjectsCollection;
-            _currentUserId = currentUserId;
 
-            CurrentProject = new Project();
+            CurrentProject = new Project()
+            {
+                User_Id_Fk = currentUserId
+            };
 
             AddProjectCommand = new DelegateCommand(Add);
             AddProjectLogoCommand = new DelegateCommand(LoadProjectLogo);
@@ -41,7 +42,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         {
             if (!string.IsNullOrWhiteSpace(CurrentProject.Name))
             {
-                bool isAdded = _projectRepository.Add(CurrentProject, _currentUserId);
+                bool isAdded = _projectRepository.Add(CurrentProject);
                 AddOperationResult(isAdded);
             }
 
@@ -64,6 +65,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 MessageBox.Show("Error occured, cannot create project");
             }
         }
+
         private void LoadProjectLogo()
         {
             OpenFileDialog openFile = new OpenFileDialog
