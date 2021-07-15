@@ -12,14 +12,16 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
     {
         private readonly NoteRepository _noteRepository;
         private readonly Action _refreshNotesCollection;
-        private readonly int _currentProjectId;
 
         public AddNoteModalDialogViewModel(Action refreshNotesCollection, int currentProjectId)
         {
             _noteRepository = new NoteRepository();
             _refreshNotesCollection = refreshNotesCollection;
-            _currentProjectId = currentProjectId;
-            CurrentNote = new Note();
+
+            CurrentNote = new Note()
+            {
+                Project_Id_Fk = currentProjectId
+            };
 
             CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
             AddNoteCommand = new DelegateCommand(Add);
@@ -37,7 +39,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         {
             if (!string.IsNullOrWhiteSpace(CurrentNote.Subject))
             {
-                bool isAdded = _noteRepository.Add(CurrentNote, _currentProjectId);
+                bool isAdded = _noteRepository.Add(CurrentNote);
                 AddOperationResult(isAdded);
             }
 

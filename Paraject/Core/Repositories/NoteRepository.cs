@@ -19,7 +19,7 @@ namespace Paraject.Core.Repositories
 
         }
 
-        public bool Add(Note note, int projectId)
+        public bool Add(Note note)
         {
             bool isAdded = false;
 
@@ -31,7 +31,7 @@ namespace Paraject.Core.Repositories
                     con.Open();
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add("@project_id", SqlDbType.Int).Value = projectId;
+                    cmd.Parameters.Add("@project_id", SqlDbType.Int).Value = note.Project_Id_Fk;
                     cmd.Parameters.Add("@note_subject", SqlDbType.NVarChar, 50).Value = note.Subject;
                     cmd.Parameters.Add("@note_description", SqlDbType.NVarChar, 1515).Value = string.IsNullOrWhiteSpace(note.Description) ? null : note.Description;
                     cmd.Parameters.Add("@date_created", SqlDbType.DateTime2).Value = DateTime.Now;

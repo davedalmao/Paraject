@@ -12,13 +12,13 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
     {
         private readonly SubtaskRepository _subtaskRepository;
         private readonly Action _refreshSubtasksCollection;
-        private readonly int _taskId;
+        private readonly int _currentTaskId;
 
-        public AddSubtaskModalDialogViewModel(int taskId, Action refreshSubtasksCollection)
+        public AddSubtaskModalDialogViewModel(int currentTaskId, Action refreshSubtasksCollection)
         {
             _subtaskRepository = new SubtaskRepository();
             _refreshSubtasksCollection = refreshSubtasksCollection;
-            _taskId = taskId;
+            _currentTaskId = currentTaskId;
 
             CurrentSubtask = new Subtask();
             AddSubtaskCommand = new DelegateCommand(Add);
@@ -36,7 +36,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         {
             if (!string.IsNullOrWhiteSpace(CurrentSubtask.Subject))
             {
-                bool isAdded = _subtaskRepository.Add(CurrentSubtask, _taskId);
+                bool isAdded = _subtaskRepository.Add(CurrentSubtask, _currentTaskId);
                 AddOperationResult(isAdded);
             }
 
