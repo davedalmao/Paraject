@@ -70,7 +70,7 @@ namespace Paraject.MVVM.ViewModels
         }
         private void Delete()
         {
-            MessageBoxResult Result = MessageBox.Show($"Do you want to DELETE {CurrentProject.Name}?", "Delete Operation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult Result = MessageBox.Show($"Do you want to DELETE {CurrentProject.Name}? \n\nAll Tasks, Subtasks, and Notes that belongs to this Project will also be deleted.", "Delete Operation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (Result == MessageBoxResult.Yes)
             {
                 DeleteProject();

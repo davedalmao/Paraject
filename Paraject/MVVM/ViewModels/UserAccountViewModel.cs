@@ -65,7 +65,7 @@ namespace Paraject.MVVM.ViewModels
         {
             try
             {
-                MessageBoxResult Result = MessageBox.Show("Do you want to DELETE your account? \n\nAll of your Project/s, Project Idea/s, Project Task/s, Project Task's Subtask/s, and Project Note/s will be also deleted.", "Delete Operation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                MessageBoxResult Result = MessageBox.Show("Do you want to DELETE your account? \n\nAll of your Projects, Project Ideas, Project Tasks, Project Task's Subtasks, and Project Notes will be also deleted.", "Delete Operation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (Result == MessageBoxResult.Yes)
                 {
                     DeleteUserAccount();
