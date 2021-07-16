@@ -189,7 +189,7 @@
                     <!--Profile-->
                     <custom:MenuItem Grid.Row="2"
                                      Content="Profile"
-                                     Command="{Binding ProfileViewCommand}"
+                                     Command="{Binding UserAccountView}"
                                      DefaultImageUriString="/UiDesign/Icons/SideBarIcons/profile.svg"
                                      SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/profile.svg"
                                      Style="{StaticResource HorizontalMenuButtonTheme}" />
