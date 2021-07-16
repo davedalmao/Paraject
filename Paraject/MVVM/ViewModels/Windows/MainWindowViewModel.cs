@@ -35,7 +35,7 @@ namespace Paraject.MVVM.ViewModels.Windows
 
             DashboardViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = DashboardVM; });
             ProjectsViewCommand = new DelegateCommand(NavigateToProjectsView);
-            ProfileViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = UserAccountVM; });
+            UserAccountView = new ParameterizedDelegateCommand(o => { CurrentView = UserAccountVM; });
             ProjectIdeasViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectIdeasVM; });
             OptionsViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = OptionsVM; });
 
@@ -75,7 +75,7 @@ namespace Paraject.MVVM.ViewModels.Windows
 
         public ICommand DashboardViewCommand { get; }
         public ICommand ProjectsViewCommand { get; }
-        public ICommand ProfileViewCommand { get; }
+        public ICommand UserAccountView { get; }
         public ICommand ProjectIdeasViewCommand { get; }
         public ICommand OptionsViewCommand { get; }
         public ICommand LogoutCommand { get; }
