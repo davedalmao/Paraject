@@ -1,0 +1,87 @@
+﻿<Window x:Class="Paraject.MVVM.Views.ModalDialogs.MessageBoxes.YesNoMessageBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Paraject.MVVM.Views.ModalDialogs.MessageBoxes"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        ResizeMode="CanResize"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterOwner"
+        Background="Transparent"
+        MinWidth="411"
+        MinHeight="217.59"
+        FontFamily="{StaticResource NunitoBold}"
+        Foreground="{StaticResource White}"
+        MouseDown="OkayMessageBoxMouseDown">
+    <Border Background="{StaticResource MessageBox}"
+            CornerRadius="20">
+        <Grid Margin="25">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <!--Modal Header-->
+            <DockPanel Grid.Row="0">
+                <!--Modal Header Text -->
+                <TextBlock Text=""
+                           FontSize="18" />
+
+                <!--Close Button-->
+                <Button Style="{StaticResource PlainButtonTheme}"
+                        HorizontalAlignment="Right">
+                    <Image Source="/UiDesign/Icons/WindowStateButtons/lightClose.png"
+                           Width="26"
+                           Height="26"
+                           Cursor="Hand" />
+                </Button>
+            </DockPanel>
+
+            <!--MessageBox Content-->
+            <Grid Grid.Row="1"
+                  VerticalAlignment="Center"
+                  Margin="0,18,0,25">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0"
+                       Margin="0,0,20,0"
+                       Width="61.59"
+                       Height="61.59" />
+                <TextBlock Grid.Column="1"
+                           Text=""
+                           TextWrapping="Wrap"
+                           MaxWidth="369"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           FontSize="16" />
+            </Grid>
+
+            <StackPanel Grid.Row="2"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <!--Yes Button-->
+                <Button Content="Yes"
+                        Height="35"
+                        Width="102"
+                        FontSize="14"
+                        Background="{StaticResource AccentColor}"
+                        Style="{StaticResource TextOnlyButtonTheme}" />
+
+                <!--No Button-->
+                <Button Content="No"
+                        Height="35"
+                        Width="102"
+                        FontSize="14"
+                        Background="{StaticResource Darkest}"
+                        Style="{StaticResource TextOnlyButtonTheme}"
+                        Margin="20,0,0,0" />
+            </StackPanel>
+        </Grid>
+    </Border>
+
+</Window>
