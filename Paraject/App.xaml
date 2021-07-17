@@ -66,6 +66,8 @@
                              Color="#2A2D32" />
             <SolidColorBrush x:Key="InputField"
                              Color="#2E3135" />
+            <SolidColorBrush x:Key="MessageBox"
+                             Color="#3E4B55" />
             <SolidColorBrush x:Key="Scrollbar"
                              Color="#89898A" />
 

@@ -56,7 +56,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isAdded)
             {
                 _refreshProjectsCollection();
-                MessageBox.Show("Project Created");
+                MessageBox.Show("Project Created", "Title");
                 CloseModalDialog();
             }
 

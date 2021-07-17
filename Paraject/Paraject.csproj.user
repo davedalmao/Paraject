@@ -36,6 +36,9 @@
     <Compile Update="MVVM\Views\ModalDialogs\AddTaskModalDialog.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="MVVM\Views\ModalDialogs\MessageBoxes\OkayMessageBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MVVM\Views\ModalDialogs\NoteDetailsModalDialog.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -111,6 +114,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\ModalDialogs\AddTaskModalDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\Views\ModalDialogs\MessageBoxes\OkayMessageBox.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\ModalDialogs\NoteDetailsModalDialog.xaml">
