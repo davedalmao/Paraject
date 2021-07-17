@@ -4,14 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paraject.MVVM.Views.ModalDialogs.MessageBoxes"
+        xmlns:okay="clr-namespace:Paraject.MVVM.ViewModels.MessageBoxes"
+        d:DataContext="{d:DesignInstance Type=okay:OkayMessageBoxViewModel}"
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="CanResize"
         AllowsTransparency="True"
         WindowStartupLocation="CenterOwner"
         Background="Transparent"
-        MinWidth="411"
-        MinHeight="217.59"
+        Width="411"
+        Height="217.59"
         FontFamily="{StaticResource NunitoBold}"
         Foreground="{StaticResource White}"
         MouseDown="OkayMessageBoxMouseDown">
@@ -27,11 +29,12 @@
             <!--Modal Header-->
             <DockPanel Grid.Row="0">
                 <!--Modal Header Text -->
-                <TextBlock Text=""
+                <TextBlock Text="{Binding Title}"
                            FontSize="18" />
 
                 <!--Close Button-->
                 <Button Style="{StaticResource PlainButtonTheme}"
+                        Command="{Binding CloseMessageBoxCommand}"
                         HorizontalAlignment="Right">
                     <Image Source="/UiDesign/Icons/WindowStateButtons/lightClose.png"
                            Width="26"
@@ -53,7 +56,7 @@
                        Width="61.59"
                        Height="61.59" />
                 <TextBlock Grid.Column="1"
-                           Text=""
+                           Text="{Binding Message}"
                            TextWrapping="Wrap"
                            MaxWidth="369"
                            HorizontalAlignment="Right"
@@ -69,7 +72,8 @@
                     FontSize="14"
                     HorizontalAlignment="Right"
                     Background="{StaticResource Green}"
-                    Style="{StaticResource TextOnlyButtonTheme}" />
+                    Style="{StaticResource TextOnlyButtonTheme}"
+                    Command="{Binding CloseMessageBoxCommand}" />
         </Grid>
     </Border>
 </Window>
