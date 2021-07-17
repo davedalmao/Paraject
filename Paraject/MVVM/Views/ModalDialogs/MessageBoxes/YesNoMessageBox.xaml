@@ -14,7 +14,7 @@
         MinHeight="217.59"
         FontFamily="{StaticResource NunitoBold}"
         Foreground="{StaticResource White}"
-        MouseDown="OkayMessageBoxMouseDown">
+        MouseDown="YesNoMessageBoxMouseDown">
     <Border Background="{StaticResource MessageBox}"
             CornerRadius="20">
         <Grid Margin="25">

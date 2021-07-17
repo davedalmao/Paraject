@@ -8,6 +8,7 @@
         xmlns:modaldialogs="clr-namespace:Paraject.MVVM.ViewModels.ModalDialogs"
         xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
         xmlns:enums="clr-namespace:Paraject.Core.Enums"
+        xmlns:utility="clr-namespace:Paraject.Core.Utilities"
         d:DataContext="{d:DesignInstance Type=modaldialogs:AddSubtaskModalDialogViewModel}"
         mc:Ignorable="d"
         WindowStyle="None"
@@ -19,7 +20,8 @@
         Height="492"
         FontFamily="{StaticResource NunitoBold}"
         Foreground="{StaticResource MainFontColor}"
-        MouseDown="AddSubtaskModalDialogMouseDown">
+        MouseDown="AddSubtaskModalDialogMouseDown"
+        utility:WindowCloser.EnableWindowClosing="True">
     <Border Background="{StaticResource MainBackground}"
             CornerRadius="20">
         <Grid Margin="25,20,25,40"
@@ -53,11 +55,11 @@
                                HorizontalAlignment="Center" />
                 </StackPanel>
 
-                <!--Close Button-->
+                <!--Close Button  Command="{Binding CloseModalDialogCommand}"-->
                 <Button Style="{StaticResource PlainButtonTheme}"
                         Grid.Column="1"
                         HorizontalAlignment="Right"
-                        Command="{Binding CloseModalDialogCommand}">
+                        Command="{Binding CloseCommand}">
                     <Image Source="/UiDesign/Icons/WindowStateButtons/close.png"
                            Width="28"
                            Height="28"

@@ -1,5 +1,6 @@
 ﻿using Paraject.Core.Commands;
 using Paraject.Core.Repositories;
+using Paraject.Core.Utilities;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using System;
@@ -8,7 +9,7 @@ using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels.ModalDialogs
 {
-    public class AddSubtaskModalDialogViewModel : BaseViewModel
+    public class AddSubtaskModalDialogViewModel : BaseViewModel, ICloseWindows
     {
         private readonly SubtaskRepository _subtaskRepository;
         private readonly Action _refreshSubtasksCollection;
@@ -24,12 +25,10 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             };
 
             AddSubtaskCommand = new DelegateCommand(Add);
-            CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
         }
 
         #region Properties
         public Subtask CurrentSubtask { get; set; }
-        public ICommand CloseModalDialogCommand { get; }
         public ICommand AddSubtaskCommand { get; }
         #endregion
 
@@ -51,10 +50,9 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         {
             if (isAdded)
             {
-                //messagebox issue (this is just temporary, we're going to use a custom MessageBox anyway)
                 _refreshSubtasksCollection();
                 MessageBox.Show("Subtask Created");
-                CloseModalDialog();
+                CloseWindow();
             }
 
             else
@@ -62,19 +60,19 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 MessageBox.Show("Error occured, cannot create subtask");
             }
         }
-
-        private void CloseModalDialog()
-        {
-            MainWindowViewModel.Overlay = false;
-
-            foreach (Window currentModal in Application.Current.Windows)
-            {
-                if (currentModal.DataContext == this)
-                {
-                    currentModal.Close();
-                }
-            }
-        }
         #endregion
+
+        //new
+        private DelegateCommand _closeCommand;
+
+        public DelegateCommand CloseCommand => _closeCommand ??= new DelegateCommand(CloseWindow);
+
+        public Action Close { get; set; }
+
+        public void CloseWindow()
+        {
+            Close?.Invoke();
+            MainWindowViewModel.Overlay = false;
+        }
     }
 }
