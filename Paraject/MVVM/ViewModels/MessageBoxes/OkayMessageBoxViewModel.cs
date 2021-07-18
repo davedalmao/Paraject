@@ -11,15 +11,14 @@ namespace Paraject.MVVM.ViewModels.MessageBoxes
     {
         private DelegateCommand _closeCommand;
 
-        public OkayMessageBoxViewModel(string title, string message) : base(message, title)
+        public OkayMessageBoxViewModel(string title, string message, string iconSource) : base(message, title, iconSource)
         {
             Title = title;
             Message = message;
+            IconSource = iconSource;
             OkayCommand = new RelayCommand<IDialogWindow>(Okay);
         }
 
-
-        public string Icon => "/UiDesign/Images/Logo/defaultProjectLogo.png";
         public Action Close { get; set; }
         public DelegateCommand CloseCommand => _closeCommand ??= new DelegateCommand(CloseWindow);
         public ICommand OkayCommand { get; private set; }

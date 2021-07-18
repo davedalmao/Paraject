@@ -17,7 +17,6 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         private readonly Action _refreshSubtasksCollection;
         private DelegateCommand _closeCommand;
 
-
         public AddSubtaskModalDialogViewModel(int currentTaskId, Action refreshSubtasksCollection)
         {
             _subtaskRepository = new SubtaskRepository();
@@ -51,15 +50,17 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             else
             {
-                OkayMessageBoxViewModel okayMessageBox = new("Data Entry", "A subtask should have a subject");
+                string iconSource = "/UiDesign/Images/Logo/defaultProjectLogo.png";
+                OkayMessageBoxViewModel okayMessageBox = new("Data Entry", "A subtask should have a subject", iconSource);
                 _dialogService.OpenDialog(okayMessageBox);
             }
         }
         private void AddOperationResult(bool isAdded)
         {
+            string iconSource = "/UiDesign/Images/Logo/defaultProjectLogo.png";
             if (isAdded)
             {
-                OkayMessageBoxViewModel okayMessageBox = new("Add Operation", "Subtask Created Successfully!");
+                OkayMessageBoxViewModel okayMessageBox = new("Add Operation", "Subtask Created Successfully!", iconSource);
 
                 _refreshSubtasksCollection();
                 _dialogService.OpenDialog(okayMessageBox);
@@ -68,7 +69,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             else
             {
-                OkayMessageBoxViewModel okayMessageBox = new("Add Operation", "An Error occured, cannot create the Subtask ;(");
+                OkayMessageBoxViewModel okayMessageBox = new("Add Operation", "An Error occured, cannot create the Subtask ;(", iconSource);
                 _dialogService.OpenDialog(okayMessageBox);
             }
         }
