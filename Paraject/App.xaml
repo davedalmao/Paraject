@@ -181,7 +181,14 @@
                 MessageBoxes-->
 
             <!--Okay MessageBox-->
+            <DataTemplate DataType="{x:Type messageBoxViewModel:OkayMessageBoxViewModel}">
+                <messageBox:OkayMessageBox />
+            </DataTemplate>
 
+            <!--YesNo MessageBox-->
+            <DataTemplate DataType="{x:Type messageBoxViewModel:YesNoMessageBoxViewModel}">
+                <messageBox:YesNoMessageBox />
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
