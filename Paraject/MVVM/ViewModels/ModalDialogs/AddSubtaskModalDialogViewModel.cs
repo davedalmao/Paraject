@@ -41,6 +41,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 AddOperationResult(isAdded);
             }
 
+            //problem here 
             else
             {
                 MessageBox.Show("A subtask should have a subject");
@@ -51,12 +52,14 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isAdded)
             {
                 _refreshSubtasksCollection();
+                //problem here 
                 MessageBox.Show("Subtask Created");
                 CloseWindow();
             }
 
             else
             {
+                //problem here 
                 MessageBox.Show("Error occured, cannot create subtask");
             }
         }

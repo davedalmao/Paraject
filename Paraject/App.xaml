@@ -6,6 +6,8 @@
              xmlns:viewModel="clr-namespace:Paraject.MVVM.ViewModels"
              xmlns:windowView="clr-namespace:Paraject.MVVM.Views.Windows"
              xmlns:windowViewModel="clr-namespace:Paraject.MVVM.ViewModels.Windows"
+             xmlns:messageBox="clr-namespace:Paraject.MVVM.Views.ModalDialogs.MessageBoxes"
+             xmlns:messageBoxViewModel="clr-namespace:Paraject.MVVM.ViewModels.MessageBoxes"
              xmlns:converter="clr-namespace:Paraject.Core.Converters"
              xmlns:enums="clr-namespace:Paraject.Core.Enums"
              StartupUri="/MVVM/Views/Windows/LoginWindow.xaml">
@@ -172,6 +174,15 @@
             <!--AllSubtasks (display subtasks todo, and completed subtasks here)-->
             <DataTemplate DataType="{x:Type viewModel:AllSubtasksViewModel}">
                 <view:AllSubtasksView />
+            </DataTemplate>
+
+
+            <!--Custom
+                MessageBoxes-->
+
+            <!--Okay MessageBox-->
+            <DataTemplate DataType="{x:Type messageBoxViewModel:OkayMessageBoxViewModel}">
+                <messageBox:OkayMessageBox />
             </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>

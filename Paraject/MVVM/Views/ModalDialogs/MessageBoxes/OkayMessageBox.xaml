@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paraject.MVVM.Views.ModalDialogs.MessageBoxes"
         xmlns:okay="clr-namespace:Paraject.MVVM.ViewModels.MessageBoxes"
+        xmlns:utility="clr-namespace:Paraject.Core.Utilities"
         d:DataContext="{d:DesignInstance Type=okay:OkayMessageBoxViewModel}"
         mc:Ignorable="d"
         WindowStyle="None"
@@ -16,7 +17,8 @@
         Height="217.59"
         FontFamily="{StaticResource NunitoBold}"
         Foreground="{StaticResource White}"
-        MouseDown="OkayMessageBoxMouseDown">
+        MouseDown="OkayMessageBoxMouseDown"
+        utility:WindowCloser.EnableWindowClosing="True">
     <Border Background="{StaticResource MessageBox}"
             CornerRadius="20">
         <Grid Margin="25">
