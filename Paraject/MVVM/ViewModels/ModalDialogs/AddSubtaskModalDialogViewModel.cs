@@ -6,7 +6,6 @@ using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.MessageBoxes;
 using Paraject.MVVM.ViewModels.Windows;
 using System;
-using System.Windows;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels.ModalDialogs
@@ -16,6 +15,8 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         private readonly IDialogService _dialogService;
         private readonly SubtaskRepository _subtaskRepository;
         private readonly Action _refreshSubtasksCollection;
+        private DelegateCommand _closeCommand;
+
 
         public AddSubtaskModalDialogViewModel(int currentTaskId, Action refreshSubtasksCollection)
         {
@@ -33,7 +34,10 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
         #region Properties
         public Subtask CurrentSubtask { get; set; }
+        public Action Close { get; set; }
+
         public ICommand AddSubtaskCommand { get; }
+        public ICommand CloseCommand => _closeCommand ??= new DelegateCommand(CloseWindow);
         #endregion
 
         #region Methods
@@ -45,7 +49,6 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 AddOperationResult(isAdded);
             }
 
-            //problem here 
             else
             {
                 OkayMessageBoxViewModel okayMessageBox = new("Data Entry", "A subtask should have a subject");
@@ -56,31 +59,24 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         {
             if (isAdded)
             {
-                _refreshSubtasksCollection();
                 OkayMessageBoxViewModel okayMessageBox = new("Add Operation", "Subtask Created Successfully!");
+
+                _refreshSubtasksCollection();
                 _dialogService.OpenDialog(okayMessageBox);
                 CloseWindow();
             }
 
             else
             {
-                //problem here 
-                MessageBox.Show("Error occured, cannot create subtask");
+                OkayMessageBoxViewModel okayMessageBox = new("Add Operation", "An Error occured, cannot create the Subtask ;(");
+                _dialogService.OpenDialog(okayMessageBox);
             }
         }
-        #endregion
-
-        //new
-        private DelegateCommand _closeCommand;
-
-        public DelegateCommand CloseCommand => _closeCommand ??= new DelegateCommand(CloseWindow);
-
-        public Action Close { get; set; }
-
         public void CloseWindow()
         {
             Close?.Invoke();
             MainWindowViewModel.Overlay = false;
         }
+        #endregion
     }
 }
