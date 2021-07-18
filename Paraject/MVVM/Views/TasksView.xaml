@@ -81,8 +81,8 @@
                              Command="{Binding ProjectDetailsViewCommand}" />
         </DockPanel>
 
-        <!--Where the views are going to be displayed-->
+        <!--Where the views are going to be displayed Content="{Binding Path=(viewmodels:TasksViewModel.CurrentView)}"-->
         <ContentControl Grid.Row="2"
-                        Content="{Binding Path=(viewmodels:TasksViewModel.CurrentView)}" />
+                        Content="{Binding CurrentView}" />
     </Grid>
 </UserControl>

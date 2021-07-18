@@ -2,7 +2,6 @@
 using Paraject.Core.Enums;
 using Paraject.Core.Services.DialogService;
 using Paraject.Core.Utilities;
-using Paraject.MVVM.ViewModels.Windows;
 using System;
 using System.Windows.Input;
 
@@ -31,7 +30,6 @@ namespace Paraject.MVVM.ViewModels.MessageBoxes
         public void CloseWindow()
         {
             Close?.Invoke();
-            MainWindowViewModel.Overlay = false;
         }
     }
 }

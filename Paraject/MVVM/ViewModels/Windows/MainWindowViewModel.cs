@@ -31,7 +31,7 @@ namespace Paraject.MVVM.ViewModels.Windows
             ProjectIdeasVM = new ProjectIdeasViewModel(currentUserAccount.Id);
             OptionsVM = new OptionsViewModel();
 
-            CurrentView = DashboardVM;
+            CurrentView = ProjectsVM;
 
             DashboardViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = DashboardVM; });
             ProjectsViewCommand = new DelegateCommand(NavigateToProjectsView);

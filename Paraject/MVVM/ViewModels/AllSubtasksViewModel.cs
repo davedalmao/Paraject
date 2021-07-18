@@ -116,7 +116,7 @@ namespace Paraject.MVVM.ViewModels
             AddSubtaskModalDialogViewModel addSubtaskModalDialogViewModel = new AddSubtaskModalDialogViewModel(CurrentTask.Id, DisplaySubtasksTodo);
             AddSubtaskModalDialog addSubtaskModalDialog = new AddSubtaskModalDialog();
             addSubtaskModalDialog.DataContext = addSubtaskModalDialogViewModel;
-            addSubtaskModalDialog.Show();
+            addSubtaskModalDialog.ShowDialog();
         }
         private void ShowSubtaskDetailsModalDialog(object subtaskId)
         {
@@ -127,7 +127,7 @@ namespace Paraject.MVVM.ViewModels
 
             SubtaskDetailsModalDialog subtaskDetailsModalDialog = new SubtaskDetailsModalDialog();
             subtaskDetailsModalDialog.DataContext = subtaskDetailsModalDialogViewModel;
-            subtaskDetailsModalDialog.Show();
+            subtaskDetailsModalDialog.ShowDialog();
         }
         #endregion
     }

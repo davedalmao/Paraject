@@ -8,7 +8,7 @@ namespace Paraject.MVVM.ViewModels
 {
     public class TasksViewModel : BaseViewModel
     {
-        private static object _currentView;
+        //private static object _currentView;
         private readonly ProjectsViewModel _projectsViewModel;
         private readonly Action _refreshProjectsCollection;
 
@@ -34,20 +34,21 @@ namespace Paraject.MVVM.ViewModels
             NavigateBackToProjectsViewCommand = new DelegateCommand(NavigateBackToProjectsView);
         }
 
-        public static event EventHandler CurrentViewChanged;
+        //public static event EventHandler CurrentViewChanged;
 
         #region Properties
         public Project CurrentProject { get; set; }
-        public static object CurrentView
-        {
-            get { return _currentView; }
-            set
-            {
-                _currentView = value;
-                if (CurrentViewChanged is not null)
-                    CurrentViewChanged(null, EventArgs.Empty);
-            }
-        }
+        public object CurrentView { get; set; }
+        //public static object CurrentView
+        //{
+        //    get { return _currentView; }
+        //    set
+        //    {
+        //        _currentView = value;
+        //        if (CurrentViewChanged is not null)
+        //            CurrentViewChanged(null, EventArgs.Empty);
+        //    }
+        //}
 
         //RadioButtons in TasksView
         public bool FinishLineButtonIsChecked { get; set; } = true; //default selected RadioButton
