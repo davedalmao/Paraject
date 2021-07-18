@@ -119,6 +119,6 @@ D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\Ui
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ModalDialogs\MessageBoxes\OkayMessageBox.g.cs
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ModalDialogs\MessageBoxes\OkayMessageBox.baml
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ModalDialogs\MessageBoxes\DialogWindow.g.cs
-D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ModalDialogs\NewFolder\YesNoMessageBox.g.cs
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ModalDialogs\MessageBoxes\DialogWindow.baml
-D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ModalDialogs\NewFolder\YesNoMessageBox.baml
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ModalDialogs\MessageBoxes\YesNoMessageBox.g.cs
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ModalDialogs\MessageBoxes\YesNoMessageBox.baml
