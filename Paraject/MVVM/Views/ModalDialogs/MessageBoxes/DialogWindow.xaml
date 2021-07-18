@@ -1,0 +1,22 @@
+﻿<Window x:Class="Paraject.MVVM.Views.ModalDialogs.MessageBoxes.DialogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Paraject.MVVM.Views.ModalDialogs.MessageBoxes"
+        mc:Ignorable="d"
+        xmlns:utility="clr-namespace:Paraject.Core.Utilities"
+        WindowStyle="None"
+        ResizeMode="CanResize"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterOwner"
+        Background="Transparent"
+        Width="411"
+        Height="217.59"
+        FontFamily="{StaticResource NunitoBold}"
+        Foreground="{StaticResource White}"
+        MouseDown="DialogWindowMouseDown"
+        utility:WindowCloser.EnableWindowClosing="True">
+    <ContentControl x:Name="ContentPeresenter"
+                    Content="{Binding}" />
+</Window>
