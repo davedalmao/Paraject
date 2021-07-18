@@ -1,4 +1,6 @@
-﻿namespace Paraject.MVVM.ViewModels.MessageBoxes
+﻿using Paraject.Core.Services.DialogService;
+
+namespace Paraject.MVVM.ViewModels.MessageBoxes
 {
     public abstract class DialogBaseViewModel<T>
     {
@@ -13,14 +15,14 @@
             Message = message;
         }
 
-        //public void CloseDialogWithResult(IDialogWindow dialog, T result)
-        //{
-        //    DialogResult = result;
+        public void CloseDialogWithResult(IDialogWindow dialog, T result)
+        {
+            DialogResult = result;
 
-        //    if (dialog != null)
-        //    {
-        //        dialog.DialogResult = true;
-        //    }
-        //}
+            if (dialog != null)
+            {
+                dialog.DialogResult = true;
+            }
+        }
     }
 }
