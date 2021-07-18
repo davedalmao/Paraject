@@ -11,12 +11,14 @@
         AllowsTransparency="True"
         WindowStartupLocation="CenterOwner"
         Background="Transparent"
-        Width="411"
-        Height="217.59"
         FontFamily="{StaticResource NunitoBold}"
         Foreground="{StaticResource White}"
         MouseDown="DialogWindowMouseDown"
+        MinWidth="411"
+        MaxWidth="493"
+        MinHeight="217.59"
         utility:WindowCloser.EnableWindowClosing="True">
     <ContentControl x:Name="ContentPeresenter"
+                    VerticalAlignment="Center"
                     Content="{Binding}" />
 </Window>

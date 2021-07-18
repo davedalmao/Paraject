@@ -19,6 +19,7 @@ namespace Paraject.MVVM.ViewModels.MessageBoxes
         }
 
 
+        public string Icon => "/UiDesign/Images/Logo/defaultProjectLogo.png";
         public Action Close { get; set; }
         public DelegateCommand CloseCommand => _closeCommand ??= new DelegateCommand(CloseWindow);
         public ICommand OkayCommand { get; private set; }
