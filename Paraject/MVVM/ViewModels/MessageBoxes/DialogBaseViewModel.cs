@@ -6,13 +6,16 @@ namespace Paraject.MVVM.ViewModels.MessageBoxes
     {
         public string Title { get; set; }
         public string Message { get; set; }
+        public string IconSource { get; set; }
+
         public T DialogResult { get; set; }
 
 
-        public DialogBaseViewModel(string title, string message)
+        public DialogBaseViewModel(string title, string message, string iconSource)
         {
             Title = title;
             Message = message;
+            IconSource = iconSource;
         }
 
         public void CloseDialogWithResult(IDialogWindow dialog, T result)

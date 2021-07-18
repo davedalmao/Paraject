@@ -7,8 +7,12 @@ namespace Paraject.MVVM.ViewModels.MessageBoxes
 {
     public class YesNoMessageBoxViewModel : DialogBaseViewModel<DialogResults>
     {
-        public YesNoMessageBoxViewModel(string title, string message) : base(message, title)
+        public YesNoMessageBoxViewModel(string title, string message, string iconSource) : base(message, title, iconSource)
         {
+            Title = title;
+            Message = message;
+            IconSource = iconSource;
+
             YesCommand = new RelayCommand<IDialogWindow>(Yes);
             NoCommand = new RelayCommand<IDialogWindow>(No);
         }
