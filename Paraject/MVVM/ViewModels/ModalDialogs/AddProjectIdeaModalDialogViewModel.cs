@@ -1,6 +1,8 @@
 ﻿using Paraject.Core.Commands;
 using Paraject.Core.Repositories;
+using Paraject.Core.Services.DialogService;
 using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.MessageBoxes;
 using Paraject.MVVM.ViewModels.Windows;
 using System;
 using System.Windows;
@@ -10,11 +12,13 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 {
     public class AddProjectIdeaModalDialogViewModel : BaseViewModel
     {
+        private readonly IDialogService _dialogService;
         private readonly ProjectIdeaRepository _projectIdeaRepository;
         private readonly Action _refreshProjectIdeasCollection;
 
         public AddProjectIdeaModalDialogViewModel(Action refreshProjectIdeasCollection, int currentUserId)
         {
+            _dialogService = new DialogService();
             _projectIdeaRepository = new ProjectIdeaRepository();
             CurrentProjectIdea = new ProjectIdea()
             {
@@ -44,22 +48,30 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             else
             {
-                MessageBox.Show("A subtask should have a subject");
+                string iconSource = "/UiDesign/Images/Logo/defaultProjectLogo.png";
+
+                OkayMessageBoxViewModel okayMessageBox = new("Incorrect Data Entry", "A Subtask should have a subject.", iconSource);
+                _dialogService.OpenDialog(okayMessageBox);
             }
         }
         private void AddOperationResult(bool isAdded)
         {
+            string iconSource = "/UiDesign/Images/Logo/defaultProjectLogo.png";
+
             if (isAdded)
             {
-                //messagebox issue (this is just temporary, we're going to use a custom MessageBox anyway)
                 _refreshProjectIdeasCollection();
-                MessageBox.Show("Project Idea Added");
+
+                OkayMessageBoxViewModel okayMessageBox = new("Add Operation", "Project Idea Created Successfully!", iconSource);
+                _dialogService.OpenDialog(okayMessageBox);
+
                 CloseModalDialog();
             }
 
             else
             {
-                MessageBox.Show("Error occured, cannot create project idea");
+                OkayMessageBoxViewModel okayMessageBox = new("Error", "An error occured, cannot create the Project Idea.", iconSource);
+                _dialogService.OpenDialog(okayMessageBox);
             }
         }
 
