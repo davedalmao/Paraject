@@ -1,7 +1,9 @@
 ﻿using Paraject.Core.Commands;
 using Paraject.Core.Repositories;
+using Paraject.Core.Services.DialogService;
 using Paraject.Core.Utilities;
 using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.MessageBoxes;
 using Paraject.MVVM.ViewModels.Windows;
 using System;
 using System.Windows;
@@ -11,12 +13,14 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 {
     public class AddSubtaskModalDialogViewModel : BaseViewModel, ICloseWindows
     {
+        private readonly IDialogService _dialogService;
         private readonly SubtaskRepository _subtaskRepository;
         private readonly Action _refreshSubtasksCollection;
 
         public AddSubtaskModalDialogViewModel(int currentTaskId, Action refreshSubtasksCollection)
         {
             _subtaskRepository = new SubtaskRepository();
+            _dialogService = new DialogService();
             _refreshSubtasksCollection = refreshSubtasksCollection;
 
             CurrentSubtask = new Subtask()
@@ -44,7 +48,8 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             //problem here 
             else
             {
-                MessageBox.Show("A subtask should have a subject");
+                OkayMessageBoxViewModel okayMessageBox = new("Data Entry", "A subtask should have a subject");
+                _dialogService.OpenDialog(okayMessageBox);
             }
         }
         private void AddOperationResult(bool isAdded)
@@ -52,8 +57,8 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isAdded)
             {
                 _refreshSubtasksCollection();
-                //problem here 
-                MessageBox.Show("Subtask Created");
+                OkayMessageBoxViewModel okayMessageBox = new("Add Operation", "Subtask Created Successfully!");
+                _dialogService.OpenDialog(okayMessageBox);
                 CloseWindow();
             }
 

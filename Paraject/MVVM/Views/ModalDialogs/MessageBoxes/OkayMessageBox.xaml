@@ -61,7 +61,8 @@
                     HorizontalAlignment="Right"
                     Background="{StaticResource Green}"
                     Style="{StaticResource TextOnlyButtonTheme}"
-                    Command="{Binding OkayCommand}" />
+                    Command="{Binding OkayCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" />
         </Grid>
     </Border>
 </UserControl>
