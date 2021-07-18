@@ -36,6 +36,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
         #region Properties
         public Project CurrentProject { get; set; }
+
         public ICommand AddProjectCommand { get; }
         public ICommand AddProjectLogoCommand { get; }
         public ICommand CloseModalDialogCommand { get; }

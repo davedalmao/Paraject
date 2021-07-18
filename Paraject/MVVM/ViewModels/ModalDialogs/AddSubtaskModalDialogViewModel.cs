@@ -51,7 +51,8 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             else
             {
                 string iconSource = "/UiDesign/Images/Logo/defaultProjectLogo.png";
-                OkayMessageBoxViewModel okayMessageBox = new("Data Entry", "A subtask should have a subject", iconSource);
+
+                OkayMessageBoxViewModel okayMessageBox = new("Data Entry", "A Subtask should have a subject", iconSource);
                 _dialogService.OpenDialog(okayMessageBox);
             }
         }
@@ -60,10 +61,11 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             string iconSource = "/UiDesign/Images/Logo/defaultProjectLogo.png";
             if (isAdded)
             {
-                OkayMessageBoxViewModel okayMessageBox = new("Add Operation", "Subtask Created Successfully!", iconSource);
-
                 _refreshSubtasksCollection();
+
+                OkayMessageBoxViewModel okayMessageBox = new("Add Operation", "Subtask Created Successfully!", iconSource);
                 _dialogService.OpenDialog(okayMessageBox);
+
                 CloseWindow();
             }
 
