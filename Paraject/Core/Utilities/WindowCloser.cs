@@ -2,6 +2,11 @@
 
 namespace Paraject.Core.Utilities
 {
+    /// <summary>
+    /// Add these to the Window(xaml) That you want to close:
+    ///     xmlns:utility="clr-namespace:Paraject.Core.Utilities"
+    ///     utility:WindowCloser.EnableWindowClosing="True"
+    /// </summary>
     public class WindowCloser
     {
         public static bool GetEnableWindowClosing(DependencyObject obj)
