@@ -181,9 +181,7 @@
                 MessageBoxes-->
 
             <!--Okay MessageBox-->
-            <DataTemplate DataType="{x:Type messageBoxViewModel:OkayMessageBoxViewModel}">
-                <messageBox:OkayMessageBox />
-            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
