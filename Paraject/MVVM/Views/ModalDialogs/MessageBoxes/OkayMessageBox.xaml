@@ -22,7 +22,7 @@
 
                 <!--Close Button-->
                 <Button Style="{StaticResource PlainButtonTheme}"
-                        Command="{Binding CloseMessageBoxCommand}"
+                        Command="{Binding CloseCommand}"
                         HorizontalAlignment="Right">
                     <Image Source="/UiDesign/Icons/WindowStateButtons/lightClose.png"
                            Width="26"
