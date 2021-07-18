@@ -215,4 +215,8 @@
     </Resource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Core\Service\" />
+  </ItemGroup>
+
 </Project>
