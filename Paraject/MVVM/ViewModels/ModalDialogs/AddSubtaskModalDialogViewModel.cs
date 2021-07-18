@@ -19,8 +19,8 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
         public AddSubtaskModalDialogViewModel(int currentTaskId, Action refreshSubtasksCollection)
         {
-            _subtaskRepository = new SubtaskRepository();
             _dialogService = new DialogService();
+            _subtaskRepository = new SubtaskRepository();
             _refreshSubtasksCollection = refreshSubtasksCollection;
 
             CurrentSubtask = new Subtask()
