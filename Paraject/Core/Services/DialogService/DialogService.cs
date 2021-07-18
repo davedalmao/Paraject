@@ -1,4 +1,5 @@
 ﻿using Paraject.MVVM.ViewModels.MessageBoxes;
+using Paraject.MVVM.Views.ModalDialogs.MessageBoxes;
 
 namespace Paraject.Core.Services.DialogService
 {
@@ -6,9 +7,11 @@ namespace Paraject.Core.Services.DialogService
     {
         public T OpenDialog<T>(DialogBaseViewModel<T> viewModel)
         {
-            //IDialogWindow window = new DialogWindow();
-            //window.DataContext = viewModel;
-            //window.ShowDialog();
+            IDialogWindow window = new DialogWindow
+            {
+                DataContext = viewModel
+            };
+            window.ShowDialog();
             return viewModel.DialogResult;
         }
     }
