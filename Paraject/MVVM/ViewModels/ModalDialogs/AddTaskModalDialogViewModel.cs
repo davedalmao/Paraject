@@ -1,6 +1,8 @@
 ﻿using Paraject.Core.Commands;
 using Paraject.Core.Repositories;
+using Paraject.Core.Services.DialogService;
 using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.MessageBoxes;
 using Paraject.MVVM.ViewModels.Windows;
 using System;
 using System.Windows;
@@ -10,11 +12,13 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 {
     public class AddTaskModalDialogViewModel : BaseViewModel
     {
+        private readonly IDialogService _dialogService;
         private readonly TaskRepository _taskRepository;
         private readonly Action _refreshTaskCollection;
 
         public AddTaskModalDialogViewModel(Action refreshTaskCollection, int currentProjectId, string taskType)
         {
+            _dialogService = new DialogService();
             _taskRepository = new TaskRepository();
             _refreshTaskCollection = refreshTaskCollection;
 
@@ -48,21 +52,30 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             else
             {
-                MessageBox.Show("A task should have a subject");
+                string iconSource = "/UiDesign/Images/Logo/defaultProjectLogo.png";
+
+                OkayMessageBoxViewModel okayMessageBox = new("Data Entry", "A Task should have a subject", iconSource);
+                _dialogService.OpenDialog(okayMessageBox);
             }
         }
         private void AddOperationResult(bool isAdded)
         {
+            string iconSource = "/UiDesign/Images/Logo/defaultProjectLogo.png";
+
             if (isAdded)
             {
                 _refreshTaskCollection();
-                MessageBox.Show("Task Created");
+
+                OkayMessageBoxViewModel okayMessageBox = new("Add Operation", "Task Created Successfully!", iconSource);
+                _dialogService.OpenDialog(okayMessageBox);
+
                 CloseModal();
             }
 
             else
             {
-                MessageBox.Show("Error occured, cannot create task");
+                OkayMessageBoxViewModel okayMessageBox = new("Add Operation", "An Error occured, cannot create the Subtask ;(", iconSource);
+                _dialogService.OpenDialog(okayMessageBox);
             }
         }
 
