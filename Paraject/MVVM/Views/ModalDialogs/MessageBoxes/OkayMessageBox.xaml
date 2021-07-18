@@ -1,24 +1,10 @@
-﻿<Window x:Class="Paraject.MVVM.Views.ModalDialogs.MessageBoxes.OkayMessageBox"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Paraject.MVVM.Views.ModalDialogs.MessageBoxes"
-        xmlns:okay="clr-namespace:Paraject.MVVM.ViewModels.MessageBoxes"
-        xmlns:utility="clr-namespace:Paraject.Core.Utilities"
-        d:DataContext="{d:DesignInstance Type=okay:OkayMessageBoxViewModel}"
-        mc:Ignorable="d"
-        WindowStyle="None"
-        ResizeMode="CanResize"
-        AllowsTransparency="True"
-        WindowStartupLocation="CenterOwner"
-        Background="Transparent"
-        Width="411"
-        Height="217.59"
-        FontFamily="{StaticResource NunitoBold}"
-        Foreground="{StaticResource White}"
-        MouseDown="OkayMessageBoxMouseDown"
-        utility:WindowCloser.EnableWindowClosing="True">
+﻿<UserControl x:Class="Paraject.MVVM.Views.ModalDialogs.MessageBoxes.OkayMessageBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Paraject.MVVM.Views.ModalDialogs.MessageBoxes"
+             mc:Ignorable="d">
     <Border Background="{StaticResource MessageBox}"
             CornerRadius="20">
         <Grid Margin="25">
@@ -75,7 +61,7 @@
                     HorizontalAlignment="Right"
                     Background="{StaticResource Green}"
                     Style="{StaticResource TextOnlyButtonTheme}"
-                    Command="{Binding CloseMessageBoxCommand}" />
+                    Command="{Binding OkayCommand}" />
         </Grid>
     </Border>
-</Window>
+</UserControl>
