@@ -42,7 +42,7 @@
     <Compile Update="MVVM\Views\ModalDialogs\MessageBoxes\OkayMessageBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="MVVM\Views\ModalDialogs\NewFolder\YesNoMessageBox.xaml.cs">
+    <Compile Update="MVVM\Views\ModalDialogs\MessageBoxes\YesNoMessageBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="MVVM\Views\ModalDialogs\NoteDetailsModalDialog.xaml.cs">
@@ -128,7 +128,7 @@
     <Page Update="MVVM\Views\ModalDialogs\MessageBoxes\OkayMessageBox.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MVVM\Views\ModalDialogs\NewFolder\YesNoMessageBox.xaml">
+    <Page Update="MVVM\Views\ModalDialogs\MessageBoxes\YesNoMessageBox.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\ModalDialogs\NoteDetailsModalDialog.xaml">

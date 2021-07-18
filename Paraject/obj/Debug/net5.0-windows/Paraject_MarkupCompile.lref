@@ -1,4 +1,4 @@
-﻿D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
+﻿
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\App.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\Core\CustomControls\UserControls\BindablePasswordBox.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\AllSubtasksView.xaml;;
@@ -11,7 +11,6 @@ FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\ModalDialogs\Ad
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\ModalDialogs\AddTaskModalDialog.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\ModalDialogs\MessageBoxes\DialogWindow.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\ModalDialogs\MessageBoxes\OkayMessageBox.xaml;;
-FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\ModalDialogs\NewFolder\YesNoMessageBox.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\ModalDialogs\NoteDetailsModalDialog.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\ModalDialogs\ProjectIdeaDetailsModalDialog.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\ModalDialogs\SubtaskDetailsModalDialog.xaml;;
@@ -31,4 +30,5 @@ FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\Windows\SignupW
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\UiDesign\Theme\BindablePasswordBoxTheme.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\UiDesign\Theme\ComboBoxTheme2.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\UiDesign\Theme\HorizontalRadioButtonTheme.xaml;;
+FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\ModalDialogs\MessageBoxes\YesNoMessageBox.xaml;;
 

@@ -17,8 +17,8 @@
             <!--Modal Header-->
             <DockPanel Grid.Row="0">
                 <!--Modal Header Text -->
-                <TextBlock Text=""
-                           FontSize="18" />
+                <TextBlock  Text="{Binding Title}"
+                            FontSize="18" />
 
                 <!--Close Button-->
                 <Button Style="{StaticResource PlainButtonTheme}"
@@ -43,7 +43,7 @@
                        Width="61.59"
                        Height="61.59" />
                 <TextBlock Grid.Column="1"
-                           Text=""
+                           Text="{Binding Message}"
                            TextWrapping="Wrap"
                            MaxWidth="369"
                            HorizontalAlignment="Right"
@@ -60,16 +60,20 @@
                         Width="102"
                         FontSize="14"
                         Background="{StaticResource AccentColor}"
-                        Style="{StaticResource TextOnlyButtonTheme}" />
+                        Style="{StaticResource TextOnlyButtonTheme}"
+                        Command="{Binding YesCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" />
 
                 <!--No Button-->
                 <Button Content="No"
                         Height="35"
                         Width="102"
                         FontSize="14"
+                        Margin="20,0,0,0"
                         Background="{StaticResource Darkest}"
                         Style="{StaticResource TextOnlyButtonTheme}"
-                        Margin="20,0,0,0" />
+                        Command="{Binding NoCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" />
             </StackPanel>
         </Grid>
     </Border>
