@@ -63,7 +63,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             }
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An Error occured, cannot update the Note.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot update the Note.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
             }
         }
 
