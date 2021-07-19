@@ -48,30 +48,21 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             else
             {
-                string iconSource = "/UiDesign/Images/Logo/defaultProjectLogo.png";
-
-                OkayMessageBoxViewModel okayMessageBox = new("Incorrect Data Entry", "A Subtask should have a subject.", iconSource);
-                _dialogService.OpenDialog(okayMessageBox);
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Subtask should have a subject.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
             }
         }
         private void AddOperationResult(bool isAdded)
         {
-            string iconSource = "/UiDesign/Images/Logo/defaultProjectLogo.png";
-
             if (isAdded)
             {
                 _refreshProjectIdeasCollection();
-
-                OkayMessageBoxViewModel okayMessageBox = new("Add Operation", "Project Idea Created Successfully!", iconSource);
-                _dialogService.OpenDialog(okayMessageBox);
-
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Add Operation", "Project Idea Created Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
                 CloseModalDialog();
             }
 
             else
             {
-                OkayMessageBoxViewModel okayMessageBox = new("Error", "An error occured, cannot create the Project Idea.", iconSource);
-                _dialogService.OpenDialog(okayMessageBox);
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot create the Project Idea.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
             }
         }
 
