@@ -1,15 +1,18 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.Core.Enums;
+using Paraject.Core.Services.DialogService;
 using Paraject.Core.Utilities;
 using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.MessageBoxes;
 using Paraject.MVVM.Views.Windows;
 using System;
-using System.Windows;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels.Windows
 {
     public class MainWindowViewModel : BaseViewModel
     {
+        private readonly IDialogService _dialogService;
         private static bool _overlay;
         private static object _currentView;
 
@@ -23,6 +26,7 @@ namespace Paraject.MVVM.ViewModels.Windows
         #region Constructor
         public MainWindowViewModel(UserAccount currentUserAccount)
         {
+            _dialogService = new DialogService();
             CurrentUserAccount = currentUserAccount;
 
             DashboardVM = new DashboardViewModel();
@@ -90,8 +94,9 @@ namespace Paraject.MVVM.ViewModels.Windows
 
         public void Logout()
         {
-            MessageBoxResult Result = MessageBox.Show("Do you want Logout?", "Logout Account", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (Result == MessageBoxResult.Yes)
+            DialogResults result = _dialogService.OpenDialog(new YesNoMessageBoxViewModel("Confirm Logout", "Do you want Logout?", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+
+            if (result == DialogResults.Yes)
             {
                 ShowLoginWindow();
             }
