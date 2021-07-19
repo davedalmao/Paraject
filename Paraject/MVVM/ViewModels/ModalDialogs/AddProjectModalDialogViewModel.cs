@@ -53,36 +53,27 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             else
             {
-                string iconSource = "/UiDesign/Images/Logo/defaultProjectLogo.png";
-
-                OkayMessageBoxViewModel okayMessageBox = new("Incorrect Data Entry", "A Project should have a name.", iconSource);
-                _dialogService.OpenDialog(okayMessageBox);
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Project should have a name.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
             }
         }
         private void AddOperationResult(bool isAdded)
         {
-            string iconSource = "/UiDesign/Images/Logo/defaultProjectLogo.png";
-
             if (isAdded)
             {
                 _refreshProjectsCollection();
-
-                OkayMessageBoxViewModel okayMessageBox = new("Add Operation", "Project Created Successfully!", iconSource);
-                _dialogService.OpenDialog(okayMessageBox);
-
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Add Operation", "Project Created Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
                 CloseModalDialog();
             }
 
             else
             {
-                OkayMessageBoxViewModel okayMessageBox = new("Error", "An error occured, cannot create the Project.", iconSource);
-                _dialogService.OpenDialog(okayMessageBox);
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot create the Project.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
             }
         }
 
         private void LoadProjectLogo()
         {
-            OpenFileDialog openFile = new OpenFileDialog
+            OpenFileDialog openFile = new()
             {
                 Title = "Select the project's logo",
                 Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
@@ -98,10 +89,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 }
                 catch (Exception ex)
                 {
-                    string iconSource = "/UiDesign/Images/Logo/defaultProjectLogo.png";
-
-                    OkayMessageBoxViewModel okayMessageBox = new("Image format Error", $"Please select a valid image.\n \n{ex}", iconSource);
-                    _dialogService.OpenDialog(okayMessageBox);
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Image Format Error", $"Please select a valid image.\n \n{ex}", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
                 }
             }
         }
