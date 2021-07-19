@@ -1,6 +1,9 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.Core.Enums;
 using Paraject.Core.Repositories;
+using Paraject.Core.Services.DialogService;
 using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.MessageBoxes;
 using Paraject.MVVM.ViewModels.Windows;
 using System;
 using System.Windows;
@@ -10,12 +13,14 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 {
     public class SubtaskDetailsModalDialogViewModel : BaseViewModel
     {
+        private readonly IDialogService _dialogService;
         private readonly SubtaskRepository _subtaskRepository;
         private readonly Action _refreshSubtasksCollection;
         private readonly int _subtaskId;
 
         public SubtaskDetailsModalDialogViewModel(Action refreshSubtasksCollection, int subtaskId)
         {
+            _dialogService = new DialogService();
             _subtaskRepository = new SubtaskRepository();
             _refreshSubtasksCollection = refreshSubtasksCollection;
             _subtaskId = subtaskId;
@@ -46,7 +51,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             else
             {
-                MessageBox.Show("A subtask should have a subject");
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Subtask should have a subject.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
             }
         }
         private void UpdateOperationResult(bool isUpdated)
@@ -54,19 +59,19 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isUpdated)
             {
                 _refreshSubtasksCollection();
-                MessageBox.Show("Subtask updated successfully");
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", "Subtask Updated Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
                 CloseModalDialog();
             }
             else
             {
-                MessageBox.Show("Error occured, cannot update the subtask");
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot update the Subtask.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
             }
         }
 
         private void Delete()
         {
-            MessageBoxResult Result = MessageBox.Show("Do you want to DELETE this subtask?", "Delete Operation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (Result == MessageBoxResult.Yes)
+            DialogResults result = _dialogService.OpenDialog(new YesNoMessageBoxViewModel("Delete Operation", "Do you want to DELETE this Subtask?", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+            if (result == DialogResults.Yes)
             {
                 DeleteSubtask();
             }
@@ -77,12 +82,12 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isDeleted)
             {
                 _refreshSubtasksCollection();
-                MessageBox.Show("Subtask deleted successfully");
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Delete Operation", "Subtask Deleted Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
                 CloseModalDialog();
             }
             else
             {
-                MessageBox.Show("An error occurred, cannot delete subtask");
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot delete the Subtask.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
             }
         }
 
