@@ -59,7 +59,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isUpdated)
             {
                 _refreshProjectIdeasCollection();
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "Project Idea Updated Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", "Project Idea Updated Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
                 CloseModalDialog();
             }
             else
