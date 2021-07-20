@@ -56,7 +56,6 @@ namespace Paraject.MVVM.ViewModels
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Task should have a subject.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
             }
         }
-
         private void UpdateOperationResult(bool isUpdated)
         {
             if (isUpdated)
