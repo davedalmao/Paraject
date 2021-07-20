@@ -20,5 +20,6 @@
         utility:WindowCloser.EnableWindowClosing="True">
     <ContentControl x:Name="ContentPeresenter"
                     VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
                     Content="{Binding}" />
 </Window>
