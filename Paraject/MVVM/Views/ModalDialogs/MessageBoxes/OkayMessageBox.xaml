@@ -60,7 +60,7 @@
                     Width="102"
                     FontSize="14"
                     HorizontalAlignment="Right"
-                    Background="{StaticResource Green}"
+                    Background="{StaticResource Darkest}"
                     Style="{StaticResource TextOnlyButtonTheme}"
                     Command="{Binding OkayCommand}"
                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" />
