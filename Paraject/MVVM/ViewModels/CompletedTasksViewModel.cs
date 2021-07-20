@@ -20,7 +20,7 @@ namespace Paraject.MVVM.ViewModels
             _tasksViewModel = tasksViewModel;
             _projectId = projectId;
 
-            FilterTasksCommand = new DelegateCommand(FilterTasks);
+            FilterTasksCommand = new DelegateCommand(DisplayAllFilteredTasks);
             NavigateToSubtasksViewCommand = new ParameterizedDelegateCommand(NavigateToSubtasksView);
 
             DisplayAllFilteredTasks();
@@ -38,6 +38,12 @@ namespace Paraject.MVVM.ViewModels
         #endregion
 
         #region Methods
+        public void DisplayAllFilteredTasks()
+        {
+            SetValuesForTasksCollection();
+            SetNewGridDisplay();
+            TaskCardGridLocation();
+        }
         private void SetValuesForTasksCollection()
         {
             CompletedTasks = null;
@@ -47,12 +53,6 @@ namespace Paraject.MVVM.ViewModels
         {
             CardTasksGrid = null;
             CardTasksGrid = new ObservableCollection<GridTileData>();
-        }
-        private void FilterTasks()
-        {
-            SetValuesForTasksCollection();
-            SetNewGridDisplay();
-            TaskCardGridLocation();
         }
         private void TaskCardGridLocation()
         {
@@ -81,12 +81,7 @@ namespace Paraject.MVVM.ViewModels
                 CardTasksGrid.Add(td);
             }
         }
-        public void DisplayAllFilteredTasks()
-        {
-            SetValuesForTasksCollection();
-            SetNewGridDisplay();
-            TaskCardGridLocation();
-        }
+
         public void NavigateToSubtasksView(object taskId) //the argument passed to this parameter is in CompletedTasksView (a "CommandParameter" from a Task card)
         {
             Task selectedTask = _taskRepository.Get((int)taskId);

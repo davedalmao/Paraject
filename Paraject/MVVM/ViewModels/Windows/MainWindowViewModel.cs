@@ -1,15 +1,18 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.Core.Enums;
+using Paraject.Core.Services.DialogService;
 using Paraject.Core.Utilities;
 using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.MessageBoxes;
 using Paraject.MVVM.Views.Windows;
 using System;
-using System.Windows;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels.Windows
 {
     public class MainWindowViewModel : BaseViewModel
     {
+        private readonly IDialogService _dialogService;
         private static bool _overlay;
         private static object _currentView;
 
@@ -23,6 +26,7 @@ namespace Paraject.MVVM.ViewModels.Windows
         #region Constructor
         public MainWindowViewModel(UserAccount currentUserAccount)
         {
+            _dialogService = new DialogService();
             CurrentUserAccount = currentUserAccount;
 
             DashboardVM = new DashboardViewModel();
@@ -34,7 +38,7 @@ namespace Paraject.MVVM.ViewModels.Windows
             CurrentView = ProjectsVM;
 
             DashboardViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = DashboardVM; });
-            ProjectsViewCommand = new DelegateCommand(NavigateToProjectsView);
+            ProjectsViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectsVM; });
             UserAccountView = new ParameterizedDelegateCommand(o => { CurrentView = UserAccountVM; });
             ProjectIdeasViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectIdeasVM; });
             OptionsViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = OptionsVM; });
@@ -82,16 +86,11 @@ namespace Paraject.MVVM.ViewModels.Windows
         #endregion
 
         #region Methods
-        public void NavigateToProjectsView() // to reload Projects Collection everytime we click the navbar option "Projects"
-        {
-            ProjectsVM = new ProjectsViewModel(CurrentUserAccount.Id);
-            CurrentView = ProjectsVM;
-        }
-
         public void Logout()
         {
-            MessageBoxResult Result = MessageBox.Show("Do you want Logout?", "Logout Account", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (Result == MessageBoxResult.Yes)
+            DialogResults result = _dialogService.OpenDialog(new YesNoMessageBoxViewModel("Confirm Logout", "Do you want Logout?", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+
+            if (result == DialogResults.Yes)
             {
                 ShowLoginWindow();
             }

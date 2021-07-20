@@ -1,6 +1,9 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.Core.Enums;
 using Paraject.Core.Repositories;
+using Paraject.Core.Services.DialogService;
 using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.MessageBoxes;
 using Paraject.MVVM.ViewModels.Windows;
 using System;
 using System.Windows;
@@ -10,12 +13,14 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 {
     public class NoteDetailsModalDialogViewModel : BaseViewModel
     {
+        private readonly IDialogService _dialogService;
         private readonly Action _refreshNotesCollection;
         private readonly int _noteId;
         private readonly NoteRepository _noteRepository;
 
         public NoteDetailsModalDialogViewModel(Action refreshNotesCollection, int noteId)
         {
+            _dialogService = new DialogService();
             _noteRepository = new NoteRepository();
             _refreshNotesCollection = refreshNotesCollection;
             _noteId = noteId;
@@ -45,7 +50,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             }
             else
             {
-                MessageBox.Show("A Note should have a subject");
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Note should have a subject.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
             }
         }
         private void UpdateOperationResult(bool isUpdated)
@@ -53,19 +58,20 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isUpdated)
             {
                 _refreshNotesCollection();
-                MessageBox.Show("Note updated successfully");
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", "Note Updated Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
                 CloseModalDialog();
             }
             else
             {
-                MessageBox.Show("Error occured, cannot update the note");
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot update the Note.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
             }
         }
 
         private void Delete()
         {
-            MessageBoxResult Result = MessageBox.Show("Do you want to DELETE this note?", "Delete Operation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (Result == MessageBoxResult.Yes)
+            DialogResults result = _dialogService.OpenDialog(new YesNoMessageBoxViewModel("Delete Operation", "Do you want to DELETE this Note?", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+
+            if (result == DialogResults.Yes)
             {
                 DeleteNote();
             }
@@ -76,12 +82,12 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isDeleted)
             {
                 _refreshNotesCollection();
-                MessageBox.Show("Note deleted successfully");
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Delete Operation", "Note Deleted Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
                 CloseModalDialog();
             }
             else
             {
-                MessageBox.Show("An error occurred, cannot delete Note");
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Delete Operation", "An error occurred, cannot delete the Note.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
             }
         }
 

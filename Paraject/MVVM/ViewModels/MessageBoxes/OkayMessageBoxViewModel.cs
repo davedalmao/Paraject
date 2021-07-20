@@ -9,7 +9,7 @@ namespace Paraject.MVVM.ViewModels.MessageBoxes
 {
     public class OkayMessageBoxViewModel : DialogBaseViewModel<DialogResults>, ICloseWindows
     {
-        private DelegateCommand _closeCommand;
+        private ICommand _closeCommand;
 
         public OkayMessageBoxViewModel(string title, string message, string iconSource) : base(message, title, iconSource)
         {
@@ -20,7 +20,7 @@ namespace Paraject.MVVM.ViewModels.MessageBoxes
         }
 
         public Action Close { get; set; }
-        public DelegateCommand CloseCommand => _closeCommand ??= new DelegateCommand(CloseWindow);
+        public ICommand CloseCommand => _closeCommand ??= new DelegateCommand(CloseWindow);
         public ICommand OkayCommand { get; private set; }
 
         private void Okay(IDialogWindow window)

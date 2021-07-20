@@ -1,6 +1,9 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.Core.Enums;
 using Paraject.Core.Repositories;
+using Paraject.Core.Services.DialogService;
 using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.MessageBoxes;
 using Paraject.MVVM.ViewModels.Windows;
 using System;
 using System.Windows;
@@ -10,12 +13,14 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 {
     public class ProjectIdeaDetailsModalDialogViewModel : BaseViewModel
     {
-        private readonly int _projectIdeaId;
-        private readonly Action _refreshProjectIdeasCollection;
+        private readonly IDialogService _dialogService;
         private readonly ProjectIdeaRepository _projectIdeaRepository;
+        private readonly Action _refreshProjectIdeasCollection;
+        private readonly int _projectIdeaId;
 
         public ProjectIdeaDetailsModalDialogViewModel(Action refreshProjectIdeasCollection, int projectIdeaId)
         {
+            _dialogService = new DialogService();
             _projectIdeaRepository = new ProjectIdeaRepository();
             _refreshProjectIdeasCollection = refreshProjectIdeasCollection;
             _projectIdeaId = projectIdeaId;
@@ -46,7 +51,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             }
             else
             {
-                MessageBox.Show("A Project Idea should have a name");
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Project Idea should have a name.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
             }
         }
         private void UpdateOperationResult(bool isUpdated)
@@ -54,19 +59,19 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isUpdated)
             {
                 _refreshProjectIdeasCollection();
-                MessageBox.Show("Project Idea updated successfully");
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "Project Idea Updated Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
                 CloseModalDialog();
             }
             else
             {
-                MessageBox.Show("Error occured, cannot update the Project Idea");
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot update the Project Idea.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
             }
         }
 
         private void Delete()
         {
-            MessageBoxResult Result = MessageBox.Show("Do you want to DELETE this note?", "Delete Operation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (Result == MessageBoxResult.Yes)
+            DialogResults result = _dialogService.OpenDialog(new YesNoMessageBoxViewModel("Delete Operation", "Do you want to DELETE this Project Idea?", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+            if (result == DialogResults.Yes)
             {
                 DeleteProjectIdea();
             }
@@ -77,12 +82,12 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isDeleted)
             {
                 _refreshProjectIdeasCollection();
-                MessageBox.Show("Project Idea deleted successfully");
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Delete Operation", "Project Idea Deleted Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
                 CloseModalDialog();
             }
             else
             {
-                MessageBox.Show("An error occurred, cannot delete Project Idea");
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot delete the Project Idea.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
             }
         }
 
