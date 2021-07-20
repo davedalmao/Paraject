@@ -19,10 +19,14 @@ namespace Paraject.MVVM.ViewModels.MessageBoxes
             OkayCommand = new RelayCommand<IDialogWindow>(Okay);
         }
 
+        #region Properties
         public Action Close { get; set; }
+
         public ICommand CloseCommand => _closeCommand ??= new DelegateCommand(CloseWindow);
         public ICommand OkayCommand { get; private set; }
+        #endregion
 
+        #region Methods
         private void Okay(IDialogWindow window)
         {
             CloseDialogWithResult(window, DialogResults.Okay);
@@ -31,5 +35,6 @@ namespace Paraject.MVVM.ViewModels.MessageBoxes
         {
             Close?.Invoke();
         }
+        #endregion
     }
 }
