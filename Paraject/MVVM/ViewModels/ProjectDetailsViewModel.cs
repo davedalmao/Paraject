@@ -78,6 +78,7 @@ namespace Paraject.MVVM.ViewModels
         {
             if (isUpdated)
             {
+                //refresh Projects Collection here
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", "Project Updated Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
             }
             else
