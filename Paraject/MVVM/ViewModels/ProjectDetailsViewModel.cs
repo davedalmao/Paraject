@@ -61,6 +61,7 @@ namespace Paraject.MVVM.ViewModels
                 }
             }
         }
+
         private void Update()
         {
             if (!string.IsNullOrWhiteSpace(CurrentProject.Name))
@@ -73,7 +74,6 @@ namespace Paraject.MVVM.ViewModels
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Project should have a name.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
             }
         }
-
         private void UpdateOperationResult(bool isUpdated)
         {
             if (isUpdated)
