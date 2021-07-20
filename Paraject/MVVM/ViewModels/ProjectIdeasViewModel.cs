@@ -28,6 +28,7 @@ namespace Paraject.MVVM.ViewModels
         #region Properties
         public ObservableCollection<ProjectIdea> ProjectIdeas { get; set; }
         public ObservableCollection<GridTileData> ProjectIdeaCardsGrid { get; set; }
+
         public ICommand ShowAddProjectIdeaModalDialogCommand { get; }
         public ICommand ShowProjectIdeaDetailsModalDialogCommand { get; }
         #endregion

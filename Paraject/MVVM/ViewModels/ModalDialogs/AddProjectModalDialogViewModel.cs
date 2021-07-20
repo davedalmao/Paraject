@@ -1,7 +1,9 @@
 ﻿using Microsoft.Win32;
 using Paraject.Core.Commands;
 using Paraject.Core.Repositories;
+using Paraject.Core.Services.DialogService;
 using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.MessageBoxes;
 using Paraject.MVVM.ViewModels.Windows;
 using System;
 using System.Drawing;
@@ -12,11 +14,13 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 {
     public class AddProjectModalDialogViewModel : BaseViewModel
     {
+        private readonly IDialogService _dialogService;
         private readonly ProjectRepository _projectRepository;
         private readonly Action _refreshProjectsCollection;
 
         public AddProjectModalDialogViewModel(Action refreshProjectsCollection, int currentUserId)
         {
+            _dialogService = new DialogService();
             _projectRepository = new ProjectRepository();
             _refreshProjectsCollection = refreshProjectsCollection;
 
@@ -32,6 +36,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
         #region Properties
         public Project CurrentProject { get; set; }
+
         public ICommand AddProjectCommand { get; }
         public ICommand AddProjectLogoCommand { get; }
         public ICommand CloseModalDialogCommand { get; }
@@ -48,7 +53,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             else
             {
-                MessageBox.Show("A project should have a name");
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Project should have a name.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
             }
         }
         private void AddOperationResult(bool isAdded)
@@ -56,19 +61,19 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isAdded)
             {
                 _refreshProjectsCollection();
-                MessageBox.Show("Project Created", "Title");
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Add Operation", "Project Created Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
                 CloseModalDialog();
             }
 
             else
             {
-                MessageBox.Show("Error occured, cannot create project");
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot create the Project.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
             }
         }
 
         private void LoadProjectLogo()
         {
-            OpenFileDialog openFile = new OpenFileDialog
+            OpenFileDialog openFile = new()
             {
                 Title = "Select the project's logo",
                 Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
@@ -84,7 +89,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Please input a valid image.\n \n{ex}");
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Image Format Error", $"Please select a valid image.\n \n{ex}", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
                 }
             }
         }

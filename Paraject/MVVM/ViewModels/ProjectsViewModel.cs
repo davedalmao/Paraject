@@ -88,6 +88,7 @@ namespace Paraject.MVVM.ViewModels
                 DisplayAllProjects();
             }
         }
+
         public void ShowAddProjectModalDialog()
         {
             MainWindowViewModel.Overlay = true;

@@ -1,6 +1,8 @@
 ﻿using Paraject.Core.Commands;
 using Paraject.Core.Repositories;
+using Paraject.Core.Services.DialogService;
 using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.MessageBoxes;
 using Paraject.MVVM.ViewModels.Windows;
 using System;
 using System.Windows;
@@ -10,11 +12,13 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 {
     public class AddNoteModalDialogViewModel : BaseViewModel
     {
+        private readonly IDialogService _dialogService;
         private readonly NoteRepository _noteRepository;
         private readonly Action _refreshNotesCollection;
 
         public AddNoteModalDialogViewModel(Action refreshNotesCollection, int currentProjectId)
         {
+            _dialogService = new DialogService();
             _noteRepository = new NoteRepository();
             _refreshNotesCollection = refreshNotesCollection;
 
@@ -45,22 +49,21 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             else
             {
-                MessageBox.Show("A note should have a subject");
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Note should have a subject.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
             }
         }
         private void AddOperationResult(bool isAdded)
         {
             if (isAdded)
             {
-                //refresh Notes collection in NotesView//
                 _refreshNotesCollection();
-                MessageBox.Show("Note Created");
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Add Operation", "Note Created Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
                 CloseModalDialog();
             }
 
             else
             {
-                MessageBox.Show("Error occured, cannot create note");
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot create the Note.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
             }
         }
 
