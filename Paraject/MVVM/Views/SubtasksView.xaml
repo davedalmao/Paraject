@@ -37,7 +37,7 @@
             </Button>
 
             <!--Header text-->
-            <TextBlock Text="All subtasks for this Task "
+            <TextBlock Text="Subtasks for this Task "
                        TextTrimming="CharacterEllipsis"
                        FontSize="25"
                        Margin="8,0,0,0" />
