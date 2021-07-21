@@ -88,7 +88,7 @@ namespace Paraject.MVVM.ViewModels.Windows
         #region Methods
         public void Logout()
         {
-            DialogResults result = _dialogService.OpenDialog(new YesNoMessageBoxViewModel("Confirm Logout", "Do you want Logout?", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+            DialogResults result = _dialogService.OpenDialog(new YesNoMessageBoxViewModel("Confirm Logout", "Do you want Logout?", Icon.User));
 
             if (result == DialogResults.Yes)
             {
