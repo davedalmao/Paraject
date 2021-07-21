@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Paraject.MVVM.ViewModels.Windows;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -17,6 +18,15 @@ namespace Paraject.Core.Commands
             if (CanExecute(parameter))
             {
                 ((Window)parameter).Close();
+                HideMainWindowOverlay();
+            }
+        }
+
+        private static void HideMainWindowOverlay()
+        {
+            if (MainWindowViewModel.Overlay)
+            {
+                MainWindowViewModel.Overlay = false;
             }
         }
 
