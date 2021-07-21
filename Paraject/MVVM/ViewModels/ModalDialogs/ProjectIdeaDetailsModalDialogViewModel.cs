@@ -51,7 +51,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             }
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Project Idea should have a name.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Project Idea should have a name.", Icon.InvalidProjectIdea));
             }
         }
         private void UpdateOperationResult(bool isUpdated)
@@ -59,18 +59,19 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isUpdated)
             {
                 _refreshProjectIdeasCollection();
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", "Project Idea Updated Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", "Project Idea Updated Successfully!", Icon.ValidProjectIdea));
                 CloseModalDialog();
             }
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot update the Project Idea.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot update the Project Idea.", Icon.InvalidProjectIdea));
             }
         }
 
         private void Delete()
         {
-            DialogResults result = _dialogService.OpenDialog(new YesNoMessageBoxViewModel("Delete Operation", "Do you want to DELETE this Project Idea?", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+            DialogResults result = _dialogService.OpenDialog(new YesNoMessageBoxViewModel("Delete Operation", "Do you want to DELETE this Project Idea?", Icon.ProjectIdea));
+
             if (result == DialogResults.Yes)
             {
                 DeleteProjectIdea();
@@ -82,12 +83,12 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isDeleted)
             {
                 _refreshProjectIdeasCollection();
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Delete Operation", "Project Idea Deleted Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Delete Operation", "Project Idea Deleted Successfully!", Icon.ValidProjectIdea));
                 CloseModalDialog();
             }
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot delete the Project Idea.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot delete the Project Idea.", Icon.InvalidProjectIdea));
             }
         }
 
