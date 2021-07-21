@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Paraject.MVVM.Views.ModalDialogs.MessageBoxes"
+             xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
              mc:Ignorable="d">
     <Border Background="{StaticResource MessageBox}"
             CornerRadius="20">
@@ -39,11 +40,15 @@
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Image Grid.Column="0"
-                       Source="{Binding IconSource}"
-                       Margin="0,0,20,0"
-                       MaxWidth="69"
-                       MaxHeight="75" />
+                <!--MessageBox Icon-->
+                <UserControl Grid.Column="0"
+                             Width="69"
+                             Height="69"
+                             Margin="0,0,20,0">
+                    <svgc1:SvgViewbox Source="{Binding IconSource}" />
+                </UserControl>
+
+                <!--MessageBox Message-->
                 <TextBlock Grid.Column="1"
                            Text="{Binding Message}"
                            TextWrapping="Wrap"
@@ -53,6 +58,7 @@
                            FontSize="16" />
             </Grid>
 
+            <!--MessageBox Buttons-->
             <StackPanel Grid.Row="2"
                         Orientation="Horizontal"
                         HorizontalAlignment="Right">

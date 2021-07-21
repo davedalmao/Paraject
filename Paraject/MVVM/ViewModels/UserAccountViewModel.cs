@@ -6,7 +6,6 @@ using Paraject.Core.Utilities;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.MessageBoxes;
 using Paraject.MVVM.Views.Windows;
-using System;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
@@ -37,30 +36,24 @@ namespace Paraject.MVVM.ViewModels
         #region Methods 
         public void Update()
         {
-            try
+            bool idExists = _userAccountRepository.IdExistsInDatabase(CurrentUserAccount.Id);
+            if (idExists)
             {
-                bool idExists = _userAccountRepository.IdExistsInDatabase(CurrentUserAccount.Id);
-                if (idExists)
-                {
-                    UpdateUserAccount();
-                }
+                UpdateOperationResult();
             }
-            catch (Exception ex)
-            {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", $"An error occured: \n\n{ex}", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
-            }
+
         }
-        private void UpdateUserAccount()
+        private void UpdateOperationResult()
         {
             bool isUpdate = _userAccountRepository.Update(CurrentUserAccount);
 
             if (isUpdate)
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", "User Account Updated Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", "User Account Updated Successfully!", Icon.ValidUser));
             }
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot update your User Account.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot update your Account.", Icon.InvalidUser));
             }
         }
 
@@ -68,13 +61,12 @@ namespace Paraject.MVVM.ViewModels
         {
             DialogResults result = _dialogService.OpenDialog(new YesNoMessageBoxViewModel("Delete Operation",
             "Do you want to DELETE your account? \n\nAll of your Projects, Project Ideas, Project Tasks, Project Task's Subtasks, and Project Notes will be also deleted.",
-            "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+           Icon.User));
 
             if (result == DialogResults.Yes)
             {
                 DeleteUserAccount();
             }
-
         }
         private void DeleteUserAccount()
         {
@@ -82,13 +74,12 @@ namespace Paraject.MVVM.ViewModels
 
             if (isDeleted)
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Delete Operation", $"Your account {CurrentUserAccount.Username} is now Deleted!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Delete Operation", $"Your account {CurrentUserAccount.Username} is now Deleted!", Icon.ValidUser));
                 ShowLoginWindow();
             }
-
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, while deleting your Account, please try again.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured while deleting your Account, please try again.", Icon.InvalidUser));
             }
         }
 

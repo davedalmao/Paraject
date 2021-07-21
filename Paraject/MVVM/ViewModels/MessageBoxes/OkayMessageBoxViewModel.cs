@@ -1,4 +1,5 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.Core.Converters;
 using Paraject.Core.Enums;
 using Paraject.Core.Services.DialogService;
 using Paraject.Core.Utilities;
@@ -11,11 +12,11 @@ namespace Paraject.MVVM.ViewModels.MessageBoxes
     {
         private ICommand _closeCommand;
 
-        public OkayMessageBoxViewModel(string title, string message, string iconSource) : base(message, title, iconSource)
+        public OkayMessageBoxViewModel(string title, string message, Icon iconSource) : base(message, title, iconSource)
         {
             Title = title;
             Message = message;
-            IconSource = iconSource;
+            IconSource = iconSource.GetDescription();
             OkayCommand = new RelayCommand<IDialogWindow>(Okay);
         }
 
