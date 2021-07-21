@@ -1,24 +1,26 @@
 ﻿using Paraject.Core.Converters;
 using Paraject.Core.Enums;
 using Paraject.Core.Repositories.Interfaces;
+using Paraject.Core.Services.DialogService;
 using Paraject.Core.Utilities;
 using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.MessageBoxes;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Windows;
 
 namespace Paraject.Core.Repositories
 {
     public class ProjectRepository : IProjectRepository
     {
+        private readonly IDialogService _dialogService;
         private readonly string _connectionString;
 
         public ProjectRepository()
         {
+            _dialogService = new DialogService();
             _connectionString = ConnectionString.config;
-
         }
 
         public bool Add(Project project)
@@ -47,18 +49,12 @@ namespace Paraject.Core.Repositories
                 }
                 catch (SqlException ex)
                 {
-                    if (ex.Number == 2627)// Violation of unique constraint (Name should be unique)
-                    {
-                        MessageBox.Show($"{project.Name} Already Exist !!!");
-                    }
-                    else
-                    {
-                        MessageBox.Show($"An SQL error occured while processing data. \nError: { ex.Message }");
-                    }
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error",
+                                             $"An SQL error occured while processing data: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", $"An error occured: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
                 }
             }
             return isAdded;
@@ -116,11 +112,12 @@ namespace Paraject.Core.Repositories
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error",
+                                         $"An SQL error occured while processing data: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", $"An error occured: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
             }
 
             return project;
@@ -181,12 +178,12 @@ namespace Paraject.Core.Repositories
                 }
                 catch (SqlException ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error",
+                                             $"An SQL error occured while processing data: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
                 }
-
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", $"An error occured: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
                 }
             }
 
@@ -249,12 +246,12 @@ namespace Paraject.Core.Repositories
                 }
                 catch (SqlException ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error",
+                                             $"An SQL error occured while processing data: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
                 }
-
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", $"An error occured: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
                 }
             }
 
@@ -285,18 +282,12 @@ namespace Paraject.Core.Repositories
                 }
                 catch (SqlException ex)
                 {
-                    if (ex.Number == 2627)// Violation of unique constraint (Name should be unique)
-                    {
-                        MessageBox.Show($"{project.Name} Already Exist !!!");
-                    }
-                    else
-                    {
-                        MessageBox.Show($"An SQL error occured while processing data. \nError: { ex.Message }");
-                    }
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error",
+                                             $"An SQL error occured while processing data: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", $"An error occured: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
                 }
             }
 
@@ -306,23 +297,27 @@ namespace Paraject.Core.Repositories
         {
             bool isDeleted = false;
 
-            if (projectId != 0)
-            {
-                using SqlConnection con = new(_connectionString);
-                using SqlCommand cmd = new("Project.spDeleteProject", con);
-                try
-                {
-                    con.Open();
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@project_id", SqlDbType.Int).Value = projectId;
+            if (projectId <= 0) { return false; }
 
-                    int rowsAffected = cmd.ExecuteNonQuery();
-                    isDeleted = rowsAffected > 0;
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
+            using SqlConnection con = new(_connectionString);
+            using SqlCommand cmd = new("Project.spDeleteProject", con);
+            try
+            {
+                con.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@project_id", SqlDbType.Int).Value = projectId;
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+                isDeleted = rowsAffected > 0;
+            }
+            catch (SqlException ex)
+            {
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error",
+                                         $"An SQL error occured while processing data: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
+            }
+            catch (Exception ex)
+            {
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", $"An error occured: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
             }
 
             return isDeleted;
