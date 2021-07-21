@@ -91,7 +91,7 @@ namespace Paraject.Core.Repositories
                                 Id = sqlDataReader.GetInt32(noteIdFromDb),
                                 Project_Id_Fk = sqlDataReader.GetInt32(projectIdFk),
                                 Subject = sqlDataReader.GetString(noteSubject),
-                                Description = sqlDataReader.GetString(noteDescription),
+                                Description = sqlDataReader.IsDBNull(noteDescription) ? "--" : sqlDataReader.GetString(noteDescription),
                                 DateCreated = sqlDataReader.GetDateTime(dateCreated)
                             };
                         }
