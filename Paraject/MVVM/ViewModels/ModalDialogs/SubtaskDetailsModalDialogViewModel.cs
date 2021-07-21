@@ -51,7 +51,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Subtask should have a subject.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Subtask should have a subject.", Icon.InvalidSubtask));
             }
         }
         private void UpdateOperationResult(bool isUpdated)
@@ -59,18 +59,19 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isUpdated)
             {
                 _refreshSubtasksCollection();
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", "Subtask Updated Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", "Subtask Updated Successfully!", Icon.ValidSubtask));
                 CloseModalDialog();
             }
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot update the Subtask.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot update the Subtask.", Icon.InvalidSubtask));
             }
         }
 
         private void Delete()
         {
-            DialogResults result = _dialogService.OpenDialog(new YesNoMessageBoxViewModel("Delete Operation", "Do you want to DELETE this Subtask?", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+            DialogResults result = _dialogService.OpenDialog(new YesNoMessageBoxViewModel("Delete Operation", "Do you want to DELETE this Subtask?", Icon.Subtask));
+
             if (result == DialogResults.Yes)
             {
                 DeleteSubtask();
@@ -82,12 +83,12 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isDeleted)
             {
                 _refreshSubtasksCollection();
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Delete Operation", "Subtask Deleted Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Delete Operation", "Subtask Deleted Successfully!", Icon.ValidSubtask));
                 CloseModalDialog();
             }
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot delete the Subtask.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot delete the Subtask.", Icon.InvalidSubtask));
             }
         }
 
