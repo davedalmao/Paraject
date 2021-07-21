@@ -37,12 +37,16 @@
                        SnapsToDevicePixels="True" />
             </Button>
 
+            <!--Header Text-->
+            <TextBlock Text="Tasks for: "
+                       Margin="8,0,0,0"
+                       FontSize="25" />
+
             <!--Selected Project Name-->
             <TextBlock Text="{Binding CurrentProject.Name}"
                        TextTrimming="CharacterEllipsis"
-                       Width="445"
-                       FontSize="25"
-                       Margin="8,0,0,0" />
+                       Width="334"
+                       FontSize="25" />
         </StackPanel>
 
         <!--TasksView Navigation-->
