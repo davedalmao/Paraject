@@ -1,4 +1,5 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.Core.Enums;
 using Paraject.Core.Repositories;
 using Paraject.Core.Services.DialogService;
 using Paraject.MVVM.Models;
@@ -49,7 +50,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Note should have a subject.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Note should have a subject.", Icon.InvalidNote));
             }
         }
         private void AddOperationResult(bool isAdded)
@@ -57,13 +58,13 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isAdded)
             {
                 _refreshNotesCollection();
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Add Operation", "Note Created Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Add Operation", "Note Created Successfully!", Icon.ValidNote));
                 CloseModalDialog();
             }
 
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot create the Note.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot create the Note.", Icon.InvalidNote));
             }
         }
 
