@@ -1,12 +1,12 @@
 ﻿using Microsoft.Win32;
 using Paraject.Core.Commands;
+using Paraject.Core.Enums;
 using Paraject.Core.Repositories;
 using Paraject.Core.Services.DialogService;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.MessageBoxes;
 using Paraject.MVVM.ViewModels.Windows;
 using System;
-using System.Drawing;
 using System.Windows;
 using System.Windows.Input;
 
@@ -53,7 +53,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Project should have a name.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Project should have a name.", Icon.InvalidProject));
             }
         }
         private void AddOperationResult(bool isAdded)
@@ -61,13 +61,13 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isAdded)
             {
                 _refreshProjectsCollection();
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Add Operation", "Project Created Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Add Operation", "Project Created Successfully!", Icon.ValidProject));
                 CloseModalDialog();
             }
 
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot create the Project.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot create the Project.", Icon.InvalidProject));
             }
         }
 
@@ -75,7 +75,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         {
             OpenFileDialog openFile = new()
             {
-                Title = "Select the project's logo",
+                Title = "Select The Project's Logo",
                 Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
                          "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
                          "Portable Network Graphic (*.png)|*.png"
@@ -85,11 +85,11 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             {
                 try
                 {
-                    CurrentProject.Logo = Image.FromFile(openFile.FileName);
+                    CurrentProject.Logo = System.Drawing.Image.FromFile(openFile.FileName);
                 }
                 catch (Exception ex)
                 {
-                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Image Format Error", $"Please select a valid image.\n \n{ex}", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Image Format Error", $"Please select a valid image.\n \n{ex}", Icon.InvalidProject));
                 }
             }
         }
