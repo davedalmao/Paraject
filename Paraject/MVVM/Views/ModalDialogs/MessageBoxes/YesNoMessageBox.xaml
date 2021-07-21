@@ -49,13 +49,15 @@
                 </UserControl>
 
                 <!--MessageBox Message-->
-                <TextBlock Grid.Column="1"
-                           Text="{Binding Message}"
-                           TextWrapping="Wrap"
-                           MaxWidth="369"
-                           HorizontalAlignment="Right"
-                           VerticalAlignment="Center"
-                           FontSize="16" />
+                <ScrollViewer Grid.Column="1"
+                              Style="{StaticResource ScrollbarTheme}">
+                    <TextBlock Text="{Binding Message}"
+                               TextWrapping="Wrap"
+                               MaxWidth="369"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               FontSize="16" />
+                </ScrollViewer>
             </Grid>
 
             <!--MessageBox Buttons-->
