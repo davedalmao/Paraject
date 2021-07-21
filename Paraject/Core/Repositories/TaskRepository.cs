@@ -1,23 +1,25 @@
 ﻿using Paraject.Core.Enums;
 using Paraject.Core.Repositories.Interfaces;
+using Paraject.Core.Services.DialogService;
 using Paraject.Core.Utilities;
 using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.MessageBoxes;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Windows;
 
 namespace Paraject.Core.Repositories
 {
     public class TaskRepository : ITaskRepository
     {
+        private readonly IDialogService _dialogService;
         private readonly string _connectionString;
 
         public TaskRepository()
         {
+            _dialogService = new DialogService();
             _connectionString = ConnectionString.config;
-
         }
 
         public bool Add(Task task)
@@ -47,18 +49,12 @@ namespace Paraject.Core.Repositories
                 }
                 catch (SqlException ex)
                 {
-                    if (ex.Number == 2627)// Violation of unique constraint (Subject should be unique)
-                    {
-                        MessageBox.Show($"{task.Subject} Already Exist !!!");
-                    }
-                    else
-                    {
-                        MessageBox.Show($"An SQL error occured while processing data. \nError: { ex.Message }");
-                    }
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error",
+                                             $"An SQL error occured while processing data: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidTask));
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", $"An error occured: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidTask));
                 }
             }
 
@@ -120,11 +116,12 @@ namespace Paraject.Core.Repositories
                 }
                 catch (SqlException ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error",
+                                             $"An SQL error occured while processing data: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidTask));
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", $"An error occured: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidTask));
                 }
             }
 
@@ -195,12 +192,12 @@ namespace Paraject.Core.Repositories
                 }
                 catch (SqlException ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error",
+                                             $"An SQL error occured while processing data: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidTask));
                 }
-
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", $"An error occured: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidTask));
                 }
             }
 
@@ -233,18 +230,12 @@ namespace Paraject.Core.Repositories
                 }
                 catch (SqlException ex)
                 {
-                    if (ex.Number == 2627)// Violation of unique constraint (Subject should be unique)
-                    {
-                        MessageBox.Show($"{task.Subject} Already Exist !!!");
-                    }
-                    else
-                    {
-                        MessageBox.Show($"An SQL error occured while processing data. \nError: { ex.Message }");
-                    }
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error",
+                                             $"An SQL error occured while processing data: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidTask));
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", $"An error occured: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidTask));
                 }
             }
 
@@ -270,11 +261,12 @@ namespace Paraject.Core.Repositories
                 }
                 catch (SqlException ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error",
+                                             $"An SQL error occured while processing data: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidTask));
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", $"An error occured: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidTask));
                 }
             }
 
