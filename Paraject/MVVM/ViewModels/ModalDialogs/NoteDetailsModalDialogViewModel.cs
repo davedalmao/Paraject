@@ -50,7 +50,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             }
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Note should have a subject.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Note should have a subject.", Icon.InvalidNote));
             }
         }
         private void UpdateOperationResult(bool isUpdated)
@@ -58,18 +58,18 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isUpdated)
             {
                 _refreshNotesCollection();
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", "Note Updated Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", "Note Updated Successfully!", Icon.ValidNote));
                 CloseModalDialog();
             }
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot update the Note.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot update the Note.", Icon.InvalidNote));
             }
         }
 
         private void Delete()
         {
-            DialogResults result = _dialogService.OpenDialog(new YesNoMessageBoxViewModel("Delete Operation", "Do you want to DELETE this Note?", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+            DialogResults result = _dialogService.OpenDialog(new YesNoMessageBoxViewModel("Delete Operation", "Do you want to DELETE this Note?", Icon.Note));
 
             if (result == DialogResults.Yes)
             {
@@ -82,12 +82,12 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isDeleted)
             {
                 _refreshNotesCollection();
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Delete Operation", "Note Deleted Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Delete Operation", "Note Deleted Successfully!", Icon.ValidNote));
                 CloseModalDialog();
             }
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Delete Operation", "An error occurred, cannot delete the Note.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Delete Operation", "An error occurred, cannot delete the Note.", Icon.InvalidNote));
             }
         }
 
