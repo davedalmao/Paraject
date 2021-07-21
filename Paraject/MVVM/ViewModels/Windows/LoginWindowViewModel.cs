@@ -1,4 +1,5 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.Core.Enums;
 using Paraject.Core.Repositories;
 using Paraject.Core.Services.DialogService;
 using Paraject.MVVM.Models;
@@ -41,7 +42,8 @@ namespace Paraject.MVVM.ViewModels.Windows
 
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "Check your inputs: Username does not exist, or incorrect Password.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry",
+                                              "Check your inputs: \n\n1.User does not exist \n2.Incorrect Username \n3.Incorrect Password.", Icon.InvalidUser));
             }
         }
         private bool ValidateInput()
