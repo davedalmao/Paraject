@@ -1,4 +1,5 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.Core.Enums;
 using Paraject.Core.Repositories;
 using Paraject.Core.Services.DialogService;
 using Paraject.MVVM.Models;
@@ -42,7 +43,8 @@ namespace Paraject.MVVM.ViewModels.Windows
 
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "Check your inputs: \n\n1. Passwords doesn't match \n2. No username in the input", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry",
+                                             "Check your inputs: \n\n1. Passwords does not match \n2. No username in the input", Icon.InvalidUser));
             }
 
         }
@@ -63,7 +65,7 @@ namespace Paraject.MVVM.ViewModels.Windows
                 !string.IsNullOrWhiteSpace(InitialPassword) &&
                 !string.IsNullOrWhiteSpace(CurrentUserAccount.Password))
             {
-                return InitialPassword.Equals(CurrentUserAccount.Password); //Check if initial password and confirm password is the same
+                return InitialPassword.Equals(CurrentUserAccount.Password);
             }
             return isValid;
         }
@@ -76,7 +78,7 @@ namespace Paraject.MVVM.ViewModels.Windows
         }
         private void ShowMainWindow()
         {
-            _dialogService.OpenDialog(new OkayMessageBoxViewModel("Welcome", "Account Created Successfully! \nPress Okay to Start!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+            _dialogService.OpenDialog(new OkayMessageBoxViewModel("Welcome", "Account Created Successfully! \nPress Okay to Begin!", Icon.ValidUser));
 
             UserAccount userToLogin = _userAccountRepository.GetByUsername(CurrentUserAccount.Username);
             MainWindow mainWindow = new(userToLogin);
