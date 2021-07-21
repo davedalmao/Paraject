@@ -7,8 +7,8 @@
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
         xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
         xmlns:enums="clr-namespace:Paraject.Core.Enums"
-        xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
         xmlns:modaldialogs="clr-namespace:Paraject.MVVM.ViewModels.ModalDialogs"
+        xmlns:closeOnEsc="clr-namespace:Paraject.Core.Commands"
         d:DataContext="{d:DesignInstance Type=modaldialogs:AddProjectModalDialogViewModel}"
         mc:Ignorable="d"
         WindowStyle="None"
@@ -21,6 +21,13 @@
         FontFamily="{StaticResource NunitoBold}"
         Foreground="{StaticResource MainFontColor}"
         MouseDown="AddProjectModalDialogMouseDown">
+
+    <Window.InputBindings>
+        <KeyBinding Key="Escape"
+                    Command="{x:Static closeOnEsc:CloseModalDialogCommand.Instance}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+    </Window.InputBindings>
+
     <Border Background="{StaticResource MainBackground}"
             CornerRadius="20">
         <Grid Margin="25,20,25,40"
