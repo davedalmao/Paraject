@@ -1,23 +1,25 @@
 ﻿using Paraject.Core.Enums;
 using Paraject.Core.Repositories.Interfaces;
+using Paraject.Core.Services.DialogService;
 using Paraject.Core.Utilities;
 using Paraject.MVVM.Models;
+using Paraject.MVVM.ViewModels.MessageBoxes;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Windows;
 
 namespace Paraject.Core.Repositories
 {
     public class SubtaskRepository : ISubtaskRepository
     {
+        private readonly IDialogService _dialogService;
         private readonly string _connectionString;
 
         public SubtaskRepository()
         {
+            _dialogService = new DialogService();
             _connectionString = ConnectionString.config;
-
         }
 
         public bool Add(Subtask subtask)
@@ -43,9 +45,14 @@ namespace Paraject.Core.Repositories
                     int rowsAffected = cmd.ExecuteNonQuery();
                     isAdded = rowsAffected > 0;
                 }
+                catch (SqlException ex)
+                {
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error",
+                                             $"An SQL error occured while processing data: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
+                }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", $"An error occured: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
                 }
             }
 
@@ -102,11 +109,12 @@ namespace Paraject.Core.Repositories
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error",
+                                         $"An SQL error occured while processing data: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", $"An error occured: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
             }
 
             return subtask;
@@ -168,11 +176,12 @@ namespace Paraject.Core.Repositories
                 }
                 catch (SqlException ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error",
+                                             $"An SQL error occured while processing data: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", $"An error occured: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
                 }
             }
 
@@ -234,11 +243,12 @@ namespace Paraject.Core.Repositories
                 }
                 catch (SqlException ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error",
+                                             $"An SQL error occured while processing data: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", $"An error occured: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
                 }
             }
 
@@ -266,9 +276,14 @@ namespace Paraject.Core.Repositories
                     int rowsAffected = cmd.ExecuteNonQuery();
                     isUpdated = rowsAffected > 0;
                 }
+                catch (SqlException ex)
+                {
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error",
+                                             $"An SQL error occured while processing data: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
+                }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", $"An error occured: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
                 }
             }
 
@@ -293,7 +308,12 @@ namespace Paraject.Core.Repositories
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error",
+                                         $"An SQL error occured while processing data: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
+            }
+            catch (Exception ex)
+            {
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", $"An error occured: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidProject));
             }
 
             return isDeleted;
