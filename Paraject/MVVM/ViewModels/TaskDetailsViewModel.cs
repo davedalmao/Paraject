@@ -53,7 +53,7 @@ namespace Paraject.MVVM.ViewModels
             }
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Task should have a subject.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Task should have a subject.", Icon.InvalidTask));
             }
         }
         private void UpdateOperationResult(bool isUpdated)
@@ -61,11 +61,11 @@ namespace Paraject.MVVM.ViewModels
             if (isUpdated)
             {
                 _refreshTaskCollection();
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", "Task Updated Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", "Task Updated Successfully!", Icon.ValidTask));
             }
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot update the Task.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot update the Task.", Icon.InvalidTask));
             }
         }
 
@@ -73,7 +73,7 @@ namespace Paraject.MVVM.ViewModels
         {
             DialogResults result = _dialogService.OpenDialog(new YesNoMessageBoxViewModel("Delete Operation",
                                                              "Do you want to DELETE this task? \n\nAll Subtasks that belongs to this Task will also be deleted.",
-                                                             "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                                                             Icon.Task));
             if (result == DialogResults.Yes)
             {
                 DeleteProject();
@@ -87,12 +87,12 @@ namespace Paraject.MVVM.ViewModels
                 //redirect to TasksView(parent View) after a successful DELETE operation, and
                 //refreshes the Tasks Collection in TasksTodoViewCompletedTasksView(child Views of TasksView) with the new records
                 _refreshTaskCollection();
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Delete Operation", "Task Deleted Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Delete Operation", "Task Deleted Successfully!", Icon.ValidTask));
                 MainWindowViewModel.CurrentView = _tasksViewModel;
             }
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot delete the Task.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot delete the Task.", Icon.InvalidTask));
             }
         }
         #endregion
