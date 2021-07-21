@@ -8,6 +8,7 @@
         xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
         xmlns:enums="clr-namespace:Paraject.Core.Enums"
         xmlns:modaldialogs="clr-namespace:Paraject.MVVM.ViewModels.ModalDialogs"
+        xmlns:closeOnEsc="clr-namespace:Paraject.Core.Commands"
         xmlns:sys="clr-namespace:System;assembly=System.Runtime"
         d:DataContext="{d:DesignInstance Type=modaldialogs:SubtaskDetailsModalDialogViewModel}"
         mc:Ignorable="d"
@@ -21,6 +22,13 @@
         FontFamily="{StaticResource NunitoBold}"
         Foreground="{StaticResource MainFontColor}"
         MouseDown="SubtaskDetailsModalDialogMouseDown">
+
+    <Window.InputBindings>
+        <KeyBinding Key="Escape"
+                    Command="{x:Static closeOnEsc:CloseModalDialogCommand.Instance}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+    </Window.InputBindings>
+
     <Border Background="{StaticResource MainBackground}"
             CornerRadius="20">
         <Grid Margin="25,30,25,40">
