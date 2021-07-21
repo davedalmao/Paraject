@@ -1,4 +1,5 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.Core.Enums;
 using Paraject.Core.Repositories;
 using Paraject.Core.Services.DialogService;
 using Paraject.Core.Utilities;
@@ -50,31 +51,24 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             else
             {
-                string iconSource = "/UiDesign/Images/Logo/defaultProjectLogo.png";
-
-                OkayMessageBoxViewModel okayMessageBox = new("Data Entry", "A Subtask should have a subject", iconSource);
-                _dialogService.OpenDialog(okayMessageBox);
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Subtask should have a subject.", Icon.InvalidSubtask));
             }
         }
         private void AddOperationResult(bool isAdded)
         {
-            string iconSource = "/UiDesign/Images/Logo/defaultProjectLogo.png";
             if (isAdded)
             {
                 _refreshSubtasksCollection();
-
-                OkayMessageBoxViewModel okayMessageBox = new("Add Operation", "Subtask Created Successfully!", iconSource);
-                _dialogService.OpenDialog(okayMessageBox);
-
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Add Operation", "Subtask Created Successfully!", Icon.ValidSubtask));
                 CloseWindow();
             }
 
             else
             {
-                OkayMessageBoxViewModel okayMessageBox = new("Add Operation", "An Error occured, cannot create the Subtask ;(", iconSource);
-                _dialogService.OpenDialog(okayMessageBox);
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An Error occured, cannot create the Subtask.", Icon.InvalidSubtask));
             }
         }
+
         public void CloseWindow()
         {
             Close?.Invoke();
