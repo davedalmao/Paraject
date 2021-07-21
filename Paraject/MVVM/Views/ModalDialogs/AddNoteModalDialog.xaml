@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Paraject.MVVM.Views.ModalDialogs"
         xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
         xmlns:modaldialogs="clr-namespace:Paraject.MVVM.ViewModels.ModalDialogs"
+        xmlns:closeOnEsc="clr-namespace:Paraject.Core.Commands"
         d:DataContext="{d:DesignInstance Type=modaldialogs:AddNoteModalDialogViewModel}"
         mc:Ignorable="d"
         WindowStyle="None"
@@ -17,6 +18,13 @@
         FontFamily="{StaticResource NunitoBold}"
         Foreground="{StaticResource MainFontColor}"
         MouseDown="AddNoteModalDialogMouseDown">
+
+    <Window.InputBindings>
+        <KeyBinding Key="Escape"
+                    Command="{x:Static closeOnEsc:CloseModalDialogCommand.Instance}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+    </Window.InputBindings>
+
     <Border Background="{StaticResource MainBackground}"
             CornerRadius="20"
             VerticalAlignment="Center">

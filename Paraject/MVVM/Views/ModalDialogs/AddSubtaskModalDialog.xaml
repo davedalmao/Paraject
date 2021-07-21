@@ -9,6 +9,7 @@
         xmlns:enumSource="clr-namespace:Paraject.Core.Enums.EnumBinding"
         xmlns:enums="clr-namespace:Paraject.Core.Enums"
         xmlns:utility="clr-namespace:Paraject.Core.Utilities"
+        xmlns:closeOnEsc="clr-namespace:Paraject.Core.Commands"
         d:DataContext="{d:DesignInstance Type=modaldialogs:AddSubtaskModalDialogViewModel}"
         mc:Ignorable="d"
         WindowStyle="None"
@@ -22,6 +23,13 @@
         Foreground="{StaticResource MainFontColor}"
         MouseDown="AddSubtaskModalDialogMouseDown"
         utility:WindowCloser.EnableWindowClosing="True">
+
+    <Window.InputBindings>
+        <KeyBinding Key="Escape"
+                    Command="{x:Static closeOnEsc:CloseModalDialogCommand.Instance}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+    </Window.InputBindings>
+
     <Border Background="{StaticResource MainBackground}"
             CornerRadius="20">
         <Grid Margin="25,20,25,40"
