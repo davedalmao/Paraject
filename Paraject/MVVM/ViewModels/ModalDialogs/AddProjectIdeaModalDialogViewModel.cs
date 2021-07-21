@@ -1,4 +1,5 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.Core.Enums;
 using Paraject.Core.Repositories;
 using Paraject.Core.Services.DialogService;
 using Paraject.MVVM.Models;
@@ -48,7 +49,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Subtask should have a subject.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Project Idea should have a name.", Icon.InvalidProjectIdea));
             }
         }
         private void AddOperationResult(bool isAdded)
@@ -56,13 +57,13 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isAdded)
             {
                 _refreshProjectIdeasCollection();
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Add Operation", "Project Idea Created Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Add Operation", "Project Idea Created Successfully!", Icon.ValidProjectIdea));
                 CloseModalDialog();
             }
 
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot create the Project Idea.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot create the Project Idea.", Icon.InvalidProjectIdea));
             }
         }
 
