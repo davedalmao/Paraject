@@ -7,7 +7,6 @@ using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.MessageBoxes;
 using Paraject.MVVM.ViewModels.Windows;
 using System;
-using System.Drawing;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
@@ -53,11 +52,11 @@ namespace Paraject.MVVM.ViewModels
             {
                 try
                 {
-                    CurrentProject.Logo = Image.FromFile(openFile.FileName);
+                    CurrentProject.Logo = System.Drawing.Image.FromFile(openFile.FileName);
                 }
                 catch (Exception ex)
                 {
-                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Image Format Error", $"Please select a valid image.\n \n{ex}", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Image Format Error", $"Please select a valid logo.\n \n{ex}", Icon.InvalidProject));
                 }
             }
         }
@@ -71,7 +70,7 @@ namespace Paraject.MVVM.ViewModels
             }
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Project should have a name.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Project should have a name.", Icon.InvalidProject));
             }
         }
         private void UpdateOperationResult(bool isUpdated)
@@ -79,11 +78,11 @@ namespace Paraject.MVVM.ViewModels
             if (isUpdated)
             {
                 _projectsViewModel.RefreshProjects();
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", "Project Updated Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", "Project Updated Successfully!", Icon.ValidProject));
             }
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot update the Project.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot update the Project.", Icon.InvalidProject));
             }
         }
 
@@ -91,7 +90,7 @@ namespace Paraject.MVVM.ViewModels
         {
             DialogResults result = _dialogService.OpenDialog(new YesNoMessageBoxViewModel("Delete Operation",
                                     $"Do you want to DELETE {CurrentProject.Name}? \n\nAll Tasks, Subtasks, and Notes that belongs to this Project will also be deleted.",
-                                    "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                                    Icon.Project));
 
             if (result == DialogResults.Yes)
             {
@@ -105,12 +104,12 @@ namespace Paraject.MVVM.ViewModels
             {
                 //redirect to ProjectsView after a successful DELETE operation, and refresh the View with the appropriate records
                 _projectsViewModel.RefreshProjects();
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Delete Operation", "Project Deleted Successfully!", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Delete Operation", "Project Deleted Successfully!", Icon.ValidProject));
                 MainWindowViewModel.CurrentView = _projectsViewModel;
             }
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot delete the Project.", "/UiDesign/Images/Logo/defaultProjectLogo.png"));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot delete the Project.", Icon.InvalidProject));
             }
         }
         #endregion
