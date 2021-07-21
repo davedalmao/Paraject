@@ -42,8 +42,8 @@
                 <Image Grid.Column="0"
                        Source="{Binding IconSource}"
                        Margin="0,0,20,0"
-                       MaxWidth="69"
-                       MaxHeight="75" />
+                       Width="69"
+                       Height="69" />
                 <TextBlock Grid.Column="1"
                            Text="{Binding Message}"
                            TextWrapping="Wrap"
