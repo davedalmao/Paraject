@@ -24,8 +24,7 @@ namespace Paraject.MVVM.ViewModels
             AllProjectsCommand = new DelegateCommand(DisplayAllProjects);
             PersonalProjectsCommand = new DelegateCommand(DisplayPersonalProjects);
             PaidProjectsCommand = new DelegateCommand(DisplayPaidProjects);
-            CompletedProjectsCommand = new DelegateCommand(FilterProjects);
-            FilterProjectsCommand = new DelegateCommand(FilterProjects);
+            CompletedProjectsCommand = new DelegateCommand(DisplayCompletedProjects);
 
             ShowAddProjectsDialogCommand = new DelegateCommand(ShowAddProjectModalDialog);
 
@@ -51,7 +50,6 @@ namespace Paraject.MVVM.ViewModels
         public ICommand PersonalProjectsCommand { get; }
         public ICommand PaidProjectsCommand { get; }
         public ICommand CompletedProjectsCommand { get; }
-        public ICommand FilterProjectsCommand { get; }
         public ICommand ShowAddProjectsDialogCommand { get; }
         public ICommand TasksViewCommand { get; }
         #endregion
@@ -59,36 +57,28 @@ namespace Paraject.MVVM.ViewModels
         #region Methods
         public void DisplayAllProjects()
         {
-            ShowButton();
+            ShowAddNewProjectButton();
             Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId));
         }
         public void DisplayPersonalProjects()
         {
-            ShowButton();
+            ShowAddNewProjectButton();
             Projects = new ObservableCollection<Project>(_projectRepository.FindAll(_currentUserId, ProjectOptions.Personal)
                                                                            .Where(project => project.Status != "Completed"));
         }
         public void DisplayPaidProjects()
         {
-            ShowButton();
+            ShowAddNewProjectButton();
             Projects = new ObservableCollection<Project>(_projectRepository.FindAll(_currentUserId, ProjectOptions.Paid)
                                                                            .Where(project => project.Status != "Completed"));
         }
-        //private void DisplayCompletedProjects()
-        //{
-        //    CurrentProjectOption = "Show All";
-        //    ShowComboBox();
-        //    Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId)
-        //                                                                   .Where(project => project.Status == "Completed"));
-        //}
-        private void FilterProjects()
+        private void DisplayCompletedProjects()
         {
-            //CurrentProjectOption = "Show All";
+            ShowProjectOptionComboBox();
             if (CurrentProjectOption == "Show All")
             {
-                ShowComboBox();
                 Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId)
-                                                                                           .Where(project => project.Status == "Completed"));
+                                                                               .Where(project => project.Status == "Completed"));
                 return;
             }
 
@@ -110,17 +100,15 @@ namespace Paraject.MVVM.ViewModels
 
             else if (CompletedButtonIsChecked)
             {
-                FilterProjects();
+                DisplayCompletedProjects();
             }
-
             else
             {
                 DisplayAllProjects();
             }
         }
 
-
-        private void ShowButton()
+        private void ShowAddNewProjectButton()
         {
             if (!AddButtonIsVisible)
             {
@@ -128,10 +116,13 @@ namespace Paraject.MVVM.ViewModels
                 ComboBoxIsVisible = false;
             }
         }
-        private void ShowComboBox()
+        private void ShowProjectOptionComboBox()
         {
             if (!ComboBoxIsVisible)
             {
+                //Remove this line to remember the last selected value of Project Option ComboBox
+                CurrentProjectOption = "Show All";
+
                 ComboBoxIsVisible = true;
                 AddButtonIsVisible = false;
             }
