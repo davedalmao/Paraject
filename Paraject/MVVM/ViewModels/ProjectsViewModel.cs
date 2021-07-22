@@ -24,7 +24,7 @@ namespace Paraject.MVVM.ViewModels
             AllProjectsCommand = new DelegateCommand(DisplayAllProjects);
             PersonalProjectsCommand = new DelegateCommand(DisplayPersonalProjects);
             PaidProjectsCommand = new DelegateCommand(DisplayPaidProjects);
-            CompletedProjectsCommand = new DelegateCommand(DisplayCompletedProjects);
+            CompletedProjectsCommand = new DelegateCommand(FilterProjects);
             FilterProjectsCommand = new DelegateCommand(FilterProjects);
 
             ShowAddProjectsDialogCommand = new DelegateCommand(ShowAddProjectModalDialog);
@@ -74,17 +74,19 @@ namespace Paraject.MVVM.ViewModels
             Projects = new ObservableCollection<Project>(_projectRepository.FindAll(_currentUserId, ProjectOptions.Paid)
                                                                            .Where(project => project.Status != "Completed"));
         }
-        private void DisplayCompletedProjects()
-        {
-            CurrentProjectOption = "Show All";
-            ShowComboBox();
-            Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId)
-                                                                           .Where(project => project.Status == "Completed"));
-        }
+        //private void DisplayCompletedProjects()
+        //{
+        //    CurrentProjectOption = "Show All";
+        //    ShowComboBox();
+        //    Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId)
+        //                                                                   .Where(project => project.Status == "Completed"));
+        //}
         private void FilterProjects()
         {
+            //CurrentProjectOption = "Show All";
             if (CurrentProjectOption == "Show All")
             {
+                ShowComboBox();
                 Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId)
                                                                                            .Where(project => project.Status == "Completed"));
                 return;
@@ -108,7 +110,7 @@ namespace Paraject.MVVM.ViewModels
 
             else if (CompletedButtonIsChecked)
             {
-                DisplayCompletedProjects();
+                FilterProjects();
             }
 
             else
