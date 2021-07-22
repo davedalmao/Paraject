@@ -76,7 +76,7 @@
                     Background="{StaticResource AccentColor}"
                     Style="{StaticResource GeneralButtonTheme}"
                     Command="{Binding ShowAddProjectsDialogCommand}"
-                    Visibility="{Binding AddButtonIsVisible,
+                    Visibility="{Binding AddNewProjectButtonIsVisible,
                                          Converter={StaticResource BooleanToVisibilityConverter}}" />
 
 
@@ -90,7 +90,7 @@
                       Style="{StaticResource ComboBoxTheme2}"
                       SelectedValue="{Binding CurrentProjectOption}"
                       Text="{Binding CurrentProjectOption}"
-                      Visibility="{Binding ComboBoxIsVisible,
+                      Visibility="{Binding ProjectOptionComboBoxIsVisible,
                                            Converter={StaticResource BooleanToVisibilityConverter}}">
                 <!--Enum ItemSource-->
                 <ComboBox.ItemsSource>
@@ -179,7 +179,7 @@
                                            Grid.Row="1"
                                            Foreground="#83868A"
                                            FontSize="14.5"
-                                           Margin="0,0,69,0"
+                                           Margin="0,0,45,0"
                                            TextTrimming="CharacterEllipsis"
                                            VerticalAlignment="Center"
                                            FontFamily="{StaticResource SignikaRegular}" />
