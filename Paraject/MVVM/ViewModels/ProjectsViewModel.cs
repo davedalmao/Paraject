@@ -65,22 +65,26 @@ namespace Paraject.MVVM.ViewModels
         public void DisplayPersonalProjects()
         {
             ShowButton();
-            Projects = new ObservableCollection<Project>(_projectRepository.FindAll(_currentUserId, ProjectOptions.Personal));
+            Projects = new ObservableCollection<Project>(_projectRepository.FindAll(_currentUserId, ProjectOptions.Personal)
+                                                                           .Where(project => project.Status != "Completed"));
         }
         public void DisplayPaidProjects()
         {
             ShowButton();
-            Projects = new ObservableCollection<Project>(_projectRepository.FindAll(_currentUserId, ProjectOptions.Paid));
+            Projects = new ObservableCollection<Project>(_projectRepository.FindAll(_currentUserId, ProjectOptions.Paid)
+                                                                           .Where(project => project.Status != "Completed"));
         }
         private void DisplayCompletedProjects()
         {
             ShowComboBox();
-            Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId).Where(project => project.Status == "Completed"));
+            Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId)
+                                                                           .Where(project => project.Status == "Completed"));
         }
         private void FilterProjects()
         {
-            Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId).Where(project => project.Option == CurrentProjectOption
-                                                                                                                    && project.Status == "Completed"));
+            Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId)
+                                                                           .Where(project => project.Option == CurrentProjectOption
+                                                                                          && project.Status == "Completed"));
         }
         public void RefreshProjects()
         {
