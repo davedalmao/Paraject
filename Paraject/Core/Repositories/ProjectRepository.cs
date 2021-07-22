@@ -36,7 +36,7 @@ namespace Paraject.Core.Repositories
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("@user_id", SqlDbType.Int).Value = project.User_Id_Fk;
-                    cmd.Parameters.Add("@project_name", SqlDbType.NVarChar, 50).Value = project.Name;
+                    cmd.Parameters.Add("@project_name", SqlDbType.NVarChar, 100).Value = project.Name;
                     cmd.Parameters.Add("@project_description", SqlDbType.NVarChar, 1515).Value = string.IsNullOrWhiteSpace(project.Description) ? null : project.Description;
                     cmd.Parameters.Add("@project_option", SqlDbType.NVarChar, 50).Value = project.Option;
                     cmd.Parameters.Add("@project_status", SqlDbType.NVarChar, 12).Value = Enum.GetName(Statuses.Open);
@@ -270,7 +270,7 @@ namespace Paraject.Core.Repositories
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("@project_id", SqlDbType.Int).Value = project.Id;
-                    cmd.Parameters.Add("@project_name", SqlDbType.NVarChar, 50).Value = project.Name;
+                    cmd.Parameters.Add("@project_name", SqlDbType.NVarChar, 100).Value = project.Name;
                     cmd.Parameters.Add("@project_description", SqlDbType.NVarChar, 1515).Value = string.IsNullOrWhiteSpace(project.Description) ? null : project.Description;
                     cmd.Parameters.Add("@project_option", SqlDbType.NVarChar, 50).Value = project.Option;
                     cmd.Parameters.Add("@project_status", SqlDbType.NVarChar, 12).Value = project.Status;
