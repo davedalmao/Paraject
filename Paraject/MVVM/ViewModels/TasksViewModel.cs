@@ -8,7 +8,6 @@ namespace Paraject.MVVM.ViewModels
 {
     public class TasksViewModel : BaseViewModel
     {
-        //private static object _currentView;
         private readonly ProjectsViewModel _projectsViewModel;
         private readonly Action _refreshProjectsCollection;
 
@@ -29,31 +28,21 @@ namespace Paraject.MVVM.ViewModels
             //TasksView child Views (Navigation)
             TasksTodoViewCommand = new ParameterizedDelegateCommand(NavigateToTasksTodoView);
             CompletedTasksViewCommand = new DelegateCommand(NavigateToCompletedTasksView);
-            ProjectNotesViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = NotesVM; });
-            ProjectDetailsViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectDetailsVM; });
+            ProjectNotesViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = NotesVM; TaskHeaderTextIsVisible = false; });
+            ProjectDetailsViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectDetailsVM; TaskHeaderTextIsVisible = false; });
             NavigateBackToProjectsViewCommand = new DelegateCommand(NavigateBackToProjectsView);
         }
-
-        //public static event EventHandler CurrentViewChanged;
 
         #region Properties
         public Project CurrentProject { get; set; }
         public object CurrentView { get; set; }
-        //public static object CurrentView
-        //{
-        //    get { return _currentView; }
-        //    set
-        //    {
-        //        _currentView = value;
-        //        if (CurrentViewChanged is not null)
-        //            CurrentViewChanged(null, EventArgs.Empty);
-        //    }
-        //}
 
         //RadioButtons in TasksView
         public bool FinishLineButtonIsChecked { get; set; } = true; //default selected RadioButton
         public bool ExtraFeaturesButtonIsChecked { get; set; }
         public bool CompletedButtonIsChecked { get; set; }
+
+        public bool TaskHeaderTextIsVisible { get; set; } = true;
 
         //TasksView child Views
         public TasksTodoViewModel TasksTodoVM { get; set; }
@@ -77,11 +66,15 @@ namespace Paraject.MVVM.ViewModels
         }
         private void NavigateToTasksTodoView(object taskType) //the argument passed to this parameter is in TasksView (a "CommandParameter" from a Tab header)
         {
+            TaskHeaderTextIsVisible = true;
+
             TasksTodoVM = new TasksTodoViewModel(this, CurrentProject.Id, taskType.ToString());
             CurrentView = TasksTodoVM;
         }
         private void NavigateToCompletedTasksView()
         {
+            TaskHeaderTextIsVisible = true;
+
             CompletedTasksVM = new CompletedTasksViewModel(this, CurrentProject.Id);
             CurrentView = CompletedTasksVM;
         }
