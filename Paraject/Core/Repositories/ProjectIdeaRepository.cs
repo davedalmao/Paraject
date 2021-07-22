@@ -36,7 +36,7 @@ namespace Paraject.Core.Repositories
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("@user_id", SqlDbType.Int).Value = projectIdea.User_Id_Fk;
-                    cmd.Parameters.Add("@project_idea_name", SqlDbType.NVarChar, 50).Value = projectIdea.Name;
+                    cmd.Parameters.Add("@project_idea_name", SqlDbType.NVarChar, 100).Value = projectIdea.Name;
                     cmd.Parameters.Add("@project_idea_description", SqlDbType.NVarChar, 1515).Value = string.IsNullOrWhiteSpace(projectIdea.Description) ? null : projectIdea.Description;
                     cmd.Parameters.Add("@project_idea_features", SqlDbType.NVarChar, 1515).Value = projectIdea.Features;
                     cmd.Parameters.Add("@date_created", SqlDbType.DateTime2).Value = DateTime.Now;
@@ -191,7 +191,7 @@ namespace Paraject.Core.Repositories
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("@project_idea_id", SqlDbType.Int).Value = projectIdea.Id;
-                    cmd.Parameters.Add("@project_idea_name", SqlDbType.NVarChar, 50).Value = projectIdea.Name;
+                    cmd.Parameters.Add("@project_idea_name", SqlDbType.NVarChar, 100).Value = projectIdea.Name;
                     cmd.Parameters.Add("@project_idea_description", SqlDbType.NVarChar, 1515).Value = string.IsNullOrWhiteSpace(projectIdea.Description) ? null : projectIdea.Description;
                     cmd.Parameters.Add("@project_idea_features", SqlDbType.NVarChar, 1515).Value = projectIdea.Features;
 

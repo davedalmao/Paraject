@@ -35,7 +35,7 @@ namespace Paraject.Core.Repositories
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("@task_id", SqlDbType.Int).Value = subtask.Task_Id_Fk;
-                    cmd.Parameters.Add("@subtask_subject", SqlDbType.NVarChar, 50).Value = subtask.Subject;
+                    cmd.Parameters.Add("@subtask_subject", SqlDbType.NVarChar, 100).Value = subtask.Subject;
                     cmd.Parameters.Add("@subtask_status", SqlDbType.NVarChar, 20).Value = Enum.GetName(Statuses.Open);
                     cmd.Parameters.Add("@subtask_priority", SqlDbType.NVarChar, 4).Value = subtask.Priority;
                     cmd.Parameters.Add("@subtask_description", SqlDbType.NVarChar, 1515).Value = string.IsNullOrWhiteSpace(subtask.Description) ? null : subtask.Description;
@@ -267,7 +267,7 @@ namespace Paraject.Core.Repositories
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("@subtask_id", SqlDbType.Int).Value = subtask.Id;
-                    cmd.Parameters.Add("@subtask_subject", SqlDbType.NVarChar, 50).Value = subtask.Subject;
+                    cmd.Parameters.Add("@subtask_subject", SqlDbType.NVarChar, 100).Value = subtask.Subject;
                     cmd.Parameters.Add("@subtask_status", SqlDbType.NVarChar, 20).Value = subtask.Status;
                     cmd.Parameters.Add("@subtask_priority", SqlDbType.NVarChar, 4).Value = subtask.Priority;
                     cmd.Parameters.Add("@subtask_description", SqlDbType.NVarChar, 1515).Value = string.IsNullOrWhiteSpace(subtask.Description) ? null : subtask.Description;
