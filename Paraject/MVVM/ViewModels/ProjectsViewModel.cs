@@ -25,6 +25,7 @@ namespace Paraject.MVVM.ViewModels
             PersonalProjectsCommand = new DelegateCommand(DisplayPersonalProjects);
             PaidProjectsCommand = new DelegateCommand(DisplayPaidProjects);
             CompletedProjectsCommand = new DelegateCommand(DisplayCompletedProjects);
+            FilterProjectsCommand = new DelegateCommand(FilterProjects);
 
             ShowAddProjectsDialogCommand = new DelegateCommand(ShowAddProjectModalDialog);
 
@@ -50,6 +51,7 @@ namespace Paraject.MVVM.ViewModels
         public ICommand PersonalProjectsCommand { get; }
         public ICommand PaidProjectsCommand { get; }
         public ICommand CompletedProjectsCommand { get; }
+        public ICommand FilterProjectsCommand { get; }
         public ICommand ShowAddProjectsDialogCommand { get; }
         public ICommand TasksViewCommand { get; }
         #endregion
@@ -75,6 +77,11 @@ namespace Paraject.MVVM.ViewModels
             ShowComboBox();
             Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId).Where(project => project.Status == "Completed"));
         }
+        private void FilterProjects()
+        {
+            Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId).Where(project => project.Option == CurrentProjectOption
+                                                                                                                    && project.Status == "Completed"));
+        }
         public void RefreshProjects()
         {
             if (PersonalButtonIsChecked)
@@ -98,6 +105,7 @@ namespace Paraject.MVVM.ViewModels
             }
         }
 
+
         private void ShowButton()
         {
             if (!AddButtonIsVisible)
@@ -106,7 +114,6 @@ namespace Paraject.MVVM.ViewModels
                 ComboBoxIsVisible = false;
             }
         }
-
         private void ShowComboBox()
         {
             if (!ComboBoxIsVisible)
