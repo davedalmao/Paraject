@@ -53,7 +53,7 @@
         <DockPanel Grid.Row="1"
                    Margin="0,20,0,32">
             <!--FinishLine Type Tasks-->
-            <custom:MenuItem Content="Finish Line"
+            <custom:MenuItem Content="Finish Line Tasks"
                              IsChecked="{Binding FinishLineButtonIsChecked}"
                              Style="{StaticResource VerticalMenuButtonTheme}"
                              Command="{Binding TasksTodoViewCommand}"
