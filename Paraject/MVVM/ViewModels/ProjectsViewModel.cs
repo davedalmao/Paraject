@@ -76,12 +76,20 @@ namespace Paraject.MVVM.ViewModels
         }
         private void DisplayCompletedProjects()
         {
+            CurrentProjectOption = "Show All";
             ShowComboBox();
             Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId)
                                                                            .Where(project => project.Status == "Completed"));
         }
         private void FilterProjects()
         {
+            if (CurrentProjectOption == "Show All")
+            {
+                Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId)
+                                                                                           .Where(project => project.Status == "Completed"));
+                return;
+            }
+
             Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId)
                                                                            .Where(project => project.Option == CurrentProjectOption
                                                                                           && project.Status == "Completed"));
