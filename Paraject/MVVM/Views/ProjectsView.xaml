@@ -101,11 +101,11 @@
                 </ComboBox.ItemsSource>
 
                 <!--Triggers a Command when the selected item of a ComboBox changes-->
-                <!--<i:Interaction.Triggers>
-                        <i:EventTrigger EventName="SelectionChanged">
-                            <i:InvokeCommandAction Command="{Binding FilterTasksCommand}" />
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>-->
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding FilterProjectsCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </ComboBox>
         </Grid>
 
