@@ -41,6 +41,11 @@ namespace Paraject.MVVM.ViewModels
         public bool PaidButtonIsChecked { get; set; }
         public bool CompletedButtonIsChecked { get; set; }
 
+        public bool AddButtonIsVisible { get; set; } = true;
+        public bool ComboBoxIsVisible { get; set; }
+        public string CurrentProjectOption { get; set; } = "Show All";
+
+
         public ICommand AllProjectsCommand { get; }
         public ICommand PersonalProjectsCommand { get; }
         public ICommand PaidProjectsCommand { get; }
@@ -52,18 +57,22 @@ namespace Paraject.MVVM.ViewModels
         #region Methods
         public void DisplayAllProjects()
         {
+            ShowButton();
             Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId));
         }
         public void DisplayPersonalProjects()
         {
+            ShowButton();
             Projects = new ObservableCollection<Project>(_projectRepository.FindAll(_currentUserId, ProjectOptions.Personal));
         }
         public void DisplayPaidProjects()
         {
+            ShowButton();
             Projects = new ObservableCollection<Project>(_projectRepository.FindAll(_currentUserId, ProjectOptions.Paid));
         }
         private void DisplayCompletedProjects()
         {
+            ShowComboBox();
             Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId).Where(project => project.Status == "Completed"));
         }
         public void RefreshProjects()
@@ -86,6 +95,24 @@ namespace Paraject.MVVM.ViewModels
             else
             {
                 DisplayAllProjects();
+            }
+        }
+
+        private void ShowButton()
+        {
+            if (!AddButtonIsVisible)
+            {
+                AddButtonIsVisible = true;
+                ComboBoxIsVisible = false;
+            }
+        }
+
+        private void ShowComboBox()
+        {
+            if (!ComboBoxIsVisible)
+            {
+                ComboBoxIsVisible = true;
+                AddButtonIsVisible = false;
             }
         }
 
