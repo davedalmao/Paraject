@@ -142,6 +142,9 @@
                                            Text="{Binding Content.Subject}"
                                            FontSize="14"
                                            VerticalAlignment="Center"
+                                           TextWrapping="Wrap"
+                                           MaxHeight="69"
+                                           TextTrimming="CharacterEllipsis"
                                            Foreground="{StaticResource MainFontColor}" />
 
                                 <!--Card Footer-->
