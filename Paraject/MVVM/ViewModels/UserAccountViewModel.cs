@@ -36,12 +36,18 @@ namespace Paraject.MVVM.ViewModels
         #region Methods 
         public void Update()
         {
-            bool idExists = _userAccountRepository.IdExistsInDatabase(CurrentUserAccount.Id);
-            if (idExists)
+            if (!string.IsNullOrWhiteSpace(CurrentUserAccount.Username) && !string.IsNullOrWhiteSpace(CurrentUserAccount.Password))
             {
-                UpdateOperationResult();
+                bool idExists = _userAccountRepository.IdExistsInDatabase(CurrentUserAccount.Id);
+                if (idExists)
+                {
+                    UpdateOperationResult();
+                }
             }
-
+            else
+            {
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "Your account should have a username AND password.", Icon.InvalidUser));
+            }
         }
         private void UpdateOperationResult()
         {
