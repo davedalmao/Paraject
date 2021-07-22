@@ -41,10 +41,9 @@ namespace Paraject.MVVM.ViewModels
         public bool PaidButtonIsChecked { get; set; }
         public bool CompletedButtonIsChecked { get; set; }
 
-        public bool AddButtonIsVisible { get; set; } = true;
-        public bool ComboBoxIsVisible { get; set; }
+        public bool AddNewProjectButtonIsVisible { get; set; } = true;
+        public bool ProjectOptionComboBoxIsVisible { get; set; }
         public string CurrentProjectOption { get; set; } = "Show All";
-
 
         public ICommand AllProjectsCommand { get; }
         public ICommand PersonalProjectsCommand { get; }
@@ -110,21 +109,21 @@ namespace Paraject.MVVM.ViewModels
 
         private void ShowAddNewProjectButton()
         {
-            if (!AddButtonIsVisible)
+            if (!AddNewProjectButtonIsVisible)
             {
-                AddButtonIsVisible = true;
-                ComboBoxIsVisible = false;
+                AddNewProjectButtonIsVisible = true;
+                ProjectOptionComboBoxIsVisible = false;
             }
         }
         private void ShowProjectOptionComboBox()
         {
-            if (!ComboBoxIsVisible)
+            if (!ProjectOptionComboBoxIsVisible)
             {
                 //Remove this line to remember the last selected value of Project Option ComboBox
                 CurrentProjectOption = "Show All";
 
-                ComboBoxIsVisible = true;
-                AddButtonIsVisible = false;
+                ProjectOptionComboBoxIsVisible = true;
+                AddNewProjectButtonIsVisible = false;
             }
         }
 
