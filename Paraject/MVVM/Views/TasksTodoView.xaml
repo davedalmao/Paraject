@@ -200,6 +200,9 @@
                                     <TextBlock Grid.Row="1"
                                                Text="{Binding Content.Subject}"
                                                FontSize="14"
+                                               TextWrapping="Wrap"
+                                               MaxHeight="69"
+                                               TextTrimming="CharacterEllipsis"
                                                VerticalAlignment="Center"
                                                Foreground="{StaticResource MainFontColor}" />
 
