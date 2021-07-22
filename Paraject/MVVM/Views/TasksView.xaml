@@ -38,12 +38,15 @@
             </Button>
 
             <!--Header Text-->
-            <TextBlock Text="Tasks for: "
+            <TextBlock Text="Tasks for:"
                        Margin="8,0,0,0"
-                       FontSize="25" />
+                       FontSize="25"
+                       Visibility="{Binding TaskHeaderTextIsVisible,
+                                         Converter={StaticResource BooleanToVisibilityConverter}}" />
 
             <!--Selected Project Name-->
             <TextBlock Text="{Binding CurrentProject.Name}"
+                       Margin="8,0,0,0"
                        TextTrimming="CharacterEllipsis"
                        Width="334"
                        FontSize="25" />
