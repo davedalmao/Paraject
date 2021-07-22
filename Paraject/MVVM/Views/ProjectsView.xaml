@@ -69,7 +69,7 @@
                 Grid.Column="4"
                 Grid.Row="0"
                 Height="36"
-                Width="169"
+                Width="182"
                 Background="{StaticResource AccentColor}"
                 HorizontalAlignment="Right"
                 Tag="/UiDesign/Icons/ButtonIcons/add.svg"
