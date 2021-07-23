@@ -45,17 +45,31 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         #region Methods
         public void Add()
         {
-            if (!string.IsNullOrWhiteSpace(CurrentProject.Name))
+            if (CurrentProject.Deadline is null || CurrentProject.Deadline < DateTime.Now.Date)
+            {
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Date", "The selected date is invalid. Cannot create a new Project.", Icon.InvalidProject));
+                return;
+            }
+
+            AddProjectToDB();
+        }
+
+        private void AddProjectToDB()
+        {
+            if (ValidateCurrentProject())
             {
                 bool isAdded = _projectRepository.Add(CurrentProject);
                 AddOperationResult(isAdded);
+                return;
             }
 
-            else
-            {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Project should have a name.", Icon.InvalidProject));
-            }
+            _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Project should have a name.", Icon.InvalidProject));
         }
+        private bool ValidateCurrentProject()
+        {
+            return !string.IsNullOrWhiteSpace(CurrentProject.Name);
+        }
+
         private void AddOperationResult(bool isAdded)
         {
             if (isAdded)
@@ -63,14 +77,11 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 _refreshProjectsCollection();
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Add Operation", "Project Created Successfully!", Icon.ValidProject));
                 CloseModalDialog();
+                return;
             }
 
-            else
-            {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot create the Project.", Icon.InvalidProject));
-            }
+            _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot create the Project.", Icon.InvalidProject));
         }
-
         private void LoadProjectLogo()
         {
             OpenFileDialog openFile = new()
