@@ -43,7 +43,7 @@ namespace Paraject.MVVM.ViewModels
 
         public bool AddNewProjectButtonIsVisible { get; set; } = true;
         public bool ProjectOptionComboBoxIsVisible { get; set; }
-        public string CurrentProjectOption { get; set; } = "Show All";
+        public string CurrentProjectOption { get; set; }
 
         public ICommand AllProjectsCommand { get; }
         public ICommand PersonalProjectsCommand { get; }
@@ -73,17 +73,22 @@ namespace Paraject.MVVM.ViewModels
         }
         private void DisplayCompletedProjects()
         {
-            ShowProjectOptionComboBox();
+            if (CompletedButtonIsChecked)
+            {
+                ShowProjectOptionComboBox();
+                GetValuesForProjectsCollection();
+            }
+        }
+        private void GetValuesForProjectsCollection()
+        {
             if (CurrentProjectOption == "Show All")
             {
-                Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId)
-                                                                               .Where(project => project.Status == "Completed"));
+                Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId).Where(project => project.Status == "Completed"));
                 return;
             }
 
             Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId)
-                                                                           .Where(project => project.Option == CurrentProjectOption
-                                                                                          && project.Status == "Completed"));
+                                                                           .Where(project => project.Option == CurrentProjectOption && project.Status == "Completed"));
         }
         public void RefreshProjects()
         {
@@ -117,10 +122,9 @@ namespace Paraject.MVVM.ViewModels
         }
         private void ShowProjectOptionComboBox()
         {
-            if (!ProjectOptionComboBoxIsVisible)
+            if (!ProjectOptionComboBoxIsVisible && CompletedButtonIsChecked)
             {
-                //Remove this line to remember the last selected value of Project Option ComboBox
-                CurrentProjectOption = "Show All";
+                CurrentProjectOption = "Show All"; //To set Project Option ComboBox's default value EVERYTIME CompletedButtonIsChecked
 
                 ProjectOptionComboBoxIsVisible = true;
                 AddNewProjectButtonIsVisible = false;
