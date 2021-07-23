@@ -46,19 +46,19 @@ namespace Paraject.MVVM.ViewModels
         #region Methods
         private void Update()
         {
-            if (CurrentTask.Status == "Completed" && CurrentTask.SubtaskCount > 0)
-            {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", $"Unable to mark this Task's Status as \"Completed\" because there are still {CurrentTask.SubtaskCount} incomplete subtask/s remaining.", Icon.InvalidTask));
-                return;
-            }
-
-            _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", "Task Updated Successfully!", Icon.ValidTask));
+            _dialogService.OpenDialog(new OkayMessageBoxViewModel("Subtask Count", $"Not \"Complete\" Subtask Count: {CurrentTask.SubtaskCount}", Icon.InvalidTask));
+            //if (CurrentTask.Status == "Completed" && CurrentTask.SubtaskCount > 0)
+            //{
+            //    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", $"Unable to mark this Task's Status as \"Completed\" because there are still {CurrentTask.SubtaskCount} incomplete subtask/s remaining.", Icon.InvalidTask));
+            //    return;
+            //}
 
             //if (!string.IsNullOrWhiteSpace(CurrentTask.Subject))
             //{
             //    bool isUpdated = _taskRepository.Update(CurrentTask);
             //    UpdateOperationResult(isUpdated);
             //}
+
             //else
             //{
             //    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Task should have a subject.", Icon.InvalidTask));
