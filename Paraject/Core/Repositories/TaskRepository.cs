@@ -91,6 +91,7 @@ namespace Paraject.Core.Repositories
                         int taskPriority = sqlDataReader.GetOrdinal("task_priority");
                         int taskDeadline = sqlDataReader.GetOrdinal("task_deadline");
                         int dateCreated = sqlDataReader.GetOrdinal("date_created");
+                        int subtaskCount = sqlDataReader.GetOrdinal("subtask_count");
 
                         //Reads a single Task
                         //Remember, we're already on the first record, so use do/while here.
@@ -107,7 +108,8 @@ namespace Paraject.Core.Repositories
                                 Category = sqlDataReader.GetString(taskCategory),
                                 Priority = sqlDataReader.GetString(taskPriority),
                                 Deadline = sqlDataReader.IsDBNull(taskDeadline) ? null : sqlDataReader.GetDateTime(taskDeadline),
-                                DateCreated = sqlDataReader.GetDateTime(dateCreated)
+                                DateCreated = sqlDataReader.GetDateTime(dateCreated),
+                                SubtaskCount = sqlDataReader.IsDBNull(subtaskCount) ? 0 : sqlDataReader.GetInt32(subtaskCount) //subtask_count is not a column in Subtask table, this is just an alias found in Task.spGetTask
                             };
                         }
                         while (sqlDataReader.Read());
@@ -117,7 +119,7 @@ namespace Paraject.Core.Repositories
                 catch (SqlException ex)
                 {
                     _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error",
-                                             $"An SQL error occured while processing data: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidTask));
+                                             $"A SQL error occured while processing data: \n\n{ ex.Message } \n\n{ ex.StackTrace }", Icon.InvalidTask));
                 }
                 catch (Exception ex)
                 {
@@ -162,7 +164,7 @@ namespace Paraject.Core.Repositories
                         int taskPriorityFromDb = sqlDataReader.GetOrdinal("task_priority");
                         int taskDeadline = sqlDataReader.GetOrdinal("task_deadline");
                         int dateCreated = sqlDataReader.GetOrdinal("date_created");
-                        int subtaskCount = sqlDataReader.GetOrdinal("subtask_count"); // subtask_count is not a column in Subtask table, this is just an alias found in spFindAllTasks
+                        int subtaskCount = sqlDataReader.GetOrdinal("subtask_count"); //subtask_count is not a column in Subtask table, this is just an alias found in Task.spFindAllTasks
 
                         //reading multiple Tasks (Add a Task object to the tasks List if SqlDataReader returns a row from the Database)
                         //Remember, we're already on the first record, so use do/while here.
