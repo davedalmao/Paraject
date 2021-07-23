@@ -81,12 +81,10 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 _refreshTaskCollection();
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Add Operation", "Task Created Successfully!", Icon.ValidTask));
                 CloseModal();
+                return;
             }
 
-            else
-            {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An Error occured, cannot create the Task.", Icon.InvalidTask));
-            }
+            _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An Error occured, cannot create the Task.", Icon.InvalidTask));
         }
 
         private void SetCurrentTaskDefaultValues()
