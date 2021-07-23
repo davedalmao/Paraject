@@ -45,34 +45,38 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         #region Methods
         public void Add()
         {
-            if (CurrentProject.Deadline is null || CurrentProject.Deadline < DateTime.Now.Date)
+            if (ProjectIsValid())
+            {
+                AddProjectToDatabaseAndShowResult(_projectRepository.Add(CurrentProject));
+            }
+        }
+        private bool ProjectIsValid()
+        {
+            if (ProjectNameIsValid() == false)
+            {
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Project should have a name.", Icon.InvalidProject));
+                return false;
+            }
+
+            else if (ProjectDeadlineDateIsValid() == false)
             {
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Date", "The selected date is invalid. Cannot create a new Project.", Icon.InvalidProject));
-                return;
+                return false;
             }
 
-            AddProjectToDB();
+            return true;
         }
-
-        private void AddProjectToDB()
-        {
-            if (ValidateCurrentProject())
-            {
-                bool isAdded = _projectRepository.Add(CurrentProject);
-                AddOperationResult(isAdded);
-                return;
-            }
-
-            _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Project should have a name.", Icon.InvalidProject));
-        }
-        private bool ValidateCurrentProject()
+        private bool ProjectNameIsValid()
         {
             return !string.IsNullOrWhiteSpace(CurrentProject.Name);
         }
-
-        private void AddOperationResult(bool isAdded)
+        private bool ProjectDeadlineDateIsValid()
         {
-            if (isAdded)
+            return CurrentProject.Deadline >= DateTime.Now.Date || CurrentProject.Deadline is null;
+        }
+        private void AddProjectToDatabaseAndShowResult(bool isValid)
+        {
+            if (isValid)
             {
                 _refreshProjectsCollection();
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Add Operation", "Project Created Successfully!", Icon.ValidProject));
@@ -82,6 +86,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot create the Project.", Icon.InvalidProject));
         }
+
         private void LoadProjectLogo()
         {
             OpenFileDialog openFile = new()
