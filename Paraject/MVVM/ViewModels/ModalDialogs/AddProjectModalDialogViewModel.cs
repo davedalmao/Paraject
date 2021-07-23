@@ -60,7 +60,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             else if (ProjectDeadlineDateIsValid() == false)
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Date", "The selected date is invalid. Cannot create a new Project.", Icon.InvalidProject));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", "The selected date is invalid. Cannot create a new Project.", Icon.InvalidProject));
                 return false;
             }
 

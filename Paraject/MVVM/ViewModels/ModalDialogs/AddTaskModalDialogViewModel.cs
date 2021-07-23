@@ -45,20 +45,38 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         #region Methods
         private void Add()
         {
-            if (!string.IsNullOrWhiteSpace(CurrentTask.Subject))
+            if (TaskIsValid())
             {
-                bool isAdded = _taskRepository.Add(CurrentTask);
-                AddOperationResult(isAdded);
-            }
-
-            else
-            {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Task should have a subject.", Icon.InvalidTask));
+                AddTaskToDatabaseAndShowResult(_taskRepository.Add(CurrentTask));
             }
         }
-        private void AddOperationResult(bool isAdded)
+        private bool TaskIsValid()
         {
-            if (isAdded)
+            if (TaskSubjecIsValid() == false)
+            {
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Task should have a subject.", Icon.InvalidTask));
+                return false;
+            }
+
+            else if (TaskDeadlineDateIsValid() == false)
+            {
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", "The selected date is invalid. Cannot create a new Task.", Icon.InvalidTask));
+                return false;
+            }
+
+            return true;
+        }
+        private bool TaskSubjecIsValid()
+        {
+            return !string.IsNullOrWhiteSpace(CurrentTask.Subject);
+        }
+        private bool TaskDeadlineDateIsValid()
+        {
+            return CurrentTask.Deadline >= DateTime.Now.Date || CurrentTask.Deadline is null;
+        }
+        private void AddTaskToDatabaseAndShowResult(bool isValid)
+        {
+            if (isValid)
             {
                 _refreshTaskCollection();
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Add Operation", "Task Created Successfully!", Icon.ValidTask));
@@ -67,7 +85,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             else
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An Error occured, cannot create the Subtask.", Icon.InvalidTask));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An Error occured, cannot create the Task.", Icon.InvalidTask));
             }
         }
 
