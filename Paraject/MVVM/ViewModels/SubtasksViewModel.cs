@@ -1,4 +1,5 @@
 ﻿using Paraject.Core.Commands;
+using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using System;
@@ -8,27 +9,29 @@ namespace Paraject.MVVM.ViewModels
 {
     public class SubtasksViewModel : BaseViewModel
     {
+        private readonly TaskRepository _taskRepository;
         private readonly Action _refreshTaskCollection;
         private readonly TasksViewModel _tasksViewModel;
 
-        public SubtasksViewModel(Action refreshTaskCollection, TasksViewModel taskDetailsViewModel, Task currentTask)
+        public SubtasksViewModel(Action refreshTaskCollection, TasksViewModel tasksViewModel, Task currentTask)
         {
+            _taskRepository = new TaskRepository();
             _refreshTaskCollection = refreshTaskCollection;
-            _tasksViewModel = taskDetailsViewModel;
+            _tasksViewModel = tasksViewModel;
             CurrentTask = currentTask;
 
             AllSubtasksVM = new AllSubtasksViewModel("SubtasksTodo", true, currentTask);
-            TaskDetailsVM = new TaskDetailsViewModel(refreshTaskCollection, taskDetailsViewModel, currentTask);
+            TaskDetailsVM = new TaskDetailsViewModel(refreshTaskCollection, tasksViewModel, currentTask);
 
             CurrentChildView = AllSubtasksVM;
 
             NavigateBackToTasksViewCommand = new DelegateCommand(NavigateBackToTasksView);
             SubtasksFilterCommand = new ParameterizedDelegateCommand(DisplayFilteredSubtasks);
-            TaskDetailsCommand = new ParameterizedDelegateCommand(o => { CurrentChildView = TaskDetailsVM; });
+            TaskDetailsCommand = new DelegateCommand(DisplayTaskDetails);
         }
 
         #region Properties
-        public Task CurrentTask { get; set; }
+        public Task CurrentTask { get; set; } // I used a Property here instead of an int field for Id because I will bind CurrentTask.Category to the UI
         public object CurrentChildView { get; set; }
 
         //Child Views
@@ -52,6 +55,12 @@ namespace Paraject.MVVM.ViewModels
         {
             AllSubtasksVM = new AllSubtasksViewModel(filterType.ToString(), !CompletedSubtasksButtonIsChecked, CurrentTask);
             CurrentChildView = AllSubtasksVM;
+        }
+        private void DisplayTaskDetails()
+        {
+            Task currentTask = _taskRepository.Get(CurrentTask.Id); //I added this here so I can "refresh" the subtask count everytime I Update/Delete a subtask
+            TaskDetailsVM = new TaskDetailsViewModel(_refreshTaskCollection, _tasksViewModel, currentTask);
+            CurrentChildView = TaskDetailsVM;
         }
         #endregion
     }
