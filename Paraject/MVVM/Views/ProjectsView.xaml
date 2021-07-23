@@ -91,7 +91,8 @@
                       SelectedValue="{Binding CurrentProjectOption}"
                       Text="{Binding CurrentProjectOption}"
                       Visibility="{Binding ProjectOptionComboBoxIsVisible,
-                                           Converter={StaticResource BooleanToVisibilityConverter}}">
+                                           Converter={StaticResource BooleanToVisibilityConverter}}"
+                      SelectedIndex="0">
                 <!--Enum ItemSource-->
                 <ComboBox.ItemsSource>
                     <CompositeCollection>

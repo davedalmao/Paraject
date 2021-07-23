@@ -7,6 +7,7 @@ namespace Paraject.Core.Commands
     {
         private readonly Action RunCommand;
 
+
         public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
