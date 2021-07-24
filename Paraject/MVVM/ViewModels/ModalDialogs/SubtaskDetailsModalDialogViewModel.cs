@@ -48,6 +48,12 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         #region Methods
         private void Update()
         {
+            if (CurrentTask.Status == "Completed" && SelectedSubtask.Status != "Completed")
+            {
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", $"Unable to change this Subtask's status as \"{SelectedSubtask.Status}\" because the Task's Status that this subtask belongs to is now completed. \n\n Change parent Task's status to \"Open\" or \"In Progress\" to change this subtask's status.", Icon.InvalidTask));
+                return;
+            }
+
             if (!string.IsNullOrWhiteSpace(SelectedSubtask.Subject))
             {
                 SubtaskCount();
