@@ -22,7 +22,7 @@ namespace Paraject.MVVM.ViewModels
             _dialogService = new DialogService();
             _projectRepository = new ProjectRepository();
             _projectsViewModel = projectsViewModel;
-            CurrentProject = currentProject;
+            SelectedProject = currentProject;
 
             AddOrChangeLogoCommand = new DelegateCommand(LoadProjectLogo);
             UpdateProjectCommand = new DelegateCommand(Update);
@@ -30,7 +30,7 @@ namespace Paraject.MVVM.ViewModels
         }
 
         #region Properties
-        public Project CurrentProject { get; set; }
+        public Project SelectedProject { get; set; }
 
         public ICommand AddOrChangeLogoCommand { get; }
         public ICommand UpdateProjectCommand { get; }
@@ -52,7 +52,7 @@ namespace Paraject.MVVM.ViewModels
             {
                 try
                 {
-                    CurrentProject.Logo = System.Drawing.Image.FromFile(openFile.FileName);
+                    SelectedProject.Logo = System.Drawing.Image.FromFile(openFile.FileName);
                 }
                 catch (Exception ex)
                 {
@@ -63,10 +63,15 @@ namespace Paraject.MVVM.ViewModels
 
         private void Update()
         {
-            if (!string.IsNullOrWhiteSpace(CurrentProject.Name))
+            if (SelectedProject.TaskCount > 0 && SelectedProject.Status == "Completed")
             {
-                //we'll code here
-                bool isUpdated = _projectRepository.Update(CurrentProject);
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", $"Unable to change this Project's Status to \"Completed\" because there are still {SelectedProject.TaskCount} unfinished task/s remaining.", Icon.InvalidProject));
+                return;
+            }
+
+            if (!string.IsNullOrWhiteSpace(SelectedProject.Name))
+            {
+                bool isUpdated = _projectRepository.Update(SelectedProject);
                 UpdateOperationResult(isUpdated);
             }
             else
@@ -90,7 +95,7 @@ namespace Paraject.MVVM.ViewModels
         private void Delete()
         {
             DialogResults result = _dialogService.OpenDialog(new YesNoMessageBoxViewModel("Delete Operation",
-                                    $"Do you want to DELETE {CurrentProject.Name}? \n\nAll Tasks, Subtasks, and Notes that belongs to this Project will also be deleted.",
+                                    $"Do you want to DELETE {SelectedProject.Name}? \n\nAll Tasks, Subtasks, and Notes that belongs to this Project will also be deleted.",
                                     Icon.Project));
 
             if (result == DialogResults.Yes)
@@ -100,7 +105,7 @@ namespace Paraject.MVVM.ViewModels
         }
         private void DeleteProject()
         {
-            bool isDeleted = _projectRepository.Delete(CurrentProject.Id);
+            bool isDeleted = _projectRepository.Delete(SelectedProject.Id);
             if (isDeleted)
             {
                 //redirect to ProjectsView after a successful DELETE operation, and refresh the View with the appropriate records
