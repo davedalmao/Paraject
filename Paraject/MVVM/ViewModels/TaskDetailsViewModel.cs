@@ -61,7 +61,7 @@ namespace Paraject.MVVM.ViewModels
 
             else if (TaskStatusCanBeCompleted() == false)
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", $"Unable to mark this Task's Status as \"Completed\" because there are still {CurrentTask.SubtaskCount} unfinished subtask/s remaining.", Icon.InvalidTask));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", $"Unable to change this Task's Status as \"Completed\" because there are still {CurrentTask.SubtaskCount} unfinished subtask/s remaining.", Icon.InvalidTask));
                 return false;
             }
 
