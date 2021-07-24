@@ -63,33 +63,51 @@ namespace Paraject.MVVM.ViewModels
 
         private void Update()
         {
-            if (SelectedProject.TaskCount > 0 && SelectedProject.Status == "Completed")
+            if (ProjectIsValid())
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", $"Unable to change this Project's Status to \"Completed\" because there are still {SelectedProject.TaskCount} unfinished task/s remaining.", Icon.InvalidProject));
-                return;
-            }
-
-            if (!string.IsNullOrWhiteSpace(SelectedProject.Name))
-            {
-                bool isUpdated = _projectRepository.Update(SelectedProject);
-                UpdateOperationResult(isUpdated);
-            }
-            else
-            {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Project should have a name.", Icon.InvalidProject));
+                UpdateProjectAndShowResult(_projectRepository.Update(SelectedProject));
             }
         }
-        private void UpdateOperationResult(bool isUpdated)
+        private bool ProjectIsValid()
         {
-            if (isUpdated)
+            if (ProjectNameIsValid() == false)
+            {
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Project should have a name.", Icon.InvalidProject));
+                return false;
+            }
+
+            else if (ProjectStatusCanBeCompleted() == false)
+            {
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", $"Unable to change this Project's Status to \"Completed\" because there are still {SelectedProject.TaskCount} unfinished task/s remaining.", Icon.InvalidProject));
+                return false;
+            }
+
+            return true;
+        }
+        private bool ProjectNameIsValid()
+        {
+            return !string.IsNullOrWhiteSpace(SelectedProject.Name);
+        }
+        private bool ProjectStatusCanBeCompleted()
+        {
+            //A Project's status can only be changed as "Completed" if they don't have any unfinished Tasks 
+            if (SelectedProject.Status == "Completed")
+            {
+                return SelectedProject.TaskCount == 0;
+            }
+
+            return true;
+        }
+        private void UpdateProjectAndShowResult(bool isValid)
+        {
+            if (isValid)
             {
                 _projectsViewModel.RefreshProjects();
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", "Project Updated Successfully!", Icon.ValidProject));
+                return;
             }
-            else
-            {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot update the Project.", Icon.InvalidProject));
-            }
+
+            _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot update the Project.", Icon.InvalidProject));
         }
 
         private void Delete()
