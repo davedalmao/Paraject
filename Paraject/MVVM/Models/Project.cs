@@ -20,5 +20,6 @@ namespace Paraject.MVVM.Models
         public DateTime? Deadline { get; set; }
         public DateTime DateCreated { get; set; }
         public Image Logo { get; set; }
+        public int TaskCount { get; set; }
     }
 }
