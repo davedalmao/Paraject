@@ -17,12 +17,15 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         private readonly SubtaskRepository _subtaskRepository;
         private readonly Action _refreshSubtasksCollection;
         private DelegateCommand _closeCommand;
+        private readonly Task _parentTask;
 
-        public AddSubtaskModalDialogViewModel(int currentTaskId, Action refreshSubtasksCollection)
+        public AddSubtaskModalDialogViewModel(int currentTaskId, Task parentTask, Action refreshSubtasksCollection)
         {
             _dialogService = new DialogService();
             _subtaskRepository = new SubtaskRepository();
             _refreshSubtasksCollection = refreshSubtasksCollection;
+            _parentTask = parentTask;
+
 
             CurrentSubtask = new Subtask()
             {
@@ -62,6 +65,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 return false;
             }
 
+            _parentTask.SubtaskCount += 1;
             return true;
         }
         private bool SubtaskSubjectIsValid()
