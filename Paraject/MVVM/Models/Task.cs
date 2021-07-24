@@ -10,6 +10,7 @@ namespace Paraject.MVVM.Models
     public class Task : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
+
         public int Id { get; set; }
         public int Project_Id_Fk { get; set; }
         public string Subject { get; set; }
