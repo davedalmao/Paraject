@@ -65,6 +65,7 @@ namespace Paraject.MVVM.ViewModels
         {
             if (!string.IsNullOrWhiteSpace(CurrentProject.Name))
             {
+                //we'll code here
                 bool isUpdated = _projectRepository.Update(CurrentProject);
                 UpdateOperationResult(isUpdated);
             }

@@ -91,7 +91,7 @@ namespace Paraject.Core.Repositories
                         int taskPriority = sqlDataReader.GetOrdinal("task_priority");
                         int taskDeadline = sqlDataReader.GetOrdinal("task_deadline");
                         int dateCreated = sqlDataReader.GetOrdinal("date_created");
-                        int subtaskCount = sqlDataReader.GetOrdinal("subtask_count");
+                        int subtaskCount = sqlDataReader.GetOrdinal("subtask_count"); //subtask_count is not a column in Subtask table, this is just an alias found in Task.spGetTask
 
                         //Reads a single Task
                         //Remember, we're already on the first record, so use do/while here.
@@ -109,7 +109,7 @@ namespace Paraject.Core.Repositories
                                 Priority = sqlDataReader.GetString(taskPriority),
                                 Deadline = sqlDataReader.IsDBNull(taskDeadline) ? null : sqlDataReader.GetDateTime(taskDeadline),
                                 DateCreated = sqlDataReader.GetDateTime(dateCreated),
-                                SubtaskCount = sqlDataReader.IsDBNull(subtaskCount) ? 0 : sqlDataReader.GetInt32(subtaskCount) //subtask_count is not a column in Subtask table, this is just an alias found in Task.spGetTask
+                                SubtaskCount = sqlDataReader.IsDBNull(subtaskCount) ? 0 : sqlDataReader.GetInt32(subtaskCount)
                             };
                         }
                         while (sqlDataReader.Read());
