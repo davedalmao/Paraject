@@ -73,7 +73,7 @@ namespace Paraject.MVVM.ViewModels
         }
         private bool TaskStatusCanBeCompleted()
         {
-            //A Task's status can only be marked "Completed" if they don't have any unfinished Subtasks
+            //A Task's status can only be changed as "Completed" if they don't have any unfinished Subtasks
             if (CurrentTask.Status == "Completed")
             {
                 return CurrentTask.SubtaskCount == 0;
