@@ -16,24 +16,29 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         private readonly IDialogService _dialogService;
         private readonly SubtaskRepository _subtaskRepository;
         private readonly Action _refreshSubtasksCollection;
-        private readonly int _subtaskId;
+        private readonly int _selectedSubtaskId;
 
-        public SubtaskDetailsModalDialogViewModel(Action refreshSubtasksCollection, int subtaskId)
+        public SubtaskDetailsModalDialogViewModel(Action refreshSubtasksCollection, Task parentTask, int selectedSubtaskId)
         {
             _dialogService = new DialogService();
             _subtaskRepository = new SubtaskRepository();
             _refreshSubtasksCollection = refreshSubtasksCollection;
-            _subtaskId = subtaskId;
+            _selectedSubtaskId = selectedSubtaskId;
+            ParentTask = parentTask;
 
             UpdateSubtaskCommand = new DelegateCommand(Update);
             DeleteSubtaskCommand = new DelegateCommand(Delete);
             CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
 
-            CurrentSubtask = _subtaskRepository.Get(subtaskId);
+            SelectedSubtask = _subtaskRepository.Get(selectedSubtaskId);
+            PreviousSelecedSubtaskStatus = SelectedSubtask.Status;
         }
 
         #region Properties
-        public Subtask CurrentSubtask { get; set; }
+        public Task ParentTask { get; set; }
+        public Subtask SelectedSubtask { get; set; }
+
+        public string PreviousSelecedSubtaskStatus { get; set; }
 
         public ICommand UpdateSubtaskCommand { get; }
         public ICommand DeleteSubtaskCommand { get; }
@@ -43,29 +48,82 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         #region Methods
         private void Update()
         {
-            if (!string.IsNullOrWhiteSpace(CurrentSubtask.Subject))
+            if (SubtaskIsValid())
             {
-                bool isUpdated = _subtaskRepository.Update(CurrentSubtask);
-                UpdateOperationResult(isUpdated);
-            }
-
-            else
-            {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Subtask should have a subject.", Icon.InvalidSubtask));
+                UpdateSubtaskAndShowResult(_subtaskRepository.Update(SelectedSubtask));
             }
         }
-        private void UpdateOperationResult(bool isUpdated)
+        private bool SubtaskIsValid()
+        {
+            if (SubtaskSubjectIsValid() == false)
+            {
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Subtask should have a subject.", Icon.InvalidSubtask));
+                return false;
+            }
+
+            else if (SubtaskStatusCanBeChanged() == false)
+            {
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", $"Unable to change this Subtask's status as \"{SelectedSubtask.Status.Replace("_", " ")}\" because the Task's Status that this subtask belongs to is now completed. \n\n Change parent Task's status to \"Open\" or \"In Progress\" to change this subtask's status.", Icon.InvalidTask));
+                return false;
+            }
+
+            UpdateSubtaskCount();
+            return true;
+        }
+        private bool SubtaskSubjectIsValid()
+        {
+            return !string.IsNullOrWhiteSpace(SelectedSubtask.Subject);
+        }
+        private bool SubtaskStatusCanBeChanged()
+        {
+            //if the Parent Task's Status is completed, then we can only change a subtask's status if it is set to "Completed"
+            if (ParentTask.Status == "Completed")
+            {
+                return SelectedSubtask.Status == "Completed";
+            }
+
+            //A Subtask's status can only be changed if the parent Task's status is not Completed (either Open or In Progress)
+            return true;
+        }
+        private void UpdateSubtaskCount()
+        {
+            //if the Previous SelecedSubtask Status is "Completed" and we change the subtask's status to Open or In Progress, +! to the parent's subtask count (add 1 more "Incomplete" subtask)
+            if (PreviousSelecedSubtaskStatus == "Completed")
+            {
+                IncreaseSubtaskCountIfSubtaskIsUnfinished();
+            }
+
+            //if the Previous SelecedSubtask Status is "Open" or "In Progress", and we change the subtask's status to Completed, -1 to the parent's subtask count (minus 1  "Incomplete" subtask)
+            else
+            {
+                DecreaseSubtaskCountIfSubtaskIsComplete();
+            }
+        }
+        private void IncreaseSubtaskCountIfSubtaskIsUnfinished()
+        {
+            if (SelectedSubtask.Status != "Completed")
+            {
+                ParentTask.SubtaskCount += 1;
+            }
+        }
+        private void DecreaseSubtaskCountIfSubtaskIsComplete()
+        {
+            if (SelectedSubtask.Status == "Completed")
+            {
+                ParentTask.SubtaskCount -= 1;
+            }
+        }
+        private void UpdateSubtaskAndShowResult(bool isUpdated)
         {
             if (isUpdated)
             {
                 _refreshSubtasksCollection();
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", "Subtask Updated Successfully!", Icon.ValidSubtask));
                 CloseModalDialog();
+                return;
             }
-            else
-            {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot update the Subtask.", Icon.InvalidSubtask));
-            }
+
+            _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot update the Subtask.", Icon.InvalidSubtask));
         }
 
         private void Delete()
@@ -79,7 +137,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         }
         private void DeleteSubtask()
         {
-            bool isDeleted = _subtaskRepository.Delete(_subtaskId);
+            bool isDeleted = _subtaskRepository.Delete(_selectedSubtaskId);
             if (isDeleted)
             {
                 _refreshSubtasksCollection();

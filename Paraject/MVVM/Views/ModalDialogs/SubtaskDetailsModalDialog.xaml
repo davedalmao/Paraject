@@ -96,7 +96,7 @@
                              Height="42"
                              FontSize="15"
                              Style="{StaticResource TextBoxTheme}"
-                             Text="{Binding CurrentSubtask.Subject}" />
+                             Text="{Binding SelectedSubtask.Subject}" />
 
                     <!--Subtask Status TextBlock-->
                     <TextBlock Text="Status"
@@ -110,7 +110,7 @@
                               Padding="20,0"
                               Style="{StaticResource ComboBoxTheme}"
                               Background="{StaticResource InputField}"
-                              Text="{Binding CurrentSubtask.Status}">
+                              Text="{Binding SelectedSubtask.Status}">
                         <ComboBox.ItemsSource>
                             <CompositeCollection>
                                 <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Statuses}}}" />
@@ -132,7 +132,7 @@
                               Style="{StaticResource ComboBoxTheme}"
                               Background="{StaticResource InputField}"
                               ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Priorities}}}"
-                              Text="{Binding CurrentSubtask.Priority}" />
+                              Text="{Binding SelectedSubtask.Priority}" />
 
                     <!--Task Deadline TextBlock-->
                     <TextBlock Text="Deadline"
@@ -142,7 +142,7 @@
                     <!--Deadline DateTimePicker-->
                     <DatePicker Style="{StaticResource DatePickerTheme}"
                                 FontSize="15"
-                                SelectedDate="{Binding CurrentSubtask.Deadline}" />
+                                SelectedDate="{Binding SelectedSubtask.Deadline}" />
                 </StackPanel>
 
                 <StackPanel Grid.Column="1">
@@ -160,7 +160,7 @@
                              VerticalScrollBarVisibility="Auto"
                              VerticalContentAlignment="Top"
                              Padding="20"
-                             Text="{Binding CurrentSubtask.Description}" />
+                             Text="{Binding SelectedSubtask.Description}" />
                 </StackPanel>
             </Grid>
 
@@ -179,7 +179,7 @@
                                FontSize="15"
                                Foreground="{StaticResource Darkest}" />
 
-                    <TextBlock Text="{Binding CurrentSubtask.DateCreated}"
+                    <TextBlock Text="{Binding SelectedSubtask.DateCreated}"
                                FontSize="15"
                                Foreground="{StaticResource Darkest}"
                                TextWrapping="Wrap"

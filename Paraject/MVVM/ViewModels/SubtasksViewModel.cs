@@ -11,14 +11,14 @@ namespace Paraject.MVVM.ViewModels
         private readonly Action _refreshTaskCollection;
         private readonly TasksViewModel _tasksViewModel;
 
-        public SubtasksViewModel(Action refreshTaskCollection, TasksViewModel taskDetailsViewModel, Task currentTask)
+        public SubtasksViewModel(Action refreshTaskCollection, TasksViewModel tasksViewModel, Task currentTask)
         {
             _refreshTaskCollection = refreshTaskCollection;
-            _tasksViewModel = taskDetailsViewModel;
+            _tasksViewModel = tasksViewModel;
             CurrentTask = currentTask;
 
             AllSubtasksVM = new AllSubtasksViewModel("SubtasksTodo", true, currentTask);
-            TaskDetailsVM = new TaskDetailsViewModel(refreshTaskCollection, taskDetailsViewModel, currentTask);
+            TaskDetailsVM = new TaskDetailsViewModel(refreshTaskCollection, tasksViewModel, currentTask);
 
             CurrentChildView = AllSubtasksVM;
 
@@ -28,7 +28,7 @@ namespace Paraject.MVVM.ViewModels
         }
 
         #region Properties
-        public Task CurrentTask { get; set; }
+        public Task CurrentTask { get; set; } // I used a Property here instead of an int field for Id because I will bind CurrentTask.Category to the UI
         public object CurrentChildView { get; set; }
 
         //Child Views
