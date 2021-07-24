@@ -40,7 +40,7 @@
                          Height="42"
                          FontSize="15"
                          Style="{StaticResource TextBoxTheme}"
-                         Text="{Binding CurrentProject.Name}" />
+                         Text="{Binding SelectedProject.Name}" />
 
                 <!--ProjectOption TextBlock-->
                 <TextBlock Text="Project Option"
@@ -55,7 +55,7 @@
                           Margin="0,0,0,20"
                           Style="{StaticResource ComboBoxTheme}"
                           Background="{StaticResource InputField}"
-                          Text="{Binding CurrentProject.Option}"
+                          Text="{Binding SelectedProject.Option}"
                           ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:ProjectOptions}}}" />
 
                 <!--ProjectDescription TextBlock-->
@@ -74,7 +74,7 @@
                          Style="{StaticResource TextBoxTheme}"
                          VerticalScrollBarVisibility="Auto"
                          VerticalContentAlignment="Top"
-                         Text="{Binding CurrentProject.Description}" />
+                         Text="{Binding SelectedProject.Description}" />
             </StackPanel>
 
             <!--Right Input Fields-->
@@ -91,7 +91,7 @@
                            SnapsToDevicePixels="True">
                         <Image.Source>
                             <!--Binded Image (Logo) Source-->
-                            <Binding Path="CurrentProject.Logo"
+                            <Binding Path="SelectedProject.Logo"
                                      Converter="{StaticResource ImageToImageSourceConverter}">
 
                                 <!--Default Image (Logo) Image-->
@@ -126,7 +126,7 @@
                           Padding="20,0"
                           Style="{StaticResource ComboBoxTheme}"
                           Background="{StaticResource InputField}"
-                          Text="{Binding CurrentProject.Status}">
+                          Text="{Binding SelectedProject.Status}">
                     <ComboBox.ItemsSource>
                         <CompositeCollection>
                             <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Statuses}}}" />
@@ -143,7 +143,7 @@
                 <!--Deadline DateTimePicker-->
                 <DatePicker Style="{StaticResource DatePickerTheme}"
                             FontSize="15"
-                            SelectedDate="{Binding CurrentProject.Deadline}" />
+                            SelectedDate="{Binding SelectedProject.Deadline}" />
             </StackPanel>
         </Grid>
 
@@ -157,19 +157,25 @@
             </Grid.ColumnDefinitions>
             <!--Date Created-->
             <StackPanel Orientation="Horizontal"
-                        Grid.Column="0"
-                        >
-                <TextBlock Text="Date Created: "
+                        Grid.Column="0">
+                <!--<TextBlock Text="Date Created: "
+                           FontSize="15"
+                           Foreground="{StaticResource Darkest}" />-->
+
+                <TextBlock Text="{Binding SelectedProject.TaskCount}"
                            FontSize="15"
                            Foreground="{StaticResource Darkest}" />
 
-                <TextBlock Text="{Binding CurrentProject.DateCreated,
+                <TextBlock Text="         "
+                           FontSize="15"
+                           Foreground="{StaticResource Darkest}" />
+
+                <TextBlock Text="{Binding SelectedProject.DateCreated,
                     StringFormat={}{0:MM / dd / yyyy  hh : mm tt}}"
                            FontSize="15"
                            Foreground="{StaticResource Darkest}"
                            TextWrapping="Wrap"
-                           Width="100" 
-                         />
+                           Width="100" />
             </StackPanel>
 
             <!--Update Project Button-->
