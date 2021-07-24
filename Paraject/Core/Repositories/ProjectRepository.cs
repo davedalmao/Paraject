@@ -88,6 +88,7 @@ namespace Paraject.Core.Repositories
                     int projectDeadline = sqlDataReader.GetOrdinal("project_deadline");
                     int dateCreated = sqlDataReader.GetOrdinal("date_created");
                     int projectLogo = sqlDataReader.GetOrdinal("project_logo");
+                    int taskCount = sqlDataReader.GetOrdinal("task_count");
 
                     //Reads a single Project
                     //Remember, we're already on the first record, so use do/while here.
@@ -103,7 +104,8 @@ namespace Paraject.Core.Repositories
                             Status = sqlDataReader.GetString(projectStatus),
                             Deadline = sqlDataReader.IsDBNull(projectDeadline) ? null : sqlDataReader.GetDateTime(projectDeadline),
                             DateCreated = sqlDataReader.GetDateTime(dateCreated),
-                            Logo = sqlDataReader.IsDBNull(projectLogo) ? null : ImageConverter.BytesToImage((byte[])sqlDataReader.GetValue(projectLogo))
+                            Logo = sqlDataReader.IsDBNull(projectLogo) ? null : ImageConverter.BytesToImage((byte[])sqlDataReader.GetValue(projectLogo)),
+                            TaskCount = sqlDataReader.IsDBNull(taskCount) ? 0 : sqlDataReader.GetInt32(taskCount) //task_count is not a column in Project table, this is just an alias found in Project.spGetProject
                         };
                     }
                     while (sqlDataReader.Read());
