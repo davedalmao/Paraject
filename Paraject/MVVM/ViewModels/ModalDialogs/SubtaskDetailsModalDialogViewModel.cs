@@ -18,22 +18,27 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         private readonly Action _refreshSubtasksCollection;
         private readonly int _subtaskId;
 
-        public SubtaskDetailsModalDialogViewModel(Action refreshSubtasksCollection, int subtaskId)
+        public SubtaskDetailsModalDialogViewModel(Action refreshSubtasksCollection, Task currentTask, int selectedSubtaskId)
         {
             _dialogService = new DialogService();
             _subtaskRepository = new SubtaskRepository();
             _refreshSubtasksCollection = refreshSubtasksCollection;
-            _subtaskId = subtaskId;
+            _subtaskId = selectedSubtaskId;
+            CurrentTask = currentTask;
 
             UpdateSubtaskCommand = new DelegateCommand(Update);
             DeleteSubtaskCommand = new DelegateCommand(Delete);
             CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
 
-            CurrentSubtask = _subtaskRepository.Get(subtaskId);
+            SelectedSubtask = _subtaskRepository.Get(selectedSubtaskId);
+            PreviousSelecedSubtaskStatus = SelectedSubtask.Status;
         }
 
         #region Properties
-        public Subtask CurrentSubtask { get; set; }
+        public Task CurrentTask { get; set; }
+        public Subtask SelectedSubtask { get; set; }
+
+        public string PreviousSelecedSubtaskStatus { get; set; }
 
         public ICommand UpdateSubtaskCommand { get; }
         public ICommand DeleteSubtaskCommand { get; }
@@ -43,9 +48,10 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         #region Methods
         private void Update()
         {
-            if (!string.IsNullOrWhiteSpace(CurrentSubtask.Subject))
+            if (!string.IsNullOrWhiteSpace(SelectedSubtask.Subject))
             {
-                bool isUpdated = _subtaskRepository.Update(CurrentSubtask);
+                SubtaskCount();
+                bool isUpdated = _subtaskRepository.Update(SelectedSubtask);
                 UpdateOperationResult(isUpdated);
             }
 
@@ -67,7 +73,26 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot update the Subtask.", Icon.InvalidSubtask));
             }
         }
+        private void SubtaskCount()
+        {
+            if (PreviousSelecedSubtaskStatus == "Completed")
+            {
+                if (SelectedSubtask.Status != "Completed")
+                {
+                    CurrentTask.SubtaskCount += 1;
+                    return;
+                }
+            }
 
+            else
+            {
+                if (SelectedSubtask.Status == "Completed")
+                {
+                    CurrentTask.SubtaskCount -= 1;
+                    return;
+                }
+            }
+        }
         private void Delete()
         {
             DialogResults result = _dialogService.OpenDialog(new YesNoMessageBoxViewModel("Delete Operation", "Do you want to DELETE this Subtask?", Icon.Subtask));

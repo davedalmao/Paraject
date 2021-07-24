@@ -1,5 +1,4 @@
 ﻿using Paraject.Core.Commands;
-using Paraject.Core.Repositories;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.Windows;
 using System;
@@ -9,13 +8,11 @@ namespace Paraject.MVVM.ViewModels
 {
     public class SubtasksViewModel : BaseViewModel
     {
-        private readonly TaskRepository _taskRepository;
         private readonly Action _refreshTaskCollection;
         private readonly TasksViewModel _tasksViewModel;
 
         public SubtasksViewModel(Action refreshTaskCollection, TasksViewModel tasksViewModel, Task currentTask)
         {
-            _taskRepository = new TaskRepository();
             _refreshTaskCollection = refreshTaskCollection;
             _tasksViewModel = tasksViewModel;
             CurrentTask = currentTask;
@@ -27,7 +24,7 @@ namespace Paraject.MVVM.ViewModels
 
             NavigateBackToTasksViewCommand = new DelegateCommand(NavigateBackToTasksView);
             SubtasksFilterCommand = new ParameterizedDelegateCommand(DisplayFilteredSubtasks);
-            TaskDetailsCommand = new DelegateCommand(DisplayTaskDetails);
+            TaskDetailsCommand = new ParameterizedDelegateCommand(o => { CurrentChildView = TaskDetailsVM; });
         }
 
         #region Properties
@@ -55,12 +52,6 @@ namespace Paraject.MVVM.ViewModels
         {
             AllSubtasksVM = new AllSubtasksViewModel(filterType.ToString(), !CompletedSubtasksButtonIsChecked, CurrentTask);
             CurrentChildView = AllSubtasksVM;
-        }
-        private void DisplayTaskDetails()
-        {
-            Task currentTask = _taskRepository.Get(CurrentTask.Id); //I added this here so I can "refresh" the subtask count everytime I Update/Delete a subtask
-            TaskDetailsVM = new TaskDetailsViewModel(_refreshTaskCollection, _tasksViewModel, currentTask);
-            CurrentChildView = TaskDetailsVM;
         }
         #endregion
     }

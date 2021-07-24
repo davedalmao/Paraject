@@ -158,7 +158,14 @@
             <!--Date Created-->
             <StackPanel Orientation="Horizontal"
                         Grid.Column="0">
-                <TextBlock Text="Date Created: "
+                <!--<TextBlock Text="Date Created: "
+                           FontSize="15"
+                           Foreground="{StaticResource Darkest}" />-->
+                <TextBlock Text="{Binding CurrentTask.SubtaskCount}"
+                           FontSize="15"
+                           Foreground="{StaticResource Darkest}" />
+
+                <TextBlock Text="   "
                            FontSize="15"
                            Foreground="{StaticResource Darkest}" />
 
