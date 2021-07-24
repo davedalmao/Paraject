@@ -158,15 +158,7 @@
             <!--Date Created-->
             <StackPanel Orientation="Horizontal"
                         Grid.Column="0">
-                <!--<TextBlock Text="Date Created: "
-                           FontSize="15"
-                           Foreground="{StaticResource Darkest}" />-->
-
-                <TextBlock Text="{Binding SelectedProject.TaskCount}"
-                           FontSize="15"
-                           Foreground="{StaticResource Darkest}" />
-
-                <TextBlock Text="         "
+                <TextBlock Text="Date Created: "
                            FontSize="15"
                            Foreground="{StaticResource Darkest}" />
 

@@ -13,12 +13,13 @@ namespace Paraject.MVVM.ViewModels
         private readonly TasksViewModel _tasksViewModel;
         private readonly int _projectId;
 
-        public CompletedTasksViewModel(TasksViewModel tasksViewModel, int projectId)
+        public CompletedTasksViewModel(TasksViewModel tasksViewModel, int projectId, Project parentProject)
         {
             _taskRepository = new TaskRepository();
 
             _tasksViewModel = tasksViewModel;
             _projectId = projectId;
+            ParentProject = parentProject;
 
             FilterTasksCommand = new DelegateCommand(DisplayAllFilteredTasks);
             NavigateToSubtasksViewCommand = new ParameterizedDelegateCommand(NavigateToSubtasksView);
@@ -27,6 +28,8 @@ namespace Paraject.MVVM.ViewModels
         }
 
         #region Properties
+        public Project ParentProject { get; set; }
+
         public ObservableCollection<Task> CompletedTasks { get; set; }
         public ObservableCollection<GridTileData> CardTasksGrid { get; set; }
 
@@ -85,7 +88,7 @@ namespace Paraject.MVVM.ViewModels
         public void NavigateToSubtasksView(object taskId) //the argument passed to this parameter is in CompletedTasksView (a "CommandParameter" from a Task card)
         {
             Task selectedTask = _taskRepository.Get((int)taskId);
-            SubtasksViewModel subtasksViewModel = new SubtasksViewModel(DisplayAllFilteredTasks, _tasksViewModel, selectedTask);
+            SubtasksViewModel subtasksViewModel = new SubtasksViewModel(DisplayAllFilteredTasks, _tasksViewModel, selectedTask, ParentProject);
             MainWindowViewModel.CurrentView = subtasksViewModel;
         }
         #endregion

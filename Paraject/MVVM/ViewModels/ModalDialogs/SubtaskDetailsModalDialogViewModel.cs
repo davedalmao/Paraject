@@ -31,14 +31,14 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
 
             SelectedSubtask = _subtaskRepository.Get(selectedSubtaskId);
-            PreviousSelecedSubtaskStatus = SelectedSubtask.Status;
+            PreviousSelectedSubtaskStatus = SelectedSubtask.Status;
         }
 
         #region Properties
         public Task ParentTask { get; set; }
         public Subtask SelectedSubtask { get; set; }
 
-        public string PreviousSelecedSubtaskStatus { get; set; }
+        public string PreviousSelectedSubtaskStatus { get; set; }
 
         public ICommand UpdateSubtaskCommand { get; }
         public ICommand DeleteSubtaskCommand { get; }
@@ -61,7 +61,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 return false;
             }
 
-            else if (SubtaskStatusCanBeChanged() == false)
+            else if (SubtaskStatusCanBeCompleted() == false)
             {
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", $"Unable to change this Subtask's status as \"{SelectedSubtask.Status.Replace("_", " ")}\" because the Task's Status that this subtask belongs to is now completed. \n\n Change parent Task's status to \"Open\" or \"In Progress\" to change this subtask's status.", Icon.InvalidTask));
                 return false;
@@ -74,7 +74,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         {
             return !string.IsNullOrWhiteSpace(SelectedSubtask.Subject);
         }
-        private bool SubtaskStatusCanBeChanged()
+        private bool SubtaskStatusCanBeCompleted()
         {
             //if the Parent Task's Status is completed, then we can only change a subtask's status if it is set to "Completed"
             if (ParentTask.Status == "Completed")
@@ -87,16 +87,16 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         }
         private void UpdateSubtaskCount()
         {
-            //if the Previous SelecedSubtask Status is "Completed" and we change the subtask's status to Open or In Progress, +! to the parent's subtask count (add 1 more "Incomplete" subtask)
-            if (PreviousSelecedSubtaskStatus == "Completed")
+            //if the Previous SelecedSubtask's Status is "Completed" and we change the subtask's status to Open or In Progress, +! to the parent's subtask count (add 1 more "Incomplete" subtask)
+            if (PreviousSelectedSubtaskStatus == "Completed")
             {
                 IncreaseSubtaskCountIfSubtaskIsUnfinished();
             }
 
-            //if the Previous SelecedSubtask Status is "Open" or "In Progress", and we change the subtask's status to Completed, -1 to the parent's subtask count (minus 1  "Incomplete" subtask)
+            //if the Previous SelecedSubtask's Status is "Open" or "In Progress", and we change the subtask's status to Completed, -1 to the parent's subtask count (minus 1  "Incomplete" subtask)
             else
             {
-                DecreaseSubtaskCountIfSubtaskIsComplete();
+                DecreaseSubtaskCountIfSubtaskIsCompleted();
             }
         }
         private void IncreaseSubtaskCountIfSubtaskIsUnfinished()
@@ -106,7 +106,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 ParentTask.SubtaskCount += 1;
             }
         }
-        private void DecreaseSubtaskCountIfSubtaskIsComplete()
+        private void DecreaseSubtaskCountIfSubtaskIsCompleted()
         {
             if (SelectedSubtask.Status == "Completed")
             {

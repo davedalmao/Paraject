@@ -17,27 +17,26 @@ namespace Paraject.MVVM.ViewModels
         private readonly Action _refreshTaskCollection;
         private readonly TasksViewModel _tasksViewModel;
 
-        /// <summary>
-        /// This displays the details of the selectedTask
-        /// </summary>
-        /// <param name="refreshTaskCollection">refreshes the Collection in the ChildView (TasksTodoView/CompletedTasksView) after a certain action is invoked</param>
-        /// <param name="tasksViewModel">this is passed to save the UI state of TasksView when navigating back to it</param>
-        /// <param name="selectedTask">the selected task in TasksTodoView/CompletedTasksview</param>
-        public TaskDetailsViewModel(Action refreshTaskCollection, TasksViewModel tasksViewModel, Task selectedTask)
+        public TaskDetailsViewModel(Action refreshTaskCollection, TasksViewModel tasksViewModel, Task selectedTask, Project parentProject)
         {
             _dialogService = new DialogService();
             _taskRepository = new TaskRepository();
 
             _refreshTaskCollection = refreshTaskCollection;
             _tasksViewModel = tasksViewModel;
-            CurrentTask = selectedTask;
+            ParentProject = parentProject;
+            SelectedTask = selectedTask;
+            PreviousSelectedTaskStatus = SelectedTask.Status;
 
             UpdateTaskCommand = new DelegateCommand(Update);
             DeleteTaskCommand = new DelegateCommand(Delete);
         }
 
         #region Properties
-        public Task CurrentTask { get; set; }
+        public Project ParentProject { get; set; }
+        public Task SelectedTask { get; set; }
+        public string PreviousSelectedTaskStatus { get; set; }
+
 
         public ICommand UpdateTaskCommand { get; }
         public ICommand DeleteTaskCommand { get; }
@@ -48,7 +47,7 @@ namespace Paraject.MVVM.ViewModels
         {
             if (TaskIsValid())
             {
-                UpdateTaskAndShowResult(_taskRepository.Update(CurrentTask));
+                UpdateTaskAndShowResult(_taskRepository.Update(SelectedTask));
             }
         }
         private bool TaskIsValid()
@@ -61,25 +60,54 @@ namespace Paraject.MVVM.ViewModels
 
             else if (TaskStatusCanBeCompleted() == false)
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", $"Unable to change this Task's Status to \"Completed\" because there are still {CurrentTask.SubtaskCount} unfinished subtask/s remaining.", Icon.InvalidTask));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", $"Unable to change this Task's Status to \"Completed\" because there are still {SelectedTask.SubtaskCount} unfinished subtask/s remaining.", Icon.InvalidTask));
                 return false;
             }
 
+            UpdateTaskCount();
             return true;
         }
         private bool TaskSubjectIsValid()
         {
-            return !string.IsNullOrWhiteSpace(CurrentTask.Subject);
+            return !string.IsNullOrWhiteSpace(SelectedTask.Subject);
         }
         private bool TaskStatusCanBeCompleted()
         {
             //A Task's status can only be changed as "Completed" if they don't have any unfinished Subtasks
-            if (CurrentTask.Status == "Completed")
+            if (SelectedTask.Status == "Completed")
             {
-                return CurrentTask.SubtaskCount == 0;
+                return SelectedTask.SubtaskCount == 0;
             }
 
             return true;
+        }
+        private void UpdateTaskCount()
+        {
+            //if the Previous SelectedTask's Status is "Completed" and we change the task's status to Open or In Progress, +! to the parent's task count (add 1 more "Incomplete" task)
+            if (PreviousSelectedTaskStatus == "Completed")
+            {
+                IncreaseTaskCountIfTaskIsUnfinished();
+            }
+
+            //if the Previous SelectedTask's Status is "Open" or "In Progress", and we change the task's status to Completed, -1 to the parent's task count (minus 1  "Incomplete" task)
+            else
+            {
+                DecreaseTaskCountIfTaskIsCompleted();
+            }
+        }
+        private void IncreaseTaskCountIfTaskIsUnfinished()
+        {
+            if (SelectedTask.Status != "Completed")
+            {
+                ParentProject.TaskCount += 1;
+            }
+        }
+        private void DecreaseTaskCountIfTaskIsCompleted()
+        {
+            if (SelectedTask.Status == "Completed")
+            {
+                ParentProject.TaskCount -= 1;
+            }
         }
         private void UpdateTaskAndShowResult(bool isValid)
         {
@@ -105,7 +133,7 @@ namespace Paraject.MVVM.ViewModels
         }
         private void DeleteProject()
         {
-            bool isDeleted = _taskRepository.Delete(CurrentTask.Id);
+            bool isDeleted = _taskRepository.Delete(SelectedTask.Id);
             if (isDeleted)
             {
                 //redirect to TasksView(parent View) after a successful DELETE operation, and
