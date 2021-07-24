@@ -19,7 +19,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         private DelegateCommand _closeCommand;
         private readonly Task _parentTask;
 
-        public AddSubtaskModalDialogViewModel(int currentTaskId, Task parentTask, Action refreshSubtasksCollection)
+        public AddSubtaskModalDialogViewModel(Task parentTask, Action refreshSubtasksCollection)
         {
             _dialogService = new DialogService();
             _subtaskRepository = new SubtaskRepository();
@@ -29,7 +29,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             CurrentSubtask = new Subtask()
             {
-                Task_Id_Fk = currentTaskId
+                Task_Id_Fk = parentTask.Id
             };
 
             AddSubtaskCommand = new DelegateCommand(Add);
