@@ -46,34 +46,51 @@ namespace Paraject.MVVM.ViewModels
         #region Methods
         private void Update()
         {
-            if (CurrentTask.Status == "Completed" && CurrentTask.SubtaskCount > 0)
+            if (TaskIsValid())
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", $"Unable to mark this Task's Status as \"Completed\" because there are still {CurrentTask.SubtaskCount} incomplete subtask/s remaining.", Icon.InvalidTask));
-                return;
-            }
-
-            if (!string.IsNullOrWhiteSpace(CurrentTask.Subject))
-            {
-                bool isUpdated = _taskRepository.Update(CurrentTask);
-                UpdateOperationResult(isUpdated);
-            }
-
-            else
-            {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Task should have a subject.", Icon.InvalidTask));
+                UpdateTaskAndShowResult(_taskRepository.Update(CurrentTask));
             }
         }
-        private void UpdateOperationResult(bool isUpdated)
+        private bool TaskIsValid()
         {
-            if (isUpdated)
+            if (TaskSubjectIsValid() == false)
+            {
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry", "A Task should have a subject.", Icon.InvalidTask));
+                return false;
+            }
+
+            else if (TaskStatusCanBeCompleted() == false)
+            {
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", $"Unable to mark this Task's Status as \"Completed\" because there are still {CurrentTask.SubtaskCount} unfinished subtask/s remaining.", Icon.InvalidTask));
+                return false;
+            }
+
+            return true;
+        }
+        private bool TaskSubjectIsValid()
+        {
+            return !string.IsNullOrWhiteSpace(CurrentTask.Subject);
+        }
+        private bool TaskStatusCanBeCompleted()
+        {
+            //A Task's status can only be marked "Completed" if they don't have any unfinished Subtasks
+            if (CurrentTask.Status == "Completed")
+            {
+                return CurrentTask.SubtaskCount == 0;
+            }
+
+            return true;
+        }
+        private void UpdateTaskAndShowResult(bool isValid)
+        {
+            if (isValid)
             {
                 _refreshTaskCollection();
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", "Task Updated Successfully!", Icon.ValidTask));
+                return;
             }
-            else
-            {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot update the Task.", Icon.InvalidTask));
-            }
+
+            _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured, cannot update the Task.", Icon.InvalidTask));
         }
 
         private void Delete()
