@@ -44,7 +44,7 @@
                          Height="42"
                          FontSize="15"
                          Style="{StaticResource TextBoxTheme}"
-                         Text="{Binding CurrentTask.Subject}" />
+                         Text="{Binding SelectedTask.Subject}" />
 
                 <!--Task Type TextBlock-->
                 <TextBlock Text="Type"
@@ -60,7 +60,7 @@
                           Style="{StaticResource ComboBoxTheme}"
                           Background="{StaticResource InputField}"
                           ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enum:TaskTypes}}}"
-                          Text="{Binding CurrentTask.Type}" />
+                          Text="{Binding SelectedTask.Type}" />
 
 
                 <!--Task Description TextBlock-->
@@ -77,7 +77,7 @@
                          TextBlock.LineHeight="23"
                          TextBlock.LineStackingStrategy="BlockLineHeight"
                          Style="{StaticResource TextBoxTheme}"
-                         Text="{Binding CurrentTask.Description}"
+                         Text="{Binding SelectedTask.Description}"
                          VerticalScrollBarVisibility="Auto"
                          VerticalContentAlignment="Top" />
             </StackPanel>
@@ -95,7 +95,7 @@
                           FontSize="15"
                           Padding="20,0"
                           Style="{StaticResource ComboBoxTheme}"
-                          Text="{Binding CurrentTask.Status}"
+                          Text="{Binding SelectedTask.Status}"
                           Background="{StaticResource InputField}">
                     <ComboBox.ItemsSource>
                         <CompositeCollection>
@@ -118,7 +118,7 @@
                           Style="{StaticResource ComboBoxTheme}"
                           Background="{StaticResource InputField}"
                           ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enum:Categories}}}"
-                          Text="{Binding CurrentTask.Category}" />
+                          Text="{Binding SelectedTask.Category}" />
 
                 <!--Task Priority TextBlock-->
                 <TextBlock Text="Priority"
@@ -133,7 +133,7 @@
                           Style="{StaticResource ComboBoxTheme}"
                           Background="{StaticResource InputField}"
                           ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enum:Priorities}}}"
-                          Text="{Binding CurrentTask.Priority}" />
+                          Text="{Binding SelectedTask.Priority}" />
 
                 <!--Task Deadline TextBlock-->
                 <TextBlock Text="Deadline"
@@ -143,7 +143,7 @@
                 <!--Deadline DateTimePicker-->
                 <DatePicker Style="{StaticResource DatePickerTheme}"
                             FontSize="15"
-                            SelectedDate="{Binding CurrentTask.Deadline}" />
+                            SelectedDate="{Binding SelectedTask.Deadline}" />
             </StackPanel>
         </Grid>
 
@@ -162,7 +162,7 @@
                            FontSize="15"
                            Foreground="{StaticResource Darkest}" />
 
-                <TextBlock Text="{Binding CurrentTask.DateCreated}"
+                <TextBlock Text="{Binding SelectedTask.DateCreated}"
                            FontSize="15"
                            Foreground="{StaticResource Darkest}"
                            TextWrapping="Wrap"

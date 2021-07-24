@@ -17,13 +17,14 @@ namespace Paraject.MVVM.ViewModels
         private readonly string _currentTaskType;
         private readonly TasksViewModel _tasksViewModel;
 
-        public TasksTodoViewModel(TasksViewModel tasksViewModel, int projectId, string taskType)
+        public TasksTodoViewModel(TasksViewModel tasksViewModel, int projectId, Project parentProject, string taskType)
         {
             _taskRepository = new TaskRepository();
 
             _projectId = projectId;
             _currentTaskType = taskType;
             _tasksViewModel = tasksViewModel;
+            ParentProject = parentProject;
 
             ShowAddTaskModalDialogCommand = new DelegateCommand(ShowAddTaskModalDialog);
             FilterTasksCommand = new DelegateCommand(DisplayAllFilteredTasks);
@@ -33,6 +34,7 @@ namespace Paraject.MVVM.ViewModels
         }
 
         #region Properties
+        public Project ParentProject { get; set; }
         public ObservableCollection<Task> Tasks { get; set; }
         public ObservableCollection<GridTileData> CardTasksGrid { get; set; }
 
@@ -104,7 +106,7 @@ namespace Paraject.MVVM.ViewModels
         public void NavigateToSubtasksView(object taskId) //the argument passed to this parameter is in ProjectsView (a "CommandParameter" from a Project card)
         {
             Task selectedTask = _taskRepository.Get((int)taskId);
-            SubtasksViewModel subtasksViewModel = new SubtasksViewModel(DisplayAllFilteredTasks, _tasksViewModel, selectedTask);
+            SubtasksViewModel subtasksViewModel = new SubtasksViewModel(DisplayAllFilteredTasks, _tasksViewModel, selectedTask, ParentProject);
 
             MainWindowViewModel.CurrentView = subtasksViewModel;
         }
