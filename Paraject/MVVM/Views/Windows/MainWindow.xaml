@@ -97,7 +97,7 @@
                              Width="90.43"
                              Height="23"
                              VerticalAlignment="Top"
-                             Margin="59,12,59,0">
+                             Margin="59,12,59,20">
                     <svgc1:SvgViewbox Source="/UiDesign/Images/Logo/parajectLogo.svg" />
                 </UserControl>
 
@@ -106,14 +106,40 @@
                              Grid.Row="2"
                              Margin="0,19,0,18">
                     <!--User image-->
-                    <Ellipse Width="81.94"
+
+                    <Border  Width="81.94"
                              Height="81.94"
                              Cursor="Hand"
-                             Margin="0,0,0,12.5">
-                        <Ellipse.Fill>
-                            <ImageBrush ImageSource="/UiDesign/Images/UserImage/default.png" />
-                        </Ellipse.Fill>
-                    </Ellipse>
+                             Margin="0,0,0,12.5"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Center">
+                        <Border.Clip>
+                            <RectangleGeometry RadiusX="40"
+                                               RadiusY="40"
+                                               Rect="0,0,81.94,81.94" />
+                        </Border.Clip>
+
+                        <Image Width="81.94"
+                               Height="81.94"
+                               RenderOptions.BitmapScalingMode="HighQuality"
+                               RenderOptions.EdgeMode="Aliased"
+                               SnapsToDevicePixels="True"
+                               Stretch="UniformToFill">
+                            <Image.Source>
+
+                                <!--Binded User Account Image Source-->
+                                <Binding Path="CurrentUserAccount.Image"
+                                         Converter="{StaticResource ImageToImageSourceConverter}">
+
+
+                                    <!--Default User Account Image-->
+                                    <Binding.TargetNullValue>
+                                        <ImageSource>/UiDesign/Images/UserImage/default.png</ImageSource>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
+                    </Border>
 
                     <!--Username-->
                     <TextBlock Text="{Binding CurrentUserAccount.Username}"
