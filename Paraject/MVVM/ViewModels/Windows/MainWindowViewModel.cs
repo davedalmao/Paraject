@@ -23,29 +23,23 @@ namespace Paraject.MVVM.ViewModels.Windows
         public static event EventHandler CurrentViewChanged;
         #endregion
 
-        #region Constructor
         public MainWindowViewModel(UserAccount currentUserAccount)
         {
             _dialogService = new DialogService();
             CurrentUserAccount = currentUserAccount;
 
-            DashboardVM = new DashboardViewModel();
             ProjectsVM = new ProjectsViewModel(currentUserAccount.Id);
             UserAccountVM = new UserAccountViewModel(currentUserAccount);
             ProjectIdeasVM = new ProjectIdeasViewModel(currentUserAccount.Id);
-            OptionsVM = new OptionsViewModel();
 
             CurrentView = ProjectsVM;
 
-            DashboardViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = DashboardVM; });
             ProjectsViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectsVM; });
             UserAccountView = new ParameterizedDelegateCommand(o => { CurrentView = UserAccountVM; });
             ProjectIdeasViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectIdeasVM; });
-            OptionsViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = OptionsVM; });
 
             LogoutCommand = new DelegateCommand(Logout);
         }
-        #endregion
 
         #region Properties
         public UserAccount CurrentUserAccount { get; set; }
@@ -71,17 +65,13 @@ namespace Paraject.MVVM.ViewModels.Windows
             }
         }
 
-        public DashboardViewModel DashboardVM { get; set; }
         public ProjectsViewModel ProjectsVM { get; set; }
         public UserAccountViewModel UserAccountVM { get; set; }
         public ProjectIdeasViewModel ProjectIdeasVM { get; set; }
-        public OptionsViewModel OptionsVM { get; set; }
 
-        public ICommand DashboardViewCommand { get; }
         public ICommand ProjectsViewCommand { get; }
         public ICommand UserAccountView { get; }
         public ICommand ProjectIdeasViewCommand { get; }
-        public ICommand OptionsViewCommand { get; }
         public ICommand LogoutCommand { get; }
         #endregion
 
