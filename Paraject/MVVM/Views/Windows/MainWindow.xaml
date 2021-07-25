@@ -140,37 +140,25 @@
                       HorizontalAlignment="Center"
                       Margin="0,0,0,33">
 
-                    <!--Height="40.9"-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40.9" />
                         <RowDefinition Height="40.9" />
                         <RowDefinition Height="40.9" />
-                        <RowDefinition Height="40.9" />
                         <RowDefinition Height="*" />
-                        <RowDefinition Height="40.9" />
-                        <RowDefinition Height="40.9" />
                     </Grid.RowDefinitions>
-
-                    <!--Dashboard-->
-                    <custom:MenuItem Grid.Row="0"
-                                     Content="Dashboard"
-                                     IsChecked="True"
-                                     Command="{Binding DashboardViewCommand}"
-                                     DefaultImageUriString="/UiDesign/Icons/SideBarIcons/dashboard.svg"
-                                     SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/dashboard.svg"
-                                     Style="{StaticResource HorizontalMenuButtonTheme}" />
 
 
                     <!--Projects-->
-                    <custom:MenuItem Grid.Row="1"
+                    <custom:MenuItem Grid.Row="0"
                                      Content="Projects"
+                                     IsChecked="True"
                                      Command="{Binding ProjectsViewCommand}"
                                      DefaultImageUriString="/UiDesign/Icons/SideBarIcons/projects.svg"
                                      SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/projects.svg"
                                      Style="{StaticResource HorizontalMenuButtonTheme}" />
 
                     <!--Profile-->
-                    <custom:MenuItem Grid.Row="2"
+                    <custom:MenuItem Grid.Row="1"
                                      Content="Profile"
                                      Command="{Binding UserAccountView}"
                                      DefaultImageUriString="/UiDesign/Icons/SideBarIcons/profile.svg"
@@ -178,27 +166,18 @@
                                      Style="{StaticResource HorizontalMenuButtonTheme}" />
 
                     <!--Project Ideas-->
-                    <custom:MenuItem Grid.Row="3"
+                    <custom:MenuItem Grid.Row="2"
                                      Content="Project Ideas"
                                      Command="{Binding ProjectIdeasViewCommand}"
                                      DefaultImageUriString="/UiDesign/Icons/SideBarIcons/projectIdeas.svg"
                                      SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/projectIdeas.svg"
                                      Style="{StaticResource HorizontalMenuButtonTheme}" />
 
-                    <!--block separator for the top and bottom menus-->
-                    <Border Grid.Row="4" />
-
-                    <!--Options-->
-                    <custom:MenuItem Grid.Row="5"
-                                     Content="Options"
-                                     Command="{Binding OptionsViewCommand}"
-                                     DefaultImageUriString="/UiDesign/Icons/SideBarIcons/options.svg"
-                                     SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/options.svg"
-                                     Style="{StaticResource HorizontalMenuButtonTheme}" />
-
                     <!--Logout-->
-                    <custom:MenuItem Grid.Row="6"
+                    <custom:MenuItem Grid.Row="3"
                                      Content="Logout"
+                                     VerticalAlignment="Bottom"
+                                     Margin="0"
                                      DefaultImageUriString="/UiDesign/Icons/SideBarIcons/logout.svg"
                                      SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/logout.svg"
                                      Style="{StaticResource HorizontalMenuButtonTheme}"
