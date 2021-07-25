@@ -50,25 +50,8 @@
                 <!--Sidebar color-->
                 <Border Background="{StaticResource Navbar}"
                         Grid.Column="0"
-                        Grid.Row="0"
-                        CornerRadius="20,0,0,0" />
-                <Border Background="{StaticResource Navbar}"
-                        Grid.Column="0"
-                        Grid.Row="1"
-                        Padding="0,40,0,0" />
-                <Border Background="{StaticResource Navbar}"
-                        Grid.Column="0"
-                        Grid.Row="2"
-                        Padding="0,53,0,0" />
-                <Border Background="{StaticResource Navbar}"
-                        Grid.Column="0"
-                        Grid.Row="3" />
-                <Border Background="{StaticResource Navbar}"
-                        Grid.Column="0"
-                        Grid.Row="4"
-                        CornerRadius="0,0,0,20" />
-
-
+                        Grid.RowSpan="5"
+                        CornerRadius="20,0,0,20" />
 
                 <!--min, max, close buttons-->
                 <StackPanel Orientation="Horizontal"
