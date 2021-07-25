@@ -1,4 +1,5 @@
-﻿using Paraject.Core.Enums;
+﻿using Paraject.Core.Converters;
+using Paraject.Core.Enums;
 using Paraject.Core.Repositories.Interfaces;
 using Paraject.Core.Services.DialogService;
 using Paraject.Core.Utilities;
@@ -145,7 +146,8 @@ namespace Paraject.Core.Repositories
                             Id = sqlDataReader.GetInt32(userAccountId),
                             Username = sqlDataReader.GetString(usernameFromDb),
                             Password = sqlDataReader.GetString(password),
-                            DateCreated = sqlDataReader.GetDateTime(dateCreated)
+                            DateCreated = sqlDataReader.GetDateTime(dateCreated),
+                            Image = sqlDataReader.IsDBNull(userAccountImage) ? null : ImageConverter.BytesToImage((byte[])sqlDataReader.GetValue(userAccountImage))
                         };
                     }
                     while (sqlDataReader.Read());
