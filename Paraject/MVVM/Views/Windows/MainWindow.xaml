@@ -101,18 +101,20 @@
                     <svgc1:SvgViewbox Source="/UiDesign/Images/Logo/parajectLogo.svg" />
                 </UserControl>
 
-                <!--User image and User name-->
+                <!--User Image and Username-->
                 <StackPanel  Grid.Column="0"
                              Grid.Row="2"
                              Margin="0,19,0,18">
-                    <!--User image-->
 
+                    <!--User Image-->
                     <Border  Width="81.94"
                              Height="81.94"
                              Cursor="Hand"
                              Margin="0,0,0,12.5"
                              VerticalAlignment="Center"
                              HorizontalAlignment="Center">
+
+                        <!--To Have a Circle Image-->
                         <Border.Clip>
                             <RectangleGeometry RadiusX="40"
                                                RadiusY="40"
