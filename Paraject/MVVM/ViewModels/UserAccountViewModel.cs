@@ -1,4 +1,5 @@
-﻿using Paraject.Core.Commands;
+﻿using Microsoft.Win32;
+using Paraject.Core.Commands;
 using Paraject.Core.Enums;
 using Paraject.Core.Repositories;
 using Paraject.Core.Services.DialogService;
@@ -6,6 +7,7 @@ using Paraject.Core.Utilities;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.MessageBoxes;
 using Paraject.MVVM.Views.Windows;
+using System;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
@@ -21,14 +23,15 @@ namespace Paraject.MVVM.ViewModels
             _userAccountRepository = new UserAccountRepository();
             CurrentUserAccount = currentUserAccount;
 
+            LoadUserAccountImageCommand = new DelegateCommand(LoadUserAccountImage);
             UpdateCurrentUserCommand = new DelegateCommand(Update);
             DeleteCurrentUserCommand = new DelegateCommand(Delete);
-
         }
 
         #region Properties
         public UserAccount CurrentUserAccount { get; set; }
 
+        public ICommand LoadUserAccountImageCommand { get; }
         public ICommand UpdateCurrentUserCommand { get; }
         public ICommand DeleteCurrentUserCommand { get; }
         #endregion
@@ -86,6 +89,29 @@ namespace Paraject.MVVM.ViewModels
             else
             {
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An error occured while deleting your Account, please try again.", Icon.InvalidUser));
+            }
+        }
+
+        private void LoadUserAccountImage()
+        {
+            OpenFileDialog openFile = new()
+            {
+                Title = "Select Your Account's Image",
+                Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+                         "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+                         "Portable Network Graphic (*.png)|*.png"
+            };
+
+            if (openFile.ShowDialog() == true)
+            {
+                try
+                {
+                    CurrentUserAccount.Image = System.Drawing.Image.FromFile(openFile.FileName);
+                }
+                catch (Exception ex)
+                {
+                    _dialogService.OpenDialog(new OkayMessageBoxViewModel("Image Format Error", $"Please select a valid image.\n \n{ex}", Icon.InvalidUser));
+                }
             }
         }
 
