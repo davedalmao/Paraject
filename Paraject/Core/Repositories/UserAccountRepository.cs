@@ -181,6 +181,8 @@ namespace Paraject.Core.Repositories
                     cmd.Parameters.Add("@user_id", SqlDbType.Int).Value = userAccount.Id;
                     cmd.Parameters.Add("@username", SqlDbType.NVarChar, 50).Value = userAccount.Username;
                     cmd.Parameters.Add("@password", SqlDbType.NVarChar, 50).Value = userAccount.Password;
+                    cmd.Parameters.Add("@user_account_image", SqlDbType.VarBinary).Value = ImageConverter.ImageToBytes(userAccount.Image);
+
 
                     int rowsAffected = cmd.ExecuteNonQuery();
                     isUpdated = rowsAffected > 0;
