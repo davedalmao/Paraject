@@ -69,6 +69,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             else if (ParentProject.Status == "Completed")
             {
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Add Operation", $"Cannot add a new task for {ParentProject.Name}, change the project's status to \"Open\" or \"In Progress\" to add a new task.", Icon.InvalidTask));
+                CloseModal();
                 return false;
             }
 
