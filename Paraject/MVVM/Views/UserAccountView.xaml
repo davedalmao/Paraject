@@ -33,26 +33,25 @@
             </Grid.RowDefinitions>
 
             <!--User Image-->
-            <Border CornerRadius="29.3"
-                    Width="141.24"
+            <Image  Grid.Row="0"
+                    MaxWidth="164"
                     Height="141.24"
-                    Grid.Row="0">
-                <Border.Background>
-                    <ImageBrush Stretch="Fill">
-                        <ImageBrush.ImageSource>
-                            <!--Binded User Account Image Source-->
-                            <Binding Path="CurrentUserAccount.Image"
-                                     Converter="{StaticResource ImageToImageSourceConverter}">
+                    HorizontalAlignment="Center"
+                    RenderOptions.BitmapScalingMode="HighQuality"
+                    RenderOptions.EdgeMode="Aliased"
+                    SnapsToDevicePixels="True">
+                <Image.Source>
+                    <!--Binded User Account Image Source-->
+                    <Binding Path="CurrentUserAccount.Image"
+                             Converter="{StaticResource ImageToImageSourceConverter}">
 
-                                <!--Default User Account Image-->
-                                <Binding.TargetNullValue>
-                                    <ImageSource>/UiDesign/Images/UserImage/default.png</ImageSource>
-                                </Binding.TargetNullValue>
-                            </Binding>
-                        </ImageBrush.ImageSource>
-                    </ImageBrush>
-                </Border.Background>
-            </Border>
+                        <!--Default User Account Image-->
+                        <Binding.TargetNullValue>
+                            <ImageSource>/UiDesign/Images/UserImage/default.png</ImageSource>
+                        </Binding.TargetNullValue>
+                    </Binding>
+                </Image.Source>
+            </Image>
 
             <!--Select Image Button-->
             <Button Content="Select Image"
@@ -62,7 +61,8 @@
                     Background="{StaticResource Blue}"
                     Margin="0,12,0,0"
                     Tag="/UiDesign/Icons/ButtonIcons/image.svg"
-                    Style="{StaticResource GeneralButtonTheme}" />
+                    Style="{StaticResource GeneralButtonTheme}"
+                    Command="{Binding LoadUserAccountImageCommand}" />
         </Grid>
 
 
