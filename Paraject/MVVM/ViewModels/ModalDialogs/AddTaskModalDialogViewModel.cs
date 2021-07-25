@@ -72,8 +72,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 return false;
             }
 
-            //A Task is valid if it passes all of the checks above
-            return true;
+            return true; //A Task is valid if it passes all of the checks above
         }
         private bool TaskSubjecIsValid()
         {
