@@ -58,6 +58,12 @@ namespace Paraject.MVVM.ViewModels
                 return false;
             }
 
+            else if (TaskDeadlineDateIsValid() == false)
+            {
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", $"The selected date is invalid. Cannot update this Task. \n\nThe deadline date should be on or after - {ParentProject.DateCreated:d} (the parent Project's created date).", Icon.InvalidTask));
+                return false;
+            }
+
             else if (TaskStatusCanBeCompleted() == false)
             {
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", $"Unable to change this Task's Status to \"Completed\" because there are still {SelectedTask.SubtaskCount} unfinished subtask/s remaining.", Icon.InvalidTask));
@@ -76,6 +82,10 @@ namespace Paraject.MVVM.ViewModels
         private bool TaskSubjectIsValid()
         {
             return !string.IsNullOrWhiteSpace(SelectedTask.Subject);
+        }
+        private bool TaskDeadlineDateIsValid()
+        {
+            return SelectedTask.Deadline >= ParentProject.DateCreated.Date || SelectedTask.Deadline == null;
         }
         private bool TaskStatusCanBeCompleted()
         {
