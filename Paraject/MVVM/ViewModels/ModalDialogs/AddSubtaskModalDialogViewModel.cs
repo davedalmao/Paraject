@@ -68,6 +68,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             else if (ParentTask.Status == "Completed")
             {
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Add Operation", $"Cannot add a new subtask for this task, change the task's status to \"Open\" or \"In Progress\" to add a new subtask.", Icon.InvalidSubtask));
+                CloseWindow();
                 return false;
             }
 
