@@ -1,6 +1,7 @@
 ﻿using PropertyChanged;
 using System;
 using System.ComponentModel;
+using System.Drawing;
 
 namespace Paraject.MVVM.Models
 {
@@ -14,5 +15,6 @@ namespace Paraject.MVVM.Models
         public string Username { get; set; }
         public string Password { get; set; }
         public DateTime DateCreated { get; set; }
+        public Image Image { get; set; }
     }
 }

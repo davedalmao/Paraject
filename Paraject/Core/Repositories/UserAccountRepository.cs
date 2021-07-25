@@ -1,4 +1,5 @@
-﻿using Paraject.Core.Enums;
+﻿using Paraject.Core.Converters;
+using Paraject.Core.Enums;
 using Paraject.Core.Repositories.Interfaces;
 using Paraject.Core.Services.DialogService;
 using Paraject.Core.Utilities;
@@ -134,6 +135,7 @@ namespace Paraject.Core.Repositories
                     int usernameFromDb = sqlDataReader.GetOrdinal("username");
                     int password = sqlDataReader.GetOrdinal("password");
                     int dateCreated = sqlDataReader.GetOrdinal("date_created");
+                    int userAccountImage = sqlDataReader.GetOrdinal("user_account_image");
 
                     //Reads a single UserAccount
                     //Remember, we're already on the first record, so use do/while here.
@@ -144,7 +146,8 @@ namespace Paraject.Core.Repositories
                             Id = sqlDataReader.GetInt32(userAccountId),
                             Username = sqlDataReader.GetString(usernameFromDb),
                             Password = sqlDataReader.GetString(password),
-                            DateCreated = sqlDataReader.GetDateTime(dateCreated)
+                            DateCreated = sqlDataReader.GetDateTime(dateCreated),
+                            Image = sqlDataReader.IsDBNull(userAccountImage) ? null : ImageConverter.BytesToImage((byte[])sqlDataReader.GetValue(userAccountImage))
                         };
                     }
                     while (sqlDataReader.Read());
@@ -178,6 +181,8 @@ namespace Paraject.Core.Repositories
                     cmd.Parameters.Add("@user_id", SqlDbType.Int).Value = userAccount.Id;
                     cmd.Parameters.Add("@username", SqlDbType.NVarChar, 50).Value = userAccount.Username;
                     cmd.Parameters.Add("@password", SqlDbType.NVarChar, 50).Value = userAccount.Password;
+                    cmd.Parameters.Add("@user_account_image", SqlDbType.VarBinary).Value = ImageConverter.ImageToBytes(userAccount.Image);
+
 
                     int rowsAffected = cmd.ExecuteNonQuery();
                     isUpdated = rowsAffected > 0;
