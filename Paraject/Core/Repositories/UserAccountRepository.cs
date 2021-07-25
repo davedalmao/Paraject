@@ -134,6 +134,7 @@ namespace Paraject.Core.Repositories
                     int usernameFromDb = sqlDataReader.GetOrdinal("username");
                     int password = sqlDataReader.GetOrdinal("password");
                     int dateCreated = sqlDataReader.GetOrdinal("date_created");
+                    int userAccountImage = sqlDataReader.GetOrdinal("user_account_image");
 
                     //Reads a single UserAccount
                     //Remember, we're already on the first record, so use do/while here.
