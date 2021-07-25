@@ -38,8 +38,19 @@
                     Height="141.24"
                     Grid.Row="0">
                 <Border.Background>
-                    <ImageBrush Stretch="Fill"
-                                ImageSource="/UiDesign/Images/UserImage/default.png" />
+                    <ImageBrush Stretch="Fill">
+                        <ImageBrush.ImageSource>
+                            <!--Binded User Account Image Source-->
+                            <Binding Path="CurrentUserAccount.Image"
+                                     Converter="{StaticResource ImageToImageSourceConverter}">
+
+                                <!--Default User Account Image-->
+                                <Binding.TargetNullValue>
+                                    <ImageSource>/UiDesign/Images/UserImage/default.png</ImageSource>
+                                </Binding.TargetNullValue>
+                            </Binding>
+                        </ImageBrush.ImageSource>
+                    </ImageBrush>
                 </Border.Background>
             </Border>
 
