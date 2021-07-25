@@ -64,6 +64,12 @@ namespace Paraject.MVVM.ViewModels
                 return false;
             }
 
+            else if (TaskStatusCanBeChangedFromCompletedToOtherStatus() == false)
+            {
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", $"Unable to change this Task's status as \"{SelectedTask.Status.Replace("_", " ")}\" because the Project's Status that this task belongs to is now completed. \n\nChange parent Project's status to \"Open\" or \"In Progress\" to change this task's status.", Icon.InvalidTask));
+                return false;
+            }
+
             UpdateTaskCount();
             return true;
         }
@@ -79,7 +85,17 @@ namespace Paraject.MVVM.ViewModels
                 return SelectedTask.SubtaskCount == 0;
             }
 
+            //A Task's status can only be changed if the parent Project's status is not Completed (either Open or In Progress)
             return true;
+        }
+        private bool TaskStatusCanBeChangedFromCompletedToOtherStatus()
+        {
+            if (ParentProject.Status != "Completed")
+            {
+                return true;
+            }
+
+            return SelectedTask.Status == "Completed";// The selected task's status should be completed so we can update its other information
         }
         private void UpdateTaskCount()
         {
