@@ -61,6 +61,12 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 return false;
             }
 
+            else if (SubtaskDeadlineDateIsValid() == false)
+            {
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", $"The selected date is invalid. Cannot update this Subtask. \n\nThe deadline date should be on or after - {ParentTask.DateCreated:d} (the parent Task's created date).", Icon.InvalidSubtask));
+                return false;
+            }
+
             else if (SubtaskStatusCanBeChangedFromCompletedToOtherStatus() == false)
             {
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", $"Unable to change this Subtask's status as \"{SelectedSubtask.Status.Replace("_", " ")}\" because the Task's Status that this subtask belongs to is now completed. \n\nChange parent Task's status to \"Open\" or \"In Progress\" to change this subtask's status.", Icon.InvalidSubtask));
@@ -73,6 +79,10 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         private bool SubtaskSubjectIsValid()
         {
             return !string.IsNullOrWhiteSpace(SelectedSubtask.Subject);
+        }
+        private bool SubtaskDeadlineDateIsValid()
+        {
+            return SelectedSubtask.Deadline >= ParentTask.DateCreated.Date || SelectedSubtask.Deadline == null;
         }
         private bool SubtaskStatusCanBeChangedFromCompletedToOtherStatus()
         {
