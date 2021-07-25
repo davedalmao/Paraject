@@ -61,7 +61,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 return false;
             }
 
-            else if (SubtaskStatusCanBeChanged() == false)
+            else if (SubtaskStatusCanBeChangedFromCompletedToOtherStatus() == false)
             {
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", $"Unable to change this Subtask's status as \"{SelectedSubtask.Status.Replace("_", " ")}\" because the Task's Status that this subtask belongs to is now completed. \n\nChange parent Task's status to \"Open\" or \"In Progress\" to change this subtask's status.", Icon.InvalidSubtask));
                 return false;
@@ -74,16 +74,14 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         {
             return !string.IsNullOrWhiteSpace(SelectedSubtask.Subject);
         }
-        private bool SubtaskStatusCanBeChanged()
+        private bool SubtaskStatusCanBeChangedFromCompletedToOtherStatus()
         {
-            //if the Parent Task's Status is completed, then we can only change a subtask's status if it is set to "Completed"
-            if (ParentTask.Status == "Completed")
+            if (ParentTask.Status != "Completed")
             {
-                return SelectedSubtask.Status == "Completed";
+                return true;
             }
 
-            //A Subtask's status can only be changed if the parent Task's status is not Completed (either Open or In Progress)
-            return true;
+            return SelectedSubtask.Status == "Completed"; //The selected subtask's status should be "Completed" so we can update its other information
         }
         private void UpdateSubtaskCount()
         {

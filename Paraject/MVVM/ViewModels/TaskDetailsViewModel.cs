@@ -95,7 +95,7 @@ namespace Paraject.MVVM.ViewModels
                 return true;
             }
 
-            return SelectedTask.Status == "Completed";// The selected task's status should be completed so we can update its other information
+            return SelectedTask.Status == "Completed"; //The selected task's status should be "Completed" so we can update its other information
         }
         private void UpdateTaskCount()
         {
