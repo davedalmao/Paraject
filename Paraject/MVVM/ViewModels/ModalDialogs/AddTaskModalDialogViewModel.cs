@@ -17,26 +17,28 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         private readonly TaskRepository _taskRepository;
         private readonly Action _refreshTaskCollection;
 
-        public AddTaskModalDialogViewModel(Action refreshTaskCollection, int currentProjectId, string taskType)
+        public AddTaskModalDialogViewModel(Action refreshTaskCollection, Project parentProject, string taskType)
         {
             _dialogService = new DialogService();
             _taskRepository = new TaskRepository();
             _refreshTaskCollection = refreshTaskCollection;
 
-            CurrentTask = new Task()
+            ParentProject = parentProject;
+            SelectedTask = new Task()
             {
                 Type = taskType,
-                Project_Id_Fk = currentProjectId
+                Project_Id_Fk = parentProject.Id
             };
-            CurrentTaskType = taskType.Replace("_", " ");
+            SelectedTaskType = taskType.Replace("_", " ");
 
             CloseModalCommand = new DelegateCommand(CloseModal);
             AddTaskCommand = new DelegateCommand(Add);
         }
 
         #region Properties
-        public Task CurrentTask { get; set; }
-        public string CurrentTaskType { get; set; }
+        public Project ParentProject { get; set; }
+        public Task SelectedTask { get; set; }
+        public string SelectedTaskType { get; set; }
 
         public ICommand AddTaskCommand { get; }
         public ICommand CloseModalCommand { get; }
@@ -47,7 +49,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         {
             if (TaskIsValid())
             {
-                AddTaskToDatabaseAndShowResult(_taskRepository.Add(CurrentTask));
+                AddTaskToDatabaseAndShowResult(_taskRepository.Add(SelectedTask));
             }
         }
         private bool TaskIsValid()
@@ -64,15 +66,22 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 return false;
             }
 
+            else if (ParentProject.Status == "Completed")
+            {
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Add Operation", $"Cannot add a new task for {ParentProject.Name}, change the project's status to \"Open\" or \"In Progress\" to add a new task.", Icon.InvalidTask));
+                return false;
+            }
+
+            //A Task is valid if it passes all of the checks above
             return true;
         }
         private bool TaskSubjecIsValid()
         {
-            return !string.IsNullOrWhiteSpace(CurrentTask.Subject);
+            return !string.IsNullOrWhiteSpace(SelectedTask.Subject);
         }
         private bool TaskDeadlineDateIsValid()
         {
-            return CurrentTask.Deadline >= DateTime.Now.Date || CurrentTask.Deadline is null;
+            return SelectedTask.Deadline >= DateTime.Now.Date || SelectedTask.Deadline is null;
         }
         private void AddTaskToDatabaseAndShowResult(bool isValid)
         {
@@ -89,8 +98,8 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
         private void SetCurrentTaskDefaultValues()
         {
-            CurrentTask = null;
-            CurrentTask = new Task();
+            SelectedTask = null;
+            SelectedTask = new Task();
         }
         private void CloseModal()
         {
