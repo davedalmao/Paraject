@@ -17,14 +17,13 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         private readonly SubtaskRepository _subtaskRepository;
         private readonly Action _refreshSubtasksCollection;
         private DelegateCommand _closeCommand;
-        private readonly Task _parentTask;
 
         public AddSubtaskModalDialogViewModel(Task parentTask, Action refreshSubtasksCollection)
         {
             _dialogService = new DialogService();
             _subtaskRepository = new SubtaskRepository();
             _refreshSubtasksCollection = refreshSubtasksCollection;
-            _parentTask = parentTask;
+            ParentTask = parentTask;
 
 
             CurrentSubtask = new Subtask()
@@ -36,6 +35,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         }
 
         #region Properties
+        public Task ParentTask { get; set; }
         public Subtask CurrentSubtask { get; set; }
         public Action Close { get; set; }
 
@@ -65,8 +65,14 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 return false;
             }
 
-            _parentTask.SubtaskCount += 1;
-            return true;
+            else if (ParentTask.Status == "Completed")
+            {
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Add Operation", $"Cannot add a new subtask for this task, change the task's status to \"Open\" or \"In Progress\" to add a new subtask.", Icon.InvalidSubtask));
+                return false;
+            }
+
+            ParentTask.SubtaskCount += 1;
+            return true; //A Subtask is valid if it passes all of the checks above
         }
         private bool SubtaskSubjectIsValid()
         {
