@@ -89,7 +89,7 @@
             <!--Add Subtask Button-->
             <Button Content="Add New Subtask"
                     Height="36"
-                    Width="216"
+                    Width="192"
                     Background="{StaticResource AccentColor}"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"

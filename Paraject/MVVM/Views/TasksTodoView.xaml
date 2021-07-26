@@ -62,7 +62,7 @@
                            Margin="0,0,0,4.5" />
 
                 <ComboBox Height="36"
-                          Width="116"
+                          Width="111"
                           FontSize="14.59"
                           Background="{StaticResource InputField}"
                           Style="{StaticResource ComboBoxTheme2}"
@@ -118,7 +118,7 @@
             <!--Add New Task Button-->
             <Button Content="Add New Task"
                     Height="36"
-                    Width="156"
+                    Width="172"
                     Background="{StaticResource AccentColor}"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
