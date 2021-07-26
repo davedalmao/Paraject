@@ -14,7 +14,8 @@
              MaxHeight="650"
              Background="Transparent"
              Foreground="{StaticResource MainFontColor}"
-             FontFamily="{StaticResource NunitoBold}">
+             FontFamily="{StaticResource NunitoBold}"
+             FocusManager.FocusedElement="{Binding ElementName=TaskSubjectTextBox}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -40,7 +41,8 @@
                            Margin="0,0,0,6" />
 
                 <!--Task Subject TextBox-->
-                <TextBox Width="294"
+                <TextBox x:Name="TaskSubjectTextBox"
+                         Width="294"
                          Height="42"
                          FontSize="15"
                          Style="{StaticResource TextBoxTheme}"
