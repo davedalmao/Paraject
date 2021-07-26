@@ -25,12 +25,13 @@
         <StackPanel Orientation="Horizontal"
                     Grid.Row="0">
             <!--Back (to ProjectsView) Button-->
-            <Button  Style="{StaticResource PlainButtonTheme}"
-                     Command="{Binding NavigateBackToProjectsViewCommand}"
-                     Background="Transparent"
-                     Cursor="Hand"
-                     Width="28"
-                     Height="28">
+            <Button Width="28"
+                    Height="28"
+                    Cursor="Hand"
+                    IsTabStop="False"
+                    Background="Transparent"
+                    Style="{StaticResource PlainButtonTheme}"
+                    Command="{Binding NavigateBackToProjectsViewCommand}">
                 <Image Source="/UiDesign/Icons/backArrow.png"
                        RenderOptions.BitmapScalingMode="HighQuality"
                        RenderOptions.EdgeMode="Aliased"
@@ -57,6 +58,7 @@
                    Margin="0,20,0,32">
             <!--FinishLine Type Tasks-->
             <custom:MenuItem Content="Finish Line Tasks"
+                             IsTabStop="False"
                              IsChecked="{Binding FinishLineButtonIsChecked}"
                              Style="{StaticResource VerticalMenuButtonTheme}"
                              Command="{Binding TasksTodoViewCommand}"
@@ -64,6 +66,7 @@
 
             <!--ExtraFeatures Type Tasks-->
             <custom:MenuItem Content="Extra Features"
+                             IsTabStop="False"
                              IsChecked="{Binding ExtraFeaturesButtonIsChecked}"
                              Style="{StaticResource VerticalMenuButtonTheme}"
                              Command="{Binding TasksTodoViewCommand}"
@@ -71,25 +74,29 @@
 
             <!--Compeleted Type Tasks-->
             <custom:MenuItem Content="Completed Tasks"
+                             IsTabStop="False"
                              IsChecked="{Binding CompletedButtonIsChecked}"
                              Style="{StaticResource VerticalMenuButtonTheme}"
                              Command="{Binding CompletedTasksViewCommand}" />
 
             <!--Project Notes-->
             <custom:MenuItem Content="Notes"
+                             IsTabStop="False"
                              Style="{StaticResource VerticalMenuButtonTheme}"
                              Command="{Binding ProjectNotesViewCommand}" />
 
             <!--Project Details-->
             <custom:MenuItem Content="Project Details"
-                             HorizontalAlignment="Right"
                              Margin="0"
+                             HorizontalAlignment="Right"
+                             IsTabStop="False"
                              Style="{StaticResource VerticalMenuButtonTheme}"
                              Command="{Binding ProjectDetailsViewCommand}" />
         </DockPanel>
 
         <!--Where the views are going to be displayed Content="{Binding Path=(viewmodels:TasksViewModel.CurrentView)}"-->
         <ContentControl Grid.Row="2"
+                        IsTabStop="False"
                         Content="{Binding CurrentView}" />
     </Grid>
 </UserControl>
