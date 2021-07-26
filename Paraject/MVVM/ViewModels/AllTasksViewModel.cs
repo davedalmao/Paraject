@@ -38,12 +38,14 @@ namespace Paraject.MVVM.ViewModels
         public ObservableCollection<Task> Tasks { get; set; }
         public ObservableCollection<GridTileData> CardTasksGrid { get; set; }
 
+        //Default Inputs' Values
         public bool TaskTypeComboBoxIsVisible { get; set; }
         public bool TaskStatusComboBoxIsVisible { get; set; } = true;
         public bool TaskPriorityComboBoxIsVisible { get; set; } = true;
         public bool TaskCategoryComboBoxIsVisible { get; set; } = true;
         public bool AddNewTaskButtonIsVisible { get; set; } = true;
 
+        //Default ComboBoxs' Values
         public string StatusFilter { get; set; } = "Show All";
         public string PriorityFilter { get; set; } = "Show All";
         public string CategoryFilter { get; set; } = "Show All";
@@ -64,6 +66,7 @@ namespace Paraject.MVVM.ViewModels
         private void SetValuesForTasksCollection()
         {
             Tasks = null;
+            InputsToDisplay();
 
             if (_currentTaskType is null)
             {
@@ -73,6 +76,28 @@ namespace Paraject.MVVM.ViewModels
 
             Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, _currentTaskType, StatusFilter, PriorityFilter, CategoryFilter)
                                                                   .Where(task => task.Status != "Completed"));
+        }
+        private void InputsToDisplay()
+        {
+            //For "Completed" status tasks
+            if (_currentTaskType is null)
+            {
+                TaskTypeComboBoxIsVisible = true;
+                TaskCategoryComboBoxIsVisible = true;
+
+                TaskStatusComboBoxIsVisible = false;
+                TaskPriorityComboBoxIsVisible = false;
+                AddNewTaskButtonIsVisible = false;
+
+                return;
+            }
+
+            //For "In Progress" and "Open" status tasks
+            TaskTypeComboBoxIsVisible = false;
+            TaskStatusComboBoxIsVisible = true;
+            TaskPriorityComboBoxIsVisible = true;
+            TaskCategoryComboBoxIsVisible = true;
+            AddNewTaskButtonIsVisible = true;
         }
         private void SetNewGridDisplay()
         {
