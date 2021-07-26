@@ -61,23 +61,21 @@
                              IsTabStop="False"
                              IsChecked="{Binding FinishLineButtonIsChecked}"
                              Style="{StaticResource VerticalMenuButtonTheme}"
-                             Command="{Binding TasksTodoViewCommand}"
-                             CommandParameter="Finish_Line" />
+                             Command="{Binding AllTasksViewCommand}" />
 
             <!--ExtraFeatures Type Tasks-->
             <custom:MenuItem Content="Extra Features"
                              IsTabStop="False"
                              IsChecked="{Binding ExtraFeaturesButtonIsChecked}"
                              Style="{StaticResource VerticalMenuButtonTheme}"
-                             Command="{Binding TasksTodoViewCommand}"
-                             CommandParameter="Extra_Feature" />
+                             Command="{Binding AllTasksViewCommand}" />
 
             <!--Compeleted Type Tasks-->
             <custom:MenuItem Content="Completed Tasks"
                              IsTabStop="False"
                              IsChecked="{Binding CompletedButtonIsChecked}"
                              Style="{StaticResource VerticalMenuButtonTheme}"
-                             Command="{Binding CompletedTasksViewCommand}" />
+                             Command="{Binding AllTasksViewCommand}" />
 
             <!--Project Notes-->
             <custom:MenuItem Content="Notes"
