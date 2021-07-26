@@ -17,7 +17,8 @@
         Width="496"
         FontFamily="{StaticResource NunitoBold}"
         Foreground="{StaticResource MainFontColor}"
-        MouseDown="NoteDetailsModalDialogMouseDown">
+        MouseDown="NoteDetailsModalDialogMouseDown"
+        FocusManager.FocusedElement="{Binding ElementName=NoteSubjectTextBox}">
 
     <Window.InputBindings>
         <KeyBinding Key="Escape"
@@ -83,7 +84,8 @@
                            Margin="0,0,0,6" />
 
                 <!--Subject TextBox-->
-                <TextBox Width="350"
+                <TextBox x:Name="NoteSubjectTextBox"
+                         Width="350"
                          Height="42"
                          FontSize="15"
                          Style="{StaticResource TextBoxTheme}"
