@@ -62,7 +62,8 @@ namespace Paraject.MVVM.Views.ModalDialogs.MessageBoxes {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Paraject;component/mvvm/views/modaldialogs/messageboxes/dialogwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Paraject;V1.0.0.0;component/mvvm/views/modaldialogs/messageboxes/dialogwindow.xa" +
+                    "ml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\..\MVVM\Views\ModalDialogs\MessageBoxes\DialogWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
