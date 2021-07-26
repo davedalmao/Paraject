@@ -17,7 +17,8 @@
         Width="764"
         FontFamily="{StaticResource NunitoBold}"
         Foreground="{StaticResource MainFontColor}"
-        MouseDown="AddProjectIdeaModalDialogMouseDown">
+        MouseDown="AddProjectIdeaModalDialogMouseDown"
+        FocusManager.FocusedElement="{Binding ElementName=ProjectNameTextBox}">
 
     <Window.InputBindings>
         <KeyBinding Key="Escape"
@@ -86,7 +87,8 @@
                                Margin="0,0,0,6" />
 
                     <!--ProjectIdea Name TextBox-->
-                    <TextBox Width="312"
+                    <TextBox x:Name="ProjectNameTextBox"
+                             Width="312"
                              Height="42"
                              FontSize="15"
                              Style="{StaticResource TextBoxTheme}"
