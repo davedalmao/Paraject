@@ -71,11 +71,12 @@
                          FontSize="15"
                          Padding="20,10"
                          TextWrapping="Wrap"
+                         AcceptsReturn="True"
                          TextBlock.LineHeight="23"
                          TextBlock.LineStackingStrategy="BlockLineHeight"
-                         Style="{StaticResource TextBoxTheme}"
-                         VerticalScrollBarVisibility="Auto"
                          VerticalContentAlignment="Top"
+                         VerticalScrollBarVisibility="Auto"
+                         Style="{StaticResource TextBoxTheme}"
                          Text="{Binding SelectedProject.Description}" />
             </StackPanel>
 
