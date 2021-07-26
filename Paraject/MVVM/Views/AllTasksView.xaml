@@ -26,7 +26,9 @@
         <DockPanel Grid.Row="0"
                    Margin="0,0,0,15">
             <!--Task Type ComboBox-->
-            <StackPanel  Margin="0,0,22,0">
+            <StackPanel Margin="0,0,22,0"
+                        Visibility="{Binding TaskTypeComboBoxIsVisible,
+                                         Converter={StaticResource BooleanToVisibilityConverter}}">
                 <TextBlock Text="Task Type:"
                            FontSize="12.5"
                            Margin="0,0,0,4.5" />
@@ -55,7 +57,8 @@
             </StackPanel>
 
             <!--Task Status ComboBox-->
-            <StackPanel>
+            <StackPanel Visibility="{Binding TaskStatusComboBoxIsVisible,
+                                         Converter={StaticResource BooleanToVisibilityConverter}}">
                 <TextBlock Text="Task Status:"
                            FontSize="13"
                            Margin="0,0,0,4.5" />
@@ -85,7 +88,9 @@
             </StackPanel>
 
             <!--Task Priority ComboBox-->
-            <StackPanel Margin="18,0">
+            <StackPanel Margin="18,0"
+                        Visibility="{Binding TaskPriorityComboBoxIsVisible,
+                                         Converter={StaticResource BooleanToVisibilityConverter}}">
                 <TextBlock Text="Task Priority:"
                            FontSize="13"
                            Margin="0,0,0,4.5" />
@@ -115,7 +120,8 @@
             </StackPanel>
 
             <!--Task Category ComboBox-->
-            <StackPanel>
+            <StackPanel Visibility="{Binding TaskCategoryComboBoxIsVisible,
+                                         Converter={StaticResource BooleanToVisibilityConverter}}">
                 <TextBlock Text="Task Category:"
                            FontSize="12.5"
                            Margin="0,0,0,4.5" />
@@ -148,12 +154,14 @@
             <Button Content="Add New Task"
                     Height="36"
                     Width="172"
-                    Background="{StaticResource AccentColor}"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
                     Tag="/UiDesign/Icons/ButtonIcons/add.svg"
+                    Background="{StaticResource AccentColor}"
                     Style="{StaticResource GeneralButtonTheme}"
-                    Command="{Binding ShowAddTaskModalDialogCommand}" />
+                    Command="{Binding ShowAddTaskModalDialogCommand}"
+                    Visibility="{Binding AddNewTaskButtonIsVisible,
+                                         Converter={StaticResource BooleanToVisibilityConverter}}" />
         </DockPanel>
 
         <!--Tasks Display-->
