@@ -41,6 +41,7 @@ namespace Paraject.MVVM.ViewModels
         public string StatusFilter { get; set; } = "Show All";
         public string PriorityFilter { get; set; } = "Show All";
         public string CategoryFilter { get; set; } = "Show All";
+        public string CurrentTaskType { get; set; } = "Show All";
 
         public ICommand ShowAddTaskModalDialogCommand { get; }
         public ICommand FilterTasksCommand { get; }
@@ -60,7 +61,7 @@ namespace Paraject.MVVM.ViewModels
 
             if (_currentTaskType is null)
             {
-                Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, _currentTaskType, "Completed", null, CategoryFilter));
+                Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, CurrentTaskType, "Completed", null, CategoryFilter));
                 return;
             }
 
