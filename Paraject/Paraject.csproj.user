@@ -15,6 +15,9 @@
     <Compile Update="MVVM\Views\AllSubtasksView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="MVVM\Views\AllTasksView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MVVM\Views\CompletedTasksView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -99,6 +102,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\AllSubtasksView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\Views\AllTasksView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\CompletedTasksView.xaml">
