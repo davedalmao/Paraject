@@ -20,7 +20,8 @@
         Height="500"
         FontFamily="{StaticResource NunitoBold}"
         Foreground="{StaticResource MainFontColor}"
-        MouseDown="AddProjectModalDialogMouseDown">
+        MouseDown="AddProjectModalDialogMouseDown"
+        FocusManager.FocusedElement="{Binding ElementName=ProjectNameTextBox}">
 
     <Window.InputBindings>
         <KeyBinding Key="Escape"
@@ -111,9 +112,10 @@
                                 Margin="0,18,0,0"
                                 Height="36"
                                 Width="190"
-                                Background="{StaticResource Blue}"
+                                TabIndex="4"
                                 HorizontalAlignment="Left"
                                 Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
+                                Background="{StaticResource Blue}"
                                 Style="{StaticResource GeneralButtonTheme}"
                                 Command="{Binding AddProjectLogoCommand}" />
                     </StackPanel>
@@ -128,6 +130,7 @@
                               Height="42"
                               FontSize="15"
                               Padding="20,0"
+                              TabIndex="2"
                               ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:ProjectOptions}}}"
                               Style="{StaticResource ComboBoxTheme}"
                               Background="{StaticResource InputField}"
@@ -141,6 +144,7 @@
                     <!--Deadline DateTimePicker-->
                     <DatePicker Style="{StaticResource DatePickerTheme}"
                                 FontSize="15"
+                                TabIndex="3"
                                 SelectedDate="{Binding CurrentProject.Deadline}" />
                 </StackPanel>
 
@@ -153,9 +157,11 @@
                                Margin="0,0,0,6" />
 
                     <!--ProjectName TextBox-->
-                    <TextBox Width="294"
+                    <TextBox x:Name="ProjectNameTextBox"
+                             Width="294"
                              Height="42"
                              FontSize="15"
+                             TabIndex="0"
                              Style="{StaticResource TextBoxTheme}"
                              Text="{Binding CurrentProject.Name}" />
 
@@ -168,11 +174,12 @@
                     <TextBox Width="294"
                              Height="185"
                              FontSize="15"
+                             Padding="20"
+                             TabIndex="1"
                              TextWrapping="Wrap"
-                             Style="{StaticResource TextBoxTheme}"
                              VerticalScrollBarVisibility="Auto"
                              VerticalContentAlignment="Top"
-                             Padding="20"
+                             Style="{StaticResource TextBoxTheme}"
                              Text="{Binding CurrentProject.Description}" />
 
 
@@ -181,9 +188,10 @@
                             Margin="0,22,0,0"
                             Height="40"
                             Width="294"
-                            Background="{StaticResource AccentColor}"
+                            TabIndex="5"
                             VerticalAlignment="Bottom"
                             Tag="/UiDesign/Icons/ButtonIcons/addProjectLogo.svg"
+                            Background="{StaticResource AccentColor}"
                             Style="{StaticResource GeneralButtonTheme}"
                             Command="{Binding AddProjectCommand}" />
                 </StackPanel>
