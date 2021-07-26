@@ -77,7 +77,7 @@
                          Padding="20,10"
                          TextWrapping="Wrap"
                          AcceptsReturn="True"
-                         TextBlock.LineHeight="23"
+                         TextBlock.LineHeight="23.5"
                          TextBlock.LineStackingStrategy="BlockLineHeight"
                          VerticalContentAlignment="Top"
                          VerticalScrollBarVisibility="Auto"
