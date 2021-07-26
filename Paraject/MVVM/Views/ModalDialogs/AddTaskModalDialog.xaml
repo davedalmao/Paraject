@@ -20,7 +20,8 @@
         Height="469"
         FontFamily="{StaticResource NunitoBold}"
         Foreground="{StaticResource MainFontColor}"
-        MouseDown="AddTaskModalDialogMouseDown">
+        MouseDown="AddTaskModalDialogMouseDown"
+        FocusManager.FocusedElement="{Binding ElementName=TaskSubjectTextBox}">
 
     <Window.InputBindings>
         <KeyBinding Key="Escape"
@@ -100,7 +101,8 @@
                                Margin="0,0,0,6" />
 
                     <!--Task Subject TextBox-->
-                    <TextBox Width="294"
+                    <TextBox x:Name="TaskSubjectTextBox"
+                             Width="294"
                              Height="42"
                              FontSize="15"
                              Style="{StaticResource TextBoxTheme}"
