@@ -24,12 +24,13 @@
         <StackPanel Orientation="Horizontal"
                     Grid.Row="0">
             <!--Back (to TasksView) Button-->
-            <Button  Style="{StaticResource PlainButtonTheme}"
-                     Command="{Binding NavigateBackToTasksViewCommand}"
-                     Background="Transparent"
-                     Cursor="Hand"
-                     Width="28"
-                     Height="28">
+            <Button Width="28"
+                    Height="28"
+                    Cursor="Hand"
+                    IsTabStop="False"
+                    Background="Transparent"
+                    Style="{StaticResource PlainButtonTheme}"
+                    Command="{Binding NavigateBackToTasksViewCommand}">
                 <Image Source="/UiDesign/Icons/backArrow.png"
                        RenderOptions.BitmapScalingMode="HighQuality"
                        RenderOptions.EdgeMode="Aliased"
@@ -58,12 +59,14 @@
             <!--Subtasks Todo Filter-->
             <custom:MenuItem Content="Subtasks Todo"
                              IsChecked="True"
+                             IsTabStop="False"
                              Style="{StaticResource VerticalMenuButtonTheme}"
                              Command="{Binding SubtasksFilterCommand}"
                              CommandParameter="SubtasksTodo" />
 
             <!--Completed Subtasks Filter-->
             <custom:MenuItem Content="Completed Subtasks"
+                             IsTabStop="False"
                              IsChecked="{Binding CompletedSubtasksButtonIsChecked}"
                              Style="{StaticResource VerticalMenuButtonTheme}"
                              Command="{Binding SubtasksFilterCommand}"
@@ -72,14 +75,16 @@
 
             <!--Task Details-->
             <custom:MenuItem Content="Task Details"
-                             HorizontalAlignment="Right"
                              Margin="0"
+                             IsTabStop="False"
+                             HorizontalAlignment="Right"
                              Style="{StaticResource VerticalMenuButtonTheme}"
                              Command="{Binding TaskDetailsCommand}" />
         </DockPanel>
 
         <!--SubtasksView's Content-->
         <ContentControl Grid.Row="2"
+                        IsTabStop="False"
                         Content="{Binding CurrentChildView}" />
     </Grid>
 </UserControl>
