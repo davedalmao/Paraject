@@ -14,7 +14,8 @@
              Height="444.5"
              Background="Transparent"
              Foreground="{StaticResource MainFontColor}"
-             FontFamily="{StaticResource NunitoBold}">
+             FontFamily="{StaticResource NunitoBold}"
+             FocusManager.FocusedElement="{Binding ElementName=ProjectNameTextBox}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -36,7 +37,8 @@
                            Margin="0,0,0,3" />
 
                 <!--ProjectName TextBox-->
-                <TextBox Width="291"
+                <TextBox x:Name="ProjectNameTextBox"
+                         Width="291"
                          Height="42"
                          FontSize="15"
                          Style="{StaticResource TextBoxTheme}"
