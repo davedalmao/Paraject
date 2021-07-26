@@ -22,7 +22,8 @@
         FontFamily="{StaticResource NunitoBold}"
         Foreground="{StaticResource MainFontColor}"
         MouseDown="AddSubtaskModalDialogMouseDown"
-        utility:WindowCloser.EnableWindowClosing="True">
+        utility:WindowCloser.EnableWindowClosing="True"
+        FocusManager.FocusedElement="{Binding ElementName=SubtaskSubjectTextBox}">
 
     <Window.InputBindings>
         <KeyBinding Key="Escape"
@@ -92,9 +93,11 @@
                                Margin="0,0,0,6" />
 
                     <!--Subtask Subject TextBox-->
-                    <TextBox Width="294"
+                    <TextBox x:Name="SubtaskSubjectTextBox"
+                             Width="294"
                              Height="42"
                              FontSize="15"
+                             TabIndex="0"
                              Style="{StaticResource TextBoxTheme}"
                              Text="{Binding CurrentSubtask.Subject}" />
 
@@ -108,6 +111,7 @@
                               Height="42"
                               FontSize="15"
                               Padding="20,0"
+                              TabIndex="1"
                               ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Priorities}}}"
                               Style="{StaticResource ComboBoxTheme}"
                               Background="{StaticResource InputField}"
@@ -121,6 +125,7 @@
                     <!--Deadline DateTimePicker-->
                     <DatePicker Style="{StaticResource DatePickerTheme}"
                                 FontSize="15"
+                                TabIndex="2"
                                 SelectedDate="{Binding CurrentSubtask.Deadline}" />
 
                     <!--Create Project Button-->
@@ -128,9 +133,10 @@
                             Margin="0,59,0,0"
                             Height="40"
                             Width="294"
-                            Background="{StaticResource AccentColor}"
+                            TabIndex="4"
                             VerticalAlignment="Bottom"
                             Tag="/UiDesign/Icons/ButtonIcons/subtask.svg"
+                            Background="{StaticResource AccentColor}"
                             Style="{StaticResource GeneralButtonTheme}"
                             Command="{Binding AddSubtaskCommand}" />
                 </StackPanel>
@@ -146,11 +152,12 @@
                     <TextBox Width="294"
                              Height="341"
                              FontSize="15"
+                             Padding="20"
+                             TabIndex="3"
                              TextWrapping="Wrap"
-                             Style="{StaticResource TextBoxTheme}"
                              VerticalScrollBarVisibility="Auto"
                              VerticalContentAlignment="Top"
-                             Padding="20"
+                             Style="{StaticResource TextBoxTheme}"
                              Text="{Binding CurrentSubtask.Description}" />
                 </StackPanel>
             </Grid>
