@@ -96,19 +96,20 @@
 
                     <!--ProjectIdea Description TextBlock-->
                     <TextBlock Text="Description"
-                               FontSize="19"
-                               Margin="0,25,0,6" />
+                               Margin="0,25,0,6"
+                               FontSize="19" />
 
                     <!--ProjectIdea Description Multiline TextBox-->
                     <TextBox Width="312"
                              Height="172"
+                             Padding="20"
                              FontSize="15"
                              TextWrapping="Wrap"
-                             Style="{StaticResource TextBoxTheme}"
-                             Text="{Binding CurrentProjectIdea.Description}"
-                             VerticalScrollBarVisibility="Auto"
+                             AcceptsReturn="True"
                              VerticalContentAlignment="Top"
-                             Padding="20" />
+                             VerticalScrollBarVisibility="Auto"
+                             Style="{StaticResource TextBoxTheme}"
+                             Text="{Binding CurrentProjectIdea.Description}" />
                 </StackPanel>
 
                 <!--Right Group-->
@@ -121,13 +122,14 @@
                     <!--ProjectIdea Description Multiline TextBox-->
                     <TextBox Width="312"
                              Height="271"
+                             Padding="20"
                              FontSize="15"
                              TextWrapping="Wrap"
-                             Style="{StaticResource TextBoxTheme}"
-                             Text="{Binding CurrentProjectIdea.Features}"
-                             VerticalScrollBarVisibility="Auto"
+                             AcceptsReturn="True"
                              VerticalContentAlignment="Top"
-                             Padding="20" />
+                             VerticalScrollBarVisibility="Auto"
+                             Style="{StaticResource TextBoxTheme}"
+                             Text="{Binding CurrentProjectIdea.Features}" />
 
                     <!--Create ProjectIdea Button-->
                     <Button Content="Add New Project Idea"
