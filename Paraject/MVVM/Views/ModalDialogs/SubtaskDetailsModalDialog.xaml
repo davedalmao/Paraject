@@ -21,7 +21,8 @@
         Height="554"
         FontFamily="{StaticResource NunitoBold}"
         Foreground="{StaticResource MainFontColor}"
-        MouseDown="SubtaskDetailsModalDialogMouseDown">
+        MouseDown="SubtaskDetailsModalDialogMouseDown"
+        FocusManager.FocusedElement="{Binding ElementName=SubtaskSubjectTextBox}">
 
     <Window.InputBindings>
         <KeyBinding Key="Escape"
@@ -92,7 +93,8 @@
                                Margin="0,0,0,6" />
 
                     <!--Subtask Subject TextBox-->
-                    <TextBox Width="294"
+                    <TextBox x:Name="SubtaskSubjectTextBox"
+                             Width="294"
                              Height="42"
                              FontSize="15"
                              Style="{StaticResource TextBoxTheme}"
