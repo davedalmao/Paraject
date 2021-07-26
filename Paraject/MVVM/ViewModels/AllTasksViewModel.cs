@@ -38,6 +38,12 @@ namespace Paraject.MVVM.ViewModels
         public ObservableCollection<Task> Tasks { get; set; }
         public ObservableCollection<GridTileData> CardTasksGrid { get; set; }
 
+        public bool TaskTypeComboBoxIsVisible { get; set; }
+        public bool TaskStatusComboBoxIsVisible { get; set; } = true;
+        public bool TaskPriorityComboBoxIsVisible { get; set; } = true;
+        public bool TaskCategoryComboBoxIsVisible { get; set; } = true;
+        public bool AddNewTaskButtonIsVisible { get; set; } = true;
+
         public string StatusFilter { get; set; } = "Show All";
         public string PriorityFilter { get; set; } = "Show All";
         public string CategoryFilter { get; set; } = "Show All";
