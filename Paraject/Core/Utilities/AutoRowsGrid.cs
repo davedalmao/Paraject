@@ -28,40 +28,33 @@ namespace Paraject.Core.Utilities
 
         private static void CountChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            try
+            Grid grid = (Grid)d;
+            double count = (int)e.NewValue;
+
+            int columns = grid.ColumnDefinitions.Count;
+            if (columns < 1)
+                columns = 1;
+
+            int newRows = (int)Math.Ceiling(count / columns);
+
+            int rows = grid.RowDefinitions.Count;
+
+            if (newRows != rows)
             {
-                Grid grid = (Grid)d;
-                double count = (int)e.NewValue;
-
-                int columns = grid.ColumnDefinitions.Count;
-                if (columns < 1)
-                    columns = 1;
-
-                int newRows = (int)Math.Ceiling(count / columns);
-
-                int rows = grid.RowDefinitions.Count;
-
-                if (newRows != rows)
+                if (newRows > rows)
                 {
-                    if (newRows > rows)
+                    for (; newRows > rows; rows++)
                     {
-                        for (; newRows > rows; rows++)
-                        {
-                            grid.RowDefinitions.Add(new RowDefinition());
-                        }
-                    }
-                    else
-                    {
-                        for (rows--; newRows <= rows; rows--)
-                        {
-                            grid.RowDefinitions.RemoveAt(rows);
-                        }
+                        grid.RowDefinitions.Add(new RowDefinition());
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
+                else
+                {
+                    for (rows--; newRows <= rows; rows--)
+                    {
+                        grid.RowDefinitions.RemoveAt(rows);
+                    }
+                }
             }
         }
     }

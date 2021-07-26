@@ -20,7 +20,6 @@ namespace Paraject.Core.Utilities
             _dialogService = new DialogService();
         }
 
-
         public static void CloseParent()
         {
             try
