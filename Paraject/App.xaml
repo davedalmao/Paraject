@@ -141,6 +141,11 @@
                 <view:TasksView />
             </DataTemplate>
 
+            <!--All Tasks-->
+            <DataTemplate DataType="{x:Type viewModel:AllTasksViewModel}">
+                <view:AllTasksView />
+            </DataTemplate>
+
             <!--Tasks Todo-->
             <DataTemplate DataType="{x:Type viewModel:TasksTodoViewModel}">
                 <view:TasksTodoView />
