@@ -21,5 +21,6 @@
     <ContentControl x:Name="ContentPeresenter"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
+                    IsTabStop="False"
                     Content="{Binding}" />
 </Window>

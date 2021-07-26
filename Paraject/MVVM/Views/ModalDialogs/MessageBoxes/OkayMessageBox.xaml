@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Paraject.MVVM.Views.ModalDialogs.MessageBoxes"
              xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
-             mc:Ignorable="d">
+             mc:Ignorable="d"
+             FocusManager.FocusedElement="{Binding ElementName=OkayButton}">
     <Border Background="{StaticResource MessageBox}"
             CornerRadius="20">
         <Grid Margin="25">
@@ -22,9 +23,10 @@
                            FontSize="18" />
 
                 <!--Close Button-->
-                <Button Style="{StaticResource PlainButtonTheme}"
-                        Command="{Binding CloseCommand}"
-                        HorizontalAlignment="Right">
+                <Button  TabIndex="1"
+                         HorizontalAlignment="Right"
+                         Style="{StaticResource PlainButtonTheme}"
+                         Command="{Binding CloseCommand}">
                     <Image Source="/UiDesign/Icons/WindowStateButtons/lightClose.png"
                            Width="26"
                            Height="26"
@@ -61,11 +63,13 @@
             </Grid>
 
             <!--Okay Button-->
-            <Button Grid.Row="2"
+            <Button x:Name="OkayButton"
+                    Grid.Row="2"
                     Content="Okay"
                     Height="35"
                     Width="102"
                     FontSize="14"
+                    TabIndex="0"
                     HorizontalAlignment="Right"
                     Background="{StaticResource Darkest}"
                     Style="{StaticResource TextOnlyButtonTheme}"
