@@ -183,6 +183,7 @@
                     <custom:MenuItem Grid.Row="0"
                                      Content="Projects"
                                      IsChecked="True"
+                                     IsTabStop="False"
                                      Command="{Binding ProjectsViewCommand}"
                                      DefaultImageUriString="/UiDesign/Icons/SideBarIcons/projects.svg"
                                      SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/projects.svg"
@@ -191,6 +192,7 @@
                     <!--Profile-->
                     <custom:MenuItem Grid.Row="1"
                                      Content="Profile"
+                                     IsTabStop="False"
                                      Command="{Binding UserAccountView}"
                                      DefaultImageUriString="/UiDesign/Icons/SideBarIcons/profile.svg"
                                      SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/profile.svg"
@@ -199,6 +201,7 @@
                     <!--Project Ideas-->
                     <custom:MenuItem Grid.Row="2"
                                      Content="Project Ideas"
+                                     IsTabStop="False"
                                      Command="{Binding ProjectIdeasViewCommand}"
                                      DefaultImageUriString="/UiDesign/Icons/SideBarIcons/projectIdeas.svg"
                                      SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/projectIdeas.svg"
@@ -207,6 +210,7 @@
                     <!--Logout-->
                     <custom:MenuItem Grid.Row="3"
                                      Content="Logout"
+                                     IsTabStop="False"
                                      VerticalAlignment="Bottom"
                                      Margin="0"
                                      DefaultImageUriString="/UiDesign/Icons/SideBarIcons/logout.svg"
@@ -218,8 +222,9 @@
                 <!--Where the views are going to be displayed-->
                 <ContentControl  Grid.Column="1"
                                  Grid.RowSpan="5"
-                                 Content="{Binding Path=(windowViewModel:MainWindowViewModel.CurrentView)}"
-                                 Margin="0,40,0,0" />
+                                 Margin="0,40,0,0"
+                                 IsTabStop="False"
+                                 Content="{Binding Path=(windowViewModel:MainWindowViewModel.CurrentView)}" />
             </Grid>
 
 
