@@ -102,14 +102,15 @@
                 <!--Description Multiline TextBox-->
                 <TextBox Width="350"
                          Height="185"
+                         Padding="20"
                          FontSize="15"
                          Margin="0,0,0,28"
-                         Padding="20"
                          TextWrapping="Wrap"
-                         Style="{StaticResource TextBoxTheme}"
-                         Text="{Binding CurrentNote.Description}"
+                         AcceptsReturn="True"
+                         VerticalContentAlignment="Top"
                          VerticalScrollBarVisibility="Auto"
-                         VerticalContentAlignment="Top" />
+                         Style="{StaticResource TextBoxTheme}"
+                         Text="{Binding CurrentNote.Description}" />
             </StackPanel>
 
             <!--Create Note Button-->

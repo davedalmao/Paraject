@@ -76,12 +76,13 @@
                          FontSize="15"
                          Padding="20,10"
                          TextWrapping="Wrap"
+                         AcceptsReturn="True"
                          TextBlock.LineHeight="23"
                          TextBlock.LineStackingStrategy="BlockLineHeight"
-                         Style="{StaticResource TextBoxTheme}"
-                         Text="{Binding SelectedTask.Description}"
+                         VerticalContentAlignment="Top"
                          VerticalScrollBarVisibility="Auto"
-                         VerticalContentAlignment="Top" />
+                         Style="{StaticResource TextBoxTheme}"
+                         Text="{Binding SelectedTask.Description}" />
             </StackPanel>
 
             <!--Left Input/Display Fields-->
