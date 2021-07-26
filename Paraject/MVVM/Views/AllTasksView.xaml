@@ -25,6 +25,35 @@
         <!--Task Filters and a Add New Task Button-->
         <DockPanel Grid.Row="0"
                    Margin="0,0,0,15">
+            <!--Task Type ComboBox-->
+            <StackPanel  Margin="0,0,22,0">
+                <TextBlock Text="Task Type:"
+                           FontSize="12.5"
+                           Margin="0,0,0,4.5" />
+                <ComboBox Height="36"
+                          Width="142"
+                          FontSize="15"
+                          Background="{StaticResource InputField}"
+                          Style="{StaticResource ComboBoxTheme2}"
+                          SelectedValue="{Binding CurrentTaskType}"
+                          Text="{Binding CurrentTaskType}">
+                    <!--Enum ItemSource-->
+                    <ComboBox.ItemsSource>
+                        <CompositeCollection>
+                            <sys:String>Show All</sys:String>
+                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:TaskTypes}}}" />
+                        </CompositeCollection>
+                    </ComboBox.ItemsSource>
+
+                    <!--Triggers a Command when the selected item of a ComboBox changes-->
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding FilterTasksCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+            </StackPanel>
+
             <!--Task Status ComboBox-->
             <StackPanel>
                 <TextBlock Text="Task Status:"
