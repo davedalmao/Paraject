@@ -63,7 +63,8 @@
 
                     <!--Minimize Button-->
                     <Button Style="{StaticResource PlainButtonTheme}"
-                            Click="MinimizeWindow">
+                            Click="MinimizeWindow"
+                            IsTabStop="False">
                         <Image Source="/UiDesign/Icons/WindowStateButtons/min.png"
                                Width="20.37"
                                Height="20"
@@ -73,7 +74,8 @@
                     <!--Maximize Button-->
                     <Button Style="{StaticResource PlainButtonTheme}"
                             Click="MaximizeWindow"
-                            Margin="20,0,20,0">
+                            Margin="20,0,20,0"
+                            IsTabStop="False">
                         <Image Source="/UiDesign/Icons/WindowStateButtons/max.png"
                                Width="20.37"
                                Height="20.37"
@@ -83,7 +85,8 @@
                     <!--Close Button-->
                     <Button Style="{StaticResource PlainButtonTheme}"
                             Margin="0,0,12,0"
-                            Click="CloseMainWindow">
+                            Click="CloseMainWindow"
+                            IsTabStop="False">
                         <Image Source="/UiDesign/Icons/WindowStateButtons/close.png"
                                Width="20.37"
                                Height="20.37"
