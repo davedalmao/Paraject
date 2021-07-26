@@ -173,12 +173,13 @@
                     <!--Description Multiline TextBox-->
                     <TextBox Width="294"
                              Height="185"
-                             FontSize="15"
                              Padding="20"
                              TabIndex="1"
+                             FontSize="15"
                              TextWrapping="Wrap"
-                             VerticalScrollBarVisibility="Auto"
+                             AcceptsReturn="True"
                              VerticalContentAlignment="Top"
+                             VerticalScrollBarVisibility="Auto"
                              Style="{StaticResource TextBoxTheme}"
                              Text="{Binding CurrentProject.Description}" />
 
