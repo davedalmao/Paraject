@@ -53,6 +53,10 @@ namespace Paraject.Core.Enums
         [Description("/UiDesign/Icons/MessageBox/ValidSubtask.svg")]
         ValidSubtask,
         [Description("/UiDesign/Icons/MessageBox/InvalidSubtask.svg")]
-        InvalidSubtask
+        InvalidSubtask,
+
+        //Generic Error
+        [Description("/UiDesign/Icons/MessageBox/Error.svg")]
+        Error
     }
 }

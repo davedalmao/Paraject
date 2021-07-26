@@ -29,6 +29,7 @@
     <None Remove="UiDesign\Icons\Calendar\grayCalendar.svg" />
     <None Remove="UiDesign\Icons\Calendar\pinkCalendar.svg" />
     <None Remove="UiDesign\Icons\graySubtask.svg" />
+    <None Remove="UiDesign\Icons\MessageBox\Error.svg" />
     <None Remove="UiDesign\Icons\MessageBox\InvalidNote.svg" />
     <None Remove="UiDesign\Icons\MessageBox\InvalidProject.svg" />
     <None Remove="UiDesign\Icons\MessageBox\InvalidProjectIdea.svg" />
@@ -133,6 +134,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Icons\Calendar\pinkCalendar.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UiDesign\Icons\MessageBox\Error.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UiDesign\Icons\MessageBox\InvalidNote.svg">
