@@ -18,14 +18,15 @@ namespace Paraject.MVVM.ViewModels
             CurrentProject = currentProject;
 
             //TasksView child Views (ViewModels)
-            AllTasksVM = new AllTasksViewModel();
+            AllTasksVM = new AllTasksViewModel(this, currentProject.Id, currentProject, "Finish_Line");
             NotesVM = new NotesViewModel(currentProject.Id);
             ProjectDetailsVM = new ProjectDetailsViewModel(projectsViewModel, currentProject);
 
             CurrentView = AllTasksVM;
 
             //TasksView child Views (Navigation)
-            AllTasksViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = AllTasksVM; TaskHeaderTextIsVisible = true; });
+            AllTasksViewCommand = new ParameterizedDelegateCommand(NavigateToAllTasks);
+            //AllTasksViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = AllTasksVM; TaskHeaderTextIsVisible = true; });
             ProjectNotesViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = NotesVM; TaskHeaderTextIsVisible = false; });
             ProjectDetailsViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectDetailsVM; TaskHeaderTextIsVisible = false; });
             NavigateBackToProjectsViewCommand = new DelegateCommand(NavigateBackToProjectsView);
@@ -59,6 +60,13 @@ namespace Paraject.MVVM.ViewModels
         {
             _refreshProjectsCollection();
             MainWindowViewModel.CurrentView = _projectsViewModel;
+        }
+        private void NavigateToAllTasks(object taskType) //the argument passed to this parameter is in TasksView (a "CommandParameter" from a Tab header)
+        {
+            TaskHeaderTextIsVisible = true;
+
+            AllTasksVM = new AllTasksViewModel(this, CurrentProject.Id, CurrentProject, taskType?.ToString());
+            CurrentView = AllTasksVM;
         }
         #endregion
     }

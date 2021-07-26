@@ -17,7 +17,7 @@ namespace Paraject.MVVM.ViewModels
         private readonly string _currentTaskType;
         private readonly TasksViewModel _tasksViewModel;
 
-        public TasksTodoViewModel(TasksViewModel tasksViewModel, int projectId, Project parentProject, string taskType)
+        public TasksTodoViewModel(TasksViewModel tasksViewModel, int projectId, Project parentProject, string taskType = null)
         {
             _taskRepository = new TaskRepository();
 
