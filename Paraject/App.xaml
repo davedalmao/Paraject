@@ -141,8 +141,10 @@
                 <view:ProjectContentView />
             </DataTemplate>
 
-            <!--Tasks HERE NEXT-->
-
+            <!--Tasks-->
+            <DataTemplate DataType="{x:Type viewModel:TasksViewModel}">
+                <view:TasksView />
+            </DataTemplate>
 
             <!--Project Notes-->
             <DataTemplate DataType="{x:Type viewModel:NotesViewModel}">
