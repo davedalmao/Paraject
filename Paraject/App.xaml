@@ -93,7 +93,6 @@
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
             <converter:ImageToImageSourceConverter x:Key="ImageToImageSourceConverter" />
             <converter:UnderscoreToSpaceConverter x:Key="UnderscoreToSpaceConverter" />
-            <converter:BooleanToVisibilityConverter x:Key="ImplementedBooleanToVisibilityConverter" />
 
             <!--Binding 
                 the 
