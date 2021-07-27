@@ -69,7 +69,7 @@
     <Compile Update="MVVM\Views\TaskDetailsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="MVVM\Views\TasksView.xaml.cs">
+    <Compile Update="MVVM\Views\ProjectContentView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="MVVM\Views\UserAccountView.xaml.cs">
@@ -152,7 +152,7 @@
     <Page Update="MVVM\Views\TaskDetailsView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MVVM\Views\TasksView.xaml">
+    <Page Update="MVVM\Views\ProjectContentView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\UserAccountView.xaml">
