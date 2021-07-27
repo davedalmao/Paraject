@@ -15,18 +15,26 @@ namespace Paraject.MVVM.ViewModels
         private readonly IDialogService _dialogService;
         private readonly TaskRepository _taskRepository;
         private readonly Action _refreshTaskCollection;
-        private readonly ProjectContentViewModel _tasksViewModel;
+        private readonly ProjectContentViewModel _projectContentViewModel;
+        private readonly ProjectRepository _projectRepository;
 
-        public TaskDetailsViewModel(Action refreshTaskCollection, ProjectContentViewModel tasksViewModel, Task selectedTask, Project parentProject)
+
+        public TaskDetailsViewModel(Action refreshTaskCollection, ProjectContentViewModel projectContentViewModel, Task selectedTask, int parentProjectId)
         {
             _dialogService = new DialogService();
             _taskRepository = new TaskRepository();
+            _projectRepository = new ProjectRepository();
 
             _refreshTaskCollection = refreshTaskCollection;
-            _tasksViewModel = tasksViewModel;
-            ParentProject = parentProject;
+            _projectContentViewModel = projectContentViewModel;
+
             SelectedTask = selectedTask;
             PreviousSelectedTaskStatus = SelectedTask.Status;
+
+            /* I have to GET a new instance of the Parent Project here (instead of passing it through the constructor),
+               because if a Project object's property or properties has been modified (without being UPDATED through a repository),
+               then the Project object (that will be passed here) breaks data integrity, therefore producing unexpected results */
+            ParentProject = _projectRepository.Get(parentProjectId);
 
             UpdateTaskCommand = new DelegateCommand(Update);
             DeleteTaskCommand = new DelegateCommand(Delete);
@@ -36,7 +44,6 @@ namespace Paraject.MVVM.ViewModels
         public Project ParentProject { get; set; }
         public Task SelectedTask { get; set; }
         public string PreviousSelectedTaskStatus { get; set; }
-
 
         public ICommand UpdateTaskCommand { get; }
         public ICommand DeleteTaskCommand { get; }
@@ -166,7 +173,7 @@ namespace Paraject.MVVM.ViewModels
                 //refreshes the Tasks Collection in TasksTodoViewCompletedTasksView(child Views of TasksView) with the new records
                 _refreshTaskCollection();
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Delete Operation", "Task Deleted Successfully!", Icon.ValidTask));
-                MainWindowViewModel.CurrentView = _tasksViewModel;
+                MainWindowViewModel.CurrentView = _projectContentViewModel;
             }
             else
             {

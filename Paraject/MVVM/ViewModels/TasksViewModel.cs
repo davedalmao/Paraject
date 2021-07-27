@@ -36,6 +36,8 @@ namespace Paraject.MVVM.ViewModels
         public ObservableCollection<Task> Tasks { get; set; }
         public ObservableCollection<GridTileData> CardTasksGrid { get; set; }
 
+        public TaskContentViewModel TaskContentVM { get; set; }
+
         //Default Inputs' Values
         public bool TaskTypeComboBoxIsVisible { get; set; }
         public bool TaskStatusComboBoxIsVisible { get; set; } = true;
@@ -143,7 +145,7 @@ namespace Paraject.MVVM.ViewModels
         public void NavigateToSubtasksView(object taskId) //the argument passed to this parameter is in ProjectsView (a "CommandParameter" from a Project card)
         {
             Task selectedTask = _taskRepository.Get((int)taskId);
-            TaskContentViewModel subtasksViewModel = new(DisplayAllFilteredTasks, _tasksViewModel, selectedTask, ParentProject);
+            TaskContentViewModel subtasksViewModel = new(DisplayAllFilteredTasks, _tasksViewModel, selectedTask, ParentProject.Id);
 
             MainWindowViewModel.CurrentView = subtasksViewModel;
         }
