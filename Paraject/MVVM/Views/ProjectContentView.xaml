@@ -7,7 +7,7 @@
              xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
              xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
              xmlns:custom="clr-namespace:Paraject.Core.CustomControls"
-             d:DataContext="{d:DesignInstance Type=viewmodels:TasksViewModel}"
+             d:DataContext="{d:DesignInstance Type=viewmodels:ProjectContentViewModel}"
              mc:Ignorable="d"
              Width="732"
              Height="574.63"
