@@ -136,7 +136,7 @@
                 <view:OptionsView />
             </DataTemplate>
 
-            <!--Project Content-->
+            <!--Project Content (a project is composed of tasks and the project's details)-->
             <DataTemplate DataType="{x:Type viewModel:ProjectContentViewModel}">
                 <view:ProjectContentView />
             </DataTemplate>
@@ -161,7 +161,10 @@
                 <view:TaskDetailsView />
             </DataTemplate>
 
-            <!--Subtasks-->
+            <!--Task Content (a task is composed of subtasks and the subtask's details)-->
+            <DataTemplate DataType="{x:Type viewModel:TaskContentViewModel}">
+                <view:TaskContentView />
+            </DataTemplate>
 
 
             <!--AllSubtasks (display subtasks todo, and completed subtasks here)-->
