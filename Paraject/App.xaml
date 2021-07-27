@@ -137,14 +137,10 @@
             </DataTemplate>
 
             <!--Tasks-->
-            <DataTemplate DataType="{x:Type viewModel:TasksViewModel}">
-                <view:TasksView />
-            </DataTemplate>
+
 
             <!--All Tasks-->
-            <DataTemplate DataType="{x:Type viewModel:AllTasksViewModel}">
-                <view:AllTasksView />
-            </DataTemplate>
+
 
             <!--Project Notes-->
             <DataTemplate DataType="{x:Type viewModel:NotesViewModel}">
@@ -162,14 +158,10 @@
             </DataTemplate>
 
             <!--Subtasks-->
-            <DataTemplate DataType="{x:Type viewModel:SubtasksViewModel}">
-                <view:SubtasksView />
-            </DataTemplate>
+
 
             <!--AllSubtasks (display subtasks todo, and completed subtasks here)-->
-            <DataTemplate DataType="{x:Type viewModel:AllSubtasksViewModel}">
-                <view:AllSubtasksView />
-            </DataTemplate>
+
 
 
             <!--Custom
