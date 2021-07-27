@@ -113,7 +113,7 @@ namespace Paraject.MVVM.ViewModels
         {
             MainWindowViewModel.Overlay = true;
 
-            AddSubtaskModalDialogViewModel addSubtaskModalDialogViewModel = new AddSubtaskModalDialogViewModel(CurrentTask, DisplaySubtasksTodo);
+            AddSubtaskModalDialogViewModel addSubtaskModalDialogViewModel = new AddSubtaskModalDialogViewModel(CurrentTask.Id, DisplaySubtasksTodo);
             AddSubtaskModalDialog addSubtaskModalDialog = new AddSubtaskModalDialog();
             addSubtaskModalDialog.DataContext = addSubtaskModalDialogViewModel;
             addSubtaskModalDialog.ShowDialog();
