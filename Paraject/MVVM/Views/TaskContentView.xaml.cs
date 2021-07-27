@@ -3,11 +3,11 @@
 namespace Paraject.MVVM.Views
 {
     /// <summary>
-    /// Interaction logic for TasksView.xaml
+    /// Interaction logic for TaskContentView.xaml
     /// </summary>
-    public partial class TasksView : UserControl
+    public partial class TaskContentView : UserControl
     {
-        public TasksView()
+        public TaskContentView()
         {
             InitializeComponent();
         }
