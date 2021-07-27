@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Paraject.MVVM.Views"
              xmlns:custom="clr-namespace:Paraject.Core.CustomControls"
              xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
-             d:DataContext="{d:DesignInstance Type=viewmodels:SubtasksViewModel}"
+             d:DataContext="{d:DesignInstance Type=viewmodels:TaskContentViewModel}"
              mc:Ignorable="d"
              MaxWidth="800"
              MaxHeight="650"
