@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Paraject.MVVM.Views
 {
     /// <summary>
-    /// Interaction logic for CompletedTasksView.xaml
+    /// Interaction logic for AllTasksView.xaml
     /// </summary>
-    public partial class CompletedTasksView : UserControl
+    public partial class AllTasksView : UserControl
     {
-        public CompletedTasksView()
+        public AllTasksView()
         {
             InitializeComponent();
         }

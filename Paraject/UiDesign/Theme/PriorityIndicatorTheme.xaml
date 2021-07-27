@@ -21,6 +21,7 @@
                         Value="{DynamicResource Red}" />
             </Trigger>
 
+            <!--The tag is null because it is set in the repository (TaskRepository, and SubtaskRepository)-->
             <Trigger Property="Tag"
                      Value="{x:Null}">
                 <Setter Property="Visibility"
