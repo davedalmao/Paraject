@@ -11,16 +11,16 @@ namespace Paraject.MVVM.ViewModels
         private readonly Action _refreshTaskCollection;
         private readonly ProjectContentViewModel _tasksViewModel;
 
-        public TaskContentViewModel(Action refreshTaskCollection, ProjectContentViewModel tasksViewModel, Task currentTask, Project parentProject)
+        public TaskContentViewModel(Action refreshTaskCollection, ProjectContentViewModel tasksViewModel, Task currentTask, int parentProjectId)
         {
             _refreshTaskCollection = refreshTaskCollection;
             _tasksViewModel = tasksViewModel;
             CurrentTask = currentTask;
 
-            AllSubtasksVM = new SubtasksViewModel("SubtasksTodo", true, currentTask);
-            TaskDetailsVM = new TaskDetailsViewModel(refreshTaskCollection, tasksViewModel, currentTask, parentProject);
+            SubtasksVM = new SubtasksViewModel("SubtasksTodo", true, currentTask);
+            TaskDetailsVM = new TaskDetailsViewModel(refreshTaskCollection, tasksViewModel, currentTask, parentProjectId);
 
-            CurrentChildView = AllSubtasksVM;
+            CurrentChildView = SubtasksVM;
 
             NavigateBackToTasksViewCommand = new DelegateCommand(NavigateBackToTasksView);
             SubtasksFilterCommand = new ParameterizedDelegateCommand(DisplayFilteredSubtasks);
@@ -32,7 +32,7 @@ namespace Paraject.MVVM.ViewModels
         public object CurrentChildView { get; set; }
 
         //Child Views
-        public SubtasksViewModel AllSubtasksVM { get; set; } //Subtasks Todo and Completed Subtasks tab
+        public SubtasksViewModel SubtasksVM { get; set; } //Subtasks Todo and Completed Subtasks tab
         public TaskDetailsViewModel TaskDetailsVM { get; set; }
 
         public bool CompletedSubtasksButtonIsChecked { get; set; } //Hides the input row in AllSubtasksView if false
@@ -50,8 +50,8 @@ namespace Paraject.MVVM.ViewModels
         }
         private void DisplayFilteredSubtasks(object filterType)
         {
-            AllSubtasksVM = new SubtasksViewModel(filterType.ToString(), !CompletedSubtasksButtonIsChecked, CurrentTask);
-            CurrentChildView = AllSubtasksVM;
+            SubtasksVM = new SubtasksViewModel(filterType.ToString(), !CompletedSubtasksButtonIsChecked, CurrentTask);
+            CurrentChildView = SubtasksVM;
         }
         #endregion
     }
