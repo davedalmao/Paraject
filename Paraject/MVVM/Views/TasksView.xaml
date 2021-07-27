@@ -11,7 +11,7 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
              xmlns:grid="clr-namespace:Paraject.Core.Utilities"
-             d:DataContext="{d:DesignInstance Type=viewmodels:AllTasksViewModel}"
+             d:DataContext="{d:DesignInstance Type=viewmodels:TasksViewModel}"
              mc:Ignorable="d"
              Background="Transparent"
              Foreground="{StaticResource MainFontColor}"
