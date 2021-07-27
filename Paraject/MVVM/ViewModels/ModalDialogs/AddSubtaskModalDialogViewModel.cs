@@ -14,21 +14,26 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
     public class AddSubtaskModalDialogViewModel : BaseViewModel, ICloseWindows
     {
         private readonly IDialogService _dialogService;
-        private readonly SubtaskRepository _subtaskRepository;
         private readonly Action _refreshSubtasksCollection;
+        private readonly SubtaskRepository _subtaskRepository;
+        private readonly TaskRepository _taskRepository;
         private DelegateCommand _closeCommand;
 
-        public AddSubtaskModalDialogViewModel(Task parentTask, Action refreshSubtasksCollection)
+        public AddSubtaskModalDialogViewModel(int parentTaskId, Action refreshSubtasksCollection)
         {
             _dialogService = new DialogService();
-            _subtaskRepository = new SubtaskRepository();
             _refreshSubtasksCollection = refreshSubtasksCollection;
-            ParentTask = parentTask;
 
+            _subtaskRepository = new SubtaskRepository();
+            _taskRepository = new TaskRepository();
 
+            /* I have to GET a new instance of the Parent Task here (instead of passing it through the constructor),
+               because if a Task object's property or properties has been modified (without being UPDATED through a repository),
+               then the Task object (that will be passed here) breaks data integrity, therefore producing unexpected results */
+            ParentTask = _taskRepository.Get(parentTaskId);
             CurrentSubtask = new Subtask()
             {
-                Task_Id_Fk = parentTask.Id
+                Task_Id_Fk = parentTaskId
             };
 
             AddSubtaskCommand = new DelegateCommand(Add);
