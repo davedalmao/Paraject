@@ -63,7 +63,7 @@
     <Compile Update="MVVM\Views\NotesView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="MVVM\Views\SubtasksView.xaml.cs">
+    <Compile Update="MVVM\Views\TaskContentView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="MVVM\Views\TaskDetailsView.xaml.cs">
@@ -146,7 +146,7 @@
     <Page Update="MVVM\Views\NotesView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MVVM\Views\SubtasksView.xaml">
+    <Page Update="MVVM\Views\TaskContentView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\TaskDetailsView.xaml">
