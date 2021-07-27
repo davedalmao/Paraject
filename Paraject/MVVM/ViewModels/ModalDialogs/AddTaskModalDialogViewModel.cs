@@ -14,20 +14,26 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
     public class AddTaskModalDialogViewModel : BaseViewModel
     {
         private readonly IDialogService _dialogService;
-        private readonly TaskRepository _taskRepository;
         private readonly Action _refreshTaskCollection;
+        private readonly TaskRepository _taskRepository;
+        private readonly ProjectRepository _projectRepository;
 
-        public AddTaskModalDialogViewModel(Action refreshTaskCollection, Project parentProject, string taskType)
+        public AddTaskModalDialogViewModel(Action refreshTaskCollection, int parentProjectId, string taskType)
         {
             _dialogService = new DialogService();
-            _taskRepository = new TaskRepository();
             _refreshTaskCollection = refreshTaskCollection;
 
-            ParentProject = parentProject;
+            _taskRepository = new TaskRepository();
+            _projectRepository = new ProjectRepository();
+
+            /* I have to GET a new instance of the Parent Project here (instead of passing it through the constructor),
+               because if a Project object's property or properties has been modified (without being UPDATED through a repository),
+               then the Project object (that will be passed here) breaks data integrity, therefore producing unexpected results */
+            ParentProject = _projectRepository.Get(parentProjectId);
             SelectedTask = new Task()
             {
                 Type = taskType,
-                Project_Id_Fk = parentProject.Id
+                Project_Id_Fk = parentProjectId
             };
             SelectedTaskType = taskType.Replace("_", " ");
 
