@@ -12,16 +12,14 @@ namespace Paraject.MVVM.ViewModels
 {
     public class AllTasksViewModel : BaseViewModel
     {
-        private readonly int _projectId;
         private readonly TaskRepository _taskRepository;
         private readonly string _currentTaskType;
         private readonly TasksViewModel _tasksViewModel;
 
-        public AllTasksViewModel(TasksViewModel tasksViewModel, int projectId, Project parentProject, string currentTaskType = null)
+        public AllTasksViewModel(TasksViewModel tasksViewModel, Project parentProject, string currentTaskType = null)
         {
             _taskRepository = new TaskRepository();
 
-            _projectId = projectId;
             _currentTaskType = currentTaskType;
             _tasksViewModel = tasksViewModel;
             ParentProject = parentProject;
@@ -70,11 +68,11 @@ namespace Paraject.MVVM.ViewModels
 
             if (_currentTaskType is null)
             {
-                Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, CurrentTaskType, "Completed", null, CategoryFilter));
+                Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(ParentProject.Id, CurrentTaskType, "Completed", null, CategoryFilter));
                 return;
             }
 
-            Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, _currentTaskType, StatusFilter, PriorityFilter, CategoryFilter)
+            Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(ParentProject.Id, _currentTaskType, StatusFilter, PriorityFilter, CategoryFilter)
                                                                   .Where(task => task.Status != "Completed"));
         }
         private void InputsToDisplay()
