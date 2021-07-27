@@ -91,8 +91,6 @@ D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MV
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ModalDialogs\AddSubtaskModalDialog.baml
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ModalDialogs\SubtaskDetailsModalDialog.g.cs
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ModalDialogs\SubtaskDetailsModalDialog.baml
-D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\AllSubtasksView.g.cs
-D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\AllSubtasksView.baml
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\NotesView.g.cs
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\NotesView.baml
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\ModalDialogs\AddNoteModalDialog.g.cs
@@ -120,3 +118,5 @@ D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MV
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\TasksView.baml
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\TaskContentView.g.cs
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\TaskContentView.baml
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\SubtasksView.g.cs
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\SubtasksView.baml
