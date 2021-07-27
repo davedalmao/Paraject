@@ -6,12 +6,12 @@ using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
 {
-    public class TasksViewModel : BaseViewModel
+    public class ProjectContentViewModel : BaseViewModel
     {
         private readonly ProjectsViewModel _projectsViewModel;
         private readonly Action _refreshProjectsCollection;
 
-        public TasksViewModel(ProjectsViewModel projectsViewModel, Action refreshProjectsCollection, Project currentProject)
+        public ProjectContentViewModel(ProjectsViewModel projectsViewModel, Action refreshProjectsCollection, Project currentProject)
         {
             _projectsViewModel = projectsViewModel;
             _refreshProjectsCollection = refreshProjectsCollection;

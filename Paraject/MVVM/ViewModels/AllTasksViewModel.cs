@@ -14,9 +14,9 @@ namespace Paraject.MVVM.ViewModels
     {
         private readonly TaskRepository _taskRepository;
         private readonly string _currentTaskType;
-        private readonly TasksViewModel _tasksViewModel;
+        private readonly ProjectContentViewModel _tasksViewModel;
 
-        public AllTasksViewModel(TasksViewModel tasksViewModel, Project parentProject, string currentTaskType = null)
+        public AllTasksViewModel(ProjectContentViewModel tasksViewModel, Project parentProject, string currentTaskType = null)
         {
             _taskRepository = new TaskRepository();
 

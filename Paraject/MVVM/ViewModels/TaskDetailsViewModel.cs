@@ -15,9 +15,9 @@ namespace Paraject.MVVM.ViewModels
         private readonly IDialogService _dialogService;
         private readonly TaskRepository _taskRepository;
         private readonly Action _refreshTaskCollection;
-        private readonly TasksViewModel _tasksViewModel;
+        private readonly ProjectContentViewModel _tasksViewModel;
 
-        public TaskDetailsViewModel(Action refreshTaskCollection, TasksViewModel tasksViewModel, Task selectedTask, Project parentProject)
+        public TaskDetailsViewModel(Action refreshTaskCollection, ProjectContentViewModel tasksViewModel, Task selectedTask, Project parentProject)
         {
             _dialogService = new DialogService();
             _taskRepository = new TaskRepository();

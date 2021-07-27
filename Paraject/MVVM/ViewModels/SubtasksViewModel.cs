@@ -9,9 +9,9 @@ namespace Paraject.MVVM.ViewModels
     public class SubtasksViewModel : BaseViewModel
     {
         private readonly Action _refreshTaskCollection;
-        private readonly TasksViewModel _tasksViewModel;
+        private readonly ProjectContentViewModel _tasksViewModel;
 
-        public SubtasksViewModel(Action refreshTaskCollection, TasksViewModel tasksViewModel, Task currentTask, Project parentProject)
+        public SubtasksViewModel(Action refreshTaskCollection, ProjectContentViewModel tasksViewModel, Task currentTask, Project parentProject)
         {
             _refreshTaskCollection = refreshTaskCollection;
             _tasksViewModel = tasksViewModel;
