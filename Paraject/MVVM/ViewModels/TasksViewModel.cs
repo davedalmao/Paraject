@@ -10,13 +10,13 @@ using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
 {
-    public class AllTasksViewModel : BaseViewModel
+    public class TasksViewModel : BaseViewModel
     {
         private readonly TaskRepository _taskRepository;
         private readonly string _currentTaskType;
         private readonly ProjectContentViewModel _tasksViewModel;
 
-        public AllTasksViewModel(ProjectContentViewModel tasksViewModel, Project parentProject, string currentTaskType = null)
+        public TasksViewModel(ProjectContentViewModel tasksViewModel, Project parentProject, string currentTaskType = null)
         {
             _taskRepository = new TaskRepository();
 
