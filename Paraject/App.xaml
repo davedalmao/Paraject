@@ -136,8 +136,10 @@
                 <view:OptionsView />
             </DataTemplate>
 
-            <!--Tasks-->
-
+            <!--Project Content-->
+            <DataTemplate DataType="{x:Type viewModel:ProjectContentViewModel}">
+                <view:ProjectContentView />
+            </DataTemplate>
 
             <!--All Tasks-->
 
