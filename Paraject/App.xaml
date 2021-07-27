@@ -167,8 +167,10 @@
             </DataTemplate>
 
 
-            <!--AllSubtasks (display subtasks todo, and completed subtasks here)-->
-
+            <!--Subtasks (display subtasks todo, and completed subtasks here)-->
+            <DataTemplate DataType="{x:Type viewModel:SubtasksViewModel}">
+                <view:SubtasksView />
+            </DataTemplate>
 
 
             <!--Custom
