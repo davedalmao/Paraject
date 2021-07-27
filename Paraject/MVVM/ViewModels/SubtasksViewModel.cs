@@ -10,12 +10,12 @@ using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
 {
-    public class AllSubtasksViewModel : BaseViewModel
+    public class SubtasksViewModel : BaseViewModel
     {
         private readonly SubtaskRepository _subtaskRepository;
         private readonly string _filterType;
 
-        public AllSubtasksViewModel(string filterType, bool isInputRowDisplayed, Task currentTask)
+        public SubtasksViewModel(string filterType, bool isInputRowDisplayed, Task currentTask)
         {
             _subtaskRepository = new SubtaskRepository();
             _filterType = filterType;

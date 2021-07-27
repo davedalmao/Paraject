@@ -11,7 +11,7 @@
              xmlns:grid="clr-namespace:Paraject.Core.Utilities"
              xmlns:svgc1="http://sharpvectors.codeplex.com/svgc/"
              xmlns:viewmodels="clr-namespace:Paraject.MVVM.ViewModels"
-             d:DataContext="{d:DesignInstance Type=viewmodels:AllSubtasksViewModel}"
+             d:DataContext="{d:DesignInstance Type=viewmodels:SubtasksViewModel}"
              mc:Ignorable="d"
              Background="Transparent"
              Foreground="{StaticResource MainFontColor}"
