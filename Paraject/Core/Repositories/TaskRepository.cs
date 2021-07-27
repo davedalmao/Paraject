@@ -179,7 +179,10 @@ namespace Paraject.Core.Repositories
                                 Description = sqlDataReader.IsDBNull(taskDescription) ? "--" : sqlDataReader.GetString(taskDescription),
                                 Status = sqlDataReader.GetString(taskStatusFromDb),
                                 Category = sqlDataReader.GetString(taskCategoryFromDb).Replace("_", " "),
-                                Priority = sqlDataReader.GetString(taskPriorityFromDb),
+
+                                //when I query for Completed(status) tasks, Priority property has no value, therefore not showing the Priority bar in a Task Card (in the UI)
+                                Priority = sqlDataReader.GetString(taskStatusFromDb) == "Completed" ? null : sqlDataReader.GetString(taskPriorityFromDb),
+
                                 Deadline = sqlDataReader.IsDBNull(taskDeadline) ? null : sqlDataReader.GetDateTime(taskDeadline),
                                 DateCreated = sqlDataReader.GetDateTime(dateCreated),
                                 SubtaskCount = sqlDataReader.IsDBNull(subtaskCount) ? 0 : sqlDataReader.GetInt32(subtaskCount)

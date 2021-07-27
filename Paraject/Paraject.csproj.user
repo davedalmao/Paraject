@@ -15,7 +15,7 @@
     <Compile Update="MVVM\Views\AllSubtasksView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="MVVM\Views\CompletedTasksView.xaml.cs">
+    <Compile Update="MVVM\Views\AllTasksView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="MVVM\Views\DashboardView.xaml.cs">
@@ -69,9 +69,6 @@
     <Compile Update="MVVM\Views\TaskDetailsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="MVVM\Views\TasksTodoView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="MVVM\Views\TasksView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -101,7 +98,7 @@
     <Page Update="MVVM\Views\AllSubtasksView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MVVM\Views\CompletedTasksView.xaml">
+    <Page Update="MVVM\Views\AllTasksView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\DashboardView.xaml">
@@ -153,9 +150,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\TaskDetailsView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="MVVM\Views\TasksTodoView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\TasksView.xaml">

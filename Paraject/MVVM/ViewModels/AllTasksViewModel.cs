@@ -10,19 +10,17 @@ using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
 {
-    public class TasksTodoViewModel : BaseViewModel
+    public class AllTasksViewModel : BaseViewModel
     {
-        private readonly int _projectId;
         private readonly TaskRepository _taskRepository;
         private readonly string _currentTaskType;
         private readonly TasksViewModel _tasksViewModel;
 
-        public TasksTodoViewModel(TasksViewModel tasksViewModel, int projectId, Project parentProject, string taskType)
+        public AllTasksViewModel(TasksViewModel tasksViewModel, Project parentProject, string currentTaskType = null)
         {
             _taskRepository = new TaskRepository();
 
-            _projectId = projectId;
-            _currentTaskType = taskType;
+            _currentTaskType = currentTaskType;
             _tasksViewModel = tasksViewModel;
             ParentProject = parentProject;
 
@@ -38,9 +36,18 @@ namespace Paraject.MVVM.ViewModels
         public ObservableCollection<Task> Tasks { get; set; }
         public ObservableCollection<GridTileData> CardTasksGrid { get; set; }
 
+        //Default Inputs' Values
+        public bool TaskTypeComboBoxIsVisible { get; set; }
+        public bool TaskStatusComboBoxIsVisible { get; set; } = true;
+        public bool TaskPriorityComboBoxIsVisible { get; set; } = true;
+        public bool TaskCategoryComboBoxIsVisible { get; set; } = true;
+        public bool AddNewTaskButtonIsVisible { get; set; } = true;
+
+        //Default ComboBoxs' Values
         public string StatusFilter { get; set; } = "Show All";
         public string PriorityFilter { get; set; } = "Show All";
         public string CategoryFilter { get; set; } = "Show All";
+        public string CurrentTaskType { get; set; } = "Show All";
 
         public ICommand ShowAddTaskModalDialogCommand { get; }
         public ICommand FilterTasksCommand { get; }
@@ -50,15 +57,45 @@ namespace Paraject.MVVM.ViewModels
         #region Methods
         public void DisplayAllFilteredTasks()
         {
-            GetValuesForTasksCollection();
+            SetValuesForTasksCollection();
             SetNewGridDisplay();
             TaskCardGridLocation();
         }
-        private void GetValuesForTasksCollection()
+        private void SetValuesForTasksCollection()
         {
             Tasks = null;
-            Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(_projectId, _currentTaskType, StatusFilter, PriorityFilter, CategoryFilter)
+            InputsToDisplay();
+
+            if (_currentTaskType is null)
+            {
+                Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(ParentProject.Id, CurrentTaskType, "Completed", null, CategoryFilter));
+                return;
+            }
+
+            Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(ParentProject.Id, _currentTaskType, StatusFilter, PriorityFilter, CategoryFilter)
                                                                   .Where(task => task.Status != "Completed"));
+        }
+        private void InputsToDisplay()
+        {
+            //For "Completed" status tasks
+            if (_currentTaskType is null)
+            {
+                TaskTypeComboBoxIsVisible = true;
+                TaskCategoryComboBoxIsVisible = true;
+
+                TaskStatusComboBoxIsVisible = false;
+                TaskPriorityComboBoxIsVisible = false;
+                AddNewTaskButtonIsVisible = false;
+
+                return;
+            }
+
+            //For "In Progress" and "Open" status tasks
+            TaskTypeComboBoxIsVisible = false;
+            TaskStatusComboBoxIsVisible = true;
+            TaskPriorityComboBoxIsVisible = true;
+            TaskCategoryComboBoxIsVisible = true;
+            AddNewTaskButtonIsVisible = true;
         }
         private void SetNewGridDisplay()
         {
@@ -97,7 +134,7 @@ namespace Paraject.MVVM.ViewModels
         {
             MainWindowViewModel.Overlay = true;
 
-            AddTaskModalDialogViewModel addTaskModalDialogViewModel = new AddTaskModalDialogViewModel(DisplayAllFilteredTasks, ParentProject, _currentTaskType);
+            AddTaskModalDialogViewModel addTaskModalDialogViewModel = new(DisplayAllFilteredTasks, ParentProject, _currentTaskType);
 
             AddTaskModalDialog addTaskModalDialog = new();
             addTaskModalDialog.DataContext = addTaskModalDialogViewModel;
@@ -106,7 +143,7 @@ namespace Paraject.MVVM.ViewModels
         public void NavigateToSubtasksView(object taskId) //the argument passed to this parameter is in ProjectsView (a "CommandParameter" from a Project card)
         {
             Task selectedTask = _taskRepository.Get((int)taskId);
-            SubtasksViewModel subtasksViewModel = new SubtasksViewModel(DisplayAllFilteredTasks, _tasksViewModel, selectedTask, ParentProject);
+            SubtasksViewModel subtasksViewModel = new(DisplayAllFilteredTasks, _tasksViewModel, selectedTask, ParentProject);
 
             MainWindowViewModel.CurrentView = subtasksViewModel;
         }
