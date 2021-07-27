@@ -13,7 +13,7 @@
              StartupUri="/MVVM/Views/Windows/LoginWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-            <!--Control Theme-->
+            <!--Control Themes-->
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/UiDesign/Theme/HorizontalRadioButtonTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/VerticalRadioButtonTheme.xaml" />
@@ -145,16 +145,6 @@
             <!--All Tasks-->
             <DataTemplate DataType="{x:Type viewModel:AllTasksViewModel}">
                 <view:AllTasksView />
-            </DataTemplate>
-
-            <!--Tasks Todo-->
-            <DataTemplate DataType="{x:Type viewModel:TasksTodoViewModel}">
-                <view:TasksTodoView />
-            </DataTemplate>
-
-            <!--Completed Tasks-->
-            <DataTemplate DataType="{x:Type viewModel:CompletedTasksViewModel}">
-                <view:CompletedTasksView />
             </DataTemplate>
 
             <!--Project Notes-->

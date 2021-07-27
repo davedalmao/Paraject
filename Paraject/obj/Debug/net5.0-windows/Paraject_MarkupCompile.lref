@@ -1,9 +1,8 @@
-﻿
+﻿D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\App.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\Core\CustomControls\UserControls\BindablePasswordBox.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\AllSubtasksView.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\AllTasksView.xaml;;
-FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\CompletedTasksView.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\DashboardView.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\ModalDialogs\AddNoteModalDialog.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\ModalDialogs\AddProjectIdeaModalDialog.xaml;;
@@ -23,7 +22,6 @@ FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\ProjectIdeasVie
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\ProjectsView.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\SubtasksView.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\TaskDetailsView.xaml;;
-FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\TasksTodoView.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\TasksView.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\UserAccountView.xaml;;
 FD:\Projects\Paraject\Paraject Main\Paraject\Paraject\MVVM\Views\Windows\LoginWindow.xaml;;
