@@ -78,7 +78,7 @@ namespace Paraject.MVVM.Views.Windows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Paraject;V1.0.0.0;component/mvvm/views/windows/signupwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Paraject;component/mvvm/views/windows/signupwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\MVVM\Views\Windows\SignupWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
