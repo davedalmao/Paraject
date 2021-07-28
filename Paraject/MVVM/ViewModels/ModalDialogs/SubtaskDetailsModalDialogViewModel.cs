@@ -13,25 +13,28 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 {
     public class SubtaskDetailsModalDialogViewModel : BaseViewModel
     {
-        private readonly IDialogService _dialogService;
         private readonly Action _refreshSubtasksCollection;
+        private readonly IDialogService _dialogService;
         private readonly SubtaskRepository _subtaskRepository;
         private readonly TaskRepository _taskRepository;
         private readonly int _selectedSubtaskId;
+        private readonly string _unmodifiedParentTaskStatus;
 
-        public SubtaskDetailsModalDialogViewModel(Action refreshSubtasksCollection, int parentTaskId, int selectedSubtaskId)
+
+        public SubtaskDetailsModalDialogViewModel(Action refreshSubtasksCollection, Task parentTask, int selectedSubtaskId)
         {
-            _dialogService = new DialogService();
             _refreshSubtasksCollection = refreshSubtasksCollection;
 
+            _dialogService = new DialogService();
             _subtaskRepository = new SubtaskRepository();
             _taskRepository = new TaskRepository();
 
-            /* I have to GET a new instance of the Parent Task here (instead of passing it through the constructor),
-             because if a Task object's property or properties has been modified (without being UPDATED through a repository),
-             then the Task object (that will be passed here) breaks data integrity, therefore producing unexpected results */
-            ParentTask = _taskRepository.Get(parentTaskId);
+            ParentTask = parentTask;
             _selectedSubtaskId = selectedSubtaskId;
+            /* I have to GET the Parent Task's Status property here (instead of getting it's Status property through the Task object that is passed in the constructor),
+             because if the Task object's Status property is modified (without being UPDATED through a repository),
+             then the Parent Task's Status (that will be passed here) breaks data integrity, therefore producing unexpected results */
+            _unmodifiedParentTaskStatus = _taskRepository.Get(parentTask.Id).Status;
 
             UpdateSubtaskCommand = new DelegateCommand(Update);
             DeleteSubtaskCommand = new DelegateCommand(Delete);
@@ -93,7 +96,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         }
         private bool SubtaskStatusCanBeChangedFromCompletedToOtherStatus()
         {
-            if (ParentTask.Status != "Completed")
+            if (_unmodifiedParentTaskStatus != "Completed")
             {
                 return true;
             }
