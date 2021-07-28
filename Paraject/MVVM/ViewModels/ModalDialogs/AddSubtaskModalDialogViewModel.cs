@@ -14,17 +14,28 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
     public class AddSubtaskModalDialogViewModel : BaseViewModel, ICloseWindows
     {
         private readonly IDialogService _dialogService;
-        private readonly SubtaskRepository _subtaskRepository;
         private readonly Action _refreshSubtasksCollection;
+        private readonly SubtaskRepository _subtaskRepository;
+        private readonly TaskRepository _taskRepository;
         private DelegateCommand _closeCommand;
+        private readonly string _unmodifiedParentTaskStatus;
+
 
         public AddSubtaskModalDialogViewModel(Task parentTask, Action refreshSubtasksCollection)
         {
             _dialogService = new DialogService();
-            _subtaskRepository = new SubtaskRepository();
             _refreshSubtasksCollection = refreshSubtasksCollection;
+
+            _subtaskRepository = new SubtaskRepository();
+            _taskRepository = new TaskRepository();
+
+
             ParentTask = parentTask;
 
+            /* I have to GET the Parent Task's Status property here (instead of getting it's Status property through the Task object that is passed in the constructor),
+               because if the Task object's Status property is modified (without being UPDATED through a repository),
+               then the Parent Task's Status (that will be passed here) breaks data integrity, therefore producing unexpected results */
+            _unmodifiedParentTaskStatus = _taskRepository.Get(parentTask.Id).Status;
 
             CurrentSubtask = new Subtask()
             {
@@ -65,7 +76,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 return false;
             }
 
-            else if (ParentTask.Status == "Completed")
+            else if (_unmodifiedParentTaskStatus == "Completed")
             {
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Add Operation", $"Cannot add a new subtask for this task, change the task's status to \"Open\" or \"In Progress\" to add a new subtask.", Icon.InvalidSubtask));
                 CloseWindow();
