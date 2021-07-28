@@ -18,8 +18,10 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         private readonly SubtaskRepository _subtaskRepository;
         private readonly TaskRepository _taskRepository;
         private DelegateCommand _closeCommand;
+        private readonly string _unmodifiedParentTaskStatus;
 
-        public AddSubtaskModalDialogViewModel(int parentTaskId, Action refreshSubtasksCollection)
+
+        public AddSubtaskModalDialogViewModel(Task parentTask, Action refreshSubtasksCollection)
         {
             _dialogService = new DialogService();
             _refreshSubtasksCollection = refreshSubtasksCollection;
@@ -27,13 +29,17 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             _subtaskRepository = new SubtaskRepository();
             _taskRepository = new TaskRepository();
 
-            /* I have to GET a new instance of the Parent Task here (instead of passing it through the constructor),
-               because if a Task object's property or properties has been modified (without being UPDATED through a repository),
-               then the Task object (that will be passed here) breaks data integrity, therefore producing unexpected results */
-            ParentTask = _taskRepository.Get(parentTaskId);
+
+            ParentTask = parentTask;
+
+            /* I have to GET the Parent Task's Status property here (instead of getting it's Status property through the Task object that is passed in the constructor),
+               because if the Task object's Status property is modified (without being UPDATED through a repository),
+               then the Parent Task's Status (that will be passed here) breaks data integrity, therefore producing unexpected results */
+            _unmodifiedParentTaskStatus = _taskRepository.Get(parentTask.Id).Status;
+
             CurrentSubtask = new Subtask()
             {
-                Task_Id_Fk = parentTaskId
+                Task_Id_Fk = parentTask.Id
             };
 
             AddSubtaskCommand = new DelegateCommand(Add);
@@ -70,7 +76,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 return false;
             }
 
-            else if (ParentTask.Status == "Completed")
+            else if (_unmodifiedParentTaskStatus == "Completed")
             {
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Add Operation", $"Cannot add a new subtask for this task, change the task's status to \"Open\" or \"In Progress\" to add a new subtask.", Icon.InvalidSubtask));
                 CloseWindow();

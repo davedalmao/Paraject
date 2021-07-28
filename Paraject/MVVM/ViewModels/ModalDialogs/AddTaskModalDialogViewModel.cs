@@ -17,8 +17,10 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         private readonly Action _refreshTaskCollection;
         private readonly TaskRepository _taskRepository;
         private readonly ProjectRepository _projectRepository;
+        private readonly string _unmodifiedParentProjectStatus;
 
-        public AddTaskModalDialogViewModel(Action refreshTaskCollection, int parentProjectId, string taskType)
+
+        public AddTaskModalDialogViewModel(Action refreshTaskCollection, Project parentProject, string taskType)
         {
             _dialogService = new DialogService();
             _refreshTaskCollection = refreshTaskCollection;
@@ -26,14 +28,17 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             _taskRepository = new TaskRepository();
             _projectRepository = new ProjectRepository();
 
-            /* I have to GET a new instance of the Parent Project here (instead of passing it through the constructor),
-               because if a Project object's property or properties has been modified (without being UPDATED through a repository),
-               then the Project object (that will be passed here) breaks data integrity, therefore producing unexpected results */
-            ParentProject = _projectRepository.Get(parentProjectId);
+            ParentProject = parentProject;
+
+            /* I have to GET the Parent Project's Status property here (instead of getting it's Status property through the Project object that is passed in the constructor),
+               because if the Project object's Status property is modified (without being UPDATED through a repository),
+               then the Parent Project's Status (that will be passed here) breaks data integrity, therefore producing unexpected results */
+            _unmodifiedParentProjectStatus = _projectRepository.Get(parentProject.Id).Status;
+
             SelectedTask = new Task()
             {
                 Type = taskType,
-                Project_Id_Fk = parentProjectId
+                Project_Id_Fk = parentProject.Id
             };
             SelectedTaskType = taskType.Replace("_", " ");
 
@@ -72,13 +77,14 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 return false;
             }
 
-            else if (ParentProject.Status == "Completed")
+            else if (ParentProjectStatusIsCompleted() == false)
             {
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Add Operation", $"Cannot add a new task for {ParentProject.Name}, change the project's status to \"Open\" or \"In Progress\" to add a new task.", Icon.InvalidTask));
                 CloseModal();
                 return false;
             }
 
+            //Add task count for the parent project here
             return true; //A Task is valid if it passes all of the checks above
         }
         private bool TaskSubjecIsValid()
@@ -88,6 +94,10 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         private bool TaskDeadlineDateIsValid()
         {
             return SelectedTask.Deadline >= DateTime.Now.Date || SelectedTask.Deadline is null;
+        }
+        private bool ParentProjectStatusIsCompleted()
+        {
+            return _unmodifiedParentProjectStatus == "Completed";
         }
         private void AddTaskToDatabaseAndShowResult(bool isValid)
         {

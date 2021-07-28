@@ -31,6 +31,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             ParentTask = parentTask;
             _selectedSubtaskId = selectedSubtaskId;
+
             /* I have to GET the Parent Task's Status property here (instead of getting it's Status property through the Task object that is passed in the constructor),
              because if the Task object's Status property is modified (without being UPDATED through a repository),
              then the Parent Task's Status (that will be passed here) breaks data integrity, therefore producing unexpected results */

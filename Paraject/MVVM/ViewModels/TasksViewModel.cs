@@ -134,7 +134,7 @@ namespace Paraject.MVVM.ViewModels
         {
             MainWindowViewModel.Overlay = true;
 
-            AddTaskModalDialogViewModel addTaskModalDialogViewModel = new(DisplayAllFilteredTasks, ParentProject.Id, _currentTaskType);
+            AddTaskModalDialogViewModel addTaskModalDialogViewModel = new(DisplayAllFilteredTasks, ParentProject, _currentTaskType);
 
             AddTaskModalDialog addTaskModalDialog = new();
             addTaskModalDialog.DataContext = addTaskModalDialogViewModel;

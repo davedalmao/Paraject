@@ -35,6 +35,7 @@ namespace Paraject.MVVM.ViewModels
             _unmodifiedSelectedTaskStatus = SelectedTask.Status;
 
             ParentProject = parentProject;
+
             /* I have to GET the Parent Project's Status property here (instead of getting it's Status property through the Project object that is passed in the constructor),
                because if the Project object's Status property is modified (without being UPDATED through a repository),
                then the Parent Project's Status (that will be passed here) breaks data integrity, therefore producing unexpected results */
