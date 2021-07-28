@@ -173,8 +173,8 @@ namespace Paraject.MVVM.ViewModels
             bool isDeleted = _taskRepository.Delete(SelectedTask.Id);
             if (isDeleted)
             {
-                //redirect to TasksView(parent View) after a successful DELETE operation, and
-                //refreshes the Tasks Collection in TasksTodoViewCompletedTasksView(child Views of TasksView) with the new records
+                ParentProject.TaskCount -= 1;
+
                 _refreshTaskCollection();
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Delete Operation", "Task Deleted Successfully!", Icon.ValidTask));
                 MainWindowViewModel.CurrentView = _projectContentViewModel;
