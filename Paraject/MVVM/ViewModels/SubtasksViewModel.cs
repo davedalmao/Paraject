@@ -123,7 +123,7 @@ namespace Paraject.MVVM.ViewModels
             MainWindowViewModel.Overlay = true;
 
             int selectedSubtask = (int)subtaskId;
-            SubtaskDetailsModalDialogViewModel subtaskDetailsModalDialogViewModel = new(DisplayAllFilteredSubtasks, CurrentTask.Id, selectedSubtask);
+            SubtaskDetailsModalDialogViewModel subtaskDetailsModalDialogViewModel = new(DisplayAllFilteredSubtasks, CurrentTask, selectedSubtask);
 
             SubtaskDetailsModalDialog subtaskDetailsModalDialog = new SubtaskDetailsModalDialog();
             subtaskDetailsModalDialog.DataContext = subtaskDetailsModalDialogViewModel;
