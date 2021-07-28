@@ -12,29 +12,33 @@ namespace Paraject.MVVM.ViewModels
 {
     public class TaskDetailsViewModel : BaseViewModel
     {
-        private readonly IDialogService _dialogService;
-        private readonly TaskRepository _taskRepository;
         private readonly Action _refreshTaskCollection;
         private readonly ProjectContentViewModel _projectContentViewModel;
+
+        private readonly IDialogService _dialogService;
+        private readonly TaskRepository _taskRepository;
         private readonly ProjectRepository _projectRepository;
 
+        private readonly string _unmodifiedSelectedTaskStatus;
+        private readonly string _unmodifiedParentProjectStatus;
 
-        public TaskDetailsViewModel(Action refreshTaskCollection, ProjectContentViewModel projectContentViewModel, Task selectedTask, int parentProjectId)
+        public TaskDetailsViewModel(Action refreshTaskCollection, ProjectContentViewModel projectContentViewModel, Task selectedTask, Project parentProject)
         {
+            _refreshTaskCollection = refreshTaskCollection;
+            _projectContentViewModel = projectContentViewModel;
+
             _dialogService = new DialogService();
             _taskRepository = new TaskRepository();
             _projectRepository = new ProjectRepository();
 
-            _refreshTaskCollection = refreshTaskCollection;
-            _projectContentViewModel = projectContentViewModel;
-
             SelectedTask = selectedTask;
-            PreviousSelectedTaskStatus = SelectedTask.Status;
+            _unmodifiedSelectedTaskStatus = SelectedTask.Status;
 
-            /* I have to GET a new instance of the Parent Project here (instead of passing it through the constructor),
-               because if a Project object's property or properties has been modified (without being UPDATED through a repository),
-               then the Project object (that will be passed here) breaks data integrity, therefore producing unexpected results */
-            ParentProject = _projectRepository.Get(parentProjectId);
+            ParentProject = parentProject;
+            /* I have to GET the Parent Project's Status property here (instead of getting it's Status property through the Project object that is passed in the constructor),
+               because if the Project object's Status property is modified (without being UPDATED through a repository),
+               then the Parent Project's Status (that will be passed here) breaks data integrity, therefore producing unexpected results */
+            _unmodifiedParentProjectStatus = _projectRepository.Get(parentProject.Id).Status;
 
             UpdateTaskCommand = new DelegateCommand(Update);
             DeleteTaskCommand = new DelegateCommand(Delete);
@@ -43,7 +47,6 @@ namespace Paraject.MVVM.ViewModels
         #region Properties
         public Project ParentProject { get; set; }
         public Task SelectedTask { get; set; }
-        public string PreviousSelectedTaskStatus { get; set; }
 
         public ICommand UpdateTaskCommand { get; }
         public ICommand DeleteTaskCommand { get; }
@@ -107,7 +110,7 @@ namespace Paraject.MVVM.ViewModels
         }
         private bool TaskStatusCanBeChangedFromCompletedToOtherStatus()
         {
-            if (ParentProject.Status != "Completed")
+            if (_unmodifiedParentProjectStatus != "Completed")
             {
                 return true;
             }
@@ -117,7 +120,7 @@ namespace Paraject.MVVM.ViewModels
         private void UpdateTaskCount()
         {
             //if the Previous SelectedTask's Status is "Completed" and we change the task's status to Open or In Progress, +! to the parent's task count (add 1 more "Incomplete" task)
-            if (PreviousSelectedTaskStatus == "Completed")
+            if (_unmodifiedSelectedTaskStatus == "Completed")
             {
                 IncreaseTaskCountIfTaskIsUnfinished();
             }
