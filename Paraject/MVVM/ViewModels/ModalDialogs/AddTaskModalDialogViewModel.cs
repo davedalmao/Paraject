@@ -77,14 +77,14 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 return false;
             }
 
-            else if (ParentProjectStatusIsCompleted() == false)
+            else if (_unmodifiedParentProjectStatus == "Completed")
             {
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Add Operation", $"Cannot add a new task for {ParentProject.Name}, change the project's status to \"Open\" or \"In Progress\" to add a new task.", Icon.InvalidTask));
                 CloseModal();
                 return false;
             }
 
-            //Add task count for the parent project here
+            ParentProject.TaskCount += 1;
             return true; //A Task is valid if it passes all of the checks above
         }
         private bool TaskSubjecIsValid()
@@ -94,10 +94,6 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         private bool TaskDeadlineDateIsValid()
         {
             return SelectedTask.Deadline >= DateTime.Now.Date || SelectedTask.Deadline is null;
-        }
-        private bool ParentProjectStatusIsCompleted()
-        {
-            return _unmodifiedParentProjectStatus == "Completed";
         }
         private void AddTaskToDatabaseAndShowResult(bool isValid)
         {
@@ -112,16 +108,10 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             _dialogService.OpenDialog(new OkayMessageBoxViewModel("Error", "An Error occured, cannot create the Task.", Icon.InvalidTask));
         }
 
-        private void SetCurrentTaskDefaultValues()
-        {
-            SelectedTask = null;
-            SelectedTask = new Task();
-        }
         private void CloseModal()
         {
             MainWindowViewModel.Overlay = false;
 
-            SetCurrentTaskDefaultValues();
 
             foreach (Window currentModal in Application.Current.Windows)
             {
