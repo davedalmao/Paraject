@@ -43,7 +43,7 @@ namespace Paraject.MVVM.ViewModels.Windows
             else
             {
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Incorrect Data Entry",
-                                              "Check your inputs: \n\n1. User does not exist \n2. Incorrect Username \n3. Incorrect Password.", Icon.InvalidUser));
+                                              "Check your inputs: \n\n1. User does not exist \n2. Incorrect Username \n3. Incorrect Password", Icon.InvalidUser));
             }
         }
         private bool ValidateInput()
