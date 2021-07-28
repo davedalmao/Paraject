@@ -15,15 +15,14 @@ namespace Paraject.MVVM.ViewModels
         private readonly TaskRepository _taskRepository;
         private readonly ProjectContentViewModel _tasksViewModel;
         private readonly string _currentTaskType;
-        private readonly int _parentProjectId;
 
-        public TasksViewModel(ProjectContentViewModel tasksViewModel, int parentProjectId, string currentTaskType = null)
+        public TasksViewModel(ProjectContentViewModel tasksViewModel, Project parentProject, string currentTaskType = null)
         {
             _taskRepository = new TaskRepository();
 
             _currentTaskType = currentTaskType;
             _tasksViewModel = tasksViewModel;
-            _parentProjectId = parentProjectId;
+            ParentProject = parentProject;
 
             ShowAddTaskModalDialogCommand = new DelegateCommand(ShowAddTaskModalDialog);
             FilterTasksCommand = new DelegateCommand(DisplayAllFilteredTasks);
@@ -33,6 +32,7 @@ namespace Paraject.MVVM.ViewModels
         }
 
         #region Properties
+        public Project ParentProject { get; set; }
         public ObservableCollection<Task> Tasks { get; set; }
         public ObservableCollection<GridTileData> CardTasksGrid { get; set; }
 
@@ -68,11 +68,11 @@ namespace Paraject.MVVM.ViewModels
 
             if (_currentTaskType is null)
             {
-                Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(_parentProjectId, CurrentTaskType, "Completed", null, CategoryFilter));
+                Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(ParentProject.Id, CurrentTaskType, "Completed", null, CategoryFilter));
                 return;
             }
 
-            Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(_parentProjectId, _currentTaskType, StatusFilter, PriorityFilter, CategoryFilter)
+            Tasks = new ObservableCollection<Task>(_taskRepository.FindAll(ParentProject.Id, _currentTaskType, StatusFilter, PriorityFilter, CategoryFilter)
                                                                   .Where(task => task.Status != "Completed"));
         }
         private void InputsToDisplay()
@@ -134,7 +134,7 @@ namespace Paraject.MVVM.ViewModels
         {
             MainWindowViewModel.Overlay = true;
 
-            AddTaskModalDialogViewModel addTaskModalDialogViewModel = new(DisplayAllFilteredTasks, _parentProjectId, _currentTaskType);
+            AddTaskModalDialogViewModel addTaskModalDialogViewModel = new(DisplayAllFilteredTasks, ParentProject.Id, _currentTaskType);
 
             AddTaskModalDialog addTaskModalDialog = new();
             addTaskModalDialog.DataContext = addTaskModalDialogViewModel;
@@ -143,7 +143,7 @@ namespace Paraject.MVVM.ViewModels
         public void NavigateToSubtasksView(object taskId) //the argument passed to this parameter is in ProjectsView (a "CommandParameter" from a Project card)
         {
             Task selectedTask = _taskRepository.Get((int)taskId);
-            TaskContentViewModel subtasksViewModel = new(DisplayAllFilteredTasks, _tasksViewModel, selectedTask, _parentProjectId);
+            TaskContentViewModel subtasksViewModel = new(DisplayAllFilteredTasks, _tasksViewModel, selectedTask, ParentProject);
 
             MainWindowViewModel.CurrentView = subtasksViewModel;
         }
