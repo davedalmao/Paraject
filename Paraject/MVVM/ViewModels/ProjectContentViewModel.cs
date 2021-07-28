@@ -18,7 +18,7 @@ namespace Paraject.MVVM.ViewModels
             CurrentProject = currentProject;
 
             //TasksView child Views (ViewModels)
-            TasksVM = new TasksViewModel(this, currentProject.Id, "Finish_Line");
+            TasksVM = new TasksViewModel(this, currentProject, "Finish_Line");
             NotesVM = new NotesViewModel(currentProject.Id);
             ProjectDetailsVM = new ProjectDetailsViewModel(projectsViewModel, currentProject);
 
@@ -64,7 +64,7 @@ namespace Paraject.MVVM.ViewModels
         {
             TaskHeaderTextIsVisible = true;
 
-            TasksVM = new TasksViewModel(this, CurrentProject.Id, taskType?.ToString());
+            TasksVM = new TasksViewModel(this, CurrentProject, taskType?.ToString());
             CurrentView = TasksVM;
         }
         #endregion

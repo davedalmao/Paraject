@@ -11,14 +11,14 @@ namespace Paraject.MVVM.ViewModels
         private readonly Action _refreshTaskCollection;
         private readonly ProjectContentViewModel _tasksViewModel;
 
-        public TaskContentViewModel(Action refreshTaskCollection, ProjectContentViewModel tasksViewModel, Task currentTask, int parentProjectId)
+        public TaskContentViewModel(Action refreshTaskCollection, ProjectContentViewModel tasksViewModel, Task currentTask, Project parentProject)
         {
             _refreshTaskCollection = refreshTaskCollection;
             _tasksViewModel = tasksViewModel;
             CurrentTask = currentTask;
 
             SubtasksVM = new SubtasksViewModel("SubtasksTodo", true, currentTask);
-            TaskDetailsVM = new TaskDetailsViewModel(refreshTaskCollection, tasksViewModel, currentTask, parentProjectId);
+            TaskDetailsVM = new TaskDetailsViewModel(refreshTaskCollection, tasksViewModel, currentTask, parentProject);
 
             CurrentChildView = SubtasksVM;
 
