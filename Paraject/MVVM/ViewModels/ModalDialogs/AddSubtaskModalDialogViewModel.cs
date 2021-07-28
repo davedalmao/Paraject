@@ -72,7 +72,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             else if (SubtaskDeadlineIsValid() == false)
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", "The selected date is invalid. Cannot create a new Subtask.", Icon.InvalidSubtask));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", $"The selected date is invalid. Cannot create a new Subtask. \n\nThe deadline date should be on or after {ParentTask.DateCreated:d} (the parent Task's created date).", Icon.InvalidSubtask));
                 return false;
             }
 
