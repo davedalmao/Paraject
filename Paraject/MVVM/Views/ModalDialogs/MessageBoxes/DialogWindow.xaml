@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Paraject.MVVM.Views.ModalDialogs.MessageBoxes"
         mc:Ignorable="d"
         xmlns:utility="clr-namespace:Paraject.Core.Utilities"
+        xmlns:closeOnEsc="clr-namespace:Paraject.Core.Commands"
         WindowStyle="None"
         ResizeMode="CanResize"
         AllowsTransparency="True"
@@ -18,6 +19,13 @@
         MaxWidth="493"
         MinHeight="217.59"
         utility:WindowCloser.EnableWindowClosing="True">
+
+    <Window.InputBindings>
+        <KeyBinding Key="Escape"
+                    Command="{x:Static closeOnEsc:CloseModalDialogCommand.Instance}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+    </Window.InputBindings>
+
     <ContentControl x:Name="ContentPeresenter"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
