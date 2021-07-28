@@ -160,6 +160,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             if (isDeleted)
             {
                 ParentTask.SubtaskCount -= 1;
+
                 _refreshSubtasksCollection();
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Delete Operation", "Subtask Deleted Successfully!", Icon.ValidSubtask));
                 CloseModalDialog();
