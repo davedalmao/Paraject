@@ -54,30 +54,42 @@
                           Height="42"
                           FontSize="15"
                           Padding="20,0"
-                          Margin="0,0,0,20"
                           Style="{StaticResource ComboBoxTheme}"
                           Background="{StaticResource InputField}"
                           Text="{Binding SelectedProject.Option}"
                           ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:ProjectOptions}}}" />
 
-                <!--ProjectDescription TextBlock-->
-                <TextBlock Text="Description (optional)"
+                <!--ProjectStatus TextBlock-->
+                <TextBlock Text="Project Status"
                            FontSize="16.5"
-                           Margin="0,0,0,3" />
+                           Margin="0,20,0,3" />
 
-                <!--ProjectDescription Multiline TextBox-->
-                <TextBox Width="291"
-                         Height="130"
-                         FontSize="15"
-                         Padding="20,10"
-                         TextWrapping="Wrap"
-                         AcceptsReturn="True"
-                         TextBlock.LineHeight="23"
-                         TextBlock.LineStackingStrategy="BlockLineHeight"
-                         VerticalContentAlignment="Top"
-                         VerticalScrollBarVisibility="Auto"
-                         Style="{StaticResource TextBoxTheme}"
-                         Text="{Binding SelectedProject.Description}" />
+                <!--ProjectStatus ComboBox-->
+                <ComboBox Width="291"
+                          Height="42"
+                          FontSize="15"
+                          Padding="20,0"
+                          Style="{StaticResource ComboBoxTheme}"
+                          Background="{StaticResource InputField}"
+                          Text="{Binding SelectedProject.Status}">
+                    <ComboBox.ItemsSource>
+                        <CompositeCollection>
+                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Statuses}}}" />
+                            <sys:String>Completed</sys:String>
+                        </CompositeCollection>
+                    </ComboBox.ItemsSource>
+                </ComboBox>
+
+                <!--Deadline TextBlock-->
+                <TextBlock Text="Deadline"
+                           Margin="0,20,0,3"
+                           FontSize="16.5" />
+
+                <!--Deadline DateTimePicker-->
+                <DatePicker Style="{StaticResource DatePickerTheme}"
+                            FontSize="15"
+                            SelectedDate="{Binding SelectedProject.Deadline}" />
+
             </StackPanel>
 
             <!--Right Input Fields-->
@@ -117,36 +129,24 @@
                             Command="{Binding AddOrChangeLogoCommand}" />
                 </StackPanel>
 
-                <!--ProjectStatus TextBlock-->
-                <TextBlock Text="Project Status"
+                <!--ProjectDescription TextBlock-->
+                <TextBlock Text="Description (optional)"
                            FontSize="16.5"
                            Margin="0,27,0,3" />
 
-                <!--ProjectStatus ComboBox-->
-                <ComboBox Width="291"
-                          Height="42"
-                          FontSize="15"
-                          Padding="20,0"
-                          Style="{StaticResource ComboBoxTheme}"
-                          Background="{StaticResource InputField}"
-                          Text="{Binding SelectedProject.Status}">
-                    <ComboBox.ItemsSource>
-                        <CompositeCollection>
-                            <CollectionContainer Collection="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Statuses}}}" />
-                            <sys:String>Completed</sys:String>
-                        </CompositeCollection>
-                    </ComboBox.ItemsSource>
-                </ComboBox>
-
-                <!--Deadline TextBlock-->
-                <TextBlock Text="Deadline"
-                           Margin="0,20,0,3"
-                           FontSize="16.5" />
-
-                <!--Deadline DateTimePicker-->
-                <DatePicker Style="{StaticResource DatePickerTheme}"
-                            FontSize="15"
-                            SelectedDate="{Binding SelectedProject.Deadline}" />
+                <!--ProjectDescription Multiline TextBox-->
+                <TextBox Width="291"
+                         Height="130"
+                         FontSize="15"
+                         Padding="20,10"
+                         TextWrapping="Wrap"
+                         AcceptsReturn="True"
+                         TextBlock.LineHeight="23"
+                         TextBlock.LineStackingStrategy="BlockLineHeight"
+                         VerticalContentAlignment="Top"
+                         VerticalScrollBarVisibility="Auto"
+                         Style="{StaticResource TextBoxTheme}"
+                         Text="{Binding SelectedProject.Description}" />
             </StackPanel>
         </Grid>
 
