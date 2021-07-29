@@ -23,8 +23,6 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         private readonly string _unmodifiedParentTaskStatus;
         private readonly DateTime? _unmodifiedParentTaskDeadline;
 
-
-
         public SubtaskDetailsModalDialogViewModel(Action refreshSubtasksCollection, Task parentTask, int selectedSubtaskId)
         {
             _refreshSubtasksCollection = refreshSubtasksCollection;
