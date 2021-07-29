@@ -25,9 +25,15 @@
         MouseDown="MainWindowMouseDown">
 
     <Window.InputBindings>
+        <!--Sidebar option: Projects-->
         <KeyBinding Modifiers="Control"
                     Key="P"
                     Command="{Binding ProjectsViewCommand}" />
+
+        <!--Sidebar option: Account-->
+        <KeyBinding Modifiers="Control"
+                    Key="A"
+                    Command="{Binding UserAccountView}" />
     </Window.InputBindings>
 
     <Border Background="{StaticResource MainBackground}"
