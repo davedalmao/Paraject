@@ -35,12 +35,12 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                then the Parent Project's Status (that will be passed here) breaks data integrity, therefore producing unexpected results */
             _unmodifiedParentProjectStatus = _projectRepository.Get(parentProject.Id).Status;
 
-            SelectedTask = new Task()
+            CurrentTask = new Task()
             {
                 Type = taskType,
                 Project_Id_Fk = parentProject.Id
             };
-            SelectedTaskType = taskType.Replace("_", " ");
+            CurrentTaskType = taskType.Replace("_", " ");
 
             CloseModalCommand = new DelegateCommand(CloseModal);
             AddTaskCommand = new DelegateCommand(Add);
@@ -48,8 +48,8 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
         #region Properties
         public Project ParentProject { get; set; }
-        public Task SelectedTask { get; set; }
-        public string SelectedTaskType { get; set; }
+        public Task CurrentTask { get; set; }
+        public string CurrentTaskType { get; set; }
 
         public ICommand AddTaskCommand { get; }
         public ICommand CloseModalCommand { get; }
@@ -60,7 +60,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         {
             if (TaskIsValid())
             {
-                AddTaskToDatabaseAndShowResult(_taskRepository.Add(SelectedTask));
+                AddTaskToDatabaseAndShowResult(_taskRepository.Add(CurrentTask));
             }
         }
         private bool TaskIsValid()
@@ -89,11 +89,16 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         }
         private bool TaskSubjecIsValid()
         {
-            return !string.IsNullOrWhiteSpace(SelectedTask.Subject);
+            return !string.IsNullOrWhiteSpace(CurrentTask.Subject);
         }
         private bool TaskDeadlineDateIsValid()
         {
-            return SelectedTask.Deadline >= DateTime.Now.Date || SelectedTask.Deadline is null;
+            if (ParentProject.Deadline is not null)
+            {
+                return (CurrentTask.Deadline <= ParentProject.Deadline && CurrentTask.Deadline >= ParentProject.DateCreated.Date) || CurrentTask.Deadline is null;
+            }
+
+            return CurrentTask.Deadline >= DateTime.Now.Date || CurrentTask.Deadline is null;
         }
         private void AddTaskToDatabaseAndShowResult(bool isValid)
         {

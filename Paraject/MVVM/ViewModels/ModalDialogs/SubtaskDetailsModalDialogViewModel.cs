@@ -93,7 +93,6 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         }
         private bool SubtaskDeadlineDateIsValid()
         {
-
             if (ParentTask.Deadline is not null)
             {
                 return (SelectedSubtask.Deadline <= ParentTask.Deadline && SelectedSubtask.Deadline >= ParentTask.DateCreated.Date) || SelectedSubtask.Deadline is null;
