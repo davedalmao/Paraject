@@ -74,8 +74,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             else if (SubtaskDeadlineDateIsValid() == false)
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", $"The selected date is invalid. Cannot update this Subtask. \n\nThe deadline date should be within: \n{ParentTask.DateCreated:MMMM dd, yyyy} (Parent Task's Created Date) \nto \n{ParentTask.Deadline:MMMM dd, yyyy} (Parent Task's Deadline) \n\nOr not have a deadline for this subtask at all.", Icon.InvalidSubtask));
-                return false;
+                return SubtaskDeadlineDateResult();
             }
 
             else if (SubtaskStatusCanBeChangedFromCompletedToOtherStatus() == false)
@@ -98,7 +97,19 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 return (SelectedSubtask.Deadline <= ParentTask.Deadline && SelectedSubtask.Deadline >= ParentTask.DateCreated.Date) || SelectedSubtask.Deadline is null;
             }
 
-            return SelectedSubtask.Deadline >= ParentTask.DateCreated.Date || SelectedSubtask.Deadline is null;
+            return SelectedSubtask.Deadline >= ParentTask.DateCreated.Date || SelectedSubtask.Deadline is null || SelectedSubtask.Deadline >= ParentTask.DateCreated.Date;
+        }
+        private bool SubtaskDeadlineDateResult()
+        {
+            if (ParentTask.Deadline is not null)
+            {
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", $"The selected date is invalid. Cannot update this Subtask. \n\nThe deadline date should be within: \n{ParentTask.DateCreated:MMMM dd, yyyy} (Parent Task's Created Date) \nto \n{ParentTask.Deadline:MMMM dd, yyyy} (Parent Task's Deadline) \n\nOr not have a deadline for this subtask at all.", Icon.InvalidSubtask));
+                return false;
+
+            }
+
+            _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", $"The selected date is invalid. Cannot update this Subtask. \n\nThe deadline date should be on or after {ParentTask.DateCreated:MMMM dd, yyyy} (the Parent Task's created date).", Icon.InvalidSubtask));
+            return false;
         }
         private bool SubtaskStatusCanBeChangedFromCompletedToOtherStatus()
         {
