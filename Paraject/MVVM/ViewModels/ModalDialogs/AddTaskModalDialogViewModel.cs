@@ -18,6 +18,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         private readonly TaskRepository _taskRepository;
         private readonly ProjectRepository _projectRepository;
         private readonly string _unmodifiedParentProjectStatus;
+        private readonly DateTime? _unmodifiedParentProjectDeadline;
 
 
         public AddTaskModalDialogViewModel(Action refreshTaskCollection, Project parentProject, string taskType)
@@ -30,10 +31,11 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             ParentProject = parentProject;
 
-            /* I have to GET the Parent Project's Status property here (instead of getting it's Status property through the Project object that is passed in the constructor),
-               because if the Project object's Status property is modified (without being UPDATED through a repository),
-               then the Parent Project's Status (that will be passed here) breaks data integrity, therefore producing unexpected results */
+            /* I have to GET the Parent Project's properties here (instead of getting it's the properties through the Project object that is passed in the constructor),
+               because if the Project object's properties are modified (without being UPDATED through a repository),
+               then the Parent Project's properties (that will be passed here) breaks data integrity, therefore producing unexpected results */
             _unmodifiedParentProjectStatus = _projectRepository.Get(parentProject.Id).Status;
+            _unmodifiedParentProjectDeadline = _projectRepository.Get(parentProject.Id).Deadline;
 
             CurrentTask = new Task()
             {
@@ -93,18 +95,18 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         }
         private bool TaskDeadlineDateIsValid()
         {
-            if (ParentProject.Deadline is not null)
+            if (_unmodifiedParentProjectDeadline is not null)
             {
-                return (CurrentTask.Deadline <= ParentProject.Deadline && CurrentTask.Deadline >= ParentProject.DateCreated.Date) || CurrentTask.Deadline is null;
+                return (CurrentTask.Deadline <= _unmodifiedParentProjectDeadline && CurrentTask.Deadline >= ParentProject.DateCreated.Date) || CurrentTask.Deadline is null;
             }
 
             return CurrentTask.Deadline >= DateTime.Now.Date || CurrentTask.Deadline is null || CurrentTask.Deadline >= ParentProject.DateCreated.Date;
         }
         private bool TaskDeadlineDateResult()
         {
-            if (ParentProject.Deadline is not null)
+            if (_unmodifiedParentProjectDeadline is not null)
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", $"The selected date is invalid. Cannot create a new Task. \n\nThe deadline date should be within: \n{ParentProject.DateCreated:MMMM dd, yyyy} (Parent Projects's Created Date) \nto \n{ParentProject.Deadline:MMMM dd, yyyy} (Parent Project's Deadline) \n\nOr not have a deadline for this task at all.", Icon.InvalidTask));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", $"The selected date is invalid. Cannot create a new Task. \n\nThe deadline date should be within: \n{ParentProject.DateCreated:MMMM dd, yyyy} (Parent Projects's Created Date) \nto \n{_unmodifiedParentProjectDeadline:MMMM dd, yyyy} (Parent Project's Deadline) \n\nOr not have a deadline for this task at all.", Icon.InvalidTask));
                 return false;
             }
 
