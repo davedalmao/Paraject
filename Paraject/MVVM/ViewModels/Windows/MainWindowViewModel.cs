@@ -34,9 +34,9 @@ namespace Paraject.MVVM.ViewModels.Windows
 
             CurrentView = ProjectsVM;
 
-            ProjectsViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectsVM; });
-            UserAccountView = new ParameterizedDelegateCommand(o => { CurrentView = UserAccountVM; });
-            ProjectIdeasViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectIdeasVM; });
+            ProjectsViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectsVM; ProjectsIsChecked = true; });
+            UserAccountView = new ParameterizedDelegateCommand(o => { CurrentView = UserAccountVM; AccountIsChecked = true; });
+            ProjectIdeasViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectIdeasVM; ProjectIdeasIsChecked = true; });
 
             LogoutCommand = new DelegateCommand(Logout);
         }
@@ -69,6 +69,11 @@ namespace Paraject.MVVM.ViewModels.Windows
         public UserAccountViewModel UserAccountVM { get; set; }
         public ProjectIdeasViewModel ProjectIdeasVM { get; set; }
 
+        public bool ProjectsIsChecked { get; set; } = true;
+        public bool AccountIsChecked { get; set; }
+        public bool ProjectIdeasIsChecked { get; set; }
+        public bool LogoutIsChecked { get; set; }
+
         public ICommand ProjectsViewCommand { get; }
         public ICommand UserAccountView { get; }
         public ICommand ProjectIdeasViewCommand { get; }
@@ -78,6 +83,7 @@ namespace Paraject.MVVM.ViewModels.Windows
         #region Methods
         public void Logout()
         {
+            LogoutIsChecked = true;
             DialogResults result = _dialogService.OpenDialog(new YesNoMessageBoxViewModel("Confirm Logout", "Do you want Logout?", Icon.User));
 
             if (result == DialogResults.Yes)
