@@ -14,11 +14,15 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
     public class SubtaskDetailsModalDialogViewModel : BaseViewModel
     {
         private readonly Action _refreshSubtasksCollection;
+
         private readonly IDialogService _dialogService;
         private readonly SubtaskRepository _subtaskRepository;
         private readonly TaskRepository _taskRepository;
+
         private readonly int _selectedSubtaskId;
         private readonly string _unmodifiedParentTaskStatus;
+        private readonly DateTime? _unmodifiedParentTaskDeadline;
+
 
 
         public SubtaskDetailsModalDialogViewModel(Action refreshSubtasksCollection, Task parentTask, int selectedSubtaskId)
@@ -32,10 +36,12 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             ParentTask = parentTask;
             _selectedSubtaskId = selectedSubtaskId;
 
-            /* I have to GET the Parent Task's Status property here (instead of getting it's Status property through the Task object that is passed in the constructor),
-             because if the Task object's Status property is modified (without being UPDATED through a repository),
-             then the Parent Task's Status (that will be passed here) breaks data integrity, therefore producing unexpected results */
+            /* I have to GET the Parent Task's properties here (instead of getting it's properties through the Task object that is passed in the constructor),
+             because if the Task object's properties are modified (without being UPDATED through a repository),
+             then the Parent Task's properties (that will be passed here) breaks data integrity, therefore producing unexpected results */
             _unmodifiedParentTaskStatus = _taskRepository.Get(parentTask.Id).Status;
+            _unmodifiedParentTaskDeadline = _taskRepository.Get(parentTask.Id).Deadline;
+
 
             UpdateSubtaskCommand = new DelegateCommand(Update);
             DeleteSubtaskCommand = new DelegateCommand(Delete);
@@ -92,18 +98,18 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         }
         private bool SubtaskDeadlineDateIsValid()
         {
-            if (ParentTask.Deadline is not null)
+            if (_unmodifiedParentTaskDeadline is not null)
             {
-                return (SelectedSubtask.Deadline <= ParentTask.Deadline && SelectedSubtask.Deadline >= ParentTask.DateCreated.Date) || SelectedSubtask.Deadline is null;
+                return (SelectedSubtask.Deadline <= _unmodifiedParentTaskDeadline && SelectedSubtask.Deadline >= ParentTask.DateCreated.Date) || SelectedSubtask.Deadline is null;
             }
 
             return SelectedSubtask.Deadline >= ParentTask.DateCreated.Date || SelectedSubtask.Deadline is null || SelectedSubtask.Deadline >= ParentTask.DateCreated.Date;
         }
         private bool SubtaskDeadlineDateResult()
         {
-            if (ParentTask.Deadline is not null)
+            if (_unmodifiedParentTaskDeadline is not null)
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", $"The selected date is invalid. Cannot update this Subtask. \n\nThe deadline date should be within: \n{ParentTask.DateCreated:MMMM dd, yyyy} (Parent Task's Created Date) \nto \n{ParentTask.Deadline:MMMM dd, yyyy} (Parent Task's Deadline) \n\nOr not have a deadline for this subtask at all.", Icon.InvalidSubtask));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", $"The selected date is invalid. Cannot update this Subtask. \n\nThe deadline date should be within: \n{ParentTask.DateCreated:MMMM dd, yyyy} (Parent Task's Created Date) \nto \n{_unmodifiedParentTaskDeadline:MMMM dd, yyyy} (Parent Task's Deadline) \n\nOr not have a deadline for this subtask at all.", Icon.InvalidSubtask));
                 return false;
 
             }
