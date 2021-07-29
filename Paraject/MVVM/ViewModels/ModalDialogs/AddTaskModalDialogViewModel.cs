@@ -73,7 +73,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             else if (TaskDeadlineDateIsValid() == false)
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", $"The selected date is invalid. Cannot create a new Task. \n\nThe deadline date should be within \n{ParentProject.DateCreated:MMMM dd, yyyy} - {ParentProject.Deadline:MMMM dd, yyyy} range, or not have a deadline for this task at all.", Icon.InvalidTask));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", $"The selected date is invalid. Cannot create a new Task. \n\nThe deadline date should be within: \n{ParentProject.DateCreated:MMMM dd, yyyy} (Parent Projects's Created Date) \nto \n{ParentProject.Deadline:MMMM dd, yyyy} (Parent Project's Deadline) \n\nOr not have a deadline for this task at all.", Icon.InvalidTask));
                 return false;
             }
 
