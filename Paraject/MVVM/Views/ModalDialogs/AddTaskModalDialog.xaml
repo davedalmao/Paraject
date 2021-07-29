@@ -60,7 +60,7 @@
                                FontSize="25"
                                HorizontalAlignment="Center" />
 
-                    <TextBlock Text="{Binding SelectedTaskType}"
+                    <TextBlock Text="{Binding CurrentTaskType}"
                                FontSize="25"
                                Foreground="{StaticResource Pink}"
                                HorizontalAlignment="Center" />
@@ -106,7 +106,7 @@
                              Height="42"
                              FontSize="15"
                              Style="{StaticResource TextBoxTheme}"
-                             Text="{Binding SelectedTask.Subject}" />
+                             Text="{Binding CurrentTask.Subject}" />
 
                     <!--Task Description TextBlock-->
                     <TextBlock Text="Description (optional)"
@@ -125,7 +125,7 @@
                              VerticalContentAlignment="Top"
                              VerticalScrollBarVisibility="Auto"
                              Style="{StaticResource TextBoxTheme}"
-                             Text="{Binding SelectedTask.Description}" />
+                             Text="{Binding CurrentTask.Description}" />
                 </StackPanel>
 
                 <!--Right Input Fields-->
@@ -149,7 +149,7 @@
                                   Style="{StaticResource ComboBoxTheme}"
                                   Background="{StaticResource InputField}"
                                   ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Categories}}}"
-                                  Text="{Binding SelectedTask.Category}" />
+                                  Text="{Binding CurrentTask.Category}" />
 
                         <!--Task Priority TextBlock-->
                         <TextBlock Text="Priority"
@@ -165,7 +165,7 @@
                                   Style="{StaticResource ComboBoxTheme}"
                                   Background="{StaticResource InputField}"
                                   ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Priorities}}}"
-                                  Text="{Binding SelectedTask.Priority}" />
+                                  Text="{Binding CurrentTask.Priority}" />
 
                         <!--Task Deadline TextBlock-->
                         <TextBlock Text="Deadline"
@@ -175,7 +175,7 @@
                         <!--Deadline DateTimePicker-->
                         <DatePicker Style="{StaticResource DatePickerTheme}"
                                     FontSize="15"
-                                    SelectedDate="{Binding SelectedTask.Deadline}" />
+                                    SelectedDate="{Binding CurrentTask.Deadline}" />
                     </StackPanel>
 
                     <!--Create Task Button-->

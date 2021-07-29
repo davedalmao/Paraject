@@ -71,7 +71,7 @@ namespace Paraject.MVVM.ViewModels
 
             else if (TaskDeadlineDateIsValid() == false)
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", $"The selected date is invalid. Cannot update this Task. \n\nThe deadline date should be on or after - {ParentProject.DateCreated:d} (the parent Project's created date).", Icon.InvalidTask));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", $"The selected date is invalid. Cannot update this Task. \n\nThe deadline date should be within \n{ParentProject.DateCreated:d} - {ParentProject.Deadline:d} range, or not have a deadline for this task at all.", Icon.InvalidTask));
                 return false;
             }
 
@@ -96,7 +96,12 @@ namespace Paraject.MVVM.ViewModels
         }
         private bool TaskDeadlineDateIsValid()
         {
-            return SelectedTask.Deadline >= ParentProject.DateCreated.Date || SelectedTask.Deadline == null;
+            if (ParentProject.Deadline is not null)
+            {
+                return (SelectedTask.Deadline <= ParentProject.Deadline && SelectedTask.Deadline >= ParentProject.DateCreated.Date) || SelectedTask.Deadline is null;
+            }
+
+            return SelectedTask.Deadline >= ParentProject.DateCreated.Date || SelectedTask.Deadline is null;
         }
         private bool TaskStatusCanBeCompleted()
         {
