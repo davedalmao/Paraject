@@ -39,6 +39,11 @@
         <KeyBinding Modifiers="Control"
                     Key="I"
                     Command="{Binding ProjectIdeasViewCommand}" />
+
+        <!--Sidebar option: Logout-->
+        <KeyBinding Modifiers="Control"
+                    Key="L"
+                    Command="{Binding LogoutCommand}" />
     </Window.InputBindings>
 
     <Border Background="{StaticResource MainBackground}"
