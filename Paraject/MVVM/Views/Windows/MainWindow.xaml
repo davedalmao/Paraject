@@ -23,6 +23,13 @@
         Background="Transparent"
         FontFamily="{StaticResource NunitoBold}"
         MouseDown="MainWindowMouseDown">
+
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Control"
+                    Key="P"
+                    Command="{Binding ProjectsViewCommand}" />
+    </Window.InputBindings>
+
     <Border Background="{StaticResource MainBackground}"
             CornerRadius="20">
         <!--The Grid that houses the overlay and the MainWindow content-->
@@ -184,27 +191,27 @@
                                      Content="Projects"
                                      IsChecked="True"
                                      IsTabStop="False"
-                                     Command="{Binding ProjectsViewCommand}"
                                      DefaultImageUriString="/UiDesign/Icons/SideBarIcons/projects.svg"
                                      SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/projects.svg"
+                                     Command="{Binding ProjectsViewCommand}"
                                      Style="{StaticResource HorizontalMenuButtonTheme}" />
 
                     <!--Profile-->
                     <custom:MenuItem Grid.Row="1"
-                                     Content="Profile"
+                                     Content="Account"
                                      IsTabStop="False"
-                                     Command="{Binding UserAccountView}"
                                      DefaultImageUriString="/UiDesign/Icons/SideBarIcons/profile.svg"
                                      SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/profile.svg"
+                                     Command="{Binding UserAccountView}"
                                      Style="{StaticResource HorizontalMenuButtonTheme}" />
 
                     <!--Project Ideas-->
                     <custom:MenuItem Grid.Row="2"
                                      Content="Project Ideas"
                                      IsTabStop="False"
-                                     Command="{Binding ProjectIdeasViewCommand}"
                                      DefaultImageUriString="/UiDesign/Icons/SideBarIcons/projectIdeas.svg"
                                      SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/projectIdeas.svg"
+                                     Command="{Binding ProjectIdeasViewCommand}"
                                      Style="{StaticResource HorizontalMenuButtonTheme}" />
 
                     <!--Logout-->
@@ -215,8 +222,8 @@
                                      Margin="0"
                                      DefaultImageUriString="/UiDesign/Icons/SideBarIcons/logout.svg"
                                      SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/logout.svg"
-                                     Style="{StaticResource HorizontalMenuButtonTheme}"
-                                     Command="{Binding LogoutCommand}" />
+                                     Command="{Binding LogoutCommand}"
+                                     Style="{StaticResource HorizontalMenuButtonTheme}" />
                 </Grid>
 
                 <!--Where the views are going to be displayed-->
