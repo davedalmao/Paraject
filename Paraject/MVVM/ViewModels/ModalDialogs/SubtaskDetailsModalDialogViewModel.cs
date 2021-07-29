@@ -74,7 +74,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             else if (SubtaskDeadlineDateIsValid() == false)
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", $"The selected date is invalid. Cannot update this Subtask. \n\nThe deadline date should be within \n{ParentTask.DateCreated:MMMM dd, yyyy} - {ParentTask.Deadline:MMMM dd, yyyy} range, or not have a deadline for this subtask at all.", Icon.InvalidSubtask));
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", $"The selected date is invalid. Cannot update this Subtask. \n\nThe deadline date should be within: \n{ParentTask.DateCreated:MMMM dd, yyyy} (Parent Task's Created Date) \nto \n{ParentTask.Deadline:MMMM dd, yyyy} (Parent Task's Deadline) \n\nOr not have a deadline for this subtask at all.", Icon.InvalidSubtask));
                 return false;
             }
 
