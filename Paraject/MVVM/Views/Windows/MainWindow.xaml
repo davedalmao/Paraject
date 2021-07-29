@@ -205,10 +205,10 @@
                     <!--Projects-->
                     <custom:MenuItem Grid.Row="0"
                                      Content="Projects"
-                                     IsChecked="True"
                                      IsTabStop="False"
                                      DefaultImageUriString="/UiDesign/Icons/SideBarIcons/projects.svg"
                                      SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/projects.svg"
+                                     IsChecked="{Binding ProjectsIsChecked}"
                                      Command="{Binding ProjectsViewCommand}"
                                      Style="{StaticResource HorizontalMenuButtonTheme}" />
 
@@ -218,6 +218,7 @@
                                      IsTabStop="False"
                                      DefaultImageUriString="/UiDesign/Icons/SideBarIcons/profile.svg"
                                      SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/profile.svg"
+                                     IsChecked="{Binding AccountIsChecked}"
                                      Command="{Binding UserAccountView}"
                                      Style="{StaticResource HorizontalMenuButtonTheme}" />
 
@@ -227,6 +228,7 @@
                                      IsTabStop="False"
                                      DefaultImageUriString="/UiDesign/Icons/SideBarIcons/projectIdeas.svg"
                                      SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/projectIdeas.svg"
+                                     IsChecked="{Binding ProjectIdeasIsChecked}"
                                      Command="{Binding ProjectIdeasViewCommand}"
                                      Style="{StaticResource HorizontalMenuButtonTheme}" />
 
@@ -238,6 +240,7 @@
                                      Margin="0"
                                      DefaultImageUriString="/UiDesign/Icons/SideBarIcons/logout.svg"
                                      SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/logout.svg"
+                                     IsChecked="{Binding LogoutIsChecked}"
                                      Command="{Binding LogoutCommand}"
                                      Style="{StaticResource HorizontalMenuButtonTheme}" />
                 </Grid>
