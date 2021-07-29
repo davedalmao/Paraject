@@ -96,7 +96,12 @@ namespace Paraject.MVVM.ViewModels
         }
         private bool TaskDeadlineDateIsValid()
         {
-            return SelectedTask.Deadline >= ParentProject.DateCreated.Date || SelectedTask.Deadline == null;
+            if (ParentProject.Deadline is not null)
+            {
+                return (SelectedTask.Deadline <= ParentProject.Deadline && SelectedTask.Deadline >= ParentProject.DateCreated.Date) || SelectedTask.Deadline is null;
+            }
+
+            return SelectedTask.Deadline >= ParentProject.DateCreated.Date || SelectedTask.Deadline is null;
         }
         private bool TaskStatusCanBeCompleted()
         {
