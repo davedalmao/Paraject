@@ -98,7 +98,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 return (CurrentTask.Deadline <= ParentProject.Deadline && CurrentTask.Deadline >= ParentProject.DateCreated.Date) || CurrentTask.Deadline is null;
             }
 
-            return CurrentTask.Deadline >= DateTime.Now.Date || CurrentTask.Deadline is null;
+            return CurrentTask.Deadline >= DateTime.Now.Date || CurrentTask.Deadline is null || CurrentTask.Deadline >= ParentProject.DateCreated.Date;
         }
         private bool TaskDeadlineDateResult()
         {

@@ -72,8 +72,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             else if (SubtaskDeadlineIsValid() == false)
             {
-                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", $"The selected date is invalid. Cannot create a new Subtask. \n\nThe deadline date should be within: \n{ParentTask.DateCreated:MMMM dd, yyyy} (Parent Task's Created Date) \nto \n{ParentTask.Deadline:MMMM dd, yyyy} (Parent Task's Deadline) \n\nOr not have a deadline for this subtask at all.", Icon.InvalidSubtask));
-                return false;
+                return SubtaskDeadlineDateResult();
             }
 
             else if (_unmodifiedParentTaskStatus == "Completed")
@@ -97,7 +96,18 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 return (CurrentSubtask.Deadline <= ParentTask.Deadline && CurrentSubtask.Deadline >= ParentTask.DateCreated.Date) || CurrentSubtask.Deadline is null;
             }
 
-            return CurrentSubtask.Deadline >= DateTime.Now.Date || CurrentSubtask.Deadline is null;
+            return CurrentSubtask.Deadline >= DateTime.Now.Date || CurrentSubtask.Deadline is null || CurrentSubtask.Deadline >= ParentTask.DateCreated.Date;
+        }
+        private bool SubtaskDeadlineDateResult()
+        {
+            if (ParentTask.Deadline is not null)
+            {
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", $"The selected date is invalid. Cannot create a new Subtask. \n\nThe deadline date should be within: \n{ParentTask.DateCreated:MMMM dd, yyyy} (Parent Task's Created Date) \nto \n{ParentTask.Deadline:MMMM dd, yyyy} (Parent Task's Deadline) \n\nOr not have a deadline for this subtask at all.", Icon.InvalidSubtask));
+                return false;
+            }
+
+            _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", $"The selected date is invalid. Cannot create a new Subtask. \n\nThe deadline date should be on or after {ParentTask.DateCreated:MMMM dd, yyyy} (the Parent Task's created date).", Icon.InvalidSubtask));
+            return false;
         }
         private void AddSubtaskToDatabaseAndShowResult(bool isAdded)
         {
