@@ -195,7 +195,7 @@
                                         <TextBlock Text="{Binding Content.Deadline, 
                                                                       StringFormat={}{0:MM / dd / yyyy}, 
                                                                       TargetNullValue=NO DEADLINE}"
-                                                   Foreground="{StaticResource Darkest}"
+                                                   Style="{StaticResource DeadlineTextTheme}"
                                                    FontSize="11" />
                                     </StackPanel>
                                 </Grid>
