@@ -100,7 +100,7 @@ namespace Paraject.MVVM.ViewModels
                 return (SelectedTask.Deadline <= ParentProject.Deadline && SelectedTask.Deadline >= ParentProject.DateCreated.Date) || SelectedTask.Deadline is null;
             }
 
-            return SelectedTask.Deadline >= ParentProject.DateCreated.Date || SelectedTask.Deadline is null;
+            return SelectedTask.Deadline >= ParentProject.DateCreated.Date || SelectedTask.Deadline is null || SelectedTask.Deadline >= ParentProject.DateCreated.Date;
         }
         private bool TaskDeadlineDateResult()
         {
@@ -110,7 +110,7 @@ namespace Paraject.MVVM.ViewModels
                 return false;
             }
 
-            _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", $"The selected date is invalid. Cannot create a new Task. \n\nThe deadline date should be on or after {ParentProject.DateCreated:MMMM dd, yyyy} (the Parent Project's created date).", Icon.InvalidTask));
+            _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", $"The selected date is invalid. Cannot update this Task. \n\nThe deadline date should be on or after {ParentProject.DateCreated:MMMM dd, yyyy} (the Parent Project's created date).", Icon.InvalidTask));
             return false;
         }
         private bool TaskStatusCanBeCompleted()
