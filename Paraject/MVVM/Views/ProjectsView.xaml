@@ -33,7 +33,13 @@
         <KeyBinding Modifiers="Control"
                     Key="D3"
                     Command="{Binding PaidProjectsCommand}" />
+
+        <!--Project Filter: Completed Projects-->
+        <KeyBinding Modifiers="Control"
+                    Key="D4"
+                    Command="{Binding CompletedProjectsCommand}" />
     </UserControl.InputBindings>
+
     <Grid Margin="65,33,65,15">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
