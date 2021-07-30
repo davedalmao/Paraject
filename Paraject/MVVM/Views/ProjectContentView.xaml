@@ -13,37 +13,7 @@
              Height="574.63"
              FontFamily="{StaticResource NunitoBold}"
              Foreground="{StaticResource MainFontColor}"
-             Background="Transparent"
-             FocusManager.FocusedElement="{Binding ElementName=ProjectNameTextBox}">
-
-    <UserControl.InputBindings>
-        <!--Task Filter: Finish Line Tasks-->
-        <KeyBinding Modifiers="Control"
-                    Key="D1"
-                    Command="{Binding TasksViewCommand}"
-                    CommandParameter="Finish_Line" />
-
-        <!--Task Filter: Extra Features-->
-        <KeyBinding Modifiers="Control"
-                    Key="D2"
-                    Command="{Binding TasksViewCommand}"
-                    CommandParameter="Extra_Feature" />
-
-        <!--Task Filter: Completed Tasks-->
-        <KeyBinding Modifiers="Control"
-                    Key="D3"
-                    Command="{Binding TasksViewCommand}" />
-
-        <!--Project Notes-->
-        <KeyBinding Modifiers="Control"
-                    Key="D4"
-                    Command="{Binding ProjectNotesViewCommand}" />
-
-        <!--Project Details-->
-        <KeyBinding Modifiers="Control"
-                    Key="D5"
-                    Command="{Binding ProjectDetailsViewCommand}" />
-    </UserControl.InputBindings>
+             Background="Transparent">
 
     <Grid Margin="40,8,40,25">
         <Grid.RowDefinitions>
@@ -78,6 +48,7 @@
 
             <!--Selected Project Name-->
             <TextBlock Text="{Binding CurrentProject.Name}"
+                       Focusable="True"
                        Margin="8,0,0,0"
                        TextTrimming="CharacterEllipsis"
                        Width="334"
@@ -88,8 +59,7 @@
         <DockPanel Grid.Row="1"
                    Margin="0,20,0,32">
             <!--FinishLine Type Tasks-->
-            <custom:MenuItem x:Name="ProjectNameTextBox"
-                             Content="Finish Line Tasks"
+            <custom:MenuItem Content="Finish Line Tasks"
                              IsTabStop="False"
                              IsChecked="{Binding FinishLineButtonIsChecked}"
                              Style="{StaticResource VerticalMenuButtonTheme}"
