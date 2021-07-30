@@ -56,23 +56,31 @@ namespace Paraject.MVVM.ViewModels
         #region Methods
         public void DisplayAllProjects()
         {
+            AllProjectsButtonIsChecked = true;
+
             ShowAddNewProjectButton();
             Projects = new ObservableCollection<Project>(_projectRepository.GetAll(_currentUserId));
         }
         public void DisplayPersonalProjects()
         {
+            PersonalButtonIsChecked = true;
+
             ShowAddNewProjectButton();
             Projects = new ObservableCollection<Project>(_projectRepository.FindAll(_currentUserId, ProjectOptions.Personal)
                                                                            .Where(project => project.Status != "Completed"));
         }
         public void DisplayPaidProjects()
         {
+            PaidButtonIsChecked = true;
+
             ShowAddNewProjectButton();
             Projects = new ObservableCollection<Project>(_projectRepository.FindAll(_currentUserId, ProjectOptions.Paid)
                                                                            .Where(project => project.Status != "Completed"));
         }
         private void DisplayCompletedProjects()
         {
+            CompletedButtonIsChecked = true;
+
             if (CompletedButtonIsChecked)
             {
                 ShowProjectOptionComboBox();
