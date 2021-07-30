@@ -13,16 +13,16 @@
                         </Grid.RowDefinitions>
 
                         <TextBlock x:Name="RadioButtonMenuText"
-                                   Text="{TemplateBinding Property=Content}"
+                                   Grid.Column="0"
+                                   Height="19.9"
+                                   Margin="0,0,0,8"
+                                   FontSize="14.59"
+                                   Cursor="Hand"
                                    VerticalAlignment="Top"
                                    HorizontalAlignment="Center"
-                                   Foreground="{DynamicResource MainFontColor}"
-                                   FontSize="14.59"
                                    FontFamily="{DynamicResource NunitoBold}"
-                                   Grid.Column="0"
-                                   Cursor="Hand"
-                                   Height="19.9"
-                                   Margin="0,0,0,8" />
+                                   Foreground="{DynamicResource MainFontColor}"
+                                   Text="{TemplateBinding Property=Content}" />
 
                         <Border x:Name="MenuBorder"
                                 Grid.Row="1"

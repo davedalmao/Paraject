@@ -55,7 +55,9 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <!--All Projects Display-->
-            <custom:MenuItem Grid.Column="0"
+            <custom:MenuItem x:Name="AllProjectsButton"
+                             Focusable="True"
+                             Grid.Column="0"
                              Content="All Projects"
                              IsChecked="{Binding AllProjectsButtonIsChecked}"
                              VerticalAlignment="Top"
@@ -134,11 +136,13 @@
         </Grid>
 
         <!--Project Cards Display-->
-        <ScrollViewer Style="{StaticResource ScrollbarTheme}"
+        <ScrollViewer x:Name="scrollviewer"
+                      Style="{StaticResource ScrollbarTheme}"
                       Grid.Row="1"
                       Height="432">
             <!--Project Cards-->
             <ItemsControl x:Name="Projects"
+                          IsTabStop="False"
                           ItemsSource="{Binding Projects}">
 
                 <!--This is what the card would look like-->

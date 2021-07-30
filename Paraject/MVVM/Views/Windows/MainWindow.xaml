@@ -22,7 +22,8 @@
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
         FontFamily="{StaticResource NunitoBold}"
-        MouseDown="MainWindowMouseDown">
+        MouseDown="MainWindowMouseDown"
+     >
 
     <Window.InputBindings>
         <!--Sidebar option: Projects-->
@@ -246,11 +247,11 @@
                 </Grid>
 
                 <!--Where the views are going to be displayed-->
-                <ContentControl  Grid.Column="1"
-                                 Grid.RowSpan="5"
-                                 Margin="0,40,0,0"
-                                 IsTabStop="False"
-                                 Content="{Binding Path=(windowViewModel:MainWindowViewModel.CurrentView)}" />
+                <ContentControl Grid.Column="1"
+                                Grid.RowSpan="5"
+                                Margin="0,40,0,0"
+                                IsTabStop="False"
+                                Content="{Binding Path=(windowViewModel:MainWindowViewModel.CurrentView)}" />
             </Grid>
 
 

@@ -36,7 +36,7 @@ namespace Paraject.MVVM.ViewModels
         public ObservableCollection<Project> Projects { get; set; }
 
         //RadioButtons in ProjectsView
-        public bool AllProjectsButtonIsChecked { get; set; } = true; //default selected RadioButton
+        public bool AllProjectsButtonIsChecked { get; set; }  //default selected RadioButton
         public bool PersonalButtonIsChecked { get; set; }
         public bool PaidButtonIsChecked { get; set; }
         public bool CompletedButtonIsChecked { get; set; }
