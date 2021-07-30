@@ -17,6 +17,13 @@
              MaxHeight="620"
              Foreground="{StaticResource MainFontColor}"
              FontFamily="{StaticResource NunitoBold}">
+
+    <UserControl.InputBindings>
+        <!--Project Filter: All Projects-->
+        <KeyBinding Modifiers="Control"
+                    Key="D1"
+                    Command="{Binding AllProjectsCommand}" />
+    </UserControl.InputBindings>
     <Grid Margin="65,33,65,15">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
