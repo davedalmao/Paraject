@@ -22,8 +22,7 @@
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
         FontFamily="{StaticResource NunitoBold}"
-        MouseDown="MainWindowMouseDown"
-     >
+        MouseDown="MainWindowMouseDown">
 
     <Window.InputBindings>
         <!--Sidebar option: Projects-->
