@@ -1,5 +1,4 @@
 ﻿using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace Paraject.MVVM.Views
 {
@@ -11,7 +10,6 @@ namespace Paraject.MVVM.Views
         public ProjectsView()
         {
             InitializeComponent();
-            Loaded += (sender, e) => MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
         }
     }
 }
