@@ -57,7 +57,8 @@
 
         <!--TasksView Navigation-->
         <DockPanel Grid.Row="1"
-                   Margin="0,20,0,32">
+                   Margin="0,20,0,32"
+                   Focusable="True">
             <!--FinishLine Type Tasks-->
             <custom:MenuItem Content="Finish Line Tasks"
                              IsTabStop="False"
