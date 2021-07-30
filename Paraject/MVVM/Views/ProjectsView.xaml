@@ -28,6 +28,11 @@
         <KeyBinding Modifiers="Control"
                     Key="D2"
                     Command="{Binding PersonalProjectsCommand}" />
+
+        <!--Project Filter: Paid Projects-->
+        <KeyBinding Modifiers="Control"
+                    Key="D3"
+                    Command="{Binding PaidProjectsCommand}" />
     </UserControl.InputBindings>
     <Grid Margin="65,33,65,15">
         <Grid.RowDefinitions>
