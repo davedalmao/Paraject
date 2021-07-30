@@ -23,6 +23,11 @@
         <KeyBinding Modifiers="Control"
                     Key="D1"
                     Command="{Binding AllProjectsCommand}" />
+
+        <!--Project Filter: Personal Projects-->
+        <KeyBinding Modifiers="Control"
+                    Key="D2"
+                    Command="{Binding PersonalProjectsCommand}" />
     </UserControl.InputBindings>
     <Grid Margin="65,33,65,15">
         <Grid.RowDefinitions>
