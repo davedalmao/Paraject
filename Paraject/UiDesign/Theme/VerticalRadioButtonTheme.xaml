@@ -45,12 +45,13 @@
             </Setter.Value>
         </Setter>
 
-        <!--Background for the whole menu item (radio button) control-->
         <Setter Property="Background"
                 Value="Transparent" />
 
-        <!--Margin for the whole menu item (radio button) control-->
         <Setter Property="Margin"
                 Value="0,0,15,0" />
+
+        <Setter Property="FocusVisualStyle"
+                Value="{x:Null}" />
     </Style>
 </ResourceDictionary>
