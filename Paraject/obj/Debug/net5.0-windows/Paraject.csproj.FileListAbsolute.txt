@@ -121,3 +121,4 @@ D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MV
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\SubtasksView.g.cs
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\MVVM\Views\SubtasksView.baml
 D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\UiDesign\Theme\ComboBoxItemTheme.baml
+D:\Projects\Paraject\Paraject Main\Paraject\Paraject\obj\Debug\net5.0-windows\UiDesign\Theme\ProjectDeadlineTextTheme.baml

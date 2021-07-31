@@ -36,6 +36,7 @@
                 <ResourceDictionary Source="/UiDesign/Theme/SubtaskCountIconTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/SubtaskCountValueTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/ComboBoxItemTheme.xaml" />
+                <ResourceDictionary Source="/UiDesign/Theme/ProjectDeadlineTextTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--Project Colors-->
@@ -94,6 +95,7 @@
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
             <converter:ImageToImageSourceConverter x:Key="ImageToImageSourceConverter" />
             <converter:UnderscoreToSpaceConverter x:Key="UnderscoreToSpaceConverter" />
+            <converter:DeadlineForegroundConverter x:Key="DeadlineForegroundConverter" />
 
             <!--Binding 
                 the 

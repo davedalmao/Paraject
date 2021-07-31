@@ -206,6 +206,9 @@
     <Page Update="UiDesign\Theme\PriorityIndicatorTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="UiDesign\Theme\ProjectDeadlineTextTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="UiDesign\Theme\ProjectStatusTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
