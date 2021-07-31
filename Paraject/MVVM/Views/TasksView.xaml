@@ -262,6 +262,7 @@
                                             <TextBlock Text="{Binding Content.Deadline, 
                                                                       StringFormat={}{0:MM / dd / yyyy}, 
                                                                       TargetNullValue=NO DEADLINE}"
+                                                       Tag="{Binding Content.Deadline, Converter={StaticResource DeadlineForegroundConverter}}"
                                                        Style="{StaticResource DeadlineTextTheme}"
                                                        FontSize="11" />
                                         </StackPanel>

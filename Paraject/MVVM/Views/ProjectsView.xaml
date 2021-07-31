@@ -201,11 +201,13 @@
                                            FontFamily="{StaticResource NunitoBold}" />
 
                                 <!--Project Deadline-->
-                                <TextBlock Text="{Binding Deadline, StringFormat={}{0:MM/dd/yyyy}, TargetNullValue=--}"
+                                <TextBlock Text="{Binding Deadline, 
+                                                          StringFormat={}{0:MM/dd/yyyy},
+                                                          TargetNullValue=--}"
                                            Grid.Column="2"
                                            Grid.Row="1"
-                                           Foreground="#83868A"
                                            FontSize="14"
+                                           Foreground="#83868A"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Right"
                                            FontFamily="{StaticResource SignikaRegular}" />
@@ -215,6 +217,5 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-
     </Grid>
 </UserControl>
