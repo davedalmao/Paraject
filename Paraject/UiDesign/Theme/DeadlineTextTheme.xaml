@@ -7,13 +7,20 @@
         <Setter Property="Foreground"
                 Value="{DynamicResource Pink}" />
 
-        <!--Null Foreground color for Deadline-->
         <Style.Triggers>
+            <!--Null Foreground color for Deadline-->
             <Trigger Property="Text"
                      Value="NO DEADLINE">
                 <Setter Property="Foreground"
                         Value="{DynamicResource Darkest}" />
             </Trigger>
+
+            <!--The color if it's past the Deadline date-->
+            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Mode=Self}}"
+                         Value="True">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Red}" />
+            </DataTrigger>
         </Style.Triggers>
     </Style>
 </ResourceDictionary>
