@@ -67,7 +67,6 @@
                 <!--ProjectStatus ComboBox-->
                 <ComboBox Width="291"
                           Height="42"
-                          FontSize="15"
                           Padding="20,0"
                           Style="{StaticResource ComboBoxTheme}"
                           Background="{StaticResource InputField}"

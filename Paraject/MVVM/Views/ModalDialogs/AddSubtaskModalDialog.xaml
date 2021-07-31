@@ -109,7 +109,6 @@
                     <!--Subtask Priority ComboBox-->
                     <ComboBox Width="294"
                               Height="42"
-                              FontSize="15"
                               Padding="20,0"
                               TabIndex="1"
                               ItemsSource="{Binding Source={enumSource:EnumBindingSource {x:Type enums:Priorities}}}"

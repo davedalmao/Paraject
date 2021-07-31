@@ -91,6 +91,12 @@
                 <Setter Property="Foreground"
                         Value="{DynamicResource Orange}" />
             </Trigger>
+
+            <Trigger Property="Text"
+                     Value="Completed">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Pink}" />
+            </Trigger>
             <!--#endregion-->
         </Style.Triggers>
     </Style>
