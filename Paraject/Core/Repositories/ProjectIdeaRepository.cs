@@ -153,8 +153,8 @@ namespace Paraject.Core.Repositories
                                 Id = sqlDataReader.GetInt32(projectIdeaIdFromDb),
                                 User_Id_Fk = sqlDataReader.GetInt32(userIdFk),
                                 Name = sqlDataReader.GetString(projectIdeaName),
-                                Description = sqlDataReader.IsDBNull(projectIdeaDescription) ? "--" : sqlDataReader.GetString(projectIdeaDescription),
-                                Features = sqlDataReader.IsDBNull(projectIdeaFeatures) ? "--" : sqlDataReader.GetString(projectIdeaFeatures),
+                                Description = sqlDataReader.IsDBNull(projectIdeaDescription) ? null : sqlDataReader.GetString(projectIdeaDescription),
+                                Features = sqlDataReader.IsDBNull(projectIdeaFeatures) ? null : sqlDataReader.GetString(projectIdeaFeatures),
                                 DateCreated = sqlDataReader.GetDateTime(dateCreated)
                             };
 

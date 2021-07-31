@@ -97,7 +97,7 @@
 
                                 <!--Project Idea Description-->
                                 <TextBlock Grid.Row="1"
-                                           Text="{Binding Content.Description}"
+                                           Text="{Binding Content.Description, TargetNullValue=--}"
                                            FontSize="14"
                                            TextWrapping="Wrap"
                                            MaxHeight="69"
