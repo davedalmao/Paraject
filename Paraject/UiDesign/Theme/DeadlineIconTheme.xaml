@@ -8,13 +8,20 @@
         <Setter Property="Source"
                 Value="/UiDesign/Icons/Calendar/pinkCalendar.svg" />
 
-        <!--Null Icon for Deadline-->
         <Style.Triggers>
-            <Trigger Property="Tag"
+            <!--Null Icon for Deadline-->
+            <Trigger Property="MessageText"
                      Value="{x:Null}">
                 <Setter Property="Source"
                         Value="/UiDesign/Icons/Calendar/grayCalendar.svg" />
             </Trigger>
+
+            <!--The icon if it's past the Deadline date-->
+            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Mode=Self}}"
+                         Value="True">
+                <Setter Property="Source"
+                        Value="/UiDesign/Icons/Calendar/redCalendar.svg" />
+            </DataTrigger>
         </Style.Triggers>
     </Style>
-</ResourceDictionary>
+</ResourceDictionary> 
