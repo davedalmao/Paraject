@@ -35,6 +35,7 @@
                 <ResourceDictionary Source="/UiDesign/Theme/DeadlineTextTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/SubtaskCountIconTheme.xaml" />
                 <ResourceDictionary Source="/UiDesign/Theme/SubtaskCountValueTheme.xaml" />
+                <ResourceDictionary Source="/UiDesign/Theme/ComboBoxItemTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--Project Colors-->

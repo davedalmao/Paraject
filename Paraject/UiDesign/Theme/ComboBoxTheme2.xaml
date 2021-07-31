@@ -140,5 +140,15 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Style="{DynamicResource ComboBoxItemTheme}"
+                               FontSize="14.59"
+                               Text="{Binding}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>
