@@ -88,7 +88,6 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             ParentProject.TaskCount += 1;
             return true; //A Task is valid if it passes all of the checks above
         }
-
         private bool TaskSubjecIsValid()
         {
             return !string.IsNullOrWhiteSpace(CurrentTask.Subject);
