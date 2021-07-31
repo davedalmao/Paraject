@@ -10,7 +10,6 @@ namespace Paraject.MVVM.Views
         public UserAccountView()
         {
             InitializeComponent();
-
         }
     }
 }

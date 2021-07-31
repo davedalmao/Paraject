@@ -1,4 +1,5 @@
 ﻿using Paraject.MVVM.ViewModels.Windows;
+using Paraject.MVVM.Views.ModalDialogs.MessageBoxes;
 using System;
 using System.Windows;
 using System.Windows.Input;
@@ -18,12 +19,15 @@ namespace Paraject.Core.Commands
             if (CanExecute(parameter))
             {
                 ((Window)parameter).Close();
-                HideMainWindowOverlay();
+                HideMainWindowOverlay((Window)parameter);
             }
         }
 
-        private static void HideMainWindowOverlay()
+        private static void HideMainWindowOverlay(Window window)
         {
+            //If the current "interactable" window is a custom "MessageBox", do not modify the value of the Overlay in the MainWindow
+            if (window is DialogWindow) { return; }
+
             if (MainWindowViewModel.Overlay)
             {
                 MainWindowViewModel.Overlay = false;
