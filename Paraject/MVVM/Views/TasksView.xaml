@@ -251,10 +251,11 @@
                                         <StackPanel Orientation="Horizontal"
                                                     Grid.Column="0">
                                             <!--Deadline Image-->
-                                            <UserControl Width="12.5"
-                                                         Height="12.5"
+                                            <UserControl Width="11"
+                                                         Height="11"
                                                          Margin="0,0,3.75,0">
-                                                <svgc1:SvgViewbox Tag="{Binding Content.Deadline}"
+                                                <svgc1:SvgViewbox Tag="{Binding Content.Deadline, Converter={StaticResource DeadlineForegroundConverter}}"
+                                                                  MessageText="{Binding Content.Deadline}"
                                                                   Style="{StaticResource DeadlineIconTheme}" />
                                             </UserControl>
 
