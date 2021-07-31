@@ -207,9 +207,10 @@
                                            Grid.Column="2"
                                            Grid.Row="1"
                                            FontSize="14"
-                                           Foreground="#83868A"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Right"
+                                           Tag="{Binding Deadline, Converter={StaticResource DeadlineForegroundConverter}}"
+                                           Style="{StaticResource ProjectDeadlineTextTheme}"
                                            FontFamily="{StaticResource SignikaRegular}" />
                             </Grid>
                         </Button>
