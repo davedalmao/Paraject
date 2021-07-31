@@ -17,7 +17,7 @@ namespace Paraject.MVVM.Models
         public string Type { get; set; }
         public string Description { get; set; }
         public string Status { get; set; }
-        public string Category { get; set; } = Enum.GetName(Categories.Database);
+        public string Category { get; set; } = Enum.GetName(Categories.Backend);
         public string Priority { get; set; } = Enum.GetName(Priorities.Low);
         public DateTime? Deadline { get; set; }
         public DateTime DateCreated { get; set; }
