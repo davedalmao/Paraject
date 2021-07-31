@@ -8,14 +8,11 @@ namespace Paraject.Core.Enums
 
     public enum Categories
     {
-        [Description("Database")]
-        Database,
+        [Description("Backend")]
+        Backend,
 
-        [Description("Database Design")]
-        Database_Design,
-
-        [Description("Database Bug")]
-        Database_Bug,
+        [Description("Backend Bug")]
+        Backend_Bug,
 
         [Description("UI Design")]
         UI_Design,
@@ -29,10 +26,13 @@ namespace Paraject.Core.Enums
         [Description("UX Bug")]
         UX_Bug,
 
-        [Description("Backend")]
-        Backend,
+        [Description("Database")]
+        Database,
 
-        [Description("Backend Bug")]
-        Backend_Bug
+        [Description("Database Design")]
+        Database_Design,
+
+        [Description("Database Bug")]
+        Database_Bug
     }
 }
