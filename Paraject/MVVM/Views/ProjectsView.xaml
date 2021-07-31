@@ -169,7 +169,7 @@
                                 </Image>
 
                                 <!--Project Name-->
-                                <TextBlock Text="{Binding Name, Mode=OneWay}"
+                                <TextBlock Text="{Binding Name}"
                                            Grid.Column="1"
                                            Grid.Row="0"
                                            Foreground="{StaticResource White}"
@@ -180,7 +180,7 @@
                                            FontFamily="{StaticResource ArbutusSlabRegular}" />
 
                                 <!--Project Description-->
-                                <TextBlock Text="{Binding Description, Mode=OneWay}"
+                                <TextBlock Text="{Binding Description, TargetNullValue=--}"
                                            Grid.Column="1"
                                            Grid.Row="1"
                                            Foreground="#83868A"
