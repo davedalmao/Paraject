@@ -144,7 +144,6 @@
                         <!--Task Category TextBox-->
                         <ComboBox Width="294"
                                   Height="42"
-                                  FontSize="15"
                                   Padding="20,0"
                                   Style="{StaticResource ComboBoxTheme}"
                                   Background="{StaticResource InputField}"
@@ -159,7 +158,6 @@
                         <!--Task Priority ComboBox-->
                         <ComboBox Width="294"
                                   Height="42"
-                                  FontSize="15"
                                   Padding="20,0"
                                   Margin="0,0,0,23"
                                   Style="{StaticResource ComboBoxTheme}"
