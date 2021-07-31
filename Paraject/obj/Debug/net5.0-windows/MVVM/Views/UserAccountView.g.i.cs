@@ -72,11 +72,7 @@ namespace Paraject.MVVM.Views {
                 return;
             }
             _contentLoaded = true;
-<<<<<<< HEAD
-            System.Uri resourceLocater = new System.Uri("/Paraject;V1.0.0.0;component/mvvm/views/useraccountview.xaml", System.UriKind.Relative);
-=======
             System.Uri resourceLocater = new System.Uri("/Paraject;component/mvvm/views/useraccountview.xaml", System.UriKind.Relative);
->>>>>>> set_null_value's_displayed_text_to_cards_instead_of_setting_the_values_in_the_repositories
             
             #line 1 "..\..\..\..\..\MVVM\Views\UserAccountView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
