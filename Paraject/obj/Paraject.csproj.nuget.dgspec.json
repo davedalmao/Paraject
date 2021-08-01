@@ -45,6 +45,7 @@
               "version": "[1.1.31, )"
             },
             "PropertyChanged.Fody": {
+              "suppressParent": "All",
               "target": "Package",
               "version": "[3.3.3, )"
             },
