@@ -35,7 +35,7 @@ namespace Paraject.MVVM.ViewModels.Windows
             CurrentView = ProjectsVM;
 
             ProjectsViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectsVM; ProjectsIsChecked = true; });
-            UserAccountView = new ParameterizedDelegateCommand(o => { CurrentView = UserAccountVM; AccountIsChecked = true; });
+            UserAccountViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = UserAccountVM; AccountIsChecked = true; });
             ProjectIdeasViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectIdeasVM; ProjectIdeasIsChecked = true; });
 
             LogoutCommand = new DelegateCommand(Logout);
@@ -75,7 +75,7 @@ namespace Paraject.MVVM.ViewModels.Windows
         public bool LogoutIsChecked { get; set; }
 
         public ICommand ProjectsViewCommand { get; }
-        public ICommand UserAccountView { get; }
+        public ICommand UserAccountViewCommand { get; }
         public ICommand ProjectIdeasViewCommand { get; }
         public ICommand LogoutCommand { get; }
         #endregion
