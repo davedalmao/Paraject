@@ -33,7 +33,7 @@
         <!--Sidebar option: Account-->
         <KeyBinding Modifiers="Control"
                     Key="A"
-                    Command="{Binding UserAccountView}" />
+                    Command="{Binding UserAccountViewCommand}" />
 
         <!--Sidebar option: Project Ideas-->
         <KeyBinding Modifiers="Control"
@@ -219,7 +219,7 @@
                                      DefaultImageUriString="/UiDesign/Icons/SideBarIcons/profile.svg"
                                      SelectedImageUriString="/UiDesign/Icons/SideBarIcons/Selected/profile.svg"
                                      IsChecked="{Binding AccountIsChecked}"
-                                     Command="{Binding UserAccountView}"
+                                     Command="{Binding UserAccountViewCommand}"
                                      Style="{StaticResource HorizontalMenuButtonTheme}" />
 
                     <!--Project Ideas-->
