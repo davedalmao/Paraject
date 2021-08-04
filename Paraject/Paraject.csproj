@@ -4,14 +4,6 @@
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<ApplicationIcon></ApplicationIcon>
-		<PublisherName>paraJdox1</PublisherName>
-		<Authors>paraJdox1</Authors>
-		<Company>paraJdox1</Company>
-		<Description>A project management application, that keeps track of a project's task.</Description>
-		<PackageIcon></PackageIcon>
-		<PackageIconUrl />
-		<NoWin32Manifest>true</NoWin32Manifest>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -108,11 +100,35 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.31" />
+		<PackageReference Include="NuGet.CommandLine" Version="5.9.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="PropertyChanged.Fody" Version="3.3.3" PrivateAssets="All" />
 		<PackageReference Include="SharpVectors" Version="1.7.1" />
+		<PackageReference Include="squirrel.windows" Version="1.9.0" />
 		<PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
 		<PackageReference Include="System.Drawing.Common" Version="5.0.2" />
 	</ItemGroup>
+
+	<PropertyGroup>
+		<NugetTools>$(PkgNuGet_CommandLine)\tools</NugetTools>
+		<SquirrelTools>$(Pkgsquirrel_windows)\tools</SquirrelTools>
+
+		<Version>1.0.0</Version>
+
+		<NuspecFile>$(SolutionDir)Paraject\ReleaseSpec.nuspec</NuspecFile>
+	</PropertyGroup>
+
+	<Target Name="GenerateRelease" AfterTargets="AfterBuild" Condition="$(Configuration) == Release">
+		<XmlPeek XmlInputPath="$(NuspecFile)" Query="/package/metadata/id/text()">
+			<Output TaskParameter="Result" ItemName="ID" />
+		</XmlPeek>
+
+		<Exec Command="$(NugetTools)\NuGet.exe pack $(NuspecFile) -Version $(Version) -Properties Configuration=Release -OutputDirectory $(SolutionDir)Deployment\GeneratedNugets" />
+
+		<Exec Command="$(SquirrelTools)\Squirrel.exe --releasify $(SolutionDir)Deployment\GeneratedNugets\@(ID).$(Version).nupkg --releaseDir=$(SolutionDir)Deployment\Releases" />
+	</Target>
 
 	<ItemGroup>
 		<Resource Include="UiDesign\Icons\backArrow.png">
@@ -301,10 +317,6 @@
 		<Resource Include="UiDesign\Icons\WindowStateButtons\min.png">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Resource>
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Properties\PublishProfiles\" />
 	</ItemGroup>
 
 </Project>
