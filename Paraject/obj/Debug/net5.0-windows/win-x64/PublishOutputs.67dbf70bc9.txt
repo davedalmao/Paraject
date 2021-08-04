@@ -1,0 +1,3 @@
+c:\Temporary\file\Paraject.pdb
+c:\Temporary\file\Paraject.dll.config
+c:\Temporary\file\Paraject.exe
