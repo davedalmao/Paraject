@@ -1,308 +1,310 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
-    <UseWPF>true</UseWPF>
-    <ApplicationIcon>ParajectLogo.ico</ApplicationIcon>
-    <Authors>paraJdox1</Authors>
-    <Company>paraJdox1</Company>
-    <Description>A project management application, that keeps track of a project's task.</Description>
-    <PackageIcon></PackageIcon>
-    <PackageIconUrl />
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net5.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<ApplicationIcon></ApplicationIcon>
+		<PublisherName>paraJdox1</PublisherName>
+		<Authors>paraJdox1</Authors>
+		<Company>paraJdox1</Company>
+		<Description>A project management application, that keeps track of a project's task.</Description>
+		<PackageIcon></PackageIcon>
+		<PackageIconUrl />
+		<NoWin32Manifest>true</NoWin32Manifest>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Database\**" />
-    <EmbeddedResource Remove="Database\**" />
-    <None Remove="Database\**" />
-    <Page Remove="Database\**" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="Database\**" />
+		<EmbeddedResource Remove="Database\**" />
+		<None Remove="Database\**" />
+		<Page Remove="Database\**" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Remove="UiDesign\Fonts\ArbutusSlab-Regular.ttf" />
-    <None Remove="UiDesign\Fonts\Merriweather-Bold.ttf" />
-    <None Remove="UiDesign\Fonts\Nunito-Bold.ttf" />
-    <None Remove="UiDesign\Fonts\Signika-Regular.ttf" />
-    <None Remove="UiDesign\Icons\backArrow.png" />
-    <None Remove="UiDesign\Icons\backArrow.svg" />
-    <None Remove="UiDesign\Icons\ButtonIcons\add.svg" />
-    <None Remove="UiDesign\Icons\ButtonIcons\addProjectLogo.svg" />
-    <None Remove="UiDesign\Icons\ButtonIcons\delete.svg" />
-    <None Remove="UiDesign\Icons\ButtonIcons\image.svg" />
-    <None Remove="UiDesign\Icons\ButtonIcons\subtask.svg" />
-    <None Remove="UiDesign\Icons\ButtonIcons\update.svg" />
-    <None Remove="UiDesign\Icons\Calendar\grayCalendar.svg" />
-    <None Remove="UiDesign\Icons\Calendar\pinkCalendar.svg" />
-    <None Remove="UiDesign\Icons\Calendar\redCalendar.svg" />
-    <None Remove="UiDesign\Icons\graySubtask.svg" />
-    <None Remove="UiDesign\Icons\MessageBox\Error.svg" />
-    <None Remove="UiDesign\Icons\MessageBox\InvalidNote.svg" />
-    <None Remove="UiDesign\Icons\MessageBox\InvalidProject.svg" />
-    <None Remove="UiDesign\Icons\MessageBox\InvalidProjectIdea.svg" />
-    <None Remove="UiDesign\Icons\MessageBox\InvalidSubtask.svg" />
-    <None Remove="UiDesign\Icons\MessageBox\InvalidTask.svg" />
-    <None Remove="UiDesign\Icons\MessageBox\InvalidUser.svg" />
-    <None Remove="UiDesign\Icons\MessageBox\Note.svg" />
-    <None Remove="UiDesign\Icons\MessageBox\Project.svg" />
-    <None Remove="UiDesign\Icons\MessageBox\ProjectIdea.svg" />
-    <None Remove="UiDesign\Icons\MessageBox\Subtask.svg" />
-    <None Remove="UiDesign\Icons\MessageBox\Task.svg" />
-    <None Remove="UiDesign\Icons\MessageBox\User.svg" />
-    <None Remove="UiDesign\Icons\MessageBox\ValidNote.svg" />
-    <None Remove="UiDesign\Icons\MessageBox\ValidProject.svg" />
-    <None Remove="UiDesign\Icons\MessageBox\ValidProjectIdea.svg" />
-    <None Remove="UiDesign\Icons\MessageBox\ValidSubtask.svg" />
-    <None Remove="UiDesign\Icons\MessageBox\ValidTask.svg" />
-    <None Remove="UiDesign\Icons\MessageBox\ValidUser.svg" />
-    <None Remove="UiDesign\Icons\ModalDialogIcons\addProjectIcon.svg" />
-    <None Remove="UiDesign\Icons\ModalDialogIcons\addTaskIcon.svg" />
-    <None Remove="UiDesign\Icons\ModalDialogIcons\note.svg" />
-    <None Remove="UiDesign\Icons\ModalDialogIcons\projectIdea.svg" />
-    <None Remove="UiDesign\Icons\ModalDialogIcons\subtask.svg" />
-    <None Remove="UiDesign\Icons\Password\showPassword.svg" />
-    <None Remove="UiDesign\Icons\pinkSubtask.svg" />
-    <None Remove="UiDesign\Icons\WindowStateButtons\lightClose.png" />
-    <None Remove="UiDesign\Icons\WindowStateButtons\lightMin.png" />
-    <None Remove="UiDesign\Images\dashboardImage.svg" />
-    <None Remove="UiDesign\Images\loginGraphic.svg" />
-    <None Remove="UiDesign\Images\Logo\defaultProjectLogo.png" />
-    <None Remove="UiDesign\Images\Logo\parajectLogo.svg" />
-    <None Remove="UiDesign\Images\Logo\parajectLogoDark.svg" />
-    <None Remove="UiDesign\Images\parajectLogo.png" />
-    <None Remove="UiDesign\Icons\SideBarIcons\dashboard.svg" />
-    <None Remove="UiDesign\Icons\SideBarIcons\logout.svg" />
-    <None Remove="UiDesign\Icons\SideBarIcons\options.svg" />
-    <None Remove="UiDesign\Icons\SideBarIcons\profile.svg" />
-    <None Remove="UiDesign\Icons\SideBarIcons\projectIdeas.svg" />
-    <None Remove="UiDesign\Icons\SideBarIcons\projects.svg" />
-    <None Remove="UiDesign\Icons\SideBarIcons\Selected\dashboard.svg" />
-    <None Remove="UiDesign\Icons\SideBarIcons\Selected\logout.svg" />
-    <None Remove="UiDesign\Icons\SideBarIcons\Selected\options.svg" />
-    <None Remove="UiDesign\Icons\SideBarIcons\Selected\profile.svg" />
-    <None Remove="UiDesign\Icons\SideBarIcons\Selected\projectIdeas.svg" />
-    <None Remove="UiDesign\Icons\SideBarIcons\Selected\projects.svg" />
-    <None Remove="UiDesign\Images\signupGraphic.svg" />
-    <None Remove="UiDesign\Images\UserImage\default.png" />
-    <None Remove="UiDesign\Icons\WindowStateButtons\close.png" />
-    <None Remove="UiDesign\Icons\WindowStateButtons\max.png" />
-    <None Remove="UiDesign\Icons\WindowStateButtons\min.png" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="UiDesign\Fonts\ArbutusSlab-Regular.ttf" />
+		<None Remove="UiDesign\Fonts\Merriweather-Bold.ttf" />
+		<None Remove="UiDesign\Fonts\Nunito-Bold.ttf" />
+		<None Remove="UiDesign\Fonts\Signika-Regular.ttf" />
+		<None Remove="UiDesign\Icons\backArrow.png" />
+		<None Remove="UiDesign\Icons\backArrow.svg" />
+		<None Remove="UiDesign\Icons\ButtonIcons\add.svg" />
+		<None Remove="UiDesign\Icons\ButtonIcons\addProjectLogo.svg" />
+		<None Remove="UiDesign\Icons\ButtonIcons\delete.svg" />
+		<None Remove="UiDesign\Icons\ButtonIcons\image.svg" />
+		<None Remove="UiDesign\Icons\ButtonIcons\subtask.svg" />
+		<None Remove="UiDesign\Icons\ButtonIcons\update.svg" />
+		<None Remove="UiDesign\Icons\Calendar\grayCalendar.svg" />
+		<None Remove="UiDesign\Icons\Calendar\pinkCalendar.svg" />
+		<None Remove="UiDesign\Icons\Calendar\redCalendar.svg" />
+		<None Remove="UiDesign\Icons\graySubtask.svg" />
+		<None Remove="UiDesign\Icons\MessageBox\Error.svg" />
+		<None Remove="UiDesign\Icons\MessageBox\InvalidNote.svg" />
+		<None Remove="UiDesign\Icons\MessageBox\InvalidProject.svg" />
+		<None Remove="UiDesign\Icons\MessageBox\InvalidProjectIdea.svg" />
+		<None Remove="UiDesign\Icons\MessageBox\InvalidSubtask.svg" />
+		<None Remove="UiDesign\Icons\MessageBox\InvalidTask.svg" />
+		<None Remove="UiDesign\Icons\MessageBox\InvalidUser.svg" />
+		<None Remove="UiDesign\Icons\MessageBox\Note.svg" />
+		<None Remove="UiDesign\Icons\MessageBox\Project.svg" />
+		<None Remove="UiDesign\Icons\MessageBox\ProjectIdea.svg" />
+		<None Remove="UiDesign\Icons\MessageBox\Subtask.svg" />
+		<None Remove="UiDesign\Icons\MessageBox\Task.svg" />
+		<None Remove="UiDesign\Icons\MessageBox\User.svg" />
+		<None Remove="UiDesign\Icons\MessageBox\ValidNote.svg" />
+		<None Remove="UiDesign\Icons\MessageBox\ValidProject.svg" />
+		<None Remove="UiDesign\Icons\MessageBox\ValidProjectIdea.svg" />
+		<None Remove="UiDesign\Icons\MessageBox\ValidSubtask.svg" />
+		<None Remove="UiDesign\Icons\MessageBox\ValidTask.svg" />
+		<None Remove="UiDesign\Icons\MessageBox\ValidUser.svg" />
+		<None Remove="UiDesign\Icons\ModalDialogIcons\addProjectIcon.svg" />
+		<None Remove="UiDesign\Icons\ModalDialogIcons\addTaskIcon.svg" />
+		<None Remove="UiDesign\Icons\ModalDialogIcons\note.svg" />
+		<None Remove="UiDesign\Icons\ModalDialogIcons\projectIdea.svg" />
+		<None Remove="UiDesign\Icons\ModalDialogIcons\subtask.svg" />
+		<None Remove="UiDesign\Icons\Password\showPassword.svg" />
+		<None Remove="UiDesign\Icons\pinkSubtask.svg" />
+		<None Remove="UiDesign\Icons\WindowStateButtons\lightClose.png" />
+		<None Remove="UiDesign\Icons\WindowStateButtons\lightMin.png" />
+		<None Remove="UiDesign\Images\dashboardImage.svg" />
+		<None Remove="UiDesign\Images\loginGraphic.svg" />
+		<None Remove="UiDesign\Images\Logo\defaultProjectLogo.png" />
+		<None Remove="UiDesign\Images\Logo\parajectLogo.svg" />
+		<None Remove="UiDesign\Images\Logo\parajectLogoDark.svg" />
+		<None Remove="UiDesign\Images\parajectLogo.png" />
+		<None Remove="UiDesign\Icons\SideBarIcons\dashboard.svg" />
+		<None Remove="UiDesign\Icons\SideBarIcons\logout.svg" />
+		<None Remove="UiDesign\Icons\SideBarIcons\options.svg" />
+		<None Remove="UiDesign\Icons\SideBarIcons\profile.svg" />
+		<None Remove="UiDesign\Icons\SideBarIcons\projectIdeas.svg" />
+		<None Remove="UiDesign\Icons\SideBarIcons\projects.svg" />
+		<None Remove="UiDesign\Icons\SideBarIcons\Selected\dashboard.svg" />
+		<None Remove="UiDesign\Icons\SideBarIcons\Selected\logout.svg" />
+		<None Remove="UiDesign\Icons\SideBarIcons\Selected\options.svg" />
+		<None Remove="UiDesign\Icons\SideBarIcons\Selected\profile.svg" />
+		<None Remove="UiDesign\Icons\SideBarIcons\Selected\projectIdeas.svg" />
+		<None Remove="UiDesign\Icons\SideBarIcons\Selected\projects.svg" />
+		<None Remove="UiDesign\Images\signupGraphic.svg" />
+		<None Remove="UiDesign\Images\UserImage\default.png" />
+		<None Remove="UiDesign\Icons\WindowStateButtons\close.png" />
+		<None Remove="UiDesign\Icons\WindowStateButtons\max.png" />
+		<None Remove="UiDesign\Icons\WindowStateButtons\min.png" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Include="UiDesign\Fonts\ArbutusSlab-Regular.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="UiDesign\Fonts\Merriweather-Bold.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="UiDesign\Fonts\Nunito-Bold.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="UiDesign\Fonts\Signika-Regular.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="UiDesign\Fonts\ArbutusSlab-Regular.ttf">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="UiDesign\Fonts\Merriweather-Bold.ttf">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="UiDesign\Fonts\Nunito-Bold.ttf">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="UiDesign\Fonts\Signika-Regular.ttf">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.31" />
-    <PackageReference Include="PropertyChanged.Fody" Version="3.3.3" PrivateAssets="All" />
-    <PackageReference Include="SharpVectors" Version="1.7.1" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
-    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.31" />
+		<PackageReference Include="PropertyChanged.Fody" Version="3.3.3" PrivateAssets="All" />
+		<PackageReference Include="SharpVectors" Version="1.7.1" />
+		<PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+		<PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Resource Include="UiDesign\Icons\backArrow.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\backArrow.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\ButtonIcons\add.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\ButtonIcons\addProjectLogo.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\ButtonIcons\delete.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\ButtonIcons\image.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\ButtonIcons\subtask.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\ButtonIcons\update.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\Calendar\grayCalendar.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\Calendar\pinkCalendar.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\Calendar\redCalendar.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\MessageBox\Error.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\MessageBox\InvalidNote.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\MessageBox\InvalidProject.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\MessageBox\InvalidProjectIdea.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\MessageBox\InvalidSubtask.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\MessageBox\InvalidTask.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\MessageBox\InvalidUser.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\MessageBox\Note.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\MessageBox\Project.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\MessageBox\ProjectIdea.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\MessageBox\Subtask.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\MessageBox\Task.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\MessageBox\User.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\MessageBox\ValidNote.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\MessageBox\ValidProject.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\MessageBox\ValidProjectIdea.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\MessageBox\ValidSubtask.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\MessageBox\ValidTask.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\MessageBox\ValidUser.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\ModalDialogIcons\addProjectIcon.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\ModalDialogIcons\addTaskIcon.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\ModalDialogIcons\note.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\ModalDialogIcons\projectIdea.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\ModalDialogIcons\subtask.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\Password\showPassword.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\graySubtask.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\pinkSubtask.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\WindowStateButtons\lightClose.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\WindowStateButtons\lightMin.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Images\dashboardImage.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Images\loginGraphic.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\SideBarIcons\dashboard.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\SideBarIcons\logout.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\SideBarIcons\profile.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\SideBarIcons\projectIdeas.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\SideBarIcons\projects.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\SideBarIcons\Selected\dashboard.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\SideBarIcons\Selected\logout.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\SideBarIcons\Selected\profile.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\SideBarIcons\Selected\projectIdeas.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\SideBarIcons\Selected\projects.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\SideBarIcons\Selected\options.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\SideBarIcons\options.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Images\Logo\defaultProjectLogo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Images\Logo\parajectLogo.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Images\Logo\parajectLogoDark.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Images\signupGraphic.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Images\UserImage\default.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\WindowStateButtons\close.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\WindowStateButtons\max.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UiDesign\Icons\WindowStateButtons\min.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
+	<ItemGroup>
+		<Resource Include="UiDesign\Icons\backArrow.png">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\backArrow.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\ButtonIcons\add.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\ButtonIcons\addProjectLogo.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\ButtonIcons\delete.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\ButtonIcons\image.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\ButtonIcons\subtask.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\ButtonIcons\update.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\Calendar\grayCalendar.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\Calendar\pinkCalendar.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\Calendar\redCalendar.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\MessageBox\Error.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\MessageBox\InvalidNote.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\MessageBox\InvalidProject.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\MessageBox\InvalidProjectIdea.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\MessageBox\InvalidSubtask.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\MessageBox\InvalidTask.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\MessageBox\InvalidUser.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\MessageBox\Note.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\MessageBox\Project.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\MessageBox\ProjectIdea.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\MessageBox\Subtask.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\MessageBox\Task.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\MessageBox\User.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\MessageBox\ValidNote.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\MessageBox\ValidProject.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\MessageBox\ValidProjectIdea.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\MessageBox\ValidSubtask.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\MessageBox\ValidTask.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\MessageBox\ValidUser.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\ModalDialogIcons\addProjectIcon.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\ModalDialogIcons\addTaskIcon.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\ModalDialogIcons\note.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\ModalDialogIcons\projectIdea.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\ModalDialogIcons\subtask.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\Password\showPassword.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\graySubtask.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\pinkSubtask.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\WindowStateButtons\lightClose.png">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\WindowStateButtons\lightMin.png">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Images\dashboardImage.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Images\loginGraphic.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\SideBarIcons\dashboard.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\SideBarIcons\logout.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\SideBarIcons\profile.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\SideBarIcons\projectIdeas.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\SideBarIcons\projects.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\SideBarIcons\Selected\dashboard.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\SideBarIcons\Selected\logout.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\SideBarIcons\Selected\profile.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\SideBarIcons\Selected\projectIdeas.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\SideBarIcons\Selected\projects.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\SideBarIcons\Selected\options.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\SideBarIcons\options.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Images\Logo\defaultProjectLogo.png">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Images\Logo\parajectLogo.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Images\Logo\parajectLogoDark.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Images\signupGraphic.svg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Images\UserImage\default.png">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\WindowStateButtons\close.png">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\WindowStateButtons\max.png">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="UiDesign\Icons\WindowStateButtons\min.png">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Properties\PublishProfiles\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="Properties\PublishProfiles\" />
+	</ItemGroup>
 
 </Project>
