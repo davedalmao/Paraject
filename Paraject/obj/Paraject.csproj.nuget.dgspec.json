@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\Paraject\\Paraject Main\\Paraject\\Paraject\\Paraject.csproj": {}
+    "D:\\Projects\\Paraject\\ParajectMain\\Paraject\\Paraject\\Paraject.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\Paraject\\Paraject Main\\Paraject\\Paraject\\Paraject.csproj": {
+    "D:\\Projects\\Paraject\\ParajectMain\\Paraject\\Paraject\\Paraject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\Paraject\\Paraject Main\\Paraject\\Paraject\\Paraject.csproj",
+        "projectUniqueName": "D:\\Projects\\Paraject\\ParajectMain\\Paraject\\Paraject\\Paraject.csproj",
         "projectName": "Paraject",
-        "projectPath": "D:\\Projects\\Paraject\\Paraject Main\\Paraject\\Paraject\\Paraject.csproj",
+        "projectPath": "D:\\Projects\\Paraject\\ParajectMain\\Paraject\\Paraject\\Paraject.csproj",
         "packagesPath": "C:\\Users\\John\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\Paraject\\Paraject Main\\Paraject\\Paraject\\obj\\",
+        "outputPath": "D:\\Projects\\Paraject\\ParajectMain\\Paraject\\Paraject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\John\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -44,6 +44,12 @@
               "target": "Package",
               "version": "[1.1.31, )"
             },
+            "NuGet.CommandLine": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.9.1, )"
+            },
             "PropertyChanged.Fody": {
               "suppressParent": "All",
               "target": "Package",
@@ -60,6 +66,10 @@
             "System.Drawing.Common": {
               "target": "Package",
               "version": "[5.0.2, )"
+            },
+            "squirrel.windows": {
+              "target": "Package",
+              "version": "[1.9.0, )"
             }
           },
           "imports": [
