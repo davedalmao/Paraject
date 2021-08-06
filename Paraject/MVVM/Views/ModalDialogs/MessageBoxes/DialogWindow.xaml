@@ -10,7 +10,6 @@
         WindowStyle="None"
         ResizeMode="CanResize"
         AllowsTransparency="True"
-        WindowStartupLocation="CenterOwner"
         Background="Transparent"
         FontFamily="{StaticResource NunitoBold}"
         Foreground="{StaticResource White}"
