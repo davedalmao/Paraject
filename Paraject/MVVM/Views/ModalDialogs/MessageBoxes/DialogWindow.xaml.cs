@@ -12,7 +12,17 @@ namespace Paraject.MVVM.Views.ModalDialogs.MessageBoxes
         public DialogWindow()
         {
             InitializeComponent();
-            this.Owner = Application.Current.MainWindow;
+
+            if (Application.Current.MainWindow is not DialogWindow)
+            {
+                this.Owner = Application.Current.MainWindow;
+                WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            }
+
+            else
+            {
+                WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            }
         }
 
         private void DialogWindowMouseDown(object sender, MouseButtonEventArgs e)
