@@ -14,6 +14,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Remove="Core\Database\ParajectDb.mdf" />
+		<None Remove="Core\Database\ParajectDb_log.ldf" />
 		<None Remove="UiDesign\Fonts\ArbutusSlab-Regular.ttf" />
 		<None Remove="UiDesign\Fonts\Merriweather-Bold.ttf" />
 		<None Remove="UiDesign\Fonts\Nunito-Bold.ttf" />
@@ -84,6 +86,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Content Include="Core\Database\ParajectDb.mdf">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Core\Database\ParajectDb_log.ldf">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
 		<Content Include="UiDesign\Fonts\ArbutusSlab-Regular.ttf">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
