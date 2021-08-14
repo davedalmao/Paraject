@@ -68,7 +68,7 @@
 			<ComponentGroupRef Id="ProductComponents" />
 
 			<!-- This is a "reference" to the PublishedComponents group (in ComponentsGenerated.wxs)  -->
-			<ComponentGroupRef Id="PublishedComponents" />
+			<!--<ComponentGroupRef Id="PublishedComponents" />-->
 		</Feature>
 	</Product>
 </Wix>

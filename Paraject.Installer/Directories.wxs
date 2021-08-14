@@ -6,6 +6,12 @@
 			<!-- All App files -->
 
 			<!-- AppData\Local Folder-->
+			<!-- to install in AppData\Local folder: 
+				 1. Right click to this project (Paraject.Installer)
+				 2. Select Properties
+				 3. Select Tool Settings
+				 4. Check the Suppress ICE validation
+				 5. Build the installer -->
 			<Directory Id="LocalAppDataFolder">
 				<Directory Id="INSTALLFOLDER" Name="!(loc.ProductFolderName)" />
 			</Directory>

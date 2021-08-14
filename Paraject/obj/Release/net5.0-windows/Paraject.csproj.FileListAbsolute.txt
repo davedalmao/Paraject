@@ -5,7 +5,6 @@ D:\Projects\Paraject\ParajectMain\Paraject\Paraject\bin\Release\net5.0-windows\U
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject\bin\Release\net5.0-windows\Paraject.exe
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject\bin\Release\net5.0-windows\Core\Database\ParajectDb.mdf
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject\bin\Release\net5.0-windows\Core\Database\ParajectDb_log.ldf
-D:\Projects\Paraject\ParajectMain\Paraject\Paraject\bin\Release\net5.0-windows\Paraject.dll.config
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject\bin\Release\net5.0-windows\Paraject.deps.json
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject\bin\Release\net5.0-windows\Paraject.runtimeconfig.json
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject\bin\Release\net5.0-windows\Paraject.runtimeconfig.dev.json
@@ -123,3 +122,4 @@ D:\Projects\Paraject\ParajectMain\Paraject\Paraject\obj\Release\net5.0-windows\P
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject\obj\Release\net5.0-windows\ref\Paraject.dll
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject\obj\Release\net5.0-windows\Paraject.pdb
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject\obj\Release\net5.0-windows\Paraject.genruntimeconfig.cache
+D:\Projects\Paraject\ParajectMain\Paraject\Paraject\obj\Release\net5.0-windows\Paraject.csproj.AssemblyReference.cache
