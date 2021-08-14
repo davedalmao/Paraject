@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="en-us" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+	<String Id="PublisherName">paraJdox1</String>
+
+	<String Id="ProductFolderName">Paraject</String>
+
+	<String Id="ProductName_x86">Paraject (32bit)</String>
+	<String Id="ProductName_x64">Paraject (64bit)</String>
+
+	<String Id="Description">A project management application that keeps track of a project's task and organizes them.</String>
+	<String Id="Keywords">dotnet,core,csharp,localdb,wpf</String>
+	<String Id="Comments">Used for project management, and project idea storage.</String>
+
+	<String Id="DowngradeErrorMessage">A newer version of Paraject is already installed.</String>
+
+	<String Id="Language">1033</String>
+</WixLocalization>
