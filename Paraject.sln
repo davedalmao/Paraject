@@ -7,8 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paraject", "Paraject\Paraje
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Paraject.Installer", "Paraject.Installer\Paraject.Installer.wixproj", "{9AF4E896-8F41-429C-91BC-6E1BD9DA175B}"
 EndProject
+<<<<<<< HEAD
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Paraject.Bootstrapper", "Paraject.Bootstrapper\Paraject.Bootstrapper.wixproj", "{173589FA-04A1-431C-A9E2-DED84BD5D26D}"
 EndProject
+=======
+>>>>>>> e36e16de1d01b077fd10aba923fdd04bbd593d65
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,12 +34,15 @@ Global
 		{9AF4E896-8F41-429C-91BC-6E1BD9DA175B}.Release|x64.ActiveCfg = Release|x64
 		{9AF4E896-8F41-429C-91BC-6E1BD9DA175B}.Release|x86.ActiveCfg = Release|x86
 		{9AF4E896-8F41-429C-91BC-6E1BD9DA175B}.Release|x86.Build.0 = Release|x86
+<<<<<<< HEAD
 		{173589FA-04A1-431C-A9E2-DED84BD5D26D}.Debug|x64.ActiveCfg = Debug|x86
 		{173589FA-04A1-431C-A9E2-DED84BD5D26D}.Debug|x86.ActiveCfg = Debug|x86
 		{173589FA-04A1-431C-A9E2-DED84BD5D26D}.Debug|x86.Build.0 = Debug|x86
 		{173589FA-04A1-431C-A9E2-DED84BD5D26D}.Release|x64.ActiveCfg = Release|x86
 		{173589FA-04A1-431C-A9E2-DED84BD5D26D}.Release|x86.ActiveCfg = Release|x86
 		{173589FA-04A1-431C-A9E2-DED84BD5D26D}.Release|x86.Build.0 = Release|x86
+=======
+>>>>>>> e36e16de1d01b077fd10aba923fdd04bbd593d65
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -67,8 +67,13 @@
 			<!-- This is a "reference" to the ProductComponents group (in Components.wxs) -->
 			<ComponentGroupRef Id="ProductComponents" />
 
+<<<<<<< HEAD
 			<!-- This is a "reference" to the PublishedComponents group (in HeatGeneratedComponents.wxs)  -->
 			<ComponentGroupRef Id="PublishedComponents" />
+=======
+			<!-- This is a "reference" to the PublishedComponents group (in ComponentsGenerated.wxs)  -->
+			<!--<ComponentGroupRef Id="PublishedComponents" />-->
+>>>>>>> e36e16de1d01b077fd10aba923fdd04bbd593d65
 		</Feature>
 	</Product>
 </Wix>
