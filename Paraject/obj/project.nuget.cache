@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QzDdyZPIBPOCcW8lZW7oSr0vbZWB3TSNp/tkOul6+SSrucJubgLDvMLfGlC5UCtDt3Lfm2qkitNNI4QyAwSuJg==",
+  "dgSpecHash": "mCmHVmAcwryeAea1mVng3xELOMLWd83xjxku0XbrFS890XzyMwwDCz1B85wrtOMVP1CHK1vu9DyUMBUjkNPh/w==",
   "success": true,
   "projectFilePath": "D:\\Projects\\Paraject\\ParajectMain\\Paraject\\Paraject\\Paraject.csproj",
   "expectedPackageFiles": [
@@ -19,10 +19,7 @@
     "C:\\Users\\John\\.nuget\\packages\\system.data.sqlclient\\4.8.2\\system.data.sqlclient.4.8.2.nupkg.sha512",
     "C:\\Users\\John\\.nuget\\packages\\system.drawing.common\\5.0.2\\system.drawing.common.5.0.2.nupkg.sha512",
     "C:\\Users\\John\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
-    "C:\\Users\\John\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
-    "C:\\Users\\John\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\5.0.8\\microsoft.netcore.app.runtime.win-x64.5.0.8.nupkg.sha512",
-    "C:\\Users\\John\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\5.0.8\\microsoft.windowsdesktop.app.runtime.win-x64.5.0.8.nupkg.sha512",
-    "C:\\Users\\John\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\5.0.8\\microsoft.aspnetcore.app.runtime.win-x64.5.0.8.nupkg.sha512"
+    "C:\\Users\\John\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }
