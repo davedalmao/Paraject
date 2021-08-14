@@ -1,30 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="Paraject.Installer" Language="1033" Version="1.0.0.0" Manufacturer="" UpgradeCode="7ed23a6e-cd24-4613-a90d-98acd0b0a8e4">
-		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
-		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-		<MediaTemplate />
+	<!-- Give the product a unique Id per platform -->
+	<?if $(var.Platform)=x64 ?>
+	<?define ProductCode = "{E9A5EE65-F603-48E8-9655-9A2029266AB3}" ?>
+	<?else?>
+	<?define ProductCode = "{CA6D739D-FDCB-4C88-9D3F-BA859FF87378}" ?>
+	<?endif?>
 
-		<Feature Id="ProductFeature" Title="Paraject.Installer" Level="1">
+	<!-- UpgradeCode is the REAL product/upgrade ID (this never changes, unlike ProductCode)-->
+	<?define UpgradeCode = "{8B6448E6-0489-4DA7-B530-68338D465181}" ?>
+
+	<!-- Main Product Details -->
+	<!-- The BuildVersion is in Paraject.Installer (unload the installer to see) -->
+	<Product Id="$(var.ProductCode)"
+			 Name="!(loc.ProductName_$(var.Platform))"
+			 Language="!(loc.Language)"
+			 Version="$(var.BuildVersion)"
+			 Manufacturer="!(loc.PublisherName)"
+			 UpgradeCode="$(var.UpgradeCode)">
+
+		<!-- Product's Package Details -->
+		<Package InstallerVersion="200"
+				 Compressed="yes"
+				 InstallScope="perMachine"
+				 Platform="$(var.Platform)"
+				 Manufacturer="!(loc.PublisherName)"
+				 Description="!(loc.Description)"
+				 Keywords="!(loc.Keywords)"
+				 Comments="!(loc.Comments)"
+				 Languages="!(loc.Language)"/>
+
+		<!-- Downgrade Error Message-->
+		<MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeErrorMessage)" />
+
+		<!-- Embed the .cab file into the installer (.msi file) -->
+		<MediaTemplate EmbedCab="yes" />
+
+		<!-- Project's icon directory (this icon will be displayed in Add/Remove Programs, and will be used as part of the installer) -->
+		<Icon Id="AppIcon" SourceFile="$(var.Paraject.ProjectDir)\app.ico"/>
+
+		<!-- The value of ARPPRODUCTICON (a special Id) needs to be an Id of an Icon -->
+		<Property Id="ARPPRODUCTICON">AppIcon</Property>
+
+		<!-- Help/Support Website (Shows in the Add/Remove Programs) -->
+		<Property Id="ARPURLINFOABOUT">https://github.com/</Property>
+
+		<!-- Installer's UI (without EULA) -->
+		<UI>
+			<UIRef Id="WixUI_InstallDir" />
+			<Publish Dialog="WelcomeDlg"
+				  Control="Next"
+				  Event="NewDialog"
+				  Value="VerifyReadyDlg"
+				  Order="2">1</Publish>
+			<Publish Dialog="VerifyReadyDlg"
+				  Control="Back"
+				  Event="NewDialog"
+				  Value="WelcomeDlg"
+				  Order="2">1</Publish>
+		</UI>
+
+		<!-- The Feature tag contains: components, shortcuts, folders, and files (this defines what to install in the installer (.msi)) -->
+		<!-- These are the files that we want to install (these will be stored in the .cab file) -->
+		<Feature Id="ProductFeature" Title="Paraject" Level="1">
+			<!-- This is a "reference" to the ProductComponents group (in Components.wxs) -->
 			<ComponentGroupRef Id="ProductComponents" />
+
+			<!-- This is a "reference" to the PublishedComponents group (in ComponentsGenerated.wxs)  -->
+			<ComponentGroupRef Id="PublishedComponents" />
 		</Feature>
 	</Product>
-
-	<Fragment>
-		<Directory Id="TARGETDIR" Name="SourceDir">
-			<Directory Id="ProgramFilesFolder">
-				<Directory Id="INSTALLFOLDER" Name="Paraject.Installer" />
-			</Directory>
-		</Directory>
-	</Fragment>
-
-	<Fragment>
-		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
-			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
-			<!-- <Component Id="ProductComponent"> -->
-				<!-- TODO: Insert files, registry keys, and other resources here. -->
-			<!-- </Component> -->
-		</ComponentGroup>
-	</Fragment>
 </Wix>

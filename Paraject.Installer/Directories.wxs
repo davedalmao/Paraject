@@ -7,7 +7,7 @@
 
 			<!-- AppData\Local Folder-->
 			<Directory Id="LocalAppDataFolder">
-				<Directory Id="INSTALLFOLDER" Name="!(loc.ProductNameFolder)" />
+				<Directory Id="INSTALLFOLDER" Name="!(loc.ProductFolderName)" />
 			</Directory>
 
 			<!-- Start Menu Shortcut (exe only) -->
