@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+		<!-- The MASTER Directory-->
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<!-- All App files -->
+
+			<!-- AppData\Local Folder-->
+			<Directory Id="LocalAppDataFolder">
+				<Directory Id="INSTALLFOLDER" Name="!(loc.ProductNameFolder)" />
+			</Directory>
+
+			<!-- Start Menu Shortcut (exe only) -->
+			<Directory Id="ProgramMenuFolder"/>
+
+			<!-- Desktop Shortcut -->
+			<Directory Id="DesktopFolder" Name ="Desktop"/>
+		</Directory>
+	</Fragment>
+</Wix>
