@@ -10,8 +10,7 @@
 	<String Id="Description">A project management application that keeps track of a project's task and organizes them.</String>
 	<String Id="Keywords">dotnet,core,csharp,localdb,wpf</String>
 	<String Id="Comments">Used for project management, and project idea storage.</String>
+	<String Id="Language">1033</String>
 
 	<String Id="DowngradeErrorMessage">A newer version of Paraject is already installed.</String>
-
-	<String Id="Language">1033</String>
 </WixLocalization>
