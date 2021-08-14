@@ -6,4 +6,7 @@ D:\Projects\Paraject\ParajectMain\Paraject\Paraject.Installer\bin\Release\Paraje
 obj\Release\Paraject.Installer.wixproj.BindContentsFileListnull.txt
 obj\Release\Paraject.Installer.wixproj.BindOutputsFileListnull.txt
 obj\Release\Paraject.Installer.wixproj.BindBuiltOutputsFileListnull.txt
+<<<<<<< HEAD
 obj\Release\HeatGeneratedComponents.wixobj
+=======
+>>>>>>> e36e16de1d01b077fd10aba923fdd04bbd593d65
