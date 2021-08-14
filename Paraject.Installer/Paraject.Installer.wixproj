@@ -1,63 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" InitialTargets="EnsureWixToolsetInstalled" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>3.10</ProductVersion>
-    <ProjectGuid>9af4e896-8f41-429c-91bc-6e1bd9da175b</ProjectGuid>
-    <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>Paraject.Installer</OutputName>
-    <OutputType>Package</OutputType>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <OutputPath>bin\$(Configuration)\</OutputPath>
-    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
-    <DefineConstants>Debug</DefineConstants>
-    <SuppressValidation>True</SuppressValidation>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <OutputPath>bin\$(Configuration)\</OutputPath>
-    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
-  </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="Components.wxs" />
-    <Compile Include="Directories.wxs" />
-    <Compile Include="Product.wxs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Common.wxl" />
-  </ItemGroup>
-  <ItemGroup>
-    <WixExtension Include="WixUtilExtension">
-      <HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
-      <Name>WixUtilExtension</Name>
-    </WixExtension>
-    <WixExtension Include="WixUIExtension">
-      <HintPath>$(WixExtDir)\WixUIExtension.dll</HintPath>
-      <Name>WixUIExtension</Name>
-    </WixExtension>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Paraject\Paraject.csproj">
-      <Name>Paraject</Name>
-      <Project>{ed4b9f12-656c-4efc-94ec-708917032063}</Project>
-      <Private>True</Private>
-      <DoNotHarvest>True</DoNotHarvest>
-      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
-      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets" Condition=" '$(WixTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets') " />
-  <Target Name="EnsureWixToolsetInstalled" Condition=" '$(WixTargetsImported)' != 'true' ">
-    <Error Text="The WiX Toolset v3.11 (or newer) build tools must be installed to build this project. To download the WiX Toolset, see http://wixtoolset.org/releases/" />
-  </Target>
-  <!--
-	To modify your build process, add your task inside one of the targets below and uncomment it.
-	Other similar extension points exist, see Wix.targets.
-	<Target Name="BeforeBuild">
+	<PropertyGroup>
+		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		<Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+		<ProductVersion>3.10</ProductVersion>
+		<ProjectGuid>9af4e896-8f41-429c-91bc-6e1bd9da175b</ProjectGuid>
+		<SchemaVersion>2.0</SchemaVersion>
+		<OutputName>Paraject-$(Configuration)-$(Platform)</OutputName>
+		<OutputType>Package</OutputType>
+		<Cultures>;</Cultures>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+		<OutputPath>bin\$(Configuration)\</OutputPath>
+		<IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+		<DefineConstants>Debug</DefineConstants>
+		<SuppressValidation>True</SuppressValidation>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+		<OutputPath>bin\$(Configuration)\</OutputPath>
+		<IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+		<OutputPath>bin\$(Configuration)\</OutputPath>
+		<IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+		<DefineConstants>Debug</DefineConstants>
+		<SuppressValidation>True</SuppressValidation>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+		<OutputPath>bin\$(Configuration)\</OutputPath>
+		<IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Include="Components.wxs" />
+		<Compile Include="Directories.wxs" />
+		<Compile Include="Product.wxs" />
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Common.wxl" />
+	</ItemGroup>
+	<ItemGroup>
+		<WixExtension Include="WixUtilExtension">
+			<HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
+			<Name>WixUtilExtension</Name>
+		</WixExtension>
+		<WixExtension Include="WixUIExtension">
+			<HintPath>$(WixExtDir)\WixUIExtension.dll</HintPath>
+			<Name>WixUIExtension</Name>
+		</WixExtension>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Paraject\Paraject.csproj">
+			<Name>Paraject</Name>
+			<Project>{ed4b9f12-656c-4efc-94ec-708917032063}</Project>
+			<Private>True</Private>
+			<DoNotHarvest>True</DoNotHarvest>
+			<RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+			<RefTargetDir>INSTALLFOLDER</RefTargetDir>
+		</ProjectReference>
+	</ItemGroup>
+
+	<Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />
+
+	<Import Project="$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets" Condition=" '$(WixTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets') " />
+
+	<Target Name="EnsureWixToolsetInstalled" Condition=" '$(WixTargetsImported)' != 'true' ">
+		<Error Text="The WiX Toolset v3.11 (or newer) build tools must be installed to build this project. To download the WiX Toolset, see http://wixtoolset.org/releases/" />
 	</Target>
-	<Target Name="AfterBuild">
+
+	<Target Name="BeforeBuild">
+		<!-- Delete the previous build folder before producing the final build output (to ensure a clean build folder) -->
+		<Exec Command="rd /s /q ..\Paraject\bin\$(Configuration)\net5.0-windows\win-$(Platform)" />
+
+		<!-- Publish .Net 5 app -->
+		<Exec Command="dotnet publish ..\Paraject\Paraject.csproj -c $(Configuration) -r win-$(Platform)" />
+
+		<!-- Get Published Project's Assembly Version -->
+		<GetAssemblyIdentity AssemblyFiles="..\Paraject\bin\$(Configuration)\net5.0-windows\win-$(Platform)\Paraject.dll">
+			<Output TaskParameter="Assemblies" ItemName="AssemblyVersion" />
+		</GetAssemblyIdentity>
+
+		<!-- Defined Variables -->
+		<PropertyGroup>
+			<DefineConstants>BuildVersion=%(AssemblyVersion.Version);BasePath=..\Paraject\bin\$(Configuration)\net5.0-windows\win-$(Platform)\publish</DefineConstants>
+		</PropertyGroup>
+
+		<!-- This generates a "Component" for each file (instead of manually adding/typing them in Components.wxs) -->
+		<HeatDirectory OutputFile="HeatGeneratedComponents.wxs"
+					   DirectoryRefId="INSTALLFOLDER"
+					   ComponentGroupName="PublishedComponents"
+					   SuppressCom="true"
+					   Directory="..\Paraject\bin\$(Configuration)\net5.0-windows\win-$(Platform)\publish"
+					   SuppressFragments="true"
+					   SuppressRegistry="true"
+					   SuppressRootDirectory="true"
+					   AutoGenerateGuids="false"
+					   GenerateGuidsNow="true"
+					   ToolPath="$(WixToolPath)"
+					   PreprocessorVariable="var.BasePath"  />
+	</Target>
+
+	<!--<Target Name="AfterBuild">
 	</Target>
 	-->
 </Project>
