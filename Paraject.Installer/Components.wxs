@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+		<!-- Product Components -->
+		<ComponentGroup Id="ProductComponents">
+			<ComponentRef Id="ApplicationShortcut"/>
+			<ComponentRef Id="ApplicationDesktopShortcut"/>
+		</ComponentGroup>
+
+		<!-- Start Menu Shortcut (exe only) -->
+		<DirectoryRef Id ="ProgramMenuFolder">
+			<Component Id="ApplicationShortcut" Guid="{60D94102-2BAF-4FC3-AF76-582EA967EE6C}">
+				<Shortcut Id="ApplicationStartMenuShortcut"
+						  Name="!(loc.ProductFolderName)"
+						  Description="!(loc.Description)"
+						  Directory="ProgramMenuFolder"
+						  Target="[INSTALLFOLDER]Paraject.exe"
+						  WorkingDirectory="INSTALLFOLDER"
+						  Icon="AppIcon"/>
+				<RemoveFolder Id="RemoveMfgStartMenuFolder"
+							  Directory="ProgramMenuFolder"
+							  On="uninstall"/>
+				<RegistryValue Root="HKCU"
+							   Key="Software\!(loc.ProductFolderName)"
+							   Name="installed"
+							   Type="integer"
+							   Value="1"
+							   KeyPath="yes"/>
+			</Component>
+		</DirectoryRef>
+
+		<!-- Desktop Shortcut -->
+		<DirectoryRef Id="DesktopFolder">
+			<Component Id ="ApplicationDesktopShortcut" Guid="{D0A797A5-7615-45AB-893A-317C64F4A2D4}">
+				<Shortcut Id="MyDesktopShortcut"
+						  Name="!(loc.ProductFolderName)"
+						  Description="!(loc.Description)"
+						  Target="[INSTALLFOLDER]Paraject.exe"
+						  WorkingDirectory="INSTALLFOLDER"
+						  Icon="AppIcon"/>
+				<RegistryValue Root="HKCU"
+							   Key="Software\!(loc.ProductFolderName)"
+							   Name="installed"
+							   Type="integer"
+							   Value="1"
+							   KeyPath="yes"/>
+			</Component>
+		</DirectoryRef>
+	</Fragment>
+</Wix>
