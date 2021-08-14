@@ -1,12 +1,4 @@
-C:\Users\John\.nuget\packages\deltacompressiondotnet\1.1.0\lib\net20\DeltaCompressionDotNet.MsDelta.dll
-C:\Users\John\.nuget\packages\deltacompressiondotnet\1.1.0\lib\net20\DeltaCompressionDotNet.PatchApi.dll
-C:\Users\John\.nuget\packages\deltacompressiondotnet\1.1.0\lib\net20\DeltaCompressionDotNet.dll
 C:\Users\John\.nuget\packages\microsoft.xaml.behaviors.wpf\1.1.31\lib\net5.0-windows7.0\Microsoft.Xaml.Behaviors.dll
-C:\Users\John\.nuget\packages\mono.cecil\0.9.6.1\lib\net45\Mono.Cecil.Mdb.dll
-C:\Users\John\.nuget\packages\mono.cecil\0.9.6.1\lib\net45\Mono.Cecil.Pdb.dll
-C:\Users\John\.nuget\packages\mono.cecil\0.9.6.1\lib\net45\Mono.Cecil.Rocks.dll
-C:\Users\John\.nuget\packages\mono.cecil\0.9.6.1\lib\net45\Mono.Cecil.dll
-C:\Users\John\.nuget\packages\sharpcompress\0.17.1\lib\netstandard1.3\SharpCompress.dll
 C:\Users\John\.nuget\packages\sharpvectors\1.7.1\lib\net5.0-windows\SharpVectors.Converters.Wpf.dll
 C:\Users\John\.nuget\packages\sharpvectors\1.7.1\lib\net5.0-windows\SharpVectors.Core.dll
 C:\Users\John\.nuget\packages\sharpvectors\1.7.1\lib\net5.0-windows\SharpVectors.Css.dll
@@ -15,9 +7,6 @@ C:\Users\John\.nuget\packages\sharpvectors\1.7.1\lib\net5.0-windows\SharpVectors
 C:\Users\John\.nuget\packages\sharpvectors\1.7.1\lib\net5.0-windows\SharpVectors.Rendering.Gdi.dll
 C:\Users\John\.nuget\packages\sharpvectors\1.7.1\lib\net5.0-windows\SharpVectors.Rendering.Wpf.dll
 C:\Users\John\.nuget\packages\sharpvectors\1.7.1\lib\net5.0-windows\SharpVectors.Runtime.Wpf.dll
-C:\Users\John\.nuget\packages\splat\1.6.2\lib\Net45\Splat.dll
-C:\Users\John\.nuget\packages\squirrel.windows\1.9.0\lib\Net45\NuGet.Squirrel.dll
-C:\Users\John\.nuget\packages\squirrel.windows\1.9.0\lib\Net45\Squirrel.dll
 C:\Users\John\.nuget\packages\system.data.sqlclient\4.8.2\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\John\.nuget\packages\system.drawing.common\5.0.2\lib\netcoreapp3.0\System.Drawing.Common.dll
 C:\Users\John\.nuget\packages\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\4.4.0\runtimes\win-arm64\native\sni.dll
