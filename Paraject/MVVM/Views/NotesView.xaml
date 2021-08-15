@@ -76,8 +76,7 @@
                                  Style="{StaticResource PlainButtonTheme}"
                                  Command="{Binding ElementName=Notes, 
                                                    Path=DataContext.ShowNoteDetailsModalDialogCommand}"
-                                 CommandParameter="{Binding Content}">
-                            <!--CommandParameter="{Binding Content.Id}"-->
+                                 CommandParameter="{Binding Content.Id}">
 
                             <!--Note Details-->
                             <Grid Margin="18,5,18,11">

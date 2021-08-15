@@ -89,15 +89,15 @@ namespace Paraject.MVVM.ViewModels
             };
             addNoteModalDialog.ShowDialog();
         }
-        public void ShowNoteDetailsModalDialog(object noteId)
+        public void ShowNoteDetailsModalDialog(object selectedNoteId)
         {
             MainWindowViewModel.Overlay = true;
 
-            int selectedNote = (int)noteId;
-            NoteDetailsModalDialogViewModel noteDetailsModalDialogViewModel = new NoteDetailsModalDialogViewModel(DisplayAllNotes, selectedNote);
-
-            NoteDetailsModalDialog noteDetailsModalDialog = new NoteDetailsModalDialog();
-            noteDetailsModalDialog.DataContext = noteDetailsModalDialogViewModel;
+            NoteDetailsModalDialog noteDetailsModalDialog = new()
+            {
+                DataContext = new NoteDetailsModalDialogViewModel(DisplayAllNotes, (int)selectedNoteId),
+                Owner = GetMainWindow.MainWindowObject
+            };
             noteDetailsModalDialog.ShowDialog();
         }
         #endregion
