@@ -1,12 +1,9 @@
-obj\Release\Components.wixobj
-obj\Release\Directories.wixobj
-obj\Release\Product.wixobj
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject.Installer\bin\Release\Paraject-Release-x64.msi
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject.Installer\bin\Release\Paraject-Release-x64.wixpdb
+obj\Release\Components.wixobj
+obj\Release\Directories.wixobj
+obj\Release\HeatGeneratedComponents.wixobj
+obj\Release\Product.wixobj
 obj\Release\Paraject.Installer.wixproj.BindContentsFileListnull.txt
 obj\Release\Paraject.Installer.wixproj.BindOutputsFileListnull.txt
 obj\Release\Paraject.Installer.wixproj.BindBuiltOutputsFileListnull.txt
-<<<<<<< HEAD
-obj\Release\HeatGeneratedComponents.wixobj
-=======
->>>>>>> e36e16de1d01b077fd10aba923fdd04bbd593d65
