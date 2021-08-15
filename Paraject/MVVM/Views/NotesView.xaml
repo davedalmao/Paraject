@@ -33,8 +33,7 @@
                     HorizontalAlignment="Right"
                     Tag="/UiDesign/Icons/ButtonIcons/add.svg"
                     Style="{StaticResource GeneralButtonTheme}"
-                    Command="{Binding ShowAddNoteModalDialogCommand}"
-                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+                    Command="{Binding ShowAddNoteModalDialogCommand}" />
         </DockPanel>
 
         <!--General Project Notes Display-->
@@ -77,8 +76,8 @@
                                  Style="{StaticResource PlainButtonTheme}"
                                  Command="{Binding ElementName=Notes, 
                                                    Path=DataContext.ShowNoteDetailsModalDialogCommand}"
-                                 CommandParameter="{Binding Content.Id}">
-
+                                 CommandParameter="{Binding Content}">
+                            <!--CommandParameter="{Binding Content.Id}"-->
 
                             <!--Note Details-->
                             <Grid Margin="18,5,18,11">

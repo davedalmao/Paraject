@@ -11,7 +11,6 @@ namespace Paraject.MVVM.Views.ModalDialogs
         public NoteDetailsModalDialog()
         {
             InitializeComponent();
-            this.Owner = Application.Current.MainWindow;
         }
 
         private void NoteDetailsModalDialogMouseDown(object sender, MouseButtonEventArgs e)

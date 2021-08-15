@@ -17,6 +17,7 @@ namespace Paraject.MVVM.Views.Windows
         {
             InitializeComponent();
             CloseWindow.WinObject = this;
+            GetMainWindow.MainWindowObject = this;
 
             _viewModel = new MainWindowViewModel(currentUserAccount);
             DataContext = _viewModel;
