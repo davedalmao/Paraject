@@ -90,15 +90,15 @@ namespace Paraject.MVVM.ViewModels
             };
             addProjectIdeaModalDialog.ShowDialog();
         }
-        private void ShowProjectIdeaDetailsModalDialog(object projectIdeaId)
+        private void ShowProjectIdeaDetailsModalDialog(object selectedProjectIdeaId)
         {
             MainWindowViewModel.Overlay = true;
 
-            int selectedProjectIdea = (int)projectIdeaId;
-            ProjectIdeaDetailsModalDialogViewModel projectIdeaDetailsModalDialogViewModel = new(DisplayProjectIdeas, selectedProjectIdea);
-
-            ProjectIdeaDetailsModalDialog projectIdeaDetailsModalDialog = new();
-            projectIdeaDetailsModalDialog.DataContext = projectIdeaDetailsModalDialogViewModel;
+            ProjectIdeaDetailsModalDialog projectIdeaDetailsModalDialog = new()
+            {
+                DataContext = new ProjectIdeaDetailsModalDialogViewModel(DisplayProjectIdeas, (int)selectedProjectIdeaId),
+                Owner = GetMainWindow.MainWindowObject
+            };
             projectIdeaDetailsModalDialog.ShowDialog();
         }
         #endregion

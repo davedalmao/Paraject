@@ -11,7 +11,6 @@ namespace Paraject.MVVM.Views.ModalDialogs
         public ProjectIdeaDetailsModalDialog()
         {
             InitializeComponent();
-            this.Owner = Application.Current.MainWindow;
         }
 
         private void ProjectIdeaDetailsModalDialogMouseDown(object sender, MouseButtonEventArgs e)
