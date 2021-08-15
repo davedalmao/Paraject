@@ -27,6 +27,10 @@
 			<MsiPackage SourceFile="$(var.Paraject.Installer.TargetDir)Paraject-$(var.Configuration)-$(var.Platform).msi"
 						DisplayInternalUI="yes"
 						Vital="yes"/>
+
 		</Chain>
+
+		<!-- To have the option to run the application after its installation -->
+		<Variable Name="LaunchTarget" Value="[LocalAppDataFolder]\Paraject\Paraject.exe"/>
 	</Bundle>
 </Wix>
