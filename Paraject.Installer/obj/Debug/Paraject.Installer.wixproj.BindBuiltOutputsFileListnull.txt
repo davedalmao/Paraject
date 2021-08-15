@@ -1,0 +1,2 @@
+D:\Projects\Paraject\ParajectMain\Paraject\Paraject.Installer\bin\Debug\Paraject-Debug-x86.msi
+D:\Projects\Paraject\ParajectMain\Paraject\Paraject.Installer\bin\Debug\Paraject-Debug-x86.wixpdb

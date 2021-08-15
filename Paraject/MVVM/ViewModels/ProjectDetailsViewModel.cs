@@ -76,6 +76,12 @@ namespace Paraject.MVVM.ViewModels
                 return false;
             }
 
+            else if (ProjectDeadlineDateIsValid() == false)
+            {
+                _dialogService.OpenDialog(new OkayMessageBoxViewModel("Invalid Deadline Date", $"The selected date is invalid. Cannot update this Project. \n\nThe deadline date should be on or after { DateTime.Now.Date:MMMM dd, yyyy} (today).", Icon.InvalidProject));
+                return false;
+            }
+
             else if (ProjectStatusCanBeCompleted() == false)
             {
                 _dialogService.OpenDialog(new OkayMessageBoxViewModel("Update Operation", $"Unable to change this Project's Status to \"Completed\" because there are still {SelectedProject.TaskCount} unfinished task/s remaining.", Icon.InvalidProject));
@@ -87,6 +93,10 @@ namespace Paraject.MVVM.ViewModels
         private bool ProjectNameIsValid()
         {
             return !string.IsNullOrWhiteSpace(SelectedProject.Name);
+        }
+        private bool ProjectDeadlineDateIsValid()
+        {
+            return SelectedProject.Deadline >= DateTime.Now.Date || SelectedProject.Deadline is null;
         }
         private bool ProjectStatusCanBeCompleted()
         {
