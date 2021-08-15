@@ -95,7 +95,8 @@
                     VerticalAlignment="Bottom"
                     Tag="/UiDesign/Icons/ButtonIcons/add.svg"
                     Style="{StaticResource GeneralButtonTheme}"
-                    Command="{Binding ShowAddSubtaskModalDialogCommand}" />
+                    Command="{Binding ShowAddSubtaskModalDialogCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
         </DockPanel>
 
         <!--Subtasks Display-->

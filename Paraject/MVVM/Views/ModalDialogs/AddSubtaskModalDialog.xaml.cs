@@ -11,7 +11,6 @@ namespace Paraject.MVVM.Views.ModalDialogs
         public AddSubtaskModalDialog()
         {
             InitializeComponent();
-            this.Owner = Application.Current.MainWindow;
         }
 
         private void AddSubtaskModalDialogMouseDown(object sender, MouseButtonEventArgs e)
