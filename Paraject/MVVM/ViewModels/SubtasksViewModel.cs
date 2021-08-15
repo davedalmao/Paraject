@@ -121,15 +121,15 @@ namespace Paraject.MVVM.ViewModels
             };
             addSubtaskModalDialog.ShowDialog();
         }
-        private void ShowSubtaskDetailsModalDialog(object subtaskId)
+        private void ShowSubtaskDetailsModalDialog(object selectedSubtaskId)
         {
             MainWindowViewModel.Overlay = true;
 
-            int selectedSubtask = (int)subtaskId;
-            SubtaskDetailsModalDialogViewModel subtaskDetailsModalDialogViewModel = new(DisplayAllFilteredSubtasks, CurrentTask, selectedSubtask);
-
-            SubtaskDetailsModalDialog subtaskDetailsModalDialog = new SubtaskDetailsModalDialog();
-            subtaskDetailsModalDialog.DataContext = subtaskDetailsModalDialogViewModel;
+            SubtaskDetailsModalDialog subtaskDetailsModalDialog = new()
+            {
+                DataContext = new SubtaskDetailsModalDialogViewModel(DisplayAllFilteredSubtasks, CurrentTask, (int)selectedSubtaskId),
+                Owner = GetMainWindow.MainWindowObject
+            };
             subtaskDetailsModalDialog.ShowDialog();
         }
         #endregion
