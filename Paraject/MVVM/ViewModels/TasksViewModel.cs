@@ -1,12 +1,12 @@
 ﻿using Paraject.Core.Commands;
 using Paraject.Core.Repositories;
+using Paraject.Core.Utilities;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.ModalDialogs;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
@@ -25,7 +25,7 @@ namespace Paraject.MVVM.ViewModels
             _tasksViewModel = tasksViewModel;
             ParentProject = parentProject;
 
-            ShowAddTaskModalDialogCommand = new ParameterizedDelegateCommand(ShowAddTaskModalDialog);
+            ShowAddTaskModalDialogCommand = new DelegateCommand(ShowAddTaskModalDialog);
             FilterTasksCommand = new DelegateCommand(DisplayAllFilteredTasks);
             NavigateToSubtasksViewCommand = new ParameterizedDelegateCommand(NavigateToSubtasksView);
 
@@ -131,14 +131,14 @@ namespace Paraject.MVVM.ViewModels
             }
         }
 
-        private void ShowAddTaskModalDialog(object owner)
+        private void ShowAddTaskModalDialog()
         {
             MainWindowViewModel.Overlay = true;
 
             AddTaskModalDialog addTaskModalDialog = new()
             {
                 DataContext = new AddTaskModalDialogViewModel(DisplayAllFilteredTasks, ParentProject, _currentTaskType),
-                Owner = owner as Window
+                Owner = GetMainWindow.MainWindowObject
             };
             addTaskModalDialog.ShowDialog();
         }
