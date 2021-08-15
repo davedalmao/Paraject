@@ -1,11 +1,11 @@
 ﻿using Paraject.Core.Commands;
 using Paraject.Core.Repositories;
+using Paraject.Core.Utilities;
 using Paraject.MVVM.Models;
 using Paraject.MVVM.ViewModels.ModalDialogs;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
 using System.Collections.ObjectModel;
-using System.Windows;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
@@ -20,7 +20,7 @@ namespace Paraject.MVVM.ViewModels
             _projectIdeaRepository = new ProjectIdeaRepository();
             _currentUserId = currentUserId;
 
-            ShowAddProjectIdeaModalDialogCommand = new ParameterizedDelegateCommand(ShowAddProjectIdeaModalDialog);
+            ShowAddProjectIdeaModalDialogCommand = new DelegateCommand(ShowAddProjectIdeaModalDialog);
             ShowProjectIdeaDetailsModalDialogCommand = new ParameterizedDelegateCommand(ShowProjectIdeaDetailsModalDialog);
 
             DisplayProjectIdeas();
@@ -79,14 +79,14 @@ namespace Paraject.MVVM.ViewModels
             }
         }
 
-        private void ShowAddProjectIdeaModalDialog(object owner)
+        private void ShowAddProjectIdeaModalDialog()
         {
             MainWindowViewModel.Overlay = true;
 
             AddProjectIdeaModalDialog addProjectIdeaModalDialog = new()
             {
                 DataContext = new AddProjectIdeaModalDialogViewModel(DisplayProjectIdeas, _currentUserId),
-                Owner = owner as Window
+                Owner = GetMainWindow.MainWindowObject
             };
             addProjectIdeaModalDialog.ShowDialog();
         }
