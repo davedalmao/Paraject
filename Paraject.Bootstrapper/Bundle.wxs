@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Bundle Name="Paraject.Bootstrapper" Version="1.0.0.0" Manufacturer="" UpgradeCode="173589fa-04a1-431c-a9e2-ded84bd5d26d">
-		<BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense" />
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
+	<Bundle Name="Paraject"
+			Version="$(var.BuildVersion)"
+			Manufacturer="paraJdox1"
+			UpgradeCode="{58EEE852-B0FB-4726-B1F0-F432A77D2CEE}"
+			IconSourceFile="App.ico">
+
+		<!-- Bootstrapper Interface (this removes the EULA when starting the bootstrapper) -->
+		<BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.HyperlinkLicense">
+			<bal:WixStandardBootstrapperApplication LicenseUrl=""
+													SuppressOptionsUI="yes"
+													LogoFile="AppLogo.png"/>
+		</BootstrapperApplicationRef>
 
 		<Chain>
-			<!-- TODO: Define the list of chained packages. -->
-			<!-- <MsiPackage SourceFile="path\to\your.msi" /> -->
+			<!-- SqlLocalDB Installer -->
+			<MsiPackage SourceFile=".\Prerequisites\SqlLocalDB.msi"
+						Vital="yes"
+						DisplayInternalUI="no"
+						ForcePerMachine="yes">
+				<MsiProperty Name="IACCEPTSQLLOCALDBLICENSETERMS"
+							 Value="YES"/>
+			</MsiPackage>
+
+			<!-- Project (Paraject) Installer -->
+			<MsiPackage SourceFile="$(var.Paraject.Installer.TargetDir)Paraject-$(var.Configuration)-$(var.Platform).msi"
+						DisplayInternalUI="yes"
+						Vital="yes"/>
 		</Chain>
 	</Bundle>
 </Wix>
