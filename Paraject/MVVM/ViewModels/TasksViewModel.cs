@@ -6,6 +6,7 @@ using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
@@ -24,7 +25,7 @@ namespace Paraject.MVVM.ViewModels
             _tasksViewModel = tasksViewModel;
             ParentProject = parentProject;
 
-            ShowAddTaskModalDialogCommand = new DelegateCommand(ShowAddTaskModalDialog);
+            ShowAddTaskModalDialogCommand = new ParameterizedDelegateCommand(ShowAddTaskModalDialog);
             FilterTasksCommand = new DelegateCommand(DisplayAllFilteredTasks);
             NavigateToSubtasksViewCommand = new ParameterizedDelegateCommand(NavigateToSubtasksView);
 
@@ -130,14 +131,15 @@ namespace Paraject.MVVM.ViewModels
             }
         }
 
-        private void ShowAddTaskModalDialog()
+        private void ShowAddTaskModalDialog(object owner)
         {
             MainWindowViewModel.Overlay = true;
 
-            AddTaskModalDialogViewModel addTaskModalDialogViewModel = new(DisplayAllFilteredTasks, ParentProject, _currentTaskType);
-
-            AddTaskModalDialog addTaskModalDialog = new();
-            addTaskModalDialog.DataContext = addTaskModalDialogViewModel;
+            AddTaskModalDialog addTaskModalDialog = new()
+            {
+                DataContext = new AddTaskModalDialogViewModel(DisplayAllFilteredTasks, ParentProject, _currentTaskType),
+                Owner = owner as Window
+            };
             addTaskModalDialog.ShowDialog();
         }
         public void NavigateToSubtasksView(object taskId) //the argument passed to this parameter is in ProjectsView (a "CommandParameter" from a Project card)

@@ -157,6 +157,7 @@
                     Background="{StaticResource AccentColor}"
                     Style="{StaticResource GeneralButtonTheme}"
                     Command="{Binding ShowAddTaskModalDialogCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
                     Visibility="{Binding AddNewTaskButtonIsVisible,
                                          Converter={StaticResource BooleanToVisibilityConverter}}" />
         </DockPanel>

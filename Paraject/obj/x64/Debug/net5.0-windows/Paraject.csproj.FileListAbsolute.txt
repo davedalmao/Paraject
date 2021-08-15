@@ -29,7 +29,6 @@ D:\Projects\Paraject\ParajectMain\Paraject\Paraject\bin\x64\Debug\net5.0-windows
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject\bin\x64\Debug\net5.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject\bin\x64\Debug\net5.0-windows\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject\bin\x64\Debug\net5.0-windows\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
-D:\Projects\Paraject\ParajectMain\Paraject\Paraject\obj\x64\Debug\net5.0-windows\Paraject.csproj.AssemblyReference.cache
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject\obj\x64\Debug\net5.0-windows\UiDesign\Theme\ComboBoxItemTheme.baml
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject\obj\x64\Debug\net5.0-windows\UiDesign\Theme\ComboBoxTheme.baml
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject\obj\x64\Debug\net5.0-windows\UiDesign\Theme\DatePickerCalendarTheme.baml
@@ -123,3 +122,4 @@ D:\Projects\Paraject\ParajectMain\Paraject\Paraject\obj\x64\Debug\net5.0-windows
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject\obj\x64\Debug\net5.0-windows\ref\Paraject.dll
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject\obj\x64\Debug\net5.0-windows\Paraject.pdb
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject\obj\x64\Debug\net5.0-windows\Paraject.genruntimeconfig.cache
+D:\Projects\Paraject\ParajectMain\Paraject\Paraject\obj\x64\Debug\net5.0-windows\Paraject.csproj.AssemblyReference.cache
