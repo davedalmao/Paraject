@@ -31,6 +31,8 @@
     <Folder Include="Prerequisites\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App.ico" />
+    <Content Include="AppLogo.png" />
     <Content Include="Prerequisites\SqlLocalDB.MSI" />
   </ItemGroup>
   <ItemGroup>
