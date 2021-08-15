@@ -79,7 +79,6 @@
                     Background="{StaticResource AccentColor}"
                     Style="{StaticResource GeneralButtonTheme}"
                     Command="{Binding ShowAddProjectsDialogCommand}"
-                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
                     Visibility="{Binding AddNewProjectButtonIsVisible,
                                          Converter={StaticResource BooleanToVisibilityConverter}}" />
 
