@@ -15,6 +15,7 @@
         WindowStartupLocation="CenterOwner"
         Background="Transparent"
         Width="496"
+        Height="546"
         FontFamily="{StaticResource NunitoBold}"
         Foreground="{StaticResource MainFontColor}"
         MouseDown="NoteDetailsModalDialogMouseDown"
