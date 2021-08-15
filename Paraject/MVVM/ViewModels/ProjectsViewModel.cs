@@ -7,6 +7,7 @@ using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
@@ -26,7 +27,7 @@ namespace Paraject.MVVM.ViewModels
             PaidProjectsCommand = new DelegateCommand(DisplayPaidProjects);
             CompletedProjectsCommand = new DelegateCommand(DisplayCompletedProjects);
 
-            ShowAddProjectsDialogCommand = new DelegateCommand(ShowAddProjectModalDialog);
+            ShowAddProjectsDialogCommand = new ParameterizedDelegateCommand(ShowAddProjectModalDialog);
 
             TasksViewCommand = new ParameterizedDelegateCommand(NavigateToTasksView); //Redirect to TasksView if a Project card is selected (to view a Project's task/s)
             DisplayAllProjects();
@@ -131,14 +132,15 @@ namespace Paraject.MVVM.ViewModels
             }
         }
 
-        public void ShowAddProjectModalDialog()
+        public void ShowAddProjectModalDialog(object owner)
         {
             MainWindowViewModel.Overlay = true;
 
-            AddProjectModalDialogViewModel addProjectModalDialogViewModel = new AddProjectModalDialogViewModel(RefreshProjects, _currentUserId);
-
-            AddProjectModalDialog addProjectModalDialog = new AddProjectModalDialog();
-            addProjectModalDialog.DataContext = addProjectModalDialogViewModel;
+            AddProjectModalDialog addProjectModalDialog = new()
+            {
+                DataContext = new AddProjectModalDialogViewModel(RefreshProjects, _currentUserId),
+                Owner = owner as Window
+            };
             addProjectModalDialog.ShowDialog();
         }
         public void NavigateToTasksView(object projectId) //the argument passed to this parameter is in ProjectsView (a "CommandParameter" from a Project card)
