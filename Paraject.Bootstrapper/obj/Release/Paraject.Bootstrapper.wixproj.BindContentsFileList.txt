@@ -1,0 +1,2 @@
+D:\Projects\Paraject\ParajectMain\Paraject\Paraject.Bootstrapper\Prerequisites\SqlLocalDB.msi
+D:\Projects\Paraject\ParajectMain\Paraject\Paraject.Installer\bin\Release\Paraject-Release-x64.msi

@@ -1,0 +1,6 @@
+D:\Projects\Paraject\ParajectMain\Paraject\Paraject.Bootstrapper\bin\Release\Paraject.Bootstrapper.exe
+D:\Projects\Paraject\ParajectMain\Paraject\Paraject.Bootstrapper\bin\Release\Paraject.Bootstrapper.wixpdb
+obj\Release\Bundle.wixobj
+obj\Release\Paraject.Bootstrapper.wixproj.BindContentsFileList.txt
+obj\Release\Paraject.Bootstrapper.wixproj.BindOutputsFileList.txt
+obj\Release\Paraject.Bootstrapper.wixproj.BindBuiltOutputsFileList.txt

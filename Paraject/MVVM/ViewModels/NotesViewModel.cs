@@ -5,6 +5,7 @@ using Paraject.MVVM.ViewModels.ModalDialogs;
 using Paraject.MVVM.ViewModels.Windows;
 using Paraject.MVVM.Views.ModalDialogs;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Paraject.MVVM.ViewModels
@@ -19,7 +20,7 @@ namespace Paraject.MVVM.ViewModels
             _noteRepository = new NoteRepository();
             _currentProjectId = currentProjectId;
 
-            ShowAddNoteModalDialogCommand = new DelegateCommand(ShowAddNoteModalDialog);
+            ShowAddNoteModalDialogCommand = new ParameterizedDelegateCommand(ShowAddNoteModalDialog);
             ShowNoteDetailsModalDialogCommand = new ParameterizedDelegateCommand(ShowNoteDetailsModalDialog);
 
             DisplayAllNotes();
@@ -77,14 +78,15 @@ namespace Paraject.MVVM.ViewModels
             }
         }
 
-        public void ShowAddNoteModalDialog()
+        public void ShowAddNoteModalDialog(object owner)
         {
             MainWindowViewModel.Overlay = true;
 
-            AddNoteModalDialogViewModel addNoteModalDialogViewModel = new AddNoteModalDialogViewModel(DisplayAllNotes, _currentProjectId);
-
-            AddNoteModalDialog addNoteModalDialog = new AddNoteModalDialog();
-            addNoteModalDialog.DataContext = addNoteModalDialogViewModel;
+            AddNoteModalDialog addNoteModalDialog = new()
+            {
+                DataContext = new AddNoteModalDialogViewModel(DisplayAllNotes, _currentProjectId),
+                Owner = owner as Window
+            };
             addNoteModalDialog.ShowDialog();
         }
         public void ShowNoteDetailsModalDialog(object noteId)

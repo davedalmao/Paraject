@@ -1,0 +1,2 @@
+D:\Projects\Paraject\ParajectMain\Paraject\Paraject.Bootstrapper\bin\Release\Paraject.Bootstrapper.exe
+D:\Projects\Paraject\ParajectMain\Paraject\Paraject.Bootstrapper\bin\Release\Paraject.Bootstrapper.wixpdb
