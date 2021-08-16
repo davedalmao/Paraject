@@ -1,1 +1,1 @@
-![paraject](https://user-images.githubusercontent.com/62003240/129517072-0dee7554-270c-4f4b-854d-89dc4286629c.png)
+![paraject](https://user-images.githubusercontent.com/62003240/129517135-04ba1a01-1285-46a1-887d-0cea37e0e66d.png)
