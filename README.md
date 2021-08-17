@@ -4,8 +4,15 @@
 <div/>
 
 <br/>
+  
+A project management desktop application that keeps track of a project's task and organizes them. (Created using WPF and LocalDB)
 
 <hr/>
   
 <br/>
-A project management desktop application that keeps track of a project's task and organizes them. (Created using WPF and LocalDB)
+  
+
+# Features
+  - An option to manage your personal and paid projects.
+  - Add tasks (with categories, and priorities) to your project 
+  - Filter a project's task, for better organization
