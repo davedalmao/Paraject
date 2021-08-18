@@ -1,11 +1,8 @@
-<div>
-  <img src="https://user-images.githubusercontent.com/62003240/129524820-b74fa54f-babe-4b1f-9f83-0baa1aebb923.jpg" width="280"   />
-  <img src="https://img.shields.io/badge/Target%20Framework-.NET%205.0-blue" hspace="35" /> 
-<div/>
+<img src="https://user-images.githubusercontent.com/62003240/129524820-b74fa54f-babe-4b1f-9f83-0baa1aebb923.jpg" width="280"  /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://img.shields.io/badge/Target%20Framework-.NET%205.0-blue" /> <img src="https://img.shields.io/badge/Platform-x64-orange" /> 
 
 <br/>
   
-A project management desktop application that keeps track of a project's task and organizes them. (Created using WPF and LocalDB)
+A project management desktop application that keeps track of a project's tasks and organizes them. (Created using WPF and LocalDB)
 
 <hr/>
   
@@ -39,14 +36,14 @@ A project management desktop application that keeps track of a project's task an
   
 ### Login / Create Account
   
-- Enter your login credentials if you already have an account.
+- Enter your login credentials if you already have an account
   
   <img src="https://user-images.githubusercontent.com/62003240/129846021-a30f3758-68f8-4726-8b71-0e958c8ac4a2.png" width="500"   />
 
   <br/>
   <br/>
   
-- Create your user account if you don't have an account.
+- Create your user account if you don't have an account
   
   <img src="https://user-images.githubusercontent.com/62003240/129846244-c4bd798c-aa87-47af-9f70-8253db18bff0.png" width="500"   />
 
@@ -80,7 +77,7 @@ A project management desktop application that keeps track of a project's task an
 
 ### Project's Tasks
 
-- Add and manage your Finish Line Tasks (the IMPORTANT tasks) and Extra Feature tasks in the Project's Content (this is displayed if you select a project)
+- Add and manage your Finish Line Tasks (the IMPORTANT tasks) and Extra Feature tasks in the Project's Content (this is displayed if you select a project from the ProjectsView)
 
   <img src="https://user-images.githubusercontent.com/62003240/129848072-3448eace-29b9-4417-9467-ca727579a82a.png" width="800"   />  
  
@@ -111,7 +108,7 @@ A project management desktop application that keeps track of a project's task an
 
 ### Task's Subtasks
   
-- Add and manage a task's subtasks in the Task's Content
+- Add and manage a task's subtasks in the Task's Content (this is displayed if you select a task from the Project's Content)
   
   <img src="https://user-images.githubusercontent.com/62003240/129849930-ccef240f-1e93-4db3-b3fd-41475ed34e0e.png" width="800"   />  
    
@@ -145,9 +142,9 @@ A project management desktop application that keeps track of a project's task an
   - To generate the project's final output (.exe)
     - Check the Configuration (Debug or Release) and Platform (x86 (32 bit) or x64) before `Building`
     - Delete the Project's bin folder if it can't copy the .mdf or .ldf files (this project uses a service-based database)
-    1. Build `Paraject.Installer` (the installer builds the project (Paraject) in its before build (located in Paraject.Installer.wixproj))
+    1. Build `Paraject.Installer` (the installer `Builds` the project (Paraject) in its `BeforeBuild` (located in Paraject.Installer.wixproj))
     1. Build `Paraject.Bootstrapper`
-    1. The [Bootstrapper].exe is the one that packages the app's installer, and the app's prerequisite (this will serve as the final output)
-  
-  - If you have SqlLocalDB (2016) already installed in your machine, it will also be uninstalled if you uninstall this app. (Check your `Control Panel` to view changes)
+    1. The [Bootstrapper's_OutputName].exe is the one that packages the app's installer, and the app's prerequisite (this will serve as the final output)
+
   - This app installs SqlLocalDB.msi (2016). When the app is uninstalled your SqlLocalDB (2016) is uninstalled too.
+  - If you have SqlLocalDB (2016) already installed in your machine, it will also be uninstalled if you uninstall this app. (Check your `Control Panel` to view changes)
