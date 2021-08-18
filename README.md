@@ -21,7 +21,7 @@ A project management desktop application that keeps track of a project's tasks a
   - An option to manage your personal and paid projects
   - Add tasks (with categories, and priorities) to your project 
   - A filter functionality for a project's tasks, for better task organization
-  - Add subtasks to a task
+  - Add subtasks to a task (a way to split the task to "smaller tasks")
   - Add Notes to a project
   - Bonus: store project ideas (that can be potentially created in the future 😉)
 
