@@ -73,3 +73,17 @@ A project management desktop application that keeps track of a project's task an
 - You can modify a project by selecting it (the project's content will be displayed), then select Project Details tab
   
   <img src="https://user-images.githubusercontent.com/62003240/129847259-40e8eec6-38ed-4416-acd1-80580d8c3bff.png" width="800"   />  
+  
+  <br/>
+  <br/>
+  <br/>
+
+### Project's Task
+
+- Add and manage your Finish Line Tasks (the IMPORTANT tasks) and Extra Feature tasks in the Project's content (this is displayed if you select a project)
+
+  <img src="https://user-images.githubusercontent.com/62003240/129848072-3448eace-29b9-4417-9467-ca727579a82a.png" width="800"   />  
+  
+- Use the ComboBoxes to enable the filtering of tasks
+  
+  
