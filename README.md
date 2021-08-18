@@ -54,7 +54,7 @@ A project management desktop application that keeps track of a project's task an
   <br/>
   <br/>
   
-### Project
+### Projects
   
 - Manage your project's in the ProjectsView
 
@@ -78,7 +78,7 @@ A project management desktop application that keeps track of a project's task an
   <br/>
   <br/>
 
-### Project's Task
+### Project's Tasks
 
 - Add and manage your Finish Line Tasks (the IMPORTANT tasks) and Extra Feature tasks in the Project's Content (this is displayed if you select a project)
 
@@ -109,7 +109,7 @@ A project management desktop application that keeps track of a project's task an
   <br/>
   <br/>  
 
-### Task's Subtask
+### Task's Subtasks
   
 - Add and manage a task's subtasks in the Task's Content
   
