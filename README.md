@@ -111,7 +111,7 @@ A project management desktop application that keeps track of a project's tasks a
 
 ### Task's Subtasks
   
-- Add and manage a task's subtasks in the Task's Content
+- Add and manage a task's subtasks in the Task's Content (this is displayed if you select a task from the Project's Content)
   
   <img src="https://user-images.githubusercontent.com/62003240/129849930-ccef240f-1e93-4db3-b3fd-41475ed34e0e.png" width="800"   />  
    
