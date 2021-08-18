@@ -147,7 +147,7 @@ A project management desktop application that keeps track of a project's tasks a
     - Delete the Project's bin folder if it can't copy the .mdf or .ldf files (this project uses a service-based database)
     1. Build `Paraject.Installer` (the installer `Builds` the project (Paraject) in its `BeforeBuild` (located in Paraject.Installer.wixproj))
     1. Build `Paraject.Bootstrapper`
-    1. The [Bootstrapper].exe is the one that packages the app's installer, and the app's prerequisite (this will serve as the final output)
+    1. The [Bootstrapper's_OutputName].exe is the one that packages the app's installer, and the app's prerequisite (this will serve as the final output)
   
   - If you have SqlLocalDB (2016) already installed in your machine, it will also be uninstalled if you uninstall this app. (Check your `Control Panel` to view changes)
   - This app installs SqlLocalDB.msi (2016). When the app is uninstalled your SqlLocalDB (2016) is uninstalled too.
