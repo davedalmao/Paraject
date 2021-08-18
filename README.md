@@ -39,14 +39,14 @@ A project management desktop application that keeps track of a project's tasks a
   
 ### Login / Create Account
   
-- Enter your login credentials if you already have an account.
+- Enter your login credentials if you already have an account
   
   <img src="https://user-images.githubusercontent.com/62003240/129846021-a30f3758-68f8-4726-8b71-0e958c8ac4a2.png" width="500"   />
 
   <br/>
   <br/>
   
-- Create your user account if you don't have an account.
+- Create your user account if you don't have an account
   
   <img src="https://user-images.githubusercontent.com/62003240/129846244-c4bd798c-aa87-47af-9f70-8253db18bff0.png" width="500"   />
 
