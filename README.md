@@ -1,7 +1,9 @@
-<div>
-  <img src="https://user-images.githubusercontent.com/62003240/129524820-b74fa54f-babe-4b1f-9f83-0baa1aebb923.jpg" width="280"   />
-  <img src="https://img.shields.io/badge/Target%20Framework-.NET%205.0-blue" hspace="35" /> 
-<div/>
+<img src="https://user-images.githubusercontent.com/62003240/129524820-b74fa54f-babe-4b1f-9f83-0baa1aebb923.jpg" width="280"  />
+
+<div style="margin: 100px" >
+  <img src="https://img.shields.io/badge/Target%20Framework-.NET%205.0-blue" /> 
+  <img src="https://img.shields.io/badge/Platform-x64-orange" /> 
+ <div/>
 
 <br/>
   
