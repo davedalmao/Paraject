@@ -32,5 +32,44 @@ A project management desktop application that keeps track of a project's task an
 
 # How To Download
   <a href="https://github.com/paraJdox1/Paraject/releases">Go to the project's "Releases" section, and select the .exe, .zip, or .7z file to download this app.</a>
+
+<br/>
+
+# How to Use
   
+### Login / Create Account
   
+- Enter your login credentials if you already have an account.
+  
+  <img src="https://user-images.githubusercontent.com/62003240/129846021-a30f3758-68f8-4726-8b71-0e958c8ac4a2.png" width="500"   />
+
+  <br/>
+  <br/>
+  
+- Create your user account if you don't have an account.
+  
+  <img src="https://user-images.githubusercontent.com/62003240/129846244-c4bd798c-aa87-47af-9f70-8253db18bff0.png" width="500"   />
+
+  <br/>
+  <br/>
+  <br/>
+  
+### Project
+  
+- Manage your project's in the ProjectsView
+
+  <img src="https://user-images.githubusercontent.com/62003240/129846778-98e6910b-3582-4fe6-89f3-c525bca9fbc5.png" width="800"   />
+ 
+  <br/>
+  <br/>
+  
+- View your completed project's in the Completed tab
+
+  <img src="https://user-images.githubusercontent.com/62003240/129847000-13574e50-b76a-4dbc-be08-a17fb1b628ec.png" width="800"   />  
+ 
+  <br/>
+  <br/>
+
+- You can modify a project by selecting it (the project's content will be displayed), then select Project Details tab
+  
+  <img src="https://user-images.githubusercontent.com/62003240/129847259-40e8eec6-38ed-4416-acd1-80580d8c3bff.png" width="800"   />  
