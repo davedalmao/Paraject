@@ -10,9 +10,21 @@ A project management desktop application that keeps track of a project's task an
 <hr/>
   
 <br/>
-  
 
+# Purpose
+  - To know when the project can be called "DONE" 
+    (by implementing the "Important functionalities" (Finish Line Tasks) first before the "Extra Features")
+  - We will only implement the "Extra Features", when all the "Important Functionalities" (Finish Line Tasks) are finished AND there is still time left before the deadline
+  - To focus on the priorities rather than the "Extra Features" (e.g. animations, and themes)
+  - To have an organized plan when creating a project
+  
+<br/>
+  
 # Features
-  - An option to manage your personal and paid projects.
+  - An option to manage your personal and paid projects
   - Add tasks (with categories, and priorities) to your project 
-  - Filter a project's task, for better organization
+  - A filter functionality for a project's tasks, for better task organization
+  - Add subtasks to a task
+  - Add Notes to a project
+  - Bonus: store project ideas (that can be potentially created in the future 😉)
+  
