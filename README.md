@@ -5,7 +5,7 @@
 
 <br/>
   
-A project management desktop application that keeps track of a project's task and organizes them. (Created using WPF and LocalDB)
+A project management desktop application that keeps track of a project's tasks and organizes them. (Created using WPF and LocalDB)
 
 <hr/>
   
