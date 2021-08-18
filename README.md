@@ -80,7 +80,7 @@ A project management desktop application that keeps track of a project's task an
 
 ### Project's Task
 
-- Add and manage your Finish Line Tasks (the IMPORTANT tasks) and Extra Feature tasks in the Project's content (this is displayed if you select a project)
+- Add and manage your Finish Line Tasks (the IMPORTANT tasks) and Extra Feature tasks in the Project's Content (this is displayed if you select a project)
 
   <img src="https://user-images.githubusercontent.com/62003240/129848072-3448eace-29b9-4417-9467-ca727579a82a.png" width="800"   />  
  
@@ -104,4 +104,38 @@ A project management desktop application that keeps track of a project's task an
 - You can modify a task by selecting it (the task's content will be displayed), then select Task Details tab
 
   <img src="https://user-images.githubusercontent.com/62003240/129849576-5306ffcb-d973-4239-b075-98672cd1157b.png" width="800"   />  
+  
+  <br/>
+  <br/>
+  <br/>  
+
+### Task's Subtask
+  
+- Add and manage a task's subtasks in the Task's Content
+  
+  <img src="https://user-images.githubusercontent.com/62003240/129849930-ccef240f-1e93-4db3-b3fd-41475ed34e0e.png" width="800"   />  
+   
+  <br/>
+  <br/>
+  
+- View your Completed Subtasks
+ 
+  <img src="https://user-images.githubusercontent.com/62003240/129850086-aac9f7f0-254f-4998-b976-f3ffd2e1f672.png" width="800"   />   
+   
+  <br/>
+  <br/>
+  
+- You can modify a subtask by selecting it (the subtask details modal dialog will be shown)
+
+  <img src="https://user-images.githubusercontent.com/62003240/129850493-bc46b01a-f08b-4dff-aa36-41f8e03317c5.png" width="800"   />  
+    
+  <br/>
+  <br/>
+  <br/>  
+
+### BONUS: Project Ideas
+  
+- A user interface to manage your project ideas 😉
+
+  <img src="https://user-images.githubusercontent.com/62003240/129850995-85e22b93-27a1-48e5-a915-54ac4839d63c.png" width="800"   />  
   
