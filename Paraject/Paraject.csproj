@@ -16,6 +16,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Remove="Core\Database\ERD.jpeg" />
 		<None Remove="Core\Database\ParajectDb.mdf" />
 		<None Remove="Core\Database\ParajectDb_log.ldf" />
 		<None Remove="UiDesign\Fonts\ArbutusSlab-Regular.ttf" />
@@ -88,6 +89,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Content Include="Core\Database\ERD.jpeg">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
 		<Content Include="Core\Database\ParajectDb.mdf">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
