@@ -142,6 +142,7 @@ A project management desktop application that keeps track of a project's tasks a
   - To generate the project's final output (.exe)
     - Check the Configuration (Debug or Release) and Platform (x86 (32 bit) or x64) before `Building`
     - Delete the Project's bin folder if it can't copy the .mdf or .ldf files (this project uses a service-based database)
+    - Unload `Paraject.Installer` or `Paraject.Bootstrapper` to modify/view its .wixproj
     1. Build `Paraject.Installer` (the installer `Builds` the project (Paraject) in its `BeforeBuild` (located in Paraject.Installer.wixproj))
     1. Build `Paraject.Bootstrapper`
     1. The [Bootstrapper's_OutputName].exe is the one that packages the app's installer, and the app's prerequisite (this will serve as the final output)
