@@ -28,7 +28,7 @@ A project management desktop application that keeps track of a project's tasks a
 <br/>
 
 # How To Download
-  <a href="https://github.com/paraJdox1/Paraject/releases">Go to the project's "Releases" section, and select the .exe, .zip, or .7z file to download this app.</a>
+  <a href="https://github.com/paraJdox1/Paraject/releases">Go to the project's "Releases" section, and select the (latest) .exe, .zip, or .7z file to download this app.</a>
 
 <br/>
 
