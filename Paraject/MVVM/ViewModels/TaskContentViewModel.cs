@@ -23,8 +23,8 @@ namespace Paraject.MVVM.ViewModels
             CurrentChildView = SubtasksVM;
 
             NavigateBackToTasksViewCommand = new DelegateCommand(NavigateBackToTasksView);
-            SubtasksFilterCommand = new ParameterizedDelegateCommand(DisplayFilteredSubtasks);
-            TaskDetailsCommand = new ParameterizedDelegateCommand(o => { CurrentChildView = TaskDetailsVM; });
+            SubtasksFilterCommand = new RelayCommand<object>(DisplayFilteredSubtasks);
+            TaskDetailsCommand = new RelayCommand<object>(o => { CurrentChildView = TaskDetailsVM; });
         }
 
         #region Properties

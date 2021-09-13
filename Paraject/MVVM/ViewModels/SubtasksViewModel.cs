@@ -26,7 +26,7 @@ namespace Paraject.MVVM.ViewModels
 
             FilterSubtasksCommand = new DelegateCommand(DisplaySubtasksTodo);
             ShowAddSubtaskModalDialogCommand = new DelegateCommand(ShowAddSubtaskModalDialog);
-            ShowSubtaskDetailsModalDialogCommand = new ParameterizedDelegateCommand(ShowSubtaskDetailsModalDialog);
+            ShowSubtaskDetailsModalDialogCommand = new RelayCommand<object>(ShowSubtaskDetailsModalDialog);
 
             DisplayAllFilteredSubtasks();
         }

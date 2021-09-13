@@ -29,7 +29,7 @@ namespace Paraject.MVVM.ViewModels
 
             ShowAddProjectsDialogCommand = new DelegateCommand(ShowAddProjectModalDialog);
 
-            TasksViewCommand = new ParameterizedDelegateCommand(NavigateToTasksView); //Redirect to TasksView if a Project card is selected (to view a Project's task/s)
+            TasksViewCommand = new RelayCommand<object>(NavigateToTasksView); //Redirect to TasksView if a Project card is selected (to view a Project's task/s)
             DisplayAllProjects();
         }
 

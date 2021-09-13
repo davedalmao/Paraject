@@ -123,3 +123,4 @@ D:\Projects\Paraject\ParajectMain\Paraject\Paraject\obj\x64\Debug\net5.0-windows
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject\obj\x64\Debug\net5.0-windows\Paraject.pdb
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject\obj\x64\Debug\net5.0-windows\Paraject.genruntimeconfig.cache
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject\obj\x64\Debug\net5.0-windows\Paraject.csproj.AssemblyReference.cache
+D:\Projects\Paraject\ParajectMain\Paraject\Paraject\bin\x64\Debug\net5.0-windows\Core\Database\ERD.jpeg

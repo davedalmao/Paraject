@@ -21,7 +21,7 @@ namespace Paraject.MVVM.ViewModels
             _currentProjectId = currentProjectId;
 
             ShowAddNoteModalDialogCommand = new DelegateCommand(ShowAddNoteModalDialog);
-            ShowNoteDetailsModalDialogCommand = new ParameterizedDelegateCommand(ShowNoteDetailsModalDialog);
+            ShowNoteDetailsModalDialogCommand = new RelayCommand<object>(ShowNoteDetailsModalDialog);
 
             DisplayAllNotes();
         }

@@ -25,9 +25,9 @@ namespace Paraject.MVVM.ViewModels
             CurrentView = TasksVM;
 
             //TasksView child Views (Navigation)
-            TasksViewCommand = new ParameterizedDelegateCommand(DisplayTasksInTasksView);
-            ProjectNotesViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = NotesVM; TaskHeaderTextIsVisible = false; });
-            ProjectDetailsViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectDetailsVM; TaskHeaderTextIsVisible = false; });
+            TasksViewCommand = new RelayCommand<object>(DisplayTasksInTasksView);
+            ProjectNotesViewCommand = new RelayCommand<object>(o => { CurrentView = NotesVM; TaskHeaderTextIsVisible = false; });
+            ProjectDetailsViewCommand = new RelayCommand<object>(o => { CurrentView = ProjectDetailsVM; TaskHeaderTextIsVisible = false; });
             NavigateBackToProjectsViewCommand = new DelegateCommand(NavigateBackToProjectsView);
         }
 

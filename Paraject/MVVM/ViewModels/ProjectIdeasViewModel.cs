@@ -21,7 +21,7 @@ namespace Paraject.MVVM.ViewModels
             _currentUserId = currentUserId;
 
             ShowAddProjectIdeaModalDialogCommand = new DelegateCommand(ShowAddProjectIdeaModalDialog);
-            ShowProjectIdeaDetailsModalDialogCommand = new ParameterizedDelegateCommand(ShowProjectIdeaDetailsModalDialog);
+            ShowProjectIdeaDetailsModalDialogCommand = new RelayCommand<object>(ShowProjectIdeaDetailsModalDialog);
 
             DisplayProjectIdeas();
         }
