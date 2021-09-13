@@ -27,7 +27,7 @@ namespace Paraject.MVVM.ViewModels.MessageBoxes
 
         public ICommand YesCommand { get; private set; }
         public ICommand NoCommand { get; private set; }
-        public ICommand CloseCommand => _closeCommand ??= new DelegateCommand(CloseWindow);
+        public ICommand CloseCommand => _closeCommand ??= new RelayCommand(CloseWindow);
         #endregion
 
         #region Methods

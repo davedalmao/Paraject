@@ -22,12 +22,12 @@ namespace Paraject.MVVM.ViewModels
             _currentUserId = currentUserId;
             _projectRepository = new ProjectRepository();
 
-            AllProjectsCommand = new DelegateCommand(DisplayAllProjects);
-            PersonalProjectsCommand = new DelegateCommand(DisplayPersonalProjects);
-            PaidProjectsCommand = new DelegateCommand(DisplayPaidProjects);
-            CompletedProjectsCommand = new DelegateCommand(DisplayCompletedProjects);
+            AllProjectsCommand = new RelayCommand(DisplayAllProjects);
+            PersonalProjectsCommand = new RelayCommand(DisplayPersonalProjects);
+            PaidProjectsCommand = new RelayCommand(DisplayPaidProjects);
+            CompletedProjectsCommand = new RelayCommand(DisplayCompletedProjects);
 
-            ShowAddProjectsDialogCommand = new DelegateCommand(ShowAddProjectModalDialog);
+            ShowAddProjectsDialogCommand = new RelayCommand(ShowAddProjectModalDialog);
 
             TasksViewCommand = new RelayCommand<object>(NavigateToTasksView); //Redirect to TasksView if a Project card is selected (to view a Project's task/s)
             DisplayAllProjects();

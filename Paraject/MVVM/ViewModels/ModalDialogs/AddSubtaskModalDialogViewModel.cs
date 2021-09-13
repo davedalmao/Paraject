@@ -17,7 +17,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         private readonly Action _refreshSubtasksCollection;
         private readonly SubtaskRepository _subtaskRepository;
         private readonly TaskRepository _taskRepository;
-        private DelegateCommand _closeCommand;
+        private RelayCommand _closeCommand;
         private readonly string _unmodifiedParentTaskStatus;
         private readonly DateTime? _unmodifiedParentTaskDeadline;
 
@@ -44,7 +44,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 Task_Id_Fk = parentTask.Id
             };
 
-            AddSubtaskCommand = new DelegateCommand(Add);
+            AddSubtaskCommand = new RelayCommand(Add);
         }
 
         #region Properties
@@ -53,7 +53,7 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
         public Action Close { get; set; }
 
         public ICommand AddSubtaskCommand { get; }
-        public ICommand CloseCommand => _closeCommand ??= new DelegateCommand(CloseWindow);
+        public ICommand CloseCommand => _closeCommand ??= new RelayCommand(CloseWindow);
         #endregion
 
         #region Methods

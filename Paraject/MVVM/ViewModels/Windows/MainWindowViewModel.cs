@@ -38,7 +38,7 @@ namespace Paraject.MVVM.ViewModels.Windows
             UserAccountViewCommand = new RelayCommand<object>(o => { CurrentView = UserAccountVM; AccountIsChecked = true; });
             ProjectIdeasViewCommand = new RelayCommand<object>(o => { CurrentView = ProjectIdeasVM; ProjectIdeasIsChecked = true; });
 
-            LogoutCommand = new DelegateCommand(Logout);
+            LogoutCommand = new RelayCommand(Logout);
         }
 
         #region Properties

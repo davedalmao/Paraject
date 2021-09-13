@@ -14,14 +14,14 @@ namespace Paraject.MVVM.ViewModels.Windows
     {
         private readonly IDialogService _dialogService;
         private readonly UserAccountRepository _userAccountRepository;
-        private DelegateCommand _loginWindowRedirectCommand;
+        private RelayCommand _loginWindowRedirectCommand;
         public event EventHandler Closed; //The Window (LoginWindow) closes itself when this event is executed
 
         public SignupWindowViewModel()
         {
             _dialogService = new DialogService();
             _userAccountRepository = new UserAccountRepository();
-            AddCommand = new DelegateCommand(Add);
+            AddCommand = new RelayCommand(Add);
             CurrentUserAccount = new UserAccount();
         }
 
@@ -30,7 +30,7 @@ namespace Paraject.MVVM.ViewModels.Windows
         public UserAccount CurrentUserAccount { get; set; }
 
         public ICommand AddCommand { get; }
-        public ICommand LoginWindowRedirectCommand => _loginWindowRedirectCommand ??= new DelegateCommand(ShowLoginWindow);
+        public ICommand LoginWindowRedirectCommand => _loginWindowRedirectCommand ??= new RelayCommand(ShowLoginWindow);
         #endregion
 
         #region Methods

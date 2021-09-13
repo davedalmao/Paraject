@@ -25,8 +25,8 @@ namespace Paraject.MVVM.ViewModels
             _tasksViewModel = tasksViewModel;
             ParentProject = parentProject;
 
-            ShowAddTaskModalDialogCommand = new DelegateCommand(ShowAddTaskModalDialog);
-            FilterTasksCommand = new DelegateCommand(DisplayAllFilteredTasks);
+            ShowAddTaskModalDialogCommand = new RelayCommand(ShowAddTaskModalDialog);
+            FilterTasksCommand = new RelayCommand(DisplayAllFilteredTasks);
             NavigateToSubtasksViewCommand = new RelayCommand<object>(NavigateToSubtasksView);
 
             DisplayAllFilteredTasks();

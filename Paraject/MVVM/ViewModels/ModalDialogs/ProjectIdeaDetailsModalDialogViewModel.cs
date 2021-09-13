@@ -25,9 +25,9 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             _refreshProjectIdeasCollection = refreshProjectIdeasCollection;
             _projectIdeaId = projectIdeaId;
 
-            CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
-            UpdateProjectIdeaCommand = new DelegateCommand(Update);
-            DeleteProjectIdeaCommand = new DelegateCommand(Delete);
+            CloseModalDialogCommand = new RelayCommand(CloseModalDialog);
+            UpdateProjectIdeaCommand = new RelayCommand(Update);
+            DeleteProjectIdeaCommand = new RelayCommand(Delete);
 
             CurrentProjectIdea = _projectIdeaRepository.Get(projectIdeaId);
         }

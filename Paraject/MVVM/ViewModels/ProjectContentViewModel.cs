@@ -28,7 +28,7 @@ namespace Paraject.MVVM.ViewModels
             TasksViewCommand = new RelayCommand<object>(DisplayTasksInTasksView);
             ProjectNotesViewCommand = new RelayCommand<object>(o => { CurrentView = NotesVM; TaskHeaderTextIsVisible = false; });
             ProjectDetailsViewCommand = new RelayCommand<object>(o => { CurrentView = ProjectDetailsVM; TaskHeaderTextIsVisible = false; });
-            NavigateBackToProjectsViewCommand = new DelegateCommand(NavigateBackToProjectsView);
+            NavigateBackToProjectsViewCommand = new RelayCommand(NavigateBackToProjectsView);
         }
 
         #region Properties

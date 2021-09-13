@@ -28,8 +28,8 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 Project_Id_Fk = currentProjectId
             };
 
-            CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
-            AddNoteCommand = new DelegateCommand(Add);
+            CloseModalDialogCommand = new RelayCommand(CloseModalDialog);
+            AddNoteCommand = new RelayCommand(Add);
         }
 
         #region Properties

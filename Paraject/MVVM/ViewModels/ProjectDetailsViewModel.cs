@@ -24,9 +24,9 @@ namespace Paraject.MVVM.ViewModels
             _projectsViewModel = projectsViewModel;
             SelectedProject = currentProject;
 
-            AddOrChangeLogoCommand = new DelegateCommand(LoadProjectLogo);
-            UpdateProjectCommand = new DelegateCommand(Update);
-            DeleteProjectCommand = new DelegateCommand(Delete);
+            AddOrChangeLogoCommand = new RelayCommand(LoadProjectLogo);
+            UpdateProjectCommand = new RelayCommand(Update);
+            DeleteProjectCommand = new RelayCommand(Delete);
         }
 
         #region Properties
