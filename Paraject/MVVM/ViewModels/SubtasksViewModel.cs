@@ -24,9 +24,9 @@ namespace Paraject.MVVM.ViewModels
             InputRowVisibility = isInputRowDisplayed;
             CurrentTask = currentTask;
 
-            FilterSubtasksCommand = new DelegateCommand(DisplaySubtasksTodo);
-            ShowAddSubtaskModalDialogCommand = new DelegateCommand(ShowAddSubtaskModalDialog);
-            ShowSubtaskDetailsModalDialogCommand = new ParameterizedDelegateCommand(ShowSubtaskDetailsModalDialog);
+            FilterSubtasksCommand = new RelayCommand(DisplaySubtasksTodo);
+            ShowAddSubtaskModalDialogCommand = new RelayCommand(ShowAddSubtaskModalDialog);
+            ShowSubtaskDetailsModalDialogCommand = new RelayCommand<object>(ShowSubtaskDetailsModalDialog);
 
             DisplayAllFilteredSubtasks();
         }

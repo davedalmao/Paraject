@@ -44,8 +44,8 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             };
             CurrentTaskType = taskType.Replace("_", " ");
 
-            CloseModalCommand = new DelegateCommand(CloseModal);
-            AddTaskCommand = new DelegateCommand(Add);
+            CloseModalCommand = new RelayCommand(CloseModal);
+            AddTaskCommand = new RelayCommand(Add);
         }
 
         #region Properties

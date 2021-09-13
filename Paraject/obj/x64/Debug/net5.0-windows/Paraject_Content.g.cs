@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("core/database/erd.jpeg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("core/database/parajectdb.mdf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("core/database/parajectdb_log.ldf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("uidesign/fonts/arbutusslab-regular.ttf")]

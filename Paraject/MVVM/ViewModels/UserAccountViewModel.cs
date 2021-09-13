@@ -23,9 +23,9 @@ namespace Paraject.MVVM.ViewModels
             _userAccountRepository = new UserAccountRepository();
             CurrentUserAccount = currentUserAccount;
 
-            LoadUserAccountImageCommand = new DelegateCommand(LoadUserAccountImage);
-            UpdateCurrentUserCommand = new DelegateCommand(Update);
-            DeleteCurrentUserCommand = new DelegateCommand(Delete);
+            LoadUserAccountImageCommand = new RelayCommand(LoadUserAccountImage);
+            UpdateCurrentUserCommand = new RelayCommand(Update);
+            DeleteCurrentUserCommand = new RelayCommand(Delete);
         }
 
         #region Properties

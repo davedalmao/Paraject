@@ -29,9 +29,9 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
                 User_Id_Fk = currentUserId
             };
 
-            AddProjectCommand = new DelegateCommand(Add);
-            AddProjectLogoCommand = new DelegateCommand(LoadProjectLogo);
-            CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
+            AddProjectCommand = new RelayCommand(Add);
+            AddProjectLogoCommand = new RelayCommand(LoadProjectLogo);
+            CloseModalDialogCommand = new RelayCommand(CloseModalDialog);
         }
 
         #region Properties

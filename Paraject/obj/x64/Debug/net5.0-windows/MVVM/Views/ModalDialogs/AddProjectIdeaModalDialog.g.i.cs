@@ -58,13 +58,14 @@ namespace Paraject.MVVM.Views.ModalDialogs {
         /// InitializeComponent
         /// </summary>
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.8.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.9.0")]
         public void InitializeComponent() {
             if (_contentLoaded) {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Paraject;component/mvvm/views/modaldialogs/addprojectideamodaldialog.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Paraject;V1.0.0.0;component/mvvm/views/modaldialogs/addprojectideamodaldialog.xa" +
+                    "ml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\..\MVVM\Views\ModalDialogs\AddProjectIdeaModalDialog.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
@@ -74,7 +75,7 @@ namespace Paraject.MVVM.Views.ModalDialogs {
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.8.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.9.0")]
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Design", "CA1033:InterfaceMethodsShouldBeCallableByChildTypes")]
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]

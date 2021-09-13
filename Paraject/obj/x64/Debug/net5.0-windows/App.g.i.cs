@@ -55,7 +55,7 @@ namespace Paraject {
         /// InitializeComponent
         /// </summary>
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.8.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.9.0")]
         public void InitializeComponent() {
             if (_contentLoaded) {
                 return;
@@ -67,7 +67,7 @@ namespace Paraject {
             
             #line default
             #line hidden
-            System.Uri resourceLocater = new System.Uri("/Paraject;component/app.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Paraject;V1.0.0.0;component/app.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\App.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
@@ -81,7 +81,7 @@ namespace Paraject {
         /// </summary>
         [System.STAThreadAttribute()]
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.8.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.9.0")]
         public static void Main() {
             Paraject.App app = new Paraject.App();
             app.InitializeComponent();

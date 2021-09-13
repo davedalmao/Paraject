@@ -69,13 +69,13 @@ namespace Paraject.MVVM.Views.ModalDialogs {
         /// InitializeComponent
         /// </summary>
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.8.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.9.0")]
         public void InitializeComponent() {
             if (_contentLoaded) {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Paraject;component/mvvm/views/modaldialogs/addsubtaskmodaldialog.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Paraject;V1.0.0.0;component/mvvm/views/modaldialogs/addsubtaskmodaldialog.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\..\MVVM\Views\ModalDialogs\AddSubtaskModalDialog.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
@@ -85,14 +85,14 @@ namespace Paraject.MVVM.Views.ModalDialogs {
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.8.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.9.0")]
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal System.Delegate _CreateDelegate(System.Type delegateType, string handler) {
             return System.Delegate.CreateDelegate(delegateType, this, handler);
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.8.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.9.0")]
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Design", "CA1033:InterfaceMethodsShouldBeCallableByChildTypes")]
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]

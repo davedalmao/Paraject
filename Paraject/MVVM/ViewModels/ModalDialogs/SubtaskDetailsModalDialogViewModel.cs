@@ -41,9 +41,9 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             _unmodifiedParentTaskDeadline = _taskRepository.Get(parentTask.Id).Deadline;
 
 
-            UpdateSubtaskCommand = new DelegateCommand(Update);
-            DeleteSubtaskCommand = new DelegateCommand(Delete);
-            CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
+            UpdateSubtaskCommand = new RelayCommand(Update);
+            DeleteSubtaskCommand = new RelayCommand(Delete);
+            CloseModalDialogCommand = new RelayCommand(CloseModalDialog);
 
             SelectedSubtask = _subtaskRepository.Get(selectedSubtaskId);
             PreviousSelectedSubtaskStatus = SelectedSubtask.Status;

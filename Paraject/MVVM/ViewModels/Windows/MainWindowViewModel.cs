@@ -34,11 +34,11 @@ namespace Paraject.MVVM.ViewModels.Windows
 
             CurrentView = ProjectsVM;
 
-            ProjectsViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectsVM; ProjectsIsChecked = true; });
-            UserAccountViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = UserAccountVM; AccountIsChecked = true; });
-            ProjectIdeasViewCommand = new ParameterizedDelegateCommand(o => { CurrentView = ProjectIdeasVM; ProjectIdeasIsChecked = true; });
+            ProjectsViewCommand = new RelayCommand<object>(o => { CurrentView = ProjectsVM; ProjectsIsChecked = true; });
+            UserAccountViewCommand = new RelayCommand<object>(o => { CurrentView = UserAccountVM; AccountIsChecked = true; });
+            ProjectIdeasViewCommand = new RelayCommand<object>(o => { CurrentView = ProjectIdeasVM; ProjectIdeasIsChecked = true; });
 
-            LogoutCommand = new DelegateCommand(Logout);
+            LogoutCommand = new RelayCommand(Logout);
         }
 
         #region Properties

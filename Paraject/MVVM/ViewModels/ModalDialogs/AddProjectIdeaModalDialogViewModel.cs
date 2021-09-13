@@ -28,8 +28,8 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
 
             _refreshProjectIdeasCollection = refreshProjectIdeasCollection;
 
-            AddProjectIdeaCommand = new DelegateCommand(Add);
-            CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
+            AddProjectIdeaCommand = new RelayCommand(Add);
+            CloseModalDialogCommand = new RelayCommand(CloseModalDialog);
         }
 
         #region Properties

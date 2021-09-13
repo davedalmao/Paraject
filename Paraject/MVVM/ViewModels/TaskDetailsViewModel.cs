@@ -43,8 +43,8 @@ namespace Paraject.MVVM.ViewModels
             _unmodifiedParentProjectStatus = _projectRepository.Get(parentProject.Id).Status;
             _unmodifiedParentProjectDeadline = _projectRepository.Get(parentProject.Id).Deadline;
 
-            UpdateTaskCommand = new DelegateCommand(Update);
-            DeleteTaskCommand = new DelegateCommand(Delete);
+            UpdateTaskCommand = new RelayCommand(Update);
+            DeleteTaskCommand = new RelayCommand(Delete);
         }
 
         #region Properties

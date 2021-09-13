@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 D:\Projects\Paraject\ParajectMain\Paraject\Paraject\App.xaml
 49-38236015
 7-425707638
-105-1307513297
+1031512637261
 2051671356928
 Core\CustomControls\UserControls\BindablePasswordBox.xaml;MVVM\Views\DashboardView.xaml;MVVM\Views\ModalDialogs\AddNoteModalDialog.xaml;MVVM\Views\ModalDialogs\AddProjectIdeaModalDialog.xaml;MVVM\Views\ModalDialogs\AddProjectModalDialog.xaml;MVVM\Views\ModalDialogs\AddSubtaskModalDialog.xaml;MVVM\Views\ModalDialogs\AddTaskModalDialog.xaml;MVVM\Views\ModalDialogs\MessageBoxes\DialogWindow.xaml;MVVM\Views\ModalDialogs\MessageBoxes\OkayMessageBox.xaml;MVVM\Views\ModalDialogs\MessageBoxes\YesNoMessageBox.xaml;MVVM\Views\ModalDialogs\NoteDetailsModalDialog.xaml;MVVM\Views\ModalDialogs\ProjectIdeaDetailsModalDialog.xaml;MVVM\Views\ModalDialogs\SubtaskDetailsModalDialog.xaml;MVVM\Views\NotesView.xaml;MVVM\Views\OptionsView.xaml;MVVM\Views\ProjectContentView.xaml;MVVM\Views\ProjectDetailsView.xaml;MVVM\Views\ProjectIdeasView.xaml;MVVM\Views\ProjectsView.xaml;MVVM\Views\SubtasksView.xaml;MVVM\Views\TaskContentView.xaml;MVVM\Views\TaskDetailsView.xaml;MVVM\Views\TasksView.xaml;MVVM\Views\UserAccountView.xaml;MVVM\Views\Windows\LoginWindow.xaml;MVVM\Views\Windows\MainWindow.xaml;MVVM\Views\Windows\SignupWindow.xaml;UiDesign\Theme\BindablePasswordBoxTheme.xaml;UiDesign\Theme\ComboBoxItemTheme.xaml;UiDesign\Theme\ComboBoxTheme.xaml;UiDesign\Theme\ComboBoxTheme2.xaml;UiDesign\Theme\DatePickerCalendarTheme.xaml;UiDesign\Theme\DatePickerTheme.xaml;UiDesign\Theme\DeadlineIconTheme.xaml;UiDesign\Theme\DeadlineTextTheme.xaml;UiDesign\Theme\GeneralButtonTheme.xaml;UiDesign\Theme\HorizontalRadioButtonTheme.xaml;UiDesign\Theme\PlainButtonTheme.xaml;UiDesign\Theme\PriorityIndicatorTheme.xaml;UiDesign\Theme\ProjectDeadlineTextTheme.xaml;UiDesign\Theme\ProjectStatusTheme.xaml;UiDesign\Theme\ScrollbarTheme.xaml;UiDesign\Theme\SubtaskCountIconTheme.xaml;UiDesign\Theme\SubtaskCountValueTheme.xaml;UiDesign\Theme\TaskCategoryTheme.xaml;UiDesign\Theme\TextBoxTheme.xaml;UiDesign\Theme\TextOnlyButtonTheme.xaml;UiDesign\Theme\TextWithImageTheme.xaml;UiDesign\Theme\VerticalRadioButtonTheme.xaml;
 
-False
+True
 

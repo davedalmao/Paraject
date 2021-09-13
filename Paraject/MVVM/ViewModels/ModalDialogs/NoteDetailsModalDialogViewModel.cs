@@ -25,9 +25,9 @@ namespace Paraject.MVVM.ViewModels.ModalDialogs
             _refreshNotesCollection = refreshNotesCollection;
             _noteId = noteId;
 
-            CloseModalDialogCommand = new DelegateCommand(CloseModalDialog);
-            UpdateNoteCommand = new DelegateCommand(Update);
-            DeleteNoteCommand = new DelegateCommand(Delete);
+            CloseModalDialogCommand = new RelayCommand(CloseModalDialog);
+            UpdateNoteCommand = new RelayCommand(Update);
+            DeleteNoteCommand = new RelayCommand(Delete);
 
             CurrentNote = _noteRepository.Get(noteId);
         }
