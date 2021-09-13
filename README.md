@@ -21,14 +21,14 @@ A project management desktop application that keeps track of a project's tasks a
   - An option to manage your personal and paid projects
   - Add tasks (with categories, and priorities) to your project 
   - A filter functionality for a project's tasks, for better task organization
-  - Add subtasks to a task
+  - Add subtasks to a task (a way to split the task to "smaller tasks")
   - Add Notes to a project
   - Bonus: store project ideas (that can be potentially created in the future 😉)
 
 <br/>
 
 # How To Download
-  <a href="https://github.com/paraJdox1/Paraject/releases">Go to the project's "Releases" section, and select the .exe, .zip, or .7z file to download this app.</a>
+  <a href="https://github.com/paraJdox1/Paraject/releases">Go to the project's "Releases" section, and select the (latest) .exe, .zip, or .7z file to download this app.</a>
 
 <br/>
 
@@ -142,6 +142,7 @@ A project management desktop application that keeps track of a project's tasks a
   - To generate the project's final output (.exe)
     - Check the Configuration (Debug or Release) and Platform (x86 (32 bit) or x64) before `Building`
     - Delete the Project's bin folder if it can't copy the .mdf or .ldf files (this project uses a service-based database)
+    - Unload `Paraject.Installer` or `Paraject.Bootstrapper` to modify/view its .wixproj
     1. Build `Paraject.Installer` (the installer `Builds` the project (Paraject) in its `BeforeBuild` (located in Paraject.Installer.wixproj))
     1. Build `Paraject.Bootstrapper`
     1. The [Bootstrapper's_OutputName].exe is the one that packages the app's installer, and the app's prerequisite (this will serve as the final output)
